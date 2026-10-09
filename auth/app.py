@@ -212,8 +212,8 @@ class AuthService:
         seconds = REMEMBER_SECONDS if remember else SESSION_SECONDS
         with self.connect() as db:
             db.execute("DELETE FROM sessions WHERE expires_at <= ?", (now,))
-            user = db.execute("SELECT status FROM users WHERE id=?", (user_id,)).fetchone()
-            if not user or user["status"] != "ACTIVE":
+            user = db.execute("SELECT status,deleted_at FROM users WHERE id=?", (user_id,)).fetchone()
+            if not user or user["status"] != "ACTIVE" or user["deleted_at"] is not None:
                 raise ApiError(401, "Account is unavailable. Contact support.")
             db.execute("INSERT INTO sessions(token_hash,user_id,expires_at) VALUES (?,?,?)",
                        (digest(token), user_id, now + seconds))
@@ -228,7 +228,7 @@ class AuthService:
                 "WHERE sessions.token_hash=? AND sessions.expires_at>?",
                 (digest(token), int(time.time())),
             ).fetchone()
-        if user is None or user["status"] != "ACTIVE":
+        if user is None or user["status"] != "ACTIVE" or user["deleted_at"] is not None:
             raise ApiError(401, "Login has expired. Please sign in again.")
         return dict(user)
 
@@ -256,9 +256,46 @@ class AuthService:
                 db.execute("DELETE FROM sessions WHERE token_hash=?", (digest(token),))
         return {}
 
-    def delete_account(self, token: str):
-        user = self.user_for_token(token)
+    @staticmethod
+    def platform_admin_in_db(db, user):
+        """Recheck the configured platform owner against the current account."""
+        if not user:
+            return False
+        row = db.execute("SELECT role,email FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL",
+                         (user['id'],)).fetchone()
+        owner_email = os.environ.get('PLATFORM_ADMIN_EMAIL', '').strip().casefold()
+        return bool(row and row['role'] == 'PLATFORM_ADMIN' and
+                    (not owner_email or row['email'].strip().casefold() == owner_email))
+
+    @staticmethod
+    def account_deletion_denial(db, user):
+        owner_email = os.environ.get('PLATFORM_ADMIN_EMAIL', '').strip().casefold()
+        if owner_email and user['email'].strip().casefold() == owner_email:
+            return 'The platform owner cannot delete their account here.'
+        if user['role'] == 'PLATFORM_ADMIN' and db.execute(
+                "SELECT count(*) FROM users WHERE role='PLATFORM_ADMIN' AND status='ACTIVE' AND deleted_at IS NULL"
+                ).fetchone()[0] <= 1:
+            return 'The last active platform administrator cannot delete their account.'
+        return None
+
+    def account_deletion_allowed(self, user):
         with self.connect() as db:
+            current = db.execute("SELECT role,email FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL",
+                                 (user['id'],)).fetchone()
+            return bool(current and not self.account_deletion_denial(db, current))
+
+    def delete_account(self, token: str):
+        with self.connect() as db:
+            # Resolve the session and administrator count under one write lock.
+            db.execute('BEGIN IMMEDIATE')
+            user = db.execute("""SELECT u.* FROM sessions s JOIN users u ON u.id=s.user_id
+                WHERE s.token_hash=? AND s.expires_at>? AND u.status='ACTIVE' AND u.deleted_at IS NULL""",
+                (digest(token), int(time.time()))).fetchone()
+            if not user:
+                raise ApiError(401, 'Please sign in.')
+            denial = self.account_deletion_denial(db, user)
+            if denial:
+                raise ApiError(403, denial)
             db.execute("DELETE FROM sessions WHERE user_id=?", (user["id"],))
             db.execute("UPDATE users SET status='DELETED',deleted_at=? WHERE id=?", (int(time.time()), user["id"]))
         return {"deleted": True}
@@ -544,10 +581,10 @@ class Handler(BaseHTTPRequestHandler):
             user = self.service.user_for_token(self.token())
             self.send_json(200, {"id": user["id"], "role": user["role"], "username": user["email"],
                                  "email": user["email"], "nickName": user["display_name"],
-                                 "companyName": user["company_name"], "isTestWorkspace":bool(user.get("is_test_workspace")), "language":user["preferred_language"], "passwordSet": self.email_auth.has_password(user["id"])})
+                                 "companyName": user["company_name"], "accountDeletionAllowed": self.service.account_deletion_allowed(user), "isTestWorkspace":bool(user.get("is_test_workspace")), "language":user["preferred_language"], "passwordSet": self.email_auth.has_password(user["id"])})
             return
         if method == "DELETE" and path == "/autolink/me":
-            self.send_json(200, self.service.delete_account(self.token()))
+            self.send_json(200, self.service.delete_account(self.token()), clear_cookie=True)
             return
         if method == "GET" and path in ("/autolink/merchant/stock", "/autolink/requests"):
             if self.service.user_for_token(self.token())["role"] != "MERCHANT":

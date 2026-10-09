@@ -1,0 +1,32 @@
+# Source-only scanning. No Docker socket, production host or remote scan server.
+format: json
+exit-code: 1
+timeout: 10m
+quiet: true
+severity:
+  - UNKNOWN
+  - LOW
+  - MEDIUM
+  - HIGH
+  - CRITICAL
+scan:
+  scanners:
+    - vuln
+    - misconfig
+    - secret
+  parallel: 2
+  disable-telemetry: true
+  skip-dirs:
+    - .git
+    - security-reports
+    - .security-cache
+    - __pycache__
+db:
+  no-progress: true
+pkg:
+  types:
+    - library
+misconfiguration:
+  scanners:
+    - dockerfile
+  include-non-failures: true

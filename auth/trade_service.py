@@ -235,9 +235,9 @@ class TradeService:
 
     def require_admin(self, token):
         user = self.auth.user_for_token(token)
-        owner_email = os.environ.get("PLATFORM_ADMIN_EMAIL", "").strip().lower()
-        if user["role"] != "PLATFORM_ADMIN" or (owner_email and user["email"].strip().lower() != owner_email):
-            raise BuyerError(403, "Platform admin required.")
+        with self.auth.connect() as db:
+            if not self.auth.platform_admin_in_db(db, user):
+                raise BuyerError(403, "Platform admin required.")
         return user
 
     def supplier_publication(self, db, supplier_id):

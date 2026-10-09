@@ -1,0 +1,19 @@
+title = "AUTOLINK source and history secrets review"
+
+[extend]
+useDefault = true
+
+# Do not allowlist .env, frontend bundles, sample configs or all test files.
+[[allowlists]]
+description = "Generated scanner output/cache and Git internals only"
+paths = [
+  '''(^|/)(security-reports|\.security-cache|__pycache__|\.git)(/|$)'''
+]
+
+[[rules]]
+id = "autolink-code-signing-secret"
+description = "Hardcoded AUTOLINK email-code signing secret"
+regex = '''(?i)auth_code_secret\s*[:=]\s*["']?([A-Za-z0-9_+/.=-]{20,})'''
+secretGroup = 1
+entropy = 3.0
+keywords = ["auth_code_secret"]
