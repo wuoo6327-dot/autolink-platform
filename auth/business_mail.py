@@ -86,9 +86,9 @@ class BusinessMailer:
                 JOIN users owner ON owner.id=i.supplier_id
                 WHERE i.id=? AND i.supplier_id=? AND i.invited_by=?
                 AND i.status='PENDING' AND i.expires_at>?
-                AND a.status='APPROVED' AND owner.role IN ('MERCHANT','SUPPLIER')
+                AND a.status='APPROVED' AND owner.role IN ('BUYER','MERCHANT','SUPPLIER')
                 AND owner.status='ACTIVE' AND owner.deleted_at IS NULL
-                AND owner.email_verified_at IS NOT NULL''',
+                AND owner.email_verified_at IS NOT NULL AND owner.is_test_workspace=0''',
                 (entity,uid,uid,int(time.time()))).fetchone())
         if event == 'WELCOME':return uid == entity
         if event == 'NEW_QUOTE':
@@ -114,7 +114,8 @@ class BusinessMailer:
                 JOIN supplier_applications a ON a.supplier_id=i.supplier_id JOIN users owner ON owner.id=i.supplier_id
                 WHERE i.id=? AND u.id=? AND i.status='PENDING' AND i.expires_at>?
                 AND a.status='APPROVED' AND owner.status='ACTIVE' AND owner.deleted_at IS NULL
-                AND owner.email_verified_at IS NOT NULL AND owner.role IN ('MERCHANT','SUPPLIER') ''', (entity,uid,int(time.time()))).fetchone())
+                AND owner.email_verified_at IS NOT NULL AND owner.is_test_workspace=0
+                AND owner.role IN ('BUYER','MERCHANT','SUPPLIER') ''', (entity,uid,int(time.time()))).fetchone())
         if event == 'TEAM_JOINED':
             return bool(db.execute("SELECT 1 FROM supplier_team_members WHERE supplier_id=? AND user_id=? AND status='ACTIVE'", (uid, entity)).fetchone())
         if event == 'BUYER_ASSIGNED':

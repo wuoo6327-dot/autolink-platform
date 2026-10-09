@@ -194,11 +194,7 @@ class EmailAuthService:
                     # or convert a supplier/admin into a buyer.
                     raise EmailError(409, 'This email already has an account. Sign in or reset your password.')
                 user_id = identity['user_id']
-                if requested_role == 'MERCHANT':
-                    # Supplier sign-in is an explicit workspace choice. Preserve
-                    # account data and review gates while correcting legacy
-                    # accounts created as buyers from the merchant entry.
-                    db.execute("UPDATE users SET role='MERCHANT' WHERE id=? AND role='BUYER' AND status='ACTIVE' AND deleted_at IS NULL", (user_id,))
+                # Entry choice does not change the existing account identity.
             else:
                 if body.get('consent') is not True:
                     raise EmailError(400, "Accept the platform terms to create an account.")
@@ -251,9 +247,7 @@ class EmailAuthService:
             raise EmailError(401, "Invalid email or password.")
         with self.auth.connect() as db:
             db.execute("DELETE FROM email_password_attempts WHERE email_hash=?", (email_hash,))
-            if requested_role == 'MERCHANT':
-                db.execute("UPDATE users SET role='MERCHANT' WHERE id=? AND role='BUYER' AND status='ACTIVE' AND deleted_at IS NULL", (row['user_id'],))
-                row = db.execute("SELECT role,id AS user_id FROM users WHERE id=?", (row['user_id'],)).fetchone()
+            row = db.execute("SELECT role,id AS user_id FROM users WHERE id=?", (row['user_id'],)).fetchone()
             db.execute("UPDATE users SET last_login_at=? WHERE id=?", (int(time.time()),row['user_id']))
         return {**self.auth.session_for_user(row['user_id'], bool(body.get('remember'))), 'role':row['role']}
 

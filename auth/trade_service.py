@@ -235,9 +235,9 @@ class TradeService:
 
     def require_admin(self, token):
         user = self.auth.user_for_token(token)
-        owner_email = os.environ.get("PLATFORM_ADMIN_EMAIL", "").strip().lower()
-        if user["role"] != "PLATFORM_ADMIN" or (owner_email and user["email"].strip().lower() != owner_email):
-            raise BuyerError(403, "Platform admin required.")
+        with self.auth.connect() as db:
+            if not self.auth.platform_admin_in_db(db, user):
+                raise BuyerError(403, "Platform admin required.")
         return user
 
     def supplier_publication(self, db, supplier_id):
@@ -272,7 +272,8 @@ class TradeService:
             if kind not in document_kinds]
         agreement = self.agreement.matching(db,supplier_id,row['company_name'],row['registration_no'],row['address']) \
             if row and row['application_id'] else None
-        complete = not missing_fields and not missing_documents and bool(agreement)
+        readiness = self.agreement.readiness()
+        complete = not missing_fields and not missing_documents and bool(agreement) and readiness['acceptanceEnabled']
         reasons = []
         status = row['application_status'] if row else None
         if not visible:
@@ -298,7 +299,9 @@ class TradeService:
         elif 'EMAIL_UNVERIFIED' in reasons:
             action = 'verify_email'
         elif status == 'PENDING':
-            action = 'await_review'
+            action = 'contact_support' if missing_fields or missing_documents else \
+                'agreement_unavailable' if not readiness['acceptanceEnabled'] else \
+                'confirm_agreement' if not agreement else 'submit_application'
         elif status == 'APPROVED':
             action = 'create_vehicle' if visible and complete else 'contact_support'
         elif status == 'SUSPENDED':
@@ -307,13 +310,16 @@ class TradeService:
             action = 'save_application'
         elif missing_documents:
             action = 'upload_documents'
+        elif not readiness['acceptanceEnabled']:
+            action = 'agreement_unavailable'
         elif not agreement:
             action = 'confirm_agreement'
         else:
             action = 'submit_application'
         return {'visible':visible,'reasons':reasons,'nextAction':action,
             'requiredFields':missing_fields,'requiredDocumentKinds':missing_documents,
-            'agreementConfirmed':bool(agreement),'requirementsComplete':bool(complete)}
+            'agreementConfirmed':bool(agreement),'requirementsComplete':bool(complete),
+            'agreementReadiness':readiness}
 
     def vehicle_publication(self, db, row, supplier_publication=None):
         """Explain private/admin listing visibility without exposing documents."""
@@ -364,6 +370,7 @@ class TradeService:
         result = dict(row) if row else {"supplier_id": user["id"], "status": "DRAFT"}
         result['agreementConfirmation'] = dict(confirmation) if confirmation else None
         result['publication'] = publication
+        result['agreementReadiness'] = self.agreement.readiness()
         return result
 
     def documents(self, supplier_id):
@@ -446,6 +453,9 @@ class TradeService:
         return {"filename":row["filename"], "contentType":row["content_type"], "data":(DOCUMENT_ROOT/row["stored_name"]).read_bytes()}
 
     def save_application(self, user, body):
+        self.team.owner(user)
+        if self.team.actor(user) != user['id']:
+            raise BuyerError(403, 'Only the company owner may enable this account.')
         fields = {
             "company_name": text(body.get("companyName"), "company name", 160, True),
             "registration_no": text(body.get("registrationNo"), "registration number", 100, True),
@@ -470,20 +480,24 @@ class TradeService:
         now = int(time.time())
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
+            actor = db.execute("SELECT id,is_test_workspace FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL "
+                "AND email_verified_at IS NOT NULL AND role IN ('BUYER','MERCHANT','SUPPLIER')", (user['id'],)).fetchone()
+            if not actor or submit and actor['is_test_workspace']:
+                raise BuyerError(403, 'A verified active supplier account is required.')
             existing = db.execute("SELECT status FROM supplier_applications WHERE supplier_id=?", (user["id"],)).fetchone()
             if submit and not db.execute("SELECT 1 FROM supplier_documents WHERE supplier_id=? AND kind='BUSINESS_LICENSE'", (user["id"],)).fetchone():
                 raise BuyerError(409, "Save draft and upload a business license before submitting.")
             if submit:
                 require_evidence(db, user["id"], evidence)
                 self.agreement.require_current(db, user['id'], fields['company_name'], fields['registration_no'], fields['address'])
-            if existing and existing["status"] in ("PENDING", "APPROVED", "SUSPENDED"):
+            if existing and (existing["status"] in ("APPROVED", "SUSPENDED") or existing["status"] == 'PENDING' and not submit):
                 raise BuyerError(409, "This application cannot be edited in its current state.")
             db.execute("INSERT OR IGNORE INTO supplier_profiles(user_id,published,country,description,updated_at) VALUES (?,0,?,?,?)",
                        (user["id"], fields["country"], fields["overview"], now))
             db.execute("UPDATE supplier_profiles SET country=?,description=?,updated_at=? WHERE user_id=?",
                        (fields["country"], fields["overview"], now, user["id"]))
             db.execute("UPDATE users SET company_name=? WHERE id=?", (fields["company_name"], user["id"]))
-            status = "PENDING" if submit else "DRAFT"
+            status = "APPROVED" if submit else "DRAFT"
             db.execute("""INSERT INTO supplier_applications(supplier_id,registration_no,address,city,contact_name,contact_phone,
                 website,overview,established_year,main_brands,main_markets,export_experience,status,submitted_at,updated_at)
                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(supplier_id) DO UPDATE SET
@@ -499,7 +513,11 @@ class TradeService:
                 inventory_basis=?,inventory_as_of=?,evidence_version=2 WHERE supplier_id=?""",
                 (evidence['premises_address'], evidence['inventory_count'], evidence['inventory_basis'], evidence['inventory_as_of'], user['id']))
             if submit:
+                db.execute("UPDATE supplier_profiles SET published=1,updated_at=? WHERE user_id=?", (now,user['id']))
+                db.execute("UPDATE supplier_applications SET reviewed_by=NULL,reviewed_at=NULL,review_reason='' WHERE supplier_id=?", (user['id'],))
                 self.audit(db,user["id"],"SUPPLIER_SUBMITTED","supplier",user["id"],user["id"])
+                self.audit(db,user["id"],"SUPPLIER_ACCOUNT_ENABLED","supplier",user["id"],user["id"],
+                    json.dumps({'agreementVersion':self.agreement.document['version'],'activation':'SELF_SERVICE'}))
         return self.application(user)
 
     def review_supplier(self, admin, supplier_id, body):
@@ -517,7 +535,7 @@ class TradeService:
                 raise BuyerError(404, "Reviewable supplier application not found.")
             if decision == "APPROVED" and not db.execute("SELECT 1 FROM supplier_documents WHERE supplier_id=? AND kind='BUSINESS_LICENSE'",(supplier_id,)).fetchone():
                 raise BuyerError(409, "A business license document is required before approval.")
-            if decision == 'APPROVED' and row['status'] == 'PENDING':
+            if decision == 'APPROVED' and row['status'] != 'APPROVED':
                 company_name = db.execute('SELECT company_name FROM users WHERE id=?', (supplier_id,)).fetchone()[0]
                 self.agreement.require_current(db, supplier_id, company_name, row['registration_no'], row['address'])
             if decision == 'APPROVED' and row['evidence_version'] >= 2:
@@ -571,6 +589,19 @@ class TradeService:
         This never serializes full user/listing rows, private files, inquiries,
         quotes or contact details. Counts and shard rows use one read snapshot.
         """
+        from seo_service import LANGUAGES, localized_url, sitemap_alternates
+        ElementTree.register_namespace('xhtml', 'http://www.w3.org/1999/xhtml')
+        # Each eligible entity produces nine URL entries. Bound URL entries,
+        # rather than just source entities, so shards remain within the limit.
+        entity_page_size = max(1, SITEMAP_PAGE_SIZE // len(LANGUAGES))
+        def append_urls(path, modified=None):
+            for language in LANGUAGES:
+                node = ElementTree.SubElement(root, 'url')
+                ElementTree.SubElement(node, 'loc').text = localized_url(path, language)
+                sitemap_alternates(node, path, ElementTree)
+                if modified:
+                    ElementTree.SubElement(node, 'lastmod').text = datetime.fromtimestamp(
+                        modified, timezone.utc).isoformat(timespec='seconds')
         supplier_from = """supplier_profiles p JOIN supplier_applications a ON a.supplier_id=p.user_id
             JOIN users u ON u.id=p.user_id"""
         sections = {
@@ -591,7 +622,7 @@ class TradeService:
                 children = ['static-1.xml']
                 for category,(source,where,*_) in sections.items():
                     count = db.execute('SELECT count(*) FROM '+source+' WHERE '+where).fetchone()[0]
-                    pages = max(1, (count+SITEMAP_PAGE_SIZE-1)//SITEMAP_PAGE_SIZE)
+                    pages = max(1, (count+entity_page_size-1)//entity_page_size)
                     if len(children)+pages > 50000:
                         raise BuyerError(503, 'Sitemap capacity exceeded.')
                     children.extend(category+'-'+str(page)+'.xml' for page in range(1,pages+1))
@@ -600,8 +631,7 @@ class TradeService:
                     ElementTree.SubElement(node, 'loc').text = SITEMAP_ORIGIN+'/sitemaps/'+child
             elif filename=='static-1.xml':
                 for path in SITEMAP_STATIC_PATHS:
-                    node = ElementTree.SubElement(root,'url')
-                    ElementTree.SubElement(node,'loc').text = SITEMAP_ORIGIN+path
+                    append_urls(path)
             else:
                 match = re.fullmatch(r'(brands|models|suppliers|vehicles)-([1-9][0-9]{0,4})\.xml',filename)
                 if not match:
@@ -609,18 +639,14 @@ class TradeService:
                 category,page = match[1],int(match[2])
                 source,where,key,modified,prefix = sections[category]
                 count = db.execute('SELECT count(*) FROM '+source+' WHERE '+where).fetchone()[0]
-                if page > max(1,(count+SITEMAP_PAGE_SIZE-1)//SITEMAP_PAGE_SIZE):
+                if page > max(1,(count+entity_page_size-1)//entity_page_size):
                     raise BuyerError(404,'Sitemap not found.')
                 rows = db.execute('SELECT '+key+' AS id,'+modified+' AS modified FROM '+source+
                     ' WHERE '+where+' ORDER BY '+key+' LIMIT ? OFFSET ?',
-                    (SITEMAP_PAGE_SIZE,(page-1)*SITEMAP_PAGE_SIZE))
+                    (entity_page_size,(page-1)*entity_page_size))
                 for row in rows:
-                    node = ElementTree.SubElement(root,'url')
-                    ElementTree.SubElement(node,'loc').text = SITEMAP_ORIGIN+prefix+quote(row['id'],safe='')
                     # Actual stored content modification, never generation time.
-                    if row['modified']:
-                        ElementTree.SubElement(node,'lastmod').text = datetime.fromtimestamp(
-                            row['modified'],timezone.utc).isoformat(timespec='seconds')
+                    append_urls(prefix+quote(row['id'],safe=''),row['modified'])
         payload = ElementTree.tostring(root,encoding='utf-8',xml_declaration=True)
         if len(payload)>52428800:
             raise BuyerError(503,'Sitemap capacity exceeded.')
@@ -784,7 +810,7 @@ class TradeService:
             condition = " AND ".join(where)
             order = {"newest":"v.updated_at DESC", "price_asc":"v.price_minor ASC",
                      "price_desc":"v.price_minor DESC",
-                     "popular":"(SELECT count(*) FROM buyer_vehicle_views bv JOIN users viewer ON viewer.id=bv.user_id WHERE bv.listing_id=v.id AND bv.viewed_at>=? AND viewer.status='ACTIVE' AND viewer.deleted_at IS NULL AND viewer.role='BUYER' AND viewer.email_verified_at IS NOT NULL) DESC, v.updated_at DESC"}.get(filters.get("sort"),"v.updated_at DESC")
+                     "popular":"(SELECT count(*) FROM buyer_vehicle_views bv JOIN users viewer ON viewer.id=bv.user_id WHERE bv.listing_id=v.id AND bv.viewed_at>=? AND viewer.status='ACTIVE' AND viewer.deleted_at IS NULL AND viewer.role IN ('BUYER','MERCHANT','SUPPLIER') AND viewer.email_verified_at IS NOT NULL) DESC, v.updated_at DESC"}.get(filters.get("sort"),"v.updated_at DESC")
             order_args = (int(time.time())-30*86400,) if filters.get("sort") == "popular" else ()
             rows = query_list(db, """SELECT v.*,u.company_name AS supplier_name,p.country AS supplier_country,a.status AS supplier_status
                 FROM supplier_vehicles v JOIN users u ON u.id=v.supplier_id
@@ -838,7 +864,7 @@ class TradeService:
         image="/autolink/public/vehicle-images/"+images[0]["id"] if images else model.get("image") or model.get("images",[None])[0]
         return {**row,"brand":model.get("brand",""),"model":model.get("model",""),
                 "image":image,"referenceImage":not bool(images),"images":["/autolink/public/vehicle-images/"+item["id"] for item in images],
-                "verifiedSupplier":row.get("supplier_status")=="APPROVED"}
+                "businessAccountActive":row.get("supplier_status")=="APPROVED"}
 
     def vehicle(self, listing_id, supplier_id=None, public=False, include_archived=False):
         with self.auth.connect() as db:
@@ -1028,7 +1054,7 @@ class TradeService:
         return result
 
     def create_inquiry(self, buyer, body):
-        if buyer["role"]!="BUYER":
+        if buyer["role"] not in ('BUYER','MERCHANT','SUPPLIER'):
             raise BuyerError(403,"Buyer account required.")
         if not buyer.get("email_verified_at"):
             raise BuyerError(403,"Verify your email before sending an inquiry.")
@@ -1047,6 +1073,8 @@ class TradeService:
         now=int(time.time())
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
+            if buyer['id'] == listing['supplier_id'] or db.execute("SELECT 1 FROM supplier_team_members WHERE supplier_id=? AND user_id=? AND status='ACTIVE'", (listing['supplier_id'],buyer['id'])).fetchone():
+                raise BuyerError(403, 'You cannot send an inquiry to your own company.')
             db.execute("DELETE FROM inquiry_rate_events WHERE created_at<?",(now-86400,))
             hourly=db.execute("SELECT count(*) FROM inquiry_rate_events WHERE buyer_id=? AND created_at>?",(buyer["id"],now-3600)).fetchone()[0]
             limited = self.platform.membership_policy_enabled() and not self.platform.member_in_db(db,buyer)
@@ -1101,7 +1129,7 @@ class TradeService:
             if sales:
                 self.team.check_assignment(db, supplier)
             else:
-                self.team.active_owner(db, supplier)
+                self.team.active_owner(db, supplier, allow_test=True)
             company = supplier['id']
             actor = self.team.actor(supplier)
             inquiry_where = 'i.supplier_id=? AND i.listing_id IS NOT NULL'
@@ -1174,29 +1202,25 @@ class TradeService:
             if inquiry_id:
                 sql+=" AND i.id=?";args.append(inquiry_id)
             rows=query_list(db,sql,args,order='i.updated_at DESC,i.id DESC',page=None if inquiry_id else page,legacy_limit=200)
-            if inquiry_id and rows and rows[0]["viewed_at"] is None:
-                now=int(time.time())
-                db.execute("""UPDATE buyer_inquiries SET status=CASE WHEN status='SUBMITTED' THEN 'VIEWED' ELSE status END,
-                    viewed_at=?,updated_at=? WHERE id=? AND supplier_id=? AND viewed_at IS NULL""",
-                    (now,now,inquiry_id,supplier["id"]))
-                if rows[0]["status"]=="SUBMITTED":
-                    rows[0]["status"]="VIEWED"
-                rows[0]["viewed_at"]=now
-                rows[0]["updated_at"]=now
         return rows
 
     def update_inquiry(self, supplier, inquiry_id, body):
         status=body.get("status")
-        if status not in ("CONTACTED","NEGOTIATING","CLOSED"):
+        if status not in ("VIEWED","CONTACTED","NEGOTIATING","CLOSED"):
             raise BuyerError(400,"Invalid inquiry status.")
         now=int(time.time())
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             self.team.check_assignment(db,supplier,inquiry=inquiry_id)
-            row=db.execute("SELECT id FROM buyer_inquiries WHERE id=? AND supplier_id=? AND listing_id IS NOT NULL",(inquiry_id,supplier["id"])).fetchone()
+            row=db.execute("SELECT id,status,viewed_at FROM buyer_inquiries WHERE id=? AND supplier_id=? AND listing_id IS NOT NULL",(inquiry_id,supplier["id"])).fetchone()
             if not row:
                 raise BuyerError(404,"Inquiry not found.")
-            db.execute("UPDATE buyer_inquiries SET status=?,last_contact_at=?,updated_at=? WHERE id=? AND supplier_id=?",(status,now,now,inquiry_id,supplier["id"]))
+            if status == 'VIEWED':
+                if row['status'] == 'CLOSED':
+                    raise BuyerError(409, 'Inquiry is closed or unavailable.')
+                db.execute("UPDATE buyer_inquiries SET status=CASE WHEN status='SUBMITTED' THEN 'VIEWED' ELSE status END,viewed_at=COALESCE(viewed_at,?),updated_at=? WHERE id=? AND supplier_id=?", (now,now,inquiry_id,supplier['id']))
+            else:
+                db.execute("UPDATE buyer_inquiries SET status=?,last_contact_at=?,updated_at=? WHERE id=? AND supplier_id=?",(status,now,now,inquiry_id,supplier["id"]))
             self.audit(db,self.team.actor(supplier),"INQUIRY_"+status,"inquiry",inquiry_id,supplier["id"])
         return self.supplier_inquiries(supplier,inquiry_id)[0]
 
@@ -1234,15 +1258,8 @@ class TradeService:
     def quote_rows(self, owner, supplier=False, inquiry_id=None, page=None):
         column="supplier_id" if supplier else "buyer_id"
         with self.auth.connect() as db:
-            db.execute("BEGIN IMMEDIATE")
             if supplier:
                 self.team.check_assignment(db,owner)
-            expiry_sql = "UPDATE trade_quotes SET status='EXPIRED',updated_at=? WHERE status IN ('SENT','VIEWED') AND valid_until<? AND archived_at IS NULL AND sent_at IS NOT NULL AND "+column+"=?"
-            expiry_args = [int(time.time()), date.today().isoformat(), owner["id"]]
-            if supplier and owner.get("supplier_role")=="SALES":
-                expiry_sql += " AND EXISTS (SELECT 1 FROM buyer_inquiries i WHERE i.id=trade_quotes.inquiry_id AND i.supplier_id=trade_quotes.supplier_id AND i.assigned_to=?)"
-                expiry_args.append(self.team.actor(owner))
-            db.execute(expiry_sql, expiry_args)
             sql=f"""SELECT q.*,u.company_name AS supplier_name FROM trade_quotes q
                 JOIN users u ON u.id=q.supplier_id WHERE q.{column}=? AND q.archived_at IS NULL"""
             args=[owner["id"]]
@@ -1255,6 +1272,7 @@ class TradeService:
                 sql+=" AND q.inquiry_id=?";args.append(inquiry_id)
             rows=query_list(db,sql,args,order='q.created_at DESC,q.id DESC',page=page,legacy_limit=200)
         for row in list_items(rows):
+            row['status'] = self.effective_quote_status(row)
             row["vehicle"] = self.catalog.get(row["vehicle_id"])
         return rows
 
@@ -1311,8 +1329,10 @@ class TradeService:
                 (SELECT b.inquiry_id FROM buyer_request_responses b WHERE b.request_id=r.id AND b.supplier_id=?) AS response_inquiry_id
                 FROM buyer_requests r JOIN users u ON u.id=r.buyer_id
                 WHERE r.distribution_consent=1 AND r.status IN ('PUBLISHED','RESPONSES_RECEIVED')
-                AND u.status='ACTIVE' AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL"""
-            args=[supplier["id"]]
+                AND u.status='ACTIVE' AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL
+                AND u.role IN ('BUYER','MERCHANT','SUPPLIER') AND r.buyer_id!=?
+                AND NOT EXISTS (SELECT 1 FROM supplier_team_members tm WHERE tm.supplier_id=? AND tm.user_id=r.buyer_id AND tm.status='ACTIVE')"""
+            args=[supplier["id"],supplier['id'],supplier['id']]
             if request_id:sql+=" AND r.id=?";args.append(request_id)
             rows=query_list(db,sql,args,order='r.published_at DESC,r.id DESC',
                             page=None if request_id else page,legacy_limit=100)
@@ -1327,8 +1347,11 @@ class TradeService:
             db.execute("BEGIN IMMEDIATE")
             request=db.execute("""SELECT r.* FROM buyer_requests r JOIN users u ON u.id=r.buyer_id
                 WHERE r.id=? AND r.distribution_consent=1 AND r.status IN ('PUBLISHED','RESPONSES_RECEIVED')
-                AND u.status='ACTIVE' AND u.email_verified_at IS NOT NULL""",(request_id,)).fetchone()
+                AND u.status='ACTIVE' AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL
+                AND u.role IN ('BUYER','MERCHANT','SUPPLIER')""",(request_id,)).fetchone()
             if not request:raise BuyerError(404,"Published buying request not found.")
+            if request['buyer_id'] == supplier['id'] or db.execute("SELECT 1 FROM supplier_team_members WHERE supplier_id=? AND user_id=? AND status='ACTIVE'", (supplier['id'],request['buyer_id'])).fetchone():
+                raise BuyerError(403, 'You cannot respond to your own company buying request.')
             current_listing=db.execute("SELECT status FROM supplier_vehicles WHERE id=? AND supplier_id=?",(listing_id,supplier["id"])).fetchone()
             if not current_listing or current_listing["status"]!="ONLINE":raise BuyerError(409,"The listing is no longer online.")
             if db.execute("SELECT 1 FROM buyer_request_responses WHERE request_id=? AND supplier_id=?",(request_id,supplier["id"])).fetchone():
@@ -1378,7 +1401,6 @@ class TradeService:
 
     def supplier_quote(self, supplier, quote_id):
         with self.auth.connect() as db:
-            db.execute("BEGIN IMMEDIATE")
             row=db.execute("""SELECT q.*,u.company_name AS buyer_company,u.display_name AS buyer_name
                 FROM trade_quotes q JOIN users u ON u.id=q.buyer_id
                 WHERE q.id=? AND q.supplier_id=? AND q.archived_at IS NULL""", (quote_id,supplier["id"])).fetchone()
@@ -1386,38 +1408,56 @@ class TradeService:
                 raise BuyerError(404, "Quote not found.")
             self.team.check_assignment(db,supplier,inquiry=row["inquiry_id"])
             result=dict(row)
-            if row["status"] in ("SENT","VIEWED") and date.fromisoformat(row["valid_until"])<date.today():
-                now=int(time.time())
-                db.execute("UPDATE trade_quotes SET status='EXPIRED',updated_at=? WHERE id=? AND supplier_id=?",
-                           (now,quote_id,supplier["id"]))
-                result.update(status="EXPIRED",updated_at=now)
+            result['status'] = self.effective_quote_status(result)
         return {**result,"vehicle":self.catalog.get(result["vehicle_id"])}
+
+    @staticmethod
+    def effective_quote_status(row):
+        if row['status'] in ('SENT','VIEWED') and date.fromisoformat(row['valid_until']) < date.today():
+            return 'EXPIRED'
+        return row['status']
+
+    def mark_quote_viewed(self, buyer, quote_id):
+        """Explicit authenticated POST; reading a quotation never marks it viewed."""
+        now = int(time.time())
+        with self.auth.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute("SELECT * FROM trade_quotes WHERE id=? AND buyer_id=? AND status!='DRAFT' AND sent_at IS NOT NULL AND archived_at IS NULL", (quote_id,buyer['id'])).fetchone()
+            if not row:
+                raise BuyerError(404, 'Quote not found.')
+            if self.effective_quote_status(row) == 'EXPIRED':
+                raise BuyerError(409, 'The quotation has expired.')
+            if row['status'] not in ('SENT','VIEWED'):
+                raise BuyerError(409, 'Quote cannot be responded to.')
+            if row['status'] == 'SENT':
+                db.execute("UPDATE trade_quotes SET status='VIEWED',viewed_at=?,updated_at=? WHERE id=? AND buyer_id=?", (now,now,quote_id,buyer['id']))
+                self.audit(db,buyer['id'],'QUOTE_VIEWED','quote',quote_id,row['supplier_id'])
+        return self.buyer_quote(buyer, quote_id)
 
     def buyer_quote(self, buyer, quote_id, response=None):
         now=int(time.time())
         with self.auth.connect() as db:
-            db.execute("BEGIN IMMEDIATE")
+            if response is not None:
+                db.execute("BEGIN IMMEDIATE")
             row=db.execute("SELECT * FROM trade_quotes WHERE id=? AND buyer_id=? AND status!='DRAFT' AND sent_at IS NOT NULL AND archived_at IS NULL",(quote_id,buyer["id"])).fetchone()
             if not row:
                 raise BuyerError(404,"Quote not found.")
-            expired=date.fromisoformat(row["valid_until"])<date.today()
-            if expired and row["status"] in ("SENT","VIEWED"):
-                db.execute("UPDATE trade_quotes SET status='EXPIRED',updated_at=? WHERE id=?",(now,quote_id))
-            elif response in ("ACCEPTED","REJECTED"):
+            effective_status = self.effective_quote_status(row)
+            if response in ("ACCEPTED","REJECTED"):
+                if effective_status == 'EXPIRED':
+                    raise BuyerError(409, 'The quotation has expired.')
                 if self.platform.membership_policy_enabled() and not self.platform.member_in_db(db,buyer):
                     raise BuyerError(403,"Membership is required to view prices and contacts.")
-                if row["status"] not in ("SENT","VIEWED"):
+                if effective_status not in ("SENT","VIEWED"):
                     raise BuyerError(409,"Quote cannot be responded to.")
                 db.execute("UPDATE trade_quotes SET status=?,responded_at=?,updated_at=? WHERE id=? AND buyer_id=?",(response,now,now,quote_id,buyer["id"]))
                 PlatformService.notify(db,row["supplier_id"],"QUOTE_"+response,quote_id,"/supplier/quotes")
                 self.audit(db,buyer["id"],"QUOTE_"+response,"quote",quote_id,row["supplier_id"])
-            elif response:
+            elif response is not None:
                 raise BuyerError(400,"Invalid quote response.")
-            elif row["status"]=="SENT":
-                db.execute("UPDATE trade_quotes SET status='VIEWED',viewed_at=?,updated_at=? WHERE id=? AND buyer_id=?",(now,now,quote_id,buyer["id"]))
             result=db.execute("""SELECT q.*,u.company_name AS supplier_name FROM trade_quotes q
                 JOIN users u ON u.id=q.supplier_id WHERE q.id=? AND q.buyer_id=?""",(quote_id,buyer["id"])).fetchone()
-        return {**dict(result), "vehicle": self.catalog.get(result["vehicle_id"]),
+        return {**dict(result), 'status':self.effective_quote_status(result), "vehicle": self.catalog.get(result["vehicle_id"]),
                 "supplierContact": self.buyer_supplier_contact(buyer, result["inquiry_id"])}
 
     def buyer_supplier_contact(self, buyer, inquiry_id):
@@ -1464,8 +1504,10 @@ class TradeService:
                                order='created_at DESC,id DESC', page=pages.get('notesPage'), legacy_limit=100)
             inquiries = query_list(db, 'SELECT id,vehicle_id,quantity,status,created_at FROM buyer_inquiries WHERE supplier_id=? AND buyer_id=?', args,
                                    order='created_at DESC,id DESC', page=pages.get('inquiriesPage'), legacy_limit=100)
-            quotes = query_list(db, 'SELECT id,status,total_price_minor,currency,created_at FROM trade_quotes WHERE supplier_id=? AND buyer_id=?', args,
+            quotes = query_list(db, 'SELECT id,status,valid_until,total_price_minor,currency,created_at FROM trade_quotes WHERE supplier_id=? AND buyer_id=?', args,
                                 order='created_at DESC,id DESC', page=pages.get('quotesPage'), legacy_limit=100)
+            for quote in list_items(quotes):
+                quote['status'] = self.effective_quote_status(quote)
         return {**relationship, "notes": notes, "inquiries": inquiries, "quotes": quotes}
 
     def cancel_quote(self, supplier, quote_id):

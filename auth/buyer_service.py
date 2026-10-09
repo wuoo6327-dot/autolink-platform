@@ -128,7 +128,8 @@ class BuyerService:
 
     def require(self, token, role="BUYER"):
         user = self.auth.user_for_token(token)
-        if user["role"] != role:
+        allowed = ('BUYER', 'MERCHANT', 'SUPPLIER') if role == 'BUYER' else (role,)
+        if user["role"] not in allowed:
             raise BuyerError(403, "This account does not have access to this workspace.")
         return user
 
@@ -164,6 +165,16 @@ class BuyerService:
         if values[6] and not re.match(r"^https?://[^\s]+$", values[6]):
             raise BuyerError(400, "Website must start with http:// or https://.")
         with self.auth.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            current = db.execute("""SELECT company_name FROM users WHERE id=? AND status='ACTIVE'
+                AND deleted_at IS NULL AND role IN ('BUYER','MERCHANT','SUPPLIER')""", (user['id'],)).fetchone()
+            if not current:
+                raise BuyerError(403, 'An active business account is required.')
+            has_review = db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='supplier_applications'").fetchone()
+            locked = has_review and db.execute("""SELECT 1 FROM supplier_applications WHERE supplier_id=?
+                AND status IN ('PENDING','APPROVED','SUSPENDED')""", (user['id'],)).fetchone()
+            if locked and company != current['company_name']:
+                raise BuyerError(409, 'Company name is locked during supplier review or while the company is active. Contact support.')
             db.execute("UPDATE users SET company_name=? WHERE id=?", (company, user["id"]))
             db.execute("INSERT INTO buyer_profiles(user_id," + ",".join(names) + ",updated_at) VALUES (" + ",".join("?" for _ in range(len(names) + 2)) + ") ON CONFLICT(user_id) DO UPDATE SET " + ",".join(key + "=excluded." + key for key in names) + ",updated_at=excluded.updated_at", (user["id"], *values, int(time.time())))
         return self.profile({**user, "company_name": company})
@@ -201,9 +212,9 @@ class BuyerService:
             selected = "s.created_at" if saved else "NULL"
             args = (user["id"],) if saved else ()
             saved_filter = " AND s.user_id=?" if saved else ""
-            rows = db.execute("SELECT p.user_id,p.country,p.description,u.company_name,"+selected+" AS created_at FROM supplier_profiles p JOIN users u ON u.id=p.user_id"+review_join+saved_join+" WHERE p.published=1 AND u.status='ACTIVE' AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL AND u.role IN ('MERCHANT','SUPPLIER')"+review_filter+saved_filter+" ORDER BY p.updated_at DESC",args).fetchall()
+            rows = db.execute("SELECT p.user_id,p.country,p.description,u.company_name,"+selected+" AS created_at FROM supplier_profiles p JOIN users u ON u.id=p.user_id"+review_join+saved_join+" WHERE p.published=1 AND u.status='ACTIVE' AND u.is_test_workspace=0 AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL AND u.role IN ('BUYER','MERCHANT','SUPPLIER')"+review_filter+saved_filter+" ORDER BY p.updated_at DESC",args).fetchall()
         return [{"id":r["user_id"],"companyName":r["company_name"],"country":r["country"],
-                 "description":r["description"],"verificationStatus":"COMPANY_CHECKED" if has_review else "UNVERIFIED","savedAt":r["created_at"]} for r in rows]
+                 "description":r["description"],"verificationStatus":"BUSINESS_ACCOUNT_ACTIVE" if has_review else "UNVERIFIED","savedAt":r["created_at"]} for r in rows]
 
     def save_supplier(self, user, supplier_id, add=True):
         supplier_id = text(supplier_id, "supplier", 100, True)
@@ -213,8 +224,8 @@ class BuyerService:
                 join = " JOIN supplier_applications a ON a.supplier_id=p.user_id" if has_review else ""
                 review = " AND a.status='APPROVED'" if has_review else ""
                 supplier = db.execute("SELECT 1 FROM supplier_profiles p JOIN users u ON u.id=p.user_id"+join+
-                    " WHERE p.user_id=? AND p.published=1 AND u.status='ACTIVE' AND u.deleted_at IS NULL"
-                    " AND u.email_verified_at IS NOT NULL AND u.role IN ('MERCHANT','SUPPLIER')"+review, (supplier_id,)).fetchone()
+                    " WHERE p.user_id=? AND p.published=1 AND u.status='ACTIVE' AND u.is_test_workspace=0 AND u.deleted_at IS NULL"
+                    " AND u.email_verified_at IS NOT NULL AND u.role IN ('BUYER','MERCHANT','SUPPLIER')"+review, (supplier_id,)).fetchone()
                 if not supplier:
                     raise BuyerError(404, "Published supplier profile was not found.")
                 db.execute("INSERT OR IGNORE INTO buyer_saved_suppliers(user_id,supplier_id,created_at) VALUES (?,?,?)", (user["id"], supplier_id, int(time.time())))
@@ -325,7 +336,7 @@ class BuyerService:
         status = body.get("status", "DRAFT")
         if status not in ("DRAFT", "PUBLISHED"):
             raise BuyerError(400, "Invalid request status.")
-        if user["role"]!="BUYER":
+        if user["role"] not in ('BUYER', 'MERCHANT', 'SUPPLIER'):
             raise BuyerError(403,"Buyer account required.")
         now = int(time.time())
         values = [title, vehicle_id, text(body.get("brand"), "brand", 120), text(body.get("vehicleType"), "vehicle type", 100),

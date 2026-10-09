@@ -1,6 +1,20 @@
 User-agent: *
 Disallow: /auth/
 Disallow: /autolink/
+# Only public read resources required by vehicle-page rendering are crawlable.
+Allow: /autolink/public/models$
+Allow: /autolink/public/models?
+Allow: /autolink/public/models/
+Allow: /autolink/public/brands$
+Allow: /autolink/public/brands?
+Allow: /autolink/public/brands/
+Allow: /autolink/public/vehicles$
+Allow: /autolink/public/vehicles?
+Allow: /autolink/public/vehicles/
+Allow: /autolink/public/suppliers$
+Allow: /autolink/public/suppliers?
+Allow: /autolink/public/suppliers/
+Allow: /autolink/public/vehicle-images/
 Disallow: /api/
 Disallow: /buyer/
 Disallow: /account/

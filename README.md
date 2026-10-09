@@ -1,25 +1,19 @@
-# AUTOLINK production deployment
+# AUTOLINK 隔离开发与审查源码
 
-Live at `https://autolinkglobal.com` since 2026-10-04. Caddy serves the site from `/opt/autolink-demo`; `auth` is a separate Python container on the internal Docker network. The account database is in the named volume `autolink-demo_auth_data` and has no host port.
+本目录用于 AUTOLINK 第一轮隔离修复。候选代码基于 Python、Caddy、SQLite 和现有前端；生产网站为 [AUTOLINK](https://autolinkglobal.com/)。**目录中的修改与扫描配置不代表已经上线。** 不运行生产 Docker、不修改线上数据、不上传 production `.env`；部署属于独立验收流程。
 
-Google Identity Services signs in merchant accounts using an ID token and a one-time nonce. The server verifies the token with Google's public keys and binds each account to the Google subject, never to email alone. New accounts require a company name and terms consent. Sessions expire after 30 minutes. `/privacy` explains stored account data and provides self-service deletion when signed in.
+`auth/` 是账号与业务服务，`site/` 是现有界面和语言资源，Caddyfile / compose.yaml 是候选配置。先阅读 [开发与回滚规范](docs/DEVELOPMENT.md) 与 [源码安全扫描](docs/SECURITY_SCANNING.md)，按备份恢复 → 源码秘密 → Git / 工具 → 安全 → 业务 → SEO 的顺序验收。
 
-The login page uses the user-selected Rolls-Royce image. The current front end shows Google and Meta as its two social entry points. Google is active; Meta opens Facebook and Instagram Professional choices, which remain unavailable until Meta developer setup is complete. Password and supplier account flows are unavailable. Stock, enquiries and quotations are still demonstration content; the merchant API returns empty data until those services are built.
-
-The 2026-10-04 front-end update removed the four icon/feature cards over the hero photo, brightened the Google button, used a vector Meta symbol, and removed the arrow from the disabled password-login button. Only the static front end was deployed; the legal pages and consent-log backend change remain local drafts pending verified business and policy details.
-
-The follow-up Membership Terms document is staged locally as a seventh bilingual legal page at `/membership-terms`. Run `python3 deployment/build_legal_pages.py --preview` and `python3 deployment/prepare-legal-frontend.py` from the workspace root to rebuild the draft; `?draft=legal` on the local preview server shows its footer and membership-page links. The membership page currently has illustrative prices and browser-only demo activation, with no checkout or billing API. The customer has deferred the actual plans/prices, renewal policy confirmation, refund contact, taxes/invoicing, and the legal entity details. Keep the legal draft offline until those facts are verified and the production build passes without placeholders. The existing production Google sign-in remains live for user testing at `https://autolinkglobal.com/merchant/login`.
-
-## Operations
-
-Run in `/opt/autolink-demo`:
+安装指定官方工具后，运行当前源码检查：
 
 ```sh
-sudo docker compose ps
-sudo docker compose logs --tail=100 auth
-sudo docker compose exec -T web wget -qO- http://auth:8080/healthz
+python3 scripts/security_scan.py --tool all
 ```
 
-The Google client ID is public and set in `compose.yaml`. The OAuth client secret is not deployed because the ID token flow does not use it. Back up the SQLite volume regularly before users register; there is no automated off-server backup yet.
+仅在当前目录已是独立 Git 仓库且完整历史可用时运行：
 
-Pre-Google copies on the server: `compose.yaml.before-google-20261004`, `Caddyfile.before-google-20261004`, and `site/index.html.before-google-20261004`. Restore these three and reload Caddy to revert the public login feature. Keep the auth volume when reverting so registered account data can be recovered.
+```sh
+python3 scripts/security_scan.py --tool gitleaks --history
+```
+
+脚本仅保存脱敏报告，区分通过、发现问题和未完成，不升级依赖、修复代码或部署。工具固定为 Gitleaks 8.30.1、Trivy 0.75.0；私有 GitHub CI 已在修复分支启用，实际运行结果以 Actions 记录为准。Lighthouse 留后续性能 / SEO 阶段。

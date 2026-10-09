@@ -102,7 +102,11 @@
       const name = displayName(account);
       const title = navigationLabels[language()][1];
       if (accountLink) setLink(accountLink, path, name, title);
-      if (entry && !entry.hidden) entry.hidden = true;
+      if (entry) {
+        const supplier = account.capabilities?.supplier ?? ['BUYER', 'MERCHANT', 'SUPPLIER'].includes(account.role);
+        if (supplier) entry.setAttribute('href', '/supplier/application');
+        entry.hidden = !supplier;
+      }
       if (join && !join.hidden) join.hidden = true;
     }
   }

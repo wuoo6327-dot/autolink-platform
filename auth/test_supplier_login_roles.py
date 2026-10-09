@@ -1,4 +1,4 @@
-"""Supplier entry repairs legacy roles without granting reviewed business access.
+"""Workspace entries preserve identity and reviewed company authorization.
 
 All accounts and provider responses are synthetic and use an isolated SQLite DB.
 """
@@ -62,7 +62,7 @@ class SupplierLoginRoleTests(unittest.TestCase):
 
     def preserved_data(self, account_id):
         with self.auth.connect() as db:
-            data = {"identity": tuple(db.execute("""SELECT id,google_sub,email,display_name,company_name,created_at
+            data = {"identity": tuple(db.execute("""SELECT id,google_sub,email,display_name,company_name,role,created_at
                        FROM users WHERE id=?""", (account_id,)).fetchone())}
             for table, key in (("email_passwords", "user_id"), ("buyer_profiles", "user_id"),
                                ("buyer_saved_vehicles", "user_id"), ("consents", "user_id"),
@@ -102,14 +102,14 @@ class SupplierLoginRoleTests(unittest.TestCase):
                 before = self.preserved_data(account_id)
                 result = self.login(method, method, "MERCHANT")
                 user = self.auth.user_for_token(result["access_token"])
-                self.assertEqual((user["id"], user["role"], result["role"]), (account_id, "MERCHANT", "MERCHANT"))
+                self.assertEqual((user["id"], user["role"], result["role"]), (account_id, "BUYER", "BUYER"))
                 self.assertEqual(self.preserved_data(account_id), before)
-                # A second login from the buyer page cannot downgrade the supplier.
+                # Both entry choices preserve the original account role.
                 if method == "code":
                     with self.auth.connect() as db:
                         db.execute("UPDATE email_verification_codes SET created_at=0 WHERE email=?", (method + "@example.com",))
                 again = self.login(method, method, "BUYER")
-                self.assertEqual(again["role"], "MERCHANT")
+                self.assertEqual(again["role"], "BUYER")
                 self.assertEqual(self.auth.user_for_token(again["access_token"])["id"], account_id)
 
     def test_regular_buyer_entry_never_promotes_for_each_provider(self):
@@ -128,7 +128,8 @@ class SupplierLoginRoleTests(unittest.TestCase):
             for method in ("password", "code", "google"):
                 with self.subTest(role=original_role, provider=method):
                     name = original_role.lower() + "-" + method
-                    account_id = self.account(name, role=original_role, google=method == "google", application=True)
+                    account_id = self.account(name, role=original_role, google=method == "google",
+                                              application=original_role != 'PLATFORM_ADMIN')
                     before = self.preserved_data(account_id)
                     result = self.login(method, name, "MERCHANT")
                     self.assertEqual(result["role"], original_role)

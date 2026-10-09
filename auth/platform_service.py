@@ -23,7 +23,7 @@ class PlatformService:
         now = int(time.time())
         return bool(db.execute("""SELECT 1 FROM users u WHERE u.id=? AND u.status='ACTIVE'
             AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL
-            AND (u.role='PLATFORM_ADMIN' OR (u.role='BUYER' AND EXISTS
+            AND (u.role='PLATFORM_ADMIN' OR (u.role IN ('BUYER','MERCHANT','SUPPLIER') AND EXISTS
             (SELECT 1 FROM buyer_memberships m WHERE m.user_id=u.id AND m.status='ACTIVE'
              AND m.plan IN ('monthly','quarterly','annual') AND m.start_at<=? AND m.end_at>?)))""",
             (user['id'], now, now)).fetchone())
@@ -128,7 +128,7 @@ class PlatformService:
         subject=text(body.get("subject"),"subject",160,True)
         message=text(body.get("message"),"message",4000,True)
         plan=body.get("plan")
-        if plan and (not user or user["role"]!="BUYER"):
+        if plan and (not user or user["role"] not in ('BUYER', 'MERCHANT', 'SUPPLIER')):
             raise BuyerError(401,"Sign in with your buyer account to apply for membership.")
         if plan and (plan not in ("monthly","quarterly","annual") or body.get("consent") is not True):
             raise BuyerError(400,"Select a plan and accept the terms before applying.")

@@ -54,8 +54,8 @@
       const result=mode==='password'?await request('/autolink/auth/password/login',{email:emailValue,password:String(data.get('password')||''),remember:!!data.get('remember'),role:'MERCHANT'}):await request('/autolink/auth/email/login',{email:emailValue,code:String(data.get('code')||''),consent:!!data.get('consent'),remember:!!data.get('remember'),language:language(),role:'MERCHANT',companyName:companyValue.trim()});
       const role=result.role;
       if(!['BUYER','MERCHANT','SUPPLIER','ADMIN','PLATFORM_ADMIN'].includes(role))throw Error(word('账号角色未配置。','Account role is not configured.'));
-      if(role==='MERCHANT'||role==='SUPPLIER'||(role==='ADMIN'||role==='PLATFORM_ADMIN'))localStorage.setItem('autolink-cookie-session','1');
-      location.assign(role==='BUYER'?'/buyer':(role==='ADMIN'||role==='PLATFORM_ADMIN')?'/admin':'/supplier');
+      if(['BUYER','MERCHANT','SUPPLIER','ADMIN','PLATFORM_ADMIN'].includes(role))localStorage.setItem('autolink-cookie-session','1');
+      location.assign((role==='ADMIN'||role==='PLATFORM_ADMIN')?'/admin':'/supplier');
     } catch(e) {status(window.businessI18n?.errorText?.(e,e.status)||word('登录失败，请重试。','Sign-in failed. Please retry.'),true);}
     finally{busy=false;const button=form.querySelector('.email-submit');if(button)button.disabled=false;}
   }

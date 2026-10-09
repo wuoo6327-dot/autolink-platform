@@ -5,6 +5,7 @@ import time
 import unittest
 import base64
 import io
+import hashlib
 from PIL import Image
 import image_service
 import json
@@ -24,12 +25,34 @@ from trade_service import TradeService
 from business_mail import BusinessMailer
 import trade_service
 from xml.etree import ElementTree
+from supplier_agreement_service import SupplierAgreementService
+
+
+def synthetic_final_document():
+    """Never promote or rewrite the actual packaged legal draft."""
+    body = 'SYNTHETIC QA AGREEMENT ONLY. Temporary automated-test company agreement; never for public acceptance.'
+    return {'version':'synthetic-final-v1-isolated-tests', 'status':'FINAL',
+        'acceptanceEnabled':True, 'pendingFields':[], 'language':'en', 'body':body,
+        'bodySha256':hashlib.sha256(body.encode()).hexdigest(),
+        'sourceSha256':hashlib.sha256(b'synthetic-isolated-qa-source').hexdigest(),
+        'legalDetails':{'operatorLegalName':'Synthetic QA Operator Ltd',
+            'operatorRegistrationNumber':'SYNTHETIC-QA-001',
+            'operatorRegisteredAddress':'1 Synthetic Test Street, QA City',
+            'operatorContactAddress':'2 Synthetic Test Street, QA City',
+            'supportEmail':'synthetic-support@example.com', 'governingLaw':'Synthetic QA jurisdiction',
+            'disputeJurisdiction':'Synthetic QA court', 'effectiveDate':'2020-01-01'}}
 
 
 class TradeFlowTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
+        self.agreement_path = Path(self.temp.name) / 'synthetic-final-agreement.json'
+        self.agreement_path.write_text(json.dumps(synthetic_final_document()))
+        agreement_factory = patch('trade_service.SupplierAgreementService',
+            side_effect=lambda auth: SupplierAgreementService(auth, self.agreement_path))
+        agreement_factory.start()
+        self.addCleanup(agreement_factory.stop)
         self.auth = AuthService(Path(self.temp.name) / "auth.sqlite3", "test-client", verifier=lambda *_: {})
         trade_service.DOCUMENT_ROOT = Path(self.temp.name) / "documents"
         image_service.ROOT = Path(self.temp.name) / "images"
@@ -121,7 +144,8 @@ class TradeFlowTests(unittest.TestCase):
         with self.auth.connect() as db:
             self.assertEqual(sent['supplier_name'], db.execute('SELECT company_name FROM users WHERE id=?', (owner['id'],)).fetchone()[0])
         self.assertEqual(sent['total_price_minor'], 3780000)
-        self.assertEqual(self.trade.buyer_quote(buyer, draft['id'])['status'], 'VIEWED')
+        self.assertEqual(self.trade.buyer_quote(buyer, draft['id'])['status'], 'SENT')
+        self.assertEqual(self.trade.mark_quote_viewed(buyer, draft['id'])['status'], 'VIEWED')
         with self.auth.connect() as db:
             self.assertEqual(db.execute("SELECT count(*) FROM account_notifications WHERE user_id=? AND event='NEW_QUOTE' AND entity_id=?", (buyer['id'], draft['id'])).fetchone()[0], 1)
             self.assertEqual(db.execute("SELECT count(*) FROM trade_audit WHERE action='QUOTE_SENT' AND entity_id=?", (draft['id'],)).fetchone()[0], 1)
@@ -137,7 +161,8 @@ class TradeFlowTests(unittest.TestCase):
         draft=self.trade.copy_vehicle(self.users['supplier-a'],listing)['id']
         inquiry=self.trade.create_inquiry(self.users['buyer-a'],{'listingId':listing,'quantity':2,'destinationCountry':'Kenya'})
         locations=self.sitemap_locations('vehicles-1.xml')
-        self.assertEqual(locations,['https://autolinkglobal.com/trade/vehicles/'+listing])
+        from seo_service import LANGUAGES, localized_url
+        self.assertEqual(locations,[localized_url('/trade/vehicles/'+listing,language) for language in LANGUAGES])
         xml=self.trade.sitemap_xml('vehicles-1.xml').decode()
         for value in (draft,inquiry['id'],'buyer-a','supplier-a@example.com','stored_name','review_reason','password'):
             self.assertNotIn(value,xml)
@@ -163,7 +188,7 @@ class TradeFlowTests(unittest.TestCase):
                 self.assertEqual(self.trade.vehicle_rows(public=True),[])
                 with self.assertRaises(BuyerError):self.trade.vehicle(listing,public=True)
                 with self.auth.connect() as db:db.execute(restore)
-        self.assertEqual(len(self.sitemap_locations('vehicles-1.xml')),1)
+        self.assertEqual(len(self.sitemap_locations('vehicles-1.xml')),9)
 
     def test_sitemap_hides_inactive_catalogue_and_archived_inventory(self):
         listing=self.approved_vehicle()
@@ -196,16 +221,16 @@ class TradeFlowTests(unittest.TestCase):
             self.assertNotIn('https://autolinkglobal.com'+missing,static)
 
     def test_sitemap_shards_cover_catalogue_once_with_bounded_results(self):
-        with patch.object(trade_service,'SITEMAP_PAGE_SIZE',2):
+        with patch.object(trade_service,'SITEMAP_PAGE_SIZE',18):
             index=self.sitemap_locations('sitemap.xml')
             children=[url.rsplit('/',1)[1] for url in index if '/models-' in url]
             found=[]
             for child in children:
                 locations=self.sitemap_locations(child)
-                self.assertLessEqual(len(locations),2)
+                self.assertLessEqual(len(locations),18)
                 found.extend(locations)
             self.assertEqual(len(found),len(set(found)))
-            self.assertEqual(len(found),len(self.trade.catalog.models()))
+            self.assertEqual(len(found),len(self.trade.catalog.models())*9)
             for filename in ('models-0.xml','models-01.xml','models-99999.xml','users-1.xml','../static-1.xml'):
                 with self.assertRaises(BuyerError):self.trade.sitemap_xml(filename)
 
@@ -267,7 +292,9 @@ class TradeFlowTests(unittest.TestCase):
         })
         self.assertEqual(inquiry["supplier_id"], supplier["id"])
         inbox = self.trade.supplier_inquiries(supplier, inquiry["id"])
-        self.assertEqual(inbox[0]["status"], "VIEWED")
+        self.assertEqual(inbox[0]["status"], "SUBMITTED")
+        self.trade.update_inquiry(supplier,inquiry['id'],{'status':'VIEWED'})
+        self.assertEqual(self.trade.supplier_inquiries(supplier,inquiry['id'])[0]['status'],'VIEWED')
         quote = self.trade.create_quote(supplier, inquiry["id"], {
             "unitPriceMinor": 1850000, "quantity": 2, "validUntil": str(date.today().replace(year=date.today().year + 1)),
             "send": True,
