@@ -22,6 +22,10 @@
 			header_up X-Forwarded-For {remote_host}
 		}
 	}
+	@health path /healthz
+	handle @health {
+		reverse_proxy auth:8080
+	}
 	@api path /api /api/*
 	@sitemap path /sitemap.xml /sitemaps/*
 	handle @sitemap {
