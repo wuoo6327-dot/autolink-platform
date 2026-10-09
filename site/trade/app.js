@@ -48,6 +48,9 @@ const activeAccountLabels={"en":["Business account active","An active business a
 const activeAccountText=index=>(activeAccountLabels[window.businessI18n.language]||activeAccountLabels.en)[index];
 const verified = `<span class="trade-verified">${esc(activeAccountText(0))} <span aria-hidden="true">ⓘ</span></span>`;
 let me = null, currentListing = null, currentSupplier = null;
+// Legacy merchant roles retain buyer access; an explicit capability takes priority.
+const hasBuyerCapability = account => Boolean(account &&
+  (account.capabilities?.buyer ?? ['BUYER','MERCHANT','SUPPLIER'].includes(account.role)));
 let navigationId=0,readController=null,navigationUrl=location.pathname+location.search;
 function assertNavigation(current){if(current!==navigationId)throw new DOMException('Navigation changed','AbortError');}
 
@@ -96,7 +99,7 @@ const brandMark=(logo,name)=>logo?`<img class="trade-brand-logo" src="${esc(logo
 async function vehicleDetail(id) {
   const current=navigationId;
   let v;try{v=await read('/autolink/public/vehicles/'+encodeURIComponent(id));}catch(error){if(error.status===404){const reference=(await modelCatalog()).find(item=>item.id===id);assertNavigation(current);if(reference){await modelDetail(id,reference);return;}}throw error;}assertNavigation(current);currentListing=v;
-  if(me?.role==='BUYER') read('/autolink/buyer/history','POST',{listingId:id}).catch(()=>{});
+  if(hasBuyerCapability(me)) read('/autolink/buyer/history','POST',{listingId:id}).catch(()=>{});
   shell(`<div class="trade-breadcrumb"><a href="/trade/vehicles">${esc(tr("Supplier vehicles"))}</a> / ${esc(v.brand)} ${esc(v.model)}</div><div class="trade-detail"><div><img class="trade-hero-image" src="${esc(v.image||'/favicon.svg')}" alt="${esc(v.brand)} ${esc(v.model)}"><section class="panel" style="margin-top:20px"><div class="panel-head"><h2>${esc(tr("Trade information"))}</h2></div><div class="trade-fields">${field(tr("MOQ"),v.moq)}${field(tr("Availability"),tr(v.status==='ONLINE'?'Available':'Unavailable'))}${field(tr("Stock"),v.stock)}${field(tr("Export port"),v.origin_port)}${field(tr("Lead time"),v.lead_time)}${field(tr("Price valid until"),v.valid_until)}${field(tr("Vehicle location"),v.location)}${field(tr("Incoterm"),v.incoterm)}${field(tr("Payment terms"),v.payment_terms)}${field(tr("Production year"),v.model_year)}${field(tr("VIN availability"),tr(v.vin_available?'Available on request':'Not specified'))}${field(tr("Available colors"),v.colors)}${field(tr("Export markets"),v.export_markets)}${field(tr("Steering"),v.steering)}</div><p class="trade-note">${(v.description?esc(v.description):esc(tr('Final vehicle specification and availability must be confirmed directly with the supplier.')))}</p></section></div><div><span class="eyebrow">${esc(v.brand)} · ${esc(tr(v.energy_type||'Vehicle'))}</span><h1>${esc(v.brand)} ${esc(v.model)} ${esc(v.trim||'')}</h1><p>${esc(v.model_year)} · ${esc(v.steering)} · ${esc(conditionLabel(v.vehicle_condition))}</p><div class="trade-price">${usd(v.price_minor,v.currency)}</div>${v.referenceImage?`<p class="trade-note">${esc(tr("Model reference photo · confirm actual inventory with the supplier."))}</p>`:''}<p class="trade-note">${esc(v.incoterm)} ${esc(tr("China · Reference price / unit. A formal quote may change with quantity, destination and availability."))}</p><div class="trade-detail-actions"><button class="btn" data-action="quote">${esc(tr("Request Quote"))}</button><button class="btn secondary" data-action="contact-supplier">${esc(tr("Contact Supplier"))}</button><button class="btn secondary" data-action="save">${esc(tr("Save Vehicle"))}</button><button class="btn secondary" data-action="compare">${esc(tr("Compare"))}</button><button class="btn secondary" data-action="share">${esc(tr("Share"))}</button></div><div id="trade-message" role="status" aria-live="polite"></div><section class="panel" id="inquiry-panel" hidden><div class="panel-head"><h2>${esc(tr("Send inquiry"))}</h2></div><form class="trade-form" id="inquiry-form"><label>${esc(tr("Quantity"))}<input type="number" name="quantity" min="${Number(v.moq)}" value="${Number(v.moq)}" required></label><label>${esc(tr("Destination country"))}<input name="destinationCountry" maxlength="120" required></label><label>${esc(tr("Destination port"))}<input name="destinationPort" maxlength="120"></label><label>${esc(tr("Incoterm"))}<select name="incoterm"><option value="FOB">${esc(tr("FOB"))}</option><option value="CIF">${esc(tr("CIF"))}</option><option value="CFR">${esc(tr("CFR"))}</option><option value="EXW">${esc(tr("EXW"))}</option></select></label><label>${esc(tr("Target price ({currency} / unit, optional)").replace("{currency}",v.currency))}<input type="number" name="targetPrice" min="0" step="0.01"></label><label class="wide">${esc(tr("Message"))}<textarea name="message" maxlength="2000"></textarea></label><button class="btn" type="submit">${esc(tr("Send Inquiry"))}</button></form><p class="trade-note">${esc(tr("Your inquiry goes to this supplier's inbox. No purchase or payment occurs here."))}</p></section><section class="panel"><div class="panel-head"><h2>${esc(tr("Supplier"))}</h2></div><p><strong>${esc(v.supplier_name)}</strong> ${verified}</p><p class="trade-note">${esc(tr(v.supplier_country||'China'))}</p>${link('/trade/suppliers/'+encodeURIComponent(v.supplier_id),tr("View Supplier"),true)} ${link('/support?entity=vehicle&id='+encodeURIComponent(v.id),tr("Report listing"),true)}<p class="trade-note">${esc(tr("Verification means AUTOLINK checked certain company information. It does not guarantee stock, performance, payment safety or the transaction."))}</p></section></div></div>` ,`${v.brand} ${v.model} ${v.model_year} for Export from China | AUTOLINK`);
   window.businessSEO?.page('vehicle',v);
   const model=(await modelCatalog()).find(m=>m.id===v.model_id);assertNavigation(current);if(model)await attachModelReference(model);
@@ -206,7 +209,7 @@ function message(text,error=false) { const el=document.querySelector('#trade-mes
 document.addEventListener('click',async event=>{
   const el=event.target.closest('[data-action]');if(!el)return;
   const action=el.dataset.action,current=navigationId;
-  if(action==='quote'){if(!me){location.href=loginLink();return;}document.querySelector('#inquiry-panel').hidden=false;document.querySelector('#inquiry-panel').scrollIntoView({behavior:'smooth'});return;}
+  if(action==='quote'){if(!hasBuyerCapability(me)){location.href=loginLink();return;}document.querySelector('#inquiry-panel').hidden=false;document.querySelector('#inquiry-panel').scrollIntoView({behavior:'smooth'});return;}
   if(action==='contact-supplier'){if(!me){location.href=loginLink();return;}if(currentListing)navigateTrade('/trade/suppliers/'+encodeURIComponent(currentListing.supplier_id)+'#supplier-contact');return;}
   if(action==='share'){try{await navigator.clipboard.writeText(location.href);if(current===navigationId)message(tr("Link copied."));}catch{if(current===navigationId)message(tr("Copy the address from your browser."),true);}return;}
   if(['compare','remove-compare','clear-compare'].includes(action)){
@@ -222,7 +225,7 @@ document.addEventListener('click',async event=>{
     }catch(error){if(current===navigationId)message(tr(error.storage?'Your browser cannot save this comparison.':'Unable to load comparison. Please try again.'),true);}
     return;
   }
-  if(!me||me.role!=='BUYER'){location.href=loginLink();return;}
+  if(!hasBuyerCapability(me)){location.href=loginLink();return;}
   try{
     if(action==='save'&&currentListing){await read('/autolink/buyer/saved-listings','POST',{listingId:currentListing.id});if(current===navigationId)message(tr("Vehicle saved to your Buyer Center."));}
     if(action==='save-supplier'&&currentSupplier){await read('/autolink/buyer/saved-suppliers','POST',{supplierId:currentSupplier.id});if(current===navigationId)message(tr("Supplier saved to your Buyer Center."));}
@@ -240,7 +243,7 @@ document.addEventListener('submit',async event=>{
     navigateTrade('/trade/vehicles?'+p);return;
   }
   if(event.target.id==='inquiry-form'){
-    event.preventDefault();if(!me||me.role!=='BUYER'){location.href=loginLink();return;}
+    event.preventDefault();if(!hasBuyerCapability(me)){location.href=loginLink();return;}
     const current=navigationId,listing=currentListing;
     if(!listing)return;
     const button=event.target.querySelector('button[type=submit]');if(button.disabled)return;button.disabled=true;
