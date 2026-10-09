@@ -133,7 +133,7 @@ class SupplierOverviewTests(unittest.TestCase):
         sales = self.sales()
         now = int(time.time())
         for account, changes in (
-            ('supplier-a', ["status='SUSPENDED'", "role='BUYER'", 'deleted_at=1', 'email_verified_at=NULL']),
+            ('supplier-a', ["status='SUSPENDED'", "role='PLATFORM_ADMIN'", 'deleted_at=1', 'email_verified_at=NULL']),
             ('buyer-b', ["status='SUSPENDED'", "role='PLATFORM_ADMIN'", 'deleted_at=1', 'email_verified_at=NULL']),
         ):
             for change in changes:

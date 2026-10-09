@@ -36,7 +36,7 @@ class SupplierAgreementTests(unittest.TestCase):
             self.assertEqual(db.execute('SELECT count(*) FROM supplier_agreement_confirmations').fetchone()[0],1)
             version = db.execute('SELECT * FROM supplier_agreement_versions').fetchone()
             self.assertEqual(hashlib.sha256(version['body'].encode()).hexdigest(),self.payload()['bodySha256'])
-            self.assertEqual(version['document_status'],'REVIEW_DRAFT')
+            self.assertEqual(version['document_status'],'FINAL')
             self.assertEqual(db.execute("SELECT count(*) FROM trade_audit WHERE action='SUPPLIER_AGREEMENT_CONFIRMED'").fetchone()[0],1)
         TradeService(self.auth)
         self.assertEqual(self.trade.application(owner)['agreementConfirmation']['id'],row['id'])

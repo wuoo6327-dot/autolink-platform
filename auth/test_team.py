@@ -87,9 +87,9 @@ class SupplierTeamTests(unittest.TestCase):
         with self.auth.connect() as db:self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(user['id'],)).fetchone()[0],'BUYER')
 
     def test_unsent_new_email_invitation_is_cancelled_if_invitation_or_owner_is_revoked(self):
-        for case in ('cancel','expire','suspend','demote','delete','unverify'):
+        for case in ('cancel','expire','suspend','demote','delete','unverify','test_workspace'):
             with self.subTest(case=case):
-                with self.auth.connect() as db:db.execute("UPDATE users SET status='ACTIVE',role='MERCHANT',deleted_at=NULL,email_verified_at=? WHERE id='supplier-a'",(int(time.time()),))
+                with self.auth.connect() as db:db.execute("UPDATE users SET status='ACTIVE',role='MERCHANT',deleted_at=NULL,is_test_workspace=0,email_verified_at=? WHERE id='supplier-a'",(int(time.time()),))
                 address=case+'-invite@example.com'
                 invitation=self.trade.team.invite(self.owner,{'email':address})
                 if case=='cancel':self.trade.team.cancel(self.owner,invitation['id'])
@@ -97,8 +97,9 @@ class SupplierTeamTests(unittest.TestCase):
                     with self.auth.connect() as db:
                         if case=='expire':db.execute('UPDATE supplier_team_invites SET expires_at=0 WHERE id=?',(invitation['id'],))
                         elif case=='suspend':db.execute("UPDATE users SET status='SUSPENDED' WHERE id='supplier-a'")
-                        elif case=='demote':db.execute("UPDATE users SET role='BUYER' WHERE id='supplier-a'")
+                        elif case=='demote':db.execute("UPDATE users SET role='PLATFORM_ADMIN' WHERE id='supplier-a'")
                         elif case=='delete':db.execute("UPDATE users SET deleted_at=? WHERE id='supplier-a'",(int(time.time()),))
+                        elif case=='test_workspace':db.execute("UPDATE users SET is_test_workspace=1 WHERE id='supplier-a'")
                         else:db.execute("UPDATE users SET email_verified_at=NULL WHERE id='supplier-a'")
                 transport=Mock(return_value='synthetic-provider-accepted')
                 BusinessMailer(self.auth,sender=transport).process_once(limit=20)
@@ -132,7 +133,7 @@ class SupplierTeamTests(unittest.TestCase):
             with self.assertRaises(BuyerError) as denied:self.trade.team.accept(self.recipient,invitation['id'])
             self.assertEqual(denied.exception.status,403)
             with self.auth.connect() as db:db.execute("UPDATE users SET status='ACTIVE',role='BUYER',email_verified_at=?,email='buyer-b@example.com' WHERE id='buyer-b'",(int(time.time()),))
-        with self.auth.connect() as db:db.execute("UPDATE users SET role='BUYER' WHERE id='supplier-a'")
+        with self.auth.connect() as db:db.execute("UPDATE users SET role='PLATFORM_ADMIN' WHERE id='supplier-a'")
         for call in (lambda:self.trade.team.invite(self.owner,{'email':'not-permitted@example.com'}),
             lambda:self.trade.team.cancel(self.owner,invitation['id']),
             lambda:self.trade.team.assign(self.owner,'buyer-a',{'userId':'buyer-b'})):
@@ -209,11 +210,11 @@ class SupplierTeamTests(unittest.TestCase):
         with self.assertRaises(BuyerError):self.trade.team.assign(self.owner,'buyer-a',{'userId':'supplier-b'})
         with self.assertRaises(BuyerError):self.trade.team.assign(self.users['supplier-b'],'buyer-b',{'userId':'supplier-b'})
 
-    def test_quote_list_expiry_updates_only_sales_assigned_unarchived_quotes(self):
+    def test_quote_list_expiry_is_projected_without_writing_any_quotes(self):
         sales = self.sales()
         self.trade.team.assign(self.owner, 'buyer-a', {'userId': 'buyer-b'})
         assigned = self.quote(self.owner, send=True)
-        other_inquiry = self.trade.create_inquiry(self.recipient, {
+        other_inquiry = self.trade.create_inquiry(self.users['supplier-b'], {
             'listingId': self.listing, 'quantity': 2, 'destinationCountry': 'UAE'})
         unassigned = self.trade.create_quote(self.owner, other_inquiry['id'], {
             'unitPriceMinor': 1890000, 'validUntil': str(date.today()), 'send': True})
@@ -231,7 +232,7 @@ class SupplierTeamTests(unittest.TestCase):
             self.assertEqual(dict(db.execute('SELECT * FROM trade_quotes WHERE id=?', (archived['id'],)).fetchone()), archived_before)
         self.trade.quote_rows(self.owner, True)
         with self.auth.connect() as db:
-            self.assertEqual(db.execute('SELECT status FROM trade_quotes WHERE id=?', (unassigned['id'],)).fetchone()[0], 'EXPIRED')
+            self.assertEqual(db.execute('SELECT status FROM trade_quotes WHERE id=?', (unassigned['id'],)).fetchone()[0], 'SENT')
 
     def test_revocation_denies_current_principal_and_preserves_history(self):
         sales=self.sales();self.trade.team.assign(self.owner,'buyer-a',{'userId':'buyer-b'})

@@ -32,7 +32,7 @@ class SupplierVerificationTests(unittest.TestCase):
         with self.assertRaises(BuyerError):self.trade.save_application(owner, {**self.form(),'submit':True})
         self.add_application_evidence(owner)
         app=self.trade.save_application(owner,{**self.form(),'submit':True})
-        self.assertEqual(app['status'],'PENDING')
+        self.assertEqual(app['status'],'APPROVED')
         self.assertEqual(app['inventory_count'],0)
         self.assertEqual(app['evidence_version'],2)
         self.trade.review_supplier(self.users['admin'],owner['id'],{'decision':'APPROVED'})

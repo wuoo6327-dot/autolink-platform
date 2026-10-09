@@ -94,6 +94,16 @@
 		}
 	}
 	@trade path /trade /trade/*
+	# Render public HTML from the same reviewed records used by the application.
+	# Files such as /trade/app.js continue through the existing file server.
+	@publicTradeHTML {
+		method GET HEAD
+		path_regexp ^/trade(?:/[^.]+)?/?$
+	}
+	handle @publicTradeHTML {
+		rewrite * /autolink/public/seo{uri}
+		reverse_proxy auth:8080
+	}
 	handle @trade {
 		route {
 			try_files {path} /trade/index.html

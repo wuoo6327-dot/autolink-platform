@@ -39,7 +39,9 @@ class BuyingRequestFlowTests(unittest.TestCase):
         inquiry=self.trade.buyer_inquiry(self.users['buyer-a'],result['inquiryId'])
         self.assertEqual(inquiry['request_id'],request['id']);self.assertEqual(inquiry['status'],'QUOTED')
         opened=self.trade.supplier_inquiries(self.users['supplier-a'],result['inquiryId'])[0]
-        self.assertEqual(opened['status'],'QUOTED');self.assertIsNotNone(opened['viewed_at'])
+        self.assertEqual(opened['status'],'QUOTED');self.assertIsNone(opened['viewed_at'])
+        self.trade.update_inquiry(self.users['supplier-a'],result['inquiryId'],{'status':'VIEWED'})
+        self.assertIsNotNone(self.trade.supplier_inquiries(self.users['supplier-a'],result['inquiryId'])[0]['viewed_at'])
         self.assertEqual(self.trade.buyer_inquiry(self.users['buyer-a'],result['inquiryId'])['status'],'QUOTED')
         self.assertEqual(self.trade.crm(self.users['supplier-a'])[0]['buyer_id'],'buyer-a')
         self.assertEqual(self.buyer.requests(self.users['buyer-a'])[0]['response_count'],1)

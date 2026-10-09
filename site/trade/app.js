@@ -44,7 +44,9 @@ const read = async (path, method='GET', body) => {
   }
 };
 const link = (href,label,secondary=false) => `<a class="button-link${secondary?' secondary':''}" href="${esc(href)}">${esc(label)}</a>`;
-const verified = `<span class="trade-verified">${esc(tr("Verified supplier"))} <span aria-hidden="true">ⓘ</span></span>`;
+const activeAccountLabels={"en":["Business account active","An active business account is not a platform guarantee of company credentials, stock or fulfilment."],"zh":["平台业务账号已启用","业务账号已启用不代表平台保证企业资质、库存或履约。"],"ar":["حساب الأعمال مفعّل","تفعيل حساب الأعمال لا يضمن مؤهلات الشركة أو المخزون أو تنفيذ الالتزامات."],"ru":["Бизнес-аккаунт активен","Активный бизнес-аккаунт не гарантирует документы компании, запасы или исполнение обязательств."],"kk":["Бизнес аккаунты іске қосылған","Іске қосылған бизнес аккаунты компания құжаттарына, қорға немесе міндеттемелерге кепілдік бермейді."],"uz":["Biznes hisobi faol","Faol biznes hisobi kompaniya hujjatlari, zaxira yoki majburiyatlar bajarilishiga kafolat bermaydi."],"ko":["사업 계정 활성화됨","사업 계정 활성화는 회사 자격, 재고 또는 이행을 보증하지 않습니다."],"fr":["Compte professionnel actif","Un compte professionnel actif ne garantit ni les justificatifs de l’entreprise, ni le stock, ni l’exécution."],"sw":["Akaunti ya biashara imewashwa","Akaunti ya biashara haihakikishi nyaraka za kampuni, hisa au utekelezaji."]};
+const activeAccountText=index=>(activeAccountLabels[window.businessI18n.language]||activeAccountLabels.en)[index];
+const verified = `<span class="trade-verified">${esc(activeAccountText(0))} <span aria-hidden="true">ⓘ</span></span>`;
 let me = null, currentListing = null, currentSupplier = null;
 let navigationId=0,readController=null,navigationUrl=location.pathname+location.search;
 function assertNavigation(current){if(current!==navigationId)throw new DOMException('Navigation changed','AbortError');}
@@ -127,8 +129,8 @@ async function supplierDetail(id) {
     <div id="trade-message" role="status" aria-live="polite"></div><div class="two-cols">
     <section class="panel"><div class="panel-head"><h2>${esc(tr('Company overview'))}</h2></div><p>${esc(s.description||tr('No overview available.'))}</p>
       <div class="trade-fields">${field('Established',s.established_year)}${field('Main brands',s.main_brands)}${field('Main markets',s.main_markets)}${field('Export experience',s.export_experience)}${field('Location',[s.city,s.country].filter(Boolean).join(', '))}${field('Joined AUTOLINK',s.joined_at?new Date(s.joined_at*1000).toLocaleDateString(window.businessI18n.locale):'')}</div>
-    </section><section class="panel"><div class="panel-head"><h2>${esc(tr('Verified Supplier'))}</h2></div>
-      <p class="trade-note">${esc(tr('AUTOLINK checked certain company information. Verification does not guarantee a vehicle exists, supplier performance, payment security or a completed deal.'))}</p>
+    </section><section class="panel"><div class="panel-head"><h2>${esc(activeAccountText(0))}</h2></div>
+      <p class="trade-note">${esc(activeAccountText(1))}</p>
       <p class="trade-note">${esc(tr('For a specific vehicle, send an inquiry to request a formal quote and contact details.'))}</p>
     </section></div>${supplierContact(s)}
     <section class="panel"><div class="panel-head"><h2>${esc(tr('Published vehicles'))}</h2>${link('/trade/vehicles?supplierId='+encodeURIComponent(s.id),tr('View all vehicles'),true)}</div>
@@ -254,7 +256,8 @@ async function start({scroll}={}){
   const current=++navigationId;readController?.abort();readController=new AbortController();
   navigationUrl=location.pathname+location.search;
   me=null;currentListing=null;currentSupplier=null;
-  shell(`<div class="loading-screen" role="status" aria-live="polite">${esc(tr('Loading…'))}</div>`);
+  if(root.dataset.ssr==='true')delete root.dataset.ssr;
+  else shell(`<div class="loading-screen" role="status" aria-live="polite">${esc(tr('Loading…'))}</div>`);
   let account=null;try{account=await read('/autolink/me');}catch{}
   if(current!==navigationId)return;me=account;
   try{

@@ -1,0 +1,40 @@
+{
+  "completedAtUtc": "2026-10-09T19:29:54.394265+00:00",
+  "python": "3.12.14",
+  "command": "unittest discover -s auth -p test_*.py",
+  "testsRun": 220,
+  "passed": 215,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 5,
+  "skipDetails": [
+    {
+      "test": "test_same_email_across_providers_does_not_link_accounts (test_app.GoogleAuthTests.test_same_email_across_providers_does_not_link_accounts)",
+      "reason": "Legacy social OAuth draft is not installed or enabled in the production API."
+    },
+    {
+      "test": "test_social_callback_registration_and_returning_login (test_app.GoogleAuthTests.test_social_callback_registration_and_returning_login)",
+      "reason": "Legacy social OAuth draft is not installed or enabled in the production API."
+    },
+    {
+      "test": "test_facebook_requires_matching_app_and_user (test_social.ProviderVerificationTests.test_facebook_requires_matching_app_and_user)",
+      "reason": "Optional social OAuth draft dependencies are not installed; provider is not deployed."
+    },
+    {
+      "test": "test_instagram_requires_professional_account (test_social.ProviderVerificationTests.test_instagram_requires_professional_account)",
+      "reason": "Optional social OAuth draft dependencies are not installed; provider is not deployed."
+    },
+    {
+      "test": "test_linkedin_rejects_invalid_signature_or_nonce (test_social.ProviderVerificationTests.test_linkedin_rejects_invalid_signature_or_nonce)",
+      "reason": "Optional social OAuth draft dependencies are not installed; provider is not deployed."
+    }
+  ],
+  "expectedFailures": 0,
+  "unexpectedSuccesses": 0,
+  "elapsedSeconds": 40.829,
+  "successful": true,
+  "supplierAgreementSha256": "07a59126e54405120988cc68e440420e29858e549d9f6b016c719d2f9d390228",
+  "supplierAgreementUnchangedDuringTests": true,
+  "supplierAgreementMatchesGitBaseline": true,
+  "isolation": "Temporary SQLite, synthetic FINAL agreement, isolated uploads, mock/no-op mail; no production requests."
+}

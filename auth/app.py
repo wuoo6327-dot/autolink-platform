@@ -23,6 +23,7 @@ from trade_service import TradeService, LISTING_STATES
 from platform_service import PlatformService
 from business_mail import BusinessMailer
 from mail_templates import language_code
+from seo_service import PublicSEOService
 
 
 CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
@@ -158,6 +159,9 @@ class AuthService:
         return claims
 
     def google_login(self, body: dict):
+        role = body.get("role", "MERCHANT")
+        if role not in ("MERCHANT", "BUYER"):
+            raise ApiError(400, "Invalid account role.")
         try:
             language = language_code(body.get('language', 'en'))
         except ValueError as exc:
@@ -173,9 +177,6 @@ class AuthService:
                 email = normalized_email(email)
                 if db.execute("SELECT 1 FROM email_identities WHERE email=?", (email,)).fetchone():
                     raise ApiError(409, "This email already has an account. Sign in with email code, then link Google from account settings.")
-                role = body.get("role", "MERCHANT")
-                if role not in ("MERCHANT", "BUYER"):
-                    raise ApiError(400, "Invalid account role.")
                 company = body.get("companyName")
                 if not isinstance(company, str) or body.get("consent") is not True:
                     return {"registrationRequired": True}
@@ -197,12 +198,7 @@ class AuthService:
                 BusinessMailer.enqueue(db,user_id,'WELCOME',user_id,'/buyer' if role=='BUYER' else '/supplier','welcome:'+user_id)
                 user = db.execute("SELECT * FROM users WHERE id=?", (user_id,)).fetchone()
             else:
-                if body.get("role") == "MERCHANT" and user["role"] == "BUYER":
-                    # The verified Google identity is the account identity. A
-                    # supplier login can correct legacy buyers created from the
-                    # old merchant entry without bypassing supplier review.
-                    db.execute("UPDATE users SET role='MERCHANT' WHERE id=? AND role='BUYER' AND status='ACTIVE' AND deleted_at IS NULL", (user["id"],))
-                    user = db.execute("SELECT * FROM users WHERE id=?", (user["id"],)).fetchone()
+                # A login entry selects a workspace, never a new identity role.
                 db.execute("UPDATE users SET last_login_at=?,email_verified_at=COALESCE(email_verified_at,?) WHERE id=?", (int(time.time()),int(time.time()), user["id"]))
         return {**self.session_for_user(user["id"], bool(body.get("remember"))), "role": user["role"]}
 
@@ -212,8 +208,8 @@ class AuthService:
         seconds = REMEMBER_SECONDS if remember else SESSION_SECONDS
         with self.connect() as db:
             db.execute("DELETE FROM sessions WHERE expires_at <= ?", (now,))
-            user = db.execute("SELECT status FROM users WHERE id=?", (user_id,)).fetchone()
-            if not user or user["status"] != "ACTIVE":
+            user = db.execute("SELECT status,deleted_at FROM users WHERE id=?", (user_id,)).fetchone()
+            if not user or user["status"] != "ACTIVE" or user["deleted_at"] is not None:
                 raise ApiError(401, "Account is unavailable. Contact support.")
             db.execute("INSERT INTO sessions(token_hash,user_id,expires_at) VALUES (?,?,?)",
                        (digest(token), user_id, now + seconds))
@@ -228,9 +224,43 @@ class AuthService:
                 "WHERE sessions.token_hash=? AND sessions.expires_at>?",
                 (digest(token), int(time.time())),
             ).fetchone()
-        if user is None or user["status"] != "ACTIVE":
+        if user is None or user["status"] != "ACTIVE" or user["deleted_at"] is not None:
             raise ApiError(401, "Login has expired. Please sign in again.")
         return dict(user)
+
+    @staticmethod
+    def platform_admin_in_db(db, user):
+        """Recheck the configured platform owner against the current account."""
+        if not user:
+            return False
+        row = db.execute("SELECT role,email FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL",
+                         (user['id'],)).fetchone()
+        owner_email = os.environ.get('PLATFORM_ADMIN_EMAIL', '').strip().casefold()
+        return bool(row and row['role'] == 'PLATFORM_ADMIN' and
+                    (not owner_email or row['email'].strip().casefold() == owner_email))
+
+    def account_capabilities(self, user):
+        business = user['role'] in ('BUYER', 'MERCHANT', 'SUPPLIER')
+        with self.connect() as db:
+            admin = self.platform_admin_in_db(db, user)
+        return {'buyer': business, 'supplier': business and bool(user.get('email_verified_at')), 'admin': admin}
+
+    @staticmethod
+    def account_deletion_denial(db, user):
+        owner_email = os.environ.get('PLATFORM_ADMIN_EMAIL', '').strip().casefold()
+        if owner_email and user['email'].strip().casefold() == owner_email:
+            return 'The platform owner cannot delete their account here.'
+        if user['role'] == 'PLATFORM_ADMIN' and db.execute(
+                "SELECT count(*) FROM users WHERE role='PLATFORM_ADMIN' AND status='ACTIVE' AND deleted_at IS NULL"
+                ).fetchone()[0] <= 1:
+            return 'The last active platform administrator cannot delete their account.'
+        return None
+
+    def account_deletion_allowed(self, user):
+        with self.connect() as db:
+            current = db.execute("SELECT role,email FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL",
+                                 (user['id'],)).fetchone()
+            return bool(current and not self.account_deletion_denial(db, current))
 
     def save_language(self, token: str, body: dict):
         if set(body) != {'language'}:
@@ -257,8 +287,17 @@ class AuthService:
         return {}
 
     def delete_account(self, token: str):
-        user = self.user_for_token(token)
         with self.connect() as db:
+            # Resolve the session and administrator count under one write lock.
+            db.execute('BEGIN IMMEDIATE')
+            user = db.execute("""SELECT u.* FROM sessions s JOIN users u ON u.id=s.user_id
+                WHERE s.token_hash=? AND s.expires_at>? AND u.status='ACTIVE' AND u.deleted_at IS NULL""",
+                (digest(token), int(time.time()))).fetchone()
+            if not user:
+                raise ApiError(401, 'Please sign in.')
+            denial = self.account_deletion_denial(db, user)
+            if denial:
+                raise ApiError(403, denial)
             db.execute("DELETE FROM sessions WHERE user_id=?", (user["id"],))
             db.execute("UPDATE users SET status='DELETED',deleted_at=? WHERE id=?", (int(time.time()), user["id"]))
         return {"deleted": True}
@@ -293,11 +332,22 @@ class Handler(BaseHTTPRequestHandler):
     email_auth: EmailAuthService
     trade: TradeService
     platform: PlatformService
+    seo: PublicSEOService
     server_version = "AUTOLINKAuth/1.0"
 
     def log_message(self, format, *args):
         # Never log bearer tokens or Google credentials.
         print("%s %s" % (self.address_string(), format % args), flush=True)
+
+    def send_html(self, status: int, payload: bytes):
+        self.send_response(status)
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        self.send_header('Content-Length', str(len(payload)))
+        self.end_headers()
+        if self.command != 'HEAD':
+            self.wfile.write(payload)
 
     def send_json(self, status: int, data=None, message: str = "OK", cookie: str = "", remember: bool = False, clear_cookie: bool = False):
         path=urlsplit(self.path).path
@@ -316,6 +366,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        if path.startswith('/autolink/public/'):
+            self.send_header('X-Robots-Tag', 'noindex')
         if cookie:
             secure = "; Secure" if os.environ.get("COOKIE_SECURE", "true").lower() != "false" else ""
             age = f"; Max-Age={REMEMBER_SECONDS}" if remember else ""
@@ -324,7 +376,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Set-Cookie", "autolink_session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0")
         self.send_header("Content-Length", str(len(payload)))
         self.end_headers()
-        self.wfile.write(payload)
+        if self.command != 'HEAD':
+            self.wfile.write(payload)
 
     def send_image(self, data):
         self.send_response(200)
@@ -333,7 +386,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control","no-store")
         self.send_header("Content-Length",str(len(data)))
         self.end_headers()
-        self.wfile.write(data)
+        if self.command != 'HEAD':
+            self.wfile.write(data)
 
     def send_xml(self, data):
         self.send_response(200)
@@ -343,7 +397,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('X-Content-Type-Options','nosniff')
         self.send_header('Content-Length',str(len(data)))
         self.end_headers()
-        self.wfile.write(data)
+        if self.command != 'HEAD':
+            self.wfile.write(data)
 
     def send_document(self, result):
         filename = "autolink-private-document" + {"application/pdf":".pdf","image/png":".png","image/jpeg":".jpg"}[result["contentType"]]
@@ -354,7 +409,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Content-Length", str(len(result["data"])))
         self.end_headers()
-        self.wfile.write(result["data"])
+        if self.command != 'HEAD':
+            self.wfile.write(result["data"])
 
     def token(self):
         auth = self.headers.get("Authorization", "")
@@ -544,10 +600,10 @@ class Handler(BaseHTTPRequestHandler):
             user = self.service.user_for_token(self.token())
             self.send_json(200, {"id": user["id"], "role": user["role"], "username": user["email"],
                                  "email": user["email"], "nickName": user["display_name"],
-                                 "companyName": user["company_name"], "isTestWorkspace":bool(user.get("is_test_workspace")), "language":user["preferred_language"], "passwordSet": self.email_auth.has_password(user["id"])})
+                                 "companyName": user["company_name"], "capabilities": self.service.account_capabilities(user), "accountDeletionAllowed": self.service.account_deletion_allowed(user), "isTestWorkspace":bool(user.get("is_test_workspace")), "language":user["preferred_language"], "passwordSet": self.email_auth.has_password(user["id"])})
             return
         if method == "DELETE" and path == "/autolink/me":
-            self.send_json(200, self.service.delete_account(self.token()))
+            self.send_json(200, self.service.delete_account(self.token()), clear_cookie=True)
             return
         if method == "GET" and path in ("/autolink/merchant/stock", "/autolink/requests"):
             if self.service.user_for_token(self.token())["role"] != "MERCHANT":
@@ -642,6 +698,9 @@ class Handler(BaseHTTPRequestHandler):
         elif method == "POST" and tail.startswith("quotes/") and tail.endswith("/response"):
             quote_id = tail.split("/")[1]
             data = self.trade.buyer_quote(user, quote_id, self.read_body().get("decision"))
+        elif method == "POST" and re.fullmatch(r"quotes/[^/]+/viewed", tail):
+            self.read_body()
+            data = self.trade.mark_quote_viewed(user, tail.split("/")[1])
         elif method == "GET" and tail == "history":
             data = self.trade.recent_views(user)
         elif method == "POST" and tail == "history":
@@ -669,6 +728,11 @@ class Handler(BaseHTTPRequestHandler):
         tail = path[len("/autolink/public/"):]
         if method != "GET":
             raise ApiError(405, "Method not allowed.")
+        if tail == 'seo/trade' or tail.startswith('seo/trade/'):
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            status, payload = renderer.render(self.path[len('/autolink/public/seo'):])
+            self.send_html(status, payload)
+            return
         if tail=='sitemap.xml' or tail.startswith('sitemaps/'):
             self.send_xml(self.trade.sitemap_xml('sitemap.xml' if tail=='sitemap.xml' else tail[len('sitemaps/'):]))
             return
@@ -931,6 +995,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.dispatch("GET")
 
+    def do_HEAD(self):
+        self.dispatch("GET")
+
     def do_POST(self):
         self.dispatch("POST")
 
@@ -959,6 +1026,7 @@ def main():
     Handler.buyer = BuyerService(Handler.service)
     Handler.trade = TradeService(Handler.service)
     Handler.platform = Handler.trade.platform
+    Handler.seo = PublicSEOService(Handler.trade)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     Handler.service.mailer.start()
     try:server.serve_forever()

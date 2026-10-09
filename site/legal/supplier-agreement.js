@@ -4,11 +4,14 @@
   const button=document.getElementById('agreement-confirm');
   const status=document.getElementById('agreement-confirmation-status');
   const next=document.getElementById('agreement-next');
-  let signed=false,busy=false;
+  let signed=false,busy=false,ready=false;
   const checked=()=>form.elements.agreement.checked&&form.elements.privacy.checked;
-  function update(){button.disabled=signed||busy||!checked();}
+  function update(){button.disabled=!ready||signed||busy||!checked();}
   function confirmed(data){
-    if(!data.confirmation)return;
+    const sameVersion=data.version===body.dataset.version&&data.bodySha256===body.dataset.bodySha256;
+    ready=data.acceptanceEnabled===true&&sameVersion;
+    if(!ready){status.textContent=data.acceptanceEnabled===true?'协议版本已更新，请刷新页面并阅读最新正式协议后再确认。':'正式协议及运营资料尚未就绪，入驻暂未开放；可返回入驻页保存企业草稿。';next.hidden=false;update();return;}
+    update();if(!data.confirmation)return;
     signed=true;button.textContent='已确认签署';
     status.textContent='确认记录：'+data.confirmation.id;
     next.hidden=false;form.querySelectorAll('input').forEach(input=>input.disabled=true);update();
@@ -22,6 +25,7 @@
     return result.data;
   }
   const errors={
+    'Supplier onboarding is not open: the final agreement and operator details are not ready.':'正式协议及运营资料尚未就绪，入驻暂未开放；可保存企业草稿。',
     'Only the company owner can confirm this agreement.':'仅企业负责人可确认本协议。',
     'Verify your email before applying as a supplier.':'请先完成邮箱验证。',
     'Supplier account required.':'请使用商家或供应商账号登录。',
@@ -33,7 +37,7 @@
   };
   form.addEventListener('change',update);
   form.addEventListener('submit',async event=>{
-    event.preventDefault();if(busy||signed||!checked())return;
+    event.preventDefault();if(!ready||busy||signed||!checked())return;
     busy=true;update();status.textContent='正在确认…';
     try{confirmed(await request('POST',{version:body.dataset.version,bodySha256:body.dataset.bodySha256,
       consent:true,authorized:true,privacyAcknowledged:true}));}
@@ -42,7 +46,8 @@
       status.textContent=errors[error.message]||'暂时无法确认，请重试。';next.hidden=false;
     }finally{busy=false;update();}
   });
+  update();
   request('GET').then(confirmed).catch(error=>{
-    if(error.status!==401){status.textContent=errors[error.message]||'确认服务暂时不可用，请稍后重试。';}
+    ready=false;update();next.hidden=false;status.textContent=error.status===401?'请先登录，并在入驻页保存企业资料。':errors[error.message]||'确认服务暂时不可用，请稍后重试。';
   });
 })();

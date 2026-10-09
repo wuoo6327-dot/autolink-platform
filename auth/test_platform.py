@@ -25,7 +25,7 @@ class PlatformFlowTests(unittest.TestCase):
         for _ in range(2):
             saved=service.save_supplier(buyer,'supplier-a')
             self.assertEqual(len(saved),1)
-            self.assertEqual(saved[0]['verificationStatus'],'COMPANY_CHECKED')
+            self.assertEqual(saved[0]['verificationStatus'],'BUSINESS_ACCOUNT_ACTIVE')
         self.assertEqual(service.suppliers(other,saved=True),[])
         service.save_supplier(other,'supplier-a',add=False)
         self.assertEqual(service.overview(buyer)['counts']['savedSuppliers'],1)
@@ -45,7 +45,7 @@ class PlatformFlowTests(unittest.TestCase):
         cases=(("users","status","SUSPENDED","ACTIVE"),
                ("users","deleted_at",1,None),
                ("users","email_verified_at",None,int(time.time())),
-               ("users","role","BUYER","MERCHANT"),
+               ("users","role","PLATFORM_ADMIN","MERCHANT"),
                ("supplier_profiles","published",0,1),
                ("supplier_applications","status","REQUIRES_CHANGES","APPROVED"))
         for table,column,revoked,restored in cases:

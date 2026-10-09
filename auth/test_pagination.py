@@ -249,6 +249,9 @@ class BusinessPaginationTests(unittest.TestCase):
     def test_shared_request_pages_require_publication_consent_and_live_buyer(self):
         service=BuyerService(self.auth)
         original=service.create_request(self.buyer,{'title':'Published request','quantity':2,'status':'PUBLISHED','publishConsent':True,'destinationCountry':'Kenya'})
+        # Issue existing sessions before revocation; a deleted account cannot
+        # obtain a new session under the current account guards.
+        call=self.serve()
         with self.auth.connect() as db:
             for n in range(224):self.clone(db,'buyer_requests',original['id'],'id',f'REQ-SHARED-{n:04}')
             self.clone(db,'buyer_requests',original['id'],'id','REQ-PRIVATE',distribution_consent=0)
@@ -268,7 +271,7 @@ class BusinessPaginationTests(unittest.TestCase):
         self.assertEqual(len(set(ids)),225);self.assertEqual(ids[-1],original['id'])
         self.assertEqual(len(self.trade.buying_requests(self.owner)),100)
         self.assertEqual(self.trade.buying_requests(self.owner,original['id'],page=9)[0]['id'],original['id'])
-        call=self.serve();self.assertEqual(call('buyer-a','/autolink/supplier/buying-requests?page=9')[0],403)
+        self.assertEqual(call('buyer-a','/autolink/supplier/buying-requests?page=9')[0],403)
         self.assertEqual(call('supplier-a','/autolink/supplier/buying-requests?page=9')[1]['data']['total'],225)
         with self.auth.connect() as db:db.execute("UPDATE users SET email_verified_at=NULL WHERE id='buyer-a'")
         self.assertEqual(self.trade.buying_requests(self.owner,page=9)['total'],0)

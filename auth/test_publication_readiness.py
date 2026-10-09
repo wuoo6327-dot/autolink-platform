@@ -54,7 +54,7 @@ class PublicationReadinessTests(unittest.TestCase):
         self.assertNotIn('/data/',serialized)
         self.assertNotIn('supplier-b',serialized)
 
-    def test_guidance_tracks_documents_agreement_submission_and_manual_approval(self):
+    def test_guidance_tracks_documents_agreement_and_explicit_automatic_activation(self):
         owner=self.users['supplier-a']
         self.trade.save_application(owner,self.form())
         publication=self.supplier_state()
@@ -68,11 +68,6 @@ class PublicationReadinessTests(unittest.TestCase):
         self.assertFalse(ready['visible'])
         self.assertEqual(ready['nextAction'],'submit_application')
         self.trade.save_application(owner,{**self.form(),'submit':True})
-        pending=self.supplier_state()
-        self.assertEqual(pending['reasons'],['APPLICATION_PENDING'])
-        self.assertEqual(pending['nextAction'],'await_review')
-        self.assertEqual(self.trade.supplier_list(public=True),[])
-        self.trade.review_supplier(self.users['admin'],owner['id'],{'decision':'APPROVED'})
         approved=self.supplier_state()
         self.assertTrue(approved['visible'])
         self.assertEqual(approved['reasons'],[])
