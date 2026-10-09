@@ -1,8 +1,12 @@
 name: autolink-demo
 services:
   auth:
-    build: ./auth
+    image: autolink-round3-auth@sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80
     restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs: ["/tmp:size=32m,mode=1777"]
     environment:
       GOOGLE_CLIENT_ID: 919734262669-4csunht5tjcdlj2oojcilidn4utpfskl.apps.googleusercontent.com
       AUTH_DB_PATH: /data/autolink-auth.sqlite3
@@ -27,10 +31,15 @@ services:
         max-size: "10m"
         max-file: "3"
   web:
-    image: caddy:2-alpine
+    image: autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb
     restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
     environment:
       SITE_ADDRESS: ${SITE_ADDRESS:?Set SITE_ADDRESS in .env}
+    sysctls:
+      net.ipv4.ip_unprivileged_port_start: "0"
     ports:
       - "80:80"
       - "443:443"

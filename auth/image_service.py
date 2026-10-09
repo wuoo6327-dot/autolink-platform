@@ -161,8 +161,12 @@ class ListingImages:
                 JOIN supplier_profiles p ON p.user_id=i.supplier_id
                 LEFT JOIN catalog_models cm ON cm.id=v.model_id LEFT JOIN catalog_brands cb ON cb.id=cm.brand_id
                 WHERE i.id=?''',(image_id,)).fetchone()
+            current = db.execute("SELECT role FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL",
+                                 (user['id'],)).fetchone() if user else None
+            privileged = bool(row and current and (
+                (user['id'] == row['supplier_id'] and current['role'] in ('BUYER', 'MERCHANT', 'SUPPLIER')) or
+                self.auth.platform_admin_in_db(db, user)))
         public=row and row['status']=='ONLINE' and row['company_status']=='APPROVED' and row['account_status']=='ACTIVE' and row['archived_at'] is None and row['published'] and row['model_active'] and row['brand_active'] and row['deleted_at'] is None and row['email_verified_at'] is not None and row['account_role'] in ('BUYER','MERCHANT','SUPPLIER')
         public = public and not row['is_test_workspace']
-        privileged=row and user and (user['id']==row['supplier_id'] or user['role']=='PLATFORM_ADMIN')
         if not public and not privileged:raise BuyerError(404,'Image not found.')
         return (ROOT/row['stored_name']).read_bytes()

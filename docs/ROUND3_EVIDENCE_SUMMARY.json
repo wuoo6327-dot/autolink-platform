@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-10",
+  "sourceBase": "edd7408be94e6d1bb928edc310876b67c8776b9c",
+  "platform": "linux/amd64",
+  "backend": {
+    "total": 193,
+    "passed": 188,
+    "skipped": 5,
+    "failed": 0,
+    "seconds": 151.636
+  },
+  "http": {
+    "passed": 45,
+    "failed": 0,
+    "syntheticOnly": true,
+    "certificateValidation": true
+  },
+  "scans": {
+    "candidate-auth": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "UNKNOWN": 0
+    },
+    "candidate-caddy": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "UNKNOWN": 1
+    },
+    "production-auth": {
+      "CRITICAL": 0,
+      "HIGH": 45,
+      "MEDIUM": 64,
+      "LOW": 62,
+      "UNKNOWN": 3
+    },
+    "production-caddy": {
+      "CRITICAL": 0,
+      "HIGH": 4,
+      "MEDIUM": 8,
+      "LOW": 1,
+      "UNKNOWN": 7
+    }
+  },
+  "images": {
+    "auth": {
+      "tag": "autolink-round3-auth:release",
+      "manifestDigest": "sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80",
+      "configDigest": "sha256:25736f3ba1098c31cd84e58b73170ae737f83e298c7cad0f66a89ae64012c114",
+      "reference": "autolink-round3-auth@sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80",
+      "architecture": "amd64"
+    },
+    "caddy": {
+      "tag": "autolink-round3-caddy:release",
+      "manifestDigest": "sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+      "configDigest": "sha256:335a69d3f130d4b91a1729b94e69371e302e3831fb6296054d45b79dd9c1bc6d",
+      "reference": "autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+      "architecture": "amd64"
+    }
+  },
+  "productionUnchanged": true,
+  "productionDeployed": false,
+  "realDatabaseCopy": {
+    "existingTables": 42,
+    "allExistingRowsUnchanged": true,
+    "quickCheck": "ok",
+    "serverStarted": false,
+    "mailerStarted": false
+  },
+  "legacyTLS": {
+    "existingCertificateLoaded": true,
+    "defaultPublicCAValidation": true,
+    "HTTP2": true,
+    "nonRootUID": 10001,
+    "certificateNotAfter": "Jan  1 14:41:18 2027 GMT",
+    "copiedStateOwnershipMigrationTested": true,
+    "productionCertificateVolumeModified": false,
+    "ACMERenewalTested": false
+  },
+  "finalCompose": {
+    "composeSHA256": "292b690e637a4639b4f5d0e26a4725e5efead771077e0670b8283700c2edf420",
+    "nativeComposeValidated": true,
+    "productionComposeStarted": false,
+    "sameHardeningAsTestedQA": true
+  },
+  "evidenceArchiveSHA256": "2328eee16abb504e24646e7a68d8ea1deef14b040c245e7c9cf3c3b906d38",
+  "openpgpAudit": {
+    "functionCount": 62593,
+    "openpgpFunctions": []
+  }
+}
