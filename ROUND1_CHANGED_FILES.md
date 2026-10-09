@@ -44,6 +44,7 @@ Isolated candidate only; not deployed. Includes all candidate files versus main 
 | [scripts/install_security_tools_ci.py](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/scripts/install_security_tools_ci.py>) | new |
 | [scripts/security_scan.py](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/scripts/security_scan.py>) | new |
 | [scripts/tests/public_seo.mjs](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/scripts/tests/public_seo.mjs>) | new |
+| [scripts/tests/supplier_inquiry_actions.mjs](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/scripts/tests/supplier_inquiry_actions.mjs>) | new |
 | [scripts/tests/test_security_reports.py](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/scripts/tests/test_security_reports.py>) | new |
 | [security/gitleaks.toml](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/security/gitleaks.toml>) | new |
 | [security/test-results/auth-discover-summary.json](</Users/oo/Documents/ChatGPT/Space Auto/deployment/autolink-round1-isolated-20261010-015717/security/test-results/auth-discover-summary.json>) | new |

@@ -266,6 +266,30 @@ class BusinessReadonlyActivationTests(unittest.TestCase):
             self.assertEqual(self.request(base,'/autolink/buyer/quotes/'+quote['id']+suffix,tokens['buyer-a'],'POST',body)[0],409)
             self.assertEqual(self.snapshot(),before)
 
+    def test_http_inquiry_viewed_uses_put_and_get_stays_readonly_with_company_authorization(self):
+        listing=self.approved_vehicle()
+        buyer,owner=self.users['buyer-a'],self.users['supplier-a']
+        inquiry=self.trade.create_inquiry(buyer,{'listingId':listing,'quantity':2,'destinationCountry':'Kenya'})
+        base=self.server()
+        tokens={key:self.auth.session_for_user(key)['access_token'] for key in ('buyer-a','supplier-a','supplier-b')}
+        path='/autolink/supplier/inquiries/'+inquiry['id']
+        before=self.snapshot()
+        status,response=self.request(base,path,tokens['supplier-a'])
+        self.assertEqual(status,200);self.assertEqual(response['data']['status'],'SUBMITTED')
+        self.assertIsNone(response['data']['viewed_at'])
+        self.assertEqual(self.snapshot(),before)
+        for key in ('buyer-a','supplier-b'):
+            self.assertEqual(self.request(base,path,tokens[key],'PUT',{'status':'VIEWED'})[0],403)
+            self.assertEqual(self.snapshot(),before)
+        self.assertEqual(self.request(base,path,tokens['supplier-a'],'PUT',{'status':'VIEWED'},'https://other.example')[0],403)
+        self.assertEqual(self.snapshot(),before)
+        status,response=self.request(base,path,tokens['supplier-a'],'PUT',{'status':'VIEWED'})
+        self.assertEqual(status,200);self.assertEqual(response['data']['status'],'VIEWED')
+        self.assertIsNotNone(response['data']['viewed_at'])
+        after=self.snapshot()
+        self.assertEqual(self.request(base,path,tokens['supplier-a'])[1]['data']['status'],'VIEWED')
+        self.assertEqual(self.snapshot(),after)
+
     def test_business_owner_can_buy_from_other_company_but_self_and_team_cannot(self):
         listing=self.approved_vehicle('buyer-a')
         owner=self.users['buyer-a'];other=self.users['supplier-b']
