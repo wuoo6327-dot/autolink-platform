@@ -1,0 +1,51 @@
+name: autolink-demo
+services:
+  auth:
+    build: ./auth
+    restart: unless-stopped
+    environment:
+      GOOGLE_CLIENT_ID: 919734262669-4csunht5tjcdlj2oojcilidn4utpfskl.apps.googleusercontent.com
+      AUTH_DB_PATH: /data/autolink-auth.sqlite3
+      MEMBERSHIP_RESTRICTIONS: "true"
+      PLATFORM_ADMIN_EMAIL: wuoo6327@gmail.com
+      MAIL_PROVIDER: ${MAIL_PROVIDER:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      AUTH_CODE_SECRET: ${AUTH_CODE_SECRET:-}
+      APP_URL: ${APP_URL:-https://autolinkglobal.com}
+    volumes:
+      - auth_data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=2)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+  web:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:?Set SITE_ADDRESS in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./site:/srv:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+volumes:
+  caddy_data:
+  caddy_config:
+  auth_data:

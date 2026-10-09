@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static fallback only. Caddy serves the database-backed sitemap index. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://autolinkglobal.com/</loc></url>
+<url><loc>https://autolinkglobal.com/trade/vehicles</loc></url>
+<url><loc>https://autolinkglobal.com/trade/models</loc></url>
+<url><loc>https://autolinkglobal.com/trade/brands</loc></url>
+<url><loc>https://autolinkglobal.com/trade/suppliers</loc></url>
+<url><loc>https://autolinkglobal.com/membership</loc></url>
+<url><loc>https://autolinkglobal.com/support</loc></url>
+</urlset>

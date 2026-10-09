@@ -1,0 +1,704 @@
+{
+  "en": {
+    "events": {
+      "WELCOME": [
+        "Welcome to AUTOLINK",
+        "Your account is ready. Explore vehicle references, compare reviewed supplier offers and contact suppliers through your workspace."
+      ],
+      "NEW_INQUIRY": [
+        "New buyer inquiry",
+        "A buyer has sent an inquiry. Sign in to review the request, assign follow-up and prepare a quotation."
+      ],
+      "NEW_QUOTE": [
+        "New supplier quotation",
+        "A supplier has sent a quotation. Sign in to review the price, trade terms and validity. Accepting a quotation records an intention and does not initiate a payment."
+      ],
+      "SUPPLIER_APPROVED": [
+        "Supplier application approved",
+        "Your company application has been approved. You can prepare vehicle listings and submit them for review."
+      ],
+      "SUPPLIER_REJECTED": [
+        "Supplier application review",
+        "Your company application was not approved. Sign in to view the review and update your application."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "Supplier application needs changes",
+        "The platform requested changes to your company application. Sign in to read the review."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "Supplier access update",
+        "Your supplier access has been suspended. Sign in to review the status and contact platform support."
+      ],
+      "VEHICLE_APPROVED": [
+        "Vehicle listing approved",
+        "Your listing has passed platform review. Sign in to confirm its stock and trade information before publishing it."
+      ],
+      "VEHICLE_REJECTED": [
+        "Vehicle listing review",
+        "Your listing was not approved. Sign in to read the review and edit the listing."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "Your AUTOLINK membership has expired",
+        "Your membership term has ended. Your account, inquiries, quotations and saved items remain available. Renewal is manual; AUTOLINK does not automatically charge you."
+      ],
+      "TEAM_INVITED": [
+        "Supplier team invitation",
+        "You have been invited to an AUTOLINK supplier team. Sign in with this email address to review the company and accept or decline the invitation."
+      ],
+      "TEAM_JOINED": [
+        "Supplier teammate joined",
+        "A verified account accepted your team invitation. Sign in to review your team."
+      ],
+      "BUYER_ASSIGNED": [
+        "Buyer follow-up assigned",
+        "A buyer has been assigned to you. Sign in to review the authorized inquiries and quotations."
+      ],
+      "QUOTE_ACCEPTED": [
+        "Buyer accepted a quotation intention",
+        "A buyer accepted a quotation intention. Sign in to continue direct trade discussions. This does not create a platform payment or a guaranteed vehicle transaction."
+      ],
+      "QUOTE_REJECTED": [
+        "Buyer declined a quotation",
+        "A buyer declined a quotation. Sign in to review the request and continue follow-up."
+      ],
+      "QUOTE_CANCELLED": [
+        "Supplier cancelled a quotation",
+        "A supplier cancelled a quotation previously sent to your account. Sign in to view its status and contact the supplier. No platform payment occurs."
+      ],
+      "TEAM_INVITATION": [
+        "Supplier team invitation",
+        "A supplier has invited this email to its AUTOLINK sales team. Sign in or register, verify this email, then open Team to review and accept the invitation. It expires after seven days. Access starts only after acceptance and buyer assignment. If this invitation is unexpected, ignore this email."
+      ]
+    },
+    "button": "Sign in to view",
+    "footer": "AUTOLINK connects buyers and suppliers. It does not hold vehicle purchase funds or guarantee a trade.",
+    "verification": "Verification Code",
+    "reset": "Password Reset Code",
+    "expires": "This code will expire in 10 minutes.",
+    "ignore": "If you did not request this code, you can safely ignore this email."
+  },
+  "zh": {
+    "events": {
+      "WELCOME": [
+        "欢迎来到 AUTOLINK",
+        "你的账号已准备就绪。浏览车型资料，比较已审核的供应商车源，并通过工作台联系供应商。"
+      ],
+      "NEW_INQUIRY": [
+        "收到新的买家询盘",
+        "买家已发送询盘。请登录查看需求、分配跟进人员并准备报价。"
+      ],
+      "NEW_QUOTE": [
+        "收到新的供应商报价",
+        "供应商已发送报价。请登录查看价格、贸易条款和有效期。接受报价仅表示交易意向，不会发起付款。"
+      ],
+      "SUPPLIER_APPROVED": [
+        "供应商申请已通过",
+        "你的企业申请已通过。现在可以准备车源并提交审核。"
+      ],
+      "SUPPLIER_REJECTED": [
+        "供应商申请审核结果",
+        "你的企业申请未通过。请登录查看审核结果并更新申请。"
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "供应商申请需要修改",
+        "平台要求修改企业申请。请登录查看审核意见。"
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "供应商权限已更新",
+        "你的供应商权限已暂停。请登录查看状态并联系平台客服。"
+      ],
+      "VEHICLE_APPROVED": [
+        "车源审核已通过",
+        "你的车源已通过平台审核。请登录确认库存和贸易信息后再发布。"
+      ],
+      "VEHICLE_REJECTED": [
+        "车源审核结果",
+        "你的车源未通过审核。请登录查看意见并修改车源。"
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "AUTOLINK 会员已到期",
+        "会员期限已结束。账号、询盘、报价和收藏仍保留。续费需手动办理，AUTOLINK 不会自动扣款。"
+      ],
+      "TEAM_INVITED": [
+        "供应商团队邀请",
+        "你已获邀加入 AUTOLINK 供应商团队。请使用此邮箱登录，查看企业并接受或拒绝邀请。"
+      ],
+      "TEAM_JOINED": [
+        "供应商团队新成员",
+        "已验证账号接受了你的团队邀请。请登录查看团队。"
+      ],
+      "BUYER_ASSIGNED": [
+        "已分配买家跟进",
+        "已为你分配买家。请登录查看你有权访问的询盘和报价。"
+      ],
+      "QUOTE_ACCEPTED": [
+        "买家已接受报价意向",
+        "买家已接受报价意向。请登录继续直接洽谈。本操作不会生成平台付款，也不代表车辆交易担保。"
+      ],
+      "QUOTE_REJECTED": [
+        "买家已拒绝报价",
+        "买家已拒绝报价。请登录查看需求并继续跟进。"
+      ],
+      "QUOTE_CANCELLED": [
+        "供应商已取消报价",
+        "供应商取消了此前发给你的报价。请登录查看状态并联系供应商。本操作不会发生平台付款。"
+      ],
+      "TEAM_INVITATION": [
+        "供应商团队邀请",
+        "一家供应商邀请此邮箱加入 AUTOLINK 销售团队。请登录或注册并验证此邮箱，然后打开团队页面查看并接受邀请。邀请将在七天后过期。只有接受邀请并被分配客户后，才能访问相关业务。如果你不认识此邀请，请忽略邮件。"
+      ]
+    },
+    "button": "登录查看",
+    "footer": "AUTOLINK 连接买家与供应商，不托管汽车采购资金，也不提供交易担保。",
+    "verification": "登录验证码",
+    "reset": "密码重置验证码",
+    "expires": "验证码将在 10 分钟后失效。",
+    "ignore": "如果不是你本人操作，请忽略此邮件。"
+  },
+  "ar": {
+    "events": {
+      "WELCOME": [
+        "مرحباً بك في AUTOLINK",
+        "حسابك جاهز. استعرض معلومات السيارات وقارن عروض الموردين التي تمت مراجعتها وتواصل معهم عبر مركزك."
+      ],
+      "NEW_INQUIRY": [
+        "استفسار جديد من مشترٍ",
+        "أرسل مشترٍ استفساراً. سجّل الدخول لمراجعة الطلب وتعيين مسؤول المتابعة وإعداد عرض سعر."
+      ],
+      "NEW_QUOTE": [
+        "عرض سعر جديد من مورد",
+        "أرسل مورد عرض سعر. راجع السعر وشروط التجارة والصلاحية. قبول العرض يسجل نية الشراء ولا يبدأ أي دفع."
+      ],
+      "SUPPLIER_APPROVED": [
+        "تمت الموافقة على طلب المورد",
+        "تمت الموافقة على طلب شركتك. يمكنك إعداد إعلانات السيارات وإرسالها للمراجعة."
+      ],
+      "SUPPLIER_REJECTED": [
+        "نتيجة مراجعة طلب المورد",
+        "لم تتم الموافقة على طلب شركتك. سجّل الدخول للاطلاع على المراجعة وتحديث الطلب."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "طلب المورد يحتاج إلى تعديلات",
+        "طلبت المنصة تعديلات على طلب شركتك. سجّل الدخول لقراءة الملاحظات."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "تحديث صلاحيات المورد",
+        "تم تعليق صلاحياتك كمورد. سجّل الدخول لمراجعة الحالة والتواصل مع دعم المنصة."
+      ],
+      "VEHICLE_APPROVED": [
+        "تمت الموافقة على إعلان السيارة",
+        "اجتاز إعلانك مراجعة المنصة. تأكد من المخزون ومعلومات التجارة قبل نشره."
+      ],
+      "VEHICLE_REJECTED": [
+        "نتيجة مراجعة إعلان السيارة",
+        "لم تتم الموافقة على إعلانك. سجّل الدخول لقراءة الملاحظات وتعديل الإعلان."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "انتهت عضويتك في AUTOLINK",
+        "انتهت مدة العضوية. يبقى حسابك واستفساراتك وعروضك ومحفوظاتك. التجديد يدوي؛ لا تخصم AUTOLINK رسوماً تلقائياً."
+      ],
+      "TEAM_INVITED": [
+        "دعوة إلى فريق مورد",
+        "تمت دعوتك إلى فريق مورد في AUTOLINK. سجّل الدخول بهذا البريد لمراجعة الشركة وقبول الدعوة أو رفضها."
+      ],
+      "TEAM_JOINED": [
+        "انضم عضو إلى فريق المورد",
+        "قبل حساب موثّق دعوتك إلى الفريق. سجّل الدخول لمراجعة فريقك."
+      ],
+      "BUYER_ASSIGNED": [
+        "تم تعيين مشترٍ للمتابعة",
+        "تم تعيين مشترٍ لك. سجّل الدخول لمراجعة الاستفسارات والعروض المسموح لك بالوصول إليها."
+      ],
+      "QUOTE_ACCEPTED": [
+        "قبل المشتري نية عرض السعر",
+        "قبل المشتري نية عرض السعر. واصل التفاوض المباشر. لا ينشئ هذا دفعاً عبر المنصة ولا يضمن صفقة سيارة."
+      ],
+      "QUOTE_REJECTED": [
+        "رفض المشتري عرض السعر",
+        "رفض مشترٍ عرض سعر. سجّل الدخول لمراجعة الطلب ومواصلة المتابعة."
+      ],
+      "QUOTE_CANCELLED": [
+        "ألغى المورد عرض السعر",
+        "ألغى مورد عرضاً أُرسل إلى حسابك. سجّل الدخول لمراجعة الحالة والتواصل مع المورد. لا يتم أي دفع عبر المنصة."
+      ],
+      "TEAM_INVITATION": [
+        "دعوة إلى فريق المورد",
+        "دعا مورد هذا البريد الإلكتروني إلى فريق المبيعات على AUTOLINK. سجّل الدخول أو أنشئ حسابًا وتحقق من هذا البريد، ثم افتح صفحة الفريق لمراجعة الدعوة وقبولها. تنتهي الدعوة بعد سبعة أيام. يبدأ الوصول فقط بعد قبولها وإسناد مشترين إليك. إذا لم تكن تتوقع الدعوة، فتجاهل الرسالة."
+      ]
+    },
+    "button": "سجّل الدخول للاطلاع",
+    "footer": "تربط AUTOLINK المشترين بالموردين. لا تحتفظ بأموال شراء السيارات ولا تضمن المعاملات.",
+    "verification": "رمز التحقق لتسجيل الدخول",
+    "reset": "رمز إعادة تعيين كلمة المرور",
+    "expires": "تنتهي صلاحية هذا الرمز بعد 10 دقائق.",
+    "ignore": "إذا لم تطلب هذا الرمز، يمكنك تجاهل هذه الرسالة."
+  },
+  "ru": {
+    "events": {
+      "WELCOME": [
+        "Добро пожаловать в AUTOLINK",
+        "Ваш аккаунт готов. Изучайте модели, сравнивайте проверенные объявления поставщиков и связывайтесь с ними через личный кабинет."
+      ],
+      "NEW_INQUIRY": [
+        "Новый запрос покупателя",
+        "Покупатель отправил запрос. Войдите, чтобы изучить его, назначить ответственного и подготовить предложение."
+      ],
+      "NEW_QUOTE": [
+        "Новое предложение поставщика",
+        "Поставщик отправил предложение. Проверьте цену, условия торговли и срок действия. Принятие означает намерение и не запускает оплату."
+      ],
+      "SUPPLIER_APPROVED": [
+        "Заявка поставщика одобрена",
+        "Заявка вашей компании одобрена. Вы можете готовить объявления об автомобилях и отправлять их на проверку."
+      ],
+      "SUPPLIER_REJECTED": [
+        "Результат проверки заявки поставщика",
+        "Заявка вашей компании не одобрена. Войдите, чтобы посмотреть результат и обновить заявку."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "Заявку поставщика нужно изменить",
+        "Платформа запросила изменения в заявке компании. Войдите, чтобы прочитать замечания."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "Обновление доступа поставщика",
+        "Ваш доступ поставщика приостановлен. Войдите, чтобы проверить статус и связаться с поддержкой."
+      ],
+      "VEHICLE_APPROVED": [
+        "Объявление об автомобиле одобрено",
+        "Объявление прошло проверку. Перед публикацией подтвердите остаток и торговые условия."
+      ],
+      "VEHICLE_REJECTED": [
+        "Результат проверки объявления",
+        "Объявление не одобрено. Войдите, чтобы прочитать замечания и внести изменения."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "Членство AUTOLINK истекло",
+        "Срок членства закончился. Аккаунт, запросы, предложения и избранное сохраняются. Продление ручное; AUTOLINK не списывает деньги автоматически."
+      ],
+      "TEAM_INVITED": [
+        "Приглашение в команду поставщика",
+        "Вас пригласили в команду поставщика AUTOLINK. Войдите с этим адресом, проверьте компанию и примите или отклоните приглашение."
+      ],
+      "TEAM_JOINED": [
+        "Новый участник команды поставщика",
+        "Подтверждённый аккаунт принял ваше приглашение. Войдите, чтобы посмотреть команду."
+      ],
+      "BUYER_ASSIGNED": [
+        "Назначена работа с покупателем",
+        "Вам назначен покупатель. Войдите, чтобы посмотреть доступные вам запросы и предложения."
+      ],
+      "QUOTE_ACCEPTED": [
+        "Покупатель принял намерение по предложению",
+        "Покупатель подтвердил намерение по предложению. Продолжите прямые переговоры. Это не создаёт оплату на платформе и не гарантирует сделку."
+      ],
+      "QUOTE_REJECTED": [
+        "Покупатель отклонил предложение",
+        "Покупатель отклонил предложение. Войдите, чтобы изучить запрос и продолжить работу."
+      ],
+      "QUOTE_CANCELLED": [
+        "Поставщик отменил предложение",
+        "Поставщик отменил ранее отправленное вам предложение. Войдите, чтобы проверить статус и связаться с ним. Оплата на платформе не происходит."
+      ],
+      "TEAM_INVITATION": [
+        "Приглашение в команду поставщика",
+        "Поставщик пригласил этот адрес в свою команду продаж AUTOLINK. Войдите или зарегистрируйтесь, подтвердите этот адрес и откройте страницу команды, чтобы проверить и принять приглашение. Оно действует семь дней. Доступ появляется только после принятия и назначения покупателей. Если приглашение неожиданное, проигнорируйте письмо."
+      ]
+    },
+    "button": "Войти для просмотра",
+    "footer": "AUTOLINK соединяет покупателей и поставщиков. Платформа не хранит деньги на покупку автомобилей и не гарантирует сделки.",
+    "verification": "Код подтверждения входа",
+    "reset": "Код сброса пароля",
+    "expires": "Код действителен 10 минут.",
+    "ignore": "Если вы не запрашивали код, проигнорируйте это письмо."
+  },
+  "kk": {
+    "events": {
+      "WELCOME": [
+        "AUTOLINK платформасына қош келдіңіз",
+        "Аккаунтыңыз дайын. Көлік мәліметтерін қарап, тексерілген жеткізуші ұсыныстарын салыстырып, жеке кабинет арқылы байланысыңыз."
+      ],
+      "NEW_INQUIRY": [
+        "Сатып алушыдан жаңа сұрау",
+        "Сатып алушы сұрау жіберді. Сұрауды қарап, жауапты қызметкерді тағайындау және баға ұсынысын дайындау үшін кіріңіз."
+      ],
+      "NEW_QUOTE": [
+        "Жеткізушіден жаңа баға ұсынысы",
+        "Жеткізуші баға ұсынысын жіберді. Бағаны, сауда шарттарын және жарамдылық мерзімін тексеріңіз. Қабылдау тек ниетті білдіреді, төлем басталмайды."
+      ],
+      "SUPPLIER_APPROVED": [
+        "Жеткізуші өтініші мақұлданды",
+        "Компанияңыздың өтініші мақұлданды. Көлік хабарландыруларын дайындап, тексеруге жібере аласыз."
+      ],
+      "SUPPLIER_REJECTED": [
+        "Жеткізуші өтінішін тексеру нәтижесі",
+        "Компанияңыздың өтініші мақұлданбады. Нәтижені қарап, өтінішті жаңарту үшін кіріңіз."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "Жеткізуші өтінішін өзгерту керек",
+        "Платформа компания өтінішіне өзгерістер енгізуді сұрады. Ескертулерді оқу үшін кіріңіз."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "Жеткізуші рұқсаты жаңартылды",
+        "Жеткізуші рұқсатыңыз тоқтатылды. Мәртебені қарап, қолдау қызметіне хабарласу үшін кіріңіз."
+      ],
+      "VEHICLE_APPROVED": [
+        "Көлік хабарландыруы мақұлданды",
+        "Хабарландыру тексеруден өтті. Жарияламас бұрын қор мен сауда мәліметтерін растаңыз."
+      ],
+      "VEHICLE_REJECTED": [
+        "Көлік хабарландыруын тексеру нәтижесі",
+        "Хабарландыру мақұлданбады. Ескертулерді оқып, түзету үшін кіріңіз."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "AUTOLINK мүшелігінің мерзімі аяқталды",
+        "Мүшелік мерзімі аяқталды. Аккаунт, сұраулар, ұсыныстар және таңдаулылар сақталады. Ұзарту қолмен жасалады; AUTOLINK автоматты түрде ақша алмайды."
+      ],
+      "TEAM_INVITED": [
+        "Жеткізуші тобына шақыру",
+        "Сіз AUTOLINK жеткізуші тобына шақырылдыңыз. Осы email арқылы кіріп, компанияны тексеріп, шақыруды қабылдаңыз немесе бас тартыңыз."
+      ],
+      "TEAM_JOINED": [
+        "Жеткізуші тобына жаңа мүше қосылды",
+        "Расталған аккаунт шақыруыңызды қабылдады. Топты қарау үшін кіріңіз."
+      ],
+      "BUYER_ASSIGNED": [
+        "Сатып алушымен жұмыс тағайындалды",
+        "Сізге сатып алушы тағайындалды. Рұқсат берілген сұраулар мен ұсыныстарды қарау үшін кіріңіз."
+      ],
+      "QUOTE_ACCEPTED": [
+        "Сатып алушы ұсыныс бойынша ниетін растады",
+        "Сатып алушы ұсыныс бойынша ниетін растады. Тікелей келіссөзді жалғастырыңыз. Бұл платформада төлем жасамайды және көлік мәмілесіне кепілдік бермейді."
+      ],
+      "QUOTE_REJECTED": [
+        "Сатып алушы ұсынысты қабылдамады",
+        "Сатып алушы ұсынысты қабылдамады. Сұрауды қарап, жұмысты жалғастыру үшін кіріңіз."
+      ],
+      "QUOTE_CANCELLED": [
+        "Жеткізуші ұсынысты жойды",
+        "Жеткізуші сізге бұрын жіберілген ұсынысты жойды. Мәртебені қарап, жеткізушімен байланысу үшін кіріңіз. Платформада төлем жасалмайды."
+      ],
+      "TEAM_INVITATION": [
+        "Жеткізуші тобына шақыру",
+        "Жеткізуші осы электрондық поштаны AUTOLINK сату тобына шақырды. Кіріңіз немесе тіркеліңіз, осы поштаны растаңыз, содан кейін шақыруды қарап, қабылдау үшін топ бетін ашыңыз. Шақыру жеті күннен кейін аяқталады. Қолжетімділік тек қабылдап, сатып алушылар тағайындалғаннан кейін беріледі. Шақыруды күтпесеңіз, бұл хатты елемеңіз."
+      ]
+    },
+    "button": "Қарау үшін кіру",
+    "footer": "AUTOLINK сатып алушылар мен жеткізушілерді байланыстырады. Көлік сатып алу қаражатын сақтамайды және мәмілеге кепілдік бермейді.",
+    "verification": "Кіруді растау коды",
+    "reset": "Құпиясөзді қалпына келтіру коды",
+    "expires": "Код 10 минуттан кейін жарамсыз болады.",
+    "ignore": "Бұл кодты сұрамаған болсаңыз, хатты елемеңіз."
+  },
+  "uz": {
+    "events": {
+      "WELCOME": [
+        "AUTOLINK platformasiga xush kelibsiz",
+        "Hisobingiz tayyor. Avtomobil ma’lumotlarini ko‘ring, tekshirilgan yetkazib beruvchi e’lonlarini solishtiring va shaxsiy kabinetingiz orqali bog‘laning."
+      ],
+      "NEW_INQUIRY": [
+        "Xaridordan yangi so‘rov",
+        "Xaridor so‘rov yubordi. Uni ko‘rib chiqish, mas’ul xodimni belgilash va narx taklifini tayyorlash uchun kiring."
+      ],
+      "NEW_QUOTE": [
+        "Yetkazib beruvchidan yangi narx taklifi",
+        "Yetkazib beruvchi taklif yubordi. Narx, savdo shartlari va amal qilish muddatini tekshiring. Qabul qilish faqat niyatni bildiradi, to‘lov boshlanmaydi."
+      ],
+      "SUPPLIER_APPROVED": [
+        "Yetkazib beruvchi arizasi tasdiqlandi",
+        "Kompaniyangiz arizasi tasdiqlandi. Avtomobil e’lonlarini tayyorlab, tekshiruvga yuborishingiz mumkin."
+      ],
+      "SUPPLIER_REJECTED": [
+        "Yetkazib beruvchi arizasini tekshirish natijasi",
+        "Kompaniyangiz arizasi tasdiqlanmadi. Natijani ko‘rish va arizani yangilash uchun kiring."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "Yetkazib beruvchi arizasini o‘zgartirish kerak",
+        "Platforma kompaniya arizasini o‘zgartirishni so‘radi. Izohlarni o‘qish uchun kiring."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "Yetkazib beruvchi ruxsati yangilandi",
+        "Yetkazib beruvchi ruxsatingiz to‘xtatildi. Holatni tekshirish va yordam xizmatiga murojaat qilish uchun kiring."
+      ],
+      "VEHICLE_APPROVED": [
+        "Avtomobil e’loni tasdiqlandi",
+        "E’lon tekshiruvdan o‘tdi. Nashr qilishdan oldin zaxira va savdo ma’lumotlarini tasdiqlang."
+      ],
+      "VEHICLE_REJECTED": [
+        "Avtomobil e’lonini tekshirish natijasi",
+        "E’lon tasdiqlanmadi. Izohlarni o‘qish va e’lonni tuzatish uchun kiring."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "AUTOLINK a’zoligingiz muddati tugadi",
+        "A’zolik muddati tugadi. Hisob, so‘rovlar, takliflar va saqlanganlar qoladi. Uzaytirish qo‘lda amalga oshiriladi; AUTOLINK avtomatik pul yechmaydi."
+      ],
+      "TEAM_INVITED": [
+        "Yetkazib beruvchi jamoasiga taklif",
+        "Siz AUTOLINK yetkazib beruvchi jamoasiga taklif qilindingiz. Shu email bilan kiring, kompaniyani tekshiring va taklifni qabul qiling yoki rad eting."
+      ],
+      "TEAM_JOINED": [
+        "Yetkazib beruvchi jamoasiga yangi a’zo qo‘shildi",
+        "Tasdiqlangan hisob taklifingizni qabul qildi. Jamoani ko‘rish uchun kiring."
+      ],
+      "BUYER_ASSIGNED": [
+        "Xaridor bilan ishlash tayinlandi",
+        "Sizga xaridor tayinlandi. Sizga ruxsat berilgan so‘rov va takliflarni ko‘rish uchun kiring."
+      ],
+      "QUOTE_ACCEPTED": [
+        "Xaridor taklif bo‘yicha niyatini tasdiqladi",
+        "Xaridor taklif bo‘yicha niyatini tasdiqladi. Bevosita muzokarani davom ettiring. Bu platformada to‘lov yaratmaydi va avtomobil bitimini kafolatlamaydi."
+      ],
+      "QUOTE_REJECTED": [
+        "Xaridor taklifni rad etdi",
+        "Xaridor taklifni rad etdi. So‘rovni tekshirish va kuzatuvni davom ettirish uchun kiring."
+      ],
+      "QUOTE_CANCELLED": [
+        "Yetkazib beruvchi taklifni bekor qildi",
+        "Yetkazib beruvchi hisobingizga yuborilgan taklifni bekor qildi. Holatni ko‘rish va u bilan bog‘lanish uchun kiring. Platformada to‘lov amalga oshmaydi."
+      ],
+      "TEAM_INVITATION": [
+        "Yetkazib beruvchi jamoasiga taklif",
+        "Yetkazib beruvchi ushbu emailni AUTOLINK savdo jamoasiga taklif qildi. Kiring yoki ro‘yxatdan o‘ting, emailni tasdiqlang, keyin taklifni ko‘rib chiqish va qabul qilish uchun Jamoa sahifasini oching. Taklif yetti kundan keyin tugaydi. Kirish faqat taklif qabul qilinib, xaridorlar biriktirilgandan keyin beriladi. Taklif kutilmagan bo‘lsa, xatni e’tiborsiz qoldiring."
+      ]
+    },
+    "button": "Ko‘rish uchun kirish",
+    "footer": "AUTOLINK xaridorlar va yetkazib beruvchilarni bog‘laydi. Avtomobil xaridi mablag‘larini saqlamaydi va bitimni kafolatlamaydi.",
+    "verification": "Kirishni tasdiqlash kodi",
+    "reset": "Parolni tiklash kodi",
+    "expires": "Kod 10 daqiqadan so‘ng amal qilmaydi.",
+    "ignore": "Agar bu kodni so‘ramagan bo‘lsangiz, xatni e’tiborsiz qoldiring."
+  },
+  "ko": {
+    "events": {
+      "WELCOME": [
+        "AUTOLINK에 오신 것을 환영합니다",
+        "계정이 준비되었습니다. 차량 정보를 살펴보고 심사를 거친 공급업체 매물을 비교하며 내 계정에서 공급업체에 문의하세요."
+      ],
+      "NEW_INQUIRY": [
+        "새 구매자 문의",
+        "구매자가 문의를 보냈습니다. 로그인하여 요청을 검토하고 담당자를 배정한 후 견적을 준비하세요."
+      ],
+      "NEW_QUOTE": [
+        "새 공급업체 견적",
+        "공급업체가 견적을 보냈습니다. 가격, 무역 조건, 유효기간을 확인하세요. 수락은 거래 의사만 기록하며 결제를 시작하지 않습니다."
+      ],
+      "SUPPLIER_APPROVED": [
+        "공급업체 신청 승인",
+        "기업 신청이 승인되었습니다. 차량 매물을 준비하여 심사를 요청할 수 있습니다."
+      ],
+      "SUPPLIER_REJECTED": [
+        "공급업체 신청 심사 결과",
+        "기업 신청이 승인되지 않았습니다. 로그인하여 결과를 확인하고 신청을 수정하세요."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "공급업체 신청 수정 필요",
+        "플랫폼에서 기업 신청의 수정을 요청했습니다. 로그인하여 심사 의견을 확인하세요."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "공급업체 권한 변경",
+        "공급업체 권한이 정지되었습니다. 로그인하여 상태를 확인하고 플랫폼 지원팀에 문의하세요."
+      ],
+      "VEHICLE_APPROVED": [
+        "차량 매물 승인",
+        "매물이 심사를 통과했습니다. 게시 전에 재고와 무역 정보를 확인하세요."
+      ],
+      "VEHICLE_REJECTED": [
+        "차량 매물 심사 결과",
+        "매물이 승인되지 않았습니다. 로그인하여 심사 의견을 확인하고 매물을 수정하세요."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "AUTOLINK 회원 기간 만료",
+        "회원 기간이 종료되었습니다. 계정, 문의, 견적, 저장 항목은 유지됩니다. 갱신은 수동으로 진행하며 AUTOLINK는 자동으로 결제하지 않습니다."
+      ],
+      "TEAM_INVITED": [
+        "공급업체 팀 초대",
+        "AUTOLINK 공급업체 팀에 초대되었습니다. 이 이메일로 로그인하여 기업을 확인하고 초대를 수락하거나 거절하세요."
+      ],
+      "TEAM_JOINED": [
+        "공급업체 팀원 합류",
+        "인증된 계정이 팀 초대를 수락했습니다. 로그인하여 팀을 확인하세요."
+      ],
+      "BUYER_ASSIGNED": [
+        "구매자 담당 배정",
+        "구매자 담당자로 배정되었습니다. 로그인하여 접근이 허용된 문의와 견적을 확인하세요."
+      ],
+      "QUOTE_ACCEPTED": [
+        "구매자가 견적 의사 수락",
+        "구매자가 견적에 대한 거래 의사를 수락했습니다. 직접 협의를 이어가세요. 플랫폼 결제가 생성되거나 차량 거래가 보장되지는 않습니다."
+      ],
+      "QUOTE_REJECTED": [
+        "구매자가 견적 거절",
+        "구매자가 견적을 거절했습니다. 로그인하여 요청을 확인하고 후속 연락을 진행하세요."
+      ],
+      "QUOTE_CANCELLED": [
+        "공급업체가 견적 취소",
+        "공급업체가 이전에 보낸 견적을 취소했습니다. 로그인하여 상태를 확인하고 공급업체에 문의하세요. 플랫폼 결제는 발생하지 않습니다."
+      ],
+      "TEAM_INVITATION": [
+        "공급업체 팀 초대",
+        "공급업체가 이 이메일을 AUTOLINK 영업팀에 초대했습니다. 로그인하거나 가입한 뒤 이 이메일을 인증하고 팀 페이지에서 초대를 확인하고 수락하세요. 초대는 7일 후 만료됩니다. 수락 후 구매자가 배정되어야 관련 업무에 접근할 수 있습니다. 예상하지 못한 초대라면 이 메일을 무시하세요."
+      ]
+    },
+    "button": "로그인하여 확인",
+    "footer": "AUTOLINK는 구매자와 공급업체를 연결합니다. 차량 구매 자금을 보관하거나 거래를 보장하지 않습니다.",
+    "verification": "로그인 인증 코드",
+    "reset": "비밀번호 재설정 코드",
+    "expires": "이 코드는 10분 후 만료됩니다.",
+    "ignore": "코드를 요청하지 않았다면 이 이메일을 무시하세요."
+  },
+  "fr": {
+    "events": {
+      "WELCOME": [
+        "Bienvenue sur AUTOLINK",
+        "Votre compte est prêt. Consultez les modèles, comparez les annonces de fournisseurs examinées et contactez les fournisseurs depuis votre espace."
+      ],
+      "NEW_INQUIRY": [
+        "Nouvelle demande d’un acheteur",
+        "Un acheteur a envoyé une demande. Connectez-vous pour l’examiner, attribuer le suivi et préparer un devis."
+      ],
+      "NEW_QUOTE": [
+        "Nouveau devis d’un fournisseur",
+        "Un fournisseur a envoyé un devis. Vérifiez le prix, les conditions commerciales et la validité. L’acceptation exprime une intention et ne déclenche aucun paiement."
+      ],
+      "SUPPLIER_APPROVED": [
+        "Candidature fournisseur approuvée",
+        "La candidature de votre entreprise a été approuvée. Vous pouvez préparer des annonces et les soumettre à l’examen."
+      ],
+      "SUPPLIER_REJECTED": [
+        "Résultat de l’examen fournisseur",
+        "La candidature de votre entreprise n’a pas été approuvée. Connectez-vous pour consulter le résultat et la modifier."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "Candidature fournisseur à modifier",
+        "La plateforme demande des modifications de votre candidature. Connectez-vous pour lire les observations."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "Mise à jour de l’accès fournisseur",
+        "Votre accès fournisseur a été suspendu. Connectez-vous pour consulter le statut et contacter l’assistance."
+      ],
+      "VEHICLE_APPROVED": [
+        "Annonce de véhicule approuvée",
+        "Votre annonce a passé l’examen. Confirmez le stock et les informations commerciales avant sa publication."
+      ],
+      "VEHICLE_REJECTED": [
+        "Résultat de l’examen de l’annonce",
+        "Votre annonce n’a pas été approuvée. Connectez-vous pour lire les observations et la modifier."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "Votre adhésion AUTOLINK a expiré",
+        "Votre adhésion est terminée. Votre compte, vos demandes, devis et favoris sont conservés. Le renouvellement est manuel ; AUTOLINK ne prélève rien automatiquement."
+      ],
+      "TEAM_INVITED": [
+        "Invitation à une équipe fournisseur",
+        "Vous êtes invité dans une équipe fournisseur AUTOLINK. Connectez-vous avec cet e-mail, vérifiez l’entreprise et acceptez ou refusez l’invitation."
+      ],
+      "TEAM_JOINED": [
+        "Nouveau membre de l’équipe fournisseur",
+        "Un compte vérifié a accepté votre invitation. Connectez-vous pour consulter votre équipe."
+      ],
+      "BUYER_ASSIGNED": [
+        "Suivi d’un acheteur attribué",
+        "Un acheteur vous a été attribué. Connectez-vous pour consulter les demandes et devis auxquels vous avez accès."
+      ],
+      "QUOTE_ACCEPTED": [
+        "Intention de devis acceptée par l’acheteur",
+        "Un acheteur a accepté l’intention liée au devis. Poursuivez les échanges directs. Cela ne crée aucun paiement sur la plateforme et ne garantit aucune transaction automobile."
+      ],
+      "QUOTE_REJECTED": [
+        "Devis refusé par l’acheteur",
+        "Un acheteur a refusé un devis. Connectez-vous pour revoir la demande et poursuivre le suivi."
+      ],
+      "QUOTE_CANCELLED": [
+        "Devis annulé par le fournisseur",
+        "Un fournisseur a annulé un devis envoyé à votre compte. Connectez-vous pour consulter son statut et contacter le fournisseur. Aucun paiement n’a lieu sur la plateforme."
+      ],
+      "TEAM_INVITATION": [
+        "Invitation à l’équipe d’un fournisseur",
+        "Un fournisseur a invité cette adresse dans son équipe commerciale AUTOLINK. Connectez-vous ou inscrivez-vous, vérifiez cette adresse, puis ouvrez la page Équipe pour examiner et accepter l’invitation. Elle expire après sept jours. L’accès commence uniquement après acceptation et attribution de clients. Si cette invitation est inattendue, ignorez cet e-mail."
+      ]
+    },
+    "button": "Se connecter pour consulter",
+    "footer": "AUTOLINK met en relation acheteurs et fournisseurs. La plateforme ne conserve pas les fonds d’achat de véhicules et ne garantit pas les transactions.",
+    "verification": "Code de vérification de connexion",
+    "reset": "Code de réinitialisation du mot de passe",
+    "expires": "Ce code expire dans 10 minutes.",
+    "ignore": "Si vous n’avez pas demandé ce code, ignorez cet e-mail."
+  },
+  "sw": {
+    "events": {
+      "WELCOME": [
+        "Karibu AUTOLINK",
+        "Akaunti yako iko tayari. Angalia taarifa za magari, linganisha matangazo ya wasambazaji yaliyokaguliwa na wasiliana nao kupitia kituo chako."
+      ],
+      "NEW_INQUIRY": [
+        "Ombi jipya kutoka kwa mnunuzi",
+        "Mnunuzi ametuma ombi. Ingia kulikagua, kugawa jukumu la ufuatiliaji na kuandaa nukuu ya bei."
+      ],
+      "NEW_QUOTE": [
+        "Nukuu mpya kutoka kwa msambazaji",
+        "Msambazaji ametuma nukuu. Kagua bei, masharti ya biashara na muda wa uhalali. Kukubali huonyesha nia pekee na hakuanzishi malipo."
+      ],
+      "SUPPLIER_APPROVED": [
+        "Maombi ya msambazaji yameidhinishwa",
+        "Maombi ya kampuni yako yameidhinishwa. Unaweza kuandaa matangazo ya magari na kuyawasilisha kwa ukaguzi."
+      ],
+      "SUPPLIER_REJECTED": [
+        "Matokeo ya ukaguzi wa msambazaji",
+        "Maombi ya kampuni yako hayajaidhinishwa. Ingia kuona matokeo na kusasisha maombi."
+      ],
+      "SUPPLIER_REQUIRES_CHANGES": [
+        "Maombi ya msambazaji yanahitaji marekebisho",
+        "Jukwaa limeomba mabadiliko kwenye maombi ya kampuni yako. Ingia kusoma maoni."
+      ],
+      "SUPPLIER_SUSPENDED": [
+        "Ruhusa za msambazaji zimesasishwa",
+        "Ruhusa zako za msambazaji zimesimamishwa. Ingia kuona hali na kuwasiliana na huduma ya usaidizi."
+      ],
+      "VEHICLE_APPROVED": [
+        "Tangazo la gari limeidhinishwa",
+        "Tangazo lako limepita ukaguzi. Thibitisha idadi ya magari na taarifa za biashara kabla ya kulichapisha."
+      ],
+      "VEHICLE_REJECTED": [
+        "Matokeo ya ukaguzi wa tangazo",
+        "Tangazo lako halijaidhinishwa. Ingia kusoma maoni na kulirekebisha."
+      ],
+      "MEMBERSHIP_EXPIRY": [
+        "Uanachama wako wa AUTOLINK umeisha",
+        "Muda wa uanachama umeisha. Akaunti, maombi, nukuu na vipendwa vinabaki. Huongeza muda mwenyewe; AUTOLINK haitoi pesa kiotomatiki."
+      ],
+      "TEAM_INVITED": [
+        "Mwaliko wa timu ya msambazaji",
+        "Umealikwa kwenye timu ya msambazaji wa AUTOLINK. Ingia kwa barua pepe hii, kagua kampuni na ukubali au ukatae mwaliko."
+      ],
+      "TEAM_JOINED": [
+        "Mwanachama amejiunga na timu ya msambazaji",
+        "Akaunti iliyothibitishwa imekubali mwaliko wako. Ingia kuona timu yako."
+      ],
+      "BUYER_ASSIGNED": [
+        "Mnunuzi amegawiwa kwako kwa ufuatiliaji",
+        "Mnunuzi amegawiwa kwako. Ingia kuona maombi na nukuu ambazo umeruhusiwa kufikia."
+      ],
+      "QUOTE_ACCEPTED": [
+        "Mnunuzi amekubali nia ya nukuu",
+        "Mnunuzi amekubali nia ya nukuu. Endelea na mazungumzo ya moja kwa moja. Hii haianzishi malipo kwenye jukwaa wala haitoi dhamana ya biashara ya gari."
+      ],
+      "QUOTE_REJECTED": [
+        "Mnunuzi amekataa nukuu",
+        "Mnunuzi amekataa nukuu. Ingia kukagua ombi na kuendelea kufuatilia."
+      ],
+      "QUOTE_CANCELLED": [
+        "Msambazaji amefuta nukuu",
+        "Msambazaji amefuta nukuu iliyotumwa kwa akaunti yako. Ingia kuona hali na kuwasiliana naye. Hakuna malipo yanayofanyika kwenye jukwaa."
+      ],
+      "TEAM_INVITATION": [
+        "Mwaliko wa timu ya msambazaji",
+        "Msambazaji ameialika barua pepe hii kwenye timu yake ya mauzo ya AUTOLINK. Ingia au jisajili, thibitisha barua pepe hii, kisha fungua ukurasa wa Timu ukague na ukubali mwaliko. Unaisha baada ya siku saba. Ufikiaji unaanza baada ya kuukubali na kupewa wanunuzi. Ikiwa hukutarajia mwaliko huu, puuza barua pepe."
+      ]
+    },
+    "button": "Ingia kuona",
+    "footer": "AUTOLINK huunganisha wanunuzi na wasambazaji. Haihifadhi fedha za ununuzi wa magari wala kutoa dhamana ya biashara.",
+    "verification": "Msimbo wa kuthibitisha kuingia",
+    "reset": "Msimbo wa kuweka upya nenosiri",
+    "expires": "Msimbo huu utaisha baada ya dakika 10.",
+    "ignore": "Ikiwa hukuomba msimbo huu, puuza barua pepe hii."
+  }
+}

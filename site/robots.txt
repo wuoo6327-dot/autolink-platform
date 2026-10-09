@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /auth/
+Disallow: /autolink/
+Disallow: /api/
+Disallow: /buyer/
+Disallow: /account/
+Disallow: /supplier/
+Disallow: /admin/
+Disallow: /merchant/
+Disallow: /trade/compare
+Sitemap: https://autolinkglobal.com/sitemap.xml

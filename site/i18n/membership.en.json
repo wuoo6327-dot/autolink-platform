@@ -1,0 +1,151 @@
+{
+  "membership": {
+    "notice": {
+      "title": "Before you join",
+      "subtitle": "Understand AUTOLINK membership, vehicle sourcing, supplier verification and account rules before you subscribe."
+    },
+    "faq": {
+      "membership": {
+        "title": "Membership service",
+        "items": [
+          {
+            "question": "What do I get with membership?",
+            "answer": "Depending on your plan, AUTOLINK membership gives you access to member vehicle information and quotations, supplier profiles and contact details, saved vehicles and other sourcing tools. The benefits of each plan are those shown on the purchase page."
+          },
+          {
+            "question": "When does my membership start?",
+            "answer": "Your membership period starts when payment succeeds and membership is activated. You can see the expiry date in My Membership in your account."
+          },
+          {
+            "question": "Will my membership renew automatically?",
+            "answer": "AUTOLINK currently uses manual renewal. When a paid period ends, you may buy membership again if you wish. We will not charge you for another period without your express confirmation."
+          },
+          {
+            "question": "What if membership prices change later?",
+            "answer": "A later price change does not affect the period you have already paid for. If you buy another period, the price shown at that time applies."
+          },
+          {
+            "question": "Can I get a refund?",
+            "answer": "AUTOLINK membership is a digital service, and some features may be available immediately after activation. Refund eligibility depends on actual use, payment status, purchase time and applicable rules. Contact support if you were charged twice, charged in error, or paid successfully but membership was not activated. The refund policy sets out the detailed rules."
+          },
+          {
+            "question": "Will my account be deleted when membership expires?",
+            "answer": "No. Your AUTOLINK account remains, but member-only features may become unavailable when membership expires. You may buy membership again later."
+          }
+        ]
+      },
+      "purchase": {
+        "title": "Vehicle sourcing",
+        "items": [
+          {
+            "question": "How do I buy after unlocking a supplier?",
+            "answer": "Once unlocked, you can view the contact details the supplier has made available and confirm the model, configuration, price, stock, lead time, trade terms, payment method and export details directly with them. A purchase is governed by the final quotation, purchase contract or sales contract agreed by buyer and seller."
+          },
+          {
+            "question": "Is the price shown the final transaction price?",
+            "answer": "Not necessarily. Vehicle prices on AUTOLINK are sourcing references. The final price may depend on model, configuration, colour, quantity, stock, exchange rates, manufacturer policy, export port, logistics costs and market conditions. Ask the supplier for a current formal quotation before purchasing."
+          },
+          {
+            "question": "What happens when a quotation expires?",
+            "answer": "The supplier may need to reconfirm the price. An expired quotation may be hidden or marked expired. The expiry of a particular vehicle quotation does not end your membership."
+          },
+          {
+            "question": "Is stock information updated in real time?",
+            "answer": "Not necessarily. Stock can change because of other purchases, dealer transfers, manufacturer policies, export arrangements or model-year changes. Confirm actual availability with the supplier again before payment."
+          },
+          {
+            "question": "Can every vehicle be exported to my country?",
+            "answer": "No. Import rules, emissions standards, vehicle certification, steering-side requirements, age limits, taxes and model approvals vary by destination. Check the rules of your destination country before purchasing."
+          },
+          {
+            "question": "Are vehicle specifications completely accurate?",
+            "answer": "AUTOLINK works to maintain vehicle specifications, but the same model can differ by market, year and version. The final specification should be confirmed against the supplier's specification sheet, VIN information and purchase contract."
+          }
+        ]
+      },
+      "supplier": {
+        "title": "Suppliers",
+        "items": [
+          {
+            "question": "What is a Verified Supplier?",
+            "answer": "Under platform rules, AUTOLINK may check some suppliers' company names, registration details, business licences, contact details, basic business records and resource information. Suppliers completing the relevant checks may display a Verified Supplier label."
+          },
+          {
+            "question": "Does verification mean AUTOLINK guarantees the transaction?",
+            "answer": "No. Verification means only that the platform checked certain company or resource information available at the time. It is not a guarantee of creditworthiness, stock, prices, performance, vehicle quality, payment safety, logistics timing or the final transaction outcome."
+          },
+          {
+            "question": "What if I cannot reach a supplier?",
+            "answer": "If a supplier does not respond for an extended period, contact details no longer work, or vehicle information substantially differs from the listing after you unlock them, you can report this to AUTOLINK. We may review the supplier's information or take account measures as appropriate."
+          },
+          {
+            "question": "What if I find a fraudulent supplier?",
+            "answer": "Report the concern through the platform or contact support. Include the supplier name, vehicle link, messages, quotation and other evidence where possible. AUTOLINK may review, restrict or remove a suspected account under platform rules."
+          }
+        ]
+      },
+      "transaction": {
+        "title": "Transactions and payments",
+        "items": [
+          {
+            "question": "Does AUTOLINK receive payment for vehicles?",
+            "answer": "The current AUTOLINK membership service does not collect vehicle purchase funds or hold them in escrow. Buyers and suppliers normally settle vehicle payments directly under their purchase contract. Unless a specific service page expressly says otherwise, do not send vehicle purchase funds to AUTOLINK's membership payment account."
+          },
+          {
+            "question": "Is the membership fee a vehicle deposit?",
+            "answer": "No. It pays only for platform membership. It is not a vehicle deposit, vehicle payment, supplier security deposit, logistics or customs fee, or vehicle prepayment. Paying for membership does not automatically create a vehicle order."
+          },
+          {
+            "question": "Does AUTOLINK charge a vehicle transaction commission?",
+            "answer": "AUTOLINK currently charges primarily for membership. Unless a service clearly states otherwise, viewing vehicles or contacting suppliers does not automatically create a vehicle transaction commission. Fees for any future sourcing agency, export, inspection, logistics or other added services will be explained before use."
+          },
+          {
+            "question": "Can I buy a car directly on AUTOLINK?",
+            "answer": "AUTOLINK currently connects vehicle trade information and supply-chain resources. Contact Supplier, Get Quote and Send Enquiry help buyers connect with suppliers; using them does not complete a purchase. A formal transaction depends on the contract signed by buyer and seller."
+          },
+          {
+            "question": "What if a transaction is disputed?",
+            "answer": "Vehicle purchase contracts are generally between buyer and supplier, so disputes should first be handled under their contract. AUTOLINK may help review accounts, contact suppliers or address platform violations where appropriate, but does not assume either party's contractual obligations unless expressly agreed."
+          }
+        ]
+      },
+      "account": {
+        "title": "Accounts and data",
+        "items": [
+          {
+            "question": "Can several people share one membership account?",
+            "answer": "An AUTOLINK membership is generally for the registered account holder or authorised staff within the registered company. Selling, renting or widely sharing an account, or using automation to scrape platform data in bulk, is prohibited."
+          },
+          {
+            "question": "Can I export supplier contact details in bulk?",
+            "answer": "You may view and save supplier information needed for sourcing within the limits allowed by the platform. Without AUTOLINK's permission, you may not scrape, bulk export, resell or publicly distribute its supplier database, or use platform information to build a competing database."
+          },
+          {
+            "question": "Will my details be shared with suppliers?",
+            "answer": "When you send an enquiry, contact a supplier or request a quotation, AUTOLINK may share information needed to answer your sourcing request with that supplier, such as your name, company, country or region, email, phone, WhatsApp and purchase requirements. The privacy policy explains the processing in more detail."
+          },
+          {
+            "question": "Is AUTOLINK a car dealer?",
+            "answer": "AUTOLINK is a vehicle trade information and supply-chain connection platform. Unless a particular page expressly identifies AUTOLINK as the seller, it is not the seller of the vehicles shown. The seller is the company named as seller in the purchase contract."
+          }
+        ]
+      }
+    },
+    "policies": {
+      "terms": "Terms of Service",
+      "membershipTerms": "Membership Terms",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy"
+    },
+    "application": {
+      "cta": "Apply now",
+      "enterpriseCta": "Ask about Enterprise",
+      "title": "Apply for membership",
+      "selected": "Selected plan",
+      "message": "Online payment is not available yet. Email AUTOLINK with your selected plan and account email. We will contact you about the next steps. No charge or membership activation happens on this page.",
+      "send": "Send application email",
+      "emailLabel": "Contact email",
+      "note": "Your email app will open. The request is sent only when you send the email."
+    }
+  }
+}

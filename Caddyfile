@@ -1,0 +1,116 @@
+{$SITE_ADDRESS} {
+	root * /srv
+	encode zstd gzip
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+	# Only immutable language files whose names contain their content hash.
+	@fingerprintedLanguage {
+		method GET HEAD
+		path_regexp ^/i18n/chunks/(business|supplier)-(en|zh|ar|ru|kk|uz|ko|fr|sw)-[a-f0-9]{12}\.js$
+		file {path}
+	}
+	header @fingerprintedLanguage {
+		Cache-Control "public, max-age=31536000, immutable"
+		defer
+		match status 2xx 304
+	}
+	@auth path /auth/* /autolink/*
+	handle @auth {
+		reverse_proxy auth:8080 {
+			header_up X-Forwarded-For {remote_host}
+		}
+	}
+	@api path /api /api/*
+	@sitemap path /sitemap.xml /sitemaps/*
+	handle @sitemap {
+		rewrite * /autolink/public{uri}
+		reverse_proxy auth:8080
+	}
+	handle @api {
+		respond "Demo only: backend is not connected." 503
+	}
+	@legal path /privacy /terms /cookies /supplier-terms /account-deletion /disclaimer /membership-terms
+	handle @legal {
+		rewrite * /legal{path}.html
+		file_server
+	}
+	@buyer path /buyer /buyer/*
+	handle @buyer {
+		route {
+			try_files {path} /buyer/index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+	@support path /support /support/*
+	handle @support {
+		route {
+			try_files {path} /support/index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+	@contact path /contact /contact-us
+	redir @contact /support 302
+	@oldBrands path /brands /brands/*
+	redir @oldBrands /trade{uri} 302
+	@oldVehicles path /vehicles /vehicles/*
+	redir @oldVehicles /trade{uri} 302
+	@oldModels path /models /models/*
+	redir @oldModels /trade{uri} 302
+	@oldSuppliers path /suppliers /suppliers/*
+	redir @oldSuppliers /trade{uri} 302
+	@oldRequests path /requests
+	redir @oldRequests /buyer/requests 302
+	@oldSupplierApplication path /supplier-apply
+	redir @oldSupplierApplication /supplier/application 302
+	@supplier path /supplier /supplier/*
+	handle @supplier {
+		route {
+			try_files {path} /supplier/index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+	@admin path /admin /admin/*
+	handle @admin {
+		route {
+			try_files {path} /admin/index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+	@merchantCenter path /merchant /merchant/dashboard
+	redir @merchantCenter /supplier 302
+	@account path /account /account/*
+	handle @account {
+		uri replace /account /buyer
+		route {
+			try_files {path} /buyer/index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+	@trade path /trade /trade/*
+	handle @trade {
+		route {
+			try_files {path} /trade/index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+	@static path /assets/* /images/* /fonts/* /videos/*
+	handle @static {
+		header Cache-Control "public, max-age=0, must-revalidate"
+		file_server
+	}
+	handle {
+		route {
+			try_files {path} /index.html
+			header Cache-Control "no-cache"
+			file_server
+		}
+	}
+}

@@ -1,0 +1,251 @@
+{
+  "Deepal": {
+    "logo": "/images/brands/deepal.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/deepal-logo.svg"
+  },
+  "Zeekr": {
+    "logo": "/images/brands/zeekr.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/zeekr-logo.png"
+  },
+  "Geely": {
+    "logo": "/images/brands/geely.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/geely-logo.svg"
+  },
+  "Lynk & Co": {
+    "logo": "/images/brands/lynk-co.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/lynk-and-co.png"
+  },
+  "Changan": {
+    "logo": "/images/brands/changan.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/changan-logo.png"
+  },
+  "BYD": {
+    "logo": "/images/brands/byd.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/byd-logo.svg"
+  },
+  "Avatr": {
+    "logo": "/images/brands/avatr.png",
+    "source": "https://www.globalchangan.com/static/clientlibs/changancms/images/header/avatr-logo.png"
+  },
+  "Denza": {
+    "logo": "/images/brands/denza.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/denza-logo.svg"
+  },
+  "Jetour": {
+    "logo": "/images/brands/jetour.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/jetour-logo.svg"
+  },
+  "Chery": {
+    "logo": "/images/brands/chery.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/chery-logo.png"
+  },
+  "Aion": {
+    "logo": "/images/brands/aion.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/aion-logo.svg"
+  },
+  "Haval": {
+    "logo": "/images/brands/haval.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/haval-logo.png"
+  },
+  "Wey": {
+    "logo": "/images/brands/wey.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/wey.png"
+  },
+  "Hongqi": {
+    "logo": "/images/brands/hongqi.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/hongqi-logo.png"
+  },
+  "MG": {
+    "logo": "/images/brands/mg.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/mg-logo.png"
+  },
+  "Li Auto": {
+    "logo": "/images/brands/li-auto.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/li-auto.png"
+  },
+  "NIO": {
+    "logo": "/images/brands/nio.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/nio-logo.png"
+  },
+  "XPENG": {
+    "logo": "/images/brands/xpeng.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/xpeng-logo.png"
+  },
+  "Leapmotor": {
+    "logo": "/images/brands/leapmotor.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/leapmotor-logo.png"
+  },
+  "Wuling": {
+    "logo": "/images/brands/wuling.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/wuling.png"
+  },
+  "AITO": {
+    "logo": "/images/brands/aito.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/aito-logo.svg"
+  },
+  "Volkswagen": {
+    "logo": "/images/brands/volkswagen.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/volkswagen-logo.svg"
+  },
+  "Toyota": {
+    "logo": "/images/brands/toyota.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/toyota-logo.svg"
+  },
+  "Nissan": {
+    "logo": "/images/brands/nissan.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/nissan-logo.svg"
+  },
+  "Xiaomi": {
+    "logo": "/images/brands/xiaomi.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/xiaomi-logo.svg"
+  },
+  "Honda": {
+    "logo": "/images/brands/honda.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/honda-logo.png"
+  },
+  "Hyundai": {
+    "logo": "/images/brands/hyundai.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/hyundai-logo.svg"
+  },
+  "Kia": {
+    "logo": "/images/brands/kia.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/kia-logo.svg"
+  },
+  "Ford": {
+    "logo": "/images/brands/ford.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/ford-logo.png"
+  },
+  "Buick": {
+    "logo": "/images/brands/buick.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/buick-logo.png"
+  },
+  "Mercedes-Benz": {
+    "logo": "/images/brands/mercedes-benz.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/mercedes-benz-logo.svg"
+  },
+  "Volvo": {
+    "logo": "/images/brands/volvo.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/volvo-logo.svg"
+  },
+  "Audi": {
+    "logo": "/images/brands/audi.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/audi-logo.svg"
+  },
+  "BMW": {
+    "logo": "/images/brands/bmw.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/bmw-logo.svg"
+  },
+  "Fulwin": {
+    "logo": "/images/brands/fulwin.svg",
+    "source": "https://fulwin.chery.cn/assets_Fulwin/images/common/logo-b.svg"
+  },
+  "Fangchengbao": {
+    "logo": "/images/brands/fangchengbao.svg",
+    "source": "https://www.fangchengbao.com/material/fangchengbao-cn1/toubudaohang/mini-logo.svg"
+  },
+  "Trumpchi": {
+    "logo": "/images/brands/trumpchi.png",
+    "source": "https://www.gacmotor.com/static/assets/imgs/logo.png"
+  },
+  "Galaxy": {
+    "logo": "/images/brands/galaxy.png",
+    "source": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/L7/logo/hui1.png"
+  },
+  "Tank": {
+    "logo": "/images/brands/tank.png",
+    "source": "https://res.gwm.com.cn/tank/tanksite/assets/common/images/logo.png"
+  },
+  "Voyah": {
+    "logo": "/images/brands/voyah.png",
+    "source": "https://www.voyah.com.cn/sitelogo/pc/brand.png"
+  },
+  "Exeed": {
+    "logo": "/images/brands/exeed.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/exeed.png"
+  },
+  "Omoda": {
+    "logo": "/images/brands/omoda.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/omoda-logo.png"
+  },
+  "Jaecoo": {
+    "logo": "/images/brands/jaecoo.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/jaecoo-logo.svg"
+  },
+  "Yangwang": {
+    "logo": "/images/brands/yangwang.svg",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/yangwang-logo.svg"
+  },
+  "Ora": {
+    "logo": "/images/brands/ora.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/ora-logo.png"
+  },
+  "Roewe": {
+    "logo": "/images/brands/roewe.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/roewe.png"
+  },
+  "Baojun": {
+    "logo": "/images/brands/baojun.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/baojun.png"
+  },
+  "JAC": {
+    "logo": "/images/brands/jac.png",
+    "source": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/main/jac-logo.png"
+  },
+  "Arcfox": {
+    "logo": "/images/brands/arcfox.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/arcfox.png"
+  },
+  "Jetta": {
+    "logo": "/images/brands/jetta.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/jetta.png"
+  },
+  "IM": {
+    "logo": "/images/brands/im.svg",
+    "source": "https://cdn.immotors.com/app/assets/image/common/logo.svg"
+  },
+  "Hyptec": {
+    "logo": "/images/brands/hyptec.png",
+    "source": "https://www.hyptec.com/web/pc/images/change-logo-img/hd-logo.png?version=v1783340981218"
+  },
+  "Aeolus": {
+    "logo": "/images/brands/aeolus.png",
+    "source": "https://www.dfpv.com.cn/static/src/views/index/img/logo_left_red.png"
+  },
+  "Firefly": {
+    "logo": "/images/brands/firefly.svg",
+    "source": "https://www.firefly.com.cn/"
+  },
+  "Onvo": {
+    "logo": "/images/brands/onvo.svg",
+    "source": "https://www.onvo.cn/"
+  },
+  "Maextro": {
+    "logo": "/images/brands/maextro.webp",
+    "source": "https://g.autoimg.cn/@img/car2/cardfs/series/g33/M01/4B/62/300x300_autohomecar__ChxpVWidpSOAUr1OAAEVlv4AEDU923.png?format=webp"
+  },
+  "Peugeot": {
+    "logo": "/images/brands/peugeot.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png"
+  },
+  "Citroen": {
+    "logo": "/images/brands/citroen.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png"
+  },
+  "Beijing": {
+    "logo": "/images/brands/beijing.png",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/baic-motor.png"
+  },
+  "Forthing": {
+    "logo": "/images/brands/forthing-badge.png",
+    "source": "https://motomarks.io/logos/forthing",
+    "image": "https://motomarks.io/api/public-img/forthing?type=badge&size=xl"
+  },
+  "MHero": {
+    "logo": "/images/brands/mhero.png",
+    "source": "https://h5.m-hero.com/website/v2/icons/header/logo1.png"
+  },
+  "Beijing Off-road": {
+    "logo": "/images/brands/beijing-off-road.webp",
+    "source": "https://g.autoimg.cn/@img/car3/cardfs/series/g31/M02/95/8C/300x300_autohomecar__ChxoHWgLQaSAG-9nAAH9T-YMof4352.png?format=webp"
+  }
+}

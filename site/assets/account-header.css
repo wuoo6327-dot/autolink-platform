@@ -1,0 +1,12 @@
+.nav-account .autolink-signed-in-name,
+.mobile-account .autolink-signed-in-name {
+  display: inline-flex;
+  align-items: center;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.nav-account [hidden],
+.mobile-account [hidden] { display: none !important; }

@@ -1,0 +1,151 @@
+{
+  "membership": {
+    "notice": {
+      "title": "Mambo ya kujua kabla ya kujiunga",
+      "subtitle": "Fahamu huduma za uanachama wa AUTOLINK, ununuzi wa magari, uhakiki wa wauzaji na sheria za akaunti."
+    },
+    "faq": {
+      "membership": {
+        "title": "Huduma ya uanachama",
+        "items": [
+          {
+            "question": "Uanachama unanipa manufaa gani?",
+            "answer": "Kulingana na mpango wako, unaweza kuona taarifa na bei za magari za wanachama, wasifu na mawasiliano ya wauzaji, kuhifadhi magari na kutumia zana nyingine za ununuzi. Manufaa mahususi ya kila mpango ni yale yanayoonyeshwa kwenye ukurasa wa ununuzi."
+          },
+          {
+            "question": "Uanachama wangu unaanza lini?",
+            "answer": "Unaanza malipo yanapofanikiwa na uanachama kuamilishwa. Tarehe ya mwisho inaonekana kwenye ‘Uanachama Wangu’ ndani ya akaunti yako."
+          },
+          {
+            "question": "Je, uanachama unasasishwa kiotomatiki?",
+            "answer": "Kwa sasa AUTOLINK hutumia usasishaji wa hiari unaofanywa na mwanachama. Kipindi ulicholipia kikiisha, unaweza kununua tena ukipenda. Hatutakata malipo ya kipindi kingine bila uthibitisho wako wa wazi."
+          },
+          {
+            "question": "Bei zikibadilika baadaye itakuwaje?",
+            "answer": "Mabadiliko ya baadaye hayaathiri kipindi ambacho tayari umelipia. Ukinunua tena, bei iliyoonyeshwa wakati huo ndiyo itakayotumika."
+          },
+          {
+            "question": "Je, ninaweza kurejeshewa fedha?",
+            "answer": "Uanachama wa AUTOLINK ni huduma ya kidijitali; baadhi ya vipengele vinaweza kutumika mara tu baada ya kuamilishwa. Haki ya kurejeshewa fedha hutegemea matumizi halisi, hali ya malipo, wakati wa ununuzi na kanuni husika. Wasiliana na usaidizi ukikatwa mara mbili, ukikatwa kimakosa au ukilipa bila uanachama kuamilishwa. Sera ya marejesho ina maelezo kamili."
+          },
+          {
+            "question": "Akaunti yangu itafutwa uanachama ukiisha?",
+            "answer": "Hapana. Akaunti yako ya AUTOLINK itabaki, lakini huduma za wanachama zinaweza kusitishwa hadi ujiunge tena. Unaweza kununua uanachama baadaye."
+          }
+        ]
+      },
+      "purchase": {
+        "title": "Ununuzi wa magari",
+        "items": [
+          {
+            "question": "Nitanunuaje baada ya kufungua mawasiliano ya muuzaji?",
+            "answer": "Unaweza kuona mawasiliano aliyotoa muuzaji na kuthibitisha naye moja kwa moja modeli, vipimo, bei, hisa, muda wa kuwasilisha, masharti ya biashara, namna ya kulipa na taarifa za usafirishaji nje. Ununuzi unategemea nukuu ya mwisho au mkataba wa ununuzi au mauzo uliokubaliwa na mnunuzi na muuzaji."
+          },
+          {
+            "question": "Bei inayoonyeshwa ndiyo bei ya mwisho?",
+            "answer": "Si lazima. Bei za AUTOLINK ni mwongozo wa ununuzi. Bei ya mwisho inaweza kutegemea modeli, vipimo, rangi, idadi, hisa, viwango vya fedha, sera za mtengenezaji, bandari ya kusafirisha, gharama za usafirishaji na hali ya soko. Omba nukuu rasmi ya sasa kabla ya kununua."
+          },
+          {
+            "question": "Nukuu ya bei ikiisha muda wake itakuwaje?",
+            "answer": "Muuzaji anaweza kuhitaji kuthibitisha tena bei. Nukuu iliyoisha muda inaweza kufichwa au kuwekewa alama. Kuisha kwa nukuu ya gari moja hakumalizi uanachama wako."
+          },
+          {
+            "question": "Taarifa za hisa ni za wakati halisi?",
+            "answer": "Si lazima. Hisa hubadilika kutokana na manunuzi mengine, uhamisho kati ya maduka, sera za mtengenezaji, mipango ya kuuza nje au mabadiliko ya mwaka wa modeli. Thibitisha upatikanaji halisi kabla ya kulipa."
+          },
+          {
+            "question": "Kila gari linaweza kupelekwa nchini mwangu?",
+            "answer": "Hapana. Sheria za uagizaji, viwango vya hewa chafu, uthibitishaji wa gari, upande wa usukani, kikomo cha umri, kodi na idhini ya modeli hutofautiana kwa nchi. Angalia masharti ya nchi lengwa kabla ya kununua."
+          },
+          {
+            "question": "Je, vipimo vya magari ni sahihi kabisa?",
+            "answer": "AUTOLINK hujitahidi kuweka taarifa sahihi, lakini modeli ileile inaweza kutofautiana kwa soko, mwaka na toleo. Thibitisha vipimo vya mwisho kwa karatasi ya muuzaji, taarifa za VIN na mkataba wa ununuzi."
+          }
+        ]
+      },
+      "supplier": {
+        "title": "Wauzaji",
+        "items": [
+          {
+            "question": "‘Muuzaji Aliyethibitishwa’ maana yake nini?",
+            "answer": "Kwa mujibu wa sheria zake, AUTOLINK inaweza kukagua majina ya kampuni, taarifa za usajili, leseni za biashara, mawasiliano, taarifa za msingi za shughuli na rasilimali za baadhi ya wauzaji. Waliokamilisha ukaguzi husika wanaweza kuonyeshwa alama ya ‘Muuzaji Aliyethibitishwa’."
+          },
+          {
+            "question": "Uhakiki unamaanisha AUTOLINK inahakikisha muamala?",
+            "answer": "Hapana. Unaonyesha tu kuwa baadhi ya taarifa zilizopatikana wakati huo zilikaguliwa. Si dhamana ya uaminifu wa muuzaji, hisa, bei, utekelezaji, ubora wa gari, usalama wa malipo, muda wa usafirishaji au matokeo ya muamala."
+          },
+          {
+            "question": "Nifanye nini nisipompata muuzaji?",
+            "answer": "Baada ya kufungua mawasiliano, ripoti kwa AUTOLINK ikiwa hajibu kwa muda mrefu, mawasiliano hayafanyi kazi au taarifa za gari zinatofautiana sana na tangazo. Jukwaa linaweza kukagua taarifa au kuchukua hatua kuhusu akaunti kulingana na hali."
+          },
+          {
+            "question": "Nifanye nini nikigundua muuzaji wa ulaghai?",
+            "answer": "Toa ripoti kupitia jukwaa au wasiliana na usaidizi. Ikiwezekana, toa jina la muuzaji, kiungo cha gari, mazungumzo, nukuu na ushahidi mwingine. AUTOLINK inaweza kukagua, kuzuia au kufuta akaunti inayoshukiwa kwa mujibu wa sheria za jukwaa."
+          }
+        ]
+      },
+      "transaction": {
+        "title": "Miamala na malipo",
+        "items": [
+          {
+            "question": "AUTOLINK inapokea malipo ya magari?",
+            "answer": "Huduma ya sasa ya uanachama haikusanyi fedha za kununua magari wala kuzishikilia kama escrow. Kwa kawaida mnunuzi na muuzaji hulipana moja kwa moja kwa mkataba wao. Isiposemwa wazi kwenye ukurasa wa huduma fulani, usitume fedha za gari kwenye akaunti ya ada ya uanachama ya AUTOLINK."
+          },
+          {
+            "question": "Ada ya uanachama ni amana ya gari?",
+            "answer": "Hapana. Inalipia huduma ya uanachama pekee; si amana au malipo ya gari, dhamana ya muuzaji, gharama ya usafirishaji au forodha, wala malipo ya awali. Kulipa uanachama hakuundi oda ya gari moja kwa moja."
+          },
+          {
+            "question": "AUTOLINK inatoza kamisheni ya mauzo ya magari?",
+            "answer": "Kwa sasa mapato yake makuu ni ada ya uanachama. Isipoelezwa vinginevyo, kuona magari au kuwasiliana na muuzaji hakutoi kamisheni kiotomatiki. Ada za huduma zozote za baadaye za uwakala wa ununuzi, usafirishaji nje, ukaguzi, usafirishaji au nyinginezo zitaelezwa kabla ya matumizi."
+          },
+          {
+            "question": "Naweza kununua gari moja kwa moja kwenye AUTOLINK?",
+            "answer": "Kwa sasa AUTOLINK huunganisha taarifa za biashara ya magari na washiriki wa mnyororo wa ugavi. Kuwasiliana na muuzaji, kuomba nukuu au kutuma swali husaidia kuanzisha mawasiliano; hakumalizi ununuzi. Muamala rasmi hutegemea mkataba wa mnunuzi na muuzaji."
+          },
+          {
+            "question": "Mgogoro wa muamala ukitokea itakuwaje?",
+            "answer": "Mkataba wa gari kwa kawaida huwa kati ya mnunuzi na muuzaji, hivyo mgogoro ushughulikiwe kwanza kwa masharti yao. AUTOLINK inaweza kusaidia kukagua akaunti, kuwasiliana na muuzaji au kushughulikia ukiukaji wa jukwaa, lakini haichukui wajibu wa kimkataba wa upande wowote bila makubaliano ya wazi."
+          }
+        ]
+      },
+      "account": {
+        "title": "Akaunti na data",
+        "items": [
+          {
+            "question": "Watu kadhaa wanaweza kushiriki akaunti moja ya uanachama?",
+            "answer": "Kwa kawaida uanachama ni wa mwenye akaunti aliyesajiliwa au wafanyakazi walioidhinishwa wa kampuni iliyosajiliwa. Kuuza, kukodisha, kushiriki kwa wingi akaunti na kukusanya data kwa wingi kwa programu za kiotomatiki ni marufuku."
+          },
+          {
+            "question": "Naweza kuhamisha mawasiliano ya wauzaji kwa wingi?",
+            "answer": "Unaweza kuona na kuhifadhi taarifa unazohitaji kwa ununuzi ndani ya mipaka ya jukwaa. Bila ruhusa ya AUTOLINK, huwezi kukusanya au kuhamisha hifadhidata ya wauzaji kwa wingi, kuiuza, kuisambaza hadharani au kuitumia kuunda hifadhidata shindani."
+          },
+          {
+            "question": "Taarifa zangu zitapelekwa kwa wauzaji?",
+            "answer": "Unapotuma swali, kuwasiliana na muuzaji au kuomba nukuu, AUTOLINK inaweza kumpa taarifa zinazohitajika kujibu, kama jina, kampuni, nchi au eneo, email, simu, WhatsApp na mahitaji ya ununuzi. Sera ya faragha ina maelezo zaidi."
+          },
+          {
+            "question": "AUTOLINK ni dalali au muuzaji wa magari?",
+            "answer": "AUTOLINK ni jukwaa la taarifa za biashara ya magari na uunganishaji wa mnyororo wa ugavi. Isiposemwa wazi kuwa AUTOLINK ndiye muuzaji kwenye ukurasa husika, si muuzaji wa magari yanayoonyeshwa. Muuzaji ni kampuni iliyotajwa kwenye mkataba wa ununuzi."
+          }
+        ]
+      }
+    },
+    "policies": {
+      "terms": "Masharti ya Huduma",
+      "membershipTerms": "Masharti ya Uanachama",
+      "privacy": "Sera ya Faragha",
+      "refund": "Sera ya Marejesho"
+    },
+    "application": {
+      "cta": "Tuma ombi sasa",
+      "enterpriseCta": "Ulizia mpango wa kampuni",
+      "title": "Ombi la uanachama",
+      "selected": "Mpango uliochaguliwa",
+      "message": "Malipo ya mtandaoni bado hayapatikani. Tuma barua pepe kwa AUTOLINK ukitaja mpango uliochagua na email ya akaunti yako. Tutawasiliana nawe kuhusu hatua zinazofuata. Hakuna malipo wala uanzishaji wa uanachama kwenye ukurasa huu.",
+      "send": "Tuma ombi kwa email",
+      "emailLabel": "Email ya mawasiliano",
+      "note": "Programu yako ya email itafunguka. Ombi litatumwa tu baada ya kutuma ujumbe."
+    }
+  }
+}

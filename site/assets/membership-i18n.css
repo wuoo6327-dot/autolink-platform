@@ -1,0 +1,31 @@
+.membership-page .membership-faq{max-width:980px;margin-inline:auto;padding:72px 0 88px}
+.membership-page .membership-notice-heading{margin-bottom:42px}
+.membership-page .membership-notice-heading h2{margin:0 0 12px;font-size:clamp(30px,4vw,48px);line-height:1.18;letter-spacing:-.035em}
+.membership-page .membership-notice-heading p{max-width:760px;margin:0;color:#68716b;font-size:15px;line-height:1.75}
+.membership-page .membership-faq-group{margin-top:38px;border-top:1px solid #dfe3de}
+.membership-page .membership-faq-group h3{font-size:18px;font-weight:650;margin:22px 0 10px;letter-spacing:0}
+.membership-page .membership-faq details{border-bottom:1px solid #e6e9e5;padding:0}
+.membership-page .membership-faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:54px;padding:14px 0;font-size:16px;line-height:1.55;font-weight:500;cursor:pointer}
+.membership-page .membership-faq summary::-webkit-details-marker{display:none}
+.membership-page .membership-faq summary:focus-visible{outline:2px solid #315544;outline-offset:3px}
+.membership-page .membership-faq .faq-caret{font-size:12px;color:#4c6254;flex:none;transition:transform .15s ease}
+.membership-page .membership-faq details[open] .faq-caret{transform:rotate(90deg)}
+.membership-page .membership-faq details p{max-width:820px;margin:0 0 20px;color:#5d6660;font-size:14px;line-height:1.8}
+.membership-page .membership-policy-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:52px;padding-top:24px;border-top:1px solid #dfe3de}
+.membership-page .membership-policy-links a{font-size:13px;color:#315544;text-underline-offset:4px}
+html[dir=rtl] .membership-page{text-align:right}
+html[dir=rtl] .membership-page .membership-faq summary{flex-direction:row}
+html[dir=rtl] .membership-page .membership-faq .faq-caret{transform:scaleX(-1)}
+html[dir=rtl] .membership-page .membership-faq details[open] .faq-caret{transform:scaleX(-1) rotate(90deg)}
+html[dir=rtl] .membership-page .plan-grid,html[dir=rtl] .membership-page .membership-benefits{direction:rtl}
+html[dir=rtl] .membership-page .plan-price{direction:ltr;text-align:right}
+.membership-apply{display:grid;gap:18px;line-height:1.65}
+.membership-apply p{margin:0}
+.membership-apply-plan{padding:13px 16px;border:1px solid #d6e0d8;background:#f4f7f3;border-radius:8px;font-weight:600}
+.membership-apply-contact{font-size:14px;color:#4c5e51}
+.membership-apply-contact span{unicode-bidi:isolate;user-select:all}
+.membership-apply-send{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:7px;background:#234632;color:white!important;text-decoration:none;font-weight:600;text-align:center}
+.membership-apply-send:hover{background:#1a3828}
+.membership-apply-send:focus-visible{outline:2px solid #234632;outline-offset:3px}
+.membership-apply-note{font-size:12px;color:#6b756d}
+@media(max-width:680px){.membership-page .membership-faq{padding:48px 0 64px}.membership-page .membership-faq-group{margin-top:30px}.membership-page .membership-faq summary{min-height:48px;font-size:15px}.membership-page .membership-policy-links{gap:14px 18px}}

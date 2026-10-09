@@ -1,0 +1,22 @@
+.supplier-agreement{font-family:Inter,"PingFang SC","Microsoft YaHei",Arial,sans-serif}
+.supplier-agreement header{border-bottom:1px solid #dfe8e2;padding-bottom:24px}
+.supplier-agreement header a:not(.brand){font-size:13px;text-decoration:none}
+.supplier-agreement h1{font-size:clamp(26px,4vw,40px);line-height:1.45;letter-spacing:0}
+.supplier-agreement h2{font-size:20px;line-height:1.6;letter-spacing:0}
+.supplier-agreement p{overflow-wrap:anywhere}
+.agreement-notice{padding:18px 20px;background:#edf3ee;border:1px solid #d3dfd5;margin:20px 0}
+.agreement-notice p:last-child{margin-bottom:0}
+.agreement-actions{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0}
+.agreement-actions a{border:1px solid #cbd8cf;background:#fff;padding:10px 14px;text-decoration:none;font-size:13px}
+.agreement-actions a:hover{background:#edf3ee}
+.agreement-bullet{padding-inline-start:16px;text-indent:-12px}
+.agreement-confirmation{display:flex;flex-direction:column;align-items:center;gap:16px;padding:32px 0 10px}
+.agreement-confirmation label{display:flex;align-items:flex-start;gap:10px;width:100%;max-width:680px;font-size:14px;line-height:1.8;color:#3e5145}
+.agreement-confirmation input{flex:none;width:16px;height:16px;margin:5px 0 0;accent-color:#264b3a}
+.agreement-confirmation button{min-width:220px;padding:13px 32px;margin:8px auto 0;border:1px solid #264b3a;border-radius:4px;background:#264b3a;color:#fff;font-size:15px;font-weight:600}
+.agreement-confirmation button:disabled{opacity:.5;cursor:default}
+.agreement-confirmation p{font-size:13px;margin:0;text-align:center}
+.agreement-confirmation p:empty{display:none}
+.agreement-confirmation>[hidden]{display:none}
+.agreement-confirmation>a{font-size:13px}
+@media(max-width:600px){.agreement-notice{padding:14px}.supplier-agreement h2{font-size:18px}}

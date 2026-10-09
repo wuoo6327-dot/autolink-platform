@@ -1,0 +1,18 @@
+{
+  "sourceFilename": "AUTOLINK_Supplier_Agreement_v0.3.docx",
+  "sourceSha256": "1aff6238d667946bf0090cffc2044097dee376c053bd5621d7e8850c49b9c866",
+  "documentLabel": "审阅稿 v0.2",
+  "documentDate": "版本日期：2026年10月7日",
+  "bodySha256": "7750b4a84050b05e82fb94abbf20b41a196108facb21554cf082aed35fd2499e",
+  "language": "zh-CN",
+  "status": "REVIEW_DRAFT",
+  "acceptanceEnabled": true,
+  "version": "supplier-v0.3-20261007",
+  "pendingFields": [
+    "平台运营公司法定全称",
+    "统一社会信用代码",
+    "注册地址",
+    "有效联系地址",
+    "最终争议管辖安排"
+  ]
+}

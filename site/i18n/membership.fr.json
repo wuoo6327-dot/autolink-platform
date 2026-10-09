@@ -1,0 +1,151 @@
+{
+  "membership": {
+    "notice": {
+      "title": "À savoir avant d’adhérer",
+      "subtitle": "Comprenez les services membres d’AUTOLINK, l’achat de véhicules, la vérification des fournisseurs et les règles du compte."
+    },
+    "faq": {
+      "membership": {
+        "title": "Service d’adhésion",
+        "items": [
+          {
+            "question": "Quels avantages offre l’adhésion ?",
+            "answer": "Selon la formule choisie, vous pouvez accéder aux informations et devis réservés aux membres, aux profils et coordonnées des fournisseurs, aux véhicules enregistrés et à d’autres outils d’approvisionnement. Les avantages précis de chaque formule sont ceux indiqués sur la page d’achat."
+          },
+          {
+            "question": "Quand mon adhésion commence-t-elle ?",
+            "answer": "Elle commence une fois le paiement réussi et l’accès membre activé. Sa date d’expiration figure dans « Mon adhésion » de votre compte."
+          },
+          {
+            "question": "L’adhésion se renouvelle-t-elle automatiquement ?",
+            "answer": "AUTOLINK prévoit actuellement un renouvellement manuel. À l’expiration de la période payée, vous pouvez racheter une formule si vous le souhaitez. Aucun nouveau paiement ne sera prélevé sans votre confirmation expresse."
+          },
+          {
+            "question": "Que se passe-t-il si les prix changent ?",
+            "answer": "Un changement ultérieur n’affecte pas la période déjà payée. Lors d’un nouvel achat, le prix affiché à ce moment-là s’applique."
+          },
+          {
+            "question": "Puis-je obtenir un remboursement ?",
+            "answer": "L’adhésion AUTOLINK est un service numérique dont certaines fonctions peuvent être utilisables dès l’activation. L’éligibilité dépend de l’utilisation réelle, du paiement, de la date d’achat et des règles applicables. Contactez l’assistance en cas de double prélèvement, de prélèvement erroné ou de paiement réussi sans activation. La politique de remboursement précise les conditions."
+          },
+          {
+            "question": "Mon compte sera-t-il supprimé à l’expiration ?",
+            "answer": "Non. Votre compte AUTOLINK demeure, mais les fonctions réservées aux membres peuvent devenir indisponibles. Vous pourrez adhérer de nouveau plus tard."
+          }
+        ]
+      },
+      "purchase": {
+        "title": "Achat de véhicules",
+        "items": [
+          {
+            "question": "Comment acheter après avoir débloqué un fournisseur ?",
+            "answer": "Vous pouvez consulter les coordonnées qu’il rend disponibles et confirmer directement le modèle, la configuration, le prix, le stock, le délai, les conditions commerciales, le paiement et l’exportation. L’achat est régi par le devis final ou le contrat conclu entre acheteur et vendeur."
+          },
+          {
+            "question": "Le prix affiché est-il le prix final ?",
+            "answer": "Pas nécessairement. Les prix AUTOLINK sont indicatifs. Le prix final peut varier selon le modèle, les options, la couleur, la quantité, le stock, le taux de change, la politique du constructeur, le port d’exportation, la logistique et le marché. Demandez un devis officiel actualisé avant d’acheter."
+          },
+          {
+            "question": "Que faire si un devis expire ?",
+            "answer": "Le fournisseur peut devoir reconfirmer le prix. Un devis expiré peut être masqué ou signalé comme tel. L’expiration d’un devis ne met pas fin à votre adhésion."
+          },
+          {
+            "question": "Les stocks sont-ils mis à jour en temps réel ?",
+            "answer": "Pas nécessairement. Les achats d’autres clients, transferts entre concessionnaires, décisions du constructeur, expéditions et changements de millésime peuvent modifier le stock. Confirmez la disponibilité réelle avant de payer."
+          },
+          {
+            "question": "Tous les véhicules peuvent-ils être exportés vers mon pays ?",
+            "answer": "Non. Les règles d’importation, normes d’émissions, homologations, exigences de conduite à droite ou à gauche, limites d’âge, taxes et autorisations de modèles varient selon le pays. Vérifiez les règles de destination avant d’acheter."
+          },
+          {
+            "question": "Les caractéristiques des véhicules sont-elles parfaitement exactes ?",
+            "answer": "AUTOLINK s’efforce de les tenir à jour, mais un même modèle peut varier selon le marché, l’année et la version. Confirmez la configuration définitive à l’aide de la fiche du fournisseur, du VIN et du contrat d’achat."
+          }
+        ]
+      },
+      "supplier": {
+        "title": "Fournisseurs",
+        "items": [
+          {
+            "question": "Qu’est-ce qu’un « fournisseur vérifié » ?",
+            "answer": "Selon ses règles, AUTOLINK peut contrôler le nom, l’immatriculation, la licence commerciale, les coordonnées, les informations d’activité et les ressources de certains fournisseurs. Ceux qui terminent les contrôles requis peuvent porter la mention « Fournisseur vérifié »."
+          },
+          {
+            "question": "Cette vérification garantit-elle la transaction ?",
+            "answer": "Non. Elle signifie seulement que certaines informations disponibles au moment du contrôle ont été examinées. Elle ne garantit ni la solvabilité, ni le stock, le prix, l’exécution, la qualité du véhicule, la sécurité du paiement, le délai logistique ou l’issue de la transaction."
+          },
+          {
+            "question": "Que faire si un fournisseur ne répond pas ?",
+            "answer": "Après déblocage, signalez à AUTOLINK une absence prolongée de réponse, des coordonnées invalides ou de fortes différences avec l’annonce. La plateforme pourra vérifier les informations ou prendre des mesures sur le compte selon le cas."
+          },
+          {
+            "question": "Que faire face à un fournisseur frauduleux ?",
+            "answer": "Signalez-le sur la plateforme ou à l’assistance, si possible avec son nom, le lien du véhicule, les échanges, le devis et les preuves. AUTOLINK peut examiner, limiter ou supprimer un compte suspect selon ses règles."
+          }
+        ]
+      },
+      "transaction": {
+        "title": "Transactions et paiements",
+        "items": [
+          {
+            "question": "AUTOLINK reçoit-il le paiement des véhicules ?",
+            "answer": "Le service d’adhésion actuel ne collecte pas les fonds d’achat des véhicules et ne les garde pas sous séquestre. Acheteur et fournisseur règlent normalement directement selon leur contrat. Sauf indication expresse d’un service précis, ne versez pas le prix d’un véhicule sur le compte destiné aux adhésions AUTOLINK."
+          },
+          {
+            "question": "La cotisation est-elle un acompte sur véhicule ?",
+            "answer": "Non. Elle paie uniquement le service membre. Ce n’est ni un acompte ou paiement de véhicule, ni une garantie fournisseur, ni des frais logistiques ou douaniers, ni un prépaiement. L’adhésion ne crée pas automatiquement une commande."
+          },
+          {
+            "question": "AUTOLINK prélève-t-il une commission sur les véhicules ?",
+            "answer": "Son modèle de revenus actuel repose principalement sur les adhésions. Sauf indication contraire, consulter un véhicule ou contacter un fournisseur ne crée pas automatiquement de commission. Les frais de futurs services d’achat, d’exportation, d’inspection, de logistique ou autres seront annoncés avant utilisation."
+          },
+          {
+            "question": "Puis-je acheter directement une voiture sur AUTOLINK ?",
+            "answer": "AUTOLINK met actuellement en relation informations commerciales et ressources de la chaîne d’approvisionnement. Contacter un fournisseur, demander un devis ou envoyer une demande ne conclut pas un achat. La transaction formelle dépend du contrat entre acheteur et vendeur."
+          },
+          {
+            "question": "Que faire en cas de litige commercial ?",
+            "answer": "Le contrat d’achat est généralement conclu entre acheteur et fournisseur ; le litige doit d’abord être traité selon ce contrat. AUTOLINK peut, selon le cas, examiner les comptes, contacter le fournisseur ou traiter une infraction sur la plateforme, sans assumer les obligations contractuelles d’une partie sauf accord exprès."
+          }
+        ]
+      },
+      "account": {
+        "title": "Compte et données",
+        "items": [
+          {
+            "question": "Plusieurs personnes peuvent-elles partager un compte membre ?",
+            "answer": "En principe, l’adhésion est réservée au titulaire inscrit ou au personnel autorisé de l’entreprise inscrite. La vente, la location, le partage massif du compte et l’extraction automatisée de données en masse sont interdits."
+          },
+          {
+            "question": "Puis-je exporter en masse les coordonnées des fournisseurs ?",
+            "answer": "Vous pouvez consulter et conserver les informations nécessaires à vos achats dans les limites autorisées. Sans autorisation d’AUTOLINK, il est interdit de collecter ou exporter en masse, revendre, diffuser publiquement la base de fournisseurs ou créer une base concurrente à partir des données de la plateforme."
+          },
+          {
+            "question": "Mes données seront-elles transmises aux fournisseurs ?",
+            "answer": "Lorsque vous envoyez une demande, contactez un fournisseur ou sollicitez un devis, AUTOLINK peut lui transmettre les informations nécessaires à la réponse : nom, entreprise, pays ou région, email, téléphone, WhatsApp et besoin d’achat. La politique de confidentialité détaille ce traitement."
+          },
+          {
+            "question": "AUTOLINK est-il concessionnaire automobile ?",
+            "answer": "AUTOLINK est une plateforme d’information commerciale et de mise en relation dans la chaîne automobile. Sauf mention expresse indiquant qu’AUTOLINK est vendeur, la plateforme ne vend pas les véhicules présentés. Le vendeur est l’entreprise désignée dans le contrat d’achat."
+          }
+        ]
+      }
+    },
+    "policies": {
+      "terms": "Conditions d’utilisation",
+      "membershipTerms": "Conditions d’adhésion",
+      "privacy": "Politique de confidentialité",
+      "refund": "Politique de remboursement"
+    },
+    "application": {
+      "cta": "Faire une demande",
+      "enterpriseCta": "Contacter pour l’offre Entreprise",
+      "title": "Demande d’adhésion",
+      "selected": "Formule choisie",
+      "message": "Le paiement en ligne n’est pas encore disponible. Envoyez à AUTOLINK la formule choisie et l’adresse email de votre compte. Nous vous contacterons pour la suite. Aucun paiement ni activation n’a lieu sur cette page.",
+      "send": "Envoyer la demande par email",
+      "emailLabel": "Email de contact",
+      "note": "Votre application de messagerie s’ouvrira. La demande ne sera transmise qu’après l’envoi du message."
+    }
+  }
+}

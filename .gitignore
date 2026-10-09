@@ -1,0 +1,31 @@
+# Credentials and private runtime state
+.env
+.env.*
+!.env.example
+*.sqlite*
+*.db
+*.db-*
+*.pem
+*.key
+*.p12
+*.pfx
+auth_data/
+data/
+uploads/
+private-documents/
+listing-images/
+backups/
+before-*/
+*.tar
+*.tar.gz
+*.zip
+*.dump
+# Local tools and generated reports
+__pycache__/
+*.py[cod]
+node_modules/
+.venv/
+.security-cache/
+security-reports/
+*.log
+.DS_Store

@@ -1,0 +1,2028 @@
+{
+  "omoda-catalog-1": {
+    "source_url": "https://www.omodajaecoo.com/global/img/model/main.webp",
+    "source_page": "https://www.omodajaecoo.com/global/c5",
+    "category": "exterior",
+    "width": 1400,
+    "height": 788,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "omoda-catalog-2": {
+    "source_url": "https://www.omodajaecoo.com/global/images/e5-edit/first-banner-bg.webp",
+    "source_page": "https://www.omodajaecoo.com/global/e5",
+    "category": "exterior",
+    "width": 1400,
+    "height": 783,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "omoda-catalog-3": {
+    "source_url": "https://www.omodajaecoo.com/global/images/c7/bg_6_1.webp",
+    "source_page": "https://www.omodajaecoo.com/global/c7",
+    "category": "exterior",
+    "width": 1400,
+    "height": 613,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "omoda-catalog-4": {
+    "source_url": "https://static.wixstatic.com/media/71c712_0dbcd60d1f2c4d56b3c7c5f76ecdffef~mv2.jpg/v1/fit/w_1920,h_927,q_90,enc_avif,quality_auto/71c712_0dbcd60d1f2c4d56b3c7c5f76ecdffef~mv2.jpg",
+    "source_page": "https://www.omodajaecoo.at/modell/omoda9",
+    "category": "exterior",
+    "width": 1400,
+    "height": 852,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "jaecoo-catalog-1": {
+    "source_url": "https://www.omodajaecoo.com/global/images/j5/bg_1.webp",
+    "source_page": "https://www.omodajaecoo.com/global/j5",
+    "category": "exterior",
+    "width": 1400,
+    "height": 788,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "jaecoo-catalog-2": {
+    "source_url": "https://www.omodajaecoo.com/global/images/models/banner.webp",
+    "source_page": "https://www.omodajaecoo.com/global/j7",
+    "category": "exterior",
+    "width": 1400,
+    "height": 788,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "jaecoo-catalog-3": {
+    "source_url": "https://www.omodajaecoo.com/global/images/j8/banner6_1.webp",
+    "source_page": "https://www.omodajaecoo.com/global/j8",
+    "category": "exterior",
+    "width": 1400,
+    "height": 652,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "jaecoo-catalog-4": {
+    "source_url": "https://www.omodajaecoo.com/global/images/j7shs/bg_1.webp",
+    "source_page": "https://www.omodajaecoo.com/global/j7shs",
+    "category": "exterior",
+    "width": 1400,
+    "height": 788,
+    "note": "Verified official manufacturer imagery, previously visually reviewed.",
+    "permission_status": "unverified"
+  },
+  "geely-catalog-1": {
+    "source_url": "https://global.geely.com/-/media/project/web-portal/models/new-monjaro/outdoor-shooting/monjaro-kv.jpg",
+    "source_page": "https://global.geely.com/en/models/monjaro",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1142,
+    "note": "Official global Geely model product marketing photograph.",
+    "permission_status": "unverified"
+  },
+  "geely-catalog-2": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/ANEW2/boyueL4/2026/0920/2pc.jpg",
+    "source_page": "https://boyue.geely.com/quanxindisidaiboyuel",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "geely-catalog-5": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/ANEW2/haoyueL3/2025/1120/12pc.jpg",
+    "source_page": "https://haoyue.geely.com/hyl3",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "galaxy-catalog-1": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/E5/newE5/2026/0922/3pc.jpg",
+    "source_page": "https://www.galaxy-geely.com/quanxinE5",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "galaxy-catalog-2": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/E8/2025/0302/9pc.jpg",
+    "source_page": "https://www.galaxy-geely.com/E8",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "galaxy-catalog-3": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/L6/EM-i/2026/kv/0401pc.jpg",
+    "source_page": "https://www.galaxy-geely.com/l6",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "galaxy-catalog-5": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/P145/2025/1118/3pc.jpg",
+    "source_page": "https://www.galaxy-geely.com/p145",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "chery-catalog-1": {
+    "source_url": "https://material.chery.cn/media/febju4s3/1835x1080-1.jpg",
+    "source_page": "https://www.chery.cn/vehicles/tiggo8zhuoyue/",
+    "width": 1835,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "chery-catalog-2": {
+    "source_url": "https://material.chery.cn/media/weobnlcz/t9l-banner-index-pc-2x.jpg",
+    "source_page": "https://www.chery.cn/vehicles/tiggo9/",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "chery-catalog-3": {
+    "source_url": "https://material.chery.cn/media/1til2hwg/瑞虎7-高颜值-虎纹纵横格栅-pc-2x.jpg",
+    "source_page": "https://www.chery.cn/vehicles/tiggo7new/",
+    "width": 3360,
+    "height": 1400,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "chery-catalog-4": {
+    "source_url": "https://material.chery.cn/media/xmhjilfd/艾瑞泽8征服版-低风阻fastback车身造型-banner-pc-2x.jpg",
+    "source_page": "https://www.chery.cn/vehicles/arrizo8/",
+    "width": 2560,
+    "height": 1440,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "chery-catalog-5": {
+    "source_url": "https://material.chery.cn/media/mh0kbd0j/a9l-532-c级尺寸-banner-pc-2x.jpg",
+    "source_page": "https://fulwin.chery.cn/vehicles/a9l/",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "lynk-co-catalog-1": {
+    "source_url": "https://dm30webimages.lynkco.com.cn/LynkCoPortal/2025/lynkcowebsite/new03/pc/5p1013.jpg?alt=领克03,25款官网,领克03座椅硬度",
+    "source_page": "https://www.lynkco.com.cn/cars/new03",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "lynk-co-catalog-2": {
+    "source_url": "https://dm30webimages.lynkco.com.cn/LynkCoPortal/2026/jbp/060303/04pc.jpg",
+    "source_page": "https://www.lynkco.com.cn/cars/06remix",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "lynk-co-catalog-3": {
+    "source_url": "https://dm30webimages.lynkco.com.cn/LynkCoPortal/2026/lyl/08/20260317/wgp0318.jpg",
+    "source_page": "https://www.lynkco.com.cn/cars/08",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "lynk-co-catalog-4": {
+    "source_url": "https://dm30webimages.lynkco.com.cn/LynkCoPortal/2025/2509/0509/1/07.jpg",
+    "source_page": "https://www.lynkco.com.cn/cars/2509emp",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "geely-catalog-3": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/ANEW2/BYCN/MAX/2025/0715/16pc.jpeg",
+    "source_page": "https://binyue.geely.com/bycn",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "geely-catalog-4": {
+    "source_url": "https://dm30webimages.geely.com/GeelyPromotion/ANEW2/dh5/2025/1103/3pc1.jpg",
+    "source_page": "https://dh.geely.com/SS21",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "exeed-catalog-1": {
+    "source_url": "https://www.exeedcars.com/images/lingyun/banner1.jpg",
+    "source_page": "https://www.exeedcars.com/xt/lingyun/",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "exeed-catalog-2": {
+    "source_url": "https://www.exeedcars.com/images/lanyue/banner1.webp",
+    "source_page": "https://www.exeedcars.com/xt/lanyue/",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "exeed-catalog-3": {
+    "source_url": "https://www.exeedcars.com/images/yaoguang_NEW/banner1.jpg",
+    "source_page": "https://www.exeedcars.com/xt/yaoguang_new/",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "exeed-catalog-4": {
+    "source_url": "https://www.exeedcars.com/images/xingjiyuan-ES_REEV/banner1.jpg",
+    "source_page": "https://www.exeedcars.com/xjy/es_reev/",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "exeed-catalog-5": {
+    "source_url": "https://www.exeedcars.com/images/xingjiyuan-ET_NEW/banner1.jpg",
+    "source_page": "https://www.exeedcars.com/xjy/et_new/",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "jetour-catalog-1": {
+    "source_url": "https://www.jetourglobal.com/new-static/images/vehicles/image/x70.png",
+    "source_page": "https://www.jetourglobal.com/x70/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "jetour-catalog-2": {
+    "source_url": "https://jetour-official-web-prod.oss-cn-hangzhou.aliyuncs.com/2026newweb/vehicles/xinX90/kv/kvpc.jpg",
+    "source_page": "https://www.jetour.com.cn/vehicles/xinx90/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "jetour-catalog-3": {
+    "source_url": "https://www.jetourglobal.com/new-static/images/vehicles/cars/T2/p3_1.png",
+    "source_page": "https://www.jetourglobal.com/t2/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "jetour-catalog-4": {
+    "source_url": "https://www.jetourglobal.com/new-static/images/vehicles/cars/T2iDM/p1_1.png",
+    "source_page": "https://www.jetourglobal.com/T2iDM/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "byd-catalog-1": {
+    "source_url": "https://www.bydauto.com.cn/material/__CN/domestic-official/dynasty/home/1-kv/kv-0827/qin-plus-dm-p-1.jpg",
+    "source_page": "https://www.bydauto.com.cn/cn/dynasty-home/models/qin/26-qin-plus-dm-i",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "byd-catalog-2": {
+    "source_url": "https://www.bydauto.com.cn/material/__CN/domestic-official/dynasty/home/1-kv/kv-0827/qin-l-dm-p.jpg",
+    "source_page": "https://www.bydauto.com.cn/cn/dynasty-home/models/qin/26-qin-l-dm-i",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "byd-catalog-3": {
+    "source_url": "https://www.bydauto.com.cn/material/domestic-official/ocean/product/haibao/haibao06dmi-260108/ksp/1-h5.jpg",
+    "source_page": "https://www.bydauto.com.cn/cn/ocean-home/models/haibao/haibao-06-dm-i-chaoxiang",
+    "width": 1080,
+    "height": 720,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "byd-catalog-4": {
+    "source_url": "https://www.byd.com/material/__CN/byd-site/mx/product/byd-song-plus-dm-i-1-5t/new_product_page/pc/BYD-SONG-PLUS-PC-02.jpg",
+    "source_page": "https://www.byd.com/mx/car/song-plus-dmi",
+    "width": 2800,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "byd-catalog-5": {
+    "source_url": "https://www.bydauto.com.cn/material/domestic-official/dynasty/product/yuan/2-yuan-plus-zhijia/KV-pc-0729.jpg",
+    "source_page": "https://www.bydauto.com.cn/cn/dynasty-home/models/yuan/2-yuan-plus",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "fangchengbao-catalog-1": {
+    "source_url": "https://www.fangchengbao.com/material/fangchengbao/product-detail/bao5/banner/pc/bao5-bg-pc.jpg",
+    "source_page": "https://www.fangchengbao.com/bao5",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "fangchengbao-catalog-2": {
+    "source_url": "https://www.fangchengbao.com/material/fangchengbao/product-detail/bao8/2.waiguan/waiguan/waiguansheji-pc-15.jpg",
+    "source_page": "https://www.fangchengbao.com/bao8",
+    "width": 3840,
+    "height": 1140,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "fangchengbao-catalog-3": {
+    "source_url": "https://www.fangchengbao.com/material/fangchengbao/product/tai3/yushou/color-cs-1-PC.jpg",
+    "source_page": "https://www.fangchengbao.com/tai3",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "fangchengbao-catalog-4": {
+    "source_url": "https://www.fangchengbao.com/material/fangchengbao/product-detail/tai7chexiangye/3waiguan/pc-1.jpg",
+    "source_page": "https://www.fangchengbao.com/tai7",
+    "width": 3840,
+    "height": 1140,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "avatr-catalog-1": {
+    "source_url": "https://static.avatr.com/pc-website/images/car06/v4/pc/Banner.jpg",
+    "source_page": "https://www.avatr.com/06",
+    "width": 4320,
+    "height": 2400,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "avatr-catalog-2": {
+    "source_url": "https://static.avatr.com/pc-website/images/car07/v1/pc/KV_07.jpg",
+    "source_page": "https://www.avatr.com/07",
+    "width": 4320,
+    "height": 2400,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "avatr-catalog-3": {
+    "source_url": "https://static.avatr.com/pc-website/images/reev11/v1/pc/design-head.jpg",
+    "source_page": "https://www.avatr.com/11",
+    "width": 4320,
+    "height": 2820,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "avatr-catalog-4": {
+    "source_url": "https://static.avatr.com/pc-website/images/car12/v5/pc/banner-svp.jpg?v=v6",
+    "source_page": "https://www.avatr.com/12",
+    "width": 4320,
+    "height": 2400,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "yangwang-catalog-1": {
+    "source_url": "https://www.yangwangauto.com/material/yangwang_cn/images/202602/u8/image/0303/P13-pc.jpg",
+    "source_page": "https://www.yangwangauto.com/u8.html",
+    "width": 3840,
+    "height": 1926,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "yangwang-catalog-2": {
+    "source_url": "https://www.yangwangauto.com/material/yangwang_cn/images/u9/2025-12-23/u9-green-pc-3840x2160-004.jpg",
+    "source_page": "https://www.yangwangauto.com/u9-detail-page.html",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "yangwang-catalog-3": {
+    "source_url": "https://www.yangwangauto.com/material/yangwang_cn/images/u7-202511/u720251118/yangwangu7buchongsucai-1117/U7-首屏页面-001-3840x2160.jpg",
+    "source_page": "https://www.yangwangauto.com/u7-detail-page.html",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "jetour-catalog-5": {
+    "source_url": "https://static-zongheng.jetour.com.cn/0/20260626/首页二屏1.png",
+    "source_page": "https://zongheng.chery.cn/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "deepal-catalog-1": {
+    "source_url": "https://www.deepal.com.cn/20260820093/static/bg-pc-s05.c9ae5f58.jpg",
+    "source_page": "https://www.deepal.com.cn/S05",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "deepal-catalog-2": {
+    "source_url": "https://www.deepal.com.cn/20260820093/static/bg-pc-s07.246ee5ff.jpg",
+    "source_page": "https://www.deepal.com.cn/S07",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "deepal-catalog-3": {
+    "source_url": "https://www.deepal.com.cn/20260820093/static/bg-pc-g318.621502a2.jpg",
+    "source_page": "https://www.deepal.com.cn/G318",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "deepal-catalog-4": {
+    "source_url": "https://www.deepal.com.cn/20260820093/static/bg-pc-s09.674536bb.jpg",
+    "source_page": "https://www.deepal.com.cn/S09",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "deepal-catalog-5": {
+    "source_url": "https://www.deepal.com.cn/20260820093/static/bg-pc-l07.02957394.jpg",
+    "source_page": "https://www.deepal.com.cn/L07",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "changan-catalog-1": {
+    "source_url": "https://www.changan.com.cn/staticImg/car/cs75plus-4nd-2026/screen1.jpg",
+    "source_page": "https://www.changan.com.cn/car/cs75plus-4nd-2026",
+    "width": 1678,
+    "height": 833,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "changan-catalog-2": {
+    "source_url": "https://www.changan.com.cn/staticImg/car/cs55plus-4nd/img4.jpg",
+    "source_page": "https://www.changan.com.cn/car/cs55plus-4nd",
+    "width": 1920,
+    "height": 1075,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "changan-catalog-3": {
+    "source_url": "https://www.changan.com.cn/staticImg/car/UNI-V-3nd/banner.jpg",
+    "source_page": "https://www.changan.com.cn/car/UNI-V-3nd",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "changan-catalog-4": {
+    "source_url": "https://www.changan.com.cn/staticImg/car/UNI-K/img1.jpg",
+    "source_page": "https://www.changan.com.cn/car/UNI-K",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "changan-catalog-5": {
+    "source_url": "https://www.changan.com.cn/staticImg/car/eado-4nd/img1.jpg",
+    "source_page": "https://www.changan.com.cn/car/eado-4nd",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "haval-catalog-1": {
+    "source_url": "https://res.gwm.com.cn/2026/05/21/1853696_122_首屏-横1.jpg",
+    "source_page": "https://www.haval.com.cn/newh6/",
+    "width": 2638,
+    "height": 1484,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "haval-catalog-2": {
+    "source_url": "https://res.gwm.com.cn/2026/09/27/1856150_272_基础kv2638x1484.jpg",
+    "source_page": "https://www.haval.com.cn/dg/",
+    "width": 5276,
+    "height": 2968,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "haval-catalog-3": {
+    "source_url": "https://res.gwm.com.cn/2026/07/16/1854517_253_基础KV-PC.jpg",
+    "source_page": "https://www.haval.com.cn/menglong/",
+    "width": 2638,
+    "height": 1484,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "haval-catalog-4": {
+    "source_url": "https://res.gwm.com.cn/2026/06/30/1854230_253_1.jpg",
+    "source_page": "https://www.haval.com.cn/xiaolongmax/",
+    "width": 2638,
+    "height": 1484,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "haval-catalog-5": {
+    "source_url": "https://res.gwm.com.cn/2026/04/26/1853240_120_2638x1484.jpg",
+    "source_page": "https://www.haval.com.cn/h9/",
+    "width": 2638,
+    "height": 1484,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "denza-catalog-1": {
+    "source_url": "https://www.tengshiauto.com/material/tengshi_cn2/home/banner/dierdaitengshid9/banner-2880x1620-无文字版.jpg",
+    "source_page": "https://www.tengshiauto.com/product-detail/D9-2.html",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "denza-catalog-3": {
+    "source_url": "https://www.tengshiauto.com/material/__CN/tengshi_cn2/product/n8lshanchongban/banner-pc-0715.jpg",
+    "source_page": "https://www.tengshiauto.com/product-detail/N8L-2026.html",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "denza-catalog-5": {
+    "source_url": "https://www.tengshiauto.com/material/__CN/tengshi_cn2/product/2026kuantengshiz9gt/0715/banner-pc.jpg",
+    "source_page": "https://www.tengshiauto.com/product-detail/26-z9gt.html",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "zeekr-catalog-1": {
+    "source_url": "https://www.datocms-assets.com/143770/1730967198-a2_kv.jpg?auto=format",
+    "source_page": "https://www.zeekrlife.com/global/vehicles/001",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "zeekr-catalog-2": {
+    "source_url": "https://www.datocms-assets.com/143770/1732789034-pc.jpg?auto=format",
+    "source_page": "https://www.zeekrlife.com/global/vehicles/007",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "zeekr-catalog-3": {
+    "source_url": "https://www.datocms-assets.com/143770/1732758838-pc.jpg?auto=format",
+    "source_page": "https://www.zeekrlife.com/global/vehicles/7x",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "zeekr-catalog-4": {
+    "source_url": "https://www.datocms-assets.com/143770/1730254171-ef1e_brightstudio_20.jpg?auto=format",
+    "source_page": "https://www.zeekrlife.com/global/vehicles/009",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "zeekr-catalog-5": {
+    "source_url": "https://www.datocms-assets.com/143770/1730340863-mix-cover.jpg?auto=format&fit=max&w=1200",
+    "source_page": "https://www.zeekrlife.com/global/posts/imagining-beyond-the-zeekr-mix-arrives",
+    "width": 1200,
+    "height": 800,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "denza-catalog-2": {
+    "source_url": "https://www.denza.com/material/tengshiauto_cn/product/25-N7/250815/KV-pc.jpg.jpg",
+    "source_page": "https://www.denza.com/cn/product-detail/n7.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "denza-catalog-4": {
+    "source_url": "https://www.denza.com/material/tengshiauto_cn/product/z9-new/251107/Z9-pc-1107.jpg",
+    "source_page": "https://www.denza.com/cn/product-detail/z9.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Manufacturer official model product page. Visually reviewed clean matching car promotional imagery.",
+    "permission_status": "unverified"
+  },
+  "galaxy-catalog-4": {
+    "source_url": "https://img.perxis.ru/unsafe/prxs/originals/d1jt33obeucc73erbtc0/original",
+    "source_page": "https://www.geely-motors.com/about-geely/news/krossover-geely-galaxy-l7-zanial-pervoe-mesto-v-reitinge-kachestva-j-d-power-china-v-kategorii-kompaktnykh-suv-s-gibridnoi-silovoi-ustanovkoi/",
+    "width": 2700,
+    "height": 1355,
+    "category": "exterior",
+    "note": "Geely official Russia news page about Galaxy L7, clean manufacturer promotional scene, visually reviewed. Commercial reuse permission not established.",
+    "permission_status": "unverified"
+  },
+  "lynk-co-catalog-5": {
+    "source_url": "https://mma.prnewswire.com/media/2438704/LYNK.jpg?p=publish",
+    "source_page": "https://www.prnewswire.com/ae/news-releases/lynk--co-unveils-first-all-electric-sedan-the-z10-in-global-debut-302172930.html",
+    "width": 2700,
+    "height": 2025,
+    "category": "exterior",
+    "note": "Manufacturer-issued official Lynk & Co launch press release, distributed by PR Newswire. Clean Z10 promotional scene, visually reviewed. Commercial reuse permission not established.",
+    "permission_status": "unverified"
+  },
+  "tank-catalog-1": {
+    "source_url": "https://res.gwm.com.cn/tank/tanksite/assets/tank300-26/media/p4.jpg",
+    "source_page": "https://www.tanksuv.com/tank300-new.html",
+    "width": 3024,
+    "height": 1702,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wey-catalog-1": {
+    "source_url": "https://res.gwm.com.cn/weysite/static/src/views/vehicle/lanshan-new/2026/p1-1-1.jpg?v=10e05ed61a",
+    "source_page": "https://www.wey.com/lanshan-new.html",
+    "width": 2370,
+    "height": 1164,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wey-catalog-2": {
+    "source_url": "https://res.gwm.com.cn/weysite/static/src/views/vehicle/gaoshan/2026/media/p1-2.jpg?v=9a2fd55bee",
+    "source_page": "https://www.wey.com/gaoshan.html",
+    "width": 3642,
+    "height": 1785,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wey-catalog-3": {
+    "source_url": "https://res.gwm.com.cn/weysite/static/src/views/vehicle/mocca-max/img/kv_renew.jpg?v=062691a7bf",
+    "source_page": "https://www.wey.com/mocca.html",
+    "width": 2880,
+    "height": 1711,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "ora-catalog-1": {
+    "source_url": "https://res.gwm.com.cn/Ora/statics/car-model/haomao/2027/img/car0021.jpg",
+    "source_page": "https://www.oraev.com/haomao.html",
+    "width": 3024,
+    "height": 1678,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "ora-catalog-3": {
+    "source_url": "https://www.oraev.com/dist/statics/images/sdm-v2/swiper/1-image01_03.jpg",
+    "source_page": "https://www.oraev.com/EC24.html",
+    "width": 2200,
+    "height": 1238,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "roewe-catalog-1": {
+    "source_url": "https://oss.roewe.com.cn/wp-content/uploads/sites/3/2023/07/i5pc-0830.jpg?x-oss-process=image/format,webp",
+    "source_page": "https://www.roewe.com.cn/vehicles/roewei5new/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "roewe-catalog-2": {
+    "source_url": "https://oss.roewe.com.cn/wp-content/uploads/sites/3/2024/05/d5-dmh-pc-0.jpg?x-oss-process=image/format,webp",
+    "source_page": "https://www.roewe.com.cn/vehicles/d5x-dmh/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "roewe-catalog-3": {
+    "source_url": "https://oss.roewe.com.cn/wp-content/uploads/sites/3/2023/10/thumb-1.jpg",
+    "source_page": "https://www.roewe.com.cn/vehicles/d7/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "roewe-catalog-5": {
+    "source_url": "https://oss.roewe.com.cn/wp-content/uploads/sites/3/2023/02/imax8-new-3.jpg?x-oss-process=image/format,webp",
+    "source_page": "https://www.roewe.com.cn/vehicles/roeweimax8/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hongqi-catalog-1": {
+    "source_url": "https://www.hongqi-auto.com/images/cartype/h5/img1.jpg",
+    "source_page": "https://www.hongqi-auto.com/pages/cartype/cartype_h5.html",
+    "width": 1760,
+    "height": 820,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hongqi-catalog-2": {
+    "source_url": "https://www.hongqi-auto.com/images/cartype/h9_2025/kv.jpg",
+    "source_page": "https://www.hongqi-auto.com/pages/cartype/cartype_h9.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hongqi-catalog-3": {
+    "source_url": "https://www.hongqi-auto.com/images/cartype/hs3/kv_1.jpg",
+    "source_page": "https://www.hongqi-auto.com/pages/cartype/cartype_hs3.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hongqi-catalog-4": {
+    "source_url": "https://www.hongqi-auto.com/images/cartype/hs5-new/kv_pc.jpg",
+    "source_page": "https://www.hongqi-auto.com/pages/cartype/cartype_hs5_new.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hongqi-catalog-5": {
+    "source_url": "https://www.hongqi-auto.com/images/cartype/hs7_2025/kv.jpg",
+    "source_page": "https://www.hongqi-auto.com/pages/cartype/cartype_hs7.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "jac-catalog-4": {
+    "source_url": "https://yiwei.jac.com.cn/u/cms/yiwei/202603/06174945u94n.jpg",
+    "source_page": "https://yiwei.jac.com.cn/yw3/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "maextro-catalog-1": {
+    "source_url": "https://hima.auto/dam/hima-site/cn/zunjie/img/260625/s800-gd-img1-2x.jpg",
+    "source_page": "https://hima.auto/zunjie/",
+    "width": 2400,
+    "height": 1400,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "tank-catalog-2": {
+    "source_url": "https://res.gwm.com.cn/tank/tanksite/assets/tank400-h/2026/p3.jpg",
+    "source_page": "https://www.tanksuv.com/tank400.html",
+    "width": 4320,
+    "height": 2430,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "tank-catalog-3": {
+    "source_url": "https://res.gwm.com.cn/tank/tanksite/assets/tank500-26/0825/p1.jpg",
+    "source_page": "https://www.tanksuv.com/tank500.html",
+    "width": 2880,
+    "height": 1620,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "tank-catalog-4": {
+    "source_url": "https://res.gwm.com.cn/tank/tanksite/assets/tank700-h/2026/p3.jpg",
+    "source_page": "https://www.tanksuv.com/tank700.html",
+    "width": 3024,
+    "height": 1702,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "ora-catalog-2": {
+    "source_url": "https://res.gwm.com.cn/2026/06/23/1854110_192_芭蕾猫KV2.jpg",
+    "source_page": "https://www.oraev.com/ES13.html",
+    "width": 2200,
+    "height": 1238,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "im-catalog-1": {
+    "source_url": "https://portal-static.immotors.com/images/portal/1787890240456%2540i06e8u6f.jpg",
+    "source_page": "https://www.immotors.com/website/l6_detail",
+    "width": 2592,
+    "height": 1332,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "im-catalog-3": {
+    "source_url": "https://portal-static.immotors.com/images/portal/1790128172216%2540jgzedqdx.jpg",
+    "source_page": "https://www.immotors.com/website/ls6_detail",
+    "width": 2592,
+    "height": 1332,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "im-catalog-5": {
+    "source_url": "https://portal-static.immotors.com/images/portal/1776319857581%2540x5xitmsg.jpg",
+    "source_page": "https://www.immotors.com/website/ls8_detail",
+    "width": 2592,
+    "height": 1332,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mg-catalog-2": {
+    "source_url": "https://media-hub-prod.mgmotor.me//api/v2/images/306/w/1920/h/1080.jpg",
+    "source_page": "https://www.mgmotor.me/models/mg-5",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mg-catalog-3": {
+    "source_url": "https://media-hub-prod.mgmotor.me/api/v2/images/260/w/1920/h/1080.jpg",
+    "source_page": "https://www.mgmotor.me/models/mg-7",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mg-catalog-4": {
+    "source_url": "https://media-hub-prod.mgmotor.me//api/v2/images/303/w/1920/h/1080.jpg",
+    "source_page": "https://www.mgmotor.me/models/mg-zs",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mg-catalog-5": {
+    "source_url": "https://media-hub-prod.mgmotor.me//api/v2/images/120/w/1920/h/1080.jpg",
+    "source_page": "https://www.mgmotor.me/models/mg-hs",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "jac-catalog-1": {
+    "source_url": "https://passengercar.jac.com.cn/u/cms/passenger/202407/16172735f8ss.jpg",
+    "source_page": "https://passengercar.jac.com.cn/jhX8PLUS/",
+    "width": 1441,
+    "height": 789,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "jac-catalog-2": {
+    "source_url": "https://passengercar.jac.com.cn/u/cms/passenger/202403/15100008o61g.jpg",
+    "source_page": "https://passengercar.jac.com.cn/shX7/",
+    "width": 1440,
+    "height": 790,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "jac-catalog-3": {
+    "source_url": "https://passengercar.jac.com.cn/u/cms/passenger/202403/14005407oau8.jpg",
+    "source_page": "https://passengercar.jac.com.cn/jhA5PLUS/",
+    "width": 1076,
+    "height": 688,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "roewe-catalog-4": {
+    "source_url": "https://oss.roewe.com.cn/wp-content/uploads/sites/3/2023/05/img7-rx5-0515.jpg?x-oss-process=image/format,webp",
+    "source_page": "https://www.roewe.com.cn/vehicles/third-rx5_old/",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "im-catalog-2": {
+    "source_url": "https://portal-static.immotors.com/images/portal/1709001562647%2540656n731a.jpg",
+    "source_page": "https://www.immotors.com/website/l7_detail",
+    "width": 2592,
+    "height": 1332,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "im-catalog-4": {
+    "source_url": "https://portal-static.immotors.com/images/portal/1749802920622%25403aoz9zm7.jpg",
+    "source_page": "https://www.immotors.com/website/ls7_detail",
+    "width": 2592,
+    "height": 1332,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mg-catalog-1": {
+    "source_url": "https://news.mgmotor.eu/wp-content/uploads/2022/09/2022_MG4-Electric_fr_1.jpg",
+    "source_page": "https://news.mgmotor.eu/press/mg4-electric-celebrates-its-european-launch/",
+    "width": 1920,
+    "height": 1077,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aion-catalog-1": {
+    "source_url": "https://static.gacne.com.cn/Public/Uploads/home/pic/file/2026/08/6b3b67d7-9184-4afb-8a5d-37c520184177.jpg",
+    "source_page": "https://www.aion.com.cn/vehicles/aion_car_introduce?cid=47",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aion-catalog-2": {
+    "source_url": "https://static.gacne.com.cn/Public/Uploads/home/pic/file/2024/07/80930f07-5854-4c7a-b0ff-6ae811365bfb.jpg",
+    "source_page": "https://www.aion.com.cn/vehicles/aion_car_introduce?cid=56",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aion-catalog-3": {
+    "source_url": "https://static.gacne.com.cn/Public/Uploads/home/pic/file/2026/04/fe7bab9d-d217-4d91-943b-338b1232810f.jpg",
+    "source_page": "https://www.aion.com.cn/vehicles/aion_car_introduce?cid=57",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aion-catalog-4": {
+    "source_url": "https://static.gacne.com.cn/Public/Uploads/home/pic/file/2026/08/28c6dc84-bdfa-4d19-830b-14a7bec0bb07.jpg",
+    "source_page": "https://www.aion.com.cn/vehicles/aion_car_introduce?cid=58",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aion-catalog-5": {
+    "source_url": "https://static.gacne.com.cn/Public/Uploads/home/pic/file/2026/08/902be8f3-3936-4b55-bea5-56f38655b4a9.jpeg",
+    "source_page": "https://www.aion.com.cn/vehicles/aion_car_introduce?cid=62",
+    "width": 1920,
+    "height": 1213,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wuling-catalog-1": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2026-03-28/d46f383ccc390374f08d498ef6c500a8.png",
+    "source_page": "https://www.sgmw.com.cn/wulingSilverBadge",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wuling-catalog-2": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2025-04-19/bac90434abfe1b5cd0d68c701a5dd0ac.png",
+    "source_page": "https://www.sgmw.com.cn/wulingSilverBadge",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wuling-catalog-3": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2024-09-20/15e1ad2ef47186fa5be17ac754bd7b37.png",
+    "source_page": "https://www.sgmw.com.cn/wulingSilverBadge",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wuling-catalog-4": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2025-08-19/ac857ac9302002bca0fbc91b9ff38570.png",
+    "source_page": "https://www.sgmw.com.cn/wulingSilverBadge",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wuling-catalog-5": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2025-08-18/6ad6fb87edc39acbae128712dfbc1d48.png",
+    "source_page": "https://www.sgmw.com.cn/wulingSilverBadge",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "baojun-catalog-1": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2025-05-16/642acb26a3e95958cc874139dc495b1f.png",
+    "source_page": "https://www.sgmw.com.cn/baojun",
+    "width": 1600,
+    "height": 800,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "baojun-catalog-2": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2025-05-15/2b5fdde5fd8e7b7da69fca973dd8541e.png",
+    "source_page": "https://www.sgmw.com.cn/baojun",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "baojun-catalog-4": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2024-09-10/2d278c8599944295d3fc64c3f341b44f.png",
+    "source_page": "https://www.sgmw.com.cn/baojun",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "baojun-catalog-5": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/2025-04-11/9099b28f3fb261506a047567bfe461ad.png",
+    "source_page": "https://www.sgmw.com.cn/baojun",
+    "width": 960,
+    "height": 480,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aeolus-catalog-1": {
+    "source_url": "https://www.dfpv.com.cn/Cg/Upload/www.dfpv.com.cn/image/260116/2026011614113483804.jpg",
+    "source_page": "https://www.dfpv.com.cn/carlist.html?model_id=29",
+    "width": 1920,
+    "height": 930,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aeolus-catalog-2": {
+    "source_url": "https://www.dfpv.com.cn/Cg/Upload/www.dfpv.com.cn/image/260116/2026011614151094841.jpg",
+    "source_page": "https://www.dfpv.com.cn/carlist.html?model_id=25",
+    "width": 1920,
+    "height": 930,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aeolus-catalog-3": {
+    "source_url": "https://www.dfpv.com.cn/Cg/Upload/www.dfpv.com.cn/image/250413/2025041318223610364.png",
+    "source_page": "https://www.dfpv.com.cn/carlist.html?model_id=32",
+    "width": 2250,
+    "height": 1266,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aeolus-catalog-4": {
+    "source_url": "https://www.dfpv.com.cn/Cg/Upload/www.dfpv.com.cn/image/250809/2025080913135352637.png",
+    "source_page": "https://www.dfpv.com.cn/carlist.html?model_id=35",
+    "width": 1125,
+    "height": 612,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "aeolus-catalog-5": {
+    "source_url": "https://www.dfpv.com.cn/Cg/Upload/www.dfpv.com.cn/image/240506/2024050610440955185.jpg",
+    "source_page": "https://www.dfpv.com.cn/carlist.html?model_id=31",
+    "width": 1920,
+    "height": 930,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mhero-catalog-1": {
+    "source_url": "https://h5.m-hero.com/website/20230825/m917/swiper03_03.png",
+    "source_page": "https://www.m-hero.com/m917",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "mhero-catalog-2": {
+    "source_url": "https://h5.m-hero.com/website/20250817/m817/07.webp",
+    "source_page": "https://www.m-hero.com/m817",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "trumpchi-catalog-1": {
+    "source_url": "https://www.gacmotor.com/gs3_2026/images/p-1-02-pc.jpg",
+    "source_page": "https://www.gacmotor.com/gs3_2026/",
+    "width": 1920,
+    "height": 950,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "trumpchi-catalog-2": {
+    "source_url": "https://www.gacmotor.com/gs4max_new/images/title_13.jpg",
+    "source_page": "https://www.gacmotor.com/gs4max_new/",
+    "width": 1920,
+    "height": 950,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "trumpchi-catalog-4": {
+    "source_url": "https://www.gacmotor.com/m6max_new/images/title_7.jpg",
+    "source_page": "https://www.gacmotor.com/m6max_new/",
+    "width": 1920,
+    "height": 950,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "trumpchi-catalog-5": {
+    "source_url": "https://www.gacmotor.com/2026m8_new/images/title_3.jpg?t=20260316",
+    "source_page": "https://www.gacmotor.com/2026m8_new/",
+    "width": 1920,
+    "height": 950,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "trumpchi-catalog-3": {
+    "source_url": "https://br-www-resouce-cdn.gacgroup.com/static/Global/tenant/cms/common/202503/bcfb290c-79ab-429e-a2b2-7624b0daf0a0.webp",
+    "source_page": "https://www.gacgroup.com/en/suv/gac-gs8",
+    "width": 1920,
+    "height": 988,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hyptec-catalog-1": {
+    "source_url": "https://hyper-resouce.aion.com.cn/Public/Uploads/home/pic/file/2026/09/192dadce-4d2f-44fc-be27-70a62b9ab4ae.jpg",
+    "source_page": "https://www.hyptec.com/vehicles/aion_car_introduce?alias=hyper_ht",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hyptec-catalog-2": {
+    "source_url": "https://hyper-resouce.aion.com.cn/Public/Uploads/home/pic/file/2025/07/0db9471b-e868-447e-9818-9c0843826d5f.jpg",
+    "source_page": "https://www.hyptec.com/vehicles/aion_car_introduce?alias=hyper_gt",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hyptec-catalog-3": {
+    "source_url": "https://hyper-resouce.aion.com.cn/Public/Uploads/home/pic/file/2026/08/922986d9-f7ea-4b15-94dd-3437e989be6d.jpg",
+    "source_page": "https://www.hyptec.com/vehicles/aion_car_introduce?alias=hyper_hl",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "hyptec-catalog-4": {
+    "source_url": "https://hyper-resouce.aion.com.cn/Public/Uploads/home/pic/file/2024/08/53152cdc-c400-4eb3-9a92-39e108cbd3a0.jpg",
+    "source_page": "https://www.hyptec.com/vehicles/aion_car_introduce?alias=hyper_ssr",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "voyah-catalog-1": {
+    "source_url": "https://www.voyah.com.cn/voyah-resources/images/car/free/kv_1920.png",
+    "source_page": "https://www.voyah.com.cn/free.html",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "voyah-catalog-2": {
+    "source_url": "https://www.voyah.com.cn/voyah-resources/images/car/newDreamer26/kv_1920.jpg",
+    "source_page": "https://www.voyah.com.cn/newDreamer26.html",
+    "width": 5760,
+    "height": 3240,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "voyah-catalog-3": {
+    "source_url": "https://www.voyah.com.cn/voyah-resources/images/car/passion/1920/fl02.jpg",
+    "source_page": "https://www.voyah.com.cn/passion.html",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "voyah-catalog-4": {
+    "source_url": "https://www.voyah.com.cn/voyah-resources/images/car/newCourage/1920/sc_3.jpg",
+    "source_page": "https://www.voyah.com.cn/newCourage.html",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "voyah-catalog-5": {
+    "source_url": "https://www.voyah.com.cn/voyah-resources/images/car/titan/1920/sc_1.jpg",
+    "source_page": "https://www.voyah.com.cn/titan.html",
+    "width": 3840,
+    "height": 2160,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "wey-catalog-4": {
+    "source_url": "https://presse.gwm-motor.de/wp-content/uploads/2024/02/GWM-WEY-03_-72-scaled.jpg",
+    "source_page": "https://presse.gwm-motor.de/1581/gwm-wey-03/",
+    "width": 2560,
+    "height": 1576,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "forthing-catalog-1": {
+    "source_url": "https://cars.fxauto.com.cn/event/t5evo/images/bg_06.jpg?v=3.4",
+    "source_page": "https://cars.fxauto.com.cn/event/t5evo/index.html",
+    "width": 1920,
+    "height": 960,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "forthing-catalog-4": {
+    "source_url": "https://cars.fxauto.com.cn/event/m4/img/color/1.jpg?e20e78fe",
+    "source_page": "https://cars.fxauto.com.cn/event/m4/index.html",
+    "width": 1920,
+    "height": 926,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "forthing-catalog-2": {
+    "source_url": "https://xinghai.fxauto.com.cn/_nuxt/pic_5_3.j8txJdfk.jpg",
+    "source_page": "https://xinghai.fxauto.com.cn/V9yx/",
+    "width": 2581,
+    "height": 1470,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "forthing-catalog-3": {
+    "source_url": "https://xinghai.fxauto.com.cn/_nuxt/4.gf2OkK3k.jpg",
+    "source_page": "https://xinghai.fxauto.com.cn/S7/",
+    "width": 2880,
+    "height": 1733,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "forthing-catalog-5": {
+    "source_url": "https://cars.fxauto.com.cn/event/fxlt/assets/1-18d94271.jpg",
+    "source_page": "https://cars.fxauto.com.cn/event/fxlt/index.html",
+    "width": 1920,
+    "height": 1080,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "baojun-catalog-3": {
+    "source_url": "https://ow-img.sgmwsales.com/ow/instruction/70_宝骏云朵_img.png",
+    "source_page": "https://www.sgmw.com.cn/carGuide",
+    "width": 3125,
+    "height": 1250,
+    "category": "exterior",
+    "note": "Official manufacturer promotional image; visually inspected for correct model and no third-party watermark.",
+    "permission_status": "unverified"
+  },
+  "arcfox-catalog-1": {
+    "source_url": "https://www.arcfox.com.cn/NewS5/images/pc/part1_3.jpg",
+    "source_page": "https://www.arcfox.com.cn/NewS5/index.html",
+    "category": "exterior",
+    "width": 2200,
+    "height": 1179,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "arcfox-catalog-2": {
+    "source_url": "https://www.arcfox.com.cn/T5/images/pc/part1_2.jpg",
+    "source_page": "https://www.arcfox.com.cn/T5/index.html",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1242,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "arcfox-catalog-3": {
+    "source_url": "https://www.arcfox.com.cn/static/web/img2022/s/pc/banner.png",
+    "source_page": "https://www.arcfox.com.cn/s.html",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "arcfox-catalog-4": {
+    "source_url": "https://www.arcfox.com.cn/static/web/img2022/t/pc/definition.png",
+    "source_page": "https://www.arcfox.com.cn/t.html",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-catalog-3": {
+    "source_url": "https://x7.beijingauto.com.cn/images/2025/9.jpg",
+    "source_page": "https://x7.beijingauto.com.cn/",
+    "category": "exterior",
+    "width": 930,
+    "height": 532,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-off-road-catalog-1": {
+    "source_url": "https://bj30.beijingauto.com.cn/images/BJ30lvxingjiaggb10.png",
+    "source_page": "https://bj30.beijingauto.com.cn/",
+    "category": "exterior",
+    "width": 930,
+    "height": 532,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-off-road-catalog-2": {
+    "source_url": "https://bj40fuel.beijingauto.com.cn/images/jingcai/33.png",
+    "source_page": "https://bj40fuel.beijingauto.com.cn/",
+    "category": "exterior",
+    "width": 930,
+    "height": 532,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "onvo-catalog-1": {
+    "source_url": "https://cdn-up-public.onvo.cn/www-alps-cn/www/l60/g1.6/soo/exterior/exterior-carousel-P1-04-desktop.jpg",
+    "source_page": "https://www.onvo.cn/l60",
+    "category": "exterior",
+    "width": 2232,
+    "height": 1360,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "onvo-catalog-2": {
+    "source_url": "https://cdn-up-public.onvo.cn/www-alps-cn/www/l90/se/blue-gold/product/topHero-desktop.jpg",
+    "source_page": "https://www.onvo.cn/l90",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "firefly-catalog-1": {
+    "source_url": "https://cdn-up-public.firefly.com.cn/www-firefly-cn/admin-file-upload/stg/2026-04-04/2428a7/exterior-peach-desktop.png",
+    "source_page": "https://www.firefly.com.cn/firefly",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "xpeng-catalog-1": {
+    "source_url": "https://xps01.xiaopeng.com/cms/material/pic/2026/08-18/pic_20260818180251_76099.jpg",
+    "source_page": "https://www.xiaopeng.com/m03.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "xpeng-catalog-2": {
+    "source_url": "https://xps01.xiaopeng.com/cms/material/pic/2025/12-22/pic_20251222193605_65524.jpg",
+    "source_page": "https://www.xiaopeng.com/p7+.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 1960,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "xpeng-catalog-3": {
+    "source_url": "https://xps01.xiaopeng.com/cms/material/pic/2026/03-03/pic_20260303144055_70303.jpg",
+    "source_page": "https://www.xiaopeng.com/g6.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "xpeng-catalog-4": {
+    "source_url": "https://xps01.xiaopeng.com/cms/material/pic/2026/01-06/pic_20260106210945_22014.jpg",
+    "source_page": "https://www.xiaopeng.com/g9.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "xpeng-catalog-5": {
+    "source_url": "https://xps01.xiaopeng.com/cms/material/pic/2026/02-27/pic_20260227135454_26341.jpg",
+    "source_page": "https://www.xiaopeng.com/x9.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "nio-catalog-1": {
+    "source_url": "https://cdn-udp-public.eu.nio.com/www-nio/admin-file-upload/prod/2026-04-02/c25292/ET5-Desktop.jpg",
+    "source_page": "https://www.nio.com/et5",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "nio-catalog-2": {
+    "source_url": "https://cdn-udp-public.eu.nio.com/www-nio/admin-file-upload/prod/2026-04-02/64c277/ET5T-Desktop.jpg",
+    "source_page": "https://www.nio.com/et5-touring",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "nio-catalog-3": {
+    "source_url": "https://cdn-udp-public.eu.nio.com/www-nio/cdn-static/mynio/nextjs/images/et7-2024/top-hero/top-hero-desktop.jpg",
+    "source_page": "https://www.nio.com/et7",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "nio-catalog-4": {
+    "source_url": "https://cdn-udp-public.eu.nio.com/www-nio/admin-file-upload/prod/2026-04-02/476636/ES6-Desktop.jpg",
+    "source_page": "https://www.nio.com/es6",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "nio-catalog-5": {
+    "source_url": "https://cdn-udp-public.eu.nio.com/www-nio/es8-2025/nd25/top-hero/top-hero-desktop.jpg",
+    "source_page": "https://www.nio.com/es8",
+    "category": "exterior",
+    "width": 2880,
+    "height": 1800,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "gac-toyota-catalog-2": {
+    "source_url": "https://www.gac-toyota.com.cn/2022/src/assets/img/newhighlander/KV00-PC.jpg",
+    "source_page": "https://www.gac-toyota.com.cn/vehicles/newhighlander/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "gac-toyota-catalog-3": {
+    "source_url": "https://www.gac-toyota.com.cn/2022/src/assets/img/frontlander/KV01-PC.jpg",
+    "source_page": "https://www.gac-toyota.com.cn/vehicles/frontlander/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "gac-toyota-catalog-4": {
+    "source_url": "https://www.gac-toyota.com.cn/2022/src/assets/img/wildlander/KV01-PC.jpg",
+    "source_page": "https://www.gac-toyota.com.cn/vehicles/wildlander/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "gac-toyota-catalog-5": {
+    "source_url": "https://www.gac-toyota.com.cn/2022/src/assets/img/sienna/KV01-PC.jpg",
+    "source_page": "https://www.gac-toyota.com.cn/vehicles/sienna/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-honda-catalog-1": {
+    "source_url": "https://www.dongfeng-honda.com/cr-v/images/page1/pc/meituBig/p0.jpg",
+    "source_page": "https://www.dongfeng-honda.com/cr-v/",
+    "category": "exterior",
+    "width": 1500,
+    "height": 900,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-honda-catalog-2": {
+    "source_url": "https://www.dongfeng-honda.com/civic/images/pet_slices/slide01.jpg",
+    "source_page": "https://www.dongfeng-honda.com/civic/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-honda-catalog-4": {
+    "source_url": "https://www.dongfeng-honda.com/hr-v/img1/slide2/bj.jpg",
+    "source_page": "https://www.dongfeng-honda.com/hr-v/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-hyundai-catalog-1": {
+    "source_url": "https://elantra.beijing-hyundai.com.cn/assets/resource/vehicle/kv/pc_kv.jpg",
+    "source_page": "https://elantra.beijing-hyundai.com.cn/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-hyundai-catalog-2": {
+    "source_url": "https://sonata.beijing-hyundai.com.cn/sonata/assets/resource/vehicle/outside/img01.jpg",
+    "source_page": "https://sonata.beijing-hyundai.com.cn/sonata",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-hyundai-catalog-3": {
+    "source_url": "https://tucson.beijing-hyundai.com.cn/assets/resource/vehicle/kv/pc_kv.jpg",
+    "source_page": "https://tucson.beijing-hyundai.com.cn/",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-hyundai-catalog-4": {
+    "source_url": "https://santafe.beijing-hyundai.com.cn/assets/resource/vehicle/outside/img01.jpg",
+    "source_page": "https://santafe.beijing-hyundai.com.cn/",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-hyundai-catalog-5": {
+    "source_url": "https://custo.beijing-hyundai.com.cn/assets/resource/vehicle/kv/pc_kv.jpg",
+    "source_page": "https://custo.beijing-hyundai.com.cn/",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-peugeot-catalog-4": {
+    "source_url": "https://www.dpca.com.cn/upload/cms/public/2024/1/11/696666423cf9434ca288fd7ebb2e8822.jpg",
+    "source_page": "https://www.dpca.com.cn/",
+    "category": "exterior",
+    "width": 1290,
+    "height": 600,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-citroen-catalog-1": {
+    "source_url": "https://www.dpca.com.cn/upload/cms/public/2025/9/1/c04dc243ec704e2bb2b759638e813156.png",
+    "source_page": "https://www.dpca.com.cn/",
+    "category": "exterior",
+    "width": 2828,
+    "height": 1434,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "leapmotor-catalog-3": {
+    "source_url": "https://lp-website-oss-static.leapmotor.com/Leapmotor-Chinese-web/C10-NEW/PC/screen4-1.jpg",
+    "source_page": "https://www.leapmotor.com/C10.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "leapmotor-catalog-4": {
+    "source_url": "https://lp-website-oss-static.leapmotor.com/Leapmotor-Chinese-web/C11-NEW/PC/screen6-2.jpg",
+    "source_page": "https://www.leapmotor.com/C11.html",
+    "category": "exterior",
+    "width": 2960,
+    "height": 1668,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "leapmotor-catalog-5": {
+    "source_url": "https://lp-website-oss-static.leapmotor.com/Leapmotor-Chinese-web/C16-New/PC/screen4-1.jpg",
+    "source_page": "https://www.leapmotor.com/C16.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-off-road-catalog-3": {
+    "source_url": "https://bj60.beijingauto.com.cn/images/pc_06.jpg",
+    "source_page": "https://bj60.beijingauto.com.cn/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1229,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "gac-toyota-catalog-1": {
+    "source_url": "https://www.gac-toyota.com.cn/2022/src/home/image/pc-2024camry.jpg",
+    "source_page": "https://www.gac-toyota.com.cn/vehicles/newcamry/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-honda-catalog-3": {
+    "source_url": "https://www.dongfeng-honda.com/inspire/img/a0/video_bg.jpg",
+    "source_page": "https://www.dongfeng-honda.com/inspire/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-honda-catalog-5": {
+    "source_url": "https://www.dongfeng-honda.com/ur-v/image/a0/video_bg.png",
+    "source_page": "https://www.dongfeng-honda.com/ur-v/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "faw-volkswagen-catalog-1": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/attachment/9c3804cf-28f0-4a29-9203-36346fb9c90e.jpg",
+    "source_page": "https://vw.faw-vw.com/#/CarDetails?vsid=9",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "faw-volkswagen-catalog-2": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/attachment/1eea520d-456f-497d-b2dc-3f00f8941645.jpg",
+    "source_page": "https://vw.faw-vw.com/#/CarDetails?vsid=20",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "faw-volkswagen-catalog-3": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/attachment/bb4c86b4-cdaf-4c27-96c6-9b3a7e7df05f.jpg",
+    "source_page": "https://vw.faw-vw.com/#/CarDetails?vsid=22",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "faw-volkswagen-catalog-4": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/attachment/47c460c8-09d7-4e09-b3de-018a5fdde16a.jpg",
+    "source_page": "https://vw.faw-vw.com/#/CarDetails?vsid=24",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "faw-volkswagen-catalog-5": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/attachment/8ccb7e50-5810-4531-9f6a-7f3bab95b6f2.jpg",
+    "source_page": "https://vw.faw-vw.com/#/CarDetails?vsid=25",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "jetta-catalog-1": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/jetta/bb274d71-840b-4b9d-8eff-62bc3d16fafd.jpg",
+    "source_page": "https://jetta.faw-vw.com/#/vehicle-detail?vsid=37",
+    "category": "exterior",
+    "width": 1920,
+    "height": 960,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "jetta-catalog-2": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/jetta/98fdc7ce-8488-4c69-a418-089832dbd9b3.jpeg",
+    "source_page": "https://jetta.faw-vw.com/#/vehicle-detail?vsid=41",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "jetta-catalog-3": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/jetta/26810d24-4f57-41ec-88df-892981c196cb.jpeg",
+    "source_page": "https://jetta.faw-vw.com/#/vehicle-detail?vsid=40",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "jetta-catalog-4": {
+    "source_url": "https://vw-osec-prod-1256532032.cos.ap-beijing.myqcloud.com/jetta/f0547437-fa22-47c0-a576-108f8a551dee.jpeg",
+    "source_page": "https://jetta.faw-vw.com/#/vehicle-detail?vsid=39",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "leapmotor-catalog-2": {
+    "source_url": "https://lp-website-oss-static.leapmotor.com/Leapmotor-Chinese-web/2026-new-B10/PC/screen1.jpg",
+    "source_page": "https://www.leapmotor.com/B10.html",
+    "category": "exterior",
+    "width": 3840,
+    "height": 2160,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "saic-volkswagen-catalog-1": {
+    "source_url": "https://brand2.svw-volkswagen.com/cms/prod/I/20260210/a1c76aeb658ef7348ad046faab6e6968.jpg",
+    "source_page": "https://www.svw-volkswagen.com/lavida/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 940,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "saic-volkswagen-catalog-2": {
+    "source_url": "https://brand2.svw-volkswagen.com/cms/prod/I/20230913/fd07aa8907e3b3e52ecccf16bfdf542a.jpg",
+    "source_page": "https://www.svw-volkswagen.com/passat/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 940,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "saic-volkswagen-catalog-3": {
+    "source_url": "https://brand2.svw-volkswagen.com/cms/prod/I/20240318/bba6af24aa261f6da344ffa1d44e6f67.jpg",
+    "source_page": "https://www.svw-volkswagen.com/tiguanl/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 940,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "saic-volkswagen-catalog-4": {
+    "source_url": "https://brand2.svw-volkswagen.com/cms/prod/I/20230922/ed3352748adcf2d61934d64295bfa8e2.jpg",
+    "source_page": "https://www.svw-volkswagen.com/teramont/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 940,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "saic-volkswagen-catalog-5": {
+    "source_url": "https://brand2.svw-volkswagen.com/cms/prod/I/20231228/3f29db96ac23599e27d647c66ffa7c56.jpg",
+    "source_page": "https://www.svw-volkswagen.com/lamandol/",
+    "category": "exterior",
+    "width": 1920,
+    "height": 940,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "leapmotor-catalog-1": {
+    "source_url": "https://lp-website-oss-static.leapmotor.com/Leapmotor-Chinese-web/T03-23/t03-gallery-01.jpg",
+    "source_page": "https://www.leapmotor.com/T03-Excellent.html",
+    "category": "exterior",
+    "width": 8000,
+    "height": 6000,
+    "note": "Official manufacturer promotional image; visually checked model identity.",
+    "permission_status": "unverified"
+  },
+  "beijing-catalog-5": {
+    "source_url": "https://www.baic.cw/web/image/2594-1907dda9/eplus1.jpg",
+    "source_page": "https://www.baic.cw/eu5-plus",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1076,
+    "note": "Official BAIC Curacao EU5 PLUS promotional exterior; original manufacturer feature text retained.",
+    "permission_status": "unverified"
+  },
+  "beijing-catalog-4": {
+    "source_url": "https://baic.com.ar/wp-content/uploads/2023/07/X55-II-1-scaled-e1736453261412.jpg",
+    "source_page": "https://baic.com.ar/",
+    "category": "exterior",
+    "width": 1800,
+    "height": 1159,
+    "note": "Official BAIC Argentina X55 II promotional image, the export name of Beijing Mofang.",
+    "permission_status": "unverified"
+  },
+  "beijing-catalog-1": {
+    "source_url": "https://baic.com.ar/wp-content/uploads/2023/07/X35-3-1024x683.png",
+    "source_page": "https://baic.com.ar/baic-x35/",
+    "category": "exterior",
+    "width": 1024,
+    "height": 683,
+    "note": "Official BAIC Argentina promotional image of X35, the export name of Beijing X3; 1024px landscape scene.",
+    "permission_status": "unverified"
+  },
+  "beijing-off-road-catalog-4": {
+    "source_url": "https://www.baic.cw/web/image/2258-5c4722b8/pc9%20%E6%8B%B7%E8%B4%9D_20230616101507A155.jpg",
+    "source_page": "https://www.baic.cw/bj80",
+    "category": "exterior",
+    "width": 1920,
+    "height": 1080,
+    "note": "Official BAIC Curacao BJ80 promotional scene; original Comfort Mode feature text retained.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-citroen-catalog-2": {
+    "source_url": "https://stellantis3.dam-broadcast.com/medias/domain12808/media107773/2331945-e5w2bc99dh.jpg",
+    "source_page": "https://www.media.stellantis.com/uk-en/citroen/c5-x",
+    "category": "exterior",
+    "width": 2917,
+    "height": 2157,
+    "note": "Official Stellantis Citroen C5 X Hypnos promotional exterior, coastal road scene; global-market trim.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-citroen-catalog-3": {
+    "source_url": "https://stellantis3.dam-broadcast.com/medias/domain12808/media101147/344269-l26g5lswys.jpg",
+    "source_page": "https://www.media.stellantis.com/fr-fr/citroen/press/avec-nouveau-suv-c3-xr-citroen-renforce-son-offensive-suv-en-chine",
+    "category": "exterior",
+    "width": 4000,
+    "height": 2798,
+    "note": "Official Stellantis Citroen China-market C3-XR 2019 press image, front three-quarter studio photograph.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-peugeot-catalog-5": {
+    "source_url": "https://h5-sapp.dpca.com.cn/05fa7f480abf47c8ac0f3b6b0ca57040.jpg",
+    "source_page": "https://www.peugeot.com.cn/#/carDetail?seriesId=MPS-1PWPCB",
+    "category": "exterior",
+    "width": 3840,
+    "height": 1826,
+    "note": "Dongfeng Peugeot China official 408X campaign KV. Original manufacturer promotional text retained. Car is right of center; suggested card object-position 70% center.",
+    "permission_status": "unverified",
+    "recommended_object_position": "70% center"
+  },
+  "arcfox-catalog-5": {
+    "source_url": "https://image.arcfox.com.cn/news/text/ade340c0eab845d0a9615c825fbb4a30.jpg",
+    "source_page": "https://www.arcfox.com.cn/pagehtml/news2023-09-21-10-58-31.html",
+    "category": "exterior",
+    "width": 1274,
+    "height": 715,
+    "note": "Original Kaola official launch promotional family lavender field scene, not Kaola S.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-peugeot-catalog-1": {
+    "source_url": "https://www.dpca.com.cn/upload/cms/public/2024/3/25/2cfa36f6c88a42e299236226023aa87c.png",
+    "source_page": "https://www.dpca.com.cn/xwzx/dt/detail?articleId=1772188097123975168",
+    "width": 1270,
+    "height": 838,
+    "category": "exterior",
+    "note": "Chinese-market Dongfeng Peugeot 408 sedan (not 408X). Official DPCA launch promotional exterior, visually verified.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-peugeot-catalog-2": {
+    "source_url": "https://www.dpca.com.cn/upload/20231231/202312312114517712.png",
+    "source_page": "https://www.dpca.com.cn/xwzx/dt/detail?articleId=1745327643269529600",
+    "width": 1496,
+    "height": 958,
+    "category": "exterior",
+    "note": "Chinese-market Dongfeng Peugeot 508L long-wheelbase sedan. Official DPCA launch promotional exterior, visually verified.",
+    "permission_status": "unverified"
+  },
+  "dongfeng-peugeot-catalog-3": {
+    "source_url": "https://www.dpca.com.cn/upload/20231231/202312312124587660.jpg",
+    "source_page": "https://www.dpca.com.cn/xwzx/dt/detail?articleId=1745328098049523712",
+    "width": 1268,
+    "height": 846,
+    "category": "exterior",
+    "note": "Chinese-market Dongfeng Peugeot 4008. Official DPCA launch promotional road convoy image, visually verified.",
+    "permission_status": "unverified"
+  },
+  "beijing-catalog-2": {
+    "source_url": "https://baicmotor.com/Uploads/file/20200428/20200428195623_94527.pdf",
+    "source_page": "https://baicmotor.com/Uploads/file/20200428/20200428195623_94527.pdf",
+    "category": "exterior",
+    "width": 2933,
+    "height": 1650,
+    "note": "Original embedded 2933px manufacturer KV from official BAIC 2018 annual-results presentation page 1; Senova Zhixing / legacy Beijing X5, not Mofang or X55 II. Original embedded artwork extracted intact, retaining manufacturer logo and decorative framing; not a screenshot or watermark edit.",
+    "permission_status": "unverified"
+  }
+}

@@ -1,0 +1,109 @@
+/* Shared login treatment based on the selected GX reference. */
+.merchant-auth-page{grid-template-columns:minmax(0,44fr) minmax(0,56fr);grid-template-rows:1fr auto;background:#f5f7f5}
+.merchant-auth-visual{grid-row:1/3;min-height:100svh;padding:clamp(32px,4vw,76px);background:#1c3028}
+.merchant-auth-visual>img{top:auto;right:auto;bottom:0;left:-35%;width:170%;height:auto;max-width:none;object-fit:contain;object-position:center bottom;-webkit-mask-image:linear-gradient(180deg,transparent,#000 20%);mask-image:linear-gradient(180deg,transparent,#000 20%)}
+.merchant-auth-visual:before,.merchant-auth-side:before{display:none}
+.merchant-auth-visual:after{background:linear-gradient(90deg,transparent 85%,rgba(250,251,249,.42) 94%,#fafbf9),linear-gradient(180deg,#1c3028 0%,#1c3028 24%,rgba(28,48,40,.9) 40%,rgba(28,48,40,.12) 64%,transparent 82%,rgba(9,22,17,.48))}
+.merchant-auth-brand{justify-content:space-between;gap:18px;white-space:normal}
+.merchant-auth-brand .logo{color:#f3f6f1;font-size:26px;font-weight:500;letter-spacing:.08em}
+.merchant-auth-brand .logo span{font-weight:500}
+.merchant-auth-brand>span{border:0;padding:0;font-size:10px;color:#cad5cd;letter-spacing:.08em;text-align:end}
+.merchant-auth-intro{margin-top:clamp(72px,11vh,145px);max-width:570px}
+.merchant-auth-intro>span{font-size:11px;letter-spacing:.17em;font-weight:500;color:#bacabe}
+.merchant-auth-intro h1{font-size:clamp(38px,3.4vw,66px);line-height:1.16;font-weight:500;color:#f4f7f3;margin:28px 0 25px;letter-spacing:-.04em}
+.merchant-auth-intro>p{font-size:clamp(14px,1.05vw,18px);color:#c0cec5;max-width:470px;line-height:1.75}
+.merchant-auth-stats{grid-template-columns:repeat(4,minmax(0,1fr));padding-top:22px;border-top:1px solid #ffffff45;gap:14px;margin-top:auto}
+.merchant-auth-stats strong{font-size:18px;font-weight:500;white-space:normal;overflow-wrap:anywhere}
+.merchant-auth-stats span{font-size:10px;white-space:normal;color:#d2ddd5}
+.merchant-auth-stats>div+div:before{display:none}
+.merchant-auth-side{background:linear-gradient(105deg,#fafbf9,#edf2ef);min-height:calc(100svh - 72px);padding:34px clamp(36px,5vw,100px) 0}
+.merchant-auth-side>header{min-height:64px;padding-bottom:26px;border-bottom:1px solid #dce4de;font-size:13px}
+.merchant-auth-side>header nav{gap:20px}
+.merchant-auth-card-area{max-width:740px;margin:auto;padding:44px 0 16px}
+.merchant-auth-form-wrap{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.merchant-auth-card-heading h2{font-size:clamp(29px,2.5vw,46px);font-weight:550;letter-spacing:-.04em;line-height:1.2;margin-bottom:13px}
+.merchant-auth-card-heading p{font-size:14px;color:#748378;line-height:1.65}
+.merchant-auth-mode{margin:26px 0 20px;background:#edf1ee;border-color:#d8e1da;border-radius:4px}
+.merchant-auth-mode button{border-radius:3px;font-size:14px;padding:15px 12px;gap:12px}
+.merchant-auth-mode small{font-size:11px}
+.merchant-auth-mode button[aria-pressed=true]{background:#213e30}
+.merchant-auth-side input:not([type=checkbox]){height:50px;border-radius:4px;font-size:14px;background:#fdfefd;border-color:#cfd9d1}
+.merchant-auth-side label{font-size:13px;font-weight:400}
+.merchant-auth-side .autolink-email-auth{gap:16px;margin-top:20px}
+.merchant-auth-side .autolink-email-auth .email-tabs{background:#eaf0eb;border-radius:4px}
+.merchant-auth-side .autolink-email-auth .email-tabs button{border-radius:3px;min-height:40px;font-size:13px}
+.merchant-auth-side .autolink-email-auth .email-submit,.merchant-auth-side .trade-primary{min-height:50px;border-radius:4px;background:#213e30;font-size:14px;font-weight:500}
+.merchant-auth-side .autolink-email-auth .email-code-line button{border-radius:4px}
+.merchant-auth-social button{height:50px;border-radius:4px;box-shadow:none;background:transparent;font-size:14px}
+.merchant-auth-assurance{margin-top:22px}
+.merchant-auth-page>.merchant-auth-footer{grid-column:2;background:#edf2ef;padding:22px clamp(36px,5vw,100px);min-height:72px;flex-wrap:wrap;gap:12px;color:#7d8c82}
+.merchant-auth-footer>span,.merchant-auth-footer strong{color:#4e6256}
+.merchant-auth-footer i{background:#c9d5cc}
+.merchant-auth-language>div{z-index:10}
+.merchant-auth-mode button:focus-visible,.merchant-auth-social button:focus-visible{outline:2px solid #6d9278;outline-offset:3px}
+/* Keep the same image proportions and form styling for buyer accounts. */
+.login-shell{direction:ltr;background:#f5f7f5}
+.login-shell .login-hero{background:#1c3028}
+.login-shell .login-hero:after{background:linear-gradient(90deg,transparent 85%,rgba(250,251,249,.42) 94%,#fafbf9),linear-gradient(180deg,#1c3028 0%,#1c3028 24%,rgba(28,48,40,.9) 40%,rgba(28,48,40,.12) 64%,transparent 82%,rgba(9,22,17,.48))}
+.login-shell .login-main{background:linear-gradient(105deg,#fafbf9,#edf2ef)}
+.login-shell .login-card{max-width:740px}
+.login-shell .login-card .buyer-role-option{border-radius:4px;min-height:80px;padding:15px 14px}
+.login-shell .login-card .buyer-role-option.active,.login-shell .login-card .buyer-continue{background:#213e30}
+.login-shell .login-card .google-button{border-radius:4px;background:transparent;box-shadow:none}
+[dir=rtl] .login-shell .login-hero,[dir=rtl] .login-shell .login-main{direction:rtl}
+@media(min-width:761px) and (max-width:1150px){
+ .merchant-auth-visual{padding:36px 28px 28px}
+ .merchant-auth-brand{gap:10px}
+ .merchant-auth-brand .logo{font-size:21px}
+ .merchant-auth-brand>span{font-size:9px}
+ .merchant-auth-intro{margin-top:95px}
+ .merchant-auth-intro h1{font-size:38px}
+ .merchant-auth-side{padding:26px 30px 0}
+ .merchant-auth-side>header nav a:nth-child(n+2){display:none}
+ .merchant-auth-page>.merchant-auth-footer{padding-inline:30px}
+ .merchant-auth-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .merchant-auth-mode button{font-size:12px;gap:8px}
+ .merchant-auth-mode small{font-size:10px}
+}
+@media(max-width:900px){
+ .login-shell .login-hero{min-height:390px;padding:26px 24px 225px}
+ .login-shell .login-hero:before{height:280px;background-size:170% auto}
+ .login-shell .login-hero:after{background:linear-gradient(180deg,transparent 86%,#fafbf9),linear-gradient(180deg,#1c3028 0%,#1c3028 20%,rgba(28,48,40,.9) 35%,transparent 68%,rgba(9,22,17,.25))}
+ .login-shell .login-hero>div{margin-top:24px}
+ .login-shell .login-hero h1{font-size:31px;margin:14px 0 12px;max-width:550px}
+ .login-shell .login-hero p{font-size:12px;max-width:500px}
+ .login-shell .login-main{padding:36px 24px 48px}
+}
+@media(max-width:760px){
+ .merchant-auth-page{display:flex;flex-direction:column}
+ .merchant-auth-visual{display:flex;min-height:390px;padding:26px 24px 225px}
+ .merchant-auth-brand .logo{font-size:23px}
+ .merchant-auth-brand>span{font-size:9px}
+ .merchant-auth-visual:after{background:linear-gradient(180deg,transparent 86%,#fafbf9),linear-gradient(180deg,#1c3028 0%,#1c3028 20%,rgba(28,48,40,.9) 35%,transparent 68%,rgba(9,22,17,.25))}
+ .merchant-auth-intro{margin-top:24px}
+ .merchant-auth-intro>span{font-size:9px}
+ .merchant-auth-intro h1{font-size:31px;margin:14px 0 12px}
+ .merchant-auth-intro>p{font-size:12px;max-width:500px}
+ .merchant-auth-stats{display:none}
+ .merchant-auth-side{padding:22px 20px 0;min-height:0}
+ .merchant-auth-side>header{min-height:52px;padding-bottom:20px;gap:12px}
+ .merchant-auth-side>header nav{gap:12px}
+ .merchant-auth-side>header nav a:nth-child(n+2){display:none}
+ .merchant-auth-card-area{max-width:600px;padding:32px 0 16px}
+ .merchant-auth-card-heading h2{font-size:29px}
+ .merchant-auth-card-heading p{font-size:12px}
+ .merchant-auth-mode button{gap:8px;font-size:12px;padding:13px 8px}
+ .merchant-auth-mode small{font-size:10px}
+ .merchant-auth-social button{font-size:13px}
+ .merchant-auth-assurance{font-size:9px}
+ .merchant-auth-page>.merchant-auth-footer{padding:22px 20px;min-height:88px}
+ .merchant-auth-mobile-brand{display:none}
+ .merchant-auth-language{padding-inline-start:12px}
+}
+@media(max-width:420px){
+ .login-shell .login-card .buyer-role-option{flex-direction:row;align-items:center;min-height:88px;padding:12px 10px}
+ .login-shell .login-card .buyer-role-option svg{width:20px;flex-basis:20px}
+ .login-shell .login-card .buyer-role-option strong{font-size:12px}
+ .merchant-auth-brand>span{max-width:120px}
+ .merchant-auth-side input:not([type=checkbox]),.login-shell .login-card .field input{font-size:16px}
+}

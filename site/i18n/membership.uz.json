@@ -1,0 +1,151 @@
+{
+  "membership": {
+    "notice": {
+      "title": "A’zo bo‘lishdan oldin",
+      "subtitle": "AUTOLINK a’zolik xizmati, avtomobil xaridi, yetkazib beruvchilarni tekshirish va hisob qoidalari bilan tanishing."
+    },
+    "faq": {
+      "membership": {
+        "title": "A’zolik xizmati",
+        "items": [
+          {
+            "question": "A’zolik qanday imkoniyatlar beradi?",
+            "answer": "Tanlangan rejaga qarab, a’zolar uchun avtomobil ma’lumotlari va narx takliflari, yetkazib beruvchi profili va aloqa ma’lumotlari, saqlangan avtomobillar hamda xaridga oid boshqa vositalardan foydalanasiz. Har bir rejaning aniq imtiyozlari xarid sahifasida ko‘rsatiladi."
+          },
+          {
+            "question": "A’zolik muddati qachon boshlanadi?",
+            "answer": "To‘lov muvaffaqiyatli o‘tib, a’zolik faollashgan paytdan boshlanadi. Tugash sanasini hisobingizdagi «Mening a’zoligim» bo‘limida ko‘rasiz."
+          },
+          {
+            "question": "A’zolik avtomatik uzaytiriladimi?",
+            "answer": "Hozir AUTOLINK qo‘lda uzaytirish tartibidan foydalanadi. To‘langan muddat tugagach, xohlasangiz a’zolikni qayta sotib olasiz. Sizning aniq roziligingizsiz keyingi davr uchun pul yechilmaydi."
+          },
+          {
+            "question": "Narxlar keyin o‘zgarsa nima bo‘ladi?",
+            "answer": "Keyingi narx o‘zgarishi allaqachon to‘langan davrga ta’sir qilmaydi. Qayta xarid qilganda o‘sha vaqtda sahifada ko‘rsatilgan narx amal qiladi."
+          },
+          {
+            "question": "Pulni qaytarib olish mumkinmi?",
+            "answer": "AUTOLINK a’zoligi raqamli xizmat bo‘lib, ayrim funksiyalar faollashishi bilan ishlaydi. Qaytarish huquqi haqiqiy foydalanish, to‘lov holati, xarid vaqti va amaldagi qoidalarga bog‘liq. Ikki marta yoki xato yechilgan pul, yoxud to‘lovdan keyin a’zolik yoqilmagan bo‘lsa, yordam xizmatiga murojaat qiling. Batafsil shartlar qaytarish siyosatida."
+          },
+          {
+            "question": "A’zolik tugasa hisobim o‘chiriladimi?",
+            "answer": "Yo‘q. AUTOLINK hisobingiz saqlanadi, ammo a’zolarga xos funksiyalar vaqtincha ishlamasligi mumkin. Keyin yana a’zo bo‘lishingiz mumkin."
+          }
+        ]
+      },
+      "purchase": {
+        "title": "Avtomobil xaridi",
+        "items": [
+          {
+            "question": "Yetkazib beruvchi ochilgach qanday xarid qilaman?",
+            "answer": "U ochiq qilgan aloqa ma’lumotlarini ko‘rib, model, jihozlanish, narx, zaxira, yetkazish muddati, savdo shartlari, to‘lov usuli va eksport tafsilotlarini bevosita aniqlang. Xarid tomonlar kelishgan yakuniy narx taklifi yoki oldi-sotdi shartnomasiga asoslanadi."
+          },
+          {
+            "question": "Sahifadagi narx yakuniy savdo narximi?",
+            "answer": "Har doim emas. AUTOLINK narxlari xarid uchun mo‘ljal hisoblanadi. Yakuniy narx model, jihozlanish, rang, miqdor, zaxira, valyuta kursi, ishlab chiqaruvchi siyosati, eksport porti, logistika va bozorga bog‘liq. Xariddan oldin yangi rasmiy taklif so‘rang."
+          },
+          {
+            "question": "Narx taklifi muddati tugasa nima bo‘ladi?",
+            "answer": "Yetkazib beruvchi narxni qayta tasdiqlashi kerak bo‘lishi mumkin. Muddati o‘tgan taklif yashiriladi yoki belgilab qo‘yiladi. Bitta taklifning tugashi a’zolikni tugatmaydi."
+          },
+          {
+            "question": "Zaxira ma’lumoti real vaqt rejimidami?",
+            "answer": "Har doim emas. Boshqa xaridlar, dilerlar o‘rtasidagi o‘tkazmalar, ishlab chiqaruvchi siyosati, eksport rejasi yoki model yili almashishi zaxirani o‘zgartiradi. To‘lovdan oldin mavjudligini yana tasdiqlang."
+          },
+          {
+            "question": "Har bir avtomobilni mamlakatimga eksport qilsa bo‘ladimi?",
+            "answer": "Yo‘q. Import qoidalari, chiqindi me’yorlari, sertifikatlash, rul tomoni talablari, yosh cheklovi, soliqlar va modellarga ruxsat mamlakatga qarab farq qiladi. Xariddan oldin boradigan mamlakat qoidalarini tekshiring."
+          },
+          {
+            "question": "Avtomobil xususiyatlari to‘liq aniqmi?",
+            "answer": "AUTOLINK ma’lumotni yangilab borishga intiladi, biroq bir model bozor, yil va versiyaga qarab farq qilishi mumkin. Yakuniy jihozlanishni yetkazib beruvchi hujjati, VIN ma’lumoti va xarid shartnomasi bilan tekshiring."
+          }
+        ]
+      },
+      "supplier": {
+        "title": "Yetkazib beruvchilar",
+        "items": [
+          {
+            "question": "«Tekshirilgan yetkazib beruvchi» nimani anglatadi?",
+            "answer": "AUTOLINK platforma qoidalariga ko‘ra ayrim yetkazib beruvchilarning kompaniya nomi, ro‘yxatga olish ma’lumoti, litsenziyasi, aloqasi, faoliyati va resurslari haqidagi hujjatlarni tekshirishi mumkin. Tegishli tekshiruvdan o‘tganlarga «Tekshirilgan yetkazib beruvchi» belgisi berilishi mumkin."
+          },
+          {
+            "question": "Tekshiruv AUTOLINK bitimga kafolat beradi deganimi?",
+            "answer": "Yo‘q. Bu faqat o‘sha paytda mavjud ayrim ma’lumotlar ko‘rilganini bildiradi. U yetkazib beruvchining ishonchliligi, zaxirasi, narxi, shartnomani bajarishi, avtomobil sifati, to‘lov xavfsizligi, logistika muddati yoki bitim natijasiga kafolat emas."
+          },
+          {
+            "question": "Yetkazib beruvchi javob bermasa nima qilaman?",
+            "answer": "Aloqa ochilgach uzoq vaqt javob bo‘lmasa, ma’lumotlar ishlamasa yoki e’londagi avtomobil ma’lumoti jiddiy farq qilsa, AUTOLINK-ga xabar bering. Platforma vaziyatga qarab ma’lumotlarni tekshirishi yoki hisobga chora ko‘rishi mumkin."
+          },
+          {
+            "question": "Soxta yetkazib beruvchini topsam nima qilaman?",
+            "answer": "Platformada shikoyat yuboring yoki yordam xizmatiga yozing. Iloji bo‘lsa, nomi, avtomobil havolasi, yozishmalar, narx taklifi va boshqa dalillarni qo‘shing. AUTOLINK shubhali hisobni qoidalarga ko‘ra tekshirishi, cheklashi yoki o‘chirishi mumkin."
+          }
+        ]
+      },
+      "transaction": {
+        "title": "Bitim va to‘lovlar",
+        "items": [
+          {
+            "question": "AUTOLINK avtomobil pulini qabul qiladimi?",
+            "answer": "Hozirgi a’zolik xizmatiga avtomobil xaridi pulini yig‘ish yoki eskrouda saqlash kirmaydi. Odatda xaridor va yetkazib beruvchi o‘z shartnomasiga binoan bevosita hisob-kitob qiladi. Muayyan xizmat sahifasida aniq boshqacha yozilmasa, avtomobil pulini AUTOLINK a’zolik to‘lovi hisobiga yubormang."
+          },
+          {
+            "question": "A’zolik badali avtomobil uchun zakalatmi?",
+            "answer": "Yo‘q. U faqat platforma a’zoligi uchun to‘lanadi; avtomobil zakalati yoki narxi, yetkazib beruvchi kafolati, logistika yoki bojxona xarajati yoxud oldindan to‘lov emas. A’zolik to‘lovi avtomobil buyurtmasini avtomatik yaratmaydi."
+          },
+          {
+            "question": "AUTOLINK avtomobil bitimidan komissiya oladimi?",
+            "answer": "Hozir AUTOLINK asosan a’zolik badali oladi. Boshqacha aniq aytilmasa, avtomobilni ko‘rish yoki yetkazib beruvchiga murojaat qilish bitim komissiyasini keltirib chiqarmaydi. Kelajakdagi xarid agentligi, eksport, ko‘rik, logistika va boshqa xizmatlar narxi foydalanishdan oldin alohida ko‘rsatiladi."
+          },
+          {
+            "question": "AUTOLINK-da bevosita avtomobil buyurtma qila olamanmi?",
+            "answer": "AUTOLINK hozir avtomobil savdosi ma’lumoti va ta’minot zanjiri resurslarini bog‘laydi. Yetkazib beruvchiga yozish, narx so‘rash yoki so‘rov yuborish xaridni yakunlamaydi. Rasmiy bitim xaridor va sotuvchi shartnomasiga asoslanadi."
+          },
+          {
+            "question": "Bitim bo‘yicha nizo chiqsa nima bo‘ladi?",
+            "answer": "Avtomobil xarid shartnomasi odatda xaridor va yetkazib beruvchi o‘rtasida tuziladi; nizo avvalo shu shartnoma bo‘yicha hal qilinadi. AUTOLINK hisobni tekshirish, yetkazib beruvchi bilan bog‘lanish yoki platforma qoidabuzarligini ko‘rishga yordam berishi mumkin, ammo alohida kelishuvsiz tomonlar majburiyatini o‘z zimmasiga olmaydi."
+          }
+        ]
+      },
+      "account": {
+        "title": "Hisob va ma’lumotlar",
+        "items": [
+          {
+            "question": "Bitta a’zolik hisobidan bir necha kishi foydalana oladimi?",
+            "answer": "A’zolik asosan ro‘yxatdagi hisob egasi yoki shu korxonaning vakolatli xodimlari uchun. Hisobni sotish, ijaraga berish, ommaviy ulashish va avtomatik vositalar bilan ma’lumotni ko‘p miqdorda yig‘ish taqiqlanadi."
+          },
+          {
+            "question": "Yetkazib beruvchilar aloqasini ommaviy eksport qilsam bo‘ladimi?",
+            "answer": "Platforma ruxsat bergan doirada xarid uchun kerakli ma’lumotni ko‘rib saqlashingiz mumkin. AUTOLINK ruxsatisiz bazani ommaviy yig‘ish yoki eksport qilish, qayta sotish, ochiq tarqatish yoki undan raqobatchi baza yaratish mumkin emas."
+          },
+          {
+            "question": "Ma’lumotlarim yetkazib beruvchiga beriladimi?",
+            "answer": "So‘rov yuborsangiz, yetkazib beruvchiga yozsangiz yoki narx so‘rasangiz, AUTOLINK javob uchun zarur ism, kompaniya, mamlakat yoki hudud, email, telefon, WhatsApp va xarid talablarini tegishli yetkazib beruvchiga berishi mumkin. Tafsilotlar maxfiylik siyosatida."
+          },
+          {
+            "question": "AUTOLINK avtomobil dilerimi?",
+            "answer": "AUTOLINK — avtomobil savdosi ma’lumoti va ta’minot zanjiri aloqalari platformasi. Muayyan sahifada AUTOLINK sotuvchi ekani aniq yozilmasa, u ko‘rsatilgan avtomobil sotuvchisi emas. Sotuvchi — xarid shartnomasida ko‘rsatilgan kompaniya."
+          }
+        ]
+      }
+    },
+    "policies": {
+      "terms": "Xizmat shartlari",
+      "membershipTerms": "A’zolik shartlari",
+      "privacy": "Maxfiylik siyosati",
+      "refund": "Pulni qaytarish siyosati"
+    },
+    "application": {
+      "cta": "Ariza yuborish",
+      "enterpriseCta": "Korporativ reja haqida so‘rash",
+      "title": "A’zolik uchun ariza",
+      "selected": "Tanlangan reja",
+      "message": "Saytda to‘lov hozircha mavjud emas. Tanlangan reja va akkauntingiz email manzilini ko‘rsatib, AUTOLINK’ga yozing. Keyingi qadamlar bo‘yicha siz bilan bog‘lanamiz. Bu sahifada to‘lov olinmaydi va a’zolik faollashtirilmaydi.",
+      "send": "Arizani email orqali yuborish",
+      "emailLabel": "Aloqa emaili",
+      "note": "Email ilovangiz ochiladi. Xatni yuborganingizdan keyingina ariza jo‘natiladi."
+    }
+  }
+}

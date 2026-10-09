@@ -1,0 +1,36 @@
+/* Keep native form controls consistent throughout the owner console. */
+.content input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+.content select,
+.content textarea {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  color: #233d30;
+  background: #fbfcfb;
+  border: 1px solid #dfe7e1;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.content input::placeholder,
+.content textarea::placeholder { color: #8a998f; }
+.content button,
+.content .button-link { border-color: transparent; box-shadow: none; }
+.content .btn.secondary,
+.content .button-link.secondary { border-color: #dfe7e1; }
+.content input:focus,
+.content select:focus,
+.content textarea:focus { border-color: #b6cbbd; }
+.content input:focus-visible,
+.content select:focus-visible,
+.content textarea:focus-visible,
+.content button:focus-visible,
+.content a:focus-visible { outline: 2px solid #b6cbbd; outline-offset: 2px; }
+.content .inline-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 12px;
+}
+.content .inline-actions input:not([type="hidden"]) { flex: 1 1 220px; }
