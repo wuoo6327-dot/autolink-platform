@@ -1,0 +1,58 @@
+name: AUTOLINK source security review
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main, 'codex/**']
+permissions:
+  contents: read
+concurrency:
+  group: source-security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-security:
+    if: github.event.repository.private == true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout private source without persisted credentials
+        # Official actions/checkout v7.0.1; SHA checked in its official repo.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install checksum-pinned official scanners
+        run: |
+          python3 scripts/install_security_tools_ci.py --destination "$RUNNER_TEMP/autolink-security-tools"
+          echo "$RUNNER_TEMP/autolink-security-tools" >> "$GITHUB_PATH"
+      - name: Verify report redaction
+        run: python3 -m unittest discover -s scripts/tests -v
+      - name: Scan current source secrets, dependencies and Dockerfile
+        continue-on-error: true
+        run: python3 scripts/security_scan.py --tool all
+      - name: Scan all checked-out Git history for secrets
+        continue-on-error: true
+        run: python3 scripts/security_scan.py --tool gitleaks --history
+      - name: Keep sanitized reports in the private repository
+        if: always()
+        # Official actions/upload-artifact v7.0.2; SHA checked in official repo.
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: source-security-sanitized
+          path: security-reports/*-sanitized.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Require complete scans with no blocking findings
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          failed = False
+          for name in ['all-sanitized.json', 'gitleaks-history-sanitized.json']:
+              path = Path('security-reports') / name
+              state = json.loads(path.read_text()).get('state') if path.is_file() else 'not_run'
+              print(name + ': ' + str(state))
+              failed = failed or state != 'passed'
+          raise SystemExit(1 if failed else 0)
+          PY
