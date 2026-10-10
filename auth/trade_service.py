@@ -571,6 +571,20 @@ class TradeService:
         This never serializes full user/listing rows, private files, inquiries,
         quotes or contact details. Counts and shard rows use one read snapshot.
         """
+        from seo_service import LANGUAGES, PublicSEOService, localized_url, sitemap_alternates
+        seo = PublicSEOService(self)
+        ElementTree.register_namespace('xhtml', 'http://www.w3.org/1999/xhtml')
+        # Each eligible entity produces nine URL entries. Bound URL entries,
+        # rather than just source entities, so shards remain within the limit.
+        entity_page_size = max(1, SITEMAP_PAGE_SIZE // len(LANGUAGES))
+        def append_urls(path, modified=None, languages=LANGUAGES):
+            for language in languages:
+                node = ElementTree.SubElement(root, 'url')
+                ElementTree.SubElement(node, 'loc').text = localized_url(path, language)
+                sitemap_alternates(node, path, ElementTree, languages)
+                if modified:
+                    ElementTree.SubElement(node, 'lastmod').text = datetime.fromtimestamp(
+                        modified, timezone.utc).isoformat(timespec='seconds')
         supplier_from = """supplier_profiles p JOIN supplier_applications a ON a.supplier_id=p.user_id
             JOIN users u ON u.id=p.user_id"""
         sections = {
@@ -591,7 +605,7 @@ class TradeService:
                 children = ['static-1.xml']
                 for category,(source,where,*_) in sections.items():
                     count = db.execute('SELECT count(*) FROM '+source+' WHERE '+where).fetchone()[0]
-                    pages = max(1, (count+SITEMAP_PAGE_SIZE-1)//SITEMAP_PAGE_SIZE)
+                    pages = max(1, (count+entity_page_size-1)//entity_page_size)
                     if len(children)+pages > 50000:
                         raise BuyerError(503, 'Sitemap capacity exceeded.')
                     children.extend(category+'-'+str(page)+'.xml' for page in range(1,pages+1))
@@ -600,8 +614,7 @@ class TradeService:
                     ElementTree.SubElement(node, 'loc').text = SITEMAP_ORIGIN+'/sitemaps/'+child
             elif filename=='static-1.xml':
                 for path in SITEMAP_STATIC_PATHS:
-                    node = ElementTree.SubElement(root,'url')
-                    ElementTree.SubElement(node,'loc').text = SITEMAP_ORIGIN+path
+                    append_urls(path)
             else:
                 match = re.fullmatch(r'(brands|models|suppliers|vehicles)-([1-9][0-9]{0,4})\.xml',filename)
                 if not match:
@@ -609,18 +622,23 @@ class TradeService:
                 category,page = match[1],int(match[2])
                 source,where,key,modified,prefix = sections[category]
                 count = db.execute('SELECT count(*) FROM '+source+' WHERE '+where).fetchone()[0]
-                if page > max(1,(count+SITEMAP_PAGE_SIZE-1)//SITEMAP_PAGE_SIZE):
+                if page > max(1,(count+entity_page_size-1)//entity_page_size):
                     raise BuyerError(404,'Sitemap not found.')
                 rows = db.execute('SELECT '+key+' AS id,'+modified+' AS modified FROM '+source+
                     ' WHERE '+where+' ORDER BY '+key+' LIMIT ? OFFSET ?',
-                    (SITEMAP_PAGE_SIZE,(page-1)*SITEMAP_PAGE_SIZE))
+                    (entity_page_size,(page-1)*entity_page_size))
                 for row in rows:
-                    node = ElementTree.SubElement(root,'url')
-                    ElementTree.SubElement(node,'loc').text = SITEMAP_ORIGIN+prefix+quote(row['id'],safe='')
                     # Actual stored content modification, never generation time.
-                    if row['modified']:
-                        ElementTree.SubElement(node,'lastmod').text = datetime.fromtimestamp(
-                            row['modified'],timezone.utc).isoformat(timespec='seconds')
+                    languages = LANGUAGES
+                    if category=='models':
+                        model = db.execute('''SELECT m.*,b.name AS brand_name,b.active AS brand_active,b.logo AS brand_logo
+                            FROM catalog_models m JOIN catalog_brands b ON b.id=m.brand_id WHERE m.id=?''',(row['id'],)).fetchone()
+                        languages = seo.index_policy('model',self.catalog.model_row(model))['indexLanguages']
+                    elif category=='brands':
+                        brand = dict(db.execute('SELECT * FROM catalog_brands WHERE id=?',(row['id'],)).fetchone())
+                        brand['models'] = [dict(item) for item in db.execute('SELECT id FROM catalog_models WHERE brand_id=? AND active=1',(row['id'],))]
+                        languages = seo.index_policy('brand',brand)['indexLanguages']
+                    append_urls(prefix+quote(row['id'],safe=''),row['modified'],languages)
         payload = ElementTree.tostring(root,encoding='utf-8',xml_declaration=True)
         if len(payload)>52428800:
             raise BuyerError(503,'Sitemap capacity exceeded.')

@@ -137,7 +137,8 @@ class TradeFlowTests(unittest.TestCase):
         draft=self.trade.copy_vehicle(self.users['supplier-a'],listing)['id']
         inquiry=self.trade.create_inquiry(self.users['buyer-a'],{'listingId':listing,'quantity':2,'destinationCountry':'Kenya'})
         locations=self.sitemap_locations('vehicles-1.xml')
-        self.assertEqual(locations,['https://autolinkglobal.com/trade/vehicles/'+listing])
+        from seo_service import LANGUAGES, localized_url
+        self.assertEqual(locations,[localized_url('/trade/vehicles/'+listing,language) for language in LANGUAGES])
         xml=self.trade.sitemap_xml('vehicles-1.xml').decode()
         for value in (draft,inquiry['id'],'buyer-a','supplier-a@example.com','stored_name','review_reason','password'):
             self.assertNotIn(value,xml)
@@ -163,7 +164,7 @@ class TradeFlowTests(unittest.TestCase):
                 self.assertEqual(self.trade.vehicle_rows(public=True),[])
                 with self.assertRaises(BuyerError):self.trade.vehicle(listing,public=True)
                 with self.auth.connect() as db:db.execute(restore)
-        self.assertEqual(len(self.sitemap_locations('vehicles-1.xml')),1)
+        self.assertEqual(len(self.sitemap_locations('vehicles-1.xml')),9)
 
     def test_sitemap_hides_inactive_catalogue_and_archived_inventory(self):
         listing=self.approved_vehicle()
@@ -196,16 +197,17 @@ class TradeFlowTests(unittest.TestCase):
             self.assertNotIn('https://autolinkglobal.com'+missing,static)
 
     def test_sitemap_shards_cover_catalogue_once_with_bounded_results(self):
-        with patch.object(trade_service,'SITEMAP_PAGE_SIZE',2):
+        with patch.object(trade_service,'SITEMAP_PAGE_SIZE',18):
             index=self.sitemap_locations('sitemap.xml')
             children=[url.rsplit('/',1)[1] for url in index if '/models-' in url]
             found=[]
             for child in children:
                 locations=self.sitemap_locations(child)
-                self.assertLessEqual(len(locations),2)
+                self.assertLessEqual(len(locations),18)
                 found.extend(locations)
             self.assertEqual(len(found),len(set(found)))
-            self.assertEqual(len(found),len(self.trade.catalog.models()))
+            self.assertEqual(len(found),195)
+            self.assertTrue(all(url.endswith('?lang=zh') for url in found))
             for filename in ('models-0.xml','models-01.xml','models-99999.xml','users-1.xml','../static-1.xml'):
                 with self.assertRaises(BuyerError):self.trade.sitemap_xml(filename)
 

@@ -1,7 +1,7 @@
 name: autolink-demo
 services:
   auth:
-    image: autolink-round3-auth@sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80
+    image: ${AUTOLINK_AUTH_IMAGE:?Use the approved round5 digest from release-lock.json}
     restart: unless-stopped
     read_only: true
     cap_drop: [ALL]
@@ -19,6 +19,7 @@ services:
       APP_URL: ${APP_URL:-https://autolinkglobal.com}
     volumes:
       - auth_data:/data
+      - ./site:/srv:ro
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=2)"]
       interval: 30s

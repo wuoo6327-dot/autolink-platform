@@ -1,0 +1,25 @@
+// Exercise shipped Vite hooks and the actual directory adapter with explicit synthetic unit fixtures.
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const root=new URL('../../',import.meta.url);
+const bundle=fs.readFileSync(new URL('site/assets/index-autolink-membership-apply-pricing.js',root),'utf8');
+const source=fs.readFileSync(new URL('site/assets/public-directory.js',root),'utf8');
+const context={window:{},Date,Promise};vm.createContext(context);vm.runInContext(source,context);
+let calls=[];
+const request=async path=>{calls.push(path);return [{id:'synthetic-only',company_name:'Unit fixture',main_brands:'Brand A,Brand B',main_markets:'QA',public_contact_email:'PRIVATE_MARKER',contact:{email:'PRIVATE_MARKER'}}]};
+const [a,b]=await Promise.all([context.window.AUTOLINK_PUBLIC_DIRECTORY.load(request),context.window.AUTOLINK_PUBLIC_DIRECTORY.load(request)]);
+assert.equal(calls.length,1);assert.equal(calls[0],'/autolink/public/suppliers');assert.equal(a,b);
+assert.ok(!JSON.stringify(a).includes('PRIVATE_MARKER'));await context.window.AUTOLINK_PUBLIC_DIRECTORY.load(request);assert.equal(calls.length,1);
+const hook=bundle.slice(bundle.indexOf('function yk('),bundle.indexOf('const w=c.companies.map',bundle.indexOf('function yk(')));
+assert.ok(!hook.includes('setInterval')&&!hook.includes('addEventListener("focus"'));
+assert.ok(!bundle.includes('Se("/autolink/merchants")')&&!bundle.includes('Se("/autolink/auth/social/config")'));
+assert.ok(!bundle.includes('onClick:()=>B("Meta")'));
+const effects=[];const values=[];let updates=[];
+const ctx={...context,T:{useState:v=>{values.push(v);return[v,x=>updates.push(x)]},useEffect:fn=>effects.push(fn)},t5:()=>({actor:null}),Se:async path=>{calls.push(path);return[]}};
+vm.createContext(ctx);vm.runInContext(hook+'return null}',ctx);ctx.yk({children:null});assert.equal(effects.length,1);
+const cleanup=effects[0]();await new Promise(resolve=>setImmediate(resolve));await new Promise(resolve=>setImmediate(resolve));cleanup();
+assert.equal(calls.filter(path=>path==='/autolink/public/suppliers').length,1);
+assert.ok(!calls.includes('/autolink/merchants')&&!calls.includes('/autolink/auth/social/config'));
+assert.ok(updates.some(item=>item&&item.companies&&item.companies[0]?.id==='synthetic-only'));
+console.log('PASS actual Vite directory hook, no old requests/polling, single-flight cache, contact exclusion, unavailable Meta hidden');

@@ -44,7 +44,10 @@
 	handle @buyer {
 		route {
 			try_files {path} /buyer/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
@@ -74,7 +77,10 @@
 	handle @supplier {
 		route {
 			try_files {path} /supplier/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
@@ -82,7 +88,10 @@
 	handle @admin {
 		route {
 			try_files {path} /admin/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
@@ -93,9 +102,22 @@
 		uri replace /account /buyer
 		route {
 			try_files {path} /buyer/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
+	}
+	@privatePages path /buyer /buyer/* /account /account/* /supplier /supplier/* /admin /admin/* /merchant /merchant/* /platform /platform/* /workspace /workspace/*
+	header @privatePages X-Robots-Tag "noindex, nofollow"
+	@publicTradeHTML {
+		method GET HEAD
+		path_regexp ^/trade(?:/[^.]+)?/?$
+	}
+	handle @publicTradeHTML {
+		rewrite * /autolink/public/seo{uri}
+		reverse_proxy auth:8080
 	}
 	@trade path /trade /trade/*
 	handle @trade {
