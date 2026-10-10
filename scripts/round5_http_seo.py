@@ -57,8 +57,8 @@ assert fetch('/trade/models/nonexistent')[0]==404
 assert b'noindex' in fetch('/trade/models/nonexistent')[1]
 assert b'noindex' in fetch('/trade/compare')[1]
 assert b'noindex' in fetch('/trade/models?keyword=x')[1]
-assert b'X-Robots-Tag: noindex' in fetch('/buyer/login',True)[1]
-assert b'X-Robots-Tag: noindex' in fetch('/admin',True)[1]
+assert b'x-robots-tag: noindex' in fetch('/buyer/login',True)[1].lower()
+assert b'x-robots-tag: noindex' in fetch('/admin',True)[1].lower()
 assert fetch('/autolink/merchants')[0]==200 and json.loads(fetch('/autolink/merchants')[1])['data']==[] # synthetic merchant was closed by preceding security tests
 social=json.loads(fetch('/autolink/auth/social/config')[1])['data'];assert social=={'google':True}
 robots=fetch('/robots.txt')[1].decode();assert 'Allow: /autolink/public/models/' in robots and 'Disallow: /buyer$' in robots
