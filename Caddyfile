@@ -44,7 +44,10 @@
 	handle @buyer {
 		route {
 			try_files {path} /buyer/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
@@ -74,7 +77,10 @@
 	handle @supplier {
 		route {
 			try_files {path} /supplier/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
@@ -82,7 +88,10 @@
 	handle @admin {
 		route {
 			try_files {path} /admin/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
@@ -93,7 +102,10 @@
 		uri replace /account /buyer
 		route {
 			try_files {path} /buyer/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, nofollow"
+			}
 			file_server
 		}
 	}
