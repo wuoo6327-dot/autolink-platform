@@ -1,4 +1,6 @@
-# 第五轮候选发布方案（未获生产部署批准）
+# 第五轮候选发布方案（历史记录，已被第七轮替代）
+
+> 第七轮已按第六轮实际 OCI 归档修正历史 digest。本文件仅作历史说明，不能用于当前候选发布。当前版本、八个 site 覆盖文件及切换步骤以 `release-lock.json` 和 `ROUND7_RELEASE_RUNBOOK.md` 为准。
 
 本分支基于已上线 a38664fc9bf2be639cbcb65dce4b57ef5b94170c。只整合旧接口兼容和公开车型 SEO；不合并 PR #1/#3 的角色、协议、入驻和报价业务改造。
 
@@ -37,7 +39,7 @@
 4. 设置镜像变量并只做配置验证：
 
 ```sh
-export AUTOLINK_AUTH_IMAGE='autolink-round5-auth-candidate@sha256:076e7cbe0475265901922dcb3dbb52a5afaab070c4489cf9c6f2b03b504dda578'
+export AUTOLINK_AUTH_IMAGE='autolink-round5-auth-candidate@sha256:07e7cbe0475265901922dcb3dbb52a5afaab070c4489cf9c6f2b03b504dda578'
 docker compose --project-name autolink-demo --env-file "$ROUND5_ENV" -f "$ROUND5_RELEASE/compose.yaml" config --quiet
 ```
 

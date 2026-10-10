@@ -1,0 +1,404 @@
+{
+  "evidenceSource": "Aliyun native AMD64; UI-exported technical summary SHA256 e41a45aa711b9090fe65c5c1e8859f5abe92ab712f351c63e615de2bdc745078",
+  "runtimeCommit": "406495bca6a13f72455e0d7b4155757ce6c2e9f8",
+  "images": {
+    "auth": {
+      "reference": "autolink-round7-auth@sha256:9e3bba2af4310b1befbd924cdc1a22ece8f9826e1af2c158713b5f0695664ae2",
+      "manifestDigest": "sha256:9e3bba2af4310b1befbd924cdc1a22ece8f9826e1af2c158713b5f0695664ae2",
+      "configDigest": "sha256:00863dca7784769900629f7c0c3ed9b0fb615833afe313f26d167ee4d8abbcbd",
+      "archive": "/home/admin/autolink-round7-stage-20261010-1515/auth-image.tar",
+      "archiveSHA256": "78fd2da1af3a232ed233756ec30e7196bc3066a23837b040014d45a0df5be0e8",
+      "archiveBytes": 33864704,
+      "architecture": "amd64",
+      "user": "10001:10001",
+      "layersVerified": 7,
+      "runtimeCommit": "406495bca6a13f72455e0d7b4155757ce6c2e9f8",
+      "rebuilt": true,
+      "completedUTC": "2026-10-10T08:50:00.617019+00:00"
+    },
+    "caddy": {
+      "manifestDigest": "sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+      "configDigest": "sha256:335a69d3f130d4b91a1729b94e69371e302e3831fb6296054d45b79dd9c1bc6d",
+      "archiveSHA256": "ddf2c2f6544eea709258695c53da57bc42b27850a52e2af5a27c61875e59927e",
+      "layersVerified": 7,
+      "architecture": "amd64",
+      "user": "10001:10001",
+      "rebuilt": false,
+      "reference": "autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+      "archive": "/home/admin/autolink-round5-stage-20261010-1132/caddy-image.tar"
+    }
+  },
+  "sourcePreservation": {
+    "runtimeCommit": "406495bca6a13f72455e0d7b4155757ce6c2e9f8",
+    "allRuntimeFilesMatch": true,
+    "baselineSiteFiles": 5066,
+    "candidateSiteFiles": 5069,
+    "unchangedBaselineFiles": 5061,
+    "changedBaselineFiles": [
+      "assets/business-page-bootstrap.mjs",
+      "assets/business-seo.js",
+      "assets/index-autolink-membership-apply-pricing.js",
+      "robots.txt",
+      "trade/model-reference.mjs"
+    ],
+    "addedSiteFiles": [
+      "assets/public-directory.js",
+      "locales/seo-index-reviews.json",
+      "locales/seo-verified-terms.json"
+    ],
+    "legalCSSAndExistingReferenceUnchanged": true
+  },
+  "native": {
+    "passed": true,
+    "nativeAMD64": true,
+    "backendAndHTTP": {
+      "passed": true,
+      "nativeAMD64": true,
+      "runtimeCommit": "406495bca6a13f72455e0d7b4155757ce6c2e9f8",
+      "backendTests": 214,
+      "backendSkipped": 5,
+      "httpSecurity": {
+        "syntheticOnly": true,
+        "certificateValidation": true,
+        "results": [
+          {
+            "check": "HTTPS certificate validated, HTTP/2 ALPN, backend JSON health",
+            "passed": true
+          },
+          {
+            "check": "--http1.1 proxy/Cookie owner protection",
+            "passed": true
+          },
+          {
+            "check": "--http2 proxy/Cookie owner protection",
+            "passed": true
+          },
+          {
+            "check": "owner account closure boundary",
+            "passed": true
+          },
+          {
+            "check": "other-admin account closure boundary",
+            "passed": true
+          },
+          {
+            "check": "last active admin remains protected",
+            "passed": true
+          },
+          {
+            "check": "anonymous login boundary",
+            "passed": true
+          },
+          {
+            "check": "buyer admin API boundary",
+            "passed": true
+          },
+          {
+            "check": "wrong password rejected",
+            "passed": true
+          },
+          {
+            "check": "suspended password login rejected",
+            "passed": true
+          },
+          {
+            "check": "actual password login over TLS sets secure Cookie",
+            "passed": true
+          },
+          {
+            "check": "Cookie-only session works through reverse proxy",
+            "passed": true
+          },
+          {
+            "check": "private JPEG authorization None",
+            "passed": true
+          },
+          {
+            "check": "private JPEG authorization outsider",
+            "passed": true
+          },
+          {
+            "check": "private JPEG authorization buyer",
+            "passed": true
+          },
+          {
+            "check": "private JPEG authorization merchant",
+            "passed": true
+          },
+          {
+            "check": "private JPEG authorization owner",
+            "passed": true
+          },
+          {
+            "check": "cross-site account closure refused {'Origin': 'https://foreign.example'}",
+            "passed": true
+          },
+          {
+            "check": "cross-site account closure refused {'Sec-Fetch-Site': 'cross-site'}",
+            "passed": true
+          },
+          {
+            "check": "cross-site account closure refused {'Origin': 'null'}",
+            "passed": true
+          },
+          {
+            "check": "denied closure leaves session active",
+            "passed": true
+          },
+          {
+            "check": "Cookie business account close clears Cookie",
+            "passed": true
+          },
+          {
+            "check": "closed business session revoked",
+            "passed": true
+          },
+          {
+            "check": "closed business private JPEG immediately denied",
+            "passed": true
+          },
+          {
+            "check": "other owner still sees preserved private image",
+            "passed": true
+          },
+          {
+            "check": "logout-all succeeds",
+            "passed": true
+          },
+          {
+            "check": "logout-all revokes original session",
+            "passed": true
+          },
+          {
+            "check": "logout-all revokes new password Cookie",
+            "passed": true
+          },
+          {
+            "check": "existing page /",
+            "passed": true
+          },
+          {
+            "check": "existing page /buyer/login",
+            "passed": true
+          },
+          {
+            "check": "existing page /supplier/login",
+            "passed": true
+          },
+          {
+            "check": "existing page /admin",
+            "passed": true
+          },
+          {
+            "check": "existing page /trade",
+            "passed": true
+          },
+          {
+            "check": "existing page /privacy",
+            "passed": true
+          },
+          {
+            "check": "existing page /cookies",
+            "passed": true
+          },
+          {
+            "check": "existing page /account-deletion",
+            "passed": true
+          },
+          {
+            "check": "existing language route en",
+            "passed": true
+          },
+          {
+            "check": "existing language route zh",
+            "passed": true
+          },
+          {
+            "check": "existing language route ar",
+            "passed": true
+          },
+          {
+            "check": "existing language route ru",
+            "passed": true
+          },
+          {
+            "check": "existing language route kk",
+            "passed": true
+          },
+          {
+            "check": "existing language route uz",
+            "passed": true
+          },
+          {
+            "check": "existing language route ko",
+            "passed": true
+          },
+          {
+            "check": "existing language route fr",
+            "passed": true
+          },
+          {
+            "check": "existing language route sw",
+            "passed": true
+          }
+        ],
+        "passed": 45
+      },
+      "SEOpageChecks": 2583,
+      "indexableModelURLs": 195,
+      "noindexDetailURLs": 2388,
+      "productionDeployed": false,
+      "runningAppSHA256Matched": true,
+      "finishedUTC": "2026-10-10T09:01:15.307789+00:00"
+    },
+    "isolatedRestoreAndRollback": {
+      "passed": true,
+      "finishedUTC": "2026-10-10T09:01:50.417571+00:00",
+      "privateServerOnly": true,
+      "productionVolumesMounted": false,
+      "networkInternalOnly": true,
+      "outboundMailDisabled": true,
+      "loginOrDestructiveTestsAgainstRealRestoredUsers": false,
+      "recordAndSchemaHashesUnchanged": true,
+      "productionUnmodified": true,
+      "oldToCandidateToOld": true,
+      "TLSCertificateSystemTrustValidated": true,
+      "HTTP2": true,
+      "certificateVolumeOwnershipChanged": false,
+      "checks": [
+        "Backup old secure auth/Caddy recovered; TLS+HTTP2 valid; all rows/schema unchanged",
+        "Restored public catalog is 234 models/53 brands, health and home accessible",
+        "Exact candidate starts against restored production DB; representative SSR and both legacy APIs HTTP200; all rows/schema unchanged",
+        "Fresh backup of candidate isolated clone read/restored; data/uploads/cert hashes and uid/gid/modes equal",
+        "Rollback to PR2 secure image/config on same clone data passed; no DB replacement, no certificate chmod/chown"
+      ]
+    },
+    "scans": {
+      "candidate-auth": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 0
+      },
+      "candidate-caddy": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 1
+      }
+    },
+    "productionContainersUnchanged": true,
+    "productionDeployed": false,
+    "completedUTC": "2026-10-10T09:01:57.841920+00:00"
+  },
+  "SEO": {
+    "atUTC": "2026-10-10T09:01:14Z",
+    "nativeAMD64LoopbackHTTPS": true,
+    "pageCount": 2583,
+    "reciprocalAlternatesPassed": 2583,
+    "sitemapCounts": {
+      "models": 195,
+      "brands": 0
+    },
+    "languages": {
+      "en": {
+        "pages": 287,
+        "modelsWithCJK": 189,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 189,
+        "maxCJKCharacters": 84,
+        "exactDuplicateMainGroups": 0
+      },
+      "zh": {
+        "pages": 287,
+        "modelsWithCJK": 234,
+        "brandsWithCJK": 53,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 459,
+        "exactDuplicateMainGroups": 0
+      },
+      "ar": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      },
+      "ru": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      },
+      "kk": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      },
+      "uz": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      },
+      "ko": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      },
+      "fr": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      },
+      "sw": {
+        "pages": 287,
+        "modelsWithCJK": 195,
+        "brandsWithCJK": 0,
+        "modelsWithReferenceCJK": 195,
+        "maxCJKCharacters": 103,
+        "exactDuplicateMainGroups": 0
+      }
+    },
+    "thinModelsWithNoUniqueEditorialOrSpecs": 39,
+    "thinModelsCurrentIndexable": 0,
+    "indexableDetailURLs": 195,
+    "noindexDetailURLs": 2388,
+    "realCatalogModels": 234,
+    "realCatalogBrands": 53,
+    "googlebotIdenticalHTMLRequests": 12,
+    "elapsedSeconds": 59.37
+  },
+  "backupRestore": {
+    "passed": true,
+    "SQLiteIntegrity": "ok",
+    "foreignKeyCheck": "ok",
+    "privateServerOnly": true
+  },
+  "backendSkippedReasons": [
+    "test_same_email_across_providers_does_not_link_accounts (test_app.GoogleAuthTests.test_same_email_across_providers_does_not_link_accounts) ... skipped 'Legacy social OAuth draft is not installed or enabled in the production API.'",
+    "test_social_callback_registration_and_returning_login (test_app.GoogleAuthTests.test_social_callback_registration_and_returning_login) ... skipped 'Legacy social OAuth draft is not installed or enabled in the production API.'",
+    "test_facebook_requires_matching_app_and_user (test_social.ProviderVerificationTests.test_facebook_requires_matching_app_and_user) ... skipped 'Optional social OAuth draft dependencies are not installed; provider is not deployed.'",
+    "test_instagram_requires_professional_account (test_social.ProviderVerificationTests.test_instagram_requires_professional_account) ... skipped 'Optional social OAuth draft dependencies are not installed; provider is not deployed.'",
+    "test_linkedin_rejects_invalid_signature_or_nonce (test_social.ProviderVerificationTests.test_linkedin_rejects_invalid_signature_or_nonce) ... skipped 'Optional social OAuth draft dependencies are not installed; provider is not deployed.'",
+    "OK (skipped=5)"
+  ],
+  "productionContainersUnchanged": true,
+  "productionDeploymentPerformed": false
+}
