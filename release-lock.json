@@ -1,0 +1,78 @@
+{
+  "release": "AUTOLINK round5 isolated candidate",
+  "productionDeploymentAuthorized": false,
+  "baselineCommit": "a38664fc9bf2be639cbcb65dce4b57ef5b94170c",
+  "testedRuntimeCommit": "bfef462c49c0c594a3e8b3600462172a4906369a",
+  "architecture": "linux/amd64",
+  "auth": {
+    "version": "Python 3.12.15 / Alpine 3.24, application round5",
+    "reference": "autolink-round5-auth-candidate@sha256:076e7cbe0475265901922dcb3dbb52a5afaab070c4489cf9c6f2b03b504dda578",
+    "manifestDigest": "sha256:076e7cbe0475265901922dcb3dbb52a5afaab070c4489cf9c6f2b03b504dda578",
+    "configDigest": "sha256:8f992dda215af637f07b7cd098fe9484cffe41dab9b5e9f15f3a892c977862ba",
+    "archive": "/home/admin/autolink-round5-stage-20261010-1132/auth-image.tar",
+    "archiveSHA256": "b0631425f527e389fcf73e534a33e56b36c3f376a9a7bd85f234783117dafa05",
+    "archiveBytes": 33862144,
+    "sourceFilesSHA256": {
+      "requirements.txt": "569103ac65e838e5f2273915dbfd219510fcf20ab711e9a9133bef8d0557a3da",
+      "requirements.lock": "3b2a087de553a5b875acd3b9a988041cc27e4916f7c2319415c6c2f6726cebbb",
+      "app.py": "272996177a7c711e64ae757d30c34e945b96348c545a1970376f39803e5358eb",
+      "seo_service.py": "cb983d9833cd8a02725e8376b4a45f1d0aa87065eb5354602f6f2f251d915374",
+      "buyer_service.py": "7f721c5b136c6d327a16175139df74ef0e8703752e78507d30868b0cefe8362d",
+      "catalog_service.py": "a255ed522ba4e332be72d9e54c5baab1b4b56ff7938de65fa15a845c41107e84",
+      "catalog.json": "a4e0d7ef36b713f861265fd30e7432e4819a5e209b6c3c250b88abe2f0a42ef0",
+      "email_auth.py": "ff33ff6a032377bdebaee6b1c03824ac073d936047bb4bb1ae12e2f5e923710b",
+      "mail_service.py": "d8721d12b01ef9a9044ed76dc9251cd7f2450337a06bfd8be7c5dfec77e560f3",
+      "business_mail.py": "8e84ea7ee58e4f8e78630a1be110e9b6780e8f35c43f916a921fe65dbdbe1f00",
+      "mail_templates.py": "0a2fd56102c3a0e8f02e23e6a89d499773af673126a75c002b0d68d49aa44c86",
+      "mail_translations.json": "752edd74fe5c2f972595cd0adc51f15de3b4406bf7a62a527d308fd51a63eecc",
+      "trade_service.py": "b4ff12c89961137be9372943cddac60cac6362be26f35b289b3c4abed716e3d2",
+      "platform_service.py": "30b8b13d99ed3b69a362907b70abd45a7c08cb9e0891e74604ee7b32fbafb29b",
+      "image_service.py": "a84c85f1f87547529c813cfd3892130b4e4b34566a4a7e807a4a824d8794807f",
+      "price_review_service.py": "57c94f31252f42a6d2750077047104afe9d35d547133ecc6f2ebb384d73712d7",
+      "verification_service.py": "31328e7d3ecc82a5291e8e76aa4d8e3dbe7dddd3ee7ad80485bfd5bacab55b84",
+      "team_service.py": "8b90af0ed35bf04967a34aa12b187165f638d9d4de095df71935cfbbf484823e",
+      "pagination.py": "68b7ba0600298b30eb2f46fa113531cf4fa466642d3a1360a0ca1be0f92d97a9",
+      "supplier_agreement_service.py": "c79865f26f232802e5e484375bbc8d717fbe5b880997396b9e377b8663858c4b",
+      "supplier-agreement.json": "07a59126e54405120988cc68e440420e29858e549d9f6b016c719d2f9d390228"
+    }
+  },
+  "caddy": {
+    "version": "Caddy 2.11.7, approved round4 Go/x-net patched stable build, unchanged",
+    "reference": "autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+    "manifestDigest": "sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+    "configDigest": "sha256:335a69d3f130d4b91a1729b94e69371e302e3831fb6296054d45b79dd9c1bc6d",
+    "archive": "/home/admin/autolink-round5-stage-20261010-1132/caddy-image.tar",
+    "archiveSHA256": "ddf2c2f6544eea709258695c53da57bc42b27850a52e2af5a27c61875e59927e",
+    "remainingFinding": "GO-2026-5932 UNKNOWN; x/crypto v0.57.0 OpenPGP unmaintained; no known fix; no OpenPGP symbols in exact unchanged approved binary"
+  },
+  "deployFilesSHA256": {
+    "compose.yaml": "413aab91779623102ee0c31999acbf53c452807301e0f025a30cf2abe612e969",
+    "Caddyfile": "884d57b584cb4ef06fc1915b341eb343be965d050ed8d548ca01f72ead95bd82",
+    "site/assets/business-page-bootstrap.mjs": "8ca70b78f53e1374045a745f33378cfedcb8b0c306abb3cc41d42198021e49f8",
+    "site/assets/business-seo.js": "a8d27a6588089630ea625eec79e877992888851410869879a524f1509437356f",
+    "site/assets/index-autolink-membership-apply-pricing.js": "18f34f6fe8396dec583f201328fd2d847bcbce29ba8af624be6b243eab3c11f8",
+    "site/assets/public-directory.js": "3f5cb9ed7f34042e6d3dd81efee4062aa3f2a5144aec327b627325fde50f771d",
+    "site/robots.txt": "ac7a57d5eebdc7a13d1540193b5b68e42b7c6ed236ab3d42da983afc6f052888"
+  },
+  "authDockerfileSHA256": "290e4897140dd11a130921039038465c5305500c576764065565f53d1714ea4a",
+  "sitePolicy": "Copy current production public site, overlay only the five listed site files. Preserve all other public assets and legal files. Never copy private data into Git.",
+  "nativeAcceptance": {
+    "evidencePath": "/home/admin/autolink-round5-stage-20261010-1132/evidence",
+    "completedUTC": "2026-10-10T04:59:29.773247+00:00",
+    "backendRun": 206,
+    "backendPassed": 201,
+    "backendSkipped": 5,
+    "securityHTTPPassed": 45,
+    "seoPageChecksPassed": 2583,
+    "googlebotRequestsPassed": 12,
+    "historicalSchemaSmokePassed": 8,
+    "productionUnmodified": true
+  },
+  "rollback": {
+    "baselineCommit": "a38664fc9bf2be639cbcb65dce4b57ef5b94170c",
+    "authReference": "autolink-round3-auth@sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80",
+    "caddyReference": "autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+    "releasePath": "/opt/autolink-releases/a38664fc9bf2be639cbcb65dce4b57ef5b94170c",
+    "keepLatestDatabaseUploadsAndCertificateVolumes": true
+  }
+}

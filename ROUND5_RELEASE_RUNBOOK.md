@@ -25,3 +25,36 @@
 ## 本轮资料限制
 
 已有 234 个目录保持不变；39 个未提供详细配置参考、38 个没有可确认年份，页面只展示已有品牌/能源/车身等参数和“年份未提供”，不得补造。Google 实际抓取和索引只能上线后核实，隔离技术测试不等于 Google 收录。
+
+
+## 供下一轮批准后执行的明确命令顺序
+
+以下是准备好的操作说明，本轮没有在生产执行。`ROUND5_RELEASE` 必须是批准提交的新版本目录，`ROUND5_ENV` 是原生产环境文件的服务器本地副本，均在核对 SHA256 后填写。不能从 Git、QA 或本地测试环境生成正式密钥。
+
+1. 核验 `release-lock.json`。对服务器上的 `auth-image.tar`、`caddy-image.tar` 执行 `sha256sum`；用归档 `index.json` 和 manifest/config/layer 内容分别核验 SHA256、AMD64 和 UID10001。不得把 Docker 的 image ID 当作 config digest。若镜像不在本机，`docker load --input` 只加载这两个已验收归档，禁止重新构建代替。
+2. 重新制作服务器本地备份：新建 `/home/admin/autolink-round5-release-<批准时刻>/private-backup`（0700）。SQLite 用 `sqlite3.Connection.backup`，不能直接复制正在写入的 SQLite 主文件；核对 `integrity_check`、表及主键数量。归档当前源码/Compose/.env、auth_data 中的上传文件、`autolink-demo_caddy_data` 与 `autolink-demo_caddy_config`。旧安全镜像也保存并核验 digest。恢复演练只使用独立 QA 数据及证书卷，网络隔离、邮件关闭。新备份没有通过演练就不能切换。
+3. 从当前生产目录复制完整公开 site 到新版本目录；只覆盖 release-lock 中五个 site 文件，再逐个核验哈希。除本轮五个覆盖/新增目标外，其余生产公开文件必须与当前生产相同。禁止覆盖法律文件、CSS、车型配置参考库。新 Compose 挂载新公开 site `/srv:ro`，三个卷仍为现有 autolink-demo 卷。
+4. 设置镜像变量并只做配置验证：
+
+```sh
+export AUTOLINK_AUTH_IMAGE='autolink-round5-auth-candidate@sha256:076e7cbe0475265901922dcb3dbb52a5afaab070c4489cf9c6f2b03b504dda578'
+docker compose --project-name autolink-demo --env-file "$ROUND5_ENV" -f "$ROUND5_RELEASE/compose.yaml" config --quiet
+```
+
+5. 候选 Caddyfile 的配置校验采用已固定的 Caddy 镜像，单独运行 `caddy validate`；验证时只挂载新公开配置，不使用生产证书卷。确认 UID10001 已能读取现有指定证书卷，本轮不再执行 root→UID10001 权限调整。
+6. 在批准的维护窗口中先切换 auth：
+
+```sh
+docker compose --project-name autolink-demo --env-file "$ROUND5_ENV" -f "$ROUND5_RELEASE/compose.yaml" up -d --no-deps auth
+```
+
+等待 auth healthy，核对实际 manifest、21 个应用文件哈希、数据库 `quick_check`、公开 API 和匿名权限；未通过就回滚，不能继续 web。然后：
+
+```sh
+docker compose --project-name autolink-demo --env-file "$ROUND5_ENV" -f "$ROUND5_RELEASE/compose.yaml" up -d --no-deps web
+```
+
+7. 外网复核 HTTPS、HTTP/2、HTTP→HTTPS、首页及主要入口、两个旧接口、初始车型 HTML、Sitemap/robots、私有页 noindex。线上权限检查以不改真实数据的方式进行；账号关闭等破坏性检查沿用已通过的隔离测试。核对最新数据库与上传文件没有被覆盖，连续监控至少 30 分钟。
+8. 若触发回滚，使用 `/opt/autolink-releases/a38664fc9bf2be639cbcb65dce4b57ef5b94170c/compose.yaml`、原环境文件、原公开 site 与原 Caddyfile；先恢复旧安全 auth 并健康检查，再恢复 web。项目名仍为 autolink-demo。原 Compose 已固定旧安全镜像，不使用候选镜像变量替换。数据库、上传目录和两个证书卷继续使用当前卷；不能恢复部署前旧数据库覆盖新数据。
+
+上述命令包含生产动作，只有下一轮明确部署批准、重新预检和备份恢复演练通过后才能执行。本轮固定镜像归档保留在 AMD64 服务器，无须在本机 ARM64 重建。
