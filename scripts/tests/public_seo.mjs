@@ -30,7 +30,7 @@ for(const language of languages){
   context.window=context;context.businessI18n={language,text:value=>value};
   vm.runInContext(source,context);
   const api=context.businessSEO;
-  const record={id:'model-synthetic',brand:'Synthetic <script>',model:'Reference',year:2026,image:'/images/reference.webp',price_minor:987654321,review_reason:'PRIVATE_MARKER',contact:{email:'PRIVATE_MARKER'}};
+  const record={id:'model-synthetic',brand:'Synthetic <script>',model:'Reference',year:2026,image:'/images/reference.webp',price_minor:987654321,review_reason:'PRIVATE_MARKER',contact:{email:'PRIVATE_MARKER'},seo:{indexLanguages:languages}};
   api.page('model',record);
   const canonical=()=>head.querySelector('link[rel="canonical"]').attributes.href;
   const expected='https://autolinkglobal.com'+location.pathname+(language==='en'?'':'?lang='+language);
@@ -47,5 +47,17 @@ for(const language of languages){
   assert.equal(head.querySelector('meta[name="robots"]').content,'noindex, follow');
   location.pathname='/buyer/security';api.update();assert.equal(head.querySelectorAll('link[rel="alternate"][hreflang]').length,0);
   assert.equal(head.querySelector('meta[name="robots"]').content,'noindex, nofollow');
+  location.pathname='/trade/models/model-synthetic';location.search='?lang='+language;
+  api.page('model',{...record,seo:{indexLanguages:['zh']}});
+  assert.equal(head.querySelector('meta[name="robots"]').content,language==='zh'?'index, follow':'noindex, follow');
+  assert.equal(head.querySelectorAll('link[rel="alternate"][hreflang]').length,language==='zh'?2:0);
+  if(language==='zh')assert.equal(head.querySelectorAll('link[rel="alternate"][hreflang]').find(n=>n.hreflang==='x-default').href,'https://autolinkglobal.com'+location.pathname+'?lang=zh');
+  api.page('model',{...record,seo:{indexLanguages:[]}});
+  api.update();assert.equal(head.querySelector('meta[name="robots"]').content,'noindex, follow');
+  assert.equal(head.querySelectorAll('link[rel="alternate"][hreflang]').length,0);
+  api.page('model',record);
+  location.pathname='/trade/brands/brand-synthetic';
+  api.page('brand',{id:'brand-synthetic',name:'Synthetic',seo:{indexLanguages:[]}});
+  assert.equal(head.querySelector('meta[name="robots"]').content,'noindex, follow');
   console.log(language+': isolated adapter canonical, language alternates, private/filter exclusions and schema redaction PASS');
 }

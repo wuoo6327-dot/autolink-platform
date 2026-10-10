@@ -7,10 +7,12 @@ The existing trade application replaces the initial content when it is ready.
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 import os
 import re
 from functools import lru_cache
+from datetime import date
 from pathlib import Path
 from urllib.parse import parse_qs, quote, urlencode, urlsplit
 
@@ -21,17 +23,32 @@ LANGUAGES = ('en', 'zh', 'ar', 'ru', 'kk', 'uz', 'ko', 'fr', 'sw')
 LANGUAGE_TAGS = {language: 'zh-CN' if language == 'zh' else language for language in LANGUAGES}
 
 
+def asset_version(path):
+    stat = path.stat()
+    return stat.st_mtime_ns, stat.st_size
+
+
+@lru_cache(maxsize=512)
+def asset_hash(path, version):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+@lru_cache(maxsize=512)
+def asset_json(path, version):
+    return json.loads(Path(path).read_text(encoding='utf-8'))
+
+
 def localized_url(path, language='en'):
     """English and x-default use the existing URL; other languages are explicit."""
     return ORIGIN + path + ('' if language == 'en' else '?lang=' + language)
 
 
-def sitemap_alternates(node, path, element_tree):
-    for language in LANGUAGES:
+def sitemap_alternates(node, path, element_tree, languages=LANGUAGES):
+    for language in languages:
         element_tree.SubElement(node, '{http://www.w3.org/1999/xhtml}link',
             rel='alternate', hreflang=LANGUAGE_TAGS[language], href=localized_url(path, language))
     element_tree.SubElement(node, '{http://www.w3.org/1999/xhtml}link',
-        rel='alternate', hreflang='x-default', href=localized_url(path))
+        rel='alternate', hreflang='x-default', href=localized_url(path, 'en' if 'en' in languages else languages[0]))
 
 
 @lru_cache(maxsize=48)
@@ -59,6 +76,96 @@ class PublicSEOService:
         default = Path(__file__).resolve().parent.parent / 'site'
         self.site_root = Path(site_root or os.environ.get('SEO_SITE_ROOT') or (default if default.is_dir() else '/srv'))
 
+    def index_policy(self, kind, record):
+        """Publication quality is checked again, never stored in business tables.
+
+        Source-language references can recover after validated real data arrives.
+        Foreign text needs an explicit review bound to the exact public content;
+        a dictionary/template alone is not evidence of complete localization.
+        """
+        reference = self.reference(record) if kind == 'model' else {}
+        keys = ('id','brand','model','year','bodyType','energy','description','specifications') if kind == 'model' else ('id','name','country','overview')
+        source = {key: record.get(key) for key in keys}
+        reference_file = self.site_root/'model-reference'/(str(record.get('id'))+'.json')
+        source['modelIds'] = sorted(str(item.get('id')) for item in record.get('models',[])) if kind=='brand' else []
+        source['referenceSHA256'] = asset_hash(str(reference_file),asset_version(reference_file)) if kind=='model' and re.fullmatch(r'[A-Za-z0-9_-]{1,100}',str(record.get('id'))) and reference_file.is_file() else None
+        # A terminology/dictionary change invalidates the previous content review.
+        source['localizationSHA256'] = {
+            str(p.relative_to(self.site_root)): asset_hash(str(p),asset_version(p))
+            for p in sorted((self.site_root/'locales').glob('specs-*.json'))
+        }
+        terms = self.site_root/'locales/seo-verified-terms.json'
+        source['verifiedTermsSHA256'] = asset_hash(str(terms),asset_version(terms)) if terms.is_file() else None
+        fingerprint = hashlib.sha256(json.dumps(source,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+        complete = self.reference_complete(record, reference) if kind == 'model' else bool(str(record.get('overview') or '').strip() and record.get('models'))
+        review_file = self.site_root/'locales/seo-index-reviews.json'
+        try:
+            reviews = asset_json(str(review_file),asset_version(review_file)) if review_file.is_file() else {}
+        except (ValueError, OSError):
+            reviews = {}  # Invalid review material must fail closed.
+        if not isinstance(reviews,dict): reviews = {}
+        allowed = []
+        for language in LANGUAGES:
+            kind_reviews = reviews.get(kind,{})
+            record_reviews = kind_reviews.get(str(record.get('id')),{}) if isinstance(kind_reviews,dict) else {}
+            review = record_reviews.get(language,{}) if isinstance(record_reviews,dict) else {}
+            if not isinstance(review,dict): review = {}
+            reviewed = (review.get('sourceFingerprint') == fingerprint and
+                        bool(str(review.get('reviewedBy') or '').strip()) and
+                        bool(str(review.get('evidence') or '').strip()))
+            if complete and ((kind == 'model' and language == 'zh') or reviewed):
+                if language == 'zh' or not self.untranslated_reference(record,reference,language):
+                    allowed.append(language)
+        return {'contentComplete':complete,'indexLanguages':allowed,'sourceFingerprint':fingerprint,
+                'reason':'content_incomplete' if not complete else 'localization_review_required' if allowed==['zh'] or not allowed else 'reviewed'}
+
+    @staticmethod
+    def reference_complete(model, reference):
+        if (not model.get('active',True) or not model.get('brandActive',True) or
+                reference.get('modelId') != model.get('id') or reference.get('status') != 'available' or
+                not reference.get('provider') or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',str(reference.get('checkedAt','')))):
+            return False
+        source = urlsplit(str(reference.get('sourceUrl','')))
+        if source.scheme != 'https' or not source.hostname or source.username or source.password:
+            return False
+        try:
+            date.fromisoformat(reference['checkedAt'])
+        except ValueError:
+            return False
+        variants = reference.get('variants',reference.get('configurations',[]))
+        groups = reference.get('groups',[])
+        years = reference.get('availableYears',[])
+        if not isinstance(variants,list) or not variants or not isinstance(groups,list) or not groups or not years:
+            return False
+        if any(type(year) is not int or not 1900 <= year <= 2100 for year in years):
+            return False
+        selected = variants[:2]
+        if any(not isinstance(v,dict) or not v.get('name') or v.get('year') not in years or not isinstance(v.get('values'),dict) for v in selected):
+            return False
+        rows = [row for group in groups[:3] if isinstance(group,dict) for row in group.get('rows',[])[:12]
+                if isinstance(row,dict) and row.get('key') and row.get('label') and not any(term in str(row['label']) for term in ('价格','指导价','报价'))]
+        # Structural publication guard, not a claim about Google's word-count rules.
+        return len(rows)>=8 and all(sum(v['values'].get(row['key']) is not None and str(v['values'].get(row['key'])).strip() not in ('','—','-') for row in rows)>=8 for v in selected)
+
+    def translated_value(self, value, language):
+        value = str(value if value is not None else '—')
+        if language == 'zh': return value
+        dictionary = read_dictionary(str(self.site_root),language,True)
+        file = self.site_root/'locales/seo-verified-terms.json'
+        terms = asset_json(str(file),asset_version(file)).get('translations',{}).get(language,{}) if file.is_file() else {}
+        # Exact reviewed terms take precedence; never replace arbitrary fragments
+        # of trim names or convert numbers/units through a substring translator.
+        return terms.get(value,dictionary.get(value,value))
+
+    def untranslated_reference(self, model, reference, language):
+        values = [model.get('description') or '',*model.get('specifications',{}).keys(),*model.get('specifications',{}).values()]
+        for variant in reference.get('variants',[])[:2]:
+            values.append(' '.join(str(x) for x in (variant.get('year'),variant.get('name')) if x))
+            values.extend(variant.get('values',{}).values())
+        values.extend(group.get('name','') for group in reference.get('groups',[]))
+        values.extend(row.get('label','') for group in reference.get('groups',[]) for row in group.get('rows',[]))
+        return any(re.search(r'[\u3400-\u9fff]',self.translated_value(value,language)) for value in values)
+
     def render(self, request_url):
         parsed = urlsplit(request_url)
         path = parsed.path.rstrip('/') or '/'
@@ -75,6 +182,7 @@ class PublicSEOService:
         collection = collection or 'vehicles'
         filtered = any(key != 'lang' for key in query)
         indexable = bool(match) and collection != 'compare' and not filtered
+        index_languages = LANGUAGES
         title_key = {'models':'Chinese Vehicle Model References | AUTOLINK',
                      'brands':'Vehicle Brands | AUTOLINK',
                      'vehicles':'Approved Supplier Vehicle Listings | AUTOLINK',
@@ -109,6 +217,8 @@ class PublicSEOService:
                 model = self.trade.catalog.get(ident)
                 if not model or not model['active'] or not model['brandActive']:
                     raise BuyerError(404, 'Model not found.')
+                index_languages = self.index_policy('model',model)['indexLanguages']
+                indexable = indexable and language in index_languages
                 name = ' '.join(str(value) for value in (model['brand'], model['model'], model.get('year')) if value)
                 title = tr('{model} Model Reference | AUTOLINK').replace('{model}', name)
                 description = name + ' · ' + tr('Model reference · not a supplier inventory offer.') + ' ' + description
@@ -118,6 +228,8 @@ class PublicSEOService:
                 graph.append({'@type':'ProductModel','name':name,'url':localized_url(canonical_path,language),'brand':{'@type':'Brand','name':model['brand']},'description':tr('Model reference · not a supplier inventory offer.')})
             elif ident and collection == 'brands':
                 brand = self.trade.catalog.brand(ident)
+                index_languages = self.index_policy('brand',brand)['indexLanguages']
+                indexable = indexable and language in index_languages
                 title = tr('{brand} Vehicles for Export from China | AUTOLINK').replace('{brand}',brand['name'])
                 description = brand['name'] + ' · ' + description
                 content = '<div class="trade-intro"><div><h1>' + e(brand['name']) + '</h1><p>' + e(brand.get('overview') or tr('Browse model references and reviewed supplier offers.')) + '</p></div></div><div class="trade-grid">' + ''.join(model_card(model) for model in brand['models']) + '</div>'
@@ -176,7 +288,7 @@ class PublicSEOService:
         shell=re.sub(r'<meta name="description" content="[^"]*">',lambda _: '<meta name="description" content="'+e(description[:320])+'">',shell,count=1)
         metadata='<link rel="canonical" href="'+e(canonical)+'"><meta name="robots" content="'+('index, follow' if indexable else 'noindex, follow')+'"><meta property="og:title" content="'+e(title)+'"><meta property="og:description" content="'+e(description[:320])+'"><meta property="og:url" content="'+e(canonical)+'">'
         if indexable:
-            metadata+=''.join('<link rel="alternate" hreflang="'+tag+'" href="'+e(localized_url(canonical_path,code))+'">' for code,tag in LANGUAGE_TAGS.items())+'<link rel="alternate" hreflang="x-default" href="'+e(localized_url(canonical_path))+'">'
+            metadata+=''.join('<link rel="alternate" hreflang="'+LANGUAGE_TAGS[code]+'" href="'+e(localized_url(canonical_path,code))+'">' for code in index_languages)+'<link rel="alternate" hreflang="x-default" href="'+e(localized_url(canonical_path,'en' if 'en' in index_languages else index_languages[0]))+'">'
         if image and indexable:metadata+='<meta property="og:image" content="'+e(ORIGIN+image if image.startswith('/') else image)+'">'
         if graph and indexable:metadata+='<script id="autolink-public-jsonld" type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<','\\u003c')+'</script>'
         shell=shell.replace('</head>',metadata+'</head>',1)
@@ -201,7 +313,11 @@ class PublicSEOService:
         if not re.fullmatch(r'[A-Za-z0-9_-]{1,100}', ident): return {}
         file = self.site_root / 'model-reference' / (ident + '.json')
         if not file.is_file(): return {}
-        data = json.loads(file.read_text(encoding='utf-8'))
+        try:
+            data = asset_json(str(file),asset_version(file))
+        except (ValueError,OSError):
+            return {}
+        if not isinstance(data,dict): return {}
         return data if data.get('modelId') == ident else {}
 
     def reference_parameters(self,model,language,tr):
@@ -209,8 +325,8 @@ class PublicSEOService:
         data=self.reference(model)
         dictionary=read_dictionary(str(self.site_root),language,True)
         def source(value):
-            value=str(value or '—')
-            value=dictionary.get(value,value) if language!='zh' else value
+            value=str(value if value is not None and value!='' else '—')
+            value=self.translated_value(value,language)
             return html.escape(re.sub(r'\d+(?:\.\d+)?\s*(?:万元|元)',tr('Supplier quote pending'),value),quote=True)
         configs=data.get('variants',data.get('configurations',[]))
         configs=[config for config in configs if isinstance(config,dict)][:2]

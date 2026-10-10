@@ -571,16 +571,17 @@ class TradeService:
         This never serializes full user/listing rows, private files, inquiries,
         quotes or contact details. Counts and shard rows use one read snapshot.
         """
-        from seo_service import LANGUAGES, localized_url, sitemap_alternates
+        from seo_service import LANGUAGES, PublicSEOService, localized_url, sitemap_alternates
+        seo = PublicSEOService(self)
         ElementTree.register_namespace('xhtml', 'http://www.w3.org/1999/xhtml')
         # Each eligible entity produces nine URL entries. Bound URL entries,
         # rather than just source entities, so shards remain within the limit.
         entity_page_size = max(1, SITEMAP_PAGE_SIZE // len(LANGUAGES))
-        def append_urls(path, modified=None):
-            for language in LANGUAGES:
+        def append_urls(path, modified=None, languages=LANGUAGES):
+            for language in languages:
                 node = ElementTree.SubElement(root, 'url')
                 ElementTree.SubElement(node, 'loc').text = localized_url(path, language)
-                sitemap_alternates(node, path, ElementTree)
+                sitemap_alternates(node, path, ElementTree, languages)
                 if modified:
                     ElementTree.SubElement(node, 'lastmod').text = datetime.fromtimestamp(
                         modified, timezone.utc).isoformat(timespec='seconds')
@@ -628,7 +629,16 @@ class TradeService:
                     (entity_page_size,(page-1)*entity_page_size))
                 for row in rows:
                     # Actual stored content modification, never generation time.
-                    append_urls(prefix+quote(row['id'],safe=''),row['modified'])
+                    languages = LANGUAGES
+                    if category=='models':
+                        model = db.execute('''SELECT m.*,b.name AS brand_name,b.active AS brand_active,b.logo AS brand_logo
+                            FROM catalog_models m JOIN catalog_brands b ON b.id=m.brand_id WHERE m.id=?''',(row['id'],)).fetchone()
+                        languages = seo.index_policy('model',self.catalog.model_row(model))['indexLanguages']
+                    elif category=='brands':
+                        brand = dict(db.execute('SELECT * FROM catalog_brands WHERE id=?',(row['id'],)).fetchone())
+                        brand['models'] = [dict(item) for item in db.execute('SELECT id FROM catalog_models WHERE brand_id=? AND active=1',(row['id'],))]
+                        languages = seo.index_policy('brand',brand)['indexLanguages']
+                    append_urls(prefix+quote(row['id'],safe=''),row['modified'],languages)
         payload = ElementTree.tostring(root,encoding='utf-8',xml_declaration=True)
         if len(payload)>52428800:
             raise BuyerError(503,'Sitemap capacity exceeded.')

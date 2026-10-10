@@ -748,15 +748,23 @@ class Handler(BaseHTTPRequestHandler):
             return
         if tail == "models":
             data = self.trade.catalog.models(brand=parse_qs(urlsplit(self.path).query).get("brandId", [None])[0])
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = [{**model,'seo':renderer.index_policy('model',model)} for model in data]
         elif tail.startswith("models/"):
             ident = tail.split("/", 1)[1]
             if not self.trade.catalog.enabled(ident):
                 raise ApiError(404, "Model not found.")
             data = self.trade.catalog.get(ident)
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = {**data,'seo':renderer.index_policy('model',data)}
         elif tail == "brands":
             data = self.trade.catalog.brands()
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = [{**brand,'seo':renderer.index_policy('brand',{**brand,'models':self.trade.catalog.models(brand=brand['id'])})} for brand in data]
         elif tail.startswith("brands/"):
             data = self.trade.catalog.brand(tail.split("/", 1)[1])
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = {**data,'seo':renderer.index_policy('brand',data)}
         elif tail == "vehicles":
             query = parse_qs(urlsplit(self.path).query)
             principal=None

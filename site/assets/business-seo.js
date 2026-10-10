@@ -30,7 +30,9 @@
     if(!details&&rawPath===initialPath&&document.querySelector?.('#app[data-ssr="true"]'))return;
     const privatePage=/^\/(buyer|account|supplier|admin|merchant|platform|workspace|login|register|auth|autolink|api)(\/|$)/.test(path);
     const filtered=path.startsWith('/trade/')&&[...new URLSearchParams(location.search).keys()].some(key=>key!=='lang');
-    const excluded=privatePage||details?.kind==='error'||path==='/trade/compare'||filtered;
+    const qualityControlled=['model','brand'].includes(details?.kind)||/^\/trade\/(models|brands)\/[^/]+$/.test(path);
+    const eligibleLanguages=qualityControlled?(details?.indexLanguages||[]):languages;
+    const excluded=privatePage||details?.kind==='error'||path==='/trade/compare'||filtered||(qualityControlled&&!eligibleLanguages.includes(language()));
     const canonical=localizedUrl(path);
     const existingDescription=document.head.querySelector('meta[name="description"]')?.content;
     if(!privatePage&&!path.startsWith('/trade/')&&existingDescription&&existingDescription!==generatedDescription)customDescriptions.set(path,existingDescription);
@@ -39,8 +41,8 @@
     put('link[rel="canonical"]',{rel:'canonical',href:canonical});
     for(const node of document.head.querySelectorAll('link[rel="alternate"][hreflang]'))node.remove();
     if(!excluded){
-      for(const code of languages){const node=document.createElement('link');node.rel='alternate';node.hreflang=code==='zh'?'zh-CN':code;node.href=localizedUrl(path,code);document.head.append(node);}
-      const node=document.createElement('link');node.rel='alternate';node.hreflang='x-default';node.href=localizedUrl(path,'en');document.head.append(node);
+      for(const code of eligibleLanguages){const node=document.createElement('link');node.rel='alternate';node.hreflang=code==='zh'?'zh-CN':code;node.href=localizedUrl(path,code);document.head.append(node);}
+      const node=document.createElement('link');node.rel='alternate';node.hreflang='x-default';node.href=localizedUrl(path,eligibleLanguages.includes('en')?'en':eligibleLanguages[0]);document.head.append(node);
     }
     put('meta[name="robots"]',{name:'robots',content:privatePage?'noindex, nofollow':excluded?'noindex, follow':'index, follow'});
     put('meta[name="description"]',{name:'description',content:description});
@@ -106,7 +108,8 @@
       graph.push({'@type':'BreadcrumbList',itemListElement:[{name:tr('Home'),item:origin+'/'},{name:parentLabel,item:origin+'/trade/'+collection},{name:label,item:canonical}].map((item,index)=>({'@type':'ListItem',position:index+1,...item}))});
       if(entity)graph.push(entity);
     }
-    details={path,kind,description,image,graph};document.title=title;update();
+    const indexLanguages=Array.isArray(data.seo?.indexLanguages)?languages.filter(code=>data.seo.indexLanguages.includes(code)):[];
+    details={path,kind,description,image,graph,indexLanguages};document.title=title;update();
   }
   window.businessSEO=Object.freeze({page,update});
   update();const title=document.head.querySelector('title');if(title)new MutationObserver(update).observe(title,{childList:true,subtree:true});

@@ -1,6 +1,10 @@
 // Reuse the original per-model configuration and photo snapshots. Stock and
 // prices are obtained only from the existing reviewed supplier listing API.
 export const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function translateSpecification(value,language,dictionary={},verified={}){
+ const source=String(value??'—');
+ return language==='zh'?source:verified[language]?.[source]??dictionary[source]??source;
+}
 export function selectionForYear(data,year,ids=[]){
  const choices=(data.variants||[]).filter(v=>String(v.year)===String(year));
  const selected=[...new Set(ids)].map(id=>choices.find(v=>v.id===id)).filter(Boolean).slice(0,4);
@@ -44,13 +48,13 @@ const json=async url=>{const r=await fetch(url,{credentials:'same-origin',signal
 export async function mountReference(host,options){
  const {model,language='en',locale=language,read,card,translate=x=>x}=options;
  const e=escapeHTML,t=key=>uiText(language,key),plain=key=>translate(key);
- let data,dictionary={};
- try{[data,dictionary]=await Promise.all([json('/model-reference/'+encodeURIComponent(model.id)+'.json'),language==='zh'?Promise.resolve({}):json('/locales/specs-'+encodeURIComponent(language)+'.json')]);}
+ let data,dictionary={},verified={};
+ try{[data,dictionary,verified]=await Promise.all([json('/model-reference/'+encodeURIComponent(model.id)+'.json'),language==='zh'?Promise.resolve({}):json('/locales/specs-'+encodeURIComponent(language)+'.json'),json('/locales/seo-verified-terms.json')]);}
  catch(error){host.innerHTML=`<div class="empty" role="status">${e(t('Configuration information unavailable'))} <button class="btn secondary" data-reference-retry>${e(t('Retry'))}</button></div>`;host.querySelector('[data-reference-retry]').onclick=()=>mountReference(host,options);return;}
  if(!host.isConnected||data.modelId!==model.id)return;
  const st={tab:(new URLSearchParams(location.search).get('tab')||'specifications').toLowerCase(),year:data.availableYears?.[0],ids:[],query:'',diff:false,category:'',photoTrim:'',photoIndex:0};
  if(!['specifications','images','suppliers'].includes(st.tab)){st.tab='specifications';const url=new URL(location.href);if(url.searchParams.has('tab')){url.searchParams.set('tab',st.tab);history.replaceState(null,'',url.pathname+url.search+url.hash);}}
- const sourceText=value=>language==='zh'?String(value??'—'):dictionary[String(value)]??String(value??'—').replace(/[\u4e00-\u9fff]+/g,part=>dictionary[part]??part);
+ const sourceText=value=>translateSpecification(value,language,dictionary,verified.translations);
  const valueText=value=>sourceText(String(value??'—').replace(/\d+(?:\.\d+)?\s*(?:万元|元)/g,plain('Supplier quote pending')));
  const photos=safePhotos(data),uniqueTrims=[...new Set(photos.map(p=>p.trim).filter(Boolean))];
  let offers,loadingOffers=false;

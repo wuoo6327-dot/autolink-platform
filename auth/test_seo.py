@@ -63,31 +63,32 @@ class PublicSEOTests(unittest.TestCase):
         self.assertEqual(document.apps[0].get('data-ssr'),'true')
         self.assertTrue(any('/assets/business-page-bootstrap.mjs' in src for src in document.script_sources))
         self.assertEqual(self.snapshot(),before)
-    def test_all_nine_language_canonical_and_bidirectional_alternates(self):
+    def test_all_nine_language_canonical_and_only_reviewed_alternates(self):
         path='/trade/models/aeolus-catalog-1'
-        expected={LANGUAGE_TAGS[language]:localized_url(path,language) for language in LANGUAGES}
-        expected['x-default']=localized_url(path)
+        expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'zh')}
         for language in LANGUAGES:
             with self.subTest(language=language):
                 status,body=self.seo.render(path+'?lang='+language)
                 document=HTMLDocument(body.decode())
                 self.assertEqual(status,200)
                 self.assertEqual(document.canonical(),localized_url(path,language))
-                self.assertEqual(document.alternates(),expected)
+                self.assertEqual(document.alternates(),expected if language=='zh' else {})
+                self.assertIn('index, follow' if language=='zh' else 'noindex, follow',next(item['content'] for item in document.metas if item.get('name')=='robots'))
                 self.assertEqual(document.html['lang'],LANGUAGE_TAGS[language])
                 self.assertEqual(document.html['dir'],'rtl' if language=='ar' else 'ltr')
-    def test_sitemap_has_234_models_nine_languages_with_reciprocal_mapping(self):
+    def test_sitemap_has_195_complete_models_in_reviewed_source_language(self):
         root=ElementTree.fromstring(self.trade.sitemap_xml('models-1.xml'))
         ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
         urls=root.findall('s:url',ns)
         locations=[node.find('s:loc',ns).text for node in urls]
-        self.assertEqual(len(locations),234*9)
-        self.assertEqual(len(set(locations)),234*9)
+        self.assertEqual(len(locations),195)
+        self.assertEqual(len(set(locations)),195)
+        self.assertTrue(all(url.endswith('?lang=zh') for url in locations))
+        self.assertFalse(any('omoda-catalog-1' in url for url in locations))
         for node in urls:
             actual={link.attrib['hreflang']:link.attrib['href'] for link in node.findall('x:link',ns)}
             path=node.find('s:loc',ns).text.split('autolinkglobal.com',1)[1].split('?',1)[0]
-            expected={LANGUAGE_TAGS[language]:localized_url(path,language) for language in LANGUAGES}
-            expected['x-default']=localized_url(path)
+            expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'zh')}
             self.assertEqual(actual,expected)
         self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('vehicles-1.xml')).findall('s:url',ns),[])
         self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('suppliers-1.xml')).findall('s:url',ns),[])
@@ -118,7 +119,7 @@ class PublicSEOTests(unittest.TestCase):
     def test_admin_maintained_text_is_escaped_in_html_and_jsonld(self):
         model=self.trade.catalog.get('aeolus-catalog-1')
         self.trade.catalog.save_model(self.users['admin'],{**model,'model':'Synthetic <script>alert(1)</script> \\g<0> & "quote"'},model['id'])
-        status,body=self.seo.render('/trade/models/'+model['id'])
+        status,body=self.seo.render('/trade/models/'+model['id']+'?lang=zh')
         source=body.decode();self.assertEqual(status,200)
         self.assertNotIn('<script>alert(1)</script>',source)
         self.assertIn('&lt;script&gt;',source)

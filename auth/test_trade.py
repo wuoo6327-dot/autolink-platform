@@ -206,7 +206,8 @@ class TradeFlowTests(unittest.TestCase):
                 self.assertLessEqual(len(locations),18)
                 found.extend(locations)
             self.assertEqual(len(found),len(set(found)))
-            self.assertEqual(len(found),len(self.trade.catalog.models())*9)
+            self.assertEqual(len(found),195)
+            self.assertTrue(all(url.endswith('?lang=zh') for url in found))
             for filename in ('models-0.xml','models-01.xml','models-99999.xml','users-1.xml','../static-1.xml'):
                 with self.assertRaises(BuyerError):self.trade.sitemap_xml(filename)
 
