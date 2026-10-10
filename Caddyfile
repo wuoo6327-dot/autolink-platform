@@ -97,6 +97,16 @@
 			file_server
 		}
 	}
+	@privatePages path /buyer /buyer/* /account /account/* /supplier /supplier/* /admin /admin/* /merchant /merchant/* /platform /platform/* /workspace /workspace/*
+	header @privatePages X-Robots-Tag "noindex, nofollow"
+	@publicTradeHTML {
+		method GET HEAD
+		path_regexp ^/trade(?:/[^.]+)?/?$
+	}
+	handle @publicTradeHTML {
+		rewrite * /autolink/public/seo{uri}
+		reverse_proxy auth:8080
+	}
 	@trade path /trade /trade/*
 	handle @trade {
 		route {

@@ -1,10 +1,10 @@
 import {ensureBusinessLanguage, loadScript, showBootstrapError} from './business-language-loader.mjs?v=20261009-speed';
 
-const version = '?v=20261009-gx';
+const version = '?v=20261010-round5';
 const page = document.querySelector('script[data-business-page]')?.dataset.businessPage;
 const pages = {
   home: {
-    before: ['/assets/supplier-program.js', '/assets/auth-entry.js'],
+    before: ['/assets/supplier-program.js', '/assets/auth-entry.js', '/assets/public-directory.js'],
     after: ['/assets/business-routes.js', '/assets/email-ui.js', '/assets/account-header.js', '/assets/business-seo.js'],
     app: '/assets/index-autolink-membership-apply-pricing.js', module: true
   },
@@ -18,7 +18,7 @@ try {
   if (!config) throw Error('Unknown application');
   await Promise.all([ensureBusinessLanguage(), ...config.before.map(url => loadScript(url + version))]);
   await Promise.all(config.after.map(url => loadScript(url + version)));
-  // Keep the existing compiled application intact. Its language, authentication
+  // Load the existing compiled application after its language, authentication
   // and navigation helpers are ready before its first render.
   await loadScript(config.app + version, {module: !!config.module});
 } catch { showBootstrapError(); }
