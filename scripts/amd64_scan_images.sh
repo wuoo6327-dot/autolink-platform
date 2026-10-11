@@ -6,6 +6,9 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SCAN='aquasec/trivy@sha256:9db099105405c648166e6b94155eb32f8da12673cf1f455207f7385cc9a77283'
 OUT="$ROOT/qa-scan"
 mkdir -p "$OUT/results" "$OUT/cache"
+# The pinned scanner runs as root with capabilities dropped, so its writable
+# bind mounts must be owned by uid 0 instead of the Workbench login user.
+sudo -n chown -R 0:0 "$OUT/results" "$OUT/cache"
 for kind in auth web; do
   test -s "$ROOT/$kind-image.tar"
   sudo -n docker run --rm --platform linux/amd64 --cpus 0.5 --memory 512m --pids-limit 128 \

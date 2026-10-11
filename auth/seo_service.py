@@ -206,6 +206,9 @@ class PublicSEOService:
             return False
         if any(type(year) is not int or not 1900 <= year <= 2100 for year in years):
             return False
+        # A future catalog label cannot justify indexing an older source trim.
+        if model.get('year') is not None and model['year'] not in years:
+            return False
         selected = variants[:2]
         if any(not isinstance(v,dict) or not v.get('name') or v.get('year') not in years or not isinstance(v.get('values'),dict) for v in selected):
             return False
@@ -289,7 +292,10 @@ class PublicSEOService:
                 index_languages = self.index_policy('model',model)['indexLanguages']
                 indexable = indexable and language in index_languages
                 model_name = model['model'] if model['model'].casefold().startswith(model['brand'].casefold()+' ') else model['brand']+' '+model['model']
-                name = ' '.join(str(value) for value in (model_name,model.get('year')) if value)
+                verified_years = reference.get('availableYears',[])
+                display_year = (model.get('year') if model.get('year') in verified_years or not verified_years
+                                else verified_years[0])
+                name = ' '.join(str(value) for value in (model_name,display_year) if value)
                 title = (name + ' Specifications & China Export Inquiry | AUTOLINK') if editorial else tr('{model} Model Reference | AUTOLINK').replace('{model}', name)
                 description = (editorial['intro'] if editorial else name + ' · ' + tr('Model reference · not a supplier inventory offer.') + ' ' + description)
                 image = self.safe_image(model.get('image'))
@@ -305,7 +311,10 @@ class PublicSEOService:
                 content += anchor(canonical_path+'?interactive=1',tr('Compare all configurations'),True)
                 related = [item for item in self.trade.catalog.models(brand=model['brandId']) if item['id'] != ident][:4]
                 content += '<section class="related-models"><h2>' + e(tr('Related models')) + '</h2><div class="trade-grid">' + ''.join(model_card(item) for item in related) + '</div></section>'
-                content += '<p class="trade-note">' + e(tr('No public supplier vehicles are currently shown for this model unless they appear in the approved listing directory.')) + '</p>'
+                offers = self.trade.vehicle_rows(public=True,limit=4,filters={'brand':model['brand'],'model':model['model']})
+                content += '<section class="related-models"><h2>' + e(tr('Approved supplier offers')) + '</h2>'
+                content += ('<div class="trade-grid">' + ''.join(vehicle_card(vehicle) for vehicle in offers) + '</div>'
+                    if offers else '<p class="trade-note">' + e(tr('No approved vehicle listings yet.')) + '</p>') + '</section>'
                 graph.append({'@type':'ProductModel','name':name,'url':localized_url(canonical_path,language),'brand':{'@type':'Brand','name':model['brand']},'description':description})
             elif ident and collection == 'brands':
                 brand = self.trade.catalog.brand(ident)
@@ -317,6 +326,10 @@ class PublicSEOService:
                 energies = sorted({item['energy'] for item in brand['models'] if item.get('energy')})
                 overview = brand.get('overview') or (brand['name'] + ' has ' + str(len(brand['models'])) + ' public model references on AUTOLINK. The catalogue lists ' + ', '.join(body_types) + ' body types and ' + ', '.join(energies) + ' energy labels where provided. These are model references, not confirmed inventory or manufacturer authorization.')
                 content = '<div class="trade-intro"><div><h1>' + e(brand['name']) + '</h1><p>' + e(overview) + '</p></div></div><div class="trade-grid">' + ''.join(model_card(model) for model in brand['models']) + '</div>' + anchor('/trade/vehicles?brand='+quote(brand['name'],safe=''),tr('Find approved supplier offers'))
+                brand_offers = self.trade.vehicle_rows(public=True,limit=4,filters={'brand':brand['name']})
+                content += '<section class="related-models"><h2>' + e(tr('Approved supplier offers')) + '</h2>'
+                content += ('<div class="trade-grid">' + ''.join(vehicle_card(vehicle) for vehicle in brand_offers) + '</div>'
+                    if brand_offers else '<p class="trade-note">' + e(tr('No approved vehicle listings yet.')) + '</p>') + '</section>'
             elif ident and collection == 'vehicles':
                 vehicle = self.trade.vehicle(ident,public=True)
                 # Whitelisted fields only: no serialized row or member price.

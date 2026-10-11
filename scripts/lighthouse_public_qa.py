@@ -7,6 +7,9 @@ out.mkdir(parents=True,exist_ok=True)
 cli=Path(os.environ['LIGHTHOUSE_CLI'])
 base=os.environ.get('LIGHTHOUSE_BASE','http://127.0.0.1:18081')
 pages={'home':'/?lang=zh','model-detail':'/trade/models/zeekr-9x-2026?lang=zh'}
+if os.environ.get('LIGHTHOUSE_PAGES'):
+    selected=set(os.environ['LIGHTHOUSE_PAGES'].split(','))
+    pages={key:value for key,value in pages.items() if key in selected}
 summary=[]
 for repeat in range(1,4):
     for label,path in pages.items():

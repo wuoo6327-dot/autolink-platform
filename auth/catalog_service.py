@@ -49,12 +49,14 @@ class CatalogService:
             now=int(time.time())
             # Import the current reference library once per ID. Never overwrite admin edits.
             for item in CATALOG.values():
-                brand=re.sub(r'[^a-z0-9]+','-',item['brand'].lower()).strip('-')
-                db.execute('INSERT OR IGNORE INTO catalog_brands(id,name,created_at,updated_at) VALUES (?,?,?,?)',
-                    (brand,item['brand'],now,now))
-                db.execute('''INSERT OR IGNORE INTO catalog_models(id,brand_id,name,model_year,body_type,energy,image,created_at,updated_at)
-                    VALUES (?,?,?,?,?,?,?,?,?)''',(item['id'],brand,item['model'],item.get('year'),item.get('bodyType') or '',
-                    item.get('energy') or '',item.get('image') or '',now,now))
+                brand=item.get('brandId') or re.sub(r'[^a-z0-9]+','-',item['brand'].lower()).strip('-')
+                db.execute('''INSERT OR IGNORE INTO catalog_brands(id,name,country,logo,overview,created_at,updated_at)
+                    VALUES (?,?,?,?,?,?,?)''',(brand,item['brand'],item.get('brandCountry') or '',
+                    item.get('brandLogo') or '',item.get('brandOverview') or '',now,now))
+                db.execute('''INSERT OR IGNORE INTO catalog_models(id,brand_id,name,model_year,body_type,energy,image,
+                    description,specifications,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
+                    (item['id'],brand,item['model'],item.get('year'),item.get('bodyType') or '',item.get('energy') or '',
+                    item.get('image') or '',item.get('description') or '',json.dumps(item.get('specifications') or {}),now,now))
 
     @staticmethod
     def model_row(row):

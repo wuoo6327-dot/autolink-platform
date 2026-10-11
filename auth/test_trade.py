@@ -206,9 +206,9 @@ class TradeFlowTests(unittest.TestCase):
                 self.assertLessEqual(len(locations),18)
                 found.extend(locations)
             self.assertEqual(len(found),len(set(found)))
-            self.assertEqual(len(found),220)
-            self.assertEqual(sum(url.endswith('?lang=zh') for url in found),195)
-            self.assertEqual(sum('?' not in url for url in found),25)
+            self.assertEqual(len(found),199)
+            self.assertEqual(sum(url.endswith('?lang=zh') for url in found),177)
+            self.assertEqual(sum('?' not in url for url in found),22)
             for filename in ('models-0.xml','models-01.xml','models-99999.xml','users-1.xml','../static-1.xml'):
                 with self.assertRaises(BuyerError):self.trade.sitemap_xml(filename)
 

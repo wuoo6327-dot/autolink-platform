@@ -120,7 +120,7 @@
     "catalogSHA256": "25bb270e4ec183d555273b8dc3c5289ff9e3f28464ffbc9410bb6e88f6aef130"
   },
   "byd-song-plus-2026": {
-    "status": "approved",
+    "status": "hold-year-mismatch",
     "brandName": "BYD",
     "modelName": "Song PLUS",
     "sourceTrim": "DM-i 75KM 豪华型",
@@ -144,7 +144,7 @@
     "catalogSHA256": "4aaf70fba9d76ab8af65bebacb473d3b3945085036c03e5e88d6f8505ac5b7c6"
   },
   "byd-sealion-7-2026": {
-    "status": "approved",
+    "status": "hold-year-mismatch",
     "brandName": "BYD",
     "modelName": "Sealion 7",
     "sourceTrim": "550智航版",
@@ -240,7 +240,7 @@
     "catalogSHA256": "ba7dba0afcb06f40c0d035e7e3b83790ed7cac7196e824f0b5ad501197961389"
   },
   "gac-gs8-2026": {
-    "status": "approved",
+    "status": "hold-year-mismatch",
     "brandName": "Trumpchi",
     "modelName": "GS8",
     "sourceTrim": "领航系列 2.0TGDI 两驱豪华版 5座",

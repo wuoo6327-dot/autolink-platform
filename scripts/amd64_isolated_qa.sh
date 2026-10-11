@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 [[ "$(uname -m)" == x86_64 && "$ROOT" == /home/admin/autolink-global-seo-qa-* ]] || { echo 'Requires the named AMD64 QA checkout' >&2; exit 2; }
 [[ "$(git -C "$ROOT" branch --show-current)" == codex/global-seo-20261012 ]] || { echo 'Wrong candidate branch' >&2; exit 2; }
 D=(sudo -n docker)
-AUTH_IMAGE="${QA_AUTH_IMAGE:-autolink-global-seo-auth:bc0649a}"
+AUTH_IMAGE="${QA_AUTH_IMAGE:?Set QA_AUTH_IMAGE to the fixed candidate image digest}"
 WEB_IMAGE="${QA_WEB_IMAGE:-autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb}"
 NETWORK=autolink-global-seo-qa-net
 AUTH=autolink-global-seo-qa-auth
@@ -56,7 +56,7 @@ status,body=get('/autolink/public/models?limit=500');assert status==200 and len(
 status,body=get('/autolink/public/brands');assert status==200 and len(json.loads(body)['data'])==53
 status,body=get('/sitemaps/models-1.xml');assert status==200
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
-assert len(ET.fromstring(body).findall('.//s:loc',ns))==205
-print(json.dumps({'result':'pass','catalogModels':244,'brands':53,'indexableModelUrls':205,'httpStatuses':checks},sort_keys=True))
+assert len(ET.fromstring(body).findall('.//s:loc',ns))==199
+print(json.dumps({'result':'pass','catalogModels':244,'brands':53,'indexableModelUrls':199,'httpStatuses':checks},sort_keys=True))
 PY
 "${D[@]}" inspect "$AUTH" "$WEB" --format '{{.Name}} {{.State.Health.Status}} {{.HostConfig.ReadonlyRootfs}}' || true

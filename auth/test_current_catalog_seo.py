@@ -4,6 +4,7 @@ from pathlib import Path
 import unittest
 from xml.etree import ElementTree
 from seo_service import LANGUAGES, PublicSEOService, localized_url
+from buyer_service import CATALOG
 from test_seo import HTMLDocument
 import test_trade
 
@@ -61,10 +62,18 @@ class CurrentCatalogSEOTests(unittest.TestCase):
                             self.assertIn('content="noindex, follow"',source)
                             self.assertEqual(doc.alternates(),{})
         self.assertEqual(len(indexable),len(set(indexable)))
-        self.assertEqual(len(indexable),205)
-        self.assertEqual(sum('?' not in url for url in indexable),25)
-        self.assertEqual(sum('?lang=zh' in url for url in indexable),180)
+        self.assertEqual(len(indexable),199)
+        self.assertEqual(sum('?' not in url for url in indexable),22)
+        self.assertEqual(sum('?lang=zh' in url for url in indexable),177)
         self.assertFalse(any('/trade/brands/' in url for url in indexable))
+
+    def test_fresh_database_seed_is_current_public_catalog(self):
+        self.assertEqual(set(CATALOG),{model['id'] for model in self.models})
+        for model in self.models:
+            with self.subTest(model=model['id']):
+                seed=CATALOG[model['id']]
+                for field in ('brandId','brand','model','year','bodyType','energy','image','description','specifications'):
+                    self.assertEqual(seed[field],model[field])
 
     def test_all_current_images_have_verified_mobile_derivatives(self):
         manifest=json.loads((ROOT/'site/images/seo-heroes/manifest.json').read_text())
@@ -87,7 +96,7 @@ class CurrentCatalogSEOTests(unittest.TestCase):
             root=ElementTree.fromstring(self.trade.sitemap_xml(f'models-{page}.xml'))
             found.update(node.text for node in root.findall('.//s:loc',ns))
         self.assertEqual(found,expected)
-        self.assertEqual(sum('?' not in url for url in found),25)
+        self.assertEqual(sum('?' not in url for url in found),22)
 
     def test_english_review_withdraws_on_catalog_change(self):
         model=self.trade.catalog.get('geely-monjaro-2026')
@@ -95,5 +104,17 @@ class CurrentCatalogSEOTests(unittest.TestCase):
         with self.auth.connect() as db:
             db.execute("UPDATE catalog_models SET name='Changed model' WHERE id=?",(model['id'],))
         self.assertNotIn('en',self.seo.index_policy('model',self.trade.catalog.get(model['id']))['indexLanguages'])
+
+    def test_catalog_year_requires_source_year_evidence(self):
+        for ident in ('byd-song-plus-2026','byd-sealion-7-2026','gac-gs8-2026'):
+            with self.subTest(model=ident):
+                model=self.trade.catalog.get(ident)
+                self.assertEqual(model['year'],2026)
+                self.assertEqual(self.seo.reference(model)['availableYears'],[2025])
+                self.assertEqual(self.seo.index_policy('model',model)['indexLanguages'],[])
+                status,body=self.seo.render('/trade/models/'+ident)
+                self.assertEqual(status,200)
+                self.assertIn('2025 Model Reference',body.decode())
+                self.assertIn('noindex, follow',body.decode())
 
 if __name__=='__main__':unittest.main()
