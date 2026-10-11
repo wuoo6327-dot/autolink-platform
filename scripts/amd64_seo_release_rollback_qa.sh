@@ -9,7 +9,8 @@ BASELINE="${QA_BASELINE_AUTH_IMAGE:?Set current production auth image ID}"
 WEB="${QA_WEB_IMAGE:?Set current production web manifest digest}"
 BASE_SITE="$ROOT/production-public/site"
 BASE_CADDY="$ROOT/production-public/Caddyfile"
-[[ -d "$BASE_SITE" && -s "$BASE_CADDY" ]] || { echo 'Missing read-only copy of current production public site/config' >&2; exit 2; }
+RELEASE_SITE="$ROOT/release-public/site"
+[[ -d "$BASE_SITE" && -s "$BASE_CADDY" && -d "$RELEASE_SITE" ]] || { echo 'Missing current production or verified overlay site/config' >&2; exit 2; }
 D=(sudo -n docker)
 AUTH=autolink-seo-release-stage-auth
 FRONT=autolink-seo-release-stage-web
@@ -86,11 +87,11 @@ if phase!='rollback':
 print(json.dumps(result,sort_keys=True))
 PY
 }
-start_pair "$CANDIDATE" "$ROOT/site" "$ROOT/Caddyfile"
+start_pair "$CANDIDATE" "$RELEASE_SITE" "$ROOT/Caddyfile"
 probe candidate
 stop_pair
 start_pair "$BASELINE" "$BASE_SITE" "$BASE_CADDY" "$ROOT/auth/catalog.json"
 probe rollback
 stop_pair
-start_pair "$CANDIDATE" "$ROOT/site" "$ROOT/Caddyfile"
+start_pair "$CANDIDATE" "$RELEASE_SITE" "$ROOT/Caddyfile"
 probe restore
