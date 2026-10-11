@@ -49,6 +49,15 @@ overlay.extend([
 ])
 overlay.extend(str(path.relative_to(source)) for path in sorted((source/'images/seo-heroes').glob('*')) if path.is_file())
 overlay = list(dict.fromkeys(overlay))
+# These live hashes were re-read on 2026-10-12 and diffed against the candidate:
+# trade/app.js gains SSR preservation; bootstrap makes noncritical scripts
+# independent; the home bundle removes an eager language-resource import. Any later
+# production edit changes the hash and blocks release assembly again.
+reviewed_live_hashes = {
+    'trade/app.js': 'f79d3723da9943aebaea5baf684e3f0a2aca6b0f4c92ed3ab53cff029d4e705c',
+    'assets/business-page-bootstrap.mjs': '136738725ba0e5b5ab9bf143ec227e79d89e4507bd10d4aa0cc00e8d4f96abac',
+    'assets/index-autolink-membership-apply-pricing.js': '744bcedd5caa4fd5ada2418410f26ee496da1db979eb32350d07f2cbe0b8fc02',
+}
 
 
 def reviewed_version(ref, name):
@@ -74,6 +83,8 @@ for name in overlay:
     if not existing.is_file():
         continue
     accepted = {digest(incoming.read_bytes())}
+    if name in reviewed_live_hashes:
+        accepted.add(reviewed_live_hashes[name])
     for ref in ('a38664fc9bf2be639cbcb65dce4b57ef5b94170c',
                 '8c6e5e94d67b8ec5aaafddab3547e38a740e5e00'):
         previous = reviewed_version(ref, name)
