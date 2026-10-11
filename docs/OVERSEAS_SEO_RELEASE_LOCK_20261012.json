@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-12",
+  "state": "isolated_candidate_not_deployed",
+  "branch": "codex/global-overseas-seo-20261012",
+  "baseCommit": "58f34c3871ab740eb77bbdff4313b4d5b587b6c1",
+  "ancestry": {
+    "productionSecurityCandidate": "a38664f",
+    "seoPR6": "8c6e5e94d67b8ec5aaafddab3547e38a740e5e00",
+    "performancePR7": "58f34c3871ab740eb77bbdff4313b4d5b587b6c1"
+  },
+  "productionReadOnlyCheckUTC": "2026-10-11T18:50:17.304015+00:00",
+  "catalog": {
+    "models": 244,
+    "brands": 53,
+    "referenceAndImageHashesMatched": 244,
+    "fixtureSHA256": "9a39b24fe17befc5b88ffb689104a4a88f8e04bc054882c1f504259467bc5ff3"
+  },
+  "editorial": {
+    "englishModelUrls": 50,
+    "retainedChineseModelUrls": 177,
+    "englishBrandUrls": 10,
+    "otherApprovedLanguageDetailUrls": 0,
+    "englishModelReviewSHA256": "31dd9f9655c211e6437d0a21e7a78f5732f5d757195463cfeafa26adacb5e247",
+    "englishBrandReviewSHA256": "da43b367d050b4324c8c121fa4d78bbffae0728d769f32982a2cbc0df20c9379"
+  },
+  "isolatedSitemap": {
+    "indexableModelUrls": 227,
+    "indexableBrandUrls": 10,
+    "staticUrls": 64,
+    "newEnglishMarketGuideUrls": 1
+  },
+  "image": {
+    "candidateAMD64ImageDigest": null,
+    "candidateAMD64ArchiveSHA256": null,
+    "reason": "This overlay has been tested in local isolation; a new immutable AMD64 image and staging rollback gate are required before production deployment."
+  },
+  "productionGuards": [
+    "Re-read the live catalog and compare every model, brand, reference and image fingerprint immediately before release.",
+    "Keep the PR6 and PR7 security and performance ancestry; do not apply PR4 a second time.",
+    "Build immutable AMD64 auth and web images, scan them, and verify the same digest in preproduction and deployment.",
+    "Back up and restore-test production SQLite and volumes; never replace the production catalog from a fixture.",
+    "Roll out only after separate approval; merge, production deployment, Sitemap submission and index requests remain excluded."
+  ]
+}

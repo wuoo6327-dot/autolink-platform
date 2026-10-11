@@ -941,6 +941,8 @@ class Handler(BaseHTTPRequestHandler):
         tail = path[len("/autolink/admin/"):]
         if method == "GET" and tail == "overview":
             data = self.trade.admin_overview()
+        elif method == "GET" and tail == "seo/status":
+            data = (getattr(self, 'seo', None) or PublicSEOService(self.trade)).admin_status()
         elif method == "GET" and tail == "email":
             data = self.service.mailer.status()
         elif method == "GET" and tail == "brands":

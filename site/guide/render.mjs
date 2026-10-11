@@ -46,7 +46,7 @@ export function shell(id,language='en',translate=value=>value) {
         <div class="guide-content">${g.type==='verification'?verification(s):g.type==='sourcing'?sourcing(s):process(s)}
         ${nextStep(s)}<p class="guide-legal-note">${esc(u.note)} <a href="${esc(href('/terms',s.language))}">${esc(translate('Terms'))}</a></p></div>
       </div>
-      <nav class="guide-related" aria-label="${esc(u.more)}">${Object.entries(guides).filter(([key])=>key!==id).map(([key,value])=>`<a href="${esc(href('/guide/'+key,s.language))}"><small>${value.number} / ${esc(u.guide)}</small><strong>${esc(value[s.contentLanguage].label)}</strong></a>`).join('')}</nav>
+      <nav class="guide-related" aria-label="${esc(u.more)}">${Object.entries(guides).filter(([key])=>key!==id).map(([key,value])=>`<a href="${esc(href('/guide/'+key,s.language))}"><small>${value.number} / ${esc(u.guide)}</small><strong>${esc(value[s.contentLanguage].label)}</strong></a>`).join('')}${s.language==='en'?'<a href="/guide/middle-east-importers"><small>MARKET GUIDE</small><strong>Middle East importer sourcing</strong></a>':''}</nav>
     </main>
     <footer class="trade-footer"><div class="trade-footer-inner"><span>${esc(translate('AUTOLINK · Connecting Chinese vehicle suppliers and global buyers.'))}</span><span>${[['/terms','Terms'],['/membership-terms','Membership Terms'],['/privacy','Privacy'],['/support','Contact support']].map(([path,label])=>`<a href="${esc(href(path,s.language))}">${esc(translate(label))}</a>`).join('')}</span></div></footer>`;
 }
