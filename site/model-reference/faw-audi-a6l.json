@@ -1,0 +1,221 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "faw-audi-a6l",
+  "brandZh": "FAW Audi",
+  "modelZh": "A6L",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "发动机与性能",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:0:1",
+          "label": "排量（cm³）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最大输出功率（kW）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "最大输出扭矩（N·m）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:5",
+          "label": "变速器"
+        },
+        {
+          "key": "official:0:6",
+          "label": "0-100km/h加速（s）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "WLTC油耗（L/100km）"
+        }
+      ]
+    },
+    {
+      "name": "整车尺寸及质量",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "长×宽×高（mm）"
+        },
+        {
+          "key": "official:1:1",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:1:2",
+          "label": "行李箱容积（L）"
+        },
+        {
+          "key": "official:1:3",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:1:4",
+          "label": "整备质量（kg）"
+        },
+        {
+          "key": "official:1:5",
+          "label": "最大允许总质量（kg）"
+        },
+        {
+          "key": "official:1:6",
+          "label": "最小转弯直径（m）"
+        },
+        {
+          "key": "official:1:7",
+          "label": "最小离地间隙（mm）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "faw-audi-a6l-official-1",
+      "name": "A6L 臻选型",
+      "values": {
+        "official:0:0": "2.0L / 直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "150",
+        "official:0:3": "340",
+        "official:0:4": "前轮驱动",
+        "official:0:5": "7速 S tronic®双离合变速器",
+        "official:0:6": "8.0",
+        "official:0:7": "237",
+        "official:0:8": "6.98",
+        "official:1:0": "5142×1874×1464；配置自适应空气悬架时高度1450",
+        "official:1:1": "3066",
+        "official:1:2": "473",
+        "official:1:3": "61",
+        "official:1:4": "1896",
+        "official:1:5": "2420",
+        "official:1:6": "12.1",
+        "official:1:7": "106",
+        "official:scope": "官网当前配置折页（更新2026.Q2）；技术数据来自第15页，选装及生产批次条件以官方资料与实际车辆为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-a6l-official-2",
+      "name": "A6L 尊享型",
+      "values": {
+        "official:0:0": "2.0L / 直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "200",
+        "official:0:3": "400",
+        "official:0:4": "前轮驱动",
+        "official:0:5": "7速 S tronic®双离合变速器",
+        "official:0:6": "7.2",
+        "official:0:7": "250",
+        "official:0:8": "7.17",
+        "official:1:0": "5142×1874×1464；配置自适应空气悬架时高度1450",
+        "official:1:1": "3066",
+        "official:1:2": "473",
+        "official:1:3": "61",
+        "official:1:4": "1911",
+        "official:1:5": "2430",
+        "official:1:6": "12.1",
+        "official:1:7": "106",
+        "official:scope": "官网当前配置折页（更新2026.Q2）；技术数据来自第15页，选装及生产批次条件以官方资料与实际车辆为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-a6l-official-3",
+      "name": "A6L quattro 尊享型",
+      "values": {
+        "official:0:0": "2.0L / 直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "200",
+        "official:0:3": "400",
+        "official:0:4": "quattro 智能四轮驱动",
+        "official:0:5": "7速 S tronic®双离合变速器",
+        "official:0:6": "5.8",
+        "official:0:7": "250",
+        "official:0:8": "6.59",
+        "official:1:0": "5142×1874×1464；配置自适应空气悬架时高度1450",
+        "official:1:1": "3066",
+        "official:1:2": "409",
+        "official:1:3": "61",
+        "official:1:4": "2060",
+        "official:1:5": "2595",
+        "official:1:6": "12.1；配置全轮转向时11.3",
+        "official:1:7": "106",
+        "official:scope": "官网当前配置折页（更新2026.Q2）；技术数据来自第15页，选装及生产批次条件以官方资料与实际车辆为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-a6l-official-4",
+      "name": "A6L 3.0T quattro 旗舰型",
+      "values": {
+        "official:0:0": "3.0L / V型六缸",
+        "official:0:1": "2995",
+        "official:0:2": "270",
+        "official:0:3": "550",
+        "official:0:4": "quattro 智能四轮驱动",
+        "official:0:5": "7速 S tronic®双离合变速器",
+        "official:0:6": "4.6",
+        "official:0:7": "250",
+        "official:0:8": "6.87",
+        "official:1:0": "5142×1874×1464；配置自适应空气悬架时高度1450",
+        "official:1:1": "3066",
+        "official:1:2": "409",
+        "official:1:3": "61",
+        "official:1:4": "2126",
+        "official:1:5": "2630",
+        "official:1:6": "12.1；配置全轮转向时11.3",
+        "official:1:7": "106",
+        "official:scope": "官网当前配置折页（更新2026.Q2）；技术数据来自第15页，选装及生产批次条件以官方资料与实际车辆为准。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/faw-audi-a6l-v2.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.audi.cn/zh/models/a/a6/new_a6l.html"
+    }
+  ],
+  "sourceUrl": "https://www.audi.cn/content/dam/OneWeb/faw_vw/pdf/202601/a6/6-17/%E5%85%A8%E6%96%B0%E5%A5%A5%E8%BF%AAA6L_%E8%BD%A6%E5%9E%8B%E6%8A%98%E9%A1%B5.pdf",
+  "sourceScope": "官网当前配置折页（更新2026.Q2）；技术数据来自第15页，选装及生产批次条件以官方资料与实际车辆为准。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "a6l-pdf",
+      "sha256": "11b298f0a8fc3e59928b4a8cdbd8579ac0a0acb5e9a3c046f7b85017d504f765"
+    }
+  ]
+}

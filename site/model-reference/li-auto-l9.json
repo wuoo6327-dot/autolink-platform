@@ -1,0 +1,2281 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "li-auto-l9",
+  "brandZh": "Li Auto",
+  "modelZh": "L9",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基础参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长度"
+        },
+        {
+          "key": "official:0:1",
+          "label": "宽度"
+        },
+        {
+          "key": "official:0:2",
+          "label": "高度"
+        },
+        {
+          "key": "official:0:3",
+          "label": "轴距"
+        },
+        {
+          "key": "official:0:4",
+          "label": "座位数"
+        },
+        {
+          "key": "official:0:5",
+          "label": "座位布局"
+        },
+        {
+          "key": "official:0:6",
+          "label": "CLTC纯电续航里程"
+        },
+        {
+          "key": "official:0:7",
+          "label": "CLTC综合续航里程"
+        }
+      ]
+    },
+    {
+      "name": "外观与内饰",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "车漆颜色 · 珍珠白金属漆"
+        },
+        {
+          "key": "official:1:1",
+          "label": "车漆颜色 · 极地灰冷光漆"
+        },
+        {
+          "key": "official:1:2",
+          "label": "车漆颜色 · 钻石黑金属漆"
+        },
+        {
+          "key": "official:1:3",
+          "label": "车漆颜色 · 钛金色金属漆"
+        },
+        {
+          "key": "official:1:4",
+          "label": "车漆颜色 · 祖母绿特别版珍珠漆"
+        },
+        {
+          "key": "official:1:5",
+          "label": "车漆颜色 · 松露金特别版珍珠漆"
+        },
+        {
+          "key": "official:1:6",
+          "label": "车漆颜色 · 暗夜紫特别版珍珠漆"
+        },
+        {
+          "key": "official:1:7",
+          "label": "车漆颜色 · 棕金定制版双色车身"
+        },
+        {
+          "key": "official:1:8",
+          "label": "车漆颜色 · 黑金定制版双色车身"
+        },
+        {
+          "key": "official:1:9",
+          "label": "车漆颜色 · 绿金定制版双色车身"
+        },
+        {
+          "key": "official:1:10",
+          "label": "车漆颜色 · 紫金定制版双色车身"
+        },
+        {
+          "key": "official:1:11",
+          "label": "轮毂 · 21英寸黑色轮毂 （配285/45 R21米其林静音轮胎）"
+        },
+        {
+          "key": "official:1:12",
+          "label": "轮毂 · 21英寸银色轮毂 （配285/45 R21米其林静音轮胎）"
+        },
+        {
+          "key": "official:1:13",
+          "label": "轮毂 · 22英寸银色轮毂 （配285/40 R22米其林静音轮胎）"
+        },
+        {
+          "key": "official:1:14",
+          "label": "轮毂 · 专属22英寸晶灰轮毂 （配285/40 R22米其林静音轮胎）"
+        },
+        {
+          "key": "official:1:15",
+          "label": "内饰颜色 · 绿白双色内饰"
+        },
+        {
+          "key": "official:1:16",
+          "label": "内饰颜色 · 棕咖双色内饰"
+        },
+        {
+          "key": "official:1:17",
+          "label": "内饰颜色 · 灰紫双色内饰"
+        },
+        {
+          "key": "official:1:18",
+          "label": "内饰颜色 · 棕白双色内饰"
+        },
+        {
+          "key": "official:1:19",
+          "label": "专属设计套件 · 专属晶灰镀铬饰条"
+        },
+        {
+          "key": "official:1:20",
+          "label": "专属设计套件 · 专属字样刺绣软枕"
+        },
+        {
+          "key": "official:1:21",
+          "label": "专属设计套件 · 专属字样尾标"
+        },
+        {
+          "key": "official:1:22",
+          "label": "专属设计套件 · 专属字样迎宾光毯"
+        },
+        {
+          "key": "official:1:23",
+          "label": "专属设计套件 · 专属双色方向盘"
+        }
+      ]
+    },
+    {
+      "name": "电动系统",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "增程电动平台 · 动力电池类型"
+        },
+        {
+          "key": "official:2:1",
+          "label": "增程电动平台 · 动力电池总电量"
+        },
+        {
+          "key": "official:2:2",
+          "label": "增程电动平台 · 5C超充时间"
+        },
+        {
+          "key": "official:2:3",
+          "label": "增程电动平台 · 增程器"
+        },
+        {
+          "key": "official:2:4",
+          "label": "增程电动平台 · 增程器长周期保养"
+        },
+        {
+          "key": "official:2:5",
+          "label": "增程电动平台 · CLTC纯电续航里程"
+        },
+        {
+          "key": "official:2:6",
+          "label": "增程电动平台 · WLTC纯电续航里程"
+        },
+        {
+          "key": "official:2:7",
+          "label": "增程电动平台 · CLTC综合续航里程"
+        },
+        {
+          "key": "official:2:8",
+          "label": "增程电动平台 · WLTC综合续航里程"
+        },
+        {
+          "key": "official:2:9",
+          "label": "增程电动平台 · 对外放电"
+        },
+        {
+          "key": "official:2:10",
+          "label": "增程电动平台 · 油箱容积"
+        },
+        {
+          "key": "official:2:11",
+          "label": "增程电动平台 · 燃油标号"
+        },
+        {
+          "key": "official:2:12",
+          "label": "增程电动平台 · 环保标准"
+        },
+        {
+          "key": "official:2:13",
+          "label": "增程电动平台 · 能源模式选择"
+        },
+        {
+          "key": "official:2:14",
+          "label": "动力系统 · 驱动形式"
+        },
+        {
+          "key": "official:2:15",
+          "label": "动力系统 · 动力系统总功率"
+        },
+        {
+          "key": "official:2:16",
+          "label": "动力系统 · 动力系统总扭矩"
+        },
+        {
+          "key": "official:2:17",
+          "label": "动力系统 · 0-100km/h加速时间"
+        },
+        {
+          "key": "official:2:18",
+          "label": "动力系统 · 最高车速"
+        },
+        {
+          "key": "official:2:19",
+          "label": "动力系统 · 前五合一驱动系统；（异步感应电机）"
+        },
+        {
+          "key": "official:2:20",
+          "label": "动力系统 · 后六合一驱动系统；（永磁同步电机）"
+        },
+        {
+          "key": "official:2:21",
+          "label": "动力系统 · SiC碳化硅功率模块"
+        },
+        {
+          "key": "official:2:22",
+          "label": "动力系统 · 驾驶模式"
+        },
+        {
+          "key": "official:2:23",
+          "label": "动力系统 · 动力电池冷却方式"
+        }
+      ]
+    },
+    {
+      "name": "底盘系统",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "前悬架类型"
+        },
+        {
+          "key": "official:3:1",
+          "label": "后悬架类型"
+        },
+        {
+          "key": "official:3:2",
+          "label": "悬架"
+        },
+        {
+          "key": "official:3:3",
+          "label": "四轮800V独立液压泵"
+        },
+        {
+          "key": "official:3:4",
+          "label": "空气弹簧"
+        },
+        {
+          "key": "official:3:5",
+          "label": "滤震双阀CDC连续可变阻尼减振器"
+        },
+        {
+          "key": "official:3:6",
+          "label": "悬架能力"
+        },
+        {
+          "key": "official:3:7",
+          "label": "悬架高度档位调节"
+        },
+        {
+          "key": "official:3:8",
+          "label": "底盘"
+        },
+        {
+          "key": "official:3:9",
+          "label": "线控转向"
+        },
+        {
+          "key": "official:3:10",
+          "label": "后轮转向"
+        },
+        {
+          "key": "official:3:11",
+          "label": "制动"
+        },
+        {
+          "key": "official:3:12",
+          "label": "前后通风盘式制动"
+        },
+        {
+          "key": "official:3:13",
+          "label": "车身高度自动随速调节"
+        },
+        {
+          "key": "official:3:14",
+          "label": "悬架模式"
+        },
+        {
+          "key": "official:3:15",
+          "label": "动力模式"
+        },
+        {
+          "key": "official:3:16",
+          "label": "线控转向比模式"
+        },
+        {
+          "key": "official:3:17",
+          "label": "后轮转向模式"
+        },
+        {
+          "key": "official:3:18",
+          "label": "线控机械制动 EMB模式"
+        },
+        {
+          "key": "official:3:19",
+          "label": "制动能量回收系统"
+        },
+        {
+          "key": "official:3:20",
+          "label": "操控大师"
+        }
+      ]
+    },
+    {
+      "name": "舒适与豪华配置",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "第一排座椅 · 主驾全尺寸零重力座椅"
+        },
+        {
+          "key": "official:4:1",
+          "label": "第一排座椅 · 副驾全尺寸零重力座椅"
+        },
+        {
+          "key": "official:4:2",
+          "label": "第一排座椅 · 电动四向腿托"
+        },
+        {
+          "key": "official:4:3",
+          "label": "第一排座椅 · 双缝线菱形格Nappa真皮*"
+        },
+        {
+          "key": "official:4:4",
+          "label": "第一排座椅 · 上下可调舒适软枕"
+        },
+        {
+          "key": "official:4:5",
+          "label": "第一排座椅 · 呼吸式座椅通风"
+        },
+        {
+          "key": "official:4:6",
+          "label": "第一排座椅 · 座椅全覆盖加热"
+        },
+        {
+          "key": "official:4:7",
+          "label": "第一排座椅 · 软枕加热"
+        },
+        {
+          "key": "official:4:8",
+          "label": "第一排座椅 · 门板扶手及中央扶手温暖皮革加热"
+        },
+        {
+          "key": "official:4:9",
+          "label": "第一排座椅 · 十八点热石揉捏按摩"
+        },
+        {
+          "key": "official:4:10",
+          "label": "第一排座椅 · 副驾老板键"
+        },
+        {
+          "key": "official:4:11",
+          "label": "第二排座椅 · 左侧动态零重力座椅"
+        },
+        {
+          "key": "official:4:12",
+          "label": "第二排座椅 · 右侧动态零重力座椅"
+        },
+        {
+          "key": "official:4:13",
+          "label": "第二排座椅 · 电动调平扶手；（集成杯托）"
+        },
+        {
+          "key": "official:4:14",
+          "label": "第二排座椅 · 电动四向腿托"
+        },
+        {
+          "key": "official:4:15",
+          "label": "第二排座椅 · 右侧电动脚托"
+        },
+        {
+          "key": "official:4:16",
+          "label": "第二排座椅 · 双缝线菱形格Nappa真皮*"
+        },
+        {
+          "key": "official:4:17",
+          "label": "第二排座椅 · 上下可调舒适软枕"
+        },
+        {
+          "key": "official:4:18",
+          "label": "第二排座椅 · 呼吸式座椅通风"
+        },
+        {
+          "key": "official:4:19",
+          "label": "第二排座椅 · 座椅全覆盖加热"
+        },
+        {
+          "key": "official:4:20",
+          "label": "第二排座椅 · 软枕加热"
+        },
+        {
+          "key": "official:4:21",
+          "label": "第二排座椅 · 门板扶手及座椅扶手温暖皮革加热"
+        },
+        {
+          "key": "official:4:22",
+          "label": "第二排座椅 · 十八点热石按摩"
+        },
+        {
+          "key": "official:4:23",
+          "label": "第二排座椅 · 加长型双侧折叠桌板"
+        },
+        {
+          "key": "official:4:24",
+          "label": "第三排座椅 · 座椅加热"
+        },
+        {
+          "key": "official:4:25",
+          "label": "第三排座椅 · 靠背角度电动调节"
+        },
+        {
+          "key": "official:4:26",
+          "label": "第三排座椅 · 座椅一键电动放倒"
+        },
+        {
+          "key": "official:4:27",
+          "label": "第三排座椅 · 座椅一键电动复位"
+        },
+        {
+          "key": "official:4:28",
+          "label": "音响系统 · 9.3.6无瑕星环剧院音响"
+        },
+        {
+          "key": "official:4:29",
+          "label": "音响系统 · - 5440W剧院级峰值总功率"
+        },
+        {
+          "key": "official:4:30",
+          "label": "音响系统 · - 33扬声器；（29个座舱扬声器，4个头枕扬声器）"
+        },
+        {
+          "key": "official:4:31",
+          "label": "音响系统 · - Livis Pods空间音频头枕音响"
+        },
+        {
+          "key": "official:4:32",
+          "label": "音响系统 · - 全链路高采样率无损解码"
+        },
+        {
+          "key": "official:4:33",
+          "label": "音响系统 · - 前后双全景声独立音区"
+        },
+        {
+          "key": "official:4:34",
+          "label": "音响系统 · 杜比全景声"
+        },
+        {
+          "key": "official:4:35",
+          "label": "座舱舒适配置 · 三重星环氛围灯"
+        },
+        {
+          "key": "official:4:36",
+          "label": "座舱舒适配置 · 方向盘四向电动调节"
+        },
+        {
+          "key": "official:4:37",
+          "label": "座舱舒适配置 · 全车LED触摸式阅读灯"
+        },
+        {
+          "key": "official:4:38",
+          "label": "座舱舒适配置 · 第一排双超大面积化妆镜"
+        },
+        {
+          "key": "official:4:39",
+          "label": "座舱舒适配置 · 第二排双独立化妆镜"
+        },
+        {
+          "key": "official:4:40",
+          "label": "座舱舒适配置 · 双全景天幕"
+        },
+        {
+          "key": "official:4:41",
+          "label": "座舱舒适配置 · 顶部电动遮阳帘"
+        },
+        {
+          "key": "official:4:42",
+          "label": "座舱舒适配置 · 第二排侧窗电动遮阳帘"
+        },
+        {
+          "key": "official:4:43",
+          "label": "座舱舒适配置 · 二三排电动调光玻璃"
+        },
+        {
+          "key": "official:4:44",
+          "label": "座舱舒适配置 · 全新10L智能电动冷暖冰箱；（冷冻/冷藏/制暖）"
+        },
+        {
+          "key": "official:4:45",
+          "label": "座舱舒适配置 · 方向盘加热"
+        },
+        {
+          "key": "official:4:46",
+          "label": "座舱舒适配置 · 全车29处环抱式温暖皮革"
+        },
+        {
+          "key": "official:4:47",
+          "label": "座舱舒适配置 · 氛围空间"
+        },
+        {
+          "key": "official:4:48",
+          "label": "座舱舒适配置 · 四麦克风主动路噪消除（RNC）"
+        },
+        {
+          "key": "official:4:49",
+          "label": "座舱舒适配置 · 增程器主动降噪（EOC）"
+        },
+        {
+          "key": "official:4:50",
+          "label": "座舱舒适配置 · 立体七温区智能空调"
+        },
+        {
+          "key": "official:4:51",
+          "label": "座舱舒适配置 · - 一排立体四温区"
+        },
+        {
+          "key": "official:4:52",
+          "label": "座舱舒适配置 · - 二排独立双温区"
+        },
+        {
+          "key": "official:4:53",
+          "label": "座舱舒适配置 · - 三排独立温区"
+        },
+        {
+          "key": "official:4:54",
+          "label": "座舱舒适配置 · - 智能静音电动出风口"
+        },
+        {
+          "key": "official:4:55",
+          "label": "座舱舒适配置 · - 后排独立空调出风口"
+        },
+        {
+          "key": "official:4:56",
+          "label": "座舱舒适配置 · 热泵空调"
+        },
+        {
+          "key": "official:4:57",
+          "label": "座舱舒适配置 · 抗菌防霉防螨CN95空调滤芯"
+        },
+        {
+          "key": "official:4:58",
+          "label": "座舱舒适配置 · 负离子发生器"
+        },
+        {
+          "key": "official:4:59",
+          "label": "座舱舒适配置 · PM2.5监测"
+        },
+        {
+          "key": "official:4:60",
+          "label": "座舱舒适配置 · AQS空气质量自动控制"
+        },
+        {
+          "key": "official:4:61",
+          "label": "座舱舒适配置 · 二氧化碳监测"
+        },
+        {
+          "key": "official:4:62",
+          "label": "座舱舒适配置 · 香氛系统"
+        },
+        {
+          "key": "official:4:63",
+          "label": "座舱材质 · 高级丝绒顶棚"
+        },
+        {
+          "key": "official:4:64",
+          "label": "座舱材质 · 星环原木饰条"
+        },
+        {
+          "key": "official:4:65",
+          "label": "座舱材质 · Nappa真皮方向盘"
+        },
+        {
+          "key": "official:4:66",
+          "label": "座舱材质 · 前风挡双层隔音镀银玻璃"
+        },
+        {
+          "key": "official:4:67",
+          "label": "座舱材质 · OEKO-TEX®防过敏标准认证；（全车可接触织物材料）"
+        },
+        {
+          "key": "official:4:68",
+          "label": "座舱材质 · 双层超隔音侧窗玻璃；（第一排、第二排、第三排）"
+        },
+        {
+          "key": "official:4:69",
+          "label": "座舱材质 · 侧窗隐私玻璃；（第二排、第三排）"
+        },
+        {
+          "key": "official:4:70",
+          "label": "座舱材质 · 后风挡隐私玻璃"
+        },
+        {
+          "key": "official:4:71",
+          "label": "座舱材质 · 全车防紫外线玻璃"
+        },
+        {
+          "key": "official:4:72",
+          "label": "座舱材质 · 天幕双层隔音隔热玻璃；（前后双天幕）"
+        },
+        {
+          "key": "official:4:73",
+          "label": "座舱材质 · 整车簇绒脚垫"
+        },
+        {
+          "key": "official:4:74",
+          "label": "车内充电 · 第一排手机无线充电；（50瓦风冷）"
+        },
+        {
+          "key": "official:4:75",
+          "label": "车内充电 · 第一排USB接口Type-C；（15瓦）"
+        },
+        {
+          "key": "official:4:76",
+          "label": "车内充电 · 第一排USB接口Type-C；（67瓦）"
+        },
+        {
+          "key": "official:4:77",
+          "label": "车内充电 · 第二排座椅USB接口Type-C；（67瓦）"
+        },
+        {
+          "key": "official:4:78",
+          "label": "车内充电 · 第三排USB接口Type-C；（27瓦）"
+        },
+        {
+          "key": "official:4:79",
+          "label": "车内充电 · 车内220V电源"
+        },
+        {
+          "key": "official:4:80",
+          "label": "车内充电 · 车内12V电源"
+        },
+        {
+          "key": "official:4:81",
+          "label": "储物空间 · 第一排独立杯架"
+        },
+        {
+          "key": "official:4:82",
+          "label": "储物空间 · 第二排扶手弹出式杯架"
+        },
+        {
+          "key": "official:4:83",
+          "label": "储物空间 · 第三排独立杯架"
+        },
+        {
+          "key": "official:4:84",
+          "label": "储物空间 · 仪表台磁吸拓展点位"
+        },
+        {
+          "key": "official:4:85",
+          "label": "储物空间 · 第二排拓展电动导轨"
+        },
+        {
+          "key": "official:4:86",
+          "label": "储物空间 · 第三排拓展顶棚接口"
+        },
+        {
+          "key": "official:4:87",
+          "label": "储物空间 · 前排中央通道下沉式储物空间"
+        },
+        {
+          "key": "official:4:88",
+          "label": "储物空间 · 副驾电解锁手套箱"
+        },
+        {
+          "key": "official:4:89",
+          "label": "储物空间 · 后备厢下沉式储物空间"
+        },
+        {
+          "key": "official:4:90",
+          "label": "驾乘便利性 · 手机蓝牙钥匙"
+        },
+        {
+          "key": "official:4:91",
+          "label": "驾乘便利性 · UWB钥匙"
+        },
+        {
+          "key": "official:4:92",
+          "label": "驾乘便利性 · 远程App车控"
+        },
+        {
+          "key": "official:4:93",
+          "label": "驾乘便利性 · NFC智能卡片钥匙"
+        },
+        {
+          "key": "official:4:94",
+          "label": "驾乘便利性 · 机械应急钥匙"
+        },
+        {
+          "key": "official:4:95",
+          "label": "驾乘便利性 · 车外非隐藏式门把手；（电子机械一体式安全设计）"
+        },
+        {
+          "key": "official:4:96",
+          "label": "驾乘便利性 · 车内电解锁按键"
+        },
+        {
+          "key": "official:4:97",
+          "label": "驾乘便利性 · 车内物理解锁门把手"
+        },
+        {
+          "key": "official:4:98",
+          "label": "驾乘便利性 · 全车电容防夹电动门"
+        },
+        {
+          "key": "official:4:99",
+          "label": "驾乘便利性 · 全车电容防夹电关门"
+        },
+        {
+          "key": "official:4:100",
+          "label": "驾乘便利性 · 电动可调方向盘"
+        },
+        {
+          "key": "official:4:101",
+          "label": "驾乘便利性 · 电动尾门"
+        },
+        {
+          "key": "official:4:102",
+          "label": "驾乘便利性 · 外后视镜电加热"
+        },
+        {
+          "key": "official:4:103",
+          "label": "驾乘便利性 · 外后视镜集成车辆盲区监测"
+        },
+        {
+          "key": "official:4:104",
+          "label": "驾乘便利性 · 外后视镜电动调节；（带位置记忆）"
+        },
+        {
+          "key": "official:4:105",
+          "label": "驾乘便利性 · 外后视镜倒车自动调节"
+        },
+        {
+          "key": "official:4:106",
+          "label": "驾乘便利性 · 超清防眩目流媒体内后视镜"
+        },
+        {
+          "key": "official:4:107",
+          "label": "驾乘便利性 · 自动防眩目驾驶员侧外后视镜"
+        },
+        {
+          "key": "official:4:108",
+          "label": "驾乘便利性 · 360°高清全景影像；（含透明底盘）"
+        },
+        {
+          "key": "official:4:109",
+          "label": "驾乘便利性 · 内置ETC"
+        },
+        {
+          "key": "official:4:110",
+          "label": "驾乘便利性 · 随车电动充气泵"
+        },
+        {
+          "key": "official:4:111",
+          "label": "驾乘便利性 · 随车常用工具"
+        },
+        {
+          "key": "official:4:112",
+          "label": "驾乘便利性 · 隐藏式电动踏板"
+        }
+      ]
+    },
+    {
+      "name": "外部配置",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "外部灯光及配置 · 智能三色星环大灯"
+        },
+        {
+          "key": "official:5:1",
+          "label": "外部灯光及配置 · 星环大灯"
+        },
+        {
+          "key": "official:5:2",
+          "label": "外部灯光及配置 · 星环尾灯"
+        },
+        {
+          "key": "official:5:3",
+          "label": "外部灯光及配置 · 智能ADB大灯"
+        },
+        {
+          "key": "official:5:4",
+          "label": "外部灯光及配置 · 大灯高度自适应调节"
+        },
+        {
+          "key": "official:5:5",
+          "label": "外部灯光及配置 · 远近光自动控制"
+        },
+        {
+          "key": "official:5:6",
+          "label": "外部灯光及配置 · LED后视镜迎宾光毯"
+        },
+        {
+          "key": "official:5:7",
+          "label": "外部灯光及配置 · LED开门光毯"
+        },
+        {
+          "key": "official:5:8",
+          "label": "外部灯光及配置 · LED低速转向辅助灯"
+        },
+        {
+          "key": "official:5:9",
+          "label": "外部灯光及配置 · LED智能辅助驾驶灯"
+        },
+        {
+          "key": "official:5:10",
+          "label": "外部灯光及配置 · LED侧标识灯"
+        },
+        {
+          "key": "official:5:11",
+          "label": "外部灯光及配置 · 无刷电机静音前车窗雨刷"
+        },
+        {
+          "key": "official:5:12",
+          "label": "外部灯光及配置 · 隐藏式后车窗雨刷"
+        },
+        {
+          "key": "official:5:13",
+          "label": "外部灯光及配置 · 车顶行李架安装预留"
+        },
+        {
+          "key": "official:5:14",
+          "label": "外部灯光及配置 · 主动进气格栅"
+        },
+        {
+          "key": "official:5:15",
+          "label": "外部灯光及配置 · 电动拖车钩"
+        }
+      ]
+    },
+    {
+      "name": "马赫智能辅助驾驶及具身智能",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 辅助驾驶芯片"
+        },
+        {
+          "key": "official:6:1",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 具身智能芯片"
+        },
+        {
+          "key": "official:6:2",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 激光雷达"
+        },
+        {
+          "key": "official:6:3",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 前向激光雷达"
+        },
+        {
+          "key": "official:6:4",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 侧向激光雷达"
+        },
+        {
+          "key": "official:6:5",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 后向激光雷达"
+        },
+        {
+          "key": "official:6:6",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · UWB近场感知系统"
+        },
+        {
+          "key": "official:6:7",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 前向毫米波雷达"
+        },
+        {
+          "key": "official:6:8",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 360°全向视觉感知系统"
+        },
+        {
+          "key": "official:6:9",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 正前感知摄像头"
+        },
+        {
+          "key": "official:6:10",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 侧向感知摄像头"
+        },
+        {
+          "key": "official:6:11",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 正后感知摄像头"
+        },
+        {
+          "key": "official:6:12",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · - 360°环视摄像头"
+        },
+        {
+          "key": "official:6:13",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 方向盘震动提醒"
+        },
+        {
+          "key": "official:6:14",
+          "label": "马赫智能辅助驾驶及具身智能硬件平台 · 注意力提醒系统"
+        },
+        {
+          "key": "official:6:15",
+          "label": "双马赫M100具身智能套装 · 马赫M100芯片 ×2；侧向固态可变焦激光雷达 ×2；后向固态可变焦激光雷达；智能三色星环大灯；全车电容防夹电动门"
+        },
+        {
+          "key": "official:6:16",
+          "label": "马赫VLA模型；全国范围内任意道路、任意园区/地库可用 · 3D ViT 视觉模型"
+        },
+        {
+          "key": "official:6:18",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 按导航路径行驶、智能调速"
+        },
+        {
+          "key": "official:6:20",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 响应红绿灯通过路口"
+        },
+        {
+          "key": "official:6:21",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 无保护左/右转、待转区启停，环岛正常通行"
+        },
+        {
+          "key": "official:6:23",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 导航/超车/拥堵博弈变道"
+        },
+        {
+          "key": "official:6:25",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 动静态障碍物绕行、施工避让、邻车靠近避让"
+        },
+        {
+          "key": "official:6:26",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 借对向车道绕行、倒车脱困"
+        },
+        {
+          "key": "official:6:28",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 高速收费站ETC自主通行、出入匝道"
+        },
+        {
+          "key": "official:6:29",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 主辅路切换"
+        },
+        {
+          "key": "official:6:30",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - U型掉头/三点式掉头"
+        },
+        {
+          "key": "official:6:32",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 因果推理：对施工封路/学校区域/车道级偏航等复杂场景的主动推理及应对"
+        },
+        {
+          "key": "official:6:33",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 交通规则理解：公交/可变车道识别与通行"
+        },
+        {
+          "key": "official:6:34",
+          "label": "VLA全场景导航辅助驾驶（NOA）；全国高速公路、城市环路及城区道路 · - 特种车辆识别：警车/救护车/消防车"
+        },
+        {
+          "key": "official:6:35",
+          "label": "VLA指挥；全国范围内的任意道路、任意园区/地库 · - 舱外VLA指挥，根据指令完成泊入、泊出等任务"
+        },
+        {
+          "key": "official:6:36",
+          "label": "VLA指挥；全国范围内的任意道路、任意园区/地库 · - AI眼镜VLA指挥，根据指令完成泊入、泊出等任务"
+        },
+        {
+          "key": "official:6:37",
+          "label": "VLA指挥；全国范围内的任意道路、任意园区/地库 · - 舱内VLA指挥基础/组合指令沟通，行车/泊车指令沟通"
+        },
+        {
+          "key": "official:6:38",
+          "label": "VLA指挥；全国范围内的任意道路、任意园区/地库 · - 舱外具身迎宾"
+        },
+        {
+          "key": "official:6:40",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 闸机自主通行"
+        },
+        {
+          "key": "official:6:41",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 记忆路线直达车位"
+        },
+        {
+          "key": "official:6:42",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 陌生园区/地库自主寻路"
+        },
+        {
+          "key": "official:6:43",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 漫游找车位泊入"
+        },
+        {
+          "key": "official:6:44",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 导航终点靠边停车"
+        },
+        {
+          "key": "official:6:46",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 路线静默学习"
+        },
+        {
+          "key": "official:6:47",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 园区/地库/停车楼记忆泊车"
+        },
+        {
+          "key": "official:6:48",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 地面/地库/随心画多种车位支持保存"
+        },
+        {
+          "key": "official:6:49",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 地面地库跨层行驶"
+        },
+        {
+          "key": "official:6:51",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 智能泊车辅助"
+        },
+        {
+          "key": "official:6:52",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 智能泊出辅助"
+        },
+        {
+          "key": "official:6:53",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 车位随心画"
+        },
+        {
+          "key": "official:6:54",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 离车泊入/关门泊入"
+        },
+        {
+          "key": "official:6:55",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 直线召唤"
+        },
+        {
+          "key": "official:6:56",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - 遥控泊出"
+        },
+        {
+          "key": "official:6:58",
+          "label": "VLA泊车；全国范围内的任意园区/地库 · - NOA直达充电车位，并提前分配充电车位、自动降地锁、自动泊入、自动打开充电口盖、自动连接充电臂、云端调度及异常远程接管"
+        },
+        {
+          "key": "official:6:60",
+          "label": "全场景辅助驾驶（LCC）；全国高速公路、城市环路及城区道路 · - 车道居中保持"
+        },
+        {
+          "key": "official:6:62",
+          "label": "全场景辅助驾驶（LCC）；全国高速公路、城市环路及城区道路 · - 响应转向灯指令发起变道"
+        },
+        {
+          "key": "official:6:63",
+          "label": "全场景辅助驾驶（LCC）；全国高速公路、城市环路及城区道路 · - 高速公路自主下匝道、合/分流自主选择车道"
+        },
+        {
+          "key": "official:6:65",
+          "label": "全场景辅助驾驶（LCC）；全国高速公路、城市环路及城区道路 · - 障碍物绕行、施工场景避让"
+        },
+        {
+          "key": "official:6:67",
+          "label": "全场景辅助驾驶（LCC）；全国高速公路、城市环路及城区道路 · - 响应红绿灯通过直行路口"
+        },
+        {
+          "key": "official:6:69",
+          "label": "主动安全 · - 前向/后向自动紧急制动（AEB/RAEB）"
+        },
+        {
+          "key": "official:6:70",
+          "label": "主动安全 · - 通用障碍物自动紧急制动（GAEB）"
+        },
+        {
+          "key": "official:6:71",
+          "label": "主动安全 · - 低速自动紧急制动（LSAEB）"
+        },
+        {
+          "key": "official:6:72",
+          "label": "主动安全 · - - 悬空障碍物"
+        },
+        {
+          "key": "official:6:73",
+          "label": "主动安全 · - 前向横穿防碰撞（FCTA/FCTB）"
+        },
+        {
+          "key": "official:6:74",
+          "label": "主动安全 · - 后向横穿防碰撞（RCTA/RCTB）"
+        },
+        {
+          "key": "official:6:76",
+          "label": "主动安全 · - 紧急车道保持（ELK）"
+        },
+        {
+          "key": "official:6:77",
+          "label": "主动安全 · - 自动紧急转向（AES）"
+        },
+        {
+          "key": "official:6:78",
+          "label": "主动安全 · - 增强型自动紧急转向（AES）*"
+        },
+        {
+          "key": "official:6:79",
+          "label": "主动安全 · - 防御型自动紧急转向（DES）"
+        },
+        {
+          "key": "official:6:81",
+          "label": "主动安全 · - 车道偏离辅助（LDP）"
+        },
+        {
+          "key": "official:6:82",
+          "label": "主动安全 · - 二次碰撞缓解（SCM）"
+        },
+        {
+          "key": "official:6:83",
+          "label": "主动安全 · - 前向/后向误加速抑制（MAI/RMAI）"
+        },
+        {
+          "key": "official:6:84",
+          "label": "主动安全 · - 自动紧急救援呼叫"
+        },
+        {
+          "key": "official:6:85",
+          "label": "主动安全 · - 起身防误触方向盘"
+        },
+        {
+          "key": "official:6:86",
+          "label": "主动安全 · - 驾驶员监控系统（DMS）"
+        },
+        {
+          "key": "official:6:87",
+          "label": "主动安全 · - 限宽墩通行辅助"
+        },
+        {
+          "key": "official:6:89",
+          "label": "主动安全 · - 车道偏离预警（LDW）"
+        },
+        {
+          "key": "official:6:90",
+          "label": "主动安全 · - 前向碰撞预警（FCW）"
+        },
+        {
+          "key": "official:6:91",
+          "label": "主动安全 · - 后向碰撞预警（RCW）"
+        },
+        {
+          "key": "official:6:92",
+          "label": "主动安全 · - 开门预警（DOW）"
+        },
+        {
+          "key": "official:6:93",
+          "label": "主动安全 · - 电开门卫士"
+        },
+        {
+          "key": "official:6:94",
+          "label": "主动安全 · - 侧方盲区预警（BSD）"
+        },
+        {
+          "key": "official:6:95",
+          "label": "主动安全 · - 智能归位转向灯"
+        },
+        {
+          "key": "official:6:96",
+          "label": "主动安全 · - 交通信号灯提醒（TLR）"
+        },
+        {
+          "key": "official:6:97",
+          "label": "主动安全 · - 超速告警（TSA）"
+        },
+        {
+          "key": "official:6:99",
+          "label": "语音交互 · - 语音交互泊车"
+        },
+        {
+          "key": "official:6:100",
+          "label": "语音交互 · - 语音交互提醒"
+        }
+      ]
+    },
+    {
+      "name": "智能空间",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "智能空间硬件平台 · 车机芯片"
+        },
+        {
+          "key": "official:7:1",
+          "label": "智能空间硬件平台 · 5GA三卡双通高速通讯系统"
+        },
+        {
+          "key": "official:7:2",
+          "label": "智能空间硬件平台 · 双阵列式麦克风"
+        },
+        {
+          "key": "official:7:3",
+          "label": "智能空间硬件平台 · 舱内传感器"
+        },
+        {
+          "key": "official:7:4",
+          "label": "第三代多屏空间交互 · 前舱29英寸6K全景屏"
+        },
+        {
+          "key": "official:7:5",
+          "label": "第三代多屏空间交互 · 后舱21英寸4K移动屏"
+        },
+        {
+          "key": "official:7:6",
+          "label": "第三代多屏空间交互 · 超清投影式抬头显示系统；（HUD）"
+        },
+        {
+          "key": "official:7:7",
+          "label": "第三代多屏空间交互 · 后舱功能交互屏"
+        },
+        {
+          "key": "official:7:8",
+          "label": "第三代多屏空间交互 · TüV莱茵硬件低蓝光认证"
+        },
+        {
+          "key": "official:7:9",
+          "label": "第三代多屏空间交互 · TüV莱茵无频闪认证"
+        },
+        {
+          "key": "official:7:10",
+          "label": "第三代多屏空间交互 · TüV莱茵Youthcare儿童成长认证"
+        },
+        {
+          "key": "official:7:11",
+          "label": "第三代多屏空间交互 · 车规级防碎裂玻璃"
+        },
+        {
+          "key": "official:7:12",
+          "label": "第三代多屏空间交互 · 屏幕防眩目"
+        },
+        {
+          "key": "official:7:13",
+          "label": "第三代多屏空间交互 · 屏幕防指纹"
+        },
+        {
+          "key": "official:7:14",
+          "label": "第三代多屏空间交互 · 无线投屏"
+        },
+        {
+          "key": "official:7:15",
+          "label": "理想同学 · Livis Agent"
+        },
+        {
+          "key": "official:7:16",
+          "label": "理想同学 · MindGPT 自主决策推理模型"
+        },
+        {
+          "key": "official:7:17",
+          "label": "理想同学 · 车外语音交互"
+        },
+        {
+          "key": "official:7:18",
+          "label": "理想同学 · 理想同学播客"
+        },
+        {
+          "key": "official:7:19",
+          "label": "理想同学 · 多模态无限音区定位"
+        },
+        {
+          "key": "official:7:20",
+          "label": "理想同学 · 多模态可见即可说"
+        },
+        {
+          "key": "official:7:21",
+          "label": "理想同学 · 多模态指代交互；（语音 / 手势）"
+        },
+        {
+          "key": "official:7:22",
+          "label": "理想同学 · 声纹识别及跟随"
+        },
+        {
+          "key": "official:7:23",
+          "label": "理想同学 · 方言自由说"
+        },
+        {
+          "key": "official:7:24",
+          "label": "理想同学 · 舱内动作交互"
+        },
+        {
+          "key": "official:7:25",
+          "label": "生成式AI应用 · 桌面大师"
+        },
+        {
+          "key": "official:7:26",
+          "label": "生成式AI应用 · 任务大师"
+        },
+        {
+          "key": "official:7:27",
+          "label": "生成式AI应用 · 调音大师"
+        },
+        {
+          "key": "official:7:28",
+          "label": "生成式AI应用 · 艺术相框"
+        },
+        {
+          "key": "official:7:29",
+          "label": "车机系统 · 小主人模式"
+        },
+        {
+          "key": "official:7:30",
+          "label": "车机系统 · 多屏同播"
+        },
+        {
+          "key": "official:7:31",
+          "label": "车机系统 · 无麦K歌"
+        },
+        {
+          "key": "official:7:32",
+          "label": "车机系统 · 浏览器；（支持Apple Music、芒果TV、抖音等）"
+        },
+        {
+          "key": "official:7:33",
+          "label": "车机系统 · 车机无线热点"
+        },
+        {
+          "key": "official:7:34",
+          "label": "充放电 · 充电口盖"
+        },
+        {
+          "key": "official:7:35",
+          "label": "充放电 · 交流充电接口"
+        },
+        {
+          "key": "official:7:36",
+          "label": "充放电 · 直流充电接口"
+        },
+        {
+          "key": "official:7:37",
+          "label": "充放电 · 理想家充预约充电"
+        },
+        {
+          "key": "official:7:38",
+          "label": "充放电 · 理想超充即插即充"
+        },
+        {
+          "key": "official:7:39",
+          "label": "充放电 · 对外放电"
+        }
+      ]
+    },
+    {
+      "name": "安全配置",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "第三代理想堡垒安全车身"
+        },
+        {
+          "key": "official:8:1",
+          "label": "四门电容防夹"
+        },
+        {
+          "key": "official:8:2",
+          "label": "第一排正面自适应安全气囊"
+        },
+        {
+          "key": "official:8:3",
+          "label": "第一排侧面安全气囊"
+        },
+        {
+          "key": "official:8:4",
+          "label": "第一排双腔远端安全气囊"
+        },
+        {
+          "key": "official:8:5",
+          "label": "第二排侧面安全气囊"
+        },
+        {
+          "key": "official:8:6",
+          "label": "第二排防下潜坐垫气囊"
+        },
+        {
+          "key": "official:8:7",
+          "label": "覆盖全车乘员侧窗的安全侧气帘"
+        },
+        {
+          "key": "official:8:8",
+          "label": "第一排自适应限力安全带"
+        },
+        {
+          "key": "official:8:9",
+          "label": "第二排ABTS座椅集成安全带"
+        },
+        {
+          "key": "official:8:10",
+          "label": "燃爆式安全带"
+        },
+        {
+          "key": "official:8:11",
+          "label": "第二排ISOFIX儿童安全座椅接口"
+        },
+        {
+          "key": "official:8:12",
+          "label": "第三排ISOFIX儿童安全座椅接口"
+        },
+        {
+          "key": "official:8:13",
+          "label": "全能儿童锁"
+        },
+        {
+          "key": "official:8:14",
+          "label": "行车记录仪"
+        },
+        {
+          "key": "official:8:15",
+          "label": "CST舒适制动功能"
+        },
+        {
+          "key": "official:8:16",
+          "label": "HDC陡坡缓降控制"
+        },
+        {
+          "key": "official:8:17",
+          "label": "ESP车身电子稳定系统"
+        },
+        {
+          "key": "official:8:18",
+          "label": "SWA侧风辅助功能"
+        },
+        {
+          "key": "official:8:19",
+          "label": "TPMS主动胎压监测"
+        },
+        {
+          "key": "official:8:20",
+          "label": "EPB电子驻车制动"
+        },
+        {
+          "key": "official:8:21",
+          "label": "AUTO HOLD驻车自动保持"
+        },
+        {
+          "key": "official:8:22",
+          "label": "车外低速提示音"
+        },
+        {
+          "key": "official:8:23",
+          "label": "动力系统电子防盗"
+        },
+        {
+          "key": "official:8:24",
+          "label": "拖车模式"
+        },
+        {
+          "key": "official:8:25",
+          "label": "防盗报警系统；（带App远程提醒）"
+        },
+        {
+          "key": "official:8:26",
+          "label": "超级节能哨兵模式"
+        }
+      ]
+    },
+    {
+      "name": "质保与服务",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "整车质保"
+        },
+        {
+          "key": "official:9:1",
+          "label": "三电系统质保"
+        },
+        {
+          "key": "official:9:2",
+          "label": "流量"
+        },
+        {
+          "key": "official:9:3",
+          "label": "7×24小时救援服务"
+        },
+        {
+          "key": "official:9:4",
+          "label": "车辆保养智能提醒"
+        },
+        {
+          "key": "official:9:5",
+          "label": "智能紧急呼叫和救援"
+        },
+        {
+          "key": "official:9:6",
+          "label": "7×24小时在线服务专家"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "li-auto-l9-official-1",
+      "name": "全新理想L9 Ultra",
+      "values": {
+        "official:0:0": "5255毫米",
+        "official:0:1": "2000毫米",
+        "official:0:2": "1810毫米",
+        "official:0:3": "3125毫米",
+        "official:0:4": "6个",
+        "official:0:5": "2-2-2",
+        "official:0:6": "420公里*",
+        "official:0:7": "1650公里*",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "○选装 +",
+        "official:1:5": "○选装 +",
+        "official:1:6": "○选装 +",
+        "official:1:7": "—",
+        "official:1:8": "—",
+        "official:1:9": "—",
+        "official:1:10": "—",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "○选装 +",
+        "official:1:14": "—",
+        "official:1:15": "●",
+        "official:1:16": "●",
+        "official:1:17": "●",
+        "official:1:18": "●",
+        "official:1:19": "—",
+        "official:1:20": "—",
+        "official:1:21": "—",
+        "official:1:22": "—",
+        "official:1:23": "—",
+        "official:2:0": "三元锂5C超充电池",
+        "official:2:1": "72.7千瓦时",
+        "official:2:2": "10分钟（10%-80%）*",
+        "official:2:3": "第三代理想自研增程器；（1.5T 四缸）",
+        "official:2:4": "整车3年或增程器3万公里保养周期",
+        "official:2:5": "420公里*",
+        "official:2:6": "350公里*",
+        "official:2:7": "1650公里*",
+        "official:2:8": "1370公里*",
+        "official:2:9": "3.5千瓦",
+        "official:2:10": "60升",
+        "official:2:11": "95号",
+        "official:2:12": "国六B",
+        "official:2:13": "纯电优先、燃油优先、油电混合",
+        "official:2:14": "双电机智能四驱",
+        "official:2:15": "420千瓦",
+        "official:2:16": "710牛·米",
+        "official:2:17": "4.9秒",
+        "official:2:18": "200公里/小时；（电子限速）",
+        "official:2:19": "- 功率：145千瓦；- 扭矩：265牛·米",
+        "official:2:20": "- 功率：275千瓦；- 扭矩：445牛·米",
+        "official:2:21": "●",
+        "official:2:22": "舒适、标准、运动、节能、高性能、个性化、越野脱困、陡坡缓降、雨雪模式",
+        "official:2:23": "液冷",
+        "official:3:0": "前双叉臂悬架",
+        "official:3:1": "后五连杆悬架",
+        "official:3:2": "第三代双腔双阀魔毯空气悬架",
+        "official:3:3": "—",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "- 便捷上下车；- 后备厢便捷装载；- 驻车调平",
+        "official:3:7": "低、标准、高",
+        "official:3:8": "线控底盘",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "电子液压制动 EHB",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "舒适、标准、运动",
+        "official:3:15": "节能、舒适、运动、高性能",
+        "official:3:16": "标准模式（360°）；灵敏模式（230°）",
+        "official:3:17": "敏捷模式（转弯半径5.3m）；稳健模式（转弯半径6m）",
+        "official:3:18": "—",
+        "official:3:19": "舒适、标准、强",
+        "official:3:20": "●",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "主驾、副驾",
+        "official:4:3": "●",
+        "official:4:4": "×2",
+        "official:4:5": "●",
+        "official:4:6": "靠背、座垫、腿托",
+        "official:4:7": "×2",
+        "official:4:8": "●",
+        "official:4:9": "背部十二点、座垫六点",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "左侧、右侧",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "×2",
+        "official:4:18": "●",
+        "official:4:19": "靠背、座垫、腿托",
+        "official:4:20": "×2",
+        "official:4:21": "●",
+        "official:4:22": "背部十二点、座垫六点",
+        "official:4:23": "●",
+        "official:4:24": "靠背、座垫",
+        "official:4:25": "最大躺角145°",
+        "official:4:26": "●",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "- 剧院级500W峰值功率主低音炮 ×1；- 前舱反磁低音炮 ×2；- 超广角高音扬声器 ×7；- 二排平板振膜中置扬声器 ×2；- 四寸超大振幅中音扬声器 ×5；- 弯折音盆低音扬声器 ×4；- 顶棚天空环绕扬声器 ×6；- 尾门环绕扬声器 ×2；- 头枕扬声器 ×4",
+        "official:4:31": "●",
+        "official:4:32": "48kHz/32bit",
+        "official:4:33": "OTA将推送",
+        "official:4:34": "●",
+        "official:4:35": "●",
+        "official:4:36": "●",
+        "official:4:37": "●",
+        "official:4:38": "支持色温、照明亮度调节",
+        "official:4:39": "支持色温、照明亮度调节",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "○选装 +",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "- 座椅加热；- 腿托加热；- 软枕加热；- 扶手温暖皮革",
+        "official:4:47": "- “在小憩”模式；- “去露营”模式；- “有萌宠”模式",
+        "official:4:48": "●",
+        "official:4:49": "●",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "- 无级风向调节；- 四种智能出风模式",
+        "official:4:55": "第二排、第三排",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "单色",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "●",
+        "official:4:72": "●",
+        "official:4:73": "●",
+        "official:4:74": "×2",
+        "official:4:75": "×1",
+        "official:4:76": "×1",
+        "official:4:77": "×2",
+        "official:4:78": "×2",
+        "official:4:79": "- 后舱 ×1；- 后备厢 ×1",
+        "official:4:80": "- 前舱 ×1；- 后备厢 ×1",
+        "official:4:81": "×4",
+        "official:4:82": "×2",
+        "official:4:83": "×2",
+        "official:4:84": "×2",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "OTA将推送",
+        "official:4:92": "●",
+        "official:4:93": "×2",
+        "official:4:94": "×1",
+        "official:4:95": "- 电容触摸解锁；- 电微开解锁；- 机械拉开解锁；- 按键解锁",
+        "official:4:96": "●",
+        "official:4:97": "●",
+        "official:4:98": "○选装",
+        "official:4:99": "●",
+        "official:4:100": "●",
+        "official:4:101": "无级可调",
+        "official:4:102": "●",
+        "official:4:103": "●",
+        "official:4:104": "●",
+        "official:4:105": "●",
+        "official:4:106": "●",
+        "official:4:107": "●",
+        "official:4:108": "●",
+        "official:4:109": "●",
+        "official:4:110": "●",
+        "official:4:111": "●",
+        "official:4:112": "○选装 +",
+        "official:5:0": "○选装",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "○选装 +",
+        "official:6:0": "马赫M100芯片（1280TOPS）",
+        "official:6:1": "○选装",
+        "official:6:2": "●",
+        "official:6:3": "ATL-P高性能激光雷达",
+        "official:6:4": "○选装",
+        "official:6:5": "○选装",
+        "official:6:6": "UWB高精度近场雷达 ×10",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "800万像素 ×2",
+        "official:6:10": "800万像素 ×4",
+        "official:6:11": "800万像素 ×1",
+        "official:6:12": "300万像素 ×4",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "○选装 +",
+        "official:6:16": "●",
+        "official:6:18": "●",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:23": "●",
+        "official:6:25": "●",
+        "official:6:26": "●",
+        "official:6:28": "●",
+        "official:6:29": "●",
+        "official:6:30": "●",
+        "official:6:32": "●",
+        "official:6:33": "●",
+        "official:6:34": "●",
+        "official:6:35": "●",
+        "official:6:36": "●",
+        "official:6:37": "●",
+        "official:6:38": "○选装",
+        "official:6:40": "●",
+        "official:6:41": "●",
+        "official:6:42": "●",
+        "official:6:43": "●",
+        "official:6:44": "●",
+        "official:6:46": "●",
+        "official:6:47": "●",
+        "official:6:48": "●",
+        "official:6:49": "●",
+        "official:6:51": "●",
+        "official:6:52": "●",
+        "official:6:53": "●",
+        "official:6:54": "●",
+        "official:6:55": "●",
+        "official:6:56": "●",
+        "official:6:58": "●",
+        "official:6:60": "●",
+        "official:6:62": "●",
+        "official:6:63": "●",
+        "official:6:65": "●",
+        "official:6:67": "●",
+        "official:6:69": "●",
+        "official:6:70": "●",
+        "official:6:71": "●",
+        "official:6:72": "○选装",
+        "official:6:73": "●",
+        "official:6:74": "●",
+        "official:6:76": "●",
+        "official:6:77": "●",
+        "official:6:78": "●",
+        "official:6:79": "●",
+        "official:6:81": "●",
+        "official:6:82": "●",
+        "official:6:83": "●",
+        "official:6:84": "●",
+        "official:6:85": "●",
+        "official:6:86": "●",
+        "official:6:87": "○选装",
+        "official:6:89": "●",
+        "official:6:90": "●",
+        "official:6:91": "●",
+        "official:6:92": "●",
+        "official:6:93": "○选装",
+        "official:6:94": "●",
+        "official:6:95": "●",
+        "official:6:96": "●",
+        "official:6:97": "●",
+        "official:6:99": "●",
+        "official:6:100": "●",
+        "official:7:0": "高通骁龙8797芯片",
+        "official:7:1": "●",
+        "official:7:2": "6组",
+        "official:7:3": "RGB+IR视觉模组",
+        "official:7:4": "●",
+        "official:7:5": "- 电动开闭；- 支持前后120mm滑移",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "语音视觉融合搜索",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "●",
+        "official:7:24": "- 下挥手打开后舱娱乐屏；- 伸手召唤后舱娱乐屏；- 拍一拍开/关冰箱门；- 敲一敲展开/收起后舱娱乐屏；持续OTA升级",
+        "official:7:25": "●",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "●",
+        "official:7:34": "带感应开启",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "3.5千瓦",
+        "official:8:0": "- 2200MPa高强度车身；- 2000MPa一体式双门环；- 一体式压铸铝合金后地板骨架",
+        "official:8:1": "●",
+        "official:8:2": "×2",
+        "official:8:3": "×2",
+        "official:8:4": "×1",
+        "official:8:5": "×2",
+        "official:8:6": "×2",
+        "official:8:7": "×2",
+        "official:8:8": "×2",
+        "official:8:9": "×2",
+        "official:8:10": "●",
+        "official:8:11": "×2",
+        "official:8:12": "×2",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "OTA将推送",
+        "official:9:0": "5年或10万公里",
+        "official:9:1": "8年或16万公里",
+        "official:9:2": "三年流量无忧方案；（20GB每月免费5G流量）",
+        "official:9:3": "质保期内",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:scope": "官网当前新一代配置；●标配，○选装，OTA将推送项目尚待软件推送，*对应条件请查看官方原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "li-auto-l9-official-2",
+      "name": "全新理想L9 Livis",
+      "values": {
+        "official:0:0": "5255毫米",
+        "official:0:1": "2000毫米",
+        "official:0:2": "1810毫米",
+        "official:0:3": "3125毫米",
+        "official:0:4": "6个",
+        "official:0:5": "2-2-2",
+        "official:0:6": "420公里*",
+        "official:0:7": "1650公里*",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "○选装 +",
+        "official:1:5": "○选装 +",
+        "official:1:6": "○选装 +",
+        "official:1:7": "○选装 +",
+        "official:1:8": "○选装 +",
+        "official:1:9": "○选装 +",
+        "official:1:10": "○选装 +",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "—",
+        "official:1:14": "○选装 +",
+        "official:1:15": "●",
+        "official:1:16": "●",
+        "official:1:17": "●",
+        "official:1:18": "●",
+        "official:1:19": "●",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:2:0": "三元锂5C超充电池",
+        "official:2:1": "72.7千瓦时",
+        "official:2:2": "10分钟（10%-80%）*",
+        "official:2:3": "第三代理想自研增程器；（1.5T 四缸）",
+        "official:2:4": "整车3年或增程器3万公里保养周期",
+        "official:2:5": "420公里*",
+        "official:2:6": "350公里*",
+        "official:2:7": "1650公里*",
+        "official:2:8": "1370公里*",
+        "official:2:9": "3.5千瓦",
+        "official:2:10": "60升",
+        "official:2:11": "95号",
+        "official:2:12": "国六B",
+        "official:2:13": "纯电优先、燃油优先、油电混合",
+        "official:2:14": "双电机智能四驱",
+        "official:2:15": "420千瓦",
+        "official:2:16": "710牛·米",
+        "official:2:17": "4.9秒",
+        "official:2:18": "200公里/小时；（电子限速）",
+        "official:2:19": "- 功率：145千瓦；- 扭矩：265牛·米",
+        "official:2:20": "- 功率：275千瓦；- 扭矩：445牛·米",
+        "official:2:21": "●",
+        "official:2:22": "舒适、标准、运动、节能、高性能、个性化、越野脱困、陡坡缓降、雨雪模式",
+        "official:2:23": "液冷",
+        "official:3:0": "前双叉臂悬架",
+        "official:3:1": "后五连杆悬架",
+        "official:3:2": "800V主动悬架",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "- 单轮10000牛举升力；- 主动侧倾调平；- 主动颠簸抑制；- 智能预瞄；- 便捷换胎（OTA）；- 5D座舱影音体验；- 便捷上下车；- 后备厢便捷装载；- 坦途模式（OTA）；- 驻车云台",
+        "official:3:7": "低、标准、高",
+        "official:3:8": "全线控底盘",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "线控机械制动 EMB",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "舒适、标准、运动",
+        "official:3:15": "节能、舒适、运动、高性能",
+        "official:3:16": "标准模式（360°）；灵敏模式（230°）",
+        "official:3:17": "敏捷模式（转弯半径5.3m）；稳健模式（转弯半径6m）",
+        "official:3:18": "舒适、标准、运动",
+        "official:3:19": "舒适、标准、强",
+        "official:3:20": "●",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "主驾、副驾",
+        "official:4:3": "●",
+        "official:4:4": "×2",
+        "official:4:5": "●",
+        "official:4:6": "靠背、座垫、腿托",
+        "official:4:7": "×2",
+        "official:4:8": "●",
+        "official:4:9": "背部十二点、座垫六点",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "左侧、右侧",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "×2",
+        "official:4:18": "●",
+        "official:4:19": "靠背、座垫、腿托",
+        "official:4:20": "×2",
+        "official:4:21": "●",
+        "official:4:22": "背部十二点、座垫六点",
+        "official:4:23": "●",
+        "official:4:24": "靠背、座垫",
+        "official:4:25": "最大躺角145°",
+        "official:4:26": "●",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "- 剧院级500W峰值功率主低音炮 ×1；- 前舱反磁低音炮 ×2；- 超广角高音扬声器 ×7；- 二排平板振膜中置扬声器 ×2；- 四寸超大振幅中音扬声器 ×5；- 弯折音盆低音扬声器 ×4；- 顶棚天空环绕扬声器 ×6；- 尾门环绕扬声器 ×2；- 头枕扬声器 ×4",
+        "official:4:31": "●",
+        "official:4:32": "96kHz/32bit",
+        "official:4:33": "●",
+        "official:4:34": "●",
+        "official:4:35": "●",
+        "official:4:36": "●",
+        "official:4:37": "●",
+        "official:4:38": "支持色温、照明亮度调节",
+        "official:4:39": "支持色温、照明亮度调节",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "○选装 +",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "- 座椅加热；- 腿托加热；- 软枕加热；- 扶手温暖皮革",
+        "official:4:47": "- “在小憩”模式；- “去露营”模式；- “有萌宠”模式",
+        "official:4:48": "●",
+        "official:4:49": "●",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "- 无级风向调节；- 四种智能出风模式",
+        "official:4:55": "第二排、第三排",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "双色",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "●",
+        "official:4:72": "●",
+        "official:4:73": "●",
+        "official:4:74": "×2",
+        "official:4:75": "×1",
+        "official:4:76": "×1",
+        "official:4:77": "×2",
+        "official:4:78": "×2",
+        "official:4:79": "- 后舱 ×1；- 后备厢 ×1",
+        "official:4:80": "- 前舱 ×1；- 后备厢 ×1",
+        "official:4:81": "×4",
+        "official:4:82": "×2",
+        "official:4:83": "×2",
+        "official:4:84": "×2",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "OTA将推送",
+        "official:4:92": "●",
+        "official:4:93": "×2",
+        "official:4:94": "×1",
+        "official:4:95": "- 电容触摸解锁；- 电微开解锁；- 机械拉开解锁；- 按键解锁",
+        "official:4:96": "●",
+        "official:4:97": "●",
+        "official:4:98": "●",
+        "official:4:99": "—",
+        "official:4:100": "●",
+        "official:4:101": "无级可调",
+        "official:4:102": "●",
+        "official:4:103": "●",
+        "official:4:104": "●",
+        "official:4:105": "●",
+        "official:4:106": "●",
+        "official:4:107": "●",
+        "official:4:108": "●",
+        "official:4:109": "●",
+        "official:4:110": "●",
+        "official:4:111": "●",
+        "official:4:112": "○选装 +",
+        "official:5:0": "●",
+        "official:5:1": "—",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "○选装 +",
+        "official:6:0": "马赫M100芯片（1280TOPS）",
+        "official:6:1": "马赫M100芯片（1280TOPS）",
+        "official:6:2": "●",
+        "official:6:3": "ATL-P高性能激光雷达",
+        "official:6:4": "固态可变焦激光雷达 ×2",
+        "official:6:5": "固态可变焦激光雷达",
+        "official:6:6": "UWB高精度近场雷达 ×10",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "800万像素 ×2",
+        "official:6:10": "800万像素 ×4",
+        "official:6:11": "800万像素 ×1",
+        "official:6:12": "300万像素 ×4",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:18": "●",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:23": "●",
+        "official:6:25": "●",
+        "official:6:26": "●",
+        "official:6:28": "●",
+        "official:6:29": "●",
+        "official:6:30": "●",
+        "official:6:32": "●",
+        "official:6:33": "●",
+        "official:6:34": "●",
+        "official:6:35": "●",
+        "official:6:36": "●",
+        "official:6:37": "●",
+        "official:6:38": "- 主动问询泊出；- 主动开侧门；- 主动开尾门",
+        "official:6:40": "●",
+        "official:6:41": "●",
+        "official:6:42": "●",
+        "official:6:43": "●",
+        "official:6:44": "●",
+        "official:6:46": "●",
+        "official:6:47": "●",
+        "official:6:48": "●",
+        "official:6:49": "●",
+        "official:6:51": "●",
+        "official:6:52": "●",
+        "official:6:53": "●",
+        "official:6:54": "●",
+        "official:6:55": "●",
+        "official:6:56": "●",
+        "official:6:58": "●",
+        "official:6:60": "●",
+        "official:6:62": "●",
+        "official:6:63": "●",
+        "official:6:65": "●",
+        "official:6:67": "●",
+        "official:6:69": "●",
+        "official:6:70": "●",
+        "official:6:71": "●",
+        "official:6:72": "●",
+        "official:6:73": "●",
+        "official:6:74": "●",
+        "official:6:76": "●",
+        "official:6:77": "●",
+        "official:6:78": "●",
+        "official:6:79": "●",
+        "official:6:81": "●",
+        "official:6:82": "●",
+        "official:6:83": "●",
+        "official:6:84": "●",
+        "official:6:85": "●",
+        "official:6:86": "●",
+        "official:6:87": "OTA将推送",
+        "official:6:89": "●",
+        "official:6:90": "●",
+        "official:6:91": "●",
+        "official:6:92": "●",
+        "official:6:93": "●",
+        "official:6:94": "●",
+        "official:6:95": "●",
+        "official:6:96": "●",
+        "official:6:97": "●",
+        "official:6:99": "●",
+        "official:6:100": "●",
+        "official:7:0": "高通骁龙8797芯片",
+        "official:7:1": "●",
+        "official:7:2": "6组",
+        "official:7:3": "RGB+IR视觉模组",
+        "official:7:4": "●",
+        "official:7:5": "- 电动开闭；- 支持前后120mm滑移",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "语音视觉融合搜索",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "●",
+        "official:7:24": "- 下挥手打开后舱娱乐屏；- 伸手召唤后舱娱乐屏；- 拍一拍开/关冰箱门；- 敲一敲展开/收起后舱娱乐屏；持续OTA升级",
+        "official:7:25": "●",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "●",
+        "official:7:34": "带感应开启",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "3.5千瓦",
+        "official:8:0": "- 2200MPa高强度车身；- 2000MPa一体式双门环；- 一体式压铸铝合金后地板骨架",
+        "official:8:1": "●",
+        "official:8:2": "×2",
+        "official:8:3": "×2",
+        "official:8:4": "×1",
+        "official:8:5": "×2",
+        "official:8:6": "×2",
+        "official:8:7": "×2",
+        "official:8:8": "×2",
+        "official:8:9": "×2",
+        "official:8:10": "●",
+        "official:8:11": "×2",
+        "official:8:12": "×2",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "OTA将推送",
+        "official:9:0": "5年或10万公里",
+        "official:9:1": "8年或16万公里",
+        "official:9:2": "三年流量无忧方案；（20GB每月免费5G流量）",
+        "official:9:3": "质保期内",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:scope": "官网当前新一代配置；●标配，○选装，OTA将推送项目尚待软件推送，*对应条件请查看官方原表。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/li-auto-l9.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.lixiang.com/L9"
+    }
+  ],
+  "sourceUrl": "https://www.lixiang.com/configuration.html?carModel=L9",
+  "sourceScope": "官网当前新一代配置；●标配，○选装，OTA将推送项目尚待软件推送，*对应条件请查看官方原表。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "li-config-l9-table",
+      "sha256": "5ae805e4ebfe95e094434925ef463b5b5b699ce9100d4aa6945906fcaa6bbd83"
+    }
+  ]
+}

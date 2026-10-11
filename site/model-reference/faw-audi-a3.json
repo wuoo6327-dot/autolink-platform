@@ -1,0 +1,192 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "faw-audi-a3",
+  "brandZh": "FAW Audi",
+  "modelZh": "A3",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": false,
+  "availableYears": [
+    2026
+  ],
+  "groups": [
+    {
+      "name": "Sportback技术数据",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:0:1",
+          "label": "排量（cm³）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最大功率（kW/rpm）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "最大扭矩（N·m/rpm）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:5",
+          "label": "变速器"
+        },
+        {
+          "key": "official:0:6",
+          "label": "0-100km/h（s）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "WLTC油耗（L/100km）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "长×宽×高（mm）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:11",
+          "label": "行李箱容积（L）"
+        },
+        {
+          "key": "official:0:12",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:0:13",
+          "label": "整备质量（kg）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "faw-audi-a3-official-1",
+      "name": "A3 Sportback 35 TFSI 飞驰悦享型",
+      "values": {
+        "official:0:0": "M5 D四缸16气门1.5L汽油直喷涡轮增压",
+        "official:0:1": "1498",
+        "official:0:2": "118 / 5000-6000",
+        "official:0:3": "250 / 1750-4000",
+        "official:0:4": "前轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "8.6",
+        "official:0:7": "200",
+        "official:0:8": "5.87",
+        "official:0:9": "4354×1815×1458",
+        "official:0:10": "2630",
+        "official:0:11": "356",
+        "official:0:12": "51",
+        "official:0:13": "1412",
+        "official:scope": "官网26年型A3 Sportback技术参数；不适用于A3L三厢车型，具体选装及交付条件以官方原表为准。"
+      },
+      "year": 2026
+    },
+    {
+      "id": "faw-audi-a3-official-2",
+      "name": "A3 Sportback 35 TFSI 飞驰尊享型",
+      "values": {
+        "official:0:0": "M5 D四缸16气门1.5L汽油直喷涡轮增压",
+        "official:0:1": "1498",
+        "official:0:2": "118 / 5000-6000",
+        "official:0:3": "250 / 1750-4000",
+        "official:0:4": "前轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "8.6",
+        "official:0:7": "200",
+        "official:0:8": "6.04",
+        "official:0:9": "4354×1815×1458",
+        "official:0:10": "2630",
+        "official:0:11": "356",
+        "official:0:12": "51",
+        "official:0:13": "1418",
+        "official:scope": "官网26年型A3 Sportback技术参数；不适用于A3L三厢车型，具体选装及交付条件以官方原表为准。"
+      },
+      "year": 2026
+    },
+    {
+      "id": "faw-audi-a3-official-3",
+      "name": "A3 Sportback 35 TFSI 飞驰尊享型＋豪华臻选包",
+      "values": {
+        "official:0:0": "M5 D四缸16气门1.5L汽油直喷涡轮增压",
+        "official:0:1": "1498",
+        "official:0:2": "118 / 5000-6000",
+        "official:0:3": "250 / 1750-4000",
+        "official:0:4": "前轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "8.6",
+        "official:0:7": "200",
+        "official:0:8": "6.04",
+        "official:0:9": "4354×1815×1458",
+        "official:0:10": "2630",
+        "official:0:11": "356",
+        "official:0:12": "51",
+        "official:0:13": "1418",
+        "official:scope": "官网26年型A3 Sportback技术参数；不适用于A3L三厢车型，具体选装及交付条件以官方原表为准。"
+      },
+      "year": 2026
+    },
+    {
+      "id": "faw-audi-a3-official-4",
+      "name": "A3 Sportback 35 TFSI 飞驰尊享型＋豪华臻选包（南方版）",
+      "values": {
+        "official:0:0": "M5 D四缸16气门1.5L汽油直喷涡轮增压",
+        "official:0:1": "1498",
+        "official:0:2": "118 / 5000-6000",
+        "official:0:3": "250 / 1750-4000",
+        "official:0:4": "前轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "8.6",
+        "official:0:7": "200",
+        "official:0:8": "6.04",
+        "official:0:9": "4354×1815×1458",
+        "official:0:10": "2630",
+        "official:0:11": "356",
+        "official:0:12": "51",
+        "official:0:13": "1418",
+        "official:scope": "官网26年型A3 Sportback技术参数；不适用于A3L三厢车型，具体选装及交付条件以官方原表为准。"
+      },
+      "year": 2026
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/faw-audi-a3.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.audi.cn/zh/models.html"
+    }
+  ],
+  "sourceUrl": "https://www.audi.cn/content/dam/OneWeb/faw_vw/pdf/202601/a3/A3_Sportback_26年型折页.pdf",
+  "sourceScope": "官网26年型A3 Sportback技术参数；不适用于A3L三厢车型，具体选装及交付条件以官方原表为准。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "audi-a3-page-pdf",
+      "sha256": "eab8dafcd2e594e301badc7a8fabf787da1fa3fa83296d0809a5f781dc408255"
+    }
+  ]
+}

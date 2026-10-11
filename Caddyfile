@@ -111,6 +111,36 @@
 	}
 	@privatePages path /buyer /buyer/* /account /account/* /supplier /supplier/* /admin /admin/* /merchant /merchant/* /platform /platform/* /workspace /workspace/*
 	header @privatePages X-Robots-Tag "noindex, nofollow"
+	# Fixed file rewrites: query values are never interpolated into filesystem paths.
+	@guideChinese {
+		path /guide/supplier-verification /guide/vehicle-sourcing /guide/trade-process
+		query lang=zh
+	}
+	handle @guideChinese {
+		rewrite * {path}.zh.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@guidePendingTranslation {
+		path /guide/supplier-verification /guide/vehicle-sourcing /guide/trade-process
+		query lang=ar lang=ru lang=kk lang=uz lang=ko lang=fr lang=sw
+	}
+	handle @guidePendingTranslation {
+		rewrite * {path}.fallback.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@guideDocument path /guide/supplier-verification /guide/vehicle-sourcing /guide/trade-process
+	handle @guideDocument {
+		rewrite * {path}.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@guideFiles path /guide /guide/*
+	handle @guideFiles {
+		header Cache-Control "no-cache"
+		file_server
+	}
 	@publicTradeHTML {
 		method GET HEAD
 		path_regexp ^/trade(?:/[^.]+)?/?$
@@ -127,9 +157,12 @@
 			file_server
 		}
 	}
+	@media path /images/* /fonts/*
+	header @media Cache-Control "public, max-age=86400, stale-while-revalidate=86400"
+	@script path /assets/* /videos/*
+	header @script Cache-Control "public, max-age=0, must-revalidate"
 	@static path /assets/* /images/* /fonts/* /videos/*
 	handle @static {
-		header Cache-Control "public, max-age=0, must-revalidate"
 		file_server
 	}
 	handle {

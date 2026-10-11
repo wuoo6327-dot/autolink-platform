@@ -1,0 +1,460 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "kia-seltos",
+  "brandZh": "Kia",
+  "modelZh": "赛图斯",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基本参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长*宽*高 (mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距 (mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "排气量 (cc)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "发动机最大马力 (Ps/rpm)"
+        },
+        {
+          "key": "official:0:4",
+          "label": "发动机最大扭矩 (N·m/rpm)"
+        },
+        {
+          "key": "official:0:5",
+          "label": "变速箱类型"
+        },
+        {
+          "key": "official:0:6",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:7",
+          "label": "悬架系统 (前/后)"
+        },
+        {
+          "key": "official:0:8",
+          "label": "转向系统"
+        },
+        {
+          "key": "official:0:9",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:0:10",
+          "label": "最高车速 (km/h)"
+        },
+        {
+          "key": "official:0:11",
+          "label": "整备质量 (kg)"
+        },
+        {
+          "key": "official:0:12",
+          "label": "最小离地间隙 (mm)"
+        },
+        {
+          "key": "official:0:13",
+          "label": "最小转弯半径 (m)"
+        },
+        {
+          "key": "official:0:14",
+          "label": "油箱容积 (L)"
+        },
+        {
+          "key": "official:0:15",
+          "label": "环保标准"
+        },
+        {
+          "key": "official:0:16",
+          "label": "WLTC综合工况油耗 (L/100km)"
+        }
+      ]
+    },
+    {
+      "name": "外部配置",
+      "rows": [
+        {
+          "key": "official:1:11",
+          "label": "可开启全景天窗"
+        },
+        {
+          "key": "official:1:17",
+          "label": "智能感应电动尾门"
+        }
+      ]
+    },
+    {
+      "name": "内部配置",
+      "rows": [
+        {
+          "key": "official:2:3",
+          "label": "自动空调"
+        },
+        {
+          "key": "official:2:10",
+          "label": "方向盘加热"
+        }
+      ]
+    },
+    {
+      "name": "舒享座椅",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "座椅材质"
+        },
+        {
+          "key": "official:3:7",
+          "label": "驾驶席电动座椅 (6向调节)"
+        },
+        {
+          "key": "official:3:9",
+          "label": "前排座椅加热"
+        }
+      ]
+    },
+    {
+      "name": "智能座舱",
+      "rows": [
+        {
+          "key": "official:4:12",
+          "label": "扬声器数量"
+        },
+        {
+          "key": "official:4:19",
+          "label": "USB 接口升级 (前排2个功率提升至100W)"
+        },
+        {
+          "key": "official:4:20",
+          "label": "前排手机无线充电"
+        }
+      ]
+    },
+    {
+      "name": "整车安全",
+      "rows": [
+        {
+          "key": "official:6:1",
+          "label": "防夹安全车窗"
+        }
+      ]
+    },
+    {
+      "name": "选装包",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "ETCS"
+        },
+        {
+          "key": "official:7:1",
+          "label": "可开启全景天窗"
+        },
+        {
+          "key": "official:7:2",
+          "label": "双色车身"
+        },
+        {
+          "key": "official:7:3",
+          "label": "舒享包：\n- 前排座椅加热+方向盘加热+前排手机无线充电+USB 接口升级 (前排2个功率提升至100W)"
+        },
+        {
+          "key": "official:7:4",
+          "label": "智能感应电动尾门"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "kia-seltos-official-1",
+      "name": "1.5L 舒适版",
+      "values": {
+        "official:0:0": "4,460*1,830*1,640",
+        "official:0:1": "2,690",
+        "official:0:2": "1,497",
+        "official:0:3": "115",
+        "official:0:4": "144",
+        "official:0:5": "IVT",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式独立悬架 / 扭力梁式悬架",
+        "official:0:8": "电动助力转向",
+        "official:0:9": "215/60 R17",
+        "official:0:10": "178",
+        "official:0:11": "1,450",
+        "official:0:12": "136",
+        "official:0:13": "5.4",
+        "official:0:14": "50",
+        "official:0:15": "国VI",
+        "official:0:16": "6.54",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:2:3": "手动",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:3:0": "织物",
+        "official:3:7": "手动",
+        "official:3:9": "官网未单独列明，请查看来源",
+        "official:4:12": "4",
+        "official:4:19": "官网未单独列明，请查看来源",
+        "official:4:20": "官网未单独列明，请查看来源",
+        "official:6:1": "驾驶席",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:scope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-seltos-official-2",
+      "name": "1.5L 豪华版",
+      "values": {
+        "official:0:0": "4,460*1,830*1,640",
+        "official:0:1": "2,690",
+        "official:0:2": "1,497",
+        "official:0:3": "115",
+        "official:0:4": "144",
+        "official:0:5": "IVT",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式独立悬架 / 扭力梁式悬架",
+        "official:0:8": "电动助力转向",
+        "official:0:9": "215/60 R17",
+        "official:0:10": "178",
+        "official:0:11": "1,450",
+        "official:0:12": "136",
+        "official:0:13": "5.4",
+        "official:0:14": "50",
+        "official:0:15": "国VI",
+        "official:0:16": "6.54",
+        "official:1:11": "*选装",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:3:0": "皮质",
+        "official:3:7": "官网未单独列明，请查看来源",
+        "official:3:9": "官网未单独列明，请查看来源",
+        "official:4:12": "6",
+        "official:4:19": "官网未单独列明，请查看来源",
+        "official:4:20": "官网未单独列明，请查看来源",
+        "official:6:1": "驾驶席",
+        "official:7:0": "*选装",
+        "official:7:1": "*选装",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:scope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-seltos-official-3",
+      "name": "1.5L 尊贵版",
+      "values": {
+        "official:0:0": "4,460*1,830*1,640",
+        "official:0:1": "2,690",
+        "official:0:2": "1,497",
+        "official:0:3": "115",
+        "official:0:4": "144",
+        "official:0:5": "IVT",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式独立悬架 / 扭力梁式悬架",
+        "official:0:8": "电动助力转向",
+        "official:0:9": "215/60 R17",
+        "official:0:10": "178",
+        "official:0:11": "1,450",
+        "official:0:12": "136",
+        "official:0:13": "5.4",
+        "official:0:14": "50",
+        "official:0:15": "国VI",
+        "official:0:16": "6.54",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:17": "*选装",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:10": "*选装",
+        "official:3:0": "皮质",
+        "official:3:7": "官网未单独列明，请查看来源",
+        "official:3:9": "*选装",
+        "official:4:12": "6",
+        "official:4:19": "*选装",
+        "official:4:20": "*选装",
+        "official:6:1": "四门",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "*选装",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:scope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-seltos-official-4",
+      "name": "1.5T 豪华版",
+      "values": {
+        "official:0:0": "4,460*1,830*1,640",
+        "official:0:1": "2,690",
+        "official:0:2": "1,497",
+        "official:0:3": "200",
+        "official:0:4": "253",
+        "official:0:5": "8AT",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式独立悬架 / 扭力梁式悬架",
+        "official:0:8": "电动助力转向",
+        "official:0:9": "215/60 R17",
+        "official:0:10": "210",
+        "official:0:11": "1,505",
+        "official:0:12": "136",
+        "official:0:13": "5.4",
+        "official:0:14": "50",
+        "official:0:15": "国VI",
+        "official:0:16": "6.94",
+        "official:1:11": "*选装",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:3:0": "皮质",
+        "official:3:7": "官网未单独列明，请查看来源",
+        "official:3:9": "官网未单独列明，请查看来源",
+        "official:4:12": "6",
+        "official:4:19": "官网未单独列明，请查看来源",
+        "official:4:20": "官网未单独列明，请查看来源",
+        "official:6:1": "驾驶席",
+        "official:7:0": "*选装",
+        "official:7:1": "*选装",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:scope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-seltos-official-5",
+      "name": "1.5T 尊贵版 X-Line",
+      "values": {
+        "official:0:0": "4,460*1,830*1,640",
+        "official:0:1": "2,690",
+        "official:0:2": "1,497",
+        "official:0:3": "200",
+        "official:0:4": "253",
+        "official:0:5": "8AT",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式独立悬架 / 扭力梁式悬架",
+        "official:0:8": "电动助力转向",
+        "official:0:9": "215/60 R17",
+        "official:0:10": "210",
+        "official:0:11": "1,505",
+        "official:0:12": "136",
+        "official:0:13": "5.4",
+        "official:0:14": "50",
+        "official:0:15": "国VI",
+        "official:0:16": "6.94",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:17": "*选装",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:10": "*选装",
+        "official:3:0": "皮质",
+        "official:3:7": "官网未单独列明，请查看来源",
+        "official:3:9": "*选装",
+        "official:4:12": "6",
+        "official:4:19": "*选装",
+        "official:4:20": "*选装",
+        "official:6:1": "四门",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "*选装",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:scope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-seltos-official-6",
+      "name": "1.5T 尊贵奢享版 X-Line",
+      "values": {
+        "official:0:0": "4,460*1,830*1,640",
+        "official:0:1": "2,690",
+        "official:0:2": "1,497",
+        "official:0:3": "200",
+        "official:0:4": "253",
+        "official:0:5": "8AT",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式独立悬架 / 扭力梁式悬架",
+        "official:0:8": "电动助力转向",
+        "official:0:9": "215/55 R18",
+        "official:0:10": "210",
+        "official:0:11": "1,505",
+        "official:0:12": "136",
+        "official:0:13": "5.4",
+        "official:0:14": "50",
+        "official:0:15": "国VI",
+        "official:0:16": "7.02",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:3:0": "皮质",
+        "official:3:7": "官网未单独列明，请查看来源",
+        "official:3:9": "官网未单独列明，请查看来源",
+        "official:4:12": "8",
+        "official:4:19": "官网未单独列明，请查看来源",
+        "official:4:20": "官网未单独列明，请查看来源",
+        "official:6:1": "四门",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "*选装",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:scope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/kia-seltos.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.kia.cn/vehicles/"
+    }
+  ],
+  "sourceUrl": "https://www.kia.cn/vehicles/seltos/specs/213/",
+  "sourceScope": "全新赛图斯；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "kia-seltos-variants",
+      "sha256": "47ace776cab0fd472014ff116f5ad569602737f6b8f930e588c6c8a716a15df9"
+    },
+    {
+      "localEvidence": "kia-cmdc",
+      "sha256": "43878b0748f9031e9e2cdc3b2314168d4bc59de12b9876ece238492c7cdfdf21"
+    }
+  ]
+}

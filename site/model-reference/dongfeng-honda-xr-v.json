@@ -1,0 +1,1277 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "dongfeng-honda-xr-v",
+  "brandZh": "Dongfeng Honda",
+  "modelZh": "XR-V",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "整车参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长（mm）x宽（mm）x高（mm）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最小转弯半径（m）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "前轮距（mm）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "后轮距（mm）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "轮胎型号"
+        },
+        {
+          "key": "official:0:6",
+          "label": "备胎"
+        },
+        {
+          "key": "official:0:7",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "整车整备质量（kg）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "最小离地间隙（≥mm）"
+        }
+      ]
+    },
+    {
+      "name": "动力系统",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "发动机型号"
+        },
+        {
+          "key": "official:1:1",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:1:2",
+          "label": "总排量（L)"
+        },
+        {
+          "key": "official:1:3",
+          "label": "供油方式"
+        },
+        {
+          "key": "official:1:4",
+          "label": "压缩比"
+        },
+        {
+          "key": "official:1:5",
+          "label": "发动机最大功率（kW/rpm)"
+        },
+        {
+          "key": "official:1:6",
+          "label": "发动机最大扭矩(N·m/rpm)"
+        },
+        {
+          "key": "official:1:7",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:1:8",
+          "label": "WLTC综合工况油耗（L/100km）"
+        },
+        {
+          "key": "official:1:9",
+          "label": "推荐燃油类型"
+        },
+        {
+          "key": "official:1:10",
+          "label": "排放标准"
+        }
+      ]
+    },
+    {
+      "name": "系统结构",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "变速器型式"
+        },
+        {
+          "key": "official:2:1",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:2:2",
+          "label": "悬架系统（前）"
+        },
+        {
+          "key": "official:2:3",
+          "label": "悬架系统（后）"
+        },
+        {
+          "key": "official:2:4",
+          "label": "制动系统（前/后）"
+        },
+        {
+          "key": "official:2:5",
+          "label": "转向系统"
+        },
+        {
+          "key": "official:2:6",
+          "label": "EPB电子驻车制动系统"
+        },
+        {
+          "key": "official:2:7",
+          "label": "ABH自动驻车系统"
+        }
+      ]
+    },
+    {
+      "name": "外观",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "LED日间行车灯"
+        },
+        {
+          "key": "official:3:1",
+          "label": "LED前大灯（近 / 远光）"
+        },
+        {
+          "key": "official:3:2",
+          "label": "LED示廓灯（前）"
+        },
+        {
+          "key": "official:3:3",
+          "label": "LED转向灯（前）"
+        },
+        {
+          "key": "official:3:4",
+          "label": "自动大灯"
+        },
+        {
+          "key": "official:3:5",
+          "label": "大灯延时关闭"
+        },
+        {
+          "key": "official:3:6",
+          "label": "大灯高度可调"
+        },
+        {
+          "key": "official:3:7",
+          "label": "AHB远近光智能切换系统"
+        },
+        {
+          "key": "official:3:8",
+          "label": "LED前雾灯"
+        },
+        {
+          "key": "official:3:9",
+          "label": "LED贯穿式组合尾灯"
+        },
+        {
+          "key": "official:3:10",
+          "label": "LED高位刹车灯"
+        },
+        {
+          "key": "official:3:11",
+          "label": "外后视镜集成LED转向灯"
+        },
+        {
+          "key": "official:3:12",
+          "label": "外后视镜电动调节"
+        },
+        {
+          "key": "official:3:13",
+          "label": "外后视镜电动折叠"
+        },
+        {
+          "key": "official:3:14",
+          "label": "外后视镜锁车自动折叠"
+        },
+        {
+          "key": "official:3:15",
+          "label": "高隔热全景天幕（带遮阳帘）"
+        },
+        {
+          "key": "official:3:16",
+          "label": "前/后排绿色隔热玻璃"
+        },
+        {
+          "key": "official:3:17",
+          "label": "后挡风玻璃除霜功能"
+        },
+        {
+          "key": "official:3:18",
+          "label": "一键升降式电动车窗"
+        },
+        {
+          "key": "official:3:19",
+          "label": "无骨雨刮"
+        },
+        {
+          "key": "official:3:20",
+          "label": "鲨鱼鳍天线"
+        },
+        {
+          "key": "official:3:21",
+          "label": "铝合金运动轮毂"
+        }
+      ]
+    },
+    {
+      "name": "内饰&舒适",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "多功能液晶仪表"
+        },
+        {
+          "key": "official:4:1",
+          "label": "多功能方向盘"
+        },
+        {
+          "key": "official:4:2",
+          "label": "方向盘4向调节"
+        },
+        {
+          "key": "official:4:3",
+          "label": "高质感换挡把手"
+        },
+        {
+          "key": "official:4:4",
+          "label": "手机无线充电"
+        },
+        {
+          "key": "official:4:5",
+          "label": "自动空调"
+        },
+        {
+          "key": "official:4:6",
+          "label": "空调滤清器（粉尘&花粉过滤&PM2.5）"
+        },
+        {
+          "key": "official:4:7",
+          "label": "后排出风口"
+        },
+        {
+          "key": "official:4:8",
+          "label": "可调式防眩目内后视镜"
+        },
+        {
+          "key": "official:4:9",
+          "label": "车载ETC"
+        },
+        {
+          "key": "official:4:10",
+          "label": "前排遮阳板带化妆镜"
+        },
+        {
+          "key": "official:4:11",
+          "label": "车内LED照明"
+        },
+        {
+          "key": "official:4:12",
+          "label": "中控台前端手机放置区域照明灯"
+        },
+        {
+          "key": "official:4:13",
+          "label": "智能进入系统（无钥匙进入）"
+        },
+        {
+          "key": "official:4:14",
+          "label": "一键启动"
+        },
+        {
+          "key": "official:4:15",
+          "label": "ECON智能化绿色节能辅助系统"
+        }
+      ]
+    },
+    {
+      "name": "座椅",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "高质感座椅"
+        },
+        {
+          "key": "official:5:1",
+          "label": "主/副驾驶席座椅调节"
+        },
+        {
+          "key": "official:5:2",
+          "label": "副驾驶席座椅靠背置物袋"
+        },
+        {
+          "key": "official:5:3",
+          "label": "后排座椅三安全头枕（高度可调）"
+        },
+        {
+          "key": "official:5:4",
+          "label": "后排座椅靠背比例放倒（4/6）"
+        },
+        {
+          "key": "official:5:5",
+          "label": "后排座椅魔术收纳"
+        },
+        {
+          "key": "official:5:6",
+          "label": "后排座椅中央扶手（带杯架）"
+        }
+      ]
+    },
+    {
+      "name": "安全&防盗",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "ACE承载式车身结构"
+        },
+        {
+          "key": "official:6:1",
+          "label": "高强度（前/后）防撞钢梁"
+        },
+        {
+          "key": "official:6:2",
+          "label": "前/后排安全带未系警示系统"
+        },
+        {
+          "key": "official:6:3",
+          "label": "前/后排座椅三点式安全带"
+        },
+        {
+          "key": "official:6:4",
+          "label": "主/副驾驶席SRS安全气囊"
+        },
+        {
+          "key": "official:6:5",
+          "label": "主/副驾驶席侧安全气囊"
+        },
+        {
+          "key": "official:6:6",
+          "label": "前后排贯穿式侧安全气帘"
+        },
+        {
+          "key": "official:6:7",
+          "label": "AHA 敏捷操控辅助系统"
+        },
+        {
+          "key": "official:6:8",
+          "label": "VSA 车辆稳定性辅助系统"
+        },
+        {
+          "key": "official:6:9",
+          "label": "ABS 防抱死制动系统"
+        },
+        {
+          "key": "official:6:10",
+          "label": "BOS 刹车优先系统"
+        },
+        {
+          "key": "official:6:11",
+          "label": "EBD 电子制动力分配系统"
+        },
+        {
+          "key": "official:6:12",
+          "label": "TCS 牵引力控制系统"
+        },
+        {
+          "key": "official:6:13",
+          "label": "BA 制动辅助系统"
+        },
+        {
+          "key": "official:6:14",
+          "label": "ESS 紧急制动提醒系统"
+        },
+        {
+          "key": "official:6:15",
+          "label": "HSA 坡道辅助系统"
+        },
+        {
+          "key": "official:6:16",
+          "label": "HDC 陡坡缓降系统"
+        },
+        {
+          "key": "official:6:17",
+          "label": "TPMS 智能胎压报警系统"
+        },
+        {
+          "key": "official:6:18",
+          "label": "豪华广角倒车影像"
+        },
+        {
+          "key": "official:6:19",
+          "label": "高灵敏度泊车雷达"
+        },
+        {
+          "key": "official:6:20",
+          "label": "智能防盗启动锁止系统"
+        },
+        {
+          "key": "official:6:21",
+          "label": "防盗报警系统"
+        },
+        {
+          "key": "official:6:22",
+          "label": "后车门儿童安全锁"
+        },
+        {
+          "key": "official:6:23",
+          "label": "ISO FIX 儿童座椅固定装置"
+        },
+        {
+          "key": "official:6:24",
+          "label": "后排座椅提醒"
+        }
+      ]
+    },
+    {
+      "name": "Honda SENSING 安全超感",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "ACC 主动巡航控制系统"
+        },
+        {
+          "key": "official:7:1",
+          "label": "CMBS碰撞缓解制动系统"
+        },
+        {
+          "key": "official:7:2",
+          "label": "FCW 预碰撞警示系统"
+        },
+        {
+          "key": "official:7:3",
+          "label": "LKAS 车道保持辅助系统"
+        },
+        {
+          "key": "official:7:4",
+          "label": "RDM 车道偏移抑制系统"
+        },
+        {
+          "key": "official:7:5",
+          "label": "LDW 车道偏移预警系统"
+        },
+        {
+          "key": "official:7:6",
+          "label": "TSR 交通标识智能识别系统"
+        },
+        {
+          "key": "official:7:7",
+          "label": "BSI盲点监测系统"
+        },
+        {
+          "key": "official:7:8",
+          "label": "CTM后视动态提醒系统"
+        }
+      ]
+    },
+    {
+      "name": "Honda CONNECT 3.0 智导互联",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "精准智能导航"
+        },
+        {
+          "key": "official:8:1",
+          "label": "在线/离线混合导航"
+        },
+        {
+          "key": "official:8:2",
+          "label": "导航 自车位置信息提供并在地图显示"
+        },
+        {
+          "key": "official:8:3",
+          "label": "用户行动预测功能"
+        },
+        {
+          "key": "official:8:4",
+          "label": "车载导航记录"
+        },
+        {
+          "key": "official:8:5",
+          "label": "空调开启/关闭"
+        },
+        {
+          "key": "official:8:6",
+          "label": "车门开锁/落锁"
+        },
+        {
+          "key": "official:8:7",
+          "label": "防盗提醒"
+        },
+        {
+          "key": "official:8:8",
+          "label": "电子围栏"
+        },
+        {
+          "key": "official:8:9",
+          "label": "手机远程控制 车辆位置查看"
+        },
+        {
+          "key": "official:8:10",
+          "label": "车辆状况确认"
+        },
+        {
+          "key": "official:8:11",
+          "label": "发送到车"
+        },
+        {
+          "key": "official:8:12",
+          "label": "最后一公里导航"
+        },
+        {
+          "key": "official:8:13",
+          "label": "车友组队"
+        },
+        {
+          "key": "official:8:14",
+          "label": "车家互联 远程车机控制智能家电(Home link）\n                    远程确认车况(Home link）\n                    第三方服务（语音购物、查询服务等）"
+        },
+        {
+          "key": "official:8:15",
+          "label": "导航操作"
+        },
+        {
+          "key": "official:8:16",
+          "label": "界面操作"
+        },
+        {
+          "key": "official:8:17",
+          "label": "语音助手 音乐播放"
+        },
+        {
+          "key": "official:8:18",
+          "label": "空调操作"
+        },
+        {
+          "key": "official:8:19",
+          "label": "娱乐应用"
+        },
+        {
+          "key": "official:8:20",
+          "label": "在线娱乐 在线音乐"
+        },
+        {
+          "key": "official:8:21",
+          "label": "在线电台"
+        },
+        {
+          "key": "official:8:22",
+          "label": "OTA 地图更新"
+        },
+        {
+          "key": "official:8:23",
+          "label": "Honda CONNECT更新"
+        },
+        {
+          "key": "official:8:24",
+          "label": "AI智能助理 同步个人设定"
+        },
+        {
+          "key": "official:8:25",
+          "label": "Wi-Fi热点(流量则需要另行购买)"
+        },
+        {
+          "key": "official:8:26",
+          "label": "E-CALL紧急救援"
+        },
+        {
+          "key": "official:8:27",
+          "label": "天气"
+        }
+      ]
+    },
+    {
+      "name": "音响及娱乐系统",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "8英寸彩色触控屏"
+        },
+        {
+          "key": "official:9:1",
+          "label": "9英寸DA智能屏互联系统"
+        },
+        {
+          "key": "official:9:2",
+          "label": "高保真扬声器"
+        },
+        {
+          "key": "official:9:3",
+          "label": "百度CarLife互联"
+        },
+        {
+          "key": "official:9:4",
+          "label": "车载蓝牙通讯系统"
+        },
+        {
+          "key": "official:9:5",
+          "label": "USB 接口"
+        },
+        {
+          "key": "official:9:6",
+          "label": "前排12V电源接口"
+        },
+        {
+          "key": "official:9:7",
+          "label": "SVC 音量与车速联动系统"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "dongfeng-honda-xr-v-official-1",
+      "name": "热力版",
+      "values": {
+        "official:0:0": "4380×1790×1590",
+        "official:0:1": "2610",
+        "official:0:2": "5.5",
+        "official:0:3": "1548",
+        "official:0:4": "1553",
+        "official:0:5": "215/60R17 96H",
+        "official:0:6": "T135/90D17 104M",
+        "official:0:7": "40",
+        "official:0:8": "1296",
+        "official:0:9": "150",
+        "official:1:0": "L15CE",
+        "official:1:1": "水冷直列四缸",
+        "official:1:2": "1.498",
+        "official:1:3": "缸内直喷",
+        "official:1:4": "11.5:1",
+        "official:1:5": "91/6600",
+        "official:1:6": "145/4700",
+        "official:1:7": "183",
+        "official:1:8": "6.30",
+        "official:1:9": "92号及以上无铅汽油",
+        "official:1:10": "国 VI",
+        "official:2:0": "CVT",
+        "official:2:1": "前轮驱动",
+        "official:2:2": "麦弗逊式独立悬架",
+        "official:2:3": "扭力梁式非独立悬架",
+        "official:2:4": "通风盘式/盘式",
+        "official:2:5": "EPS 电动助力转向系统",
+        "official:2:6": "●",
+        "official:2:7": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "—",
+        "official:3:15": "—",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●(主驾)",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●17英寸",
+        "official:4:0": "●4.2英寸",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "—",
+        "official:4:5": "●单温区",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:5:0": "织物",
+        "official:5:1": "6向/4向手动",
+        "official:5:2": "—",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "—",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:17": "●",
+        "official:6:18": "—",
+        "official:6:19": "—",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:22": "●",
+        "official:6:23": "●",
+        "official:6:24": "●",
+        "official:7:0": "—",
+        "official:7:1": "—",
+        "official:7:2": "—",
+        "official:7:3": "—",
+        "official:7:4": "—",
+        "official:7:5": "—",
+        "official:7:6": "—",
+        "official:7:7": "—",
+        "official:7:8": "—",
+        "official:8:0": "—",
+        "official:8:1": "—",
+        "official:8:2": "—",
+        "official:8:3": "—",
+        "official:8:4": "—",
+        "official:8:5": "—",
+        "official:8:6": "—",
+        "official:8:7": "—",
+        "official:8:8": "—",
+        "official:8:9": "—",
+        "official:8:10": "—",
+        "official:8:11": "—",
+        "official:8:12": "—",
+        "official:8:13": "—",
+        "official:8:14": "—",
+        "official:8:15": "—",
+        "official:8:16": "—",
+        "official:8:17": "—",
+        "official:8:18": "—",
+        "official:8:19": "—",
+        "official:8:20": "—",
+        "official:8:21": "—",
+        "official:8:22": "—",
+        "official:8:23": "—",
+        "official:8:24": "—",
+        "official:8:25": "—",
+        "official:8:26": "—",
+        "official:8:27": "—",
+        "official:9:0": "●",
+        "official:9:1": "—",
+        "official:9:2": "●4 扬声器",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●前2/后2",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-honda-xr-v-official-2",
+      "name": "热诚版",
+      "values": {
+        "official:0:0": "4380×1790×1590",
+        "official:0:1": "2610",
+        "official:0:2": "5.5",
+        "official:0:3": "1548",
+        "official:0:4": "1553",
+        "official:0:5": "215/60R17 96H",
+        "official:0:6": "T135/90D17 104M",
+        "official:0:7": "40",
+        "official:0:8": "1296",
+        "official:0:9": "150",
+        "official:1:0": "L15CE",
+        "official:1:1": "水冷直列四缸",
+        "official:1:2": "1.498",
+        "official:1:3": "缸内直喷",
+        "official:1:4": "11.5:1",
+        "official:1:5": "91/6600",
+        "official:1:6": "145/4700",
+        "official:1:7": "183",
+        "official:1:8": "6.30",
+        "official:1:9": "92号及以上无铅汽油",
+        "official:1:10": "国 VI",
+        "official:2:0": "CVT",
+        "official:2:1": "前轮驱动",
+        "official:2:2": "麦弗逊式独立悬架",
+        "official:2:3": "扭力梁式非独立悬架",
+        "official:2:4": "通风盘式/盘式",
+        "official:2:5": "EPS 电动助力转向系统",
+        "official:2:6": "●",
+        "official:2:7": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "—",
+        "official:3:15": "—",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●(主驾)",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●17英寸",
+        "official:4:0": "●7英寸",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●真皮",
+        "official:4:4": "—",
+        "official:4:5": "●单温区",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:5:0": "织物/皮革双拼",
+        "official:5:1": "6向/4向手动",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:17": "●",
+        "official:6:18": "●",
+        "official:6:19": "—",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:22": "●",
+        "official:6:23": "●",
+        "official:6:24": "●",
+        "official:7:0": "—",
+        "official:7:1": "—",
+        "official:7:2": "—",
+        "official:7:3": "—",
+        "official:7:4": "—",
+        "official:7:5": "—",
+        "official:7:6": "—",
+        "official:7:7": "—",
+        "official:7:8": "—",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "○ OP",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:9:0": "—",
+        "official:9:1": "●",
+        "official:9:2": "●4 扬声器",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●前2/后2",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-honda-xr-v-official-3",
+      "name": "热潮版",
+      "values": {
+        "official:0:0": "4380×1790×1590",
+        "official:0:1": "2610",
+        "official:0:2": "5.5",
+        "official:0:3": "1548",
+        "official:0:4": "1553",
+        "official:0:5": "215/60R17 96H",
+        "official:0:6": "T135/90D17 104M",
+        "official:0:7": "40",
+        "official:0:8": "1321",
+        "official:0:9": "150",
+        "official:1:0": "L15CE",
+        "official:1:1": "水冷直列四缸",
+        "official:1:2": "1.498",
+        "official:1:3": "缸内直喷",
+        "official:1:4": "11.5:1",
+        "official:1:5": "91/6600",
+        "official:1:6": "145/4700",
+        "official:1:7": "183",
+        "official:1:8": "6.30",
+        "official:1:9": "92号及以上无铅汽油",
+        "official:1:10": "国 VI",
+        "official:2:0": "CVT",
+        "official:2:1": "前轮驱动",
+        "official:2:2": "麦弗逊式独立悬架",
+        "official:2:3": "扭力梁式非独立悬架",
+        "official:2:4": "通风盘式/盘式",
+        "official:2:5": "EPS 电动助力转向系统",
+        "official:2:6": "●",
+        "official:2:7": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "—",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "—",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●(主驾)",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●17英寸",
+        "official:4:0": "●7英寸",
+        "official:4:1": "●真皮",
+        "official:4:2": "●",
+        "official:4:3": "●真皮",
+        "official:4:4": "—",
+        "official:4:5": "●单温区",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●后排触控式",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:5:0": "织物/皮革双拼",
+        "official:5:1": "6向/4向手动",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:17": "●",
+        "official:6:18": "●",
+        "official:6:19": "—",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:22": "●",
+        "official:6:23": "●",
+        "official:6:24": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "○ OP",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:9:0": "—",
+        "official:9:1": "●",
+        "official:9:2": "●4 扬声器",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●前2/后2",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-honda-xr-v-official-4",
+      "name": "热爱版",
+      "values": {
+        "official:0:0": "4380×1790×1590",
+        "official:0:1": "2610",
+        "official:0:2": "5.5",
+        "official:0:3": "1537",
+        "official:0:4": "1543",
+        "official:0:5": "225/50R18 95V",
+        "official:0:6": "T135/90D17 104M",
+        "official:0:7": "40",
+        "official:0:8": "1330",
+        "official:0:9": "150",
+        "official:1:0": "L15CE",
+        "official:1:1": "水冷直列四缸",
+        "official:1:2": "1.498",
+        "official:1:3": "缸内直喷",
+        "official:1:4": "11.5:1",
+        "official:1:5": "91/6600",
+        "official:1:6": "145/4700",
+        "official:1:7": "180",
+        "official:1:8": "6.40",
+        "official:1:9": "92号及以上无铅汽油",
+        "official:1:10": "国 VI",
+        "official:2:0": "CVT",
+        "official:2:1": "前轮驱动",
+        "official:2:2": "麦弗逊式独立悬架",
+        "official:2:3": "扭力梁式非独立悬架",
+        "official:2:4": "通风盘式/盘式",
+        "official:2:5": "EPS 电动助力转向系统",
+        "official:2:6": "●",
+        "official:2:7": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●（流动转向灯）",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●(主驾)",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●18英寸",
+        "official:4:0": "●7英寸",
+        "official:4:1": "●真皮",
+        "official:4:2": "●",
+        "official:4:3": "●真皮",
+        "official:4:4": "●",
+        "official:4:5": "●双温区",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●带照明灯",
+        "official:4:11": "●后排触控式",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:5:0": "真皮*",
+        "official:5:1": "6向/4向手动",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:17": "●",
+        "official:6:18": "●",
+        "official:6:19": "●前4/后4",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:22": "●",
+        "official:6:23": "●",
+        "official:6:24": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "○ OP",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:9:0": "—",
+        "official:9:1": "●",
+        "official:9:2": "●4 扬声器",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●前2/后2",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/dongfeng-honda-xr-v-v2.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.dongfeng-honda.com/xr-v/"
+    }
+  ],
+  "sourceUrl": "https://www.dongfeng-honda.com/xr-v/js/configuration.html",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "honda-xrv-config",
+      "sha256": "10705705af62620c264b7a2e8886c103e59763a21a418e5fb13bea0d3bf042bc"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "/images/catalog-update-20261011/bestune-pony-v3.jpg": {
+    "bytes": 2401185,
+    "sha256": "dc4c14406abeae5b5e657e5a09d8b387d0e30dcf2997da8b49eaed21e3cc3025"
+  },
+  "/images/catalog-update-20261011/bmw-brilliance-i3.jpg": {
+    "bytes": 326786,
+    "sha256": "6452427866ce812d976c36a3296f2c05705f091c15f4eac7fb975c194e31aea0"
+  },
+  "/images/catalog-update-20261011/bmw-brilliance-i5.jpg": {
+    "bytes": 501497,
+    "sha256": "db0a8e2e172a87817072c00df9f3b6898b787dd6c5adfef8853bf33532c8a83f"
+  },
+  "/images/catalog-update-20261011/bmw-brilliance-x3.jpg": {
+    "bytes": 243247,
+    "sha256": "4134b0680ca09c6438f632a8bdda6f960fed64b1c0464066edc10f7964e9554d"
+  },
+  "/images/catalog-update-20261011/bmw-brilliance-x5l.jpg": {
+    "bytes": 540199,
+    "sha256": "63487d7f3847b37b636585b590c1d8e9c57cc1c10ccf8aa7d23e8e4e7953b9d7"
+  },
+  "/images/catalog-update-20261011/byd-seal-06-dm-i.png": {
+    "bytes": 299765,
+    "sha256": "db8d45bfacbe91c00e76e7772affdb05e11e39d9b82c1146d86a2026f0e0adbe"
+  },
+  "/images/catalog-update-20261011/byd-seal-07-ev.jpg": {
+    "bytes": 3806802,
+    "sha256": "83f3d1b4e8c6d593b90089d133e545b46d200fecbdf53886c4cc196aabb057fd"
+  },
+  "/images/catalog-update-20261011/byd-shark.jpg": {
+    "bytes": 405803,
+    "sha256": "d491865ba1be23651444800b01bd05b6ed9c6074d78476473b66cd262eb1188a"
+  },
+  "/images/catalog-update-20261011/denza-n9.jpg": {
+    "bytes": 109327,
+    "sha256": "a125ee5d840c7ae7db67c092dd6e404aa3354ca5558093cae7b945504f94c1f6"
+  },
+  "/images/catalog-update-20261011/dongfeng-honda-xr-v-v2.jpg": {
+    "bytes": 551175,
+    "sha256": "604a83f379c4463f8c93eaa315c71198197db71eb292e59eec448df81fb25762"
+  },
+  "/images/catalog-update-20261011/dongfeng-nissan-n6.jpg": {
+    "bytes": 400386,
+    "sha256": "754451e1dbf0d7c083b15e82035f847b3c9ede0fbd64fd2b65f2c20fe8801531"
+  },
+  "/images/catalog-update-20261011/dongfeng-nissan-nx8.jpg": {
+    "bytes": 1067531,
+    "sha256": "28deef5b93dd45316395ea438ea5af978e96981b0d2d1adf0b22e6ee7d283acf"
+  },
+  "/images/catalog-update-20261011/faw-audi-a3.png": {
+    "bytes": 258000,
+    "sha256": "2f9678964546f983815f37ab994c922b112bd8a37ebf8a73c76327348c17e57f"
+  },
+  "/images/catalog-update-20261011/faw-audi-a6l-v2.jpg": {
+    "bytes": 328067,
+    "sha256": "397833eee9d90a0457cb6786dd97bb892f8db203768cf16937e038b76d8bcb1f"
+  },
+  "/images/catalog-update-20261011/faw-audi-q5l.jpg": {
+    "bytes": 1194941,
+    "sha256": "9e33361dd673cbeb55b9aca1ee72a17a3bc7d23158cb842420e78241d4c12c6a"
+  },
+  "/images/catalog-update-20261011/faw-volkswagen-t-roc.png": {
+    "bytes": 768636,
+    "sha256": "8d6eb6dcc9d91577bc31968195f49d8d90b2e124247dc01bb8f3dcd37221e6b9"
+  },
+  "/images/catalog-update-20261011/galaxy-a7.jpg": {
+    "bytes": 665391,
+    "sha256": "e5eb9b7b8ea235e708678ad398558543e4fd68da4f2180bbdc9976d710543737"
+  },
+  "/images/catalog-update-20261011/galaxy-zhanjian-700.jpg": {
+    "bytes": 594760,
+    "sha256": "4c1dd43578406ddab08f560f90ff390196349efd33a83b2d5cddc1c2552f4069"
+  },
+  "/images/catalog-update-20261011/kia-ev5.png": {
+    "bytes": 69469,
+    "sha256": "111e941de29fab959d3f9cda6f58266c68a7d79d51b41e70e901bb873119c0bb"
+  },
+  "/images/catalog-update-20261011/kia-ev6.png": {
+    "bytes": 63969,
+    "sha256": "5a0292a4dba3a23b0cca668bcadb3a1a78a4e2a2d7b60cc5afa4e99b19422feb"
+  },
+  "/images/catalog-update-20261011/kia-kx1.png": {
+    "bytes": 21990,
+    "sha256": "66c92a3b229ff761c2ff999e2e5763637095749af5ab1f2b9bc9d51310dd99bf"
+  },
+  "/images/catalog-update-20261011/kia-seltos.png": {
+    "bytes": 21167,
+    "sha256": "8b31bc2565465b81410fbd6a385028a3f56c5b673570ddb349eb07ecfef62e2e"
+  },
+  "/images/catalog-update-20261011/kia-sportage.png": {
+    "bytes": 23286,
+    "sha256": "8112a2688124096a4f0a93fdd62df8d567f57442ecd2f948b230758115836291"
+  },
+  "/images/catalog-update-20261011/kia-zhipao-ace.png": {
+    "bytes": 23686,
+    "sha256": "4dcb04eed977282ae8b8866b3467f2ca28f4c6f2a30faa2e2936074520509836"
+  },
+  "/images/catalog-update-20261011/li-auto-l6.jpg": {
+    "bytes": 510704,
+    "sha256": "57051205e8d3aa8e6b6f81391ec86976bf1285386557a18a5f9763666b0b8762"
+  },
+  "/images/catalog-update-20261011/li-auto-l7.jpg": {
+    "bytes": 635752,
+    "sha256": "83124d865d71382563fb2a228a26f31f24dd04c593212d4922d419a2567573cb"
+  },
+  "/images/catalog-update-20261011/li-auto-l8.jpg": {
+    "bytes": 1289672,
+    "sha256": "ab288e4c911746cbbf694c0d3eb55809157e8a7a775d0abf3eec511d293f0a97"
+  },
+  "/images/catalog-update-20261011/li-auto-l9.jpg": {
+    "bytes": 492803,
+    "sha256": "b3055ecb128bcef1e1464e400f946ff89ba13eeab1f542bf3fdecb44d3818222"
+  },
+  "/images/catalog-update-20261011/lynk-co-900.jpg": {
+    "bytes": 324526,
+    "sha256": "53a3ccb0ea74b634a4018b2cbb03bd387decd224d51e84f08cb0487e720fbea0"
+  },
+  "/images/catalog-update-20261011/mazda-cx-5.png": {
+    "bytes": 171586,
+    "sha256": "6d350cfb1bc68b832e830e7cb1418ac2e94faa60b948c422d71dff92d542d1da"
+  },
+  "/images/catalog-update-20261011/mazda-cx-50.png": {
+    "bytes": 156929,
+    "sha256": "e72549f12abf4cc19b9e586a7eef881eb85186666fcd899ffb20572cf196b346"
+  },
+  "/images/catalog-update-20261011/mazda-ez-60.png": {
+    "bytes": 179771,
+    "sha256": "04746cffca1c6ea9e6c418ea1b02a1398ce5c3d1fc4ee5bfb3b6382a79035ffc"
+  },
+  "/images/catalog-update-20261011/saic-volkswagen-id-era-9x.png": {
+    "bytes": 542443,
+    "sha256": "898e4f294833d2d5dbac29cd67a7c3b310f6318a6b0fedc6d1528561762e1fa9"
+  },
+  "/images/catalog-update-20261011/wuling-starlight-560.png": {
+    "bytes": 267374,
+    "sha256": "1e8441119473f6b10bdbe847cd6de283406a85f1e2a385d8ede7f3f1c77fa845"
+  },
+  "/images/catalog-update-20261011/wuling-starlight-730.png": {
+    "bytes": 264171,
+    "sha256": "8cd2312bda181be847cc4eb59343321c624b77b556db91a9070a61ed80d68ae6"
+  },
+  "/images/catalog-update-20261011/xiaomi-yu7-v2.jpg": {
+    "bytes": 288953,
+    "sha256": "7bbc9ce7c91200fe73e1bed0422e0e74a7002e5067c693ff81432c265c2b6000"
+  }
+}

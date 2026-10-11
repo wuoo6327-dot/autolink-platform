@@ -1,0 +1,1778 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "galaxy-a7",
+  "brandZh": "Galaxy",
+  "modelZh": "A7",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "整车参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高（mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最小离地间隙（mm)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "油箱容积（L)"
+        },
+        {
+          "key": "official:0:4",
+          "label": "后备箱容积（L）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "整备质量（kg)"
+        },
+        {
+          "key": "official:0:6",
+          "label": "最小转弯半径(m)"
+        },
+        {
+          "key": "official:0:7",
+          "label": "麋鹿测试最高速度(km/h)"
+        },
+        {
+          "key": "official:0:8",
+          "label": "GEA全球智能新能源架构"
+        },
+        {
+          "key": "official:0:9",
+          "label": "雷神AI电混2.0"
+        },
+        {
+          "key": "official:0:10",
+          "label": "全球最高发动机平台热效率"
+        },
+        {
+          "key": "official:0:11",
+          "label": "11合1混动电驱系统综合效率"
+        },
+        {
+          "key": "official:0:12",
+          "label": "星睿AI云动力2.0"
+        },
+        {
+          "key": "official:0:13",
+          "label": "17寸多辐铝合金轮毂"
+        },
+        {
+          "key": "official:0:14",
+          "label": "18寸低风阻轮毂"
+        },
+        {
+          "key": "official:0:15",
+          "label": "19寸多辐豪华铝合金轮毂"
+        },
+        {
+          "key": "official:0:16",
+          "label": "215/60 R17 轮胎"
+        },
+        {
+          "key": "official:0:17",
+          "label": "225/55 R18 轮胎"
+        },
+        {
+          "key": "official:0:18",
+          "label": "235/45 R19 马牌品牌轮胎"
+        }
+      ]
+    },
+    {
+      "name": "美学家轿新标杆",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "LED大灯"
+        },
+        {
+          "key": "official:1:1",
+          "label": "大灯自动开闭"
+        },
+        {
+          "key": "official:1:2",
+          "label": "银河涟漪一体式贯穿前灯"
+        },
+        {
+          "key": "official:1:3",
+          "label": "LED中间位置灯"
+        },
+        {
+          "key": "official:1:4",
+          "label": "旭日东升贯穿尾灯"
+        },
+        {
+          "key": "official:1:5",
+          "label": "伴我回家照明"
+        },
+        {
+          "key": "official:1:6",
+          "label": "LED后雾灯"
+        },
+        {
+          "key": "official:1:7",
+          "label": "辅助驾驶小蓝灯"
+        },
+        {
+          "key": "official:1:8",
+          "label": "外置式AGS主动进气格栅"
+        },
+        {
+          "key": "official:1:9",
+          "label": "整车车窗一键升降(防夹)"
+        },
+        {
+          "key": "official:1:10",
+          "label": "雨量感应式雨刮"
+        },
+        {
+          "key": "official:1:11",
+          "label": "前后挡风除雾"
+        },
+        {
+          "key": "official:1:12",
+          "label": "外后视镜电动调节"
+        },
+        {
+          "key": "official:1:13",
+          "label": "外后视镜加热"
+        },
+        {
+          "key": "official:1:14",
+          "label": "外后视镜电动折叠"
+        },
+        {
+          "key": "official:1:15",
+          "label": "防眩目内后视镜"
+        },
+        {
+          "key": "official:1:16",
+          "label": "超大尺寸可开启全景天窗"
+        },
+        {
+          "key": "official:1:17",
+          "label": "电动遮阳帘"
+        },
+        {
+          "key": "official:1:18",
+          "label": "视觉识别电动尾门"
+        },
+        {
+          "key": "official:1:19",
+          "label": "车身颜色"
+        },
+        {
+          "key": "official:1:20",
+          "label": "内饰颜色"
+        }
+      ]
+    },
+    {
+      "name": "节能家轿新标杆",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "动力类型"
+        },
+        {
+          "key": "official:2:1",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:2:2",
+          "label": "变速箱型式"
+        },
+        {
+          "key": "official:2:3",
+          "label": "最大排气量(cc）"
+        },
+        {
+          "key": "official:2:4",
+          "label": "发动机功率（kW）"
+        },
+        {
+          "key": "official:2:5",
+          "label": "发动机扭矩（N·m ）"
+        },
+        {
+          "key": "official:2:6",
+          "label": "电机型式"
+        },
+        {
+          "key": "official:2:7",
+          "label": "驱动形式"
+        },
+        {
+          "key": "official:2:8",
+          "label": "电机功率（kW）"
+        },
+        {
+          "key": "official:2:9",
+          "label": "电机扭矩（N·m ）"
+        },
+        {
+          "key": "official:2:10",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:2:11",
+          "label": "电池能量（kWh）"
+        },
+        {
+          "key": "official:2:12",
+          "label": "电池品牌"
+        },
+        {
+          "key": "official:2:13",
+          "label": "电池类型"
+        },
+        {
+          "key": "official:2:14",
+          "label": "CLTC纯电续航里程（km）"
+        },
+        {
+          "key": "official:2:15",
+          "label": "CLTC馈电油耗（L/100km）"
+        },
+        {
+          "key": "official:2:16",
+          "label": "排放标准"
+        },
+        {
+          "key": "official:2:17",
+          "label": "0~100km/h加速时间（s）"
+        },
+        {
+          "key": "official:2:18",
+          "label": "交流慢充功率（kW）"
+        },
+        {
+          "key": "official:2:19",
+          "label": "直流快充功率"
+        },
+        {
+          "key": "official:2:20",
+          "label": "30%-80%SOC直流快充时间（min）"
+        },
+        {
+          "key": "official:2:21",
+          "label": "本地/远程预约充电"
+        },
+        {
+          "key": "official:2:22",
+          "label": "对外放电"
+        },
+        {
+          "key": "official:2:23",
+          "label": "V2V车辆对车辆供电"
+        },
+        {
+          "key": "official:2:24",
+          "label": "电子怀挡式换挡"
+        },
+        {
+          "key": "official:2:25",
+          "label": "制动能量回收系统"
+        },
+        {
+          "key": "official:2:26",
+          "label": "滑行能量回收可调节"
+        },
+        {
+          "key": "official:2:27",
+          "label": "悬架系统"
+        },
+        {
+          "key": "official:2:28",
+          "label": "阻尼自适应可变悬架"
+        },
+        {
+          "key": "official:2:29",
+          "label": "EPS电动助力转向"
+        },
+        {
+          "key": "official:2:30",
+          "label": "电子驻车制动EPB"
+        },
+        {
+          "key": "official:2:31",
+          "label": "AutoHold自动驻车"
+        },
+        {
+          "key": "official:2:32",
+          "label": "制动器类型"
+        }
+      ]
+    },
+    {
+      "name": "大空间家轿新标杆",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "多功能抗菌皮质方向盘"
+        },
+        {
+          "key": "official:3:1",
+          "label": "方向盘4向手动调节"
+        },
+        {
+          "key": "official:3:2",
+          "label": "棉花糖皮质座椅"
+        },
+        {
+          "key": "official:3:3",
+          "label": "主驾座椅6向手动调节"
+        },
+        {
+          "key": "official:3:4",
+          "label": "主驾座椅6向电动调节"
+        },
+        {
+          "key": "official:3:5",
+          "label": "副驾座椅4向手动调节"
+        },
+        {
+          "key": "official:3:6",
+          "label": "副驾座椅4向电动调节"
+        },
+        {
+          "key": "official:3:7",
+          "label": "前排座椅三档通风"
+        },
+        {
+          "key": "official:3:8",
+          "label": "前排座椅三档加热"
+        },
+        {
+          "key": "official:3:9",
+          "label": "主驾座椅记忆迎宾"
+        },
+        {
+          "key": "official:3:10",
+          "label": "前排座椅14点臀背指压按摩"
+        },
+        {
+          "key": "official:3:11",
+          "label": "后排座椅靠背4/6折叠"
+        },
+        {
+          "key": "official:3:12",
+          "label": "后排座椅中扶手（带杯架）"
+        },
+        {
+          "key": "official:3:13",
+          "label": "256色星瀑氛围灯(仪表台/前排/后排)"
+        },
+        {
+          "key": "official:3:14",
+          "label": "双区自动恒温空调"
+        },
+        {
+          "key": "official:3:15",
+          "label": "清洁座舱"
+        },
+        {
+          "key": "official:3:16",
+          "label": "后排空调独立出风口"
+        },
+        {
+          "key": "official:3:17",
+          "label": "解锁/延时/远程控制空调通风"
+        },
+        {
+          "key": "official:3:18",
+          "label": "CN95空调滤芯"
+        },
+        {
+          "key": "official:3:19",
+          "label": "主副驾化妆镜（灯）"
+        }
+      ]
+    },
+    {
+      "name": "智能家轿新标杆",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "银河 Flyme Auto 2 智能座舱系统"
+        },
+        {
+          "key": "official:4:1",
+          "label": "车规级座舱芯片"
+        },
+        {
+          "key": "official:4:2",
+          "label": "10.2英寸液晶仪表"
+        },
+        {
+          "key": "official:4:3",
+          "label": "高清中控屏"
+        },
+        {
+          "key": "official:4:4",
+          "label": "16.6英寸W-HUD"
+        },
+        {
+          "key": "official:4:5",
+          "label": "16扬Flyme Sound无界之声（含主驾头枕音响）"
+        },
+        {
+          "key": "official:4:6",
+          "label": "高品质6扬声器"
+        },
+        {
+          "key": "official:4:7",
+          "label": "车外扬声器"
+        },
+        {
+          "key": "official:4:8",
+          "label": "50W手机无线充电（带散热风扇）"
+        },
+        {
+          "key": "official:4:9",
+          "label": "高德850地图导航"
+        },
+        {
+          "key": "official:4:10",
+          "label": "可视化车道引导"
+        },
+        {
+          "key": "official:4:11",
+          "label": "Flyme Link、HUAWEI HiCar、Carlink手车互联"
+        },
+        {
+          "key": "official:4:12",
+          "label": "CarPlay手车互联"
+        },
+        {
+          "key": "official:4:13",
+          "label": "宠物模式"
+        },
+        {
+          "key": "official:4:14",
+          "label": "Alive动态交互壁纸"
+        },
+        {
+          "key": "official:4:15",
+          "label": "G-C无界空间"
+        },
+        {
+          "key": "official:4:16",
+          "label": "AI智能语音交互"
+        },
+        {
+          "key": "official:4:17",
+          "label": "AI交互智能体"
+        },
+        {
+          "key": "official:4:18",
+          "label": "预约出行"
+        },
+        {
+          "key": "official:4:19",
+          "label": "车载4G网络"
+        },
+        {
+          "key": "official:4:20",
+          "label": "车内KTV"
+        },
+        {
+          "key": "official:4:21",
+          "label": "2*type A+2* type C 数据传输接口"
+        },
+        {
+          "key": "official:4:22",
+          "label": "行车自动落锁"
+        },
+        {
+          "key": "official:4:23",
+          "label": "手机蓝牙钥匙"
+        },
+        {
+          "key": "official:4:24",
+          "label": "无钥匙启动/无感进入"
+        },
+        {
+          "key": "official:4:25",
+          "label": "车内人脸识别"
+        },
+        {
+          "key": "official:4:26",
+          "label": "千里浩瀚辅助驾驶H3方案（J6M）"
+        },
+        {
+          "key": "official:4:27",
+          "label": "基础辅助驾驶"
+        },
+        {
+          "key": "official:4:28",
+          "label": "高清摄像头"
+        },
+        {
+          "key": "official:4:29",
+          "label": "毫米波雷达"
+        },
+        {
+          "key": "official:4:30",
+          "label": "超声波雷达"
+        },
+        {
+          "key": "official:4:31",
+          "label": "ACC自适应巡航"
+        },
+        {
+          "key": "official:4:32",
+          "label": "ISA智能速度辅助"
+        },
+        {
+          "key": "official:4:33",
+          "label": "TLA交通灯识别"
+        },
+        {
+          "key": "official:4:34",
+          "label": "HWA智能巡航驾驶辅助"
+        },
+        {
+          "key": "official:4:35",
+          "label": "ALCA拨杆变道辅助"
+        },
+        {
+          "key": "official:4:36",
+          "label": "TSR交通标志识别"
+        },
+        {
+          "key": "official:4:37",
+          "label": "IHBC智能远近光灯控制"
+        },
+        {
+          "key": "official:4:38",
+          "label": "LDW车道偏离预警"
+        },
+        {
+          "key": "official:4:39",
+          "label": "ELKA紧急车道保持辅助"
+        },
+        {
+          "key": "official:4:40",
+          "label": "LKA车道保持辅助"
+        },
+        {
+          "key": "official:4:41",
+          "label": "BSD盲点监测"
+        },
+        {
+          "key": "official:4:42",
+          "label": "LCA变道辅助"
+        },
+        {
+          "key": "official:4:43",
+          "label": "DOW开门预警"
+        },
+        {
+          "key": "official:4:44",
+          "label": "RCW后方碰撞预警"
+        },
+        {
+          "key": "official:4:45",
+          "label": "RCTA倒车车侧预警"
+        },
+        {
+          "key": "official:4:46",
+          "label": "FCTA前方穿行预警"
+        },
+        {
+          "key": "official:4:47",
+          "label": "AEB自动紧急制动"
+        },
+        {
+          "key": "official:4:48",
+          "label": "TAA大型车辆智慧避让"
+        },
+        {
+          "key": "official:4:49",
+          "label": "NOA城市通勤领航驾驶辅助"
+        },
+        {
+          "key": "official:4:50",
+          "label": "HNOA高速领航驾驶辅助"
+        },
+        {
+          "key": "official:4:51",
+          "label": "AES自动紧急避让"
+        },
+        {
+          "key": "official:4:52",
+          "label": "MAI误加速抑制"
+        },
+        {
+          "key": "official:4:53",
+          "label": "驾驶员状态监测DMS"
+        },
+        {
+          "key": "official:4:54",
+          "label": "后泊车雷达"
+        },
+        {
+          "key": "official:4:55",
+          "label": "前泊车雷达"
+        },
+        {
+          "key": "official:4:56",
+          "label": "540°全景影像"
+        },
+        {
+          "key": "official:4:57",
+          "label": "APA自动泊车"
+        },
+        {
+          "key": "official:4:58",
+          "label": "RPA遥控泊车"
+        },
+        {
+          "key": "official:4:59",
+          "label": "FTP指尖泊车"
+        },
+        {
+          "key": "official:4:60",
+          "label": "HPA记忆泊车"
+        },
+        {
+          "key": "official:4:61",
+          "label": "PEB泊车紧急制动"
+        }
+      ]
+    },
+    {
+      "name": "全球架构家轿新标杆",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "GEA全球智能新能源架构"
+        },
+        {
+          "key": "official:5:1",
+          "label": "六横四纵框架式结构油电保险舱"
+        },
+        {
+          "key": "official:5:2",
+          "label": "油电烟隔离专属布置通道"
+        },
+        {
+          "key": "official:5:3",
+          "label": "油电隔离三层阶梯防护"
+        },
+        {
+          "key": "official:5:4",
+          "label": "五层HDPE高强度聚乙烯电混专用高压油箱"
+        },
+        {
+          "key": "official:5:5",
+          "label": "电池新国标安全认证"
+        },
+        {
+          "key": "official:5:6",
+          "label": "高速爆胎稳定控制系统"
+        },
+        {
+          "key": "official:5:7",
+          "label": "CST舒适制动 2.0"
+        },
+        {
+          "key": "official:5:8",
+          "label": "TCS牵引力控制系统"
+        },
+        {
+          "key": "official:5:9",
+          "label": "ABS防抱死刹车"
+        },
+        {
+          "key": "official:5:10",
+          "label": "EBD制动力分配"
+        },
+        {
+          "key": "official:5:11",
+          "label": "ESC车身电子稳定控制"
+        },
+        {
+          "key": "official:5:12",
+          "label": "HAC上坡辅助"
+        },
+        {
+          "key": "official:5:13",
+          "label": "CBC弯道制动控制系统"
+        },
+        {
+          "key": "official:5:14",
+          "label": "前排双安全气囊"
+        },
+        {
+          "key": "official:5:15",
+          "label": "前排座椅侧安全气囊"
+        },
+        {
+          "key": "official:5:16",
+          "label": "前/后排一体式双侧安全气帘"
+        },
+        {
+          "key": "official:5:17",
+          "label": "前排限力安全带"
+        },
+        {
+          "key": "official:5:18",
+          "label": "前排安全带未系提醒"
+        },
+        {
+          "key": "official:5:19",
+          "label": "后排两侧非限力安全带"
+        },
+        {
+          "key": "official:5:20",
+          "label": "ISO-FIX儿童座椅接口"
+        },
+        {
+          "key": "official:5:21",
+          "label": "前排座椅乘员检测"
+        },
+        {
+          "key": "official:5:22",
+          "label": "间接式胎压警示"
+        },
+        {
+          "key": "official:5:23",
+          "label": "直接式胎压数字显示"
+        },
+        {
+          "key": "official:5:24",
+          "label": "哨兵模式"
+        },
+        {
+          "key": "official:5:25",
+          "label": "驻车拍照"
+        },
+        {
+          "key": "official:5:26",
+          "label": "电子防盗系统"
+        },
+        {
+          "key": "official:5:27",
+          "label": "高清行车记录仪"
+        },
+        {
+          "key": "official:5:28",
+          "label": "低速行驶提醒音"
+        },
+        {
+          "key": "official:5:29",
+          "label": "EDR事件数据记录系统"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "galaxy-a7-official-1",
+      "name": "150km 悦享版",
+      "values": {
+        "official:0:0": "4918×1905×1495",
+        "official:0:1": "2845",
+        "official:0:2": "145",
+        "official:0:3": "60",
+        "official:0:4": "535（可扩展至988L）",
+        "official:0:5": "1735",
+        "official:0:6": "5.3",
+        "official:0:7": "80.2",
+        "official:0:8": "●",
+        "official:0:9": "●",
+        "official:0:10": "47.26%",
+        "official:0:11": "93.1%",
+        "official:0:12": "●",
+        "official:0:13": "●",
+        "official:0:14": "—",
+        "official:0:15": "—",
+        "official:0:16": "●",
+        "official:0:17": "—",
+        "official:0:18": "—",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "—",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "—",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "●",
+        "official:1:14": "—",
+        "official:1:15": "●",
+        "official:1:16": "—",
+        "official:1:17": "—",
+        "official:1:18": "—",
+        "official:1:19": "珐琅蓝、烟渚灰、玄玉黑、霜华银、砚雪白、云锦紫",
+        "official:1:20": "秋韵棕、烟波灰",
+        "official:2:0": "插电混合系统",
+        "official:2:1": "1.5L PFI",
+        "official:2:2": "1DHT",
+        "official:2:3": "1499",
+        "official:2:4": "82",
+        "official:2:5": "136",
+        "official:2:6": "永磁同步电机",
+        "official:2:7": "前驱",
+        "official:2:8": "175",
+        "official:2:9": "262",
+        "official:2:10": "190",
+        "official:2:11": "18.4",
+        "official:2:12": "宁德时代",
+        "official:2:13": "磷酸铁锂电池",
+        "official:2:14": "150",
+        "official:2:15": "2.74",
+        "official:2:16": "国Ⅵ b",
+        "official:2:17": "7.1",
+        "official:2:18": "3.3",
+        "official:2:19": "37kW",
+        "official:2:20": "18",
+        "official:2:21": "●",
+        "official:2:22": "●",
+        "official:2:23": "●",
+        "official:2:24": "●",
+        "official:2:25": "●",
+        "official:2:26": "●",
+        "official:2:27": "前：麦弗逊式独立悬架/后：多连杆独立悬架",
+        "official:2:28": "—",
+        "official:2:29": "●",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "前：通风盘式/后：实心盘式",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "—",
+        "official:3:5": "●",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "—",
+        "official:3:14": "—",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "—",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "●（断码）",
+        "official:4:3": "●（14.6英寸）",
+        "official:4:4": "—",
+        "official:4:5": "—",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "—",
+        "official:4:9": "●",
+        "official:4:10": "—",
+        "official:4:11": "●",
+        "official:4:12": "—",
+        "official:4:13": "—",
+        "official:4:14": "—",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "—",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "—",
+        "official:4:26": "—",
+        "official:4:27": "—",
+        "official:4:28": "4",
+        "official:4:29": "—",
+        "official:4:30": "3",
+        "official:4:31": "—",
+        "official:4:32": "—",
+        "official:4:33": "—",
+        "official:4:34": "—",
+        "official:4:35": "—",
+        "official:4:36": "—",
+        "official:4:37": "—",
+        "official:4:38": "—",
+        "official:4:39": "—",
+        "official:4:40": "—",
+        "official:4:41": "—",
+        "official:4:42": "—",
+        "official:4:43": "—",
+        "official:4:44": "—",
+        "official:4:45": "—",
+        "official:4:46": "—",
+        "official:4:47": "—",
+        "official:4:48": "—",
+        "official:4:49": "—",
+        "official:4:50": "—",
+        "official:4:51": "—",
+        "official:4:52": "—",
+        "official:4:53": "—",
+        "official:4:54": "●",
+        "official:4:55": "—",
+        "official:4:56": "●",
+        "official:4:57": "—",
+        "official:4:58": "—",
+        "official:4:59": "—",
+        "official:4:60": "—",
+        "official:4:61": "—",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "—",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "—",
+        "official:5:24": "—",
+        "official:5:25": "—",
+        "official:5:26": "●",
+        "official:5:27": "—",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-a7-official-2",
+      "name": "150km 启航版",
+      "values": {
+        "official:0:0": "官网未单独列明，请查看来源",
+        "official:0:1": "官网未单独列明，请查看来源",
+        "official:0:2": "官网未单独列明，请查看来源",
+        "official:0:3": "官网未单独列明，请查看来源",
+        "official:0:4": "官网未单独列明，请查看来源",
+        "official:0:5": "官网未单独列明，请查看来源",
+        "official:0:6": "官网未单独列明，请查看来源",
+        "official:0:7": "官网未单独列明，请查看来源",
+        "official:0:8": "●",
+        "official:0:9": "●",
+        "official:0:10": "官网未单独列明，请查看来源",
+        "official:0:11": "官网未单独列明，请查看来源",
+        "official:0:12": "●",
+        "official:0:13": "—",
+        "official:0:14": "●（限时赠送）",
+        "official:0:15": "—",
+        "official:0:16": "—",
+        "official:0:17": "●",
+        "official:0:18": "—",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "—",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "●",
+        "official:1:14": "●",
+        "official:1:15": "●",
+        "official:1:16": "○",
+        "official:1:17": "○",
+        "official:1:18": "—",
+        "official:1:19": "官网未单独列明，请查看来源",
+        "official:1:20": "官网未单独列明，请查看来源",
+        "official:2:0": "官网未单独列明，请查看来源",
+        "official:2:1": "官网未单独列明，请查看来源",
+        "official:2:2": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:4": "官网未单独列明，请查看来源",
+        "official:2:5": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:2:7": "官网未单独列明，请查看来源",
+        "official:2:8": "官网未单独列明，请查看来源",
+        "official:2:9": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:2:11": "官网未单独列明，请查看来源",
+        "official:2:12": "官网未单独列明，请查看来源",
+        "official:2:13": "官网未单独列明，请查看来源",
+        "official:2:14": "官网未单独列明，请查看来源",
+        "official:2:15": "官网未单独列明，请查看来源",
+        "official:2:16": "官网未单独列明，请查看来源",
+        "official:2:17": "官网未单独列明，请查看来源",
+        "official:2:18": "官网未单独列明，请查看来源",
+        "official:2:19": "官网未单独列明，请查看来源",
+        "official:2:20": "官网未单独列明，请查看来源",
+        "official:2:21": "●",
+        "official:2:22": "●",
+        "official:2:23": "●",
+        "official:2:24": "●",
+        "official:2:25": "●",
+        "official:2:26": "●",
+        "official:2:27": "官网未单独列明，请查看来源",
+        "official:2:28": "—",
+        "official:2:29": "●",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "官网未单独列明，请查看来源",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "—",
+        "official:3:5": "●",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "—",
+        "official:3:14": "—",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●（14.6英寸）",
+        "official:4:4": "—",
+        "official:4:5": "●（ 限时赠送）",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "—",
+        "official:4:9": "●",
+        "official:4:10": "—",
+        "official:4:11": "●",
+        "official:4:12": "—",
+        "official:4:13": "—",
+        "official:4:14": "—",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "—",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "—",
+        "official:4:26": "—",
+        "official:4:27": "●",
+        "official:4:28": "5",
+        "official:4:29": "2",
+        "official:4:30": "5",
+        "official:4:31": "●",
+        "official:4:32": "—",
+        "official:4:33": "—",
+        "official:4:34": "●",
+        "official:4:35": "—",
+        "official:4:36": "●",
+        "official:4:37": "●",
+        "official:4:38": "●",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "—",
+        "official:4:47": "●",
+        "official:4:48": "●",
+        "official:4:49": "—",
+        "official:4:50": "—",
+        "official:4:51": "—",
+        "official:4:52": "—",
+        "official:4:53": "—",
+        "official:4:54": "●",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "—",
+        "official:4:58": "—",
+        "official:4:59": "—",
+        "official:4:60": "—",
+        "official:4:61": "—",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "—",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "—",
+        "official:5:23": "●",
+        "official:5:24": "●（停车守卫）",
+        "official:5:25": "—",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-a7-official-3",
+      "name": "150km 探索版",
+      "values": {
+        "official:0:0": "官网未单独列明，请查看来源",
+        "official:0:1": "官网未单独列明，请查看来源",
+        "official:0:2": "官网未单独列明，请查看来源",
+        "official:0:3": "官网未单独列明，请查看来源",
+        "official:0:4": "官网未单独列明，请查看来源",
+        "official:0:5": "官网未单独列明，请查看来源",
+        "official:0:6": "官网未单独列明，请查看来源",
+        "official:0:7": "官网未单独列明，请查看来源",
+        "official:0:8": "●",
+        "official:0:9": "●",
+        "official:0:10": "官网未单独列明，请查看来源",
+        "official:0:11": "官网未单独列明，请查看来源",
+        "official:0:12": "●",
+        "official:0:13": "—",
+        "official:0:14": "●",
+        "official:0:15": "—",
+        "official:0:16": "—",
+        "official:0:17": "●",
+        "official:0:18": "—",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "●",
+        "official:1:14": "●",
+        "official:1:15": "●",
+        "official:1:16": "●",
+        "official:1:17": "●",
+        "official:1:18": "—",
+        "official:1:19": "官网未单独列明，请查看来源",
+        "official:1:20": "官网未单独列明，请查看来源",
+        "official:2:0": "官网未单独列明，请查看来源",
+        "official:2:1": "官网未单独列明，请查看来源",
+        "official:2:2": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:4": "官网未单独列明，请查看来源",
+        "official:2:5": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:2:7": "官网未单独列明，请查看来源",
+        "official:2:8": "官网未单独列明，请查看来源",
+        "official:2:9": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:2:11": "官网未单独列明，请查看来源",
+        "official:2:12": "官网未单独列明，请查看来源",
+        "official:2:13": "官网未单独列明，请查看来源",
+        "official:2:14": "官网未单独列明，请查看来源",
+        "official:2:15": "官网未单独列明，请查看来源",
+        "official:2:16": "官网未单独列明，请查看来源",
+        "official:2:17": "官网未单独列明，请查看来源",
+        "official:2:18": "官网未单独列明，请查看来源",
+        "official:2:19": "官网未单独列明，请查看来源",
+        "official:2:20": "官网未单独列明，请查看来源",
+        "official:2:21": "●",
+        "official:2:22": "●",
+        "official:2:23": "●",
+        "official:2:24": "●",
+        "official:2:25": "●",
+        "official:2:26": "●",
+        "official:2:27": "官网未单独列明，请查看来源",
+        "official:2:28": "—",
+        "official:2:29": "●",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "官网未单独列明，请查看来源",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "—",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "—",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:4:0": "●",
+        "official:4:1": "●（龍鹰一号）",
+        "official:4:2": "●",
+        "official:4:3": "●（15.4英寸）",
+        "official:4:4": "○",
+        "official:4:5": "●（ 限时赠送）",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "○",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "●",
+        "official:4:27": "—",
+        "official:4:28": "11",
+        "official:4:29": "3",
+        "official:4:30": "12",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "●",
+        "official:4:35": "●",
+        "official:4:36": "●",
+        "official:4:37": "●",
+        "official:4:38": "●",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "●",
+        "official:4:49": "●（OTA）",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "●",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●（OTA）",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "—",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "—",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-a7-official-4",
+      "name": "235km 探索+版",
+      "values": {
+        "official:0:0": "官网未单独列明，请查看来源",
+        "official:0:1": "官网未单独列明，请查看来源",
+        "official:0:2": "官网未单独列明，请查看来源",
+        "official:0:3": "官网未单独列明，请查看来源",
+        "official:0:4": "官网未单独列明，请查看来源",
+        "official:0:5": "1775",
+        "official:0:6": "官网未单独列明，请查看来源",
+        "official:0:7": "官网未单独列明，请查看来源",
+        "official:0:8": "●",
+        "official:0:9": "●",
+        "official:0:10": "官网未单独列明，请查看来源",
+        "official:0:11": "官网未单独列明，请查看来源",
+        "official:0:12": "●",
+        "official:0:13": "—",
+        "official:0:14": "●",
+        "official:0:15": "—",
+        "official:0:16": "—",
+        "official:0:17": "●",
+        "official:0:18": "—",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "●",
+        "official:1:14": "●",
+        "official:1:15": "●",
+        "official:1:16": "●",
+        "official:1:17": "●",
+        "official:1:18": "—",
+        "official:1:19": "官网未单独列明，请查看来源",
+        "official:1:20": "官网未单独列明，请查看来源",
+        "official:2:0": "官网未单独列明，请查看来源",
+        "official:2:1": "官网未单独列明，请查看来源",
+        "official:2:2": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:4": "官网未单独列明，请查看来源",
+        "official:2:5": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:2:7": "官网未单独列明，请查看来源",
+        "official:2:8": "官网未单独列明，请查看来源",
+        "official:2:9": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:2:11": "28.3",
+        "official:2:12": "神盾金砖",
+        "official:2:13": "官网未单独列明，请查看来源",
+        "official:2:14": "235",
+        "official:2:15": "2.76",
+        "official:2:16": "官网未单独列明，请查看来源",
+        "official:2:17": "官网未单独列明，请查看来源",
+        "official:2:18": "6.6",
+        "official:2:19": "75kW",
+        "official:2:20": "15",
+        "official:2:21": "●",
+        "official:2:22": "●",
+        "official:2:23": "●",
+        "official:2:24": "●",
+        "official:2:25": "●",
+        "official:2:26": "●",
+        "official:2:27": "官网未单独列明，请查看来源",
+        "official:2:28": "—",
+        "official:2:29": "●",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "官网未单独列明，请查看来源",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "—",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "—",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:4:0": "●",
+        "official:4:1": "●（龍鹰一号）",
+        "official:4:2": "●",
+        "official:4:3": "●（15.4英寸）",
+        "official:4:4": "●",
+        "official:4:5": "●（ 限时赠送）",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "●",
+        "official:4:27": "—",
+        "official:4:28": "11",
+        "official:4:29": "3",
+        "official:4:30": "12",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "●",
+        "official:4:35": "●",
+        "official:4:36": "●",
+        "official:4:37": "●",
+        "official:4:38": "●",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "●",
+        "official:4:49": "●（OTA）",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "●",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●（OTA）",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "—",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "—",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-a7-official-5",
+      "name": "235km 星舰版",
+      "values": {
+        "official:0:0": "官网未单独列明，请查看来源",
+        "official:0:1": "官网未单独列明，请查看来源",
+        "official:0:2": "官网未单独列明，请查看来源",
+        "official:0:3": "官网未单独列明，请查看来源",
+        "official:0:4": "官网未单独列明，请查看来源",
+        "official:0:5": "官网未单独列明，请查看来源",
+        "official:0:6": "官网未单独列明，请查看来源",
+        "official:0:7": "官网未单独列明，请查看来源",
+        "official:0:8": "●",
+        "official:0:9": "●",
+        "official:0:10": "官网未单独列明，请查看来源",
+        "official:0:11": "官网未单独列明，请查看来源",
+        "official:0:12": "●",
+        "official:0:13": "—",
+        "official:0:14": "—",
+        "official:0:15": "●",
+        "official:0:16": "—",
+        "official:0:17": "—",
+        "official:0:18": "●",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "●",
+        "official:1:14": "●",
+        "official:1:15": "●",
+        "official:1:16": "●",
+        "official:1:17": "●",
+        "official:1:18": "●",
+        "official:1:19": "官网未单独列明，请查看来源",
+        "official:1:20": "秋韵棕、烟波灰、霁雪白",
+        "official:2:0": "官网未单独列明，请查看来源",
+        "official:2:1": "官网未单独列明，请查看来源",
+        "official:2:2": "官网未单独列明，请查看来源",
+        "official:2:3": "官网未单独列明，请查看来源",
+        "official:2:4": "官网未单独列明，请查看来源",
+        "official:2:5": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:2:7": "官网未单独列明，请查看来源",
+        "official:2:8": "官网未单独列明，请查看来源",
+        "official:2:9": "官网未单独列明，请查看来源",
+        "official:2:10": "官网未单独列明，请查看来源",
+        "official:2:11": "官网未单独列明，请查看来源",
+        "official:2:12": "官网未单独列明，请查看来源",
+        "official:2:13": "官网未单独列明，请查看来源",
+        "official:2:14": "官网未单独列明，请查看来源",
+        "official:2:15": "官网未单独列明，请查看来源",
+        "official:2:16": "官网未单独列明，请查看来源",
+        "official:2:17": "官网未单独列明，请查看来源",
+        "official:2:18": "官网未单独列明，请查看来源",
+        "official:2:19": "官网未单独列明，请查看来源",
+        "official:2:20": "官网未单独列明，请查看来源",
+        "official:2:21": "●",
+        "official:2:22": "●",
+        "official:2:23": "●",
+        "official:2:24": "●",
+        "official:2:25": "●",
+        "official:2:26": "●",
+        "official:2:27": "官网未单独列明，请查看来源",
+        "official:2:28": "●",
+        "official:2:29": "●",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "官网未单独列明，请查看来源",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "—",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:4:0": "●",
+        "official:4:1": "●（龍鹰一号）",
+        "official:4:2": "●",
+        "official:4:3": "●（15.4英寸）",
+        "official:4:4": "●",
+        "official:4:5": "●（ 限时赠送）",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "●",
+        "official:4:27": "—",
+        "official:4:28": "11",
+        "official:4:29": "3",
+        "official:4:30": "12",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "●",
+        "official:4:35": "●",
+        "official:4:36": "●",
+        "official:4:37": "●",
+        "official:4:38": "●",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "●",
+        "official:4:49": "●（OTA）",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "●",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●（OTA）",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●（OTA）",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "—",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/galaxy-a7.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.galaxy-geely.com/A7"
+    }
+  ],
+  "sourceUrl": "https://www.galaxy-geely.com/A7",
+  "sourceScope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "galaxy-a7",
+      "sha256": "0f2a837937fdac9708fc9683e130fbfea62ea783c1c60a2dee26ad8f3d2684bc"
+    }
+  ]
+}

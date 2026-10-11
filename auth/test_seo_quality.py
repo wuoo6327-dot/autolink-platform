@@ -20,7 +20,8 @@ class SEOQualityTests(unittest.TestCase):
         self.assertEqual(len(models),234)
         self.assertEqual(sum(p['contentComplete'] for p in policies.values()),195)
         self.assertEqual(sum(not p['contentComplete'] for p in policies.values()),39)
-        self.assertEqual(sum(p['indexLanguages']==['zh'] for p in policies.values()),195)
+        self.assertEqual(sum('zh' in p['indexLanguages'] for p in policies.values()),195)
+        self.assertEqual(sum('en' in p['indexLanguages'] for p in policies.values()),25)
         self.assertTrue(all(not p['indexLanguages'] for p in policies.values() if not p['contentComplete']))
 
     def test_all_39_thin_models_remain_accessible_in_every_language_and_noindex(self):

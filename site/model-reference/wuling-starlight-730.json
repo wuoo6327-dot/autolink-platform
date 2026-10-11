@@ -1,0 +1,1640 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "wuling-starlight-730",
+  "brandZh": "Wuling",
+  "modelZh": "星光730",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "车型参数",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "长*宽*高（mm）"
+        },
+        {
+          "key": "official:1:1",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:1:2",
+          "label": "整备质量（kg）"
+        },
+        {
+          "key": "official:1:3",
+          "label": "总质量（kg）"
+        },
+        {
+          "key": "official:1:4",
+          "label": "车身结构"
+        },
+        {
+          "key": "official:1:5",
+          "label": "左后侧门开启方式"
+        },
+        {
+          "key": "official:1:6",
+          "label": "右后侧门开启方式"
+        }
+      ]
+    },
+    {
+      "name": "动力系统",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "燃料形式"
+        },
+        {
+          "key": "official:2:1",
+          "label": "发动机技术"
+        },
+        {
+          "key": "official:2:2",
+          "label": "发动机排量（L）"
+        },
+        {
+          "key": "official:2:3",
+          "label": "发动机进气形式"
+        },
+        {
+          "key": "official:2:4",
+          "label": "发动机最大马力（Ps）"
+        },
+        {
+          "key": "official:2:5",
+          "label": "发动机额定功率（kW）"
+        },
+        {
+          "key": "official:2:6",
+          "label": "发动机最大净功率（kW）"
+        },
+        {
+          "key": "official:2:7",
+          "label": "发动机最大功率转速（rpm）"
+        },
+        {
+          "key": "official:2:8",
+          "label": "发动机最大扭矩（N·m）"
+        },
+        {
+          "key": "official:2:9",
+          "label": "发动机最大扭矩转速（rpm）"
+        },
+        {
+          "key": "official:2:10",
+          "label": "缸盖材料"
+        },
+        {
+          "key": "official:2:11",
+          "label": "缸体材料"
+        },
+        {
+          "key": "official:2:12",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:2:13",
+          "label": "变速箱类型"
+        },
+        {
+          "key": "official:2:14",
+          "label": "排放标准"
+        },
+        {
+          "key": "official:2:15",
+          "label": "WLTC综合油耗（L/100km）"
+        },
+        {
+          "key": "official:2:16",
+          "label": "WLTC最低荷电状态燃油消耗量（L/100km）"
+        },
+        {
+          "key": "official:2:17",
+          "label": "WLTC综合电量消耗量（kW·h/100km）"
+        },
+        {
+          "key": "official:2:18",
+          "label": "驱动电机类型"
+        },
+        {
+          "key": "official:2:19",
+          "label": "驱动电机最大功率（kW）"
+        },
+        {
+          "key": "official:2:20",
+          "label": "驱动电机最大扭矩（N·m）"
+        },
+        {
+          "key": "official:2:21",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:2:22",
+          "label": "能量回收"
+        }
+      ]
+    },
+    {
+      "name": "神炼电池",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "动力电池"
+        },
+        {
+          "key": "official:3:1",
+          "label": "动力电池类型"
+        },
+        {
+          "key": "official:3:2",
+          "label": "电池冷却方式"
+        },
+        {
+          "key": "official:3:3",
+          "label": "动力电池容量（kW·h）"
+        },
+        {
+          "key": "official:3:4",
+          "label": "电池系统能量密度（Wh/kg）"
+        },
+        {
+          "key": "official:3:5",
+          "label": "CLTC续航里程（km）"
+        },
+        {
+          "key": "official:3:6",
+          "label": "WLTC续航里程（km）"
+        },
+        {
+          "key": "official:3:7",
+          "label": "综合续航里程（km）"
+        },
+        {
+          "key": "official:3:8",
+          "label": "交流充电功率（kW)"
+        },
+        {
+          "key": "official:3:9",
+          "label": "交流充电时间（h）（常温下，在SOC为20%-100%，交流充电桩）"
+        },
+        {
+          "key": "official:3:10",
+          "label": "快充时间（min）（常温下，SOC 30%-80%）"
+        },
+        {
+          "key": "official:3:11",
+          "label": "电池加热以及智能保温"
+        }
+      ]
+    },
+    {
+      "name": "底盘系统",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "悬架类型（前/后）"
+        },
+        {
+          "key": "official:4:1",
+          "label": "驱动形式"
+        },
+        {
+          "key": "official:4:2",
+          "label": "转向形式"
+        },
+        {
+          "key": "official:4:3",
+          "label": "制动系统"
+        },
+        {
+          "key": "official:4:4",
+          "label": "驻车制动类型"
+        },
+        {
+          "key": "official:4:5",
+          "label": "轮圈材质"
+        },
+        {
+          "key": "official:4:6",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:4:7",
+          "label": "补胎装置"
+        }
+      ]
+    },
+    {
+      "name": "安全保障",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "ESC电子车身稳定系统"
+        },
+        {
+          "key": "official:5:1",
+          "label": "ABS防抱死＆制动力分配系统"
+        },
+        {
+          "key": "official:5:2",
+          "label": "HHC坡道辅助功能"
+        },
+        {
+          "key": "official:5:3",
+          "label": "AUTO HOLD自动驻车"
+        },
+        {
+          "key": "official:5:4",
+          "label": "胎压显示"
+        },
+        {
+          "key": "official:5:5",
+          "label": "主/副驾驶座安全气囊"
+        },
+        {
+          "key": "official:5:6",
+          "label": "前排侧气囊"
+        },
+        {
+          "key": "official:5:7",
+          "label": "后驻车雷达"
+        },
+        {
+          "key": "official:5:8",
+          "label": "360°高清全景影像"
+        },
+        {
+          "key": "official:5:9",
+          "label": "透明底盘"
+        },
+        {
+          "key": "official:5:10",
+          "label": "车速感应自动落锁"
+        },
+        {
+          "key": "official:5:11",
+          "label": "儿童安全锁"
+        },
+        {
+          "key": "official:5:12",
+          "label": "第二排ISOFIX儿童安全座椅接口2个"
+        },
+        {
+          "key": "official:5:13",
+          "label": "第三排ISOFIX儿童安全座椅接口2个"
+        },
+        {
+          "key": "official:5:14",
+          "label": "主副驾驶座安全带未系提醒"
+        },
+        {
+          "key": "official:5:15",
+          "label": "电子防盗系统"
+        },
+        {
+          "key": "official:5:16",
+          "label": "驾驶辅助级别"
+        },
+        {
+          "key": "official:5:17",
+          "label": "定速巡航"
+        },
+        {
+          "key": "official:5:18",
+          "label": "全速域自适应巡航"
+        },
+        {
+          "key": "official:5:19",
+          "label": "IDA智能行车辅助"
+        },
+        {
+          "key": "official:5:20",
+          "label": "FCW前向碰撞预警"
+        },
+        {
+          "key": "official:5:21",
+          "label": "AEB主动紧急制动"
+        },
+        {
+          "key": "official:5:22",
+          "label": "LDW车道偏离预警"
+        },
+        {
+          "key": "official:5:23",
+          "label": "LDP车道偏离辅助"
+        },
+        {
+          "key": "official:5:24",
+          "label": "TSR交通标志识别"
+        },
+        {
+          "key": "official:5:25",
+          "label": "AFL智能远近光灯切换"
+        }
+      ]
+    },
+    {
+      "name": "电感外观",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "LED远近光灯"
+        },
+        {
+          "key": "official:6:1",
+          "label": "自动大灯"
+        },
+        {
+          "key": "official:6:2",
+          "label": "前大灯延时关闭"
+        },
+        {
+          "key": "official:6:3",
+          "label": "LED转向辅助灯"
+        },
+        {
+          "key": "official:6:4",
+          "label": "LED后尾灯"
+        },
+        {
+          "key": "official:6:5",
+          "label": "LED高位刹车灯"
+        },
+        {
+          "key": "official:6:6",
+          "label": "后雾灯"
+        }
+      ]
+    },
+    {
+      "name": "舒适便利",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "机械档把换挡"
+        },
+        {
+          "key": "official:7:1",
+          "label": "电子式怀挡换挡"
+        },
+        {
+          "key": "official:7:2",
+          "label": "多功能方向盘"
+        },
+        {
+          "key": "official:7:3",
+          "label": "超纤皮包覆多功能方向盘"
+        },
+        {
+          "key": "official:7:4",
+          "label": "方向盘位置调节（2向）"
+        },
+        {
+          "key": "official:7:5",
+          "label": "方向盘位置调节（4向）"
+        },
+        {
+          "key": "official:7:6",
+          "label": "座椅布局"
+        },
+        {
+          "key": "official:7:7",
+          "label": "织物座椅"
+        },
+        {
+          "key": "official:7:8",
+          "label": "舒适皮革座椅"
+        },
+        {
+          "key": "official:7:9",
+          "label": "主驾驶座6向手动调节"
+        },
+        {
+          "key": "official:7:10",
+          "label": "主驾驶座6向电动调节"
+        },
+        {
+          "key": "official:7:11",
+          "label": "副驾驶座4向手动调节"
+        },
+        {
+          "key": "official:7:12",
+          "label": "第二排独立座椅（可活动扶手）+4向手调"
+        },
+        {
+          "key": "official:7:13",
+          "label": "第三排座椅靠背独立4/6分"
+        },
+        {
+          "key": "official:7:14",
+          "label": "第三排座椅靠背角度可调"
+        },
+        {
+          "key": "official:7:15",
+          "label": "内后视镜带USB接口"
+        },
+        {
+          "key": "official:7:16",
+          "label": "内后视镜带USB接口（手动防炫目）"
+        },
+        {
+          "key": "official:7:17",
+          "label": "主副驾遮阳板"
+        },
+        {
+          "key": "official:7:18",
+          "label": "第二排LED阅读灯"
+        },
+        {
+          "key": "official:7:19",
+          "label": "第三排LED阅读灯"
+        },
+        {
+          "key": "official:7:20",
+          "label": "折叠式辅助拉手"
+        },
+        {
+          "key": "official:7:21",
+          "label": "后备箱灯"
+        },
+        {
+          "key": "official:7:22",
+          "label": "无钥匙进入+一键启动"
+        },
+        {
+          "key": "official:7:23",
+          "label": "无感进入+无感启动"
+        },
+        {
+          "key": "official:7:24",
+          "label": "驾驶模式"
+        },
+        {
+          "key": "official:7:25",
+          "label": "车窗一键升降（带防夹功能）"
+        },
+        {
+          "key": "official:7:26",
+          "label": "后排隐私玻璃"
+        },
+        {
+          "key": "official:7:27",
+          "label": "外后视镜电动调节"
+        },
+        {
+          "key": "official:7:28",
+          "label": "外后视镜加热"
+        },
+        {
+          "key": "official:7:29",
+          "label": "电动尾门"
+        },
+        {
+          "key": "official:7:30",
+          "label": "后挡加热"
+        },
+        {
+          "key": "official:7:31",
+          "label": "感应雨刮"
+        },
+        {
+          "key": "official:7:32",
+          "label": "后雨刮"
+        },
+        {
+          "key": "official:7:33",
+          "label": "单蒸电子空调"
+        },
+        {
+          "key": "official:7:34",
+          "label": "双蒸电子空调（后排独立空调-仅冷气）"
+        },
+        {
+          "key": "official:7:35",
+          "label": "双蒸自动空调（后排独立空调-仅冷气）"
+        },
+        {
+          "key": "official:7:36",
+          "label": "第二、三排空调出风口"
+        },
+        {
+          "key": "official:7:37",
+          "label": "对外放电"
+        },
+        {
+          "key": "official:7:38",
+          "label": "12V车载电源"
+        },
+        {
+          "key": "official:7:39",
+          "label": "3.5英寸TFT+断码组合仪表"
+        },
+        {
+          "key": "official:7:40",
+          "label": "收音机"
+        },
+        {
+          "key": "official:7:41",
+          "label": "12.8英寸中控屏"
+        },
+        {
+          "key": "official:7:42",
+          "label": "车联网"
+        },
+        {
+          "key": "official:7:43",
+          "label": "整车OTA升级"
+        },
+        {
+          "key": "official:7:44",
+          "label": "手机远程控制"
+        },
+        {
+          "key": "official:7:45",
+          "label": "蓝牙钥匙"
+        },
+        {
+          "key": "official:7:46",
+          "label": "蓝牙音乐、蓝牙电话"
+        },
+        {
+          "key": "official:7:47",
+          "label": "手机互联"
+        },
+        {
+          "key": "official:7:48",
+          "label": "扬声器"
+        }
+      ]
+    },
+    {
+      "name": "颜色",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "外观颜色"
+        },
+        {
+          "key": "official:8:1",
+          "label": "内饰颜色"
+        }
+      ]
+    },
+    {
+      "name": "质保",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "整车包修期"
+        },
+        {
+          "key": "official:9:1",
+          "label": "三电包修期"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "wuling-starlight-730-official-1",
+      "name": "1.5T 6MT 舒适型",
+      "values": {
+        "official:1:0": "4910*1850*1760",
+        "official:1:1": "2910",
+        "official:1:2": "1560",
+        "official:1:3": "2140",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "—",
+        "official:2:0": "汽油",
+        "official:2:1": "米勒循环/双顶置凸轮轴/直列四缸",
+        "official:2:2": "1.5",
+        "official:2:3": "涡轮增压",
+        "official:2:4": "177",
+        "official:2:5": "130",
+        "official:2:6": "125",
+        "official:2:7": "5200",
+        "official:2:8": "260",
+        "official:2:9": "1400~4000",
+        "official:2:10": "铝合金",
+        "official:2:11": "铸铁",
+        "official:2:12": "52",
+        "official:2:13": "手动变速箱",
+        "official:2:14": "国Ⅵ",
+        "official:2:15": "6.99",
+        "official:2:16": "—",
+        "official:2:17": "—",
+        "official:2:18": "—",
+        "official:2:19": "—",
+        "official:2:20": "—",
+        "official:2:21": "180",
+        "official:2:22": "—",
+        "official:3:0": "—",
+        "official:3:1": "—",
+        "official:3:2": "—",
+        "official:3:3": "—",
+        "official:3:4": "—",
+        "official:3:5": "—",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "—",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "手刹",
+        "official:4:5": "钢",
+        "official:4:6": "205/55 R16",
+        "official:4:7": "补胎剂",
+        "official:5:0": "—",
+        "official:5:1": "●",
+        "official:5:2": "—",
+        "official:5:3": "—",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "—",
+        "official:5:7": "●",
+        "official:5:8": "—",
+        "official:5:9": "—",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "—",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "—",
+        "official:5:17": "—",
+        "official:5:18": "—",
+        "official:5:19": "—",
+        "official:5:20": "—",
+        "official:5:21": "—",
+        "official:5:22": "—",
+        "official:5:23": "—",
+        "official:5:24": "—",
+        "official:5:25": "—",
+        "official:6:0": "●",
+        "official:6:1": "—",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "●",
+        "official:7:3": "—",
+        "official:7:4": "●",
+        "official:7:5": "—",
+        "official:7:6": "2-2-3",
+        "official:7:7": "●",
+        "official:7:8": "—",
+        "official:7:9": "●",
+        "official:7:10": "—",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "—",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "—",
+        "official:7:20": "副驾+第二排",
+        "official:7:21": "●",
+        "official:7:22": "—",
+        "official:7:23": "—",
+        "official:7:24": "—",
+        "official:7:25": "●仅主驾",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "—",
+        "official:7:29": "—",
+        "official:7:30": "—",
+        "official:7:31": "—",
+        "official:7:32": "—",
+        "official:7:33": "●",
+        "official:7:34": "—",
+        "official:7:35": "—",
+        "official:7:36": "—",
+        "official:7:37": "—",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "●",
+        "official:7:41": "—",
+        "official:7:42": "—",
+        "official:7:43": "—",
+        "official:7:44": "—",
+        "official:7:45": "—",
+        "official:7:46": "●",
+        "official:7:47": "—",
+        "official:7:48": "2个",
+        "official:8:0": "银霜白\n烟霞灰",
+        "official:8:1": "胡桃棕",
+        "official:9:0": "3年或10万公里",
+        "official:9:1": "—",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "wuling-starlight-730-official-2",
+      "name": "1.5T CVT 精英型",
+      "values": {
+        "official:1:0": "4910*1850*1770",
+        "official:1:1": "2910",
+        "official:1:2": "1610",
+        "official:1:3": "2200",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "○电动滑移门",
+        "official:2:0": "汽油",
+        "official:2:1": "米勒循环/双顶置凸轮轴/直列四缸",
+        "official:2:2": "1.5",
+        "official:2:3": "涡轮增压",
+        "official:2:4": "177",
+        "official:2:5": "130",
+        "official:2:6": "125",
+        "official:2:7": "5200",
+        "official:2:8": "290",
+        "official:2:9": "1500~3500",
+        "official:2:10": "铝合金",
+        "official:2:11": "铸铁",
+        "official:2:12": "52",
+        "official:2:13": "无级变速箱",
+        "official:2:14": "国Ⅵ",
+        "official:2:15": "7.49",
+        "official:2:16": "—",
+        "official:2:17": "—",
+        "official:2:18": "—",
+        "official:2:19": "—",
+        "official:2:20": "—",
+        "official:2:21": "180",
+        "official:2:22": "—",
+        "official:3:0": "—",
+        "official:3:1": "—",
+        "official:3:2": "—",
+        "official:3:3": "—",
+        "official:3:4": "—",
+        "official:3:5": "—",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "—",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "电子驻车",
+        "official:4:5": "铝合金",
+        "official:4:6": "215/55 R17",
+        "official:4:7": "补胎剂",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "—",
+        "official:5:17": "●",
+        "official:5:18": "—",
+        "official:5:19": "—",
+        "official:5:20": "—",
+        "official:5:21": "—",
+        "official:5:22": "—",
+        "official:5:23": "—",
+        "official:5:24": "—",
+        "official:5:25": "—",
+        "official:6:0": "●",
+        "official:6:1": "—",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "—",
+        "official:7:3": "●",
+        "official:7:4": "—",
+        "official:7:5": "●",
+        "official:7:6": "2-2-3",
+        "official:7:7": "—",
+        "official:7:8": "●",
+        "official:7:9": "—",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "—",
+        "official:7:16": "●",
+        "official:7:17": "●带化妆镜及LED灯",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "副驾+第二排+第三排",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "—",
+        "official:7:24": "手动/经济/标准/运动",
+        "official:7:25": "●全车",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "—",
+        "official:7:30": "●",
+        "official:7:31": "—",
+        "official:7:32": "●",
+        "official:7:33": "—",
+        "official:7:34": "●",
+        "official:7:35": "—",
+        "official:7:36": "●",
+        "official:7:37": "—",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "—",
+        "official:7:41": "●",
+        "official:7:42": "—",
+        "official:7:43": "—",
+        "official:7:44": "—",
+        "official:7:45": "—",
+        "official:7:46": "●",
+        "official:7:47": "HUAWEI HiCar\nICCOA Carlink\nDLNA",
+        "official:7:48": "6个",
+        "official:8:0": "银霜白\n烟霞灰\n耀石黑\n暮山紫",
+        "official:8:1": "胡桃棕（搭配银霜白、烟霞灰、耀石黑、暮山紫）\n暖沙棕（搭配银霜白、烟霞灰）",
+        "official:9:0": "3年或10万公里",
+        "official:9:1": "—",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "wuling-starlight-730-official-3",
+      "name": "1.5T CVT 尊享型",
+      "values": {
+        "official:1:0": "4910*1850*1770",
+        "official:1:1": "2910",
+        "official:1:2": "1610",
+        "official:1:3": "2200",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "●电动滑移门",
+        "official:2:0": "汽油",
+        "official:2:1": "米勒循环/双顶置凸轮轴/直列四缸",
+        "official:2:2": "1.5",
+        "official:2:3": "涡轮增压",
+        "official:2:4": "177",
+        "official:2:5": "130",
+        "official:2:6": "125",
+        "official:2:7": "5200",
+        "official:2:8": "290",
+        "official:2:9": "1500~3500",
+        "official:2:10": "铝合金",
+        "official:2:11": "铸铁",
+        "official:2:12": "52",
+        "official:2:13": "无级变速箱",
+        "official:2:14": "国Ⅵ",
+        "official:2:15": "7.49",
+        "official:2:16": "—",
+        "official:2:17": "—",
+        "official:2:18": "—",
+        "official:2:19": "—",
+        "official:2:20": "—",
+        "official:2:21": "180",
+        "official:2:22": "—",
+        "official:3:0": "—",
+        "official:3:1": "—",
+        "official:3:2": "—",
+        "official:3:3": "—",
+        "official:3:4": "—",
+        "official:3:5": "—",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:3:9": "—",
+        "official:3:10": "—",
+        "official:3:11": "—",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "电子驻车",
+        "official:4:5": "铝合金",
+        "official:4:6": "215/55 R17",
+        "official:4:7": "补胎剂",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●L2",
+        "official:5:17": "—",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "—",
+        "official:7:3": "●",
+        "official:7:4": "—",
+        "official:7:5": "●",
+        "official:7:6": "2-2-3",
+        "official:7:7": "—",
+        "official:7:8": "●",
+        "official:7:9": "—",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "—",
+        "official:7:16": "●",
+        "official:7:17": "●带化妆镜及LED灯",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "副驾+第二排+第三排",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "—",
+        "official:7:24": "手动/经济/标准/运动",
+        "official:7:25": "●全车",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "—",
+        "official:7:34": "—",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "—",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "—",
+        "official:7:41": "●",
+        "official:7:42": "●",
+        "official:7:43": "●",
+        "official:7:44": "启动车辆\n解闭锁车辆\n开关空调\n开关车窗\n车况查询/诊断\n车辆定位/寻车",
+        "official:7:45": "●",
+        "official:7:46": "●",
+        "official:7:47": "HUAWEI HiCar\nICCOA Carlink\nApple CarPlay\nDLNA",
+        "official:7:48": "6个",
+        "official:8:0": "银霜白\n烟霞灰\n耀石黑\n暮山紫",
+        "official:8:1": "胡桃棕（搭配银霜白、烟霞灰、耀石黑、暮山紫）\n暖沙棕（搭配银霜白、烟霞灰）",
+        "official:9:0": "3年或10万公里",
+        "official:9:1": "—",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "wuling-starlight-730-official-4",
+      "name": "插混 125km 豪华型",
+      "values": {
+        "official:1:0": "4910*1850*1770",
+        "official:1:1": "2910",
+        "official:1:2": "1818",
+        "official:1:3": "2415",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "○电动滑移门",
+        "official:2:0": "插电式混合动力",
+        "official:2:1": "阿特金森循环/双顶置凸轮轴/直列四缸",
+        "official:2:2": "1.5",
+        "official:2:3": "自然吸气",
+        "official:2:4": "106",
+        "official:2:5": "78",
+        "official:2:6": "75",
+        "official:2:7": "5800",
+        "official:2:8": "130",
+        "official:2:9": "4600-5000",
+        "official:2:10": "铝合金",
+        "official:2:11": "铸铁",
+        "official:2:12": "52",
+        "official:2:13": "电子无级变速箱",
+        "official:2:14": "国Ⅵ",
+        "official:2:15": "1.83",
+        "official:2:16": "5.3",
+        "official:2:17": "16.2",
+        "official:2:18": "永磁同步电机",
+        "official:2:19": "145",
+        "official:2:20": "230",
+        "official:2:21": "170",
+        "official:2:22": "●",
+        "official:3:0": "神炼电池",
+        "official:3:1": "磷酸铁锂电池",
+        "official:3:2": "液冷",
+        "official:3:3": "20.5",
+        "official:3:4": "118",
+        "official:3:5": "125",
+        "official:3:6": "100",
+        "official:3:7": "1100",
+        "official:3:8": "3.3",
+        "official:3:9": "6.7",
+        "official:3:10": "30",
+        "official:3:11": "●",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "电子驻车",
+        "official:4:5": "铝合金",
+        "official:4:6": "215/55 R17",
+        "official:4:7": "补胎剂",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "—",
+        "official:5:17": "●",
+        "official:5:18": "—",
+        "official:5:19": "—",
+        "official:5:20": "—",
+        "official:5:21": "—",
+        "official:5:22": "—",
+        "official:5:23": "—",
+        "official:5:24": "—",
+        "official:5:25": "—",
+        "official:6:0": "●",
+        "official:6:1": "—",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "—",
+        "official:7:1": "●",
+        "official:7:2": "—",
+        "official:7:3": "●",
+        "official:7:4": "—",
+        "official:7:5": "●",
+        "official:7:6": "2-2-3",
+        "official:7:7": "—",
+        "official:7:8": "●",
+        "official:7:9": "—",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "—",
+        "official:7:16": "●",
+        "official:7:17": "●带化妆镜及LED灯",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "副驾+第二排+第三排",
+        "official:7:21": "●",
+        "official:7:22": "—",
+        "official:7:23": "●",
+        "official:7:24": "个性化/经济/标准/运动",
+        "official:7:25": "●全车",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "—",
+        "official:7:30": "●",
+        "official:7:31": "—",
+        "official:7:32": "●",
+        "official:7:33": "—",
+        "official:7:34": "●",
+        "official:7:35": "—",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "—",
+        "official:7:41": "●",
+        "official:7:42": "—",
+        "official:7:43": "●",
+        "official:7:44": "启动车辆\n解闭锁车辆\n开关空调\n开关车窗\n充电管理\n车况查询/诊断\n车辆定位/寻车\n预约充电",
+        "official:7:45": "●",
+        "official:7:46": "●",
+        "official:7:47": "HUAWEI HiCar\nICCOA Carlink\nDLNA",
+        "official:7:48": "6个",
+        "official:8:0": "银霜白\n烟霞灰\n耀石黑\n暮山紫",
+        "official:8:1": "胡桃棕（搭配银霜白、烟霞灰、耀石黑、暮山紫）\n暖沙棕（搭配银霜白、烟霞灰）",
+        "official:9:0": "6年或15万公里",
+        "official:9:1": "8年或15万公里（首任非营运车主终身质保）",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "wuling-starlight-730-official-5",
+      "name": "插混 125km 尊享型",
+      "values": {
+        "official:1:0": "4910*1850*1770",
+        "official:1:1": "2910",
+        "official:1:2": "1818",
+        "official:1:3": "2415",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "●电动滑移门",
+        "official:2:0": "插电式混合动力",
+        "official:2:1": "阿特金森循环/双顶置凸轮轴/直列四缸",
+        "official:2:2": "1.5",
+        "official:2:3": "自然吸气",
+        "official:2:4": "106",
+        "official:2:5": "78",
+        "official:2:6": "75",
+        "official:2:7": "5800",
+        "official:2:8": "130",
+        "official:2:9": "4600-5000",
+        "official:2:10": "铝合金",
+        "official:2:11": "铸铁",
+        "official:2:12": "52",
+        "official:2:13": "电子无级变速箱",
+        "official:2:14": "国Ⅵ",
+        "official:2:15": "1.83",
+        "official:2:16": "5.3",
+        "official:2:17": "16.2",
+        "official:2:18": "永磁同步电机",
+        "official:2:19": "145",
+        "official:2:20": "230",
+        "official:2:21": "170",
+        "official:2:22": "●",
+        "official:3:0": "神炼电池",
+        "official:3:1": "磷酸铁锂电池",
+        "official:3:2": "液冷",
+        "official:3:3": "20.5",
+        "official:3:4": "118",
+        "official:3:5": "125",
+        "official:3:6": "100",
+        "official:3:7": "1100",
+        "official:3:8": "3.3",
+        "official:3:9": "6.7",
+        "official:3:10": "30",
+        "official:3:11": "●",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "电子驻车",
+        "official:4:5": "铝合金",
+        "official:4:6": "215/55 R17",
+        "official:4:7": "补胎剂",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●L2",
+        "official:5:17": "—",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "—",
+        "official:7:1": "●",
+        "official:7:2": "—",
+        "official:7:3": "●",
+        "official:7:4": "—",
+        "official:7:5": "●",
+        "official:7:6": "2-2-3",
+        "official:7:7": "—",
+        "official:7:8": "●",
+        "official:7:9": "—",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "—",
+        "official:7:16": "●",
+        "official:7:17": "●带化妆镜及LED灯",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "副驾+第二排+第三排",
+        "official:7:21": "●",
+        "official:7:22": "—",
+        "official:7:23": "●",
+        "official:7:24": "个性化/经济/标准/运动",
+        "official:7:25": "●全车",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "—",
+        "official:7:34": "—",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "—",
+        "official:7:41": "●",
+        "official:7:42": "●",
+        "official:7:43": "●",
+        "official:7:44": "启动车辆\n解闭锁车辆\n开关空调\n开关车窗\n充电管理\n车况查询/诊断\n车辆定位/寻车\n预约充电",
+        "official:7:45": "●",
+        "official:7:46": "●",
+        "official:7:47": "HUAWEI HiCar\nICCOA Carlink\nApple CarPlay\nDLNA",
+        "official:7:48": "6个",
+        "official:8:0": "银霜白\n烟霞灰\n耀石黑\n暮山紫",
+        "official:8:1": "胡桃棕（搭配银霜白、烟霞灰、耀石黑、暮山紫）\n暖沙棕（搭配银霜白、烟霞灰）",
+        "official:9:0": "6年或15万公里",
+        "official:9:1": "8年或15万公里（首任非营运车主终身质保）",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "wuling-starlight-730-official-6",
+      "name": "纯电 500km 豪华型",
+      "values": {
+        "official:1:0": "4910*1850*1770",
+        "official:1:1": "2910",
+        "official:1:2": "1810",
+        "official:1:3": "2405",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "○电动滑移门",
+        "official:2:0": "纯电动",
+        "official:2:1": "—",
+        "official:2:2": "—",
+        "official:2:3": "—",
+        "official:2:4": "—",
+        "official:2:5": "—",
+        "official:2:6": "—",
+        "official:2:7": "—",
+        "official:2:8": "—",
+        "official:2:9": "—",
+        "official:2:10": "—",
+        "official:2:11": "—",
+        "official:2:12": "—",
+        "official:2:13": "固定齿比变速箱",
+        "official:2:14": "—",
+        "official:2:15": "—",
+        "official:2:16": "—",
+        "official:2:17": "13.6",
+        "official:2:18": "永磁同步电机",
+        "official:2:19": "100",
+        "official:2:20": "200",
+        "official:2:21": "160",
+        "official:2:22": "●",
+        "official:3:0": "神炼电池",
+        "official:3:1": "磷酸铁锂电池",
+        "official:3:2": "液冷",
+        "official:3:3": "60",
+        "official:3:4": "144",
+        "official:3:5": "500",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "6.6",
+        "official:3:9": "9.7",
+        "official:3:10": "20",
+        "official:3:11": "●",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "电子驻车",
+        "official:4:5": "铝合金",
+        "official:4:6": "215/55 R17",
+        "official:4:7": "补胎剂",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "—",
+        "official:5:17": "●",
+        "official:5:18": "—",
+        "official:5:19": "—",
+        "official:5:20": "—",
+        "official:5:21": "—",
+        "official:5:22": "—",
+        "official:5:23": "—",
+        "official:5:24": "—",
+        "official:5:25": "—",
+        "official:6:0": "●",
+        "official:6:1": "—",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "—",
+        "official:7:1": "●",
+        "official:7:2": "—",
+        "official:7:3": "●",
+        "official:7:4": "—",
+        "official:7:5": "●",
+        "official:7:6": "2-2-3",
+        "official:7:7": "—",
+        "official:7:8": "●",
+        "official:7:9": "—",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "—",
+        "official:7:16": "●",
+        "official:7:17": "●带化妆镜及LED灯",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "副驾+第二排+第三排",
+        "official:7:21": "●",
+        "official:7:22": "—",
+        "official:7:23": "●",
+        "official:7:24": "个性化/经济/标准/运动",
+        "official:7:25": "●全车",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "—",
+        "official:7:30": "●",
+        "official:7:31": "—",
+        "official:7:32": "●",
+        "official:7:33": "—",
+        "official:7:34": "●",
+        "official:7:35": "—",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "—",
+        "official:7:41": "●",
+        "official:7:42": "—",
+        "official:7:43": "●",
+        "official:7:44": "启动车辆\n解闭锁车辆\n开关空调\n开关车窗\n充电管理\n车况查询/诊断\n车辆定位/寻车\n预约充电",
+        "official:7:45": "●",
+        "official:7:46": "●",
+        "official:7:47": "HUAWEI HiCar\nICCOA Carlink\nDLNA",
+        "official:7:48": "6个",
+        "official:8:0": "银霜白\n烟霞灰\n暮山紫",
+        "official:8:1": "胡桃棕",
+        "official:9:0": "6年或15万公里",
+        "official:9:1": "8年或15万公里（首任非营运车主终身质保）",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "wuling-starlight-730-official-7",
+      "name": "纯电 500km 尊享型",
+      "values": {
+        "official:1:0": "4910*1850*1770",
+        "official:1:1": "2910",
+        "official:1:2": "1810",
+        "official:1:3": "2405",
+        "official:1:4": "5门7座MPV",
+        "official:1:5": "●手动侧滑门",
+        "official:1:6": "●电动滑移门",
+        "official:2:0": "纯电动",
+        "official:2:1": "—",
+        "official:2:2": "—",
+        "official:2:3": "—",
+        "official:2:4": "—",
+        "official:2:5": "—",
+        "official:2:6": "—",
+        "official:2:7": "—",
+        "official:2:8": "—",
+        "official:2:9": "—",
+        "official:2:10": "—",
+        "official:2:11": "—",
+        "official:2:12": "—",
+        "official:2:13": "固定齿比变速箱",
+        "official:2:14": "—",
+        "official:2:15": "—",
+        "official:2:16": "—",
+        "official:2:17": "13.6",
+        "official:2:18": "永磁同步电机",
+        "official:2:19": "100",
+        "official:2:20": "200",
+        "official:2:21": "160",
+        "official:2:22": "●",
+        "official:3:0": "神炼电池",
+        "official:3:1": "磷酸铁锂电池",
+        "official:3:2": "液冷",
+        "official:3:3": "60",
+        "official:3:4": "144",
+        "official:3:5": "500",
+        "official:3:6": "—",
+        "official:3:7": "—",
+        "official:3:8": "6.6",
+        "official:3:9": "9.7",
+        "official:3:10": "20",
+        "official:3:11": "●",
+        "official:4:0": "前麦弗逊式独立悬架/后多连杆独立悬架",
+        "official:4:1": "前置前驱",
+        "official:4:2": "EPS电动助力转向",
+        "official:4:3": "前/后盘式",
+        "official:4:4": "电子驻车",
+        "official:4:5": "铝合金",
+        "official:4:6": "215/55 R17",
+        "official:4:7": "补胎剂",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "间接式",
+        "official:5:5": "主●/副●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●L2",
+        "official:5:17": "—",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:7:0": "—",
+        "official:7:1": "●",
+        "official:7:2": "—",
+        "official:7:3": "●",
+        "official:7:4": "—",
+        "official:7:5": "●",
+        "official:7:6": "2-2-3",
+        "official:7:7": "—",
+        "official:7:8": "●",
+        "official:7:9": "—",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "—",
+        "official:7:16": "●",
+        "official:7:17": "●带化妆镜及LED灯",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "副驾+第二排+第三排",
+        "official:7:21": "●",
+        "official:7:22": "—",
+        "official:7:23": "●",
+        "official:7:24": "个性化/经济/标准/运动",
+        "official:7:25": "●全车",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "—",
+        "official:7:34": "—",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "—",
+        "official:7:41": "●",
+        "official:7:42": "●",
+        "official:7:43": "●",
+        "official:7:44": "启动车辆\n解闭锁车辆\n开关空调\n开关车窗\n充电管理\n车况查询/诊断\n车辆定位/寻车\n预约充电",
+        "official:7:45": "●",
+        "official:7:46": "●",
+        "official:7:47": "HUAWEI HiCar\nICCOA Carlink\nApple CarPlay\nDLNA",
+        "official:7:48": "6个",
+        "official:8:0": "银霜白\n烟霞灰\n暮山紫",
+        "official:8:1": "胡桃棕",
+        "official:9:0": "6年或15万公里",
+        "official:9:1": "8年或15万公里（首任非营运车主终身质保）",
+        "official:scope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/wuling-starlight-730.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.sgmw.com.cn/wulingSilverBadge"
+    }
+  ],
+  "sourceUrl": "https://www.sgmw.com.cn/wulingSilverBadge",
+  "sourceScope": "官网当前在售配置；合并单元格未单独列明的版本请查看官网原表。出口版本及选装条件需向供应商确认。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "wuling",
+      "sha256": "a23c681b860bf65ec0b551511ab5801afce19f9ed8fe8ef51dd45a0f0a8b7f80"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+/* Home illustration layout. All company and listing cards still use live data. */
+.home-suv-model:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.sourcing-featured .section-heading{margin-bottom:26px}
+.home-suv-selection{margin:24px 0 30px}
+.home-suv-selection-heading{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:17px}
+.home-suv-selection-heading .eyebrow{margin:0;font-size:10px;letter-spacing:.12em}
+.home-suv-selection-heading>p{margin:0;color:#69736e;font-size:11px;line-height:1.65;max-width:580px}
+.home-suv-selection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.home-suv-model{min-width:0;color:#1e2722;text-decoration:none;background:#fff;border:1px solid #e0e5e1;border-radius:7px;overflow:hidden}
+.home-suv-model figure{height:225px;margin:0;background:#eef1ee;overflow:hidden}
+.home-suv-model figure img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .35s ease}
+.home-suv-model-volkswagen figure img{object-position:53% 58%}
+.home-suv-model-lynk figure img{object-position:50% 58%}
+.home-suv-model-im figure img{object-position:61% 55%}
+.home-suv-model:hover figure img{transform:scale(1.025)}
+.home-suv-model-caption{position:relative;display:flex;flex-direction:column;padding:18px 19px 19px;gap:6px;padding-inline-end:40px}
+.home-suv-model-caption>span:first-child{font-size:9px;letter-spacing:.12em;color:#69736e}
+.home-suv-model-caption strong{font-size:16px;font-weight:500;line-height:1.4}
+.home-suv-model-arrow{position:absolute;inset-inline-end:19px;top:27px;font-size:17px;color:#65766a}
+.sourcing-featured .home-data-state{margin-top:0;padding:20px 24px;border:1px solid #dde3de;border-radius:6px;background:#f6f8f5}
+.home-supplier-editorial{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border:1px solid #dde4dd;border-radius:8px;background:#fff;overflow:hidden;margin:30px 0}
+.home-supplier-scene{position:relative;min-width:0;min-height:365px;margin:0;background:#dce5dc;overflow:hidden}
+.home-supplier-scene>img,.home-supplier-scene>picture>img{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:57% 50%}
+.home-mobile-model-label{display:none}
+.home-supplier-scene:after{content:'';position:absolute;inset:50% 0 0;background:linear-gradient(0deg,#1728209c,transparent);pointer-events:none}
+.home-supplier-scene figcaption{position:absolute;inset-inline-start:25px;bottom:24px;color:#fff;z-index:1;display:flex;flex-direction:column;gap:6px;font-size:12px;letter-spacing:.12em}
+.home-supplier-scene figcaption small{letter-spacing:0;font-size:10px}
+.home-supplier-editorial-copy{padding:32px 35px}
+.home-supplier-editorial-copy>.eyebrow{font-size:10px;color:#69756b;letter-spacing:.12em;margin:0 0 13px}
+.home-supplier-editorial-copy h3{font-size:28px;line-height:1.4;font-weight:500;letter-spacing:-.025em;margin:0 0 18px}
+.home-supplier-editorial-copy ul{list-style:none;padding:0;margin:0}
+.home-supplier-editorial-copy li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid #e2e7e1}
+.home-supplier-editorial-copy li>span{font-size:10px;color:#78877b;line-height:1.7}
+.home-supplier-editorial-copy li strong{font-size:12px;font-weight:600}
+.home-supplier-editorial-copy li p{margin:5px 0 0;font-size:11px;line-height:1.7;color:#637167}
+.home-supplier-editorial-copy .home-supplier-photo-note{font-size:10px;color:#778077;line-height:1.8;margin:15px 0 0}
+.sourcing-suppliers>.home-data-state,.sourcing-suppliers>.company-cards:empty{margin:0}
+@media(max-width:1000px){.home-suv-selection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.home-suv-model figure{height:175px}.home-suv-model-caption strong{font-size:14px}.home-supplier-editorial-copy{padding:27px}}
+@media(max-width:680px){
+ .home-suv-selection-heading{display:block}.home-suv-selection-heading>p{margin-top:9px;font-size:11px}
+ .home-suv-selection-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+ .home-suv-model figure{height:205px}
+ .home-suv-model-caption{padding:15px 12px;padding-inline-end:30px}.home-suv-model-caption strong{font-size:13px}.home-suv-model-caption>span:first-child{font-size:8px;letter-spacing:.06em}.home-suv-model-arrow{inset-inline-end:12px;top:23px}
+ .home-supplier-editorial{grid-template-columns:1fr}.home-supplier-scene{min-height:240px}.home-supplier-editorial-copy{padding:25px 24px}.home-supplier-editorial-copy h3{font-size:26px}
+ .sourcing-featured .home-data-state{padding:18px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.home-suv-model figure img{transition:none}}
+
+/* The entire guide row is a native keyboard and touch accessible link. */
+.home-supplier-editorial-copy li{display:block;padding:0}
+.home-supplier-guide-link{display:grid;grid-template-columns:26px minmax(0,1fr);gap:14px;padding:17px 10px;min-height:44px;color:inherit;text-decoration:none;border-radius:4px;transition:background-color .15s ease}
+.home-supplier-guide-link:focus-visible{outline:2px solid #486653;outline-offset:4px}
+.home-supplier-guide-link:hover{background:#eef2ec}
+.home-supplier-guide-link:active{background:#e1e9df}
+.home-supplier-guide-link .home-guide-number{font-size:10px;color:#78877b;line-height:1.7}
+@media(max-width:680px){.home-supplier-guide-link strong{font-size:14px}.home-supplier-guide-link p{font-size:12px;line-height:1.8}}
+@media(prefers-reduced-motion:reduce){.home-supplier-guide-link{transition:none}}

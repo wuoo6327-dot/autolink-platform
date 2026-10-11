@@ -1,0 +1,941 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "kia-sportage",
+  "brandZh": "Kia",
+  "modelZh": "狮铂拓界",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基本参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "变速器"
+        },
+        {
+          "key": "official:0:1",
+          "label": "长×宽×高(mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "轴距(mm)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "悬架系统(前/后)"
+        },
+        {
+          "key": "official:0:4",
+          "label": "转向系统"
+        },
+        {
+          "key": "official:0:5",
+          "label": "最小转弯半径(m)"
+        },
+        {
+          "key": "official:0:6",
+          "label": "后备箱容积(L)"
+        },
+        {
+          "key": "official:0:7",
+          "label": "最小离地间隙(mm)"
+        },
+        {
+          "key": "official:0:8",
+          "label": "最高车速(km/h)"
+        },
+        {
+          "key": "official:0:9",
+          "label": "油箱容积(L)"
+        },
+        {
+          "key": "official:0:10",
+          "label": "推荐油品"
+        },
+        {
+          "key": "official:0:11",
+          "label": "排量(cc)"
+        },
+        {
+          "key": "official:0:12",
+          "label": "发动机最大马力(Ps/rpm)"
+        },
+        {
+          "key": "official:0:13",
+          "label": "发动机最大扭矩(N·m/rpm)"
+        },
+        {
+          "key": "official:0:14",
+          "label": "发动机"
+        },
+        {
+          "key": "official:0:15",
+          "label": "变速箱类型"
+        },
+        {
+          "key": "official:0:16",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:0:17",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:18",
+          "label": "整备质量(kg)"
+        },
+        {
+          "key": "official:0:19",
+          "label": "WLTC综合工况油耗(L/100km)"
+        },
+        {
+          "key": "official:0:20",
+          "label": "系统最大马力(Ps)"
+        },
+        {
+          "key": "official:0:21",
+          "label": "系统最大扭矩(N·m)"
+        },
+        {
+          "key": "official:0:22",
+          "label": "环保标准"
+        }
+      ]
+    },
+    {
+      "name": "外观",
+      "rows": [
+        {
+          "key": "official:1:11",
+          "label": "18英寸铝合金暗灰轮毂"
+        },
+        {
+          "key": "official:1:12",
+          "label": "双色车身"
+        },
+        {
+          "key": "official:1:14",
+          "label": "哑光灰专属定制车身"
+        }
+      ]
+    },
+    {
+      "name": "内饰",
+      "rows": [
+        {
+          "key": "official:2:6",
+          "label": "绗缝工艺真皮座椅"
+        }
+      ]
+    },
+    {
+      "name": "智能行车辅助",
+      "rows": [
+        {
+          "key": "official:3:7",
+          "label": "ISLA智能限速辅助 *高级型可与SCC自适应巡航控制联动"
+        },
+        {
+          "key": "official:3:14",
+          "label": "BVM侧后方影像"
+        },
+        {
+          "key": "official:3:15",
+          "label": "SVM360°全景影像"
+        },
+        {
+          "key": "official:3:16",
+          "label": "BCA盲区防撞辅助(限起步)"
+        },
+        {
+          "key": "official:3:17",
+          "label": "BCW盲区防撞预警"
+        },
+        {
+          "key": "official:3:18",
+          "label": "RCCA后方交叉防撞辅助"
+        },
+        {
+          "key": "official:3:19",
+          "label": "RCCW后方交叉防撞预警"
+        },
+        {
+          "key": "official:3:20",
+          "label": "ROA后排乘客遗忘提醒"
+        },
+        {
+          "key": "official:3:21",
+          "label": "SEW安全下车预警"
+        }
+      ]
+    },
+    {
+      "name": "舒适/便利",
+      "rows": [
+        {
+          "key": "official:5:11",
+          "label": "前排座椅后背储物袋"
+        },
+        {
+          "key": "official:5:21",
+          "label": "副驾驶席电动座椅(4向)"
+        },
+        {
+          "key": "official:5:22",
+          "label": "驾驶席座椅记忆"
+        },
+        {
+          "key": "official:5:23",
+          "label": "副驾驶席座椅后排电动可调(老板键)"
+        },
+        {
+          "key": "official:5:24",
+          "label": "前后排座椅加热"
+        },
+        {
+          "key": "official:5:25",
+          "label": "前排通风座椅"
+        }
+      ]
+    },
+    {
+      "name": "选装包",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "ETCS（1,000元）"
+        },
+        {
+          "key": "official:7:1",
+          "label": "时尚设计包（3,000元）：\n    双色车身、18英寸铝合金暗灰轮毂"
+        },
+        {
+          "key": "official:7:2",
+          "label": "智能安全包（5,000元）：\n    SVM360°全景影像、BVM侧后方影像、\n      BCA盲区防撞辅助(限起步)、BCW盲区防撞预警、\n      RCCA后方交叉防撞辅助、RCCW后方交叉防撞预警、\n      ROA后排乘客遗忘提醒、SEW安全下车预警"
+        },
+        {
+          "key": "official:7:3",
+          "label": "专属定制色（3,000元）：哑光灰"
+        },
+        {
+          "key": "official:7:4",
+          "label": "四轮驱动（12,000元）"
+        },
+        {
+          "key": "official:7:5",
+          "label": "舒适座椅包（10,000元）：\n     绗缝工艺真皮座椅、副驾驶席电动座椅4向(老板键 )、\n       前后排座椅加热、前排通风座椅、驾驶席座椅记忆、"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "kia-sportage-official-1",
+      "name": "1.5T 豪华版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "205",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,497",
+        "official:0:12": "200 / 6,000",
+        "official:0:13": "253 / 2,200~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱",
+        "official:0:18": "1,568",
+        "official:0:19": "7.00",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@基本型",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-2",
+      "name": "1.5T 豪华舒享版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "205",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,497",
+        "official:0:12": "200 / 6,000",
+        "official:0:13": "253 / 2,200~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱",
+        "official:0:18": "1,568",
+        "official:0:19": "7.00",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@基本型",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-3",
+      "name": "1.5T 尊贵智享版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "205",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,497",
+        "official:0:12": "200 / 6,000",
+        "official:0:13": "253 / 2,200~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱",
+        "official:0:18": "1,568",
+        "official:0:19": "7.00",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "*选装",
+        "official:1:12": "*选装",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@高级型*",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "*选装",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-4",
+      "name": "1.5T 尊贵版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,680(含行李架)",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "205",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,497",
+        "official:0:12": "200 / 6,000",
+        "official:0:13": "253 / 2,200~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱",
+        "official:0:18": "1,568",
+        "official:0:19": "7.00",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "*选装",
+        "official:1:12": "*选装",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@高级型*",
+        "official:3:14": "*选装",
+        "official:3:15": "*选装",
+        "official:3:16": "*选装",
+        "official:3:17": "*选装",
+        "official:3:18": "*选装",
+        "official:3:19": "*选装",
+        "official:3:20": "*选装",
+        "official:3:21": "*选装",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "*选装",
+        "official:7:2": "*选装",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-5",
+      "name": "2.0T 豪华版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "210",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,975",
+        "official:0:12": "236 / 6,000",
+        "official:0:13": "353 / 1,500~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱/四驱",
+        "official:0:18": "1,590(四驱1,724)",
+        "official:0:19": "7.45(四驱8.03)",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "*选装",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@基本型",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-6",
+      "name": "2.0T 豪华舒享版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "210",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,975",
+        "official:0:12": "236 / 6,000",
+        "official:0:13": "353 / 1,500~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱/四驱",
+        "official:0:18": "1,590(四驱1,724)",
+        "official:0:19": "7.45(四驱8.03)",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "*选装",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@基本型",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-7",
+      "name": "2.0T 尊贵智享版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "210",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,975",
+        "official:0:12": "236 / 6,000",
+        "official:0:13": "353 / 1,500~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱/四驱",
+        "official:0:18": "1,590(四驱1,724)",
+        "official:0:19": "7.45(四驱8.03)",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "*选装",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@高级型*",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-8",
+      "name": "2.0T 尊贵版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,680(含行李架)",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "210",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,975",
+        "official:0:12": "236 / 6,000",
+        "official:0:13": "353 / 1,500~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/55R19",
+        "official:0:17": "前驱/四驱",
+        "official:0:18": "1,637(四驱1,724)",
+        "official:0:19": "7.54(四驱8.03)",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "*选装",
+        "official:2:6": "*选装",
+        "official:3:7": "@高级型*",
+        "official:3:14": "*选装",
+        "official:3:15": "*选装",
+        "official:3:16": "*选装",
+        "official:3:17": "*选装",
+        "official:3:18": "*选装",
+        "official:3:19": "*选装",
+        "official:3:20": "*选装",
+        "official:3:21": "*选装",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "*选装",
+        "official:5:22": "*选装",
+        "official:5:23": "*选装",
+        "official:5:24": "*选装",
+        "official:5:25": "*选装",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "*选装",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:7:5": "*选装",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-9",
+      "name": "2.0T 旗舰版",
+      "values": {
+        "official:0:0": "8AT",
+        "official:0:1": "4,670 × 1,865 × 1,680(含行李架)",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "156",
+        "official:0:8": "210",
+        "official:0:9": "54",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,975",
+        "official:0:12": "236 / 6,000",
+        "official:0:13": "353 / 1,500~4,000",
+        "official:0:14": "涡轮增压缸内直喷",
+        "official:0:15": "8档手自一体",
+        "official:0:16": "235/55R19",
+        "official:0:17": "前驱/四驱",
+        "official:0:18": "1,637(四驱1,724)",
+        "official:0:19": "7.54(四驱8.03)",
+        "official:0:20": "官网未单独列明，请查看来源",
+        "official:0:21": "官网未单独列明，请查看来源",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "*选装",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@高级型*",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "双层",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "*选装",
+        "official:7:4": "*选装",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-10",
+      "name": "2.0L HEV 豪华版",
+      "values": {
+        "official:0:0": "6AT",
+        "official:0:1": "4,670 × 1,865 × 1,678",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "165",
+        "official:0:8": "160",
+        "official:0:9": "52",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,999",
+        "official:0:12": "150 / 6,000",
+        "official:0:13": "186 / 5,000",
+        "official:0:14": "缸内直喷",
+        "official:0:15": "6档手自一体",
+        "official:0:16": "235/65R17",
+        "official:0:17": "前驱",
+        "official:0:18": "1,622",
+        "official:0:19": "5.60",
+        "official:0:20": "200",
+        "official:0:21": "350",
+        "official:0:22": "国6",
+        "official:1:11": "官网未单独列明，请查看来源",
+        "official:1:12": "官网未单独列明，请查看来源",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@基本型",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "官网未单独列明，请查看来源",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-11",
+      "name": "2.0L HEV 尊贵版",
+      "values": {
+        "official:0:0": "6AT",
+        "official:0:1": "4,670 × 1,865 × 1,680(含行李架)",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "165",
+        "official:0:8": "160",
+        "official:0:9": "52",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,999",
+        "official:0:12": "150 / 6,000",
+        "official:0:13": "186 / 5,000",
+        "official:0:14": "缸内直喷",
+        "official:0:15": "6档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱",
+        "official:0:18": "1,622",
+        "official:0:19": "5.60",
+        "official:0:20": "200",
+        "official:0:21": "350",
+        "official:0:22": "国6",
+        "official:1:11": "*选装",
+        "official:1:12": "*选装",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "*选装",
+        "official:3:7": "@高级型*",
+        "official:3:14": "*选装",
+        "official:3:15": "*选装",
+        "official:3:16": "*选装",
+        "official:3:17": "*选装",
+        "official:3:18": "*选装",
+        "official:3:19": "*选装",
+        "official:3:20": "*选装",
+        "official:3:21": "*选装",
+        "official:5:11": "官网未单独列明，请查看来源",
+        "official:5:21": "*选装",
+        "official:5:22": "*选装",
+        "official:5:23": "*选装",
+        "official:5:24": "*选装",
+        "official:5:25": "*选装",
+        "official:7:0": "*选装",
+        "official:7:1": "*选装",
+        "official:7:2": "*选装",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "*选装",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-sportage-official-12",
+      "name": "2.0L HEV 旗舰版",
+      "values": {
+        "official:0:0": "6AT",
+        "official:0:1": "4,670 × 1,865 × 1,680(含行李架)",
+        "official:0:2": "2,755",
+        "official:0:3": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:4": "电动助力转向",
+        "official:0:5": "5.9",
+        "official:0:6": "545",
+        "official:0:7": "165",
+        "official:0:8": "160",
+        "official:0:9": "52",
+        "official:0:10": "92号及以上",
+        "official:0:11": "1,999",
+        "official:0:12": "150 / 6,000",
+        "official:0:13": "186 / 5,000",
+        "official:0:14": "缸内直喷",
+        "official:0:15": "6档手自一体",
+        "official:0:16": "235/60R18",
+        "official:0:17": "前驱",
+        "official:0:18": "1,622",
+        "official:0:19": "5.60",
+        "official:0:20": "200",
+        "official:0:21": "350",
+        "official:0:22": "国6",
+        "official:1:11": "*选装",
+        "official:1:12": "*选装",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:2:6": "官网未单独列明，请查看来源",
+        "official:3:7": "@高级型*",
+        "official:3:14": "官网未单独列明，请查看来源",
+        "official:3:15": "官网未单独列明，请查看来源",
+        "official:3:16": "官网未单独列明，请查看来源",
+        "official:3:17": "官网未单独列明，请查看来源",
+        "official:3:18": "官网未单独列明，请查看来源",
+        "official:3:19": "官网未单独列明，请查看来源",
+        "official:3:20": "官网未单独列明，请查看来源",
+        "official:3:21": "官网未单独列明，请查看来源",
+        "official:5:11": "双层",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "官网未单独列明，请查看来源",
+        "official:5:24": "官网未单独列明，请查看来源",
+        "official:5:25": "官网未单独列明，请查看来源",
+        "official:7:0": "*选装",
+        "official:7:1": "*选装",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "官网未单独列明，请查看来源",
+        "official:7:4": "官网未单独列明，请查看来源",
+        "official:7:5": "官网未单独列明，请查看来源",
+        "official:scope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/kia-sportage.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.kia.cn/vehicles/"
+    }
+  ],
+  "sourceUrl": "https://www.kia.cn/vehicles/sportage/specs/85/",
+  "sourceScope": "狮铂拓界；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "kia-sportage-variants",
+      "sha256": "28f9069ec0b0c06f5748c79dc7f33c9244acda673213be5e09277ae569a5759f"
+    },
+    {
+      "localEvidence": "kia-cmdc",
+      "sha256": "43878b0748f9031e9e2cdc3b2314168d4bc59de12b9876ece238492c7cdfdf21"
+    }
+  ]
+}

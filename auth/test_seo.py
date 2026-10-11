@@ -76,19 +76,22 @@ class PublicSEOTests(unittest.TestCase):
                 self.assertIn('index, follow' if language=='zh' else 'noindex, follow',next(item['content'] for item in document.metas if item.get('name')=='robots'))
                 self.assertEqual(document.html['lang'],LANGUAGE_TAGS[language])
                 self.assertEqual(document.html['dir'],'rtl' if language=='ar' else 'ltr')
-    def test_sitemap_has_195_complete_models_in_reviewed_source_language(self):
+    def test_sitemap_has_reviewed_source_and_english_models(self):
         root=ElementTree.fromstring(self.trade.sitemap_xml('models-1.xml'))
         ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
         urls=root.findall('s:url',ns)
         locations=[node.find('s:loc',ns).text for node in urls]
-        self.assertEqual(len(locations),195)
-        self.assertEqual(len(set(locations)),195)
-        self.assertTrue(all(url.endswith('?lang=zh') for url in locations))
+        self.assertEqual(len(locations),220)
+        self.assertEqual(len(set(locations)),220)
+        self.assertEqual(sum(url.endswith('?lang=zh') for url in locations),195)
+        self.assertEqual(sum('?' not in url for url in locations),25)
         self.assertFalse(any('omoda-catalog-1' in url for url in locations))
         for node in urls:
             actual={link.attrib['hreflang']:link.attrib['href'] for link in node.findall('x:link',ns)}
             path=node.find('s:loc',ns).text.split('autolinkglobal.com',1)[1].split('?',1)[0]
-            expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'zh')}
+            english=path.rsplit('/',1)[-1] in json.loads((Path(__file__).resolve().parent.parent/'site/locales/seo-model-en-reviewed.json').read_text())
+            expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'en' if english else 'zh')}
+            if english:expected['en']=localized_url(path,'en')
             self.assertEqual(actual,expected)
         self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('vehicles-1.xml')).findall('s:url',ns),[])
         self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('suppliers-1.xml')).findall('s:url',ns),[])

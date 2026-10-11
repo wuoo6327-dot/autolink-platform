@@ -1,0 +1,1169 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "mazda-cx-5",
+  "brandZh": "Mazda",
+  "modelZh": "CX-5",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "燃油 · 规格参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高(mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距(mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "油箱容积(L)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "轮胎规格"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SKYACTIV-G 创驰蓝天发动机",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:1:1",
+          "label": "发动机技术"
+        },
+        {
+          "key": "official:1:2",
+          "label": "排量(ml)"
+        },
+        {
+          "key": "official:1:3",
+          "label": "最大功率(kW/r/min)"
+        },
+        {
+          "key": "official:1:4",
+          "label": "最大扭矩(N·m/r/min)"
+        },
+        {
+          "key": "official:1:5",
+          "label": "WLTC综合工况油耗(L/100km)"
+        },
+        {
+          "key": "official:1:6",
+          "label": "燃油种类"
+        },
+        {
+          "key": "official:1:7",
+          "label": "排放标准"
+        },
+        {
+          "key": "official:1:8",
+          "label": "油门系统"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SKYACTIV-DRIVE 创驰蓝天全速域锁止变速箱",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "变速箱型式"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SKYACTIV-BODY 创驰蓝天车身",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "高强度车身"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SKYACTIV-CHASSIS 创驰蓝天底盘",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "悬架系统"
+        },
+        {
+          "key": "official:4:1",
+          "label": "转向系统"
+        },
+        {
+          "key": "official:4:2",
+          "label": "制动系统 (前/后)"
+        },
+        {
+          "key": "official:4:3",
+          "label": "驱动方式"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SKYACTIV-VEHICLE DYNAMICS 创驰蓝天车辆动态控制技术",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "GVC PLUS （G-Vectoring Control Plus）\n加速度矢量控制系统 升级版（回正力矩强化系统）"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 创驰蓝天节能环保技术",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "i-STOP 智能怠速停止系统"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · KODO DESIGN 魂动设计-外观",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "全新远近光一体LED前大灯"
+        },
+        {
+          "key": "official:7:1",
+          "label": "前大灯自动开关系统"
+        },
+        {
+          "key": "official:7:2",
+          "label": "前大灯自动高度调节"
+        },
+        {
+          "key": "official:7:3",
+          "label": "前大灯延时关闭功能"
+        },
+        {
+          "key": "official:7:4",
+          "label": "前大灯迎宾照明功能"
+        },
+        {
+          "key": "official:7:5",
+          "label": "LED日间行车灯"
+        },
+        {
+          "key": "official:7:6",
+          "label": "LED高位刹车灯"
+        },
+        {
+          "key": "official:7:7",
+          "label": "全新LED尾灯"
+        },
+        {
+          "key": "official:7:8",
+          "label": "外后视镜带LED转向灯"
+        },
+        {
+          "key": "official:7:9",
+          "label": "外后视镜电动调节+电加热"
+        },
+        {
+          "key": "official:7:10",
+          "label": "外后视镜折叠"
+        },
+        {
+          "key": "official:7:11",
+          "label": "黑色外后视镜"
+        },
+        {
+          "key": "official:7:12",
+          "label": "后风挡玻璃加热除霜功能"
+        },
+        {
+          "key": "official:7:13",
+          "label": "双开启式电动天窗"
+        },
+        {
+          "key": "official:7:14",
+          "label": "车窗一键升降/防夹"
+        },
+        {
+          "key": "official:7:15",
+          "label": "雨量感应式智能无骨雨刷"
+        },
+        {
+          "key": "official:7:16",
+          "label": "车顶行李架"
+        },
+        {
+          "key": "official:7:17",
+          "label": "黑色车顶行李架"
+        },
+        {
+          "key": "official:7:18",
+          "label": "豪华运动双排气管"
+        },
+        {
+          "key": "official:7:19",
+          "label": "鲨鱼鳍天线"
+        },
+        {
+          "key": "official:7:20",
+          "label": "17英寸铝合金轮毂"
+        },
+        {
+          "key": "official:7:21",
+          "label": "17英寸黑色铝合金轮毂"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · KODO DESIGN 魂动设计-内饰",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "跑车化三环运动仪表"
+        },
+        {
+          "key": "official:8:1",
+          "label": "4.6英寸彩色仪表"
+        },
+        {
+          "key": "official:8:2",
+          "label": "7英寸彩色仪表"
+        },
+        {
+          "key": "official:8:3",
+          "label": "内饰主题"
+        },
+        {
+          "key": "official:8:4",
+          "label": "仪表台饰板"
+        },
+        {
+          "key": "official:8:5",
+          "label": "多功能方向盘（四向调节）"
+        },
+        {
+          "key": "official:8:6",
+          "label": "双区独立控制自动恒温空调（带外部温度显示）"
+        },
+        {
+          "key": "official:8:7",
+          "label": "空气过滤器(粉尘过滤)"
+        },
+        {
+          "key": "official:8:8",
+          "label": "后排空调出风口"
+        },
+        {
+          "key": "official:8:9",
+          "label": "遥控钥匙寻车鸣笛提醒功能"
+        },
+        {
+          "key": "official:8:10",
+          "label": "智能无钥匙进入系统"
+        },
+        {
+          "key": "official:8:11",
+          "label": "智能化离车自动落锁"
+        },
+        {
+          "key": "official:8:12",
+          "label": "遥控钥匙车窗升降功能"
+        },
+        {
+          "key": "official:8:13",
+          "label": "一键启动系统"
+        },
+        {
+          "key": "official:8:14",
+          "label": "EPB 电子驻车制动系统"
+        },
+        {
+          "key": "official:8:15",
+          "label": "AUTO HOLD 自动驻车功能"
+        },
+        {
+          "key": "official:8:16",
+          "label": "定速巡航"
+        },
+        {
+          "key": "official:8:17",
+          "label": "电动尾门（带高度记忆、遥控功能）"
+        },
+        {
+          "key": "official:8:18",
+          "label": "座椅材质"
+        },
+        {
+          "key": "official:8:19",
+          "label": "※勃艮第红真皮座椅"
+        },
+        {
+          "key": "official:8:20",
+          "label": "主驾驶席座椅调节"
+        },
+        {
+          "key": "official:8:21",
+          "label": "主驾驶席座椅记忆功能"
+        },
+        {
+          "key": "official:8:22",
+          "label": "副驾驶席座椅调节"
+        },
+        {
+          "key": "official:8:23",
+          "label": "前排座椅电加热"
+        },
+        {
+          "key": "official:8:24",
+          "label": "后排座椅6:4折叠功能"
+        },
+        {
+          "key": "official:8:25",
+          "label": "后排座椅靠背角度调节"
+        },
+        {
+          "key": "official:8:26",
+          "label": "后排座椅中央扶手+双杯托+USB充电接口"
+        },
+        {
+          "key": "official:8:27",
+          "label": "中控中央储物格/扶手箱电源输出(12V)"
+        },
+        {
+          "key": "official:8:28",
+          "label": "主/副驾驶席遮阳板带化妆镜、照明灯"
+        },
+        {
+          "key": "official:8:29",
+          "label": "顶置式太阳镜盒"
+        },
+        {
+          "key": "official:8:30",
+          "label": "行李箱遮物帘车门联动与细网透视设计"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SAFETY 安全配置",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "主/副驾驶席安全气囊"
+        },
+        {
+          "key": "official:9:1",
+          "label": "主/副驾驶席侧安全气囊"
+        },
+        {
+          "key": "official:9:2",
+          "label": "前后排贯穿式侧安全气帘"
+        },
+        {
+          "key": "official:9:3",
+          "label": "前排座椅三点式高度可调预紧式安全带"
+        },
+        {
+          "key": "official:9:4",
+          "label": "后排座椅（左中右）三点式安全带"
+        },
+        {
+          "key": "official:9:5",
+          "label": "4探头高灵敏度后驻车雷达"
+        },
+        {
+          "key": "official:9:6",
+          "label": "4探头高灵敏度前驻车雷达"
+        },
+        {
+          "key": "official:9:7",
+          "label": "高分辨率倒车影像（带辅助线提示）"
+        },
+        {
+          "key": "official:9:8",
+          "label": "360度全景影像驻车辅助系统"
+        },
+        {
+          "key": "official:9:9",
+          "label": "内后视镜自动防眩目"
+        },
+        {
+          "key": "official:9:10",
+          "label": "ABS 四轮防抱死制动系统"
+        },
+        {
+          "key": "official:9:11",
+          "label": "EBD 电子制动力分配系统"
+        },
+        {
+          "key": "official:9:12",
+          "label": "EBA 电子紧急制动辅助系统"
+        },
+        {
+          "key": "official:9:13",
+          "label": "BOS 刹车优先系统"
+        },
+        {
+          "key": "official:9:14",
+          "label": "DSC 电子车身稳定控制系统"
+        },
+        {
+          "key": "official:9:15",
+          "label": "TCS 牵引力控制系统"
+        },
+        {
+          "key": "official:9:16",
+          "label": "HLA 坡道起步辅助系统"
+        },
+        {
+          "key": "official:9:17",
+          "label": "ESS 紧急刹车警示系统"
+        },
+        {
+          "key": "official:9:18",
+          "label": "TPMS 胎压监测系统"
+        },
+        {
+          "key": "official:9:19",
+          "label": "行车自动落锁/碰撞自动解锁功能"
+        },
+        {
+          "key": "official:9:20",
+          "label": "ISO FIX 儿童座椅固定装置"
+        },
+        {
+          "key": "official:9:21",
+          "label": "后门儿童安全锁"
+        },
+        {
+          "key": "official:9:22",
+          "label": "发动机芯片锁止防盗系统"
+        },
+        {
+          "key": "official:9:23",
+          "label": "防盗声音报警装置"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · i-ACTIVSENSE 马自达智能安全辅助系统",
+      "rows": [
+        {
+          "key": "official:10:0",
+          "label": "BSM 盲点监测系统"
+        },
+        {
+          "key": "official:10:1",
+          "label": "RCTA 倒车预警系统"
+        },
+        {
+          "key": "official:10:2",
+          "label": "MRCC 全速域自适应巡航系统"
+        },
+        {
+          "key": "official:10:3",
+          "label": "CTS 巡航模式智能行车辅助系统"
+        },
+        {
+          "key": "official:10:4",
+          "label": "LAS 车道保持辅助系统"
+        },
+        {
+          "key": "official:10:5",
+          "label": "LDWS 车道偏离警示系统"
+        },
+        {
+          "key": "official:10:6",
+          "label": "SBS 中高速刹车辅助系统"
+        },
+        {
+          "key": "official:10:7",
+          "label": "FOW 前方碰撞预警系统"
+        },
+        {
+          "key": "official:10:8",
+          "label": "SCBS 低速刹车辅助系统"
+        },
+        {
+          "key": "official:10:9",
+          "label": "HBC 自适应远光灯控制系统"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 影音娱乐系统",
+      "rows": [
+        {
+          "key": "official:11:0",
+          "label": "随速自动音量调节功能"
+        },
+        {
+          "key": "official:11:1",
+          "label": "AM/FM收音机"
+        },
+        {
+          "key": "official:11:2",
+          "label": "USB接口（支持iPod/iPhone）+AUX音频接口"
+        },
+        {
+          "key": "official:11:3",
+          "label": "立体环绕式高保真扬声器"
+        },
+        {
+          "key": "official:11:4",
+          "label": "MAZDA CONNECT 马自达悦联系统"
+        },
+        {
+          "key": "official:11:5",
+          "label": "10.25英寸中央信息显示屏"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "mazda-cx-5-official-1",
+      "name": "2.0L 6AT 2WD 舒适型",
+      "values": {
+        "official:0:0": "4,575x1,842x1,685",
+        "official:0:1": "2700",
+        "official:0:2": "56",
+        "official:0:3": "225/65 R17",
+        "official:1:0": "创驰蓝天高压缩比汽油直喷发动机\n水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "13:1高压缩比发动机\n全新4-2-1发动机排气系统\nDual S-VT双可变气门正时控制系统+电子控制节气门\n燃料精细混合多点式6孔高压缸内直喷技术（二级喷射）\n高燃烧效能发动机独特凹顶活塞+长冲程化设计\n燃烧状态发动机电脑实时控制系统",
+        "official:1:2": "1998",
+        "official:1:3": "114/6,000",
+        "official:1:4": "200/4,000",
+        "official:1:5": "7.05",
+        "official:1:6": "92#以上无铅汽油",
+        "official:1:7": "国Ⅵ",
+        "official:1:8": "风琴式油门踏板 降挡加速开关（Kickdown Switch）",
+        "official:2:0": "六速手自一体\n全速域锁止技术",
+        "official:3:0": "连续化环闭式车身结构 车身冲击力分散引导系统\n车身钢材强度至高1,800MPa 前后超高强度防撞梁 车门内部双防撞杆结构",
+        "official:4:0": "前悬架：麦弗逊式独立悬架+前横向稳定杆\n后悬架：多连杆式独立悬架+后横向稳定杆",
+        "official:4:1": "EPAS 电动助力转向系统",
+        "official:4:2": "通风盘/盘式",
+        "official:4:3": "FWD前驱",
+        "official:5:0": "●",
+        "official:6:0": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "电动",
+        "official:7:11": "○黑曜版",
+        "official:7:12": "●",
+        "official:7:13": "—",
+        "official:7:14": "主驾驶席",
+        "official:7:15": "●",
+        "official:7:16": "—",
+        "official:7:17": "—",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "○黑曜版",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "○黑曜版",
+        "official:8:3": "高级黑色运动内饰",
+        "official:8:4": "银色",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "—",
+        "official:8:11": "—",
+        "official:8:12": "—",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "—",
+        "official:8:17": "—",
+        "official:8:18": "织物座椅",
+        "official:8:19": "—",
+        "official:8:20": "8向手动",
+        "official:8:21": "—",
+        "official:8:22": "4向手动",
+        "official:8:23": "—",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "—",
+        "official:9:7": "●",
+        "official:9:8": "—",
+        "official:9:9": "—",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:9:15": "●",
+        "official:9:16": "●",
+        "official:9:17": "●",
+        "official:9:18": "●",
+        "official:9:19": "●",
+        "official:9:20": "●",
+        "official:9:21": "●",
+        "official:9:22": "●",
+        "official:9:23": "●",
+        "official:10:0": "—",
+        "official:10:1": "—",
+        "official:10:2": "—",
+        "official:10:3": "—",
+        "official:10:4": "—",
+        "official:10:5": "—",
+        "official:10:6": "—",
+        "official:10:7": "—",
+        "official:10:8": "—",
+        "official:10:9": "—",
+        "official:11:0": "●",
+        "official:11:1": "●",
+        "official:11:2": "●",
+        "official:11:3": "6扬声器",
+        "official:11:4": "●",
+        "official:11:5": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    },
+    {
+      "id": "mazda-cx-5-official-2",
+      "name": "2.0L 6AT 2WD 智尚型",
+      "values": {
+        "official:0:0": "4,575x1,842x1,685",
+        "official:0:1": "2700",
+        "official:0:2": "56",
+        "official:0:3": "225/65 R17",
+        "official:1:0": "创驰蓝天高压缩比汽油直喷发动机\n水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "13:1高压缩比发动机\n全新4-2-1发动机排气系统\nDual S-VT双可变气门正时控制系统+电子控制节气门\n燃料精细混合多点式6孔高压缸内直喷技术（二级喷射）\n高燃烧效能发动机独特凹顶活塞+长冲程化设计\n燃烧状态发动机电脑实时控制系统",
+        "official:1:2": "1998",
+        "official:1:3": "114/6,000",
+        "official:1:4": "200/4,000",
+        "official:1:5": "7.15",
+        "official:1:6": "92#以上无铅汽油",
+        "official:1:7": "国Ⅵ",
+        "official:1:8": "风琴式油门踏板 降挡加速开关（Kickdown Switch）",
+        "official:2:0": "六速手自一体\n全速域锁止技术",
+        "official:3:0": "连续化环闭式车身结构 车身冲击力分散引导系统\n车身钢材强度至高1,800MPa 前后超高强度防撞梁 车门内部双防撞杆结构",
+        "official:4:0": "前悬架：麦弗逊式独立悬架+前横向稳定杆\n后悬架：多连杆式独立悬架+后横向稳定杆",
+        "official:4:1": "EPAS 电动助力转向系统",
+        "official:4:2": "通风盘/盘式",
+        "official:4:3": "FWD前驱",
+        "official:5:0": "●",
+        "official:6:0": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "自动",
+        "official:7:11": "○黑曜版",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "四门",
+        "official:7:15": "●",
+        "official:7:16": "—",
+        "official:7:17": "—",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "○黑曜版",
+        "official:8:0": "●",
+        "official:8:1": "—",
+        "official:8:2": "●",
+        "official:8:3": "高级黑色运动内饰",
+        "official:8:4": "银色",
+        "official:8:5": "●真皮",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "—",
+        "official:8:18": "织物座椅",
+        "official:8:19": "—",
+        "official:8:20": "8向手动",
+        "official:8:21": "—",
+        "official:8:22": "4向手动",
+        "official:8:23": "—",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:9:8": "—",
+        "official:9:9": "—",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:9:15": "●",
+        "official:9:16": "●",
+        "official:9:17": "●",
+        "official:9:18": "●",
+        "official:9:19": "●",
+        "official:9:20": "●",
+        "official:9:21": "●",
+        "official:9:22": "●",
+        "official:9:23": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "—",
+        "official:10:3": "—",
+        "official:10:4": "—",
+        "official:10:5": "—",
+        "official:10:6": "—",
+        "official:10:7": "—",
+        "official:10:8": "—",
+        "official:10:9": "—",
+        "official:11:0": "●",
+        "official:11:1": "●",
+        "official:11:2": "●",
+        "official:11:3": "6扬声器",
+        "official:11:4": "●",
+        "official:11:5": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    },
+    {
+      "id": "mazda-cx-5-official-3",
+      "name": "2.0L 6AT 2WD 智雅型",
+      "values": {
+        "official:0:0": "4,575x1,842x1,685",
+        "official:0:1": "2700",
+        "official:0:2": "56",
+        "official:0:3": "225/65 R17",
+        "official:1:0": "创驰蓝天高压缩比汽油直喷发动机\n水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "13:1高压缩比发动机\n全新4-2-1发动机排气系统\nDual S-VT双可变气门正时控制系统+电子控制节气门\n燃料精细混合多点式6孔高压缸内直喷技术（二级喷射）\n高燃烧效能发动机独特凹顶活塞+长冲程化设计\n燃烧状态发动机电脑实时控制系统",
+        "official:1:2": "1998",
+        "official:1:3": "114/6,000",
+        "official:1:4": "200/4,000",
+        "official:1:5": "7.15",
+        "official:1:6": "92#以上无铅汽油",
+        "official:1:7": "国Ⅵ",
+        "official:1:8": "风琴式油门踏板 降挡加速开关（Kickdown Switch）",
+        "official:2:0": "六速手自一体\n全速域锁止技术",
+        "official:3:0": "连续化环闭式车身结构 车身冲击力分散引导系统\n车身钢材强度至高1,800MPa 前后超高强度防撞梁 车门内部双防撞杆结构",
+        "official:4:0": "前悬架：麦弗逊式独立悬架+前横向稳定杆\n后悬架：多连杆式独立悬架+后横向稳定杆",
+        "official:4:1": "EPAS 电动助力转向系统",
+        "official:4:2": "通风盘/盘式",
+        "official:4:3": "FWD前驱",
+        "official:5:0": "●",
+        "official:6:0": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "自动",
+        "official:7:11": "○黑曜版",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "四门",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "○黑曜版",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "○黑曜版",
+        "official:8:0": "●",
+        "official:8:1": "—",
+        "official:8:2": "●",
+        "official:8:3": "高级黑色运动内饰",
+        "official:8:4": "金属木纹",
+        "official:8:5": "●真皮",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "※真皮座椅",
+        "official:8:19": "○黑曜版",
+        "official:8:20": "10向电动",
+        "official:8:21": "●",
+        "official:8:22": "4向手动",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:9:8": "—",
+        "official:9:9": "●",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:9:15": "●",
+        "official:9:16": "●",
+        "official:9:17": "●",
+        "official:9:18": "●",
+        "official:9:19": "●",
+        "official:9:20": "●",
+        "official:9:21": "●",
+        "official:9:22": "●",
+        "official:9:23": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "—",
+        "official:10:3": "—",
+        "official:10:4": "—",
+        "official:10:5": "—",
+        "official:10:6": "—",
+        "official:10:7": "—",
+        "official:10:8": "—",
+        "official:10:9": "—",
+        "official:11:0": "●",
+        "official:11:1": "●",
+        "official:11:2": "●",
+        "official:11:3": "6扬声器",
+        "official:11:4": "●",
+        "official:11:5": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    },
+    {
+      "id": "mazda-cx-5-official-4",
+      "name": "2.0L 6AT 2WD 智尚型Pro",
+      "values": {
+        "official:0:0": "4,575x1,842x1,685",
+        "official:0:1": "2700",
+        "official:0:2": "56",
+        "official:0:3": "225/65 R17",
+        "official:1:0": "创驰蓝天高压缩比汽油直喷发动机\n水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "13:1高压缩比发动机\n全新4-2-1发动机排气系统\nDual S-VT双可变气门正时控制系统+电子控制节气门\n燃料精细混合多点式6孔高压缸内直喷技术（二级喷射）\n高燃烧效能发动机独特凹顶活塞+长冲程化设计\n燃烧状态发动机电脑实时控制系统",
+        "official:1:2": "1998",
+        "official:1:3": "114/6,000",
+        "official:1:4": "200/4,000",
+        "official:1:5": "7.15",
+        "official:1:6": "92#以上无铅汽油",
+        "official:1:7": "国Ⅵ",
+        "official:1:8": "风琴式油门踏板 降挡加速开关（Kickdown Switch）",
+        "official:2:0": "六速手自一体\n全速域锁止技术",
+        "official:3:0": "连续化环闭式车身结构 车身冲击力分散引导系统\n车身钢材强度至高1,800MPa 前后超高强度防撞梁 车门内部双防撞杆结构",
+        "official:4:0": "前悬架：麦弗逊式独立悬架+前横向稳定杆\n后悬架：多连杆式独立悬架+后横向稳定杆",
+        "official:4:1": "EPAS 电动助力转向系统",
+        "official:4:2": "通风盘/盘式",
+        "official:4:3": "FWD前驱",
+        "official:5:0": "●",
+        "official:6:0": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "自动",
+        "official:7:11": "○黑曜版",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "四门",
+        "official:7:15": "●",
+        "official:7:16": "—",
+        "official:7:17": "—",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "○黑曜版",
+        "official:8:0": "●",
+        "official:8:1": "—",
+        "official:8:2": "●",
+        "official:8:3": "高级黑色运动内饰",
+        "official:8:4": "银色",
+        "official:8:5": "●真皮",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "—",
+        "official:8:18": "织物座椅",
+        "official:8:19": "—",
+        "official:8:20": "8向手动",
+        "official:8:21": "—",
+        "official:8:22": "4向手动",
+        "official:8:23": "—",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:9:8": "●",
+        "official:9:9": "—",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:9:15": "●",
+        "official:9:16": "●",
+        "official:9:17": "●",
+        "official:9:18": "●",
+        "official:9:19": "●",
+        "official:9:20": "●",
+        "official:9:21": "●",
+        "official:9:22": "●",
+        "official:9:23": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "●",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "●",
+        "official:11:0": "●",
+        "official:11:1": "●",
+        "official:11:2": "●",
+        "official:11:3": "6扬声器",
+        "official:11:4": "●",
+        "official:11:5": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    },
+    {
+      "id": "mazda-cx-5-official-5",
+      "name": "2.0L 6AT 2WD 智雅型Pro",
+      "values": {
+        "official:0:0": "4,575x1,842x1,685",
+        "official:0:1": "2700",
+        "official:0:2": "56",
+        "official:0:3": "225/65 R17",
+        "official:1:0": "创驰蓝天高压缩比汽油直喷发动机\n水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "13:1高压缩比发动机\n全新4-2-1发动机排气系统\nDual S-VT双可变气门正时控制系统+电子控制节气门\n燃料精细混合多点式6孔高压缸内直喷技术（二级喷射）\n高燃烧效能发动机独特凹顶活塞+长冲程化设计\n燃烧状态发动机电脑实时控制系统",
+        "official:1:2": "1998",
+        "official:1:3": "114/6,000",
+        "official:1:4": "200/4,000",
+        "official:1:5": "7.15",
+        "official:1:6": "92#以上无铅汽油",
+        "official:1:7": "国Ⅵ",
+        "official:1:8": "风琴式油门踏板 降挡加速开关（Kickdown Switch）",
+        "official:2:0": "六速手自一体\n全速域锁止技术",
+        "official:3:0": "连续化环闭式车身结构 车身冲击力分散引导系统\n车身钢材强度至高1,800MPa 前后超高强度防撞梁 车门内部双防撞杆结构",
+        "official:4:0": "前悬架：麦弗逊式独立悬架+前横向稳定杆\n后悬架：多连杆式独立悬架+后横向稳定杆",
+        "official:4:1": "EPAS 电动助力转向系统",
+        "official:4:2": "通风盘/盘式",
+        "official:4:3": "FWD前驱",
+        "official:5:0": "●",
+        "official:6:0": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "自动",
+        "official:7:11": "○黑曜版",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "四门",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "○黑曜版",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "○黑曜版",
+        "official:8:0": "●",
+        "official:8:1": "—",
+        "official:8:2": "●",
+        "official:8:3": "高级黑色运动内饰",
+        "official:8:4": "金属木纹",
+        "official:8:5": "●真皮",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "※真皮座椅",
+        "official:8:19": "○黑曜版",
+        "official:8:20": "10向电动",
+        "official:8:21": "●",
+        "official:8:22": "4向手动",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:9:8": "●",
+        "official:9:9": "●",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:9:15": "●",
+        "official:9:16": "●",
+        "official:9:17": "●",
+        "official:9:18": "●",
+        "official:9:19": "●",
+        "official:9:20": "●",
+        "official:9:21": "●",
+        "official:9:22": "●",
+        "official:9:23": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "●",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "●",
+        "official:11:0": "●",
+        "official:11:1": "●",
+        "official:11:2": "●",
+        "official:11:3": "6扬声器",
+        "official:11:4": "●",
+        "official:11:5": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/mazda-cx-5.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.changan-mazda.com.cn/"
+    }
+  ],
+  "sourceUrl": "https://www.changan-mazda.com.cn/compare/?name=MAZDA CX-5",
+  "sourceScope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "mazda-current-compare-js",
+      "sha256": "c3aef872f3e179304d93cdce85cbd7868f03ca6b870647d226d9ee3abe7d5fd7"
+    }
+  ]
+}

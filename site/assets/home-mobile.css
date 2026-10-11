@@ -1,0 +1,231 @@
+/* Phone art direction only. Desktop keeps the existing images and layout. */
+@media (max-width:680px) {
+  :root .navbar,
+  :root .navbar.on-hero {
+    position:sticky;
+    min-height:68px;
+    background:#f3f5f2;
+    color:#24382c;
+  }
+  :root .navbar.on-hero .nav-links.open {
+    background:#f3f5f2;
+    color:#24382c;
+  }
+  :root .journey .journey-viewport {
+    height:auto;
+    min-height:0;
+    overflow:hidden;
+    background:#f3f5f2;
+    color:#1e3026;
+  }
+  :root .journey .journey-film {
+    position:relative;
+    inset:auto;
+    width:100%;
+    aspect-ratio:3 / 4;
+    background:#e4e7e6;
+  }
+  :root .journey .journey-poster {
+    object-fit:cover;
+    object-position:100% 50%;
+  }
+  :root .journey .journey-film video {
+    object-fit:contain;
+    background:#17201b;
+  }
+  :root .journey .journey-shade {
+    pointer-events:none;
+    /* Official ad art: keep the car clear and blend into the copy panel. */
+    background:linear-gradient(180deg,
+      #10231dd1 0%,#10231d70 24%,#10231d00 46%,
+      #f3f5f200 80%,#f3f5f278 92%,#f3f5f2 100%);
+  }
+  :root .journey .journey-shade:after { display:none; }
+  :root .journey .journey-copy {
+    position:static;
+    inset:auto;
+    max-width:none;
+    padding:24px;
+    text-align:start;
+  }
+  :root .journey .journey-copy>.eyebrow {
+    position:absolute;
+    inset-block-start:28px;
+    inset-inline-start:24px;
+    inset-inline-end:24px;
+    margin:0;
+    color:#f0f4f0;
+    text-shadow:0 1px 10px #10231d80;
+    font-size:10px;
+    letter-spacing:.1em;
+  }
+  :root .journey .journey-copy h1 {
+    position:absolute;
+    inset-block-start:57px;
+    inset-inline-start:24px;
+    inset-inline-end:24px;
+    margin:0;
+    color:#fff;
+    text-shadow:0 2px 18px #10231d66;
+    font-size:clamp(30px,8.2vw,46px);
+    line-height:1.16;
+    letter-spacing:-.035em;
+  }
+  :root:lang(zh) .journey .journey-copy h1 {
+    font-size:clamp(30px,8.2vw,46px);
+    line-height:1.25;
+    letter-spacing:0;
+  }
+  :root .journey .journey-subtitle {
+    max-width:none;
+    margin:0;
+    color:#56655b;
+    font-size:14px;
+    line-height:1.7;
+  }
+  :root .journey .home-hero-search {
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:8px;
+    margin-top:20px;
+    max-width:none;
+  }
+  :root .journey .home-search-label {
+    font-size:12px;
+    color:#43554a;
+  }
+  :root .journey .home-hero-search input {
+    min-height:48px;
+    border-color:#cbd5cd;
+    border-radius:6px;
+    background:#fff;
+    padding:11px 12px;
+    font-size:16px;
+  }
+  :root .journey .home-hero-search .button {
+    width:auto;
+    min-height:48px;
+    border:1px solid #314c3d;
+    border-radius:6px;
+    padding:11px 14px;
+    font-size:13px;
+  }
+  :root .journey .journey-actions {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px;
+    margin-top:16px;
+  }
+  :root .journey .journey-actions .button {
+    min-width:0;
+    min-height:48px;
+    padding:0 16px;
+    font-size:13px;
+  }
+  :root .journey .journey-actions .quiet-link {
+    display:inline-flex;
+    align-items:center;
+    min-height:48px;
+    padding:0 4px;
+    color:#35513f;
+    font-size:13px;
+  }
+  :root .journey .journey-meta { display:none; }
+  :root .journey .film-control {
+    inset-inline-start:auto;
+    inset-inline-end:18px;
+    inset-block-start:calc(100vw * 4 / 3 - 64px);
+    inset-block-end:auto;
+    width:44px;
+    height:44px;
+    background:#ffffffd9;
+    border-color:#63726766;
+    color:#263b2e;
+  }
+  :root .journey.journey-mobile-film-playing .journey-copy h1,
+  :root .journey.journey-mobile-film-playing .journey-copy>.eyebrow {
+    color:#fff;
+    text-shadow:0 1px 12px #0008;
+  }
+  :root .journey.journey-mobile-film-playing .journey-shade {
+    background:linear-gradient(#101c1970,transparent 40%);
+  }
+
+  /* A portrait company scene above readable, fully clickable guide rows. */
+  .home-supplier-editorial { grid-template-columns:1fr; }
+  .home-supplier-scene {
+    aspect-ratio:3 / 4;
+    min-height:0;
+  }
+  .home-supplier-scene>picture>img {
+    object-position:50% 78%;
+  }
+  .home-supplier-scene .home-desktop-model-label { display:none; }
+  .home-supplier-scene .home-mobile-model-label { display:block; }
+  .home-supplier-editorial-copy { padding:24px 20px; }
+  .home-supplier-editorial-copy h3 { font-size:25px;line-height:1.4; }
+  .home-supplier-editorial-copy .home-supplier-guide-link {
+    gap:10px;
+    padding:18px 0;
+  }
+  .home-supplier-editorial-copy li .home-supplier-guide-link strong {
+    font-size:14px;
+    line-height:1.5;
+  }
+  .home-supplier-editorial-copy li .home-supplier-guide-link p {
+    font-size:13px;
+    line-height:1.75;
+    margin-top:6px;
+  }
+  .home-supplier-editorial-copy .home-supplier-photo-note {
+    font-size:11px;
+    line-height:1.75;
+  }
+
+  /* A separate phone invitation: 3:4 photo, then text and the entry button. */
+  :root .supplier-cta.cinematic-supplier {
+    height:auto;
+    min-height:0;
+    padding:0;
+    background:#f0f3ef;
+    color:#24382c;
+  }
+  :root .cinematic-supplier .supplier-landscape {
+    position:relative;
+    inset:auto;
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:3 / 4;
+    object-fit:cover;
+    object-position:50% 60%;
+  }
+  :root .cinematic-supplier .supplier-veil { display:none; }
+  :root .cinematic-supplier>.eyebrow {
+    margin:26px 24px 0;
+    color:#617065;
+    font-size:11px;
+  }
+  :root .cinematic-supplier>div:not(.supplier-veil) {
+    margin:14px 24px 30px;
+  }
+  :root .cinematic-supplier h2 {
+    font-size:clamp(30px,8.5vw,42px);
+    line-height:1.3;
+    letter-spacing:-.02em;
+  }
+  :root .cinematic-supplier p:not(.eyebrow) {
+    margin:18px 0;
+    color:#58675d;
+    font-size:14px;
+    line-height:1.8;
+  }
+  :root .cinematic-supplier .button {
+    width:100%;
+    min-height:48px;
+    height:auto;
+    margin-top:4px;
+    border-radius:6px;
+    font-size:14px;
+  }
+}

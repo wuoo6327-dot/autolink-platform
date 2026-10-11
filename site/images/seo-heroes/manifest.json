@@ -1,0 +1,1222 @@
+{
+  "aeolus-catalog-1": {
+    "mobile": "/images/seo-heroes/aeolus-catalog-1-640.webp",
+    "source": "/images/official-covers/aeolus-catalog-1.webp",
+    "sourceSHA256": "475d4795160d2f6e2293f9c45a561a0d1924324a2b5d3e9bb4df625d35f95c72"
+  },
+  "aeolus-catalog-2": {
+    "mobile": "/images/seo-heroes/aeolus-catalog-2-640.webp",
+    "source": "/images/official-covers/aeolus-catalog-2.webp",
+    "sourceSHA256": "2ce78006cf79b32b3b3a2f09b9af2ccb47599aee6e641ae231dabddf8145f3a0"
+  },
+  "aeolus-catalog-3": {
+    "mobile": "/images/seo-heroes/aeolus-catalog-3-640.webp",
+    "source": "/images/official-covers/aeolus-catalog-3.webp",
+    "sourceSHA256": "f8a9cb83777db0281f15aa44c62dcb2afef06f8164754fd5965a243d6dfa15e4"
+  },
+  "aeolus-catalog-4": {
+    "mobile": "/images/seo-heroes/aeolus-catalog-4-640.webp",
+    "source": "/images/official-covers/aeolus-catalog-4.webp",
+    "sourceSHA256": "9b62f556880bc0e8006509858ddc84fc00019557dc3da3049ba5f8d934e50f0d"
+  },
+  "aeolus-catalog-5": {
+    "mobile": "/images/seo-heroes/aeolus-catalog-5-640.webp",
+    "source": "/images/official-covers/aeolus-catalog-5.webp",
+    "sourceSHA256": "73484744535c2117182384e6236a6a4cfd7824da6fae2f1ef2caf10a2ab51360"
+  },
+  "aion-catalog-1": {
+    "mobile": "/images/seo-heroes/aion-catalog-1-640.webp",
+    "source": "/images/official-covers/aion-catalog-1.webp",
+    "sourceSHA256": "8de8eff4c8634f2c402b9d295f19f5446ea0a887cf1925d306d2bbf288e224a7"
+  },
+  "aion-catalog-2": {
+    "mobile": "/images/seo-heroes/aion-catalog-2-640.webp",
+    "source": "/images/official-covers/aion-catalog-2.webp",
+    "sourceSHA256": "66ae93bd93b6dc550410810ae9b50cb0bdc065be562dfc7c7169f746790e475b"
+  },
+  "aion-catalog-4": {
+    "mobile": "/images/seo-heroes/aion-catalog-4-640.webp",
+    "source": "/images/official-covers/aion-catalog-4.webp",
+    "sourceSHA256": "496910bdfd3b6e10ad15346b79e7a884c930f67b2eb134a08a26435274af123c"
+  },
+  "aion-catalog-5": {
+    "mobile": "/images/seo-heroes/aion-catalog-5-640.webp",
+    "source": "/images/official-covers/aion-catalog-5.webp",
+    "sourceSHA256": "a0b8c3feddfcdbe720e5e604c019006d521a9d0fbb2987d9a7d6f23fca7a1c90"
+  },
+  "arcfox-catalog-1": {
+    "mobile": "/images/seo-heroes/arcfox-catalog-1-640.webp",
+    "source": "/images/official-covers/arcfox-catalog-1.webp",
+    "sourceSHA256": "20bd7e0265e924ff33abaa26cdd08629f24bc99440e484d6a5dcb84b44c18dcd"
+  },
+  "arcfox-catalog-2": {
+    "mobile": "/images/seo-heroes/arcfox-catalog-2-640.webp",
+    "source": "/images/official-covers/arcfox-catalog-2.webp",
+    "sourceSHA256": "f3b03b8b3919d81e711c9b62ef154de463f0cb5b3e4f160038d4e9e2f23c637b"
+  },
+  "arcfox-catalog-3": {
+    "mobile": "/images/seo-heroes/arcfox-catalog-3-640.webp",
+    "source": "/images/official-covers/arcfox-catalog-3.webp",
+    "sourceSHA256": "0c53c54c4329321a28c0e3a89256fcb531fe5bad6ae9ee3d3cafe33cb605e846"
+  },
+  "arcfox-catalog-4": {
+    "mobile": "/images/seo-heroes/arcfox-catalog-4-640.webp",
+    "source": "/images/official-covers/arcfox-catalog-4.webp",
+    "sourceSHA256": "0687dda3ee8264827256e4004ca54007daea6fb87121480d1a06243a0a0327de"
+  },
+  "arcfox-catalog-5": {
+    "mobile": "/images/seo-heroes/arcfox-catalog-5-640.webp",
+    "source": "/images/official-covers/arcfox-catalog-5.webp",
+    "sourceSHA256": "236e4c98b1532df9d06dd6f619db490c30735c8d5b63fca18d9827169f5686ca"
+  },
+  "avatr-catalog-1": {
+    "mobile": "/images/seo-heroes/avatr-catalog-1-640.webp",
+    "source": "/images/official-covers/avatr-catalog-1.webp",
+    "sourceSHA256": "22c7aa6e58048fe87636d06e1c3e64e978e9be3df78c5cee75c212d465802ce8"
+  },
+  "avatr-catalog-2": {
+    "mobile": "/images/seo-heroes/avatr-catalog-2-640.webp",
+    "source": "/images/official-covers/avatr-catalog-2.webp",
+    "sourceSHA256": "75b1e7c6fa7f09f068552d4486a400f9e1cd3f337980b49b6b5a9d2cf00d0428"
+  },
+  "avatr-catalog-3": {
+    "mobile": "/images/seo-heroes/avatr-catalog-3-640.webp",
+    "source": "/images/official-covers/avatr-catalog-3.webp",
+    "sourceSHA256": "21c90cc18ca96383207594ba7f92b7260fc23c1cdb43b7a6991a3066b72d5855"
+  },
+  "avatr-catalog-4": {
+    "mobile": "/images/seo-heroes/avatr-catalog-4-640.webp",
+    "source": "/images/official-covers/avatr-catalog-4.webp",
+    "sourceSHA256": "604d8283d25b15a6d046ac29a230fc3353a81fe57f11dc8b9577ad1567a694e4"
+  },
+  "beijing-catalog-1": {
+    "mobile": "/images/seo-heroes/beijing-catalog-1-640.webp",
+    "source": "/images/official-covers/beijing-catalog-1.webp",
+    "sourceSHA256": "c16bdc123e93a964748de4db3831a744acc298479a206c2e7e5ba869e7c743f6"
+  },
+  "beijing-catalog-2": {
+    "mobile": "/images/seo-heroes/beijing-catalog-2-640.webp",
+    "source": "/images/official-covers/beijing-catalog-2.webp",
+    "sourceSHA256": "a8933fdc7020073d5b7bb7ccc53322d58296cda96ef2d2a8d50d39c6b31be6b7"
+  },
+  "beijing-catalog-3": {
+    "mobile": "/images/seo-heroes/beijing-catalog-3-640.webp",
+    "source": "/images/official-covers/beijing-catalog-3.webp",
+    "sourceSHA256": "e391f17faf127fec2e247ce3b327e01dff720a40a85be4a1ba1c7573be713959"
+  },
+  "beijing-catalog-4": {
+    "mobile": "/images/seo-heroes/beijing-catalog-4-640.webp",
+    "source": "/images/official-covers/beijing-catalog-4.webp",
+    "sourceSHA256": "3c2cea1d74e19b6df323531400e0a2b48b8670ea97cbb23308c55116bf69670e"
+  },
+  "beijing-catalog-5": {
+    "mobile": "/images/seo-heroes/beijing-catalog-5-640.webp",
+    "source": "/images/official-covers/beijing-catalog-5.webp",
+    "sourceSHA256": "4d44cfc1f5967f3089d3256b4c1989ac58b8c8263d202e46c3069bbd2a9a54e6"
+  },
+  "beijing-hyundai-catalog-1": {
+    "mobile": "/images/seo-heroes/beijing-hyundai-catalog-1-640.webp",
+    "source": "/images/official-covers/beijing-hyundai-catalog-1.webp",
+    "sourceSHA256": "25c6fada5a259786675096077fd0a3e193d7521f8c2f38ff69c3418db763b249"
+  },
+  "beijing-hyundai-catalog-2": {
+    "mobile": "/images/seo-heroes/beijing-hyundai-catalog-2-640.webp",
+    "source": "/images/official-covers/beijing-hyundai-catalog-2.webp",
+    "sourceSHA256": "c2353c05377ed884ae9db328aaa87d38099c32a70c53cefb9eb4aaee67154a73"
+  },
+  "beijing-hyundai-catalog-3": {
+    "mobile": "/images/seo-heroes/beijing-hyundai-catalog-3-640.webp",
+    "source": "/images/official-covers/beijing-hyundai-catalog-3.webp",
+    "sourceSHA256": "d6f69947e44492c5ca225dafecdf6ed814216d014a30763567732b0c15d7a431"
+  },
+  "beijing-hyundai-catalog-4": {
+    "mobile": "/images/seo-heroes/beijing-hyundai-catalog-4-640.webp",
+    "source": "/images/official-covers/beijing-hyundai-catalog-4.webp",
+    "sourceSHA256": "fc8903859f49d9b9c18dbdb8b87ba4f297ca895dff61167fdc4d1e023722e1f9"
+  },
+  "beijing-hyundai-catalog-5": {
+    "mobile": "/images/seo-heroes/beijing-hyundai-catalog-5-640.webp",
+    "source": "/images/official-covers/beijing-hyundai-catalog-5.webp",
+    "sourceSHA256": "382451fff7b81edb31f823eec5802693f710e169e144e1a3a1e5907936889930"
+  },
+  "beijing-off-road-catalog-1": {
+    "mobile": "/images/seo-heroes/beijing-off-road-catalog-1-640.webp",
+    "source": "/images/official-covers/beijing-off-road-catalog-1.webp",
+    "sourceSHA256": "c2d88f74d6e686dc997d7c03c8cff335a683dd1c840cbba0dab82d7a18278a91"
+  },
+  "beijing-off-road-catalog-2": {
+    "mobile": "/images/seo-heroes/beijing-off-road-catalog-2-640.webp",
+    "source": "/images/official-covers/beijing-off-road-catalog-2.webp",
+    "sourceSHA256": "38cdd153fb71259f33667a9dd95e2bf97cb5a6e325ffde0931ef781596981503"
+  },
+  "beijing-off-road-catalog-3": {
+    "mobile": "/images/seo-heroes/beijing-off-road-catalog-3-640.webp",
+    "source": "/images/official-covers/beijing-off-road-catalog-3.webp",
+    "sourceSHA256": "541ae4fd690e80c23c70c8944ca942840686f66485e21c208ff054b2e0e8d658"
+  },
+  "beijing-off-road-catalog-4": {
+    "mobile": "/images/seo-heroes/beijing-off-road-catalog-4-640.webp",
+    "source": "/images/official-covers/beijing-off-road-catalog-4.webp",
+    "sourceSHA256": "6dea3b291c862573ec2ac0a5d60ffa1688e5fd2a7c8b07c0d788da629e011d65"
+  },
+  "bestune-pony": {
+    "mobile": "/images/seo-heroes/bestune-pony-640.webp",
+    "source": "/images/catalog-update-20261011/bestune-pony-v3.jpg",
+    "sourceSHA256": "dc4c14406abeae5b5e657e5a09d8b387d0e30dcf2997da8b49eaed21e3cc3025"
+  },
+  "bmw-brilliance-i3": {
+    "mobile": "/images/seo-heroes/bmw-brilliance-i3-640.webp",
+    "source": "/images/catalog-update-20261011/bmw-brilliance-i3.jpg",
+    "sourceSHA256": "6452427866ce812d976c36a3296f2c05705f091c15f4eac7fb975c194e31aea0"
+  },
+  "bmw-brilliance-i5": {
+    "mobile": "/images/seo-heroes/bmw-brilliance-i5-640.webp",
+    "source": "/images/catalog-update-20261011/bmw-brilliance-i5.jpg",
+    "sourceSHA256": "db0a8e2e172a87817072c00df9f3b6898b787dd6c5adfef8853bf33532c8a83f"
+  },
+  "bmw-brilliance-x3": {
+    "mobile": "/images/seo-heroes/bmw-brilliance-x3-640.webp",
+    "source": "/images/catalog-update-20261011/bmw-brilliance-x3.jpg",
+    "sourceSHA256": "4134b0680ca09c6438f632a8bdda6f960fed64b1c0464066edc10f7964e9554d"
+  },
+  "bmw-brilliance-x5l": {
+    "mobile": "/images/seo-heroes/bmw-brilliance-x5l-640.webp",
+    "source": "/images/catalog-update-20261011/bmw-brilliance-x5l.jpg",
+    "sourceSHA256": "63487d7f3847b37b636585b590c1d8e9c57cc1c10ccf8aa7d23e8e4e7953b9d7"
+  },
+  "byd-catalog-1": {
+    "mobile": "/images/seo-heroes/byd-catalog-1-640.webp",
+    "source": "/images/official-covers/byd-catalog-1.webp",
+    "sourceSHA256": "bab0d330b3cf1561fa78e72168cf96a1c950f581bb02987337a7b59171654507"
+  },
+  "byd-catalog-2": {
+    "mobile": "/images/seo-heroes/byd-catalog-2-640.webp",
+    "source": "/images/official-covers/byd-catalog-2.webp",
+    "sourceSHA256": "7c74ecc88b22c15a5da03087d9825669f01782e85218ff0d55130f6bdfe812bf"
+  },
+  "byd-catalog-3": {
+    "mobile": "/images/seo-heroes/byd-catalog-3-640.webp",
+    "source": "/images/official-covers/byd-catalog-3.webp",
+    "sourceSHA256": "b10ef79933549238714dd1100f9abf1836e3fc147e71c38af947ccb4ef44569d"
+  },
+  "byd-catalog-5": {
+    "mobile": "/images/seo-heroes/byd-catalog-5-640.webp",
+    "source": "/images/official-covers/byd-catalog-5.webp",
+    "sourceSHA256": "f7ee37a6549d53a05da1c2366aeff29df6d3806a60cd491ce106cd96a6deb823"
+  },
+  "byd-han-2026": {
+    "mobile": "/images/seo-heroes/byd-han-2026-640.webp",
+    "source": "/images/byd-han.jpg",
+    "sourceSHA256": "56a0b034a5e75291522eafc463138be89336569335efb127e78e9375d12bd664"
+  },
+  "byd-seal-06-dm-i": {
+    "mobile": "/images/seo-heroes/byd-seal-06-dm-i-640.webp",
+    "source": "/images/catalog-update-20261011/byd-seal-06-dm-i.png",
+    "sourceSHA256": "db8d45bfacbe91c00e76e7772affdb05e11e39d9b82c1146d86a2026f0e0adbe"
+  },
+  "byd-seal-07-ev": {
+    "mobile": "/images/seo-heroes/byd-seal-07-ev-640.webp",
+    "source": "/images/catalog-update-20261011/byd-seal-07-ev.jpg",
+    "sourceSHA256": "83f3d1b4e8c6d593b90089d133e545b46d200fecbdf53886c4cc196aabb057fd"
+  },
+  "byd-sealion-7-2026": {
+    "mobile": "/images/seo-heroes/byd-sealion-7-2026-640.webp",
+    "source": "/images/byd-sealion-7.jpg",
+    "sourceSHA256": "cf9d4e1580102a4dd4893ded9211b15ba77975278d6c748bdbb100d22a1a1565"
+  },
+  "byd-shark": {
+    "mobile": "/images/seo-heroes/byd-shark-640.webp",
+    "source": "/images/catalog-update-20261011/byd-shark.jpg",
+    "sourceSHA256": "d491865ba1be23651444800b01bd05b6ed9c6074d78476473b66cd262eb1188a"
+  },
+  "byd-song-plus-2026": {
+    "mobile": "/images/seo-heroes/byd-song-plus-2026-640.webp",
+    "source": "/images/official-covers/byd-catalog-4.webp",
+    "sourceSHA256": "7d20b7f79610ffe5b56c69a95de1bbb4e78f25f2d2813ec228cff9431719723b"
+  },
+  "changan-catalog-1": {
+    "mobile": "/images/seo-heroes/changan-catalog-1-640.webp",
+    "source": "/images/official-covers/changan-catalog-1.webp",
+    "sourceSHA256": "ce65edc6b63cb2d3d5775ffd85d41228c2a3991d7d02193a90f5a245ca58275f"
+  },
+  "changan-catalog-2": {
+    "mobile": "/images/seo-heroes/changan-catalog-2-640.webp",
+    "source": "/images/official-covers/changan-catalog-2.webp",
+    "sourceSHA256": "7f27ff484c7a43443ce2475a87aaefbe68972e135f5bb03467a38f08dc097184"
+  },
+  "changan-catalog-3": {
+    "mobile": "/images/seo-heroes/changan-catalog-3-640.webp",
+    "source": "/images/official-covers/changan-catalog-3.webp",
+    "sourceSHA256": "bb8a6bfe588fad13dd27d00f53d8abe378c6ab92c384dea91bc8766ded1a3c9d"
+  },
+  "changan-catalog-5": {
+    "mobile": "/images/seo-heroes/changan-catalog-5-640.webp",
+    "source": "/images/official-covers/changan-catalog-5.webp",
+    "sourceSHA256": "39dfc038a69d7582c49869964e4f1d6982829e01bdab2f4e52a74019610f9aa6"
+  },
+  "changan-uni-k-2026": {
+    "mobile": "/images/seo-heroes/changan-uni-k-2026-640.webp",
+    "source": "/images/official-covers/changan-catalog-4.webp",
+    "sourceSHA256": "2543decbdb4c1a4fa29d549302a9b4083e8862313f72794e88b615933fe84f15"
+  },
+  "chery-catalog-1": {
+    "mobile": "/images/seo-heroes/chery-catalog-1-640.webp",
+    "source": "/images/official-covers/chery-catalog-1.webp",
+    "sourceSHA256": "3a71a081cd0a20d5662487140a9ddddb036d2dd4f858048d5c1a8fcacbf08450"
+  },
+  "chery-catalog-2": {
+    "mobile": "/images/seo-heroes/chery-catalog-2-640.webp",
+    "source": "/images/official-covers/chery-catalog-2.webp",
+    "sourceSHA256": "52c5989b8806f701dfadfb72b424b573362fca6aef1b1ef4304265108162daf4"
+  },
+  "chery-catalog-3": {
+    "mobile": "/images/seo-heroes/chery-catalog-3-640.webp",
+    "source": "/images/official-covers/chery-catalog-3.webp",
+    "sourceSHA256": "67622e8f2814a21a262e3b09783c0d2431e8f925b88868a8043e28b28812ae51"
+  },
+  "chery-catalog-4": {
+    "mobile": "/images/seo-heroes/chery-catalog-4-640.webp",
+    "source": "/images/official-covers/chery-catalog-4.webp",
+    "sourceSHA256": "c6e95538d5a723d3cd596e413373bba4b058817c70388c8b0ff6f0a39e6d2798"
+  },
+  "deepal-catalog-1": {
+    "mobile": "/images/seo-heroes/deepal-catalog-1-640.webp",
+    "source": "/images/official-covers/deepal-catalog-1.webp",
+    "sourceSHA256": "d4c31816119cfc306d024819f41c1837dd31f9d95330dcc1cb784d948221e63b"
+  },
+  "deepal-catalog-3": {
+    "mobile": "/images/seo-heroes/deepal-catalog-3-640.webp",
+    "source": "/images/official-covers/deepal-catalog-3.webp",
+    "sourceSHA256": "cec036922e63255d1f0345111b939ca9d536185b2c729012e619bac60185633e"
+  },
+  "deepal-catalog-4": {
+    "mobile": "/images/seo-heroes/deepal-catalog-4-640.webp",
+    "source": "/images/official-covers/deepal-catalog-4.webp",
+    "sourceSHA256": "e1310757b7209e9294cd922f9dd5f2ab1ecef46bd8cf8471f163d15e7caf85f7"
+  },
+  "deepal-catalog-5": {
+    "mobile": "/images/seo-heroes/deepal-catalog-5-640.webp",
+    "source": "/images/official-covers/deepal-catalog-5.webp",
+    "sourceSHA256": "c938a29f0656697d9efb659e9d72c99384ae96b5aa0dec1a54fb3bef8dae321f"
+  },
+  "deepal-s07-2026": {
+    "mobile": "/images/seo-heroes/deepal-s07-2026-640.webp",
+    "source": "/images/official-covers/deepal-catalog-2.webp",
+    "sourceSHA256": "25cef39d2fb463c79e2c4d6ed704e34280d9cbab7fcb4dbc5b77af8cab64c124"
+  },
+  "denza-catalog-2": {
+    "mobile": "/images/seo-heroes/denza-catalog-2-640.webp",
+    "source": "/images/official-covers/denza-catalog-2.webp",
+    "sourceSHA256": "4ddacae4bb1fe26b5a1f3a0a961c1426eae0f2ed80fb5a61366f5e8f73757804"
+  },
+  "denza-catalog-3": {
+    "mobile": "/images/seo-heroes/denza-catalog-3-640.webp",
+    "source": "/images/official-covers/denza-catalog-3.webp",
+    "sourceSHA256": "fcdc39d74c3853925edd275e6e9351cc6339cb690b3937398bb4e3203f4011ca"
+  },
+  "denza-catalog-4": {
+    "mobile": "/images/seo-heroes/denza-catalog-4-640.webp",
+    "source": "/images/official-covers/denza-catalog-4.webp",
+    "sourceSHA256": "6ecf55a937ecc8a2c6e2ccfabc496c3e924cf744c9f9e8869780f2662b0d974b"
+  },
+  "denza-catalog-5": {
+    "mobile": "/images/seo-heroes/denza-catalog-5-640.webp",
+    "source": "/images/official-covers/denza-catalog-5.webp",
+    "sourceSHA256": "3f872398ba87dc3ec2f7fc087d2d0a41ba1da6d2ad218559dad63c3c52d0cf86"
+  },
+  "denza-d9-2026": {
+    "mobile": "/images/seo-heroes/denza-d9-2026-640.webp",
+    "source": "/images/official-covers/denza-catalog-1.webp",
+    "sourceSHA256": "af7d3f9168ed68f121f25e1beada5c9b5d571161ff247bea42cb0c71db74e570"
+  },
+  "denza-n9": {
+    "mobile": "/images/seo-heroes/denza-n9-640.webp",
+    "source": "/images/catalog-update-20261011/denza-n9.jpg",
+    "sourceSHA256": "a125ee5d840c7ae7db67c092dd6e404aa3354ca5558093cae7b945504f94c1f6"
+  },
+  "dongfeng-citroen-catalog-1": {
+    "mobile": "/images/seo-heroes/dongfeng-citroen-catalog-1-640.webp",
+    "source": "/images/official-covers/dongfeng-citroen-catalog-1.webp",
+    "sourceSHA256": "3c6db9c680e0f31b127017d173df89c67439baafb9b5e3ab982f5116e1bf0cef"
+  },
+  "dongfeng-citroen-catalog-2": {
+    "mobile": "/images/seo-heroes/dongfeng-citroen-catalog-2-640.webp",
+    "source": "/images/official-covers/dongfeng-citroen-catalog-2.webp",
+    "sourceSHA256": "3dcdf5aa7f7ac841bcbb5fab64e2fa01a10f6a0713e939776a7213cdd215847f"
+  },
+  "dongfeng-citroen-catalog-3": {
+    "mobile": "/images/seo-heroes/dongfeng-citroen-catalog-3-640.webp",
+    "source": "/images/official-covers/dongfeng-citroen-catalog-3.webp",
+    "sourceSHA256": "1f52c31d26a1b5b46c99c44222f76a234dd05bea08251fb7a2339a0ad9267c11"
+  },
+  "dongfeng-honda-catalog-1": {
+    "mobile": "/images/seo-heroes/dongfeng-honda-catalog-1-640.webp",
+    "source": "/images/official-covers/dongfeng-honda-catalog-1.webp",
+    "sourceSHA256": "d32c9d5a5b73df0d0a95678059d888830bae4b4baa5a2745e2987ad52432b2ae"
+  },
+  "dongfeng-honda-catalog-2": {
+    "mobile": "/images/seo-heroes/dongfeng-honda-catalog-2-640.webp",
+    "source": "/images/official-covers/dongfeng-honda-catalog-2.webp",
+    "sourceSHA256": "9ed7da9b18edb4f2f37b4cbf03d7593d6c3e755e4c72a05aaed795c95338bfdb"
+  },
+  "dongfeng-honda-catalog-3": {
+    "mobile": "/images/seo-heroes/dongfeng-honda-catalog-3-640.webp",
+    "source": "/images/official-covers/dongfeng-honda-catalog-3.webp",
+    "sourceSHA256": "eca4a9e7054ab8d1f14273ff325eb4548577815ea25f385258a8880db992f029"
+  },
+  "dongfeng-honda-catalog-5": {
+    "mobile": "/images/seo-heroes/dongfeng-honda-catalog-5-640.webp",
+    "source": "/images/official-covers/dongfeng-honda-catalog-5.webp",
+    "sourceSHA256": "b24dd0ba38f69f7e71093c513d5cb686bd60809565210ed2ac496eb8c399abed"
+  },
+  "dongfeng-honda-xr-v": {
+    "mobile": "/images/seo-heroes/dongfeng-honda-xr-v-640.webp",
+    "source": "/images/catalog-update-20261011/dongfeng-honda-xr-v-v2.jpg",
+    "sourceSHA256": "604a83f379c4463f8c93eaa315c71198197db71eb292e59eec448df81fb25762"
+  },
+  "dongfeng-nissan-n6": {
+    "mobile": "/images/seo-heroes/dongfeng-nissan-n6-640.webp",
+    "source": "/images/catalog-update-20261011/dongfeng-nissan-n6.jpg",
+    "sourceSHA256": "754451e1dbf0d7c083b15e82035f847b3c9ede0fbd64fd2b65f2c20fe8801531"
+  },
+  "dongfeng-nissan-nx8": {
+    "mobile": "/images/seo-heroes/dongfeng-nissan-nx8-640.webp",
+    "source": "/images/catalog-update-20261011/dongfeng-nissan-nx8.jpg",
+    "sourceSHA256": "28deef5b93dd45316395ea438ea5af978e96981b0d2d1adf0b22e6ee7d283acf"
+  },
+  "dongfeng-peugeot-catalog-1": {
+    "mobile": "/images/seo-heroes/dongfeng-peugeot-catalog-1-640.webp",
+    "source": "/images/official-covers/dongfeng-peugeot-catalog-1.webp",
+    "sourceSHA256": "6dd10e90be2707f07f2fc47c412da988d901891a151e240d9220a19c5d433d26"
+  },
+  "dongfeng-peugeot-catalog-2": {
+    "mobile": "/images/seo-heroes/dongfeng-peugeot-catalog-2-640.webp",
+    "source": "/images/official-covers/dongfeng-peugeot-catalog-2.webp",
+    "sourceSHA256": "f7d6aaa5afd56b186bab0c3fac8fd0525225555836355b7125850d8a57f4e9cd"
+  },
+  "dongfeng-peugeot-catalog-3": {
+    "mobile": "/images/seo-heroes/dongfeng-peugeot-catalog-3-640.webp",
+    "source": "/images/official-covers/dongfeng-peugeot-catalog-3.webp",
+    "sourceSHA256": "2ad809388a097184c64d9467ad4fca30c9b89d5eb5ca5b3362ad8828b2ef7f62"
+  },
+  "dongfeng-peugeot-catalog-4": {
+    "mobile": "/images/seo-heroes/dongfeng-peugeot-catalog-4-640.webp",
+    "source": "/images/official-covers/dongfeng-peugeot-catalog-4.webp",
+    "sourceSHA256": "df923d808ef89da78a5919b2d10a92c46d28839ad5f8e12d59414fec8960b902"
+  },
+  "dongfeng-peugeot-catalog-5": {
+    "mobile": "/images/seo-heroes/dongfeng-peugeot-catalog-5-640.webp",
+    "source": "/images/official-covers/dongfeng-peugeot-catalog-5.webp",
+    "sourceSHA256": "477cb85e76509a3d032769d46c6d5ef997b589075a250b4bb096007e6f80c364"
+  },
+  "exeed-catalog-1": {
+    "mobile": "/images/seo-heroes/exeed-catalog-1-640.webp",
+    "source": "/images/official-covers/exeed-catalog-1.webp",
+    "sourceSHA256": "8c88f655efcaf461c8947fa5f319b74d57906993139af9e4f64d56efe7b9f806"
+  },
+  "exeed-catalog-2": {
+    "mobile": "/images/seo-heroes/exeed-catalog-2-640.webp",
+    "source": "/images/official-covers/exeed-catalog-2.webp",
+    "sourceSHA256": "8b3e1bb5282fb7683a1014d354f62e6313e63ba17407f4f97d11816d83e5588b"
+  },
+  "exeed-catalog-3": {
+    "mobile": "/images/seo-heroes/exeed-catalog-3-640.webp",
+    "source": "/images/official-covers/exeed-catalog-3.webp",
+    "sourceSHA256": "0315aba2728d7497031541538619f11c80634bdaa053c5083c924817c5567bc6"
+  },
+  "exeed-catalog-4": {
+    "mobile": "/images/seo-heroes/exeed-catalog-4-640.webp",
+    "source": "/images/official-covers/exeed-catalog-4.webp",
+    "sourceSHA256": "7c0cca7bc52224b52f0cad0f33a5f2f35b50e49d0d3d67161f5d9a13c0856fbe"
+  },
+  "exeed-catalog-5": {
+    "mobile": "/images/seo-heroes/exeed-catalog-5-640.webp",
+    "source": "/images/official-covers/exeed-catalog-5.webp",
+    "sourceSHA256": "e314c89738a04249aa0f573c1ff383b186ead785d2bfd09dca262dddb5df6f98"
+  },
+  "fangchengbao-catalog-1": {
+    "mobile": "/images/seo-heroes/fangchengbao-catalog-1-640.webp",
+    "source": "/images/official-covers/fangchengbao-catalog-1.webp",
+    "sourceSHA256": "3de9ebb4e6387db2b3f073b90805cf9715e78c8456b3e64d5bddf6fc9ca1ef63"
+  },
+  "fangchengbao-catalog-2": {
+    "mobile": "/images/seo-heroes/fangchengbao-catalog-2-640.webp",
+    "source": "/images/official-covers/fangchengbao-catalog-2.webp",
+    "sourceSHA256": "d1b72e84a17cb0d0aeca61c59cdbba6a8836ea314113ad93de5811167c1b7b15"
+  },
+  "fangchengbao-catalog-3": {
+    "mobile": "/images/seo-heroes/fangchengbao-catalog-3-640.webp",
+    "source": "/images/official-covers/fangchengbao-catalog-3.webp",
+    "sourceSHA256": "3a94769b619140882aa820da7c951363e42ec6c58dcfec196320fc82849be35c"
+  },
+  "fangchengbao-tai7-2026": {
+    "mobile": "/images/seo-heroes/fangchengbao-tai7-2026-640.webp",
+    "source": "/images/official-covers/fangchengbao-catalog-4.webp",
+    "sourceSHA256": "424ddc1966058be0a9ad4af82a464616ca2ff2ef486175d531239edcab618534"
+  },
+  "faw-audi-a3": {
+    "mobile": "/images/seo-heroes/faw-audi-a3-640.webp",
+    "source": "/images/catalog-update-20261011/faw-audi-a3.png",
+    "sourceSHA256": "2f9678964546f983815f37ab994c922b112bd8a37ebf8a73c76327348c17e57f"
+  },
+  "faw-audi-a6l": {
+    "mobile": "/images/seo-heroes/faw-audi-a6l-640.webp",
+    "source": "/images/catalog-update-20261011/faw-audi-a6l-v2.jpg",
+    "sourceSHA256": "397833eee9d90a0457cb6786dd97bb892f8db203768cf16937e038b76d8bcb1f"
+  },
+  "faw-audi-q5l": {
+    "mobile": "/images/seo-heroes/faw-audi-q5l-640.webp",
+    "source": "/images/catalog-update-20261011/faw-audi-q5l.jpg",
+    "sourceSHA256": "9e33361dd673cbeb55b9aca1ee72a17a3bc7d23158cb842420e78241d4c12c6a"
+  },
+  "faw-volkswagen-catalog-1": {
+    "mobile": "/images/seo-heroes/faw-volkswagen-catalog-1-640.webp",
+    "source": "/images/official-covers/faw-volkswagen-catalog-1.webp",
+    "sourceSHA256": "bbacf4694e94e80f8b9e3df0df104eae3f578e9005b2c8fa4c511dd7311857c9"
+  },
+  "faw-volkswagen-catalog-2": {
+    "mobile": "/images/seo-heroes/faw-volkswagen-catalog-2-640.webp",
+    "source": "/images/official-covers/faw-volkswagen-catalog-2.webp",
+    "sourceSHA256": "b06605e4fbe38c87b400799825af396b9dfb07d7cb6d055cf4f81200e189e0c9"
+  },
+  "faw-volkswagen-catalog-3": {
+    "mobile": "/images/seo-heroes/faw-volkswagen-catalog-3-640.webp",
+    "source": "/images/official-covers/faw-volkswagen-catalog-3.webp",
+    "sourceSHA256": "eeae0cc9749c65cd427757bbdc6d91a8f476d6662a1de4ad209abcdca22426a2"
+  },
+  "faw-volkswagen-catalog-4": {
+    "mobile": "/images/seo-heroes/faw-volkswagen-catalog-4-640.webp",
+    "source": "/images/official-covers/faw-volkswagen-catalog-4.webp",
+    "sourceSHA256": "68885175e778d596b95e13d173c162b53bfa20916a53248e908b160cc65f4e06"
+  },
+  "faw-volkswagen-catalog-5": {
+    "mobile": "/images/seo-heroes/faw-volkswagen-catalog-5-640.webp",
+    "source": "/images/official-covers/faw-volkswagen-catalog-5.webp",
+    "sourceSHA256": "064441a6803be1645e140306a493795bd9e0470b2b3d0a7ebdc7ab8c35044b54"
+  },
+  "faw-volkswagen-t-roc": {
+    "mobile": "/images/seo-heroes/faw-volkswagen-t-roc-640.webp",
+    "source": "/images/catalog-update-20261011/faw-volkswagen-t-roc.png",
+    "sourceSHA256": "8d6eb6dcc9d91577bc31968195f49d8d90b2e124247dc01bb8f3dcd37221e6b9"
+  },
+  "forthing-catalog-1": {
+    "mobile": "/images/seo-heroes/forthing-catalog-1-640.webp",
+    "source": "/images/official-covers/forthing-catalog-1.webp",
+    "sourceSHA256": "284be78f3da5616aebcd17c672746bc0073f88518c7ff56ef2f6dd8bc321a1ef"
+  },
+  "forthing-catalog-2": {
+    "mobile": "/images/seo-heroes/forthing-catalog-2-640.webp",
+    "source": "/images/official-covers/forthing-catalog-2.webp",
+    "sourceSHA256": "d821ee9495e7bc2818edb76365aafcf389d4111ae30e4c565b0ee6e89555603e"
+  },
+  "forthing-catalog-3": {
+    "mobile": "/images/seo-heroes/forthing-catalog-3-640.webp",
+    "source": "/images/official-covers/forthing-catalog-3.webp",
+    "sourceSHA256": "f411b166f59f9cad4a0f4503be344941ca07d5ee63c3903b09fa635c6d891226"
+  },
+  "forthing-catalog-5": {
+    "mobile": "/images/seo-heroes/forthing-catalog-5-640.webp",
+    "source": "/images/official-covers/forthing-catalog-5.webp",
+    "sourceSHA256": "691b80779493ef78164367cc652d6d003aff22ab61f73a5ff2927c7ac86121a3"
+  },
+  "gac-aion-v-2026": {
+    "mobile": "/images/seo-heroes/gac-aion-v-2026-640.webp",
+    "source": "/images/official-covers/aion-catalog-3.webp",
+    "sourceSHA256": "afc13315db3740391c0945eea09d29ff2ccdd3ae51c6913709f66f20a758eb37"
+  },
+  "gac-gs8-2026": {
+    "mobile": "/images/seo-heroes/gac-gs8-2026-640.webp",
+    "source": "/images/official-covers/trumpchi-catalog-3.webp",
+    "sourceSHA256": "5fb010346a273920997377599b1d770b84774a5478ba72d89caafffe7a417867"
+  },
+  "gac-toyota-catalog-1": {
+    "mobile": "/images/seo-heroes/gac-toyota-catalog-1-640.webp",
+    "source": "/images/official-covers/gac-toyota-catalog-1.webp",
+    "sourceSHA256": "c9b0c4f26c5236d3be9ee81bbec145d2307beacc31c0a8b974daa5d0d27a8ffa"
+  },
+  "gac-toyota-catalog-2": {
+    "mobile": "/images/seo-heroes/gac-toyota-catalog-2-640.webp",
+    "source": "/images/official-covers/gac-toyota-catalog-2.webp",
+    "sourceSHA256": "e79c6efa59f857773466e0cb9b82b3de5160e3742a7d1ec264e26471f35bd6e1"
+  },
+  "gac-toyota-catalog-3": {
+    "mobile": "/images/seo-heroes/gac-toyota-catalog-3-640.webp",
+    "source": "/images/official-covers/gac-toyota-catalog-3.webp",
+    "sourceSHA256": "5f9ce76af63cc3f661386a76b030a5512d03c8e8b9cec0dc7c4cc55208a2fd99"
+  },
+  "gac-toyota-catalog-4": {
+    "mobile": "/images/seo-heroes/gac-toyota-catalog-4-640.webp",
+    "source": "/images/official-covers/gac-toyota-catalog-4.webp",
+    "sourceSHA256": "044b27dff204770a992bf6134610d1928961b0ea86178580cb52da6eb3c93da7"
+  },
+  "gac-toyota-catalog-5": {
+    "mobile": "/images/seo-heroes/gac-toyota-catalog-5-640.webp",
+    "source": "/images/official-covers/gac-toyota-catalog-5.webp",
+    "sourceSHA256": "f5f6db288c7fd92e8aee1948ed37be4a7c7b9a4e8a8ba1fa8c5e4352dc67d4d6"
+  },
+  "galaxy-a7": {
+    "mobile": "/images/seo-heroes/galaxy-a7-640.webp",
+    "source": "/images/catalog-update-20261011/galaxy-a7.jpg",
+    "sourceSHA256": "e5eb9b7b8ea235e708678ad398558543e4fd68da4f2180bbdc9976d710543737"
+  },
+  "galaxy-catalog-1": {
+    "mobile": "/images/seo-heroes/galaxy-catalog-1-640.webp",
+    "source": "/images/official-covers/galaxy-catalog-1.webp",
+    "sourceSHA256": "87820894121eac448ebc0936b9c66d357e610f3aea36888716388b548e1d3273"
+  },
+  "galaxy-catalog-2": {
+    "mobile": "/images/seo-heroes/galaxy-catalog-2-640.webp",
+    "source": "/images/official-covers/galaxy-catalog-2.webp",
+    "sourceSHA256": "0c03944a54bad245821d634fc268ff0b491cccb7ea7b214dba7bedb2addc7a28"
+  },
+  "galaxy-catalog-3": {
+    "mobile": "/images/seo-heroes/galaxy-catalog-3-640.webp",
+    "source": "/images/official-covers/galaxy-catalog-3.webp",
+    "sourceSHA256": "3632f47a107693c55d2cdc403dc451e19d196e71b4a2ef018786e856f11e9b7c"
+  },
+  "galaxy-catalog-4": {
+    "mobile": "/images/seo-heroes/galaxy-catalog-4-640.webp",
+    "source": "/images/official-covers/galaxy-catalog-4.webp",
+    "sourceSHA256": "2201402f69608e001725674531a90407ce9232fd94ec7dad85bd2f75ccd22d12"
+  },
+  "galaxy-catalog-5": {
+    "mobile": "/images/seo-heroes/galaxy-catalog-5-640.webp",
+    "source": "/images/official-covers/galaxy-catalog-5.webp",
+    "sourceSHA256": "bc11cc26daaabc9eca6f68be30e976eda4276fc843292cef400c6817cb0d0369"
+  },
+  "galaxy-zhanjian-700": {
+    "mobile": "/images/seo-heroes/galaxy-zhanjian-700-640.webp",
+    "source": "/images/catalog-update-20261011/galaxy-zhanjian-700.jpg",
+    "sourceSHA256": "4c1dd43578406ddab08f560f90ff390196349efd33a83b2d5cddc1c2552f4069"
+  },
+  "geely-catalog-2": {
+    "mobile": "/images/seo-heroes/geely-catalog-2-640.webp",
+    "source": "/images/official-covers/geely-catalog-2.webp",
+    "sourceSHA256": "1c1c3fabd3ebefe484d614cddb56267a075491b5e44bc38d4e25cb94fb976e08"
+  },
+  "geely-catalog-3": {
+    "mobile": "/images/seo-heroes/geely-catalog-3-640.webp",
+    "source": "/images/official-covers/geely-catalog-3.webp",
+    "sourceSHA256": "ac9c114ed2299806b9306130c671935abe97bb027b2a4936e9af05c4dae881ec"
+  },
+  "geely-catalog-4": {
+    "mobile": "/images/seo-heroes/geely-catalog-4-640.webp",
+    "source": "/images/official-covers/geely-catalog-4.webp",
+    "sourceSHA256": "02b68b04af8495d25080f620717e6188f28f99ab7f1e21363d0f19b613152e10"
+  },
+  "geely-catalog-5": {
+    "mobile": "/images/seo-heroes/geely-catalog-5-640.webp",
+    "source": "/images/official-covers/geely-catalog-5.webp",
+    "sourceSHA256": "f0847caabd8a0da753acc2b1293f5a260428e108c58799a87233ea86a0765b56"
+  },
+  "geely-galaxy-m9-2026": {
+    "mobile": "/images/seo-heroes/geely-galaxy-m9-2026-640.webp",
+    "source": "/images/geely-galaxy-m9.jpg",
+    "sourceSHA256": "055d65bac03d9781ec31eb588adfd9afa857d59453533c4d5174a54e58cfc6e0"
+  },
+  "geely-monjaro-2026": {
+    "mobile": "/images/seo-heroes/geely-monjaro-2026-640.webp",
+    "source": "/images/official-covers/geely-catalog-1.webp",
+    "sourceSHA256": "4867dc9aec42ad2c17b517c8dbd473206bc93d89a2d1541c3f4d8696749f2fe5"
+  },
+  "geely-xingyuan-2026": {
+    "mobile": "/images/seo-heroes/geely-xingyuan-2026-640.webp",
+    "source": "/images/geely-xingyuan.jpg",
+    "sourceSHA256": "eb0d5aadf7462b2bfdd214473587c7d081bf09a3c046004a9c0b6555d3d70fa0"
+  },
+  "haval-catalog-1": {
+    "mobile": "/images/seo-heroes/haval-catalog-1-640.webp",
+    "source": "/images/official-covers/haval-catalog-1.webp",
+    "sourceSHA256": "4ac032881f05acabcec892ecef4c0490ea5795cbe30f28f3541e1bdb5d9d3aea"
+  },
+  "haval-catalog-2": {
+    "mobile": "/images/seo-heroes/haval-catalog-2-640.webp",
+    "source": "/images/official-covers/haval-catalog-2.webp",
+    "sourceSHA256": "2653f51a7fd8db3cb9131c6eaf4640f637a5ba673f2906eb02a8dc16d9895e07"
+  },
+  "haval-catalog-3": {
+    "mobile": "/images/seo-heroes/haval-catalog-3-640.webp",
+    "source": "/images/official-covers/haval-catalog-3.webp",
+    "sourceSHA256": "1de1855bd8477c9b3edb3e7fef75dd8c9d5cc9364b624ff5419f5aaf4e6a8cbf"
+  },
+  "haval-catalog-4": {
+    "mobile": "/images/seo-heroes/haval-catalog-4-640.webp",
+    "source": "/images/official-covers/haval-catalog-4.webp",
+    "sourceSHA256": "7a68b95d2d7a4ac04dd3f66e7954644554efb1514784119504a16119c8802d7c"
+  },
+  "haval-catalog-5": {
+    "mobile": "/images/seo-heroes/haval-catalog-5-640.webp",
+    "source": "/images/official-covers/haval-catalog-5.webp",
+    "sourceSHA256": "ad9e02a2a4e553d52da061574a18923f86ed7686deaf57f60f3f5ee3a0c055c6"
+  },
+  "hongqi-catalog-1": {
+    "mobile": "/images/seo-heroes/hongqi-catalog-1-640.webp",
+    "source": "/images/official-covers/hongqi-catalog-1.webp",
+    "sourceSHA256": "61e4f4a629884aa4f77a066b056acc833f5c5df1d8f96f6a2a260ac6ff13bcf1"
+  },
+  "hongqi-catalog-2": {
+    "mobile": "/images/seo-heroes/hongqi-catalog-2-640.webp",
+    "source": "/images/official-covers/hongqi-catalog-2.webp",
+    "sourceSHA256": "b89c6b58d9df710856a8c44532c21a58ce2892f064cf1a42c0f211c6cfd4570a"
+  },
+  "hongqi-catalog-3": {
+    "mobile": "/images/seo-heroes/hongqi-catalog-3-640.webp",
+    "source": "/images/official-covers/hongqi-catalog-3.webp",
+    "sourceSHA256": "8e63a5b8d7adf670da0f00ebf08d19788b1424054db7022b20b8dd59824abc88"
+  },
+  "hongqi-catalog-4": {
+    "mobile": "/images/seo-heroes/hongqi-catalog-4-640.webp",
+    "source": "/images/official-covers/hongqi-catalog-4.webp",
+    "sourceSHA256": "4a2f54e1fc4a5ed251fc32e19f820ab4af63574ed71831583fd9e19587fbb60e"
+  },
+  "hongqi-catalog-5": {
+    "mobile": "/images/seo-heroes/hongqi-catalog-5-640.webp",
+    "source": "/images/official-covers/hongqi-catalog-5.webp",
+    "sourceSHA256": "ee04c525289745b9b03d99d097f28aac58442e192fd59438d8c7634262b9036a"
+  },
+  "hyptec-catalog-1": {
+    "mobile": "/images/seo-heroes/hyptec-catalog-1-640.webp",
+    "source": "/images/official-covers/hyptec-catalog-1.webp",
+    "sourceSHA256": "85dbfc9d964681a0621e714800ac3751206813f3d0a0f995dad70e0864585cd8"
+  },
+  "hyptec-catalog-2": {
+    "mobile": "/images/seo-heroes/hyptec-catalog-2-640.webp",
+    "source": "/images/official-covers/hyptec-catalog-2.webp",
+    "sourceSHA256": "f9347a13e2f914c0c96135898dfe108db5cd7d6c0a2a3e5a215335553205d449"
+  },
+  "hyptec-catalog-3": {
+    "mobile": "/images/seo-heroes/hyptec-catalog-3-640.webp",
+    "source": "/images/official-covers/hyptec-catalog-3.webp",
+    "sourceSHA256": "000cba8a372189adbba3a5a292ed39fa65276cc9f69cf1eee36f292e882004f5"
+  },
+  "hyptec-catalog-4": {
+    "mobile": "/images/seo-heroes/hyptec-catalog-4-640.webp",
+    "source": "/images/official-covers/hyptec-catalog-4.webp",
+    "sourceSHA256": "beb6787cc9fc277ecb2bc70e1d0b5d810f72894277ba5085eb635f5b5aab7af2"
+  },
+  "im-catalog-1": {
+    "mobile": "/images/seo-heroes/im-catalog-1-640.webp",
+    "source": "/images/official-covers/im-catalog-1.webp",
+    "sourceSHA256": "2fccbb0c0875005001aeda5c9c200cab1a89eb7c60e02ddc4bde6ea0e3ee84c9"
+  },
+  "im-catalog-2": {
+    "mobile": "/images/seo-heroes/im-catalog-2-640.webp",
+    "source": "/images/official-covers/im-catalog-2.webp",
+    "sourceSHA256": "fa2d6413d9fc9981284aadebd92afb531b37f967920b7806bdf595e2058f091d"
+  },
+  "im-catalog-3": {
+    "mobile": "/images/seo-heroes/im-catalog-3-640.webp",
+    "source": "/images/official-covers/im-catalog-3.webp",
+    "sourceSHA256": "e2283e84af6ea2e73d127511a369a21715fa16d2120e7a8e87baf9ffa5ffff3e"
+  },
+  "im-catalog-4": {
+    "mobile": "/images/seo-heroes/im-catalog-4-640.webp",
+    "source": "/images/official-covers/im-catalog-4.webp",
+    "sourceSHA256": "53a7b4f591ba4da7429792abe3c34a78c7826909fccae9cccbc977641ebf0231"
+  },
+  "im-catalog-5": {
+    "mobile": "/images/seo-heroes/im-catalog-5-640.webp",
+    "source": "/images/official-covers/im-catalog-5.webp",
+    "sourceSHA256": "908a3bded64c60e31b9be400fe0ca9cb41fa79f9cfa31fc553abe673f3a2515e"
+  },
+  "jac-catalog-1": {
+    "mobile": "/images/seo-heroes/jac-catalog-1-640.webp",
+    "source": "/images/official-covers/jac-catalog-1.webp",
+    "sourceSHA256": "c5e8af4313a419937a01fe11a232d2dc70698fcd7e98d743e6695304cde640b8"
+  },
+  "jac-catalog-2": {
+    "mobile": "/images/seo-heroes/jac-catalog-2-640.webp",
+    "source": "/images/official-covers/jac-catalog-2.webp",
+    "sourceSHA256": "fa825c91651a81c50e9671832c7bf8337b20129052cb41fac3005095c7b0da21"
+  },
+  "jac-catalog-3": {
+    "mobile": "/images/seo-heroes/jac-catalog-3-640.webp",
+    "source": "/images/official-covers/jac-catalog-3.webp",
+    "sourceSHA256": "775fff9735f88809fb6a5f68adb28c02f162d56fe39d35a1a9bbbd8a6b45300d"
+  },
+  "jac-catalog-4": {
+    "mobile": "/images/seo-heroes/jac-catalog-4-640.webp",
+    "source": "/images/official-covers/jac-catalog-4.webp",
+    "sourceSHA256": "369da3a1272b6063a3f2af9cd83f486eb5d30674629f341cb5b48b44d15cf834"
+  },
+  "jetour-catalog-1": {
+    "mobile": "/images/seo-heroes/jetour-catalog-1-640.webp",
+    "source": "/images/official-covers/jetour-catalog-1.webp",
+    "sourceSHA256": "65cc319c6bbfadd588406d019c0bfc010fa6485d631e39d48171fbb1c39c9d41"
+  },
+  "jetour-catalog-2": {
+    "mobile": "/images/seo-heroes/jetour-catalog-2-640.webp",
+    "source": "/images/official-covers/jetour-catalog-2.webp",
+    "sourceSHA256": "0216af1853592adfb87b3d304d0e4d6a0e72db2ab7b7d44fb5bc3348d3a9a4b4"
+  },
+  "jetour-catalog-3": {
+    "mobile": "/images/seo-heroes/jetour-catalog-3-640.webp",
+    "source": "/images/official-covers/jetour-catalog-3.webp",
+    "sourceSHA256": "7a250ca7076eb9283524d4ebdcf13b0abeefd5e3730b149120ffdd8155f0ee37"
+  },
+  "jetour-catalog-4": {
+    "mobile": "/images/seo-heroes/jetour-catalog-4-640.webp",
+    "source": "/images/official-covers/jetour-catalog-4.webp",
+    "sourceSHA256": "c41472dc0e8202c63b1668fb35b9559f636208feb94a47a9276d9d479c8c6f69"
+  },
+  "jetour-catalog-5": {
+    "mobile": "/images/seo-heroes/jetour-catalog-5-640.webp",
+    "source": "/images/official-covers/jetour-catalog-5.webp",
+    "sourceSHA256": "c5af78ce45de87b9b83ea3d1b8867beffc970d0c0b06a648788d2756c4a8a24f"
+  },
+  "jetta-catalog-1": {
+    "mobile": "/images/seo-heroes/jetta-catalog-1-640.webp",
+    "source": "/images/official-covers/jetta-catalog-1.webp",
+    "sourceSHA256": "1811f2e10620d9f41449bcdca81afa64e095e720adbcc6f2b8f731cc31150c82"
+  },
+  "jetta-catalog-2": {
+    "mobile": "/images/seo-heroes/jetta-catalog-2-640.webp",
+    "source": "/images/official-covers/jetta-catalog-2.webp",
+    "sourceSHA256": "ed0989f2e16328bc07a6264a6f7d370fba49b7c6e619ee2d7899c4175741c45e"
+  },
+  "jetta-catalog-3": {
+    "mobile": "/images/seo-heroes/jetta-catalog-3-640.webp",
+    "source": "/images/official-covers/jetta-catalog-3.webp",
+    "sourceSHA256": "b34a0d6f1eeca51c8c275f12e6a8648d18dfe792b4f6197b713d62aa8d154365"
+  },
+  "jetta-catalog-4": {
+    "mobile": "/images/seo-heroes/jetta-catalog-4-640.webp",
+    "source": "/images/official-covers/jetta-catalog-4.webp",
+    "sourceSHA256": "fc12a046565e2a0219a3ca0d975ecd0e872bba09c1ff5f15f288f0eeb61a5187"
+  },
+  "kia-ev5": {
+    "mobile": "/images/seo-heroes/kia-ev5-640.webp",
+    "source": "/images/catalog-update-20261011/kia-ev5.png",
+    "sourceSHA256": "111e941de29fab959d3f9cda6f58266c68a7d79d51b41e70e901bb873119c0bb"
+  },
+  "kia-ev6": {
+    "mobile": "/images/seo-heroes/kia-ev6-640.webp",
+    "source": "/images/catalog-update-20261011/kia-ev6.png",
+    "sourceSHA256": "5a0292a4dba3a23b0cca668bcadb3a1a78a4e2a2d7b60cc5afa4e99b19422feb"
+  },
+  "kia-kx1": {
+    "mobile": "/images/seo-heroes/kia-kx1-640.webp",
+    "source": "/images/catalog-update-20261011/kia-kx1.png",
+    "sourceSHA256": "66c92a3b229ff761c2ff999e2e5763637095749af5ab1f2b9bc9d51310dd99bf"
+  },
+  "kia-seltos": {
+    "mobile": "/images/seo-heroes/kia-seltos-640.webp",
+    "source": "/images/catalog-update-20261011/kia-seltos.png",
+    "sourceSHA256": "8b31bc2565465b81410fbd6a385028a3f56c5b673570ddb349eb07ecfef62e2e"
+  },
+  "kia-sportage": {
+    "mobile": "/images/seo-heroes/kia-sportage-640.webp",
+    "source": "/images/catalog-update-20261011/kia-sportage.png",
+    "sourceSHA256": "8112a2688124096a4f0a93fdd62df8d567f57442ecd2f948b230758115836291"
+  },
+  "kia-zhipao-ace": {
+    "mobile": "/images/seo-heroes/kia-zhipao-ace-640.webp",
+    "source": "/images/catalog-update-20261011/kia-zhipao-ace.png",
+    "sourceSHA256": "4dcb04eed977282ae8b8866b3467f2ca28f4c6f2a30faa2e2936074520509836"
+  },
+  "leapmotor-catalog-1": {
+    "mobile": "/images/seo-heroes/leapmotor-catalog-1-640.webp",
+    "source": "/images/official-covers/leapmotor-catalog-1.webp",
+    "sourceSHA256": "db22689e2298b6f35d0700bf343032aebfa4a8b9fa8dd49742784a5d7126116f"
+  },
+  "leapmotor-catalog-2": {
+    "mobile": "/images/seo-heroes/leapmotor-catalog-2-640.webp",
+    "source": "/images/official-covers/leapmotor-catalog-2.webp",
+    "sourceSHA256": "a121538f9bb76da63339802f0653f8d675cd2e143f92dd5718264fbed178842b"
+  },
+  "leapmotor-catalog-3": {
+    "mobile": "/images/seo-heroes/leapmotor-catalog-3-640.webp",
+    "source": "/images/official-covers/leapmotor-catalog-3.webp",
+    "sourceSHA256": "5ccbd1f8620ea4d70b913b8a7b3c3f9ce3812e1adb9866ec46029662f2057f19"
+  },
+  "leapmotor-catalog-4": {
+    "mobile": "/images/seo-heroes/leapmotor-catalog-4-640.webp",
+    "source": "/images/official-covers/leapmotor-catalog-4.webp",
+    "sourceSHA256": "57edae0d5d23d1cd32c546ce0ee37706fb6ea7687247fcbb816dce6ac0542419"
+  },
+  "leapmotor-catalog-5": {
+    "mobile": "/images/seo-heroes/leapmotor-catalog-5-640.webp",
+    "source": "/images/official-covers/leapmotor-catalog-5.webp",
+    "sourceSHA256": "55d96a1da570562bb33f5b61af81878a9bcfc5bc32acdd21b7d29f74ec8e49e1"
+  },
+  "li-auto-l6": {
+    "mobile": "/images/seo-heroes/li-auto-l6-640.webp",
+    "source": "/images/catalog-update-20261011/li-auto-l6.jpg",
+    "sourceSHA256": "57051205e8d3aa8e6b6f81391ec86976bf1285386557a18a5f9763666b0b8762"
+  },
+  "li-auto-l7": {
+    "mobile": "/images/seo-heroes/li-auto-l7-640.webp",
+    "source": "/images/catalog-update-20261011/li-auto-l7.jpg",
+    "sourceSHA256": "83124d865d71382563fb2a228a26f31f24dd04c593212d4922d419a2567573cb"
+  },
+  "li-auto-l8": {
+    "mobile": "/images/seo-heroes/li-auto-l8-640.webp",
+    "source": "/images/catalog-update-20261011/li-auto-l8.jpg",
+    "sourceSHA256": "ab288e4c911746cbbf694c0d3eb55809157e8a7a775d0abf3eec511d293f0a97"
+  },
+  "li-auto-l9": {
+    "mobile": "/images/seo-heroes/li-auto-l9-640.webp",
+    "source": "/images/catalog-update-20261011/li-auto-l9.jpg",
+    "sourceSHA256": "b3055ecb128bcef1e1464e400f946ff89ba13eeab1f542bf3fdecb44d3818222"
+  },
+  "lynk-co-900": {
+    "mobile": "/images/seo-heroes/lynk-co-900-640.webp",
+    "source": "/images/catalog-update-20261011/lynk-co-900.jpg",
+    "sourceSHA256": "53a3ccb0ea74b634a4018b2cbb03bd387decd224d51e84f08cb0487e720fbea0"
+  },
+  "lynk-co-catalog-1": {
+    "mobile": "/images/seo-heroes/lynk-co-catalog-1-640.webp",
+    "source": "/images/official-covers/lynk-co-catalog-1.webp",
+    "sourceSHA256": "e7df6e1a996145b31437253449884d55c50f70dd14fb43c4404769008d7bf7b0"
+  },
+  "lynk-co-catalog-2": {
+    "mobile": "/images/seo-heroes/lynk-co-catalog-2-640.webp",
+    "source": "/images/official-covers/lynk-co-catalog-2.webp",
+    "sourceSHA256": "a9105aff24190f1b1c24009841a5232add5e00a31dd6b7a5ad27b4e3db5d39b9"
+  },
+  "lynk-co-catalog-3": {
+    "mobile": "/images/seo-heroes/lynk-co-catalog-3-640.webp",
+    "source": "/images/official-covers/lynk-co-catalog-3.webp",
+    "sourceSHA256": "fc37309dbe509ad7e06cec42418edb7384b7bf55b92b9fa4a7c864f902b445b6"
+  },
+  "lynk-co-catalog-4": {
+    "mobile": "/images/seo-heroes/lynk-co-catalog-4-640.webp",
+    "source": "/images/official-covers/lynk-co-catalog-4.webp",
+    "sourceSHA256": "7a475163329b7f0cf5428cdf877add4b18663bee5384d1f972f460b31b598625"
+  },
+  "lynk-co-catalog-5": {
+    "mobile": "/images/seo-heroes/lynk-co-catalog-5-640.webp",
+    "source": "/images/official-covers/lynk-co-catalog-5.webp",
+    "sourceSHA256": "71284954fad47414ffa3e5b92cf197cdbd6c18aa66bdd9f7870c7a6bcb43ca2d"
+  },
+  "maextro-catalog-1": {
+    "mobile": "/images/seo-heroes/maextro-catalog-1-640.webp",
+    "source": "/images/official-covers/maextro-catalog-1.webp",
+    "sourceSHA256": "777a9e1618e29fa9b4005e22f75d9c094bda44cf7d42d7a4797b2a785aa9378a"
+  },
+  "mazda-cx-5": {
+    "mobile": "/images/seo-heroes/mazda-cx-5-640.webp",
+    "source": "/images/catalog-update-20261011/mazda-cx-5.png",
+    "sourceSHA256": "6d350cfb1bc68b832e830e7cb1418ac2e94faa60b948c422d71dff92d542d1da"
+  },
+  "mazda-cx-50": {
+    "mobile": "/images/seo-heroes/mazda-cx-50-640.webp",
+    "source": "/images/catalog-update-20261011/mazda-cx-50.png",
+    "sourceSHA256": "e72549f12abf4cc19b9e586a7eef881eb85186666fcd899ffb20572cf196b346"
+  },
+  "mazda-ez-60": {
+    "mobile": "/images/seo-heroes/mazda-ez-60-640.webp",
+    "source": "/images/catalog-update-20261011/mazda-ez-60.png",
+    "sourceSHA256": "04746cffca1c6ea9e6c418ea1b02a1398ce5c3d1fc4ee5bfb3b6382a79035ffc"
+  },
+  "mg-catalog-1": {
+    "mobile": "/images/seo-heroes/mg-catalog-1-640.webp",
+    "source": "/images/official-covers/mg-catalog-1.webp",
+    "sourceSHA256": "5060a059b9cad873e9b05dacdd187c0e5769979d10296a02fa9441920dcac4ed"
+  },
+  "mg-catalog-2": {
+    "mobile": "/images/seo-heroes/mg-catalog-2-640.webp",
+    "source": "/images/official-covers/mg-catalog-2.webp",
+    "sourceSHA256": "4e7884a818a33443e09691c27b19f25eb70e975a86d31dab87b81efb28ddf116"
+  },
+  "mg-catalog-3": {
+    "mobile": "/images/seo-heroes/mg-catalog-3-640.webp",
+    "source": "/images/official-covers/mg-catalog-3.webp",
+    "sourceSHA256": "3a274977fe41dd199e00eabac161f8076f7609062e9def8d7eeb70460d6a595e"
+  },
+  "mg-catalog-4": {
+    "mobile": "/images/seo-heroes/mg-catalog-4-640.webp",
+    "source": "/images/official-covers/mg-catalog-4.webp",
+    "sourceSHA256": "84cc44f1e08d18542415037cc3f6398f8ae26042dd9b21e494e2e37e96e77de7"
+  },
+  "mg-catalog-5": {
+    "mobile": "/images/seo-heroes/mg-catalog-5-640.webp",
+    "source": "/images/official-covers/mg-catalog-5.webp",
+    "sourceSHA256": "6d9014302a4d23deaaaba52f2c413c391092c5801708b27a646596c18419c0b4"
+  },
+  "mhero-catalog-1": {
+    "mobile": "/images/seo-heroes/mhero-catalog-1-640.webp",
+    "source": "/images/official-covers/mhero-catalog-1.webp",
+    "sourceSHA256": "a17dcfc131a62bb493855ba13361ab0f290ad44b0a521bfe24cc77bcf4b56dd6"
+  },
+  "mhero-catalog-2": {
+    "mobile": "/images/seo-heroes/mhero-catalog-2-640.webp",
+    "source": "/images/official-covers/mhero-catalog-2.webp",
+    "sourceSHA256": "548eeff63c5606a22ae8f4e36e277ebf21ea42ae706d365561bddc13848f7a21"
+  },
+  "ora-catalog-1": {
+    "mobile": "/images/seo-heroes/ora-catalog-1-640.webp",
+    "source": "/images/official-covers/ora-catalog-1.webp",
+    "sourceSHA256": "7b5e62db303939c895da45f3739417fc7e5af9638b09d6d89d302d54207e00ec"
+  },
+  "ora-catalog-2": {
+    "mobile": "/images/seo-heroes/ora-catalog-2-640.webp",
+    "source": "/images/official-covers/ora-catalog-2.webp",
+    "sourceSHA256": "fa09622cd31088a1c4c75febf9d17ca24588c477fe8f4f5b0316ccdc1c61527d"
+  },
+  "ora-catalog-3": {
+    "mobile": "/images/seo-heroes/ora-catalog-3-640.webp",
+    "source": "/images/official-covers/ora-catalog-3.webp",
+    "sourceSHA256": "1480c94cc406745f6c5d47b3750e80fffad9290c548a1e6f053756506bae99c1"
+  },
+  "roewe-catalog-1": {
+    "mobile": "/images/seo-heroes/roewe-catalog-1-640.webp",
+    "source": "/images/official-covers/roewe-catalog-1.webp",
+    "sourceSHA256": "71a297d0766abce46c02c30bedcc13709486af10adbf11774e4b7a515bcd462f"
+  },
+  "roewe-catalog-2": {
+    "mobile": "/images/seo-heroes/roewe-catalog-2-640.webp",
+    "source": "/images/official-covers/roewe-catalog-2.webp",
+    "sourceSHA256": "22ae0810cd303d9d0527aa4c716fe1c8e12957964a411a82073205b6bde47694"
+  },
+  "roewe-catalog-3": {
+    "mobile": "/images/seo-heroes/roewe-catalog-3-640.webp",
+    "source": "/images/official-covers/roewe-catalog-3.webp",
+    "sourceSHA256": "9c4d8e1791deb099bfc075457a2766b71d8826e6edd9159fe6b4177d8b441337"
+  },
+  "roewe-catalog-4": {
+    "mobile": "/images/seo-heroes/roewe-catalog-4-640.webp",
+    "source": "/images/official-covers/roewe-catalog-4.webp",
+    "sourceSHA256": "216185750725b97e4fb7fcc0c5c902c77ec298df8664246eca88beca9e85fffe"
+  },
+  "roewe-catalog-5": {
+    "mobile": "/images/seo-heroes/roewe-catalog-5-640.webp",
+    "source": "/images/official-covers/roewe-catalog-5.webp",
+    "sourceSHA256": "d295833a71e3947ea300ab1a06fa803f721cc12ae4b53ab4d90f8a10dabcfdcf"
+  },
+  "saic-volkswagen-catalog-1": {
+    "mobile": "/images/seo-heroes/saic-volkswagen-catalog-1-640.webp",
+    "source": "/images/official-covers/saic-volkswagen-catalog-1.webp",
+    "sourceSHA256": "43aed086bf22376b3bfb72577024ac17fc80e59db8911b4faef782c376d99a77"
+  },
+  "saic-volkswagen-catalog-2": {
+    "mobile": "/images/seo-heroes/saic-volkswagen-catalog-2-640.webp",
+    "source": "/images/official-covers/saic-volkswagen-catalog-2.webp",
+    "sourceSHA256": "ff1afa38e166bc5dbccbdb2108f28c30e7d457465a53348377d97f47775d4bb6"
+  },
+  "saic-volkswagen-catalog-3": {
+    "mobile": "/images/seo-heroes/saic-volkswagen-catalog-3-640.webp",
+    "source": "/images/official-covers/saic-volkswagen-catalog-3.webp",
+    "sourceSHA256": "721a44d5023c50b9e7e57be3f8f4cd3bbf3b1af85701744b67f33045f090d7e5"
+  },
+  "saic-volkswagen-catalog-4": {
+    "mobile": "/images/seo-heroes/saic-volkswagen-catalog-4-640.webp",
+    "source": "/images/official-covers/saic-volkswagen-catalog-4.webp",
+    "sourceSHA256": "e7db887418367d07b6934e2ebf4ec6e6c39559049dd70181f5b5927b24e1358b"
+  },
+  "saic-volkswagen-id-era-9x": {
+    "mobile": "/images/seo-heroes/saic-volkswagen-id-era-9x-640.webp",
+    "source": "/images/catalog-update-20261011/saic-volkswagen-id-era-9x.png",
+    "sourceSHA256": "898e4f294833d2d5dbac29cd67a7c3b310f6318a6b0fedc6d1528561762e1fa9"
+  },
+  "tank-catalog-1": {
+    "mobile": "/images/seo-heroes/tank-catalog-1-640.webp",
+    "source": "/images/official-covers/tank-catalog-1.webp",
+    "sourceSHA256": "9b795c7d2691668139677f6021b574efccdf95ddb3325e5c0eaf5ed426b09c77"
+  },
+  "tank-catalog-2": {
+    "mobile": "/images/seo-heroes/tank-catalog-2-640.webp",
+    "source": "/images/official-covers/tank-catalog-2.webp",
+    "sourceSHA256": "78c35dca2d8e937be22fd7cc3e61635e33ee05668d14a3660ac1267fd328f512"
+  },
+  "tank-catalog-3": {
+    "mobile": "/images/seo-heroes/tank-catalog-3-640.webp",
+    "source": "/images/official-covers/tank-catalog-3.webp",
+    "sourceSHA256": "6d87e22f5f99c2da5ac492006fc8df57b19f28645307084c9ed5b813089eac61"
+  },
+  "tank-catalog-4": {
+    "mobile": "/images/seo-heroes/tank-catalog-4-640.webp",
+    "source": "/images/official-covers/tank-catalog-4.webp",
+    "sourceSHA256": "eb9c19076ac929bc9b2508a469a3fe38d663eba99c58a947556240ba2a7d268a"
+  },
+  "trumpchi-catalog-1": {
+    "mobile": "/images/seo-heroes/trumpchi-catalog-1-640.webp",
+    "source": "/images/official-covers/trumpchi-catalog-1.webp",
+    "sourceSHA256": "b14ba48f69887176ea7cc198d7536b925a42ef0b562b2295b63f74fdbdb2b2d0"
+  },
+  "trumpchi-catalog-2": {
+    "mobile": "/images/seo-heroes/trumpchi-catalog-2-640.webp",
+    "source": "/images/official-covers/trumpchi-catalog-2.webp",
+    "sourceSHA256": "497106495f22417c57d549a25f061c593cd00305888fc0792d0685f7313c50d6"
+  },
+  "trumpchi-catalog-4": {
+    "mobile": "/images/seo-heroes/trumpchi-catalog-4-640.webp",
+    "source": "/images/official-covers/trumpchi-catalog-4.webp",
+    "sourceSHA256": "3f0ac1eb4f07a0da6acf65ffd9df5ba902bdfcb6150b5e623f1d652cbdd1c51d"
+  },
+  "trumpchi-m8-2026": {
+    "mobile": "/images/seo-heroes/trumpchi-m8-2026-640.webp",
+    "source": "/images/catalog/trumpchi-m8-2026/01.webp",
+    "sourceSHA256": "e5bf1022393aff0c084bdc4a50cd20182bc4cab789c923a7bed7e6dd4147817c"
+  },
+  "trumpchi-m8-ice-2026": {
+    "mobile": "/images/seo-heroes/trumpchi-m8-ice-2026-640.webp",
+    "source": "/images/official-covers/trumpchi-catalog-5.webp",
+    "sourceSHA256": "3764d314cc1cf3920fc9def51b04606c36614f5c0ca7456d21cc122a5f864f27"
+  },
+  "voyah-catalog-1": {
+    "mobile": "/images/seo-heroes/voyah-catalog-1-640.webp",
+    "source": "/images/official-covers/voyah-catalog-1.webp",
+    "sourceSHA256": "be844eea024e921aebc5202fee5e400aee81a6d35e6d8499d4013518f05f78e5"
+  },
+  "voyah-catalog-2": {
+    "mobile": "/images/seo-heroes/voyah-catalog-2-640.webp",
+    "source": "/images/official-covers/voyah-catalog-2.webp",
+    "sourceSHA256": "089f45262c2b708537ce11ec1fa122dbb69e810f06bd77eaf3c7d05afca16d20"
+  },
+  "voyah-catalog-3": {
+    "mobile": "/images/seo-heroes/voyah-catalog-3-640.webp",
+    "source": "/images/official-covers/voyah-catalog-3.webp",
+    "sourceSHA256": "56618cfc58a15c50c9a4e87f9701e17e00dd546d752cf2377dd2e8aa3d5278a0"
+  },
+  "voyah-catalog-4": {
+    "mobile": "/images/seo-heroes/voyah-catalog-4-640.webp",
+    "source": "/images/official-covers/voyah-catalog-4.webp",
+    "sourceSHA256": "49069647c65e0dc0bd2c779d7bdf4ac27d6a00b8e7c5489d705b20c020a0df19"
+  },
+  "voyah-catalog-5": {
+    "mobile": "/images/seo-heroes/voyah-catalog-5-640.webp",
+    "source": "/images/official-covers/voyah-catalog-5.webp",
+    "sourceSHA256": "b93cd5202fad918ed415d8a53e8d1e333e7b8355cb10f3d8635a6d864455afcd"
+  },
+  "wey-catalog-1": {
+    "mobile": "/images/seo-heroes/wey-catalog-1-640.webp",
+    "source": "/images/official-covers/wey-catalog-1.webp",
+    "sourceSHA256": "ede8c9f8d66f0056f80657b837dc3c880b0d1ef35f45d936518748976e9895e8"
+  },
+  "wey-catalog-2": {
+    "mobile": "/images/seo-heroes/wey-catalog-2-640.webp",
+    "source": "/images/official-covers/wey-catalog-2.webp",
+    "sourceSHA256": "df37064ad0a7fed0ffb3cbfb359354fd79a0458bb786d40247929f6a23d6e327"
+  },
+  "wey-catalog-3": {
+    "mobile": "/images/seo-heroes/wey-catalog-3-640.webp",
+    "source": "/images/official-covers/wey-catalog-3.webp",
+    "sourceSHA256": "f052941e94ee7dd8a914cd8982d670d1cf49d43588cd38fb8665e69e3a06fd50"
+  },
+  "wey-catalog-4": {
+    "mobile": "/images/seo-heroes/wey-catalog-4-640.webp",
+    "source": "/images/official-covers/wey-catalog-4.webp",
+    "sourceSHA256": "98a3e86b6d39fbe60ad1936b2801a2881d23e062b71de49d4825da4dca6d7fdd"
+  },
+  "wuling-catalog-1": {
+    "mobile": "/images/seo-heroes/wuling-catalog-1-640.webp",
+    "source": "/images/official-covers/wuling-catalog-1.webp",
+    "sourceSHA256": "a6b3d752284bedc38438d21b2a33c3747bdf008ea1e799e5dd5585526e8344a4"
+  },
+  "wuling-catalog-2": {
+    "mobile": "/images/seo-heroes/wuling-catalog-2-640.webp",
+    "source": "/images/official-covers/wuling-catalog-2.webp",
+    "sourceSHA256": "72715e37ace22ee6de2222610da4c1efac26db76fc72057fca93735984b1faa8"
+  },
+  "wuling-catalog-3": {
+    "mobile": "/images/seo-heroes/wuling-catalog-3-640.webp",
+    "source": "/images/official-covers/wuling-catalog-3.webp",
+    "sourceSHA256": "fa2357abc442cd4664bdf1a2d1feed9505e212a040de7bde8e0904123dc203e3"
+  },
+  "wuling-catalog-4": {
+    "mobile": "/images/seo-heroes/wuling-catalog-4-640.webp",
+    "source": "/images/official-covers/wuling-catalog-4.webp",
+    "sourceSHA256": "f25995227d899c209cfe38d226fbf7c738e7e9459ae71326dc3c824830dd7546"
+  },
+  "wuling-catalog-5": {
+    "mobile": "/images/seo-heroes/wuling-catalog-5-640.webp",
+    "source": "/images/official-covers/wuling-catalog-5.webp",
+    "sourceSHA256": "2df40eee45a446571b6e4649786ccb57d61ac36ff608a972d08334f2003265e7"
+  },
+  "wuling-starlight-560": {
+    "mobile": "/images/seo-heroes/wuling-starlight-560-640.webp",
+    "source": "/images/catalog-update-20261011/wuling-starlight-560.png",
+    "sourceSHA256": "1e8441119473f6b10bdbe847cd6de283406a85f1e2a385d8ede7f3f1c77fa845"
+  },
+  "wuling-starlight-730": {
+    "mobile": "/images/seo-heroes/wuling-starlight-730-640.webp",
+    "source": "/images/catalog-update-20261011/wuling-starlight-730.png",
+    "sourceSHA256": "8cd2312bda181be847cc4eb59343321c624b77b556db91a9070a61ed80d68ae6"
+  },
+  "xiaomi-su7-2026": {
+    "mobile": "/images/seo-heroes/xiaomi-su7-2026-640.webp",
+    "source": "/images/xiaomi-su7.png",
+    "sourceSHA256": "4cd7deab917d293d78ff8a33ff57bdbaed55ff1a2c6287988faf7af939677592"
+  },
+  "xiaomi-yu7": {
+    "mobile": "/images/seo-heroes/xiaomi-yu7-640.webp",
+    "source": "/images/catalog-update-20261011/xiaomi-yu7-v2.jpg",
+    "sourceSHA256": "7bbc9ce7c91200fe73e1bed0422e0e74a7002e5067c693ff81432c265c2b6000"
+  },
+  "xpeng-catalog-1": {
+    "mobile": "/images/seo-heroes/xpeng-catalog-1-640.webp",
+    "source": "/images/official-covers/xpeng-catalog-1.webp",
+    "sourceSHA256": "0fd8062dddabf2b05d5b5cfa883eb62ef5225d6642be5067bd7b1287e66a7066"
+  },
+  "xpeng-catalog-2": {
+    "mobile": "/images/seo-heroes/xpeng-catalog-2-640.webp",
+    "source": "/images/official-covers/xpeng-catalog-2.webp",
+    "sourceSHA256": "a4622c1ba88930f1fa08a9734e63e47b299825ff10c6291096056e9ab62f94e4"
+  },
+  "xpeng-catalog-3": {
+    "mobile": "/images/seo-heroes/xpeng-catalog-3-640.webp",
+    "source": "/images/official-covers/xpeng-catalog-3.webp",
+    "sourceSHA256": "1a475fe751aae5075bbb66d209ac79b69141f213718e23876e621290e86b070c"
+  },
+  "xpeng-catalog-4": {
+    "mobile": "/images/seo-heroes/xpeng-catalog-4-640.webp",
+    "source": "/images/official-covers/xpeng-catalog-4.webp",
+    "sourceSHA256": "0e4b4be5ebd8a45a731ae7e41618f15d0304b8a55d928a590875fcab1f3d3b6d"
+  },
+  "xpeng-catalog-5": {
+    "mobile": "/images/seo-heroes/xpeng-catalog-5-640.webp",
+    "source": "/images/official-covers/xpeng-catalog-5.webp",
+    "sourceSHA256": "541fc9dd4b890b8787e16b1ac913a80101af880b0ae029c6b080a903349629b5"
+  },
+  "xpeng-gx-2026": {
+    "mobile": "/images/seo-heroes/xpeng-gx-2026-640.webp",
+    "source": "/images/catalog/xpeng-gx-2026/01.webp",
+    "sourceSHA256": "1a2540f612641848568d4363ba8755ec9b2143aaa6b2c4f13ceb2aee3e12f3f9"
+  },
+  "yangwang-catalog-1": {
+    "mobile": "/images/seo-heroes/yangwang-catalog-1-640.webp",
+    "source": "/images/official-covers/yangwang-catalog-1.webp",
+    "sourceSHA256": "92c4c007b517dfd2a7f700f72c94ab85d7a474dae6712ea9ca76d5d58e7f9551"
+  },
+  "yangwang-catalog-2": {
+    "mobile": "/images/seo-heroes/yangwang-catalog-2-640.webp",
+    "source": "/images/official-covers/yangwang-catalog-2.webp",
+    "sourceSHA256": "52ba8d761fa7bbd35aa3a566032108c40f73e824dad59a207bd5246a207cb9dc"
+  },
+  "yangwang-catalog-3": {
+    "mobile": "/images/seo-heroes/yangwang-catalog-3-640.webp",
+    "source": "/images/official-covers/yangwang-catalog-3.webp",
+    "sourceSHA256": "c82cc4c026d6cf32c2f5db8b2eed26018b31393285b0ddab0b6c36db0dfb6b11"
+  },
+  "zeekr-7x-2026": {
+    "mobile": "/images/seo-heroes/zeekr-7x-2026-640.webp",
+    "source": "/images/official-covers/zeekr-catalog-3.webp",
+    "sourceSHA256": "5952fe73727ad20ed416f0a9d27f73155c81802fca8396e6eadd9ce0cb6bd3b6"
+  },
+  "zeekr-9x-2026": {
+    "mobile": "/images/seo-heroes/zeekr-9x-2026-640.webp",
+    "source": "/images/zeekr9x-villa.jpg",
+    "sourceSHA256": "f0366e90927d2a8d7d69ae5c3d3f4a96a7aee0006ff9626c88c9c9ca869df50f"
+  },
+  "zeekr-catalog-1": {
+    "mobile": "/images/seo-heroes/zeekr-catalog-1-640.webp",
+    "source": "/images/official-covers/zeekr-catalog-1.webp",
+    "sourceSHA256": "8af5ba4a0ec443ae4eddb4b35e5ffa3f952d0d7d16efe778c764cb67ec2c0020"
+  },
+  "zeekr-catalog-2": {
+    "mobile": "/images/seo-heroes/zeekr-catalog-2-640.webp",
+    "source": "/images/official-covers/zeekr-catalog-2.webp",
+    "sourceSHA256": "aea67c0992cecc122bfc51c76cfc3a62527aa9bcb77267a8414f64c29113d45a"
+  },
+  "zeekr-catalog-4": {
+    "mobile": "/images/seo-heroes/zeekr-catalog-4-640.webp",
+    "source": "/images/official-covers/zeekr-catalog-4.webp",
+    "sourceSHA256": "3e7cc2fe2fb40cc2daaa8f50c951c9dc42da28eb18604dad76227bc7094a3734"
+  },
+  "zeekr-catalog-5": {
+    "mobile": "/images/seo-heroes/zeekr-catalog-5-640.webp",
+    "source": "/images/official-covers/zeekr-catalog-5.webp",
+    "sourceSHA256": "60e6ec36a89ce28f5e82bef308377a13cfcf354dc72168cecb06c5c5b8d9645d"
+  }
+}
