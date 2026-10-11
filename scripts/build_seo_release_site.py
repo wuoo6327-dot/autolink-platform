@@ -66,6 +66,7 @@ def digest(data):
 # Production received some static updates after the original security commit.
 # A file outside the known security/PR #6/final-candidate versions is a live
 # change to reconcile, never something this overlay may overwrite blindly.
+conflicts = []
 for name in overlay:
     incoming = source / name
     assert incoming.is_file(), name
@@ -79,7 +80,9 @@ for name in overlay:
         if previous is not None:
             accepted.add(digest(previous))
     if digest(existing.read_bytes()) not in accepted:
-        raise RuntimeError(f'Unreviewed production change blocks overlay: {name}')
+        conflicts.append({'path': name, 'productionSHA256': digest(existing.read_bytes())})
+if conflicts:
+    raise RuntimeError('Unreviewed production changes block overlay: ' + json.dumps(conflicts))
 
 shutil.copytree(live, target, copy_function=shutil.copy2)
 manifest=[]
