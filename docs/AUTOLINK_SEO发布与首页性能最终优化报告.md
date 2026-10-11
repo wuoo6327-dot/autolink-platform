@@ -67,7 +67,7 @@ Chrome 的 Googlebot Smartphone UA 模拟、普通用户与服务端初始 HTML 
 | 项目 | 固定值 |
 | --- | --- |
 | SEO 独立候选 | `codex/seo-release-ready-20261012`，提交 `8c6e5e9`，草稿 PR #6 |
-| 首页性能候选 | `codex/home-performance-release-20261012`，草稿 PR 提交中 |
+| 首页性能候选 | `codex/home-performance-release-20261012`，代码与证据提交 `5e328b4`，[草稿 PR #7](https://github.com/wuoo6327-dot/autolink-platform/pull/7) |
 | auth AMD64 本地镜像 ID | `sha256:4f828c7c39f2545a6501ce2276cdc6732a2fb8f78ba9d4623a82e16f1891ac12` |
 | auth 归档及 SHA-256 | `/home/admin/autolink-global-seo-qa-20261012/auth-image.tar`；`25dabd6f3824a1a8deeca50499b14811c0f5c034500c40c6aad535e2e97e2d57` |
 | web 注册表 manifest digest | `autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb` |
