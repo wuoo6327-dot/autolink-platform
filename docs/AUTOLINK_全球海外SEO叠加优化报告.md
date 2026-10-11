@@ -50,7 +50,7 @@
 - 隔离环境：macOS ARM64 本机，当前 244/53 生产公开目录的只读快照、独立临时 SQLite 与合成账号；Caddy `127.0.0.1:18181`、后端 `127.0.0.1:18180`。未访问生产写接口。
 - 车型与品牌 **2,673 个语言详情页**逐页检查 HTTP、初始 HTML、H1、`html lang`、Canonical、robots、hreflang；Sitemap 精确集合一致，缺失车型 404、匿名 SEO 后台 401，普通 User-Agent 与 Googlebot Smartphone **模拟**的四个代表页面字节一致。结果通过；模拟不能替代 Search Console 实际抓取。
 - 后端全套 **225 项通过、5 项条件跳过**，覆盖目录、登录、Cookie/CSRF、权限、私有资料、供应商发布审核、SEO 和交易流程。`node --check`、Python 编译、Caddy 校验和 `git diff --check` 均通过。
-- Trivy 本地源文件扫描：`secret,misconfig` 对检查到的依赖清单和两个 Dockerfile 均为 0 发现；`vuln` 对 `auth/requirements.txt` 为 0 发现。本轮没有构建新 AMD64 镜像；PR #6 原镜像扫描记录不能当作本分支新镜像扫描通过。
+- Trivy 本地源文件扫描：`secret,misconfig` 对检查到的依赖清单和两个 Dockerfile 均为 0 发现；`vuln` 对 `auth/requirements.txt` 为 0 发现。本轮没有构建新 AMD64 镜像；PR #6 原镜像扫描记录不能当作本分支新镜像扫描通过。PR #8 的 GitHub `source-security` 检查显示 **SKIPPED**，不能算作通过。
 - 393×852 浏览器手机视口：新指南无横向溢出，首屏正文与移动菜单可见，菜单中的车型、品牌、车源及采购入口可访问。
 
 原始抓取、后端日志、Trivy JSON 和 Lighthouse JSON 均保存在[证据归档](evidence/autolink-overseas-seo-20261012.tar.gz)（SHA-256 `9a5b99c2fbc1b36a189aa0e9b3979a463d6152590fcdcbfc25af5f73b051b988`）；测试没有调节浏览器节流参数来制造分数。
