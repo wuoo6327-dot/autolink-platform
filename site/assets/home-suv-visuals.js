@@ -8,7 +8,7 @@
     l9: '/images/ui-suv/li-l9-livis.webp'
   };
   const mobileImages = {
-    zeekr: '/images/home-mobile/zeekr9x-city-ad.webp',
+    zeekr: '/images/home-mobile/zeekr9x-city-ad.webp?v=20261012-home-fast',
     s800: '/images/home-mobile/maextro-s800-portrait.webp',
     l9: '/images/home-mobile/li-l9-portrait.webp'
   };

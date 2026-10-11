@@ -6,14 +6,21 @@ out=Path(os.environ.get('LIGHTHOUSE_OUTPUT',root/'tests/results/lighthouse-candi
 out.mkdir(parents=True,exist_ok=True)
 cli=Path(os.environ['LIGHTHOUSE_CLI'])
 base=os.environ.get('LIGHTHOUSE_BASE','http://127.0.0.1:18081')
-pages={'home':'/?lang=zh','model-detail':'/trade/models/zeekr-9x-2026?lang=zh'}
+pages={
+    'home':'/?lang=zh',
+    'model-detail':'/trade/models/zeekr-9x-2026?lang=zh',
+    'brand-directory':'/trade/brands?lang=zh',
+    'model-directory':'/trade/models?lang=zh',
+    'buyer-login':'/buyer/login?lang=zh',
+}
 if os.environ.get('LIGHTHOUSE_PAGES'):
     selected=set(os.environ['LIGHTHOUSE_PAGES'].split(','))
     pages={key:value for key,value in pages.items() if key in selected}
 summary=[]
+devices=tuple(item for item in ('mobile','desktop') if item in set(os.environ.get('LIGHTHOUSE_DEVICES','mobile,desktop').split(',')))
 for repeat in range(1,4):
     for label,path in pages.items():
-        for device in ('mobile','desktop'):
+        for device in devices:
             name=f'{label}-{device}-{repeat}';file=out/(name+'.json')
             cmd=['node',str(cli),base+path,'--only-categories=performance,seo,accessibility,best-practices',
                  '--output=json','--output-path='+str(file),'--chrome-flags=--headless --disable-gpu --no-first-run','--quiet']
