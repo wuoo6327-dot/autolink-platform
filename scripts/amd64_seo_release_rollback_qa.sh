@@ -2,8 +2,8 @@
 # Candidate -> current production image -> candidate, all on an isolated loopback port.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-[[ "$(uname -m)" == x86_64 && "$ROOT" == /home/admin/autolink-seo-release-stage-* ]] || { echo 'Requires named AMD64 stage checkout' >&2; exit 2; }
-[[ "$(git -C "$ROOT" branch --show-current)" == codex/seo-release-ready-20261012 ]] || { echo 'Wrong SEO release branch' >&2; exit 2; }
+[[ "$(uname -m)" == x86_64 && "$ROOT" == /home/admin/autolink-final-seo-qa-* ]] || { echo 'Requires named AMD64 stage checkout' >&2; exit 2; }
+[[ "$(git -C "$ROOT" branch --show-current)" == codex/seo-production-release-20261012 ]] || { echo 'Wrong SEO release branch' >&2; exit 2; }
 CANDIDATE="${QA_AUTH_IMAGE:?Set fixed candidate local image ID}"
 BASELINE="${QA_BASELINE_AUTH_IMAGE:?Set current production auth image ID}"
 WEB="${QA_WEB_IMAGE:?Set current production web manifest digest}"
@@ -12,20 +12,26 @@ BASE_CADDY="$ROOT/production-public/Caddyfile"
 RELEASE_SITE="$ROOT/release-public/site"
 [[ -d "$BASE_SITE" && -s "$BASE_CADDY" && -d "$RELEASE_SITE" ]] || { echo 'Missing current production or verified overlay site/config' >&2; exit 2; }
 D=(sudo -n docker)
-AUTH=autolink-seo-release-stage-auth
-FRONT=autolink-seo-release-stage-web
-NET=autolink-seo-release-stage-net
-DATA="$ROOT/qa-data"
-PORT=18083
+AUTH=autolink-final-seo-stage-auth
+FRONT=autolink-final-seo-stage-web
+NET=autolink-final-seo-stage-net
+DATA="$ROOT/qa-data-final"
+PORT=18084
 stop_pair() { "${D[@]}" rm -f "$FRONT" "$AUTH" >/dev/null 2>&1 || true; }
 cleanup() { stop_pair; "${D[@]}" network rm "$NET" >/dev/null 2>&1 || true; }
 trap cleanup EXIT
 "${D[@]}" image inspect "$CANDIDATE" "$BASELINE" "$WEB" >/dev/null
 "${D[@]}" network create "$NET" >/dev/null
 sudo -n install -d -m 0700 "$DATA"
-"${D[@]}" run --rm --user 0 --network none --read-only --tmpfs /tmp:size=256m,mode=1777 \
-  -v "$ROOT:/workspace:ro" -v "$DATA:/data" -w /workspace -e PYTHONPATH=/workspace/auth \
-  "$CANDIDATE" python -c '
+[[ ! -e "$DATA/autolink-auth.sqlite3" ]] || { echo 'QA database already exists; use a fresh isolated checkout' >&2; exit 2; }
+if [[ -n "${QA_DB_SNAPSHOT:-}" ]]; then
+  [[ -s "$QA_DB_SNAPSHOT" ]] || { echo 'Missing verified backup snapshot' >&2; exit 2; }
+  sudo -n cp --reflink=auto "$QA_DB_SNAPSHOT" "$DATA/autolink-auth.sqlite3"
+  sudo -n chown 10001:10001 "$DATA/autolink-auth.sqlite3"
+else
+  "${D[@]}" run --rm --user 0 --network none --read-only --tmpfs /tmp:size=256m,mode=1777 \
+    -v "$ROOT:/workspace:ro" -v "$DATA:/data" -w /workspace -e PYTHONPATH=/workspace/auth \
+    "$CANDIDATE" python -c '
 import os,sqlite3
 from test_current_catalog_seo import CurrentCatalogSEOTests
 fixture=CurrentCatalogSEOTests();fixture.setUp()
@@ -34,6 +40,7 @@ with fixture.auth.connect() as source, sqlite3.connect("/data/autolink-auth.sqli
 os.chown("/data/autolink-auth.sqlite3",10001,10001)
 fixture.doCleanups()
 '
+fi
 sudo -n chown 10001:10001 "$DATA"
 start_pair() {
   local image="$1" site="$2" config="$3" catalog="${4:-}"
@@ -59,7 +66,7 @@ probe() {
   local phase="$1"
   PHASE="$phase" QA_ROOT="$ROOT" python3 - <<'PY'
 import json,os,urllib.request,urllib.error,xml.etree.ElementTree as ET
-base='http://127.0.0.1:18083'; phase=os.environ['PHASE']
+base='http://127.0.0.1:18084'; phase=os.environ['PHASE']
 def get(path):
     try:
         with urllib.request.urlopen(base+path,timeout=15) as response:return response.status,response.read()
@@ -75,7 +82,7 @@ expected_brand_ids={str(item['id']) for item in expected['brands']}
 brand_ids={str(item['id']) for item in json.loads(brands)['data']}
 assert len(expected_ids)==244 and expected_ids<=model_ids
 assert len(expected_brand_ids)==53 and expected_brand_ids<=brand_ids
-if phase!='rollback':assert model_ids==expected_ids and brand_ids==expected_brand_ids
+assert model_ids==expected_ids and brand_ids==expected_brand_ids
 result={'phase':phase,'health':health,'models':len(model_ids),'brands':len(brand_ids),'admin':admin,'home':home,'detail':detail_status,'extraRollbackModels':len(model_ids-expected_ids),'extraRollbackBrands':len(brand_ids-expected_brand_ids)}
 if phase!='rollback':
     assert b'Geely Monjaro' in detail and b'index, follow' in detail
@@ -83,7 +90,10 @@ if phase!='rollback':
     sitemap_status,sitemap=get('/sitemaps/models-1.xml');assert sitemap_status==200
     ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
     result['sitemapUrls']=len(ET.fromstring(sitemap).findall('.//s:loc',ns))
-    assert result['sitemapUrls']==199
+    assert result['sitemapUrls']==227
+    brand_status,brand_sitemap=get('/sitemaps/brands-1.xml');assert brand_status==200
+    result['brandSitemapUrls']=len(ET.fromstring(brand_sitemap).findall('.//s:loc',ns))
+    assert result['brandSitemapUrls']==10
 print(json.dumps(result,sort_keys=True))
 PY
 }
