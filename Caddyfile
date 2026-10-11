@@ -136,6 +136,21 @@
 		header Cache-Control "no-cache"
 		file_server
 	}
+	@middleEastPendingTranslation {
+		path /guide/middle-east-importers
+		query lang=zh lang=ar lang=ru lang=kk lang=uz lang=ko lang=fr lang=sw
+	}
+	handle @middleEastPendingTranslation {
+		rewrite * /guide/middle-east-importers.fallback.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@middleEastGuide path /guide/middle-east-importers
+	handle @middleEastGuide {
+		rewrite * /guide/middle-east-importers.html
+		header Cache-Control "no-cache"
+		file_server
+	}
 	@guideFiles path /guide /guide/*
 	handle @guideFiles {
 		header Cache-Control "no-cache"

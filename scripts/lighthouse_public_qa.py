@@ -12,6 +12,9 @@ pages={
     'brand-directory':'/trade/brands?lang=zh',
     'model-directory':'/trade/models?lang=zh',
     'buyer-login':'/buyer/login?lang=zh',
+    'overseas-model':'/trade/models/geely-catalog-3',
+    'overseas-brand':'/trade/brands/byd',
+    'market-guide':'/guide/middle-east-importers',
 }
 if os.environ.get('LIGHTHOUSE_PAGES'):
     selected=set(os.environ['LIGHTHOUSE_PAGES'].split(','))

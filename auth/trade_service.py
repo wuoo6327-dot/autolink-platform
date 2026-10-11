@@ -47,7 +47,7 @@ PUBLIC_VEHICLE_WHERE = """v.archived_at IS NULL AND v.status='ONLINE' AND """ + 
 SITEMAP_ORIGIN = 'https://autolinkglobal.com'
 SITEMAP_PAGE_SIZE = 5000
 SITEMAP_STATIC_PATHS = ('/', '/trade/vehicles', '/trade/models', '/trade/brands',
-    '/trade/suppliers', '/membership', '/support')
+    '/trade/suppliers', '/membership', '/support', '/guide/middle-east-importers')
 
 
 def ident(prefix: str) -> str:
@@ -614,7 +614,7 @@ class TradeService:
                     ElementTree.SubElement(node, 'loc').text = SITEMAP_ORIGIN+'/sitemaps/'+child
             elif filename=='static-1.xml':
                 for path in SITEMAP_STATIC_PATHS:
-                    append_urls(path)
+                    append_urls(path,languages=('en',) if path=='/guide/middle-east-importers' else LANGUAGES)
             else:
                 match = re.fullmatch(r'(brands|models|suppliers|vehicles)-([1-9][0-9]{0,4})\.xml',filename)
                 if not match:
@@ -636,7 +636,10 @@ class TradeService:
                         languages = seo.index_policy('model',self.catalog.model_row(model))['indexLanguages']
                     elif category=='brands':
                         brand = dict(db.execute('SELECT * FROM catalog_brands WHERE id=?',(row['id'],)).fetchone())
-                        brand['models'] = [dict(item) for item in db.execute('SELECT id FROM catalog_models WHERE brand_id=? AND active=1',(row['id'],))]
+                        brand['models'] = [self.catalog.model_row(item) for item in db.execute('''
+                            SELECT m.*,b.name AS brand_name,b.active AS brand_active,b.logo AS brand_logo
+                            FROM catalog_models m JOIN catalog_brands b ON b.id=m.brand_id
+                            WHERE m.brand_id=? AND m.active=1 AND b.active=1''',(row['id'],))]
                         languages = seo.index_policy('brand',brand)['indexLanguages']
                     append_urls(prefix+quote(row['id'],safe=''),row['modified'],languages)
         payload = ElementTree.tostring(root,encoding='utf-8',xml_declaration=True)

@@ -21,7 +21,7 @@ class SEOQualityTests(unittest.TestCase):
         self.assertEqual(sum(p['contentComplete'] for p in policies.values()),177)
         self.assertEqual(sum(not p['contentComplete'] for p in policies.values()),67)
         self.assertEqual(sum('zh' in p['indexLanguages'] for p in policies.values()),177)
-        self.assertEqual(sum('en' in p['indexLanguages'] for p in policies.values()),22)
+        self.assertEqual(sum('en' in p['indexLanguages'] for p in policies.values()),50)
         self.assertTrue(all(not p['indexLanguages'] for p in policies.values() if not p['contentComplete']))
 
     def test_all_67_thin_models_remain_accessible_in_every_language_and_noindex(self):
@@ -40,11 +40,15 @@ class SEOQualityTests(unittest.TestCase):
     def test_unreviewed_brand_editorial_pages_are_not_blindly_indexed(self):
         brands=self.trade.catalog.brands()
         self.assertEqual(len(brands),53)
+        approved=0
         for brand in brands:
             policy=self.seo.index_policy('brand',self.trade.catalog.brand(brand['id']))
-            self.assertEqual(policy['indexLanguages'],[])
+            if 'en' in policy['indexLanguages']:approved+=1
+            self.assertEqual(policy['indexLanguages'],['en'] if brand['id'] in
+                {'geely','galaxy','zeekr','byd','denza','changan','deepal','trumpchi','saic-volkswagen','faw-volkswagen'} else [])
+        self.assertEqual(approved,10)
         for language in LANGUAGES:
-            status,body=self.seo.render('/trade/brands/byd?lang='+language)
+            status,body=self.seo.render('/trade/brands/aion?lang='+language)
             self.assertEqual(status,200)
             self.assertIn('noindex, follow',body.decode())
             self.assertEqual(HTMLDocument(body.decode()).alternates(),{})

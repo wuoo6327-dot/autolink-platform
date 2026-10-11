@@ -1,0 +1,92 @@
+{
+  "geely": {
+    "status": "approved",
+    "brandName": "Geely",
+    "intro": "Geely Auto is a China-based automotive manufacturer whose public range includes passenger cars and SUVs. This AUTOLINK directory follows China-market Geely model references, including Emgrand, Coolray/Binyue, Boyue L, Haoyue L and Monjaro/Xingyue L. The listed configurations are research material; manufacturer affiliation, stock and export permission are not implied.",
+    "sourceUrl": "https://global.geely.com/en/brand",
+    "catalogSHA256": "16a81426db5434e743b090653c8503d83c584a8166f914b77fa6f815fa676cfe",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://global.geely.com/en/brand; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "galaxy": {
+    "status": "approved",
+    "brandName": "Galaxy",
+    "intro": "Geely Galaxy is the new-energy nameplate in Geely Auto’s portfolio. The AUTOLINK China-market directory spans electric models such as E5, E8 and Xingyuan as well as plug-in hybrid L-series and Starship 7 references. Powertrain and test-cycle figures belong to individual source trims, not every Galaxy vehicle or export market.",
+    "sourceUrl": "https://global.geely.com/en/news/2026/geely-full-domain-ai-auto-china-2026",
+    "catalogSHA256": "d0477c48d17ec6a2160ef12071ad0a6e95bd3e53d89dd591677bda14b9bf5aef",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://global.geely.com/en/news/2026/geely-full-domain-ai-auto-china-2026; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "zeekr": {
+    "status": "approved",
+    "brandName": "Zeekr",
+    "intro": "Zeekr is a luxury electric mobility brand in the Zeekr Group. This directory covers China-market references across electric passenger cars, SUVs and MPVs, including 001, 007, 7X, 009 and MIX. The brand information helps compare models; actual stock and supplier identity must be checked through separate approved listings.",
+    "sourceUrl": "https://www.zeekrgroup.com/en/about-zeekr",
+    "catalogSHA256": "1fe858a548f085897fa229d7e1344976c8bea7486105c7fb996e13945453e166",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.zeekrgroup.com/en/about-zeekr; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "byd": {
+    "status": "approved",
+    "brandName": "BYD",
+    "intro": "BYD is a Chinese manufacturer known for battery-electric and plug-in hybrid vehicles. AUTOLINK lists China-market references such as Han, Qin L, Qin PLUS, Seal 06 and Yuan PLUS/ATTO 3. Similar names can represent different powertrains and market specifications, so the exact offered trim must be confirmed with a supplier.",
+    "sourceUrl": "https://www.byd.com/en/about-byd",
+    "catalogSHA256": "0dfd109444c75170fc6360179509b8fc0ac047c7d97048ab26bd21d288a8e2b7",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.byd.com/en/about-byd; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "denza": {
+    "status": "approved",
+    "brandName": "Denza",
+    "intro": "Denza is a premium new-energy vehicle brand within the BYD Group. The AUTOLINK directory presents China-market references for its MPVs, SUVs and Z-series passenger vehicles, including D9, N7, N8L and Z9GT. A model’s presence here does not establish manufacturer authorization, current inventory or delivery eligibility.",
+    "sourceUrl": "https://media.byd.com/section/company/brands/denza/?lang=eng",
+    "catalogSHA256": "7ab12d9a1ae11d298c2b246e538f98d3ba8259775da3254b82eaff01fe73841e",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://media.byd.com/section/company/brands/denza/?lang=eng; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "changan": {
+    "status": "approved",
+    "brandName": "Changan",
+    "intro": "Changan Automobile is a Chinese automotive group with CHANGAN and DEEPAL among its passenger-vehicle brands. This CHANGAN directory focuses on China-market CS-series SUVs, Eado and UNI-series references. The body, powertrain and model year shown on an individual page describe a selected configuration rather than a guaranteed export offer.",
+    "sourceUrl": "https://www.globalchangan.com/aboutus.html/",
+    "catalogSHA256": "69f415cd90ab8d7647b6b3aefeb5adfe11c00c3c993bb22b15ab7fadec5ce87b",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.globalchangan.com/aboutus.html/; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "deepal": {
+    "status": "approved",
+    "brandName": "Deepal",
+    "intro": "Deepal is Changan’s electric vehicle brand, with official model families including S05, S07, S09, L07 and G318. AUTOLINK keeps China-market battery-electric and range-extended configurations separate, because batteries and range-cycle figures differ by trim. Buyers should verify a particular vehicle and its destination requirements with an approved seller.",
+    "sourceUrl": "https://www.globalchangan.com/deepal.html",
+    "catalogSHA256": "7f36706b928430ec710f86fd4f3829912727429837b0e0165f67ff600ab7787f",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.globalchangan.com/deepal.html; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "trumpchi": {
+    "status": "approved",
+    "brandName": "Trumpchi",
+    "intro": "Trumpchi is the passenger-vehicle brand presented by GAC Motor in China. This AUTOLINK directory includes GS-series SUVs and M-series MPVs, with gasoline and plug-in hybrid configurations represented where source data exists. The brand page supports model research and supplier discovery without claiming that AUTOLINK is a GAC-authorized dealer.",
+    "sourceUrl": "https://www.gacmotor.com/about",
+    "catalogSHA256": "6987814c167bd3c16d4404b62640e71f7283972bc452da8299fd2860f74c8ade",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.gacmotor.com/about; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "saic-volkswagen": {
+    "status": "approved",
+    "brandName": "SAIC Volkswagen",
+    "intro": "SAIC Volkswagen is Volkswagen Group’s China joint venture established in Shanghai. The China-market references on AUTOLINK include Lavida, Passat, Tiguan L and Teramont. These are local model and trim records; overseas homologation, Volkswagen authorization and available supplier stock must be verified independently.",
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/volkswagen-group-china-4068",
+    "catalogSHA256": "e074ec0cc27925b6a3ca76329815174f4bf74613cf2d0437b483c0fcd3d76b3b",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.volkswagen-newsroom.com/en/volkswagen-group-china-4068; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "faw-volkswagen": {
+    "status": "approved",
+    "brandName": "FAW Volkswagen",
+    "intro": "FAW Volkswagen is a Volkswagen Group joint venture in China. This AUTOLINK directory separates its China-market references, including Sagitar, Magotan, Golf, Tayron and Talagon, from SAIC Volkswagen vehicles. Model badges can cross markets while specifications vary; buyers should review the actual trim, documentation and seller listing.",
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/volkswagen-group-china-4068",
+    "catalogSHA256": "3a27c630c24c8ab051e5a50feba22a7d56ce21c5f1cb89179d9351369bcf98f4",
+    "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
+    "evidence": "source:https://www.volkswagen-newsroom.com/en/volkswagen-group-china-4068; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  }
+}

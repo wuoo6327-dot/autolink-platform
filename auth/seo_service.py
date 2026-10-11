@@ -84,6 +84,34 @@ class PublicSEOService:
         return hashlib.sha256(json.dumps(payload,ensure_ascii=False,sort_keys=True,
             separators=(',',':')).encode()).hexdigest()
 
+    @staticmethod
+    def brand_digest(brand):
+        payload = {key:brand.get(key) for key in ('id','name','country','overview','active')}
+        payload['active'] = bool(payload['active'])
+        # A reviewed brand page describes its current catalogue lineup. A model
+        # edit therefore withdraws that review until the new lineup is checked.
+        payload['modelFingerprints'] = sorted(
+            PublicSEOService.catalog_digest(item) for item in brand.get('models',[]))
+        return hashlib.sha256(json.dumps(payload,ensure_ascii=False,sort_keys=True,
+            separators=(',',':')).encode()).hexdigest()
+
+    def english_brand_editorial(self, brand):
+        file = self.site_root/'locales/seo-brand-en-reviewed.json'
+        if not file.is_file() or not brand.get('active',True) or not brand.get('models'):
+            return None
+        try:
+            entry = asset_json(str(file),asset_version(file)).get(brand['id'])
+            if not isinstance(entry,dict) or entry.get('status') != 'approved': return None
+            if entry.get('brandName') != brand['name'] or entry.get('catalogSHA256') != self.brand_digest(brand): return None
+            source = urlsplit(str(entry.get('sourceUrl','')))
+            if source.scheme != 'https' or not source.hostname or source.username or source.password: return None
+            if len(entry.get('intro','').split()) < 35 or re.search(r'[\u3400-\u9fff]',entry['intro']): return None
+            if not all(str(entry.get(key,'')).strip() for key in ('reviewedBy','evidence')): return None
+            if not entry['evidence'].startswith('source:'): return None
+            return entry
+        except (ValueError,OSError,KeyError,TypeError):
+            return None
+
     def english_editorial(self, model, reference=None):
         """Return a reviewed English entry only while its exact source still matches.
 
@@ -124,7 +152,9 @@ class PublicSEOService:
             '电池能量(kWh)':'Battery capacity (kWh)',
             'WLTC综合油耗(L/100km)':'WLTC fuel consumption (L/100 km)',
         }
-        variant = reference.get('variants',[{}])[0]
+        variants = reference.get('variants') or []
+        if not variants: return {}
+        variant = variants[0]
         facts = {}
         for group in reference.get('groups',[]):
             for row in group.get('rows',[]):
@@ -133,7 +163,8 @@ class PublicSEOService:
                 value = str(variant.get('values',{}).get(row.get('key')) or '').strip().lstrip('● ').strip()
                 if re.fullmatch(r'\d+(?:\.\d+)?',value): facts[label] = value
         powertrains={'汽油':'Gasoline','纯电动':'Battery electric',
-                     '插电式混合动力':'Plug-in hybrid','油电混合':'Hybrid'}
+                     '插电式混合动力':'Plug-in hybrid','油电混合':'Hybrid',
+                     '增程式':'Range-extended electric'}
         for group in reference.get('groups',[]):
             for row in group.get('rows',[]):
                 if row.get('label') == '能源类型':
@@ -163,7 +194,8 @@ class PublicSEOService:
         terms = self.site_root/'locales/seo-verified-terms.json'
         source['verifiedTermsSHA256'] = asset_hash(str(terms),asset_version(terms)) if terms.is_file() else None
         fingerprint = hashlib.sha256(json.dumps(source,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-        complete = self.reference_complete(record, reference) if kind == 'model' else bool(str(record.get('overview') or '').strip() and record.get('models'))
+        brand_editorial = self.english_brand_editorial(record) if kind == 'brand' else None
+        complete = self.reference_complete(record, reference) if kind == 'model' else bool(record.get('models') and (str(record.get('overview') or '').strip() or brand_editorial))
         review_file = self.site_root/'locales/seo-index-reviews.json'
         try:
             reviews = asset_json(str(review_file),asset_version(review_file)) if review_file.is_file() else {}
@@ -179,12 +211,61 @@ class PublicSEOService:
             reviewed = (review.get('sourceFingerprint') == fingerprint and
                         bool(str(review.get('reviewedBy') or '').strip()) and
                         bool(str(review.get('evidence') or '').strip()))
-            editorial = self.english_editorial(record,reference) if kind == 'model' and language == 'en' and complete else None
+            editorial = self.english_editorial(record,reference) if kind == 'model' and language == 'en' and complete else brand_editorial if kind == 'brand' and language == 'en' else None
             if complete and ((kind == 'model' and language == 'zh') or editorial or reviewed):
                 if language == 'zh' or editorial or not self.untranslated_reference(record,reference,language):
                     allowed.append(language)
         return {'contentComplete':complete,'indexLanguages':allowed,'sourceFingerprint':fingerprint,
                 'reason':'content_incomplete' if not complete else 'localization_review_required' if allowed==['zh'] or not allowed else 'reviewed'}
+
+    def admin_status(self):
+        """Read-only publication ledger for the existing admin console.
+
+        Technical eligibility, sitemap inclusion and Google indexing are kept
+        as separate concepts. All states are recomputed from maintained rows.
+        """
+        models = self.trade.catalog.models(public=False)
+        brands = self.trade.catalog.brands(public=False)
+        model_file = self.site_root/'locales/seo-model-en-reviewed.json'
+        brand_file = self.site_root/'locales/seo-brand-en-reviewed.json'
+        model_reviews = asset_json(str(model_file),asset_version(model_file)) if model_file.is_file() else {}
+        brand_reviews = asset_json(str(brand_file),asset_version(brand_file)) if brand_file.is_file() else {}
+        with self.trade.auth.connect() as db:
+            modified_models = {row['id']:row['updated_at'] for row in db.execute('SELECT id,updated_at FROM catalog_models')}
+            modified_brands = {row['id']:row['updated_at'] for row in db.execute('SELECT id,updated_at FROM catalog_brands')}
+        language_counts = {lang:{'models':0,'brands':0} for lang in LANGUAGES}
+        model_rows = []
+        for model in models:
+            policy = self.index_policy('model',model) if model['active'] and model['brandActive'] else {'contentComplete':False,'indexLanguages':[],'reason':'inactive'}
+            approved = self.english_editorial(model) is not None
+            review = model_reviews.get(model['id'],{})
+            state = 'approved' if approved else 'stale' if review.get('status') == 'approved' else review.get('status','missing')
+            for language in policy['indexLanguages']: language_counts[language]['models'] += 1
+            model_rows.append({'id':model['id'],'brand':model['brand'],'name':model['model'],
+                'year':model.get('year'),'active':model['active'] and model['brandActive'],
+                'contentComplete':policy['contentComplete'],'englishReview':state,
+                'indexLanguages':policy['indexLanguages'],'reason':policy['reason'],
+                'updatedAt':modified_models.get(model['id'])})
+        brand_rows = []
+        for brand in brands:
+            record = self.trade.catalog.brand(brand['id'],public=False)
+            policy = self.index_policy('brand',record) if brand['active'] else {'contentComplete':False,'indexLanguages':[],'reason':'inactive'}
+            approved = self.english_brand_editorial(record) is not None
+            review = brand_reviews.get(brand['id'],{})
+            state = 'approved' if approved else 'stale' if review.get('status') == 'approved' else review.get('status','missing')
+            for language in policy['indexLanguages']: language_counts[language]['brands'] += 1
+            brand_rows.append({'id':brand['id'],'name':brand['name'],'active':brand['active'],
+                'englishReview':state,'indexLanguages':policy['indexLanguages'],
+                'reason':policy['reason'],'updatedAt':modified_brands.get(brand['id'])})
+        updates = sorted([{'kind':'model','id':row['id'],'updatedAt':row['updatedAt']} for row in model_rows]
+            + [{'kind':'brand','id':row['id'],'updatedAt':row['updatedAt']} for row in brand_rows],
+            key=lambda row:row['updatedAt'] or 0,reverse=True)[:20]
+        return {'models':model_rows,'brands':brand_rows,'languages':language_counts,
+            'sitemap':{'generation':'on_request','eligibleDetailUrls':sum(sum(item.values()) for item in language_counts.values()),
+                'submittedToGoogle':None,'googleIndexedUrls':None},
+            'contentUpdates':updates,
+            'searchConsole':{'connected':False,'indexedUrls':None,'englishModelImpressions':None,
+                'organicClicks':None,'organicModelVisits':None,'registrations':None,'qualifiedInquiries':None}}
 
     @staticmethod
     def reference_complete(model, reference):
@@ -275,7 +356,9 @@ class PublicSEOService:
 
         def model_card(model):
             target = '/trade/models/' + quote(model['id'], safe='')
-            return '<article class="trade-card"><img loading="lazy" decoding="async" src="' + e(self.safe_image(model.get('image'))) + '" alt="' + e(model['model'] if model['model'].casefold().startswith(model['brand'].casefold()+' ') else model['brand'] + ' ' + model['model']) + '"><div class="trade-card-body"><span class="eyebrow">' + e(model['brand']) + '</span><h2>' + e(model['model']) + '</h2><p>' + e(model.get('year') or tr('Year unspecified')) + ' · ' + e(tr(model.get('energy', ''))) + ' · ' + e(tr(model.get('bodyType', ''))) + '</p>' + anchor(target, tr('View model reference')) + '</div></article>'
+            original = self.safe_image(model.get('image'))
+            thumbnail = self.mobile_hero(model, original) or original
+            return '<article class="trade-card"><img loading="lazy" decoding="async" src="' + e(thumbnail) + '" alt="' + e(model['model'] if model['model'].casefold().startswith(model['brand'].casefold()+' ') else model['brand'] + ' ' + model['model']) + '"><div class="trade-card-body"><span class="eyebrow">' + e(model['brand']) + '</span><h2>' + e(model['model']) + '</h2><p>' + e(model.get('year') or tr('Year unspecified')) + ' · ' + e(tr(model.get('energy', ''))) + ' · ' + e(tr(model.get('bodyType', ''))) + '</p>' + anchor(target, tr('View model reference')) + '</div></article>'
 
         def vehicle_card(vehicle):
             return '<article class="trade-card"><img loading="lazy" decoding="async" src="' + e(self.safe_image(vehicle.get('image'))) + '" alt="' + e(vehicle['brand'] + ' ' + vehicle['model']) + '"><div class="trade-card-body"><span class="eyebrow">' + e(vehicle['supplier_name']) + '</span><h2>' + e(vehicle['brand'] + ' ' + vehicle['model']) + '</h2><p>' + e(vehicle.get('model_year') or '') + ' · ' + e(vehicle.get('trim') or tr(vehicle.get('energy_type', ''))) + '</p><p>' + e(tr('Supplier quote pending')) + '</p>' + anchor('/trade/vehicles/' + quote(vehicle['id'], safe=''), tr('View trade details')) + '</div></article>'
@@ -302,11 +385,15 @@ class PublicSEOService:
                 years = ', '.join(map(str,reference.get('availableYears',[]))) or tr('Year unspecified')
                 introduction = editorial['intro'] if editorial else tr('This catalogue entry describes a model only. Confirm the exact trim, steering, specification, stock and price with an approved supplier. No supplier inventory or quote is implied.')
                 facts = [('Brand',model['brand']),('Model',model['model']),('Year',years),('Body type',tr(model['bodyType']))]
+                if editorial and reference.get('modelZh'):
+                    facts.append(('China-market name',reference['modelZh']))
                 if not editorial: facts += [('Energy',tr(model['energy'])),*model.get('specifications',{}).items()]
                 safe_description = model.get('description') and not editorial and (language!='en' or not re.search(r'[\u3400-\u9fff]',model['description']))
                 mobile_image = self.mobile_hero(model, image)
                 hero = ('<picture>' + ('<source media="(max-width:700px)" srcset="' + e(mobile_image) + '">' if mobile_image else '') + '<img class="trade-hero-image" width="1200" height="750" fetchpriority="high" src="' + e(image) + '" alt="' + e(name) + '"></picture>')
                 content = '<div class="trade-intro"><div><span class="eyebrow">' + e(tr('MODEL REFERENCE · NOT A STOCK OFFER')) + '</span><h1>' + e(model_name) + '</h1><p>' + e(introduction) + '</p></div></div><div class="trade-detail"><div>' + hero + '</div><div>' + fields(facts) + ('<p>' + e(model['description']) + '</p>' if safe_description else '') + anchor('/trade/vehicles?' + urlencode({'brand':model['brand'],'model':model['model']}), tr('Find approved supplier offers')) + '</div></div>'
+                if editorial and editorial.get('buyerNote'):
+                    content += '<section class="related-models"><h2>China sourcing note</h2><p>' + e(editorial['buyerNote']) + '</p>' + anchor('/buyer/requests','Submit a purchase request',True) + '</section>'
                 content += self.reference_parameters(model, language, tr)
                 content += anchor(canonical_path+'?interactive=1',tr('Compare all configurations'),True)
                 related = [item for item in self.trade.catalog.models(brand=model['brandId']) if item['id'] != ident][:4]
@@ -318,14 +405,19 @@ class PublicSEOService:
                 graph.append({'@type':'ProductModel','name':name,'url':localized_url(canonical_path,language),'brand':{'@type':'Brand','name':model['brand']},'description':description})
             elif ident and collection == 'brands':
                 brand = self.trade.catalog.brand(ident)
+                brand_editorial = self.english_brand_editorial(brand) if language == 'en' else None
                 index_languages = self.index_policy('brand',brand)['indexLanguages']
                 indexable = indexable and language in index_languages
-                title = tr('{brand} Vehicles for Export from China | AUTOLINK').replace('{brand}',brand['name'])
-                description = brand['name'] + ' · ' + description
+                title = (brand['name'] + ' Models & China Sourcing | AUTOLINK') if brand_editorial else tr('{brand} Vehicles for Export from China | AUTOLINK').replace('{brand}',brand['name'])
+                description = brand_editorial['intro'] if brand_editorial else brand['name'] + ' · ' + description
                 body_types = sorted({item['bodyType'] for item in brand['models'] if item.get('bodyType')})
                 energies = sorted({item['energy'] for item in brand['models'] if item.get('energy')})
-                overview = brand.get('overview') or (brand['name'] + ' has ' + str(len(brand['models'])) + ' public model references on AUTOLINK. The catalogue lists ' + ', '.join(body_types) + ' body types and ' + ', '.join(energies) + ' energy labels where provided. These are model references, not confirmed inventory or manufacturer authorization.')
-                content = '<div class="trade-intro"><div><h1>' + e(brand['name']) + '</h1><p>' + e(overview) + '</p></div></div><div class="trade-grid">' + ''.join(model_card(model) for model in brand['models']) + '</div>' + anchor('/trade/vehicles?brand='+quote(brand['name'],safe=''),tr('Find approved supplier offers'))
+                overview = brand_editorial['intro'] if brand_editorial else brand.get('overview') or (brand['name'] + ' has ' + str(len(brand['models'])) + ' public model references on AUTOLINK. The catalogue lists ' + ', '.join(body_types) + ' body types and ' + ', '.join(energies) + ' energy labels where provided. These are model references, not confirmed inventory or manufacturer authorization.')
+                content = '<div class="trade-intro"><div><h1>' + e(brand['name']) + '</h1><p>' + e(overview) + '</p></div></div>'
+                if brand_editorial:
+                    content += fields([('Body types',', '.join(body_types)),('Powertrains',', '.join(energies))])
+                    content += '<p class="trade-note">Brand background: <a href="' + e(brand_editorial['sourceUrl']) + '" rel="noopener noreferrer">manufacturer source</a>. Catalogue entries do not imply manufacturer authorization or current stock.</p>'
+                content += '<div class="trade-grid">' + ''.join(model_card(model) for model in brand['models']) + '</div>' + anchor('/trade/vehicles?brand='+quote(brand['name'],safe=''),tr('Find approved supplier offers')) + anchor('/buyer/requests','Submit a purchase request',True)
                 brand_offers = self.trade.vehicle_rows(public=True,limit=4,filters={'brand':brand['name']})
                 content += '<section class="related-models"><h2>' + e(tr('Approved supplier offers')) + '</h2>'
                 content += ('<div class="trade-grid">' + ''.join(vehicle_card(vehicle) for vehicle in brand_offers) + '</div>'
