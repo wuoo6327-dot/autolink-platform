@@ -35,10 +35,12 @@ fixture.doCleanups()
 '
 sudo -n chown 10001:10001 "$DATA"
 start_pair() {
-  local image="$1" site="$2" config="$3"
+  local image="$1" site="$2" config="$3" catalog="${4:-}"
+  local -a catalog_mount=()
+  if [[ -n "$catalog" ]]; then catalog_mount=(-v "$catalog:/app/catalog.json:ro"); fi
   "${D[@]}" run -d --name "$AUTH" --network "$NET" --network-alias auth --read-only --cap-drop ALL \
     --security-opt no-new-privileges:true --tmpfs /tmp:size=32m,mode=1777 \
-    -v "$DATA:/data" -v "$site:/srv:ro" -e AUTH_DB_PATH=/data/autolink-auth.sqlite3 \
+    -v "$DATA:/data" -v "$site:/srv:ro" "${catalog_mount[@]}" -e AUTH_DB_PATH=/data/autolink-auth.sqlite3 \
     -e GOOGLE_CLIENT_ID=qa-client -e MEMBERSHIP_RESTRICTIONS=true "$image" >/dev/null
   "${D[@]}" run -d --name "$FRONT" --network "$NET" --read-only --cap-drop ALL \
     --security-opt no-new-privileges:true --tmpfs /tmp:size=16m,mode=1777 \
@@ -54,7 +56,7 @@ start_pair() {
 }
 probe() {
   local phase="$1"
-  PHASE="$phase" python3 - <<'PY'
+  PHASE="$phase" QA_ROOT="$ROOT" python3 - <<'PY'
 import json,os,urllib.request,urllib.error,xml.etree.ElementTree as ET
 base='http://127.0.0.1:18083'; phase=os.environ['PHASE']
 def get(path):
@@ -65,8 +67,15 @@ health,_=get('/healthz'); models_status,models=get('/autolink/public/models?limi
 brand_status,brands=get('/autolink/public/brands'); admin,_=get('/autolink/admin/users')
 home,_=get('/'); detail_status,detail=get('/trade/models/geely-monjaro-2026')
 assert (health,models_status,brand_status,admin,home,detail_status)==(200,200,200,401,200,200)
-assert len(json.loads(models)['data'])==244 and len(json.loads(brands)['data'])==53
-result={'phase':phase,'health':health,'models':244,'brands':53,'admin':admin,'home':home,'detail':detail_status}
+expected=json.load(open(os.path.join(os.environ['QA_ROOT'],'tests/fixtures/production-public-catalog-20261012.json')))
+expected_ids={str(item['id']) for item in expected['models']}
+model_ids={str(item['id']) for item in json.loads(models)['data']}
+expected_brand_ids={str(item['id']) for item in expected['brands']}
+brand_ids={str(item['id']) for item in json.loads(brands)['data']}
+assert len(expected_ids)==244 and expected_ids<=model_ids
+assert len(expected_brand_ids)==53 and expected_brand_ids<=brand_ids
+if phase!='rollback':assert model_ids==expected_ids and brand_ids==expected_brand_ids
+result={'phase':phase,'health':health,'models':len(model_ids),'brands':len(brand_ids),'admin':admin,'home':home,'detail':detail_status,'extraRollbackModels':len(model_ids-expected_ids),'extraRollbackBrands':len(brand_ids-expected_brand_ids)}
 if phase!='rollback':
     assert b'Geely Monjaro' in detail and b'index, follow' in detail
     unknown,_=get('/trade/models/not-a-model'); assert unknown==404
@@ -80,7 +89,7 @@ PY
 start_pair "$CANDIDATE" "$ROOT/site" "$ROOT/Caddyfile"
 probe candidate
 stop_pair
-start_pair "$BASELINE" "$BASE_SITE" "$BASE_CADDY"
+start_pair "$BASELINE" "$BASE_SITE" "$BASE_CADDY" "$ROOT/auth/catalog.json"
 probe rollback
 stop_pair
 start_pair "$CANDIDATE" "$ROOT/site" "$ROOT/Caddyfile"
