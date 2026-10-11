@@ -68,10 +68,12 @@ assert (health,models_status,brand_status,admin,home,detail_status)==(200,200,20
 expected=json.load(open(os.path.join(os.environ['QA_ROOT'],'tests/fixtures/production-public-catalog-20261012.json')))
 expected_ids={str(item['id']) for item in expected['models']}
 model_ids={str(item['id']) for item in json.loads(models)['data']}
+expected_brand_ids={str(item['id']) for item in expected['brands']}
+brand_ids={str(item['id']) for item in json.loads(brands)['data']}
 assert len(expected_ids)==244 and expected_ids<=model_ids
-assert len(json.loads(brands)['data'])==53
-if phase!='rollback':assert model_ids==expected_ids
-result={'phase':phase,'health':health,'models':len(model_ids),'brands':53,'admin':admin,'home':home,'detail':detail_status,'extraRollbackModels':len(model_ids-expected_ids)}
+assert len(expected_brand_ids)==53 and expected_brand_ids<=brand_ids
+if phase!='rollback':assert model_ids==expected_ids and brand_ids==expected_brand_ids
+result={'phase':phase,'health':health,'models':len(model_ids),'brands':len(brand_ids),'admin':admin,'home':home,'detail':detail_status,'extraRollbackModels':len(model_ids-expected_ids),'extraRollbackBrands':len(brand_ids-expected_brand_ids)}
 if phase!='rollback':
     assert b'Geely Monjaro' in detail and b'index, follow' in detail
     unknown,_=get('/trade/models/not-a-model'); assert unknown==404
