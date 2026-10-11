@@ -64,6 +64,7 @@ def get(path):
 health,_=get('/healthz'); models_status,models=get('/autolink/public/models?limit=500')
 brand_status,brands=get('/autolink/public/brands'); admin,_=get('/autolink/admin/users')
 home,_=get('/'); detail_status,detail=get('/trade/models/geely-monjaro-2026')
+print(json.dumps({'phase':phase,'observed':{'health':health,'models':models_status,'brands':brand_status,'admin':admin,'home':home,'detail':detail_status,'modelCount':len(json.loads(models).get('data',[])),'brandCount':len(json.loads(brands).get('data',[]))}},sort_keys=True),flush=True)
 assert (health,models_status,brand_status,admin,home,detail_status)==(200,200,200,401,200,200)
 assert len(json.loads(models)['data'])==244 and len(json.loads(brands)['data'])==53
 result={'phase':phase,'health':health,'models':244,'brands':53,'admin':admin,'home':home,'detail':detail_status}
