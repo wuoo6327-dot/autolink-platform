@@ -54,7 +54,7 @@ start_pair() {
 }
 probe() {
   local phase="$1"
-  PHASE="$phase" python3 - <<'PY'
+  PHASE="$phase" QA_ROOT="$ROOT" python3 - <<'PY'
 import json,os,urllib.request,urllib.error,xml.etree.ElementTree as ET
 base='http://127.0.0.1:18083'; phase=os.environ['PHASE']
 def get(path):
@@ -64,10 +64,14 @@ def get(path):
 health,_=get('/healthz'); models_status,models=get('/autolink/public/models?limit=500')
 brand_status,brands=get('/autolink/public/brands'); admin,_=get('/autolink/admin/users')
 home,_=get('/'); detail_status,detail=get('/trade/models/geely-monjaro-2026')
-print(json.dumps({'phase':phase,'observed':{'health':health,'models':models_status,'brands':brand_status,'admin':admin,'home':home,'detail':detail_status,'modelCount':len(json.loads(models).get('data',[])),'brandCount':len(json.loads(brands).get('data',[]))}},sort_keys=True),flush=True)
 assert (health,models_status,brand_status,admin,home,detail_status)==(200,200,200,401,200,200)
-assert len(json.loads(models)['data'])==244 and len(json.loads(brands)['data'])==53
-result={'phase':phase,'health':health,'models':244,'brands':53,'admin':admin,'home':home,'detail':detail_status}
+expected=json.load(open(os.path.join(os.environ['QA_ROOT'],'tests/fixtures/production-public-catalog-20261012.json')))
+expected_ids={str(item['id']) for item in expected['models']}
+model_ids={str(item['id']) for item in json.loads(models)['data']}
+assert len(expected_ids)==244 and expected_ids<=model_ids
+assert len(json.loads(brands)['data'])==53
+if phase!='rollback':assert model_ids==expected_ids
+result={'phase':phase,'health':health,'models':len(model_ids),'brands':53,'admin':admin,'home':home,'detail':detail_status,'extraRollbackModels':len(model_ids-expected_ids)}
 if phase!='rollback':
     assert b'Geely Monjaro' in detail and b'index, follow' in detail
     unknown,_=get('/trade/models/not-a-model'); assert unknown==404
