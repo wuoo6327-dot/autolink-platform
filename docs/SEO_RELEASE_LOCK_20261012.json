@@ -72,5 +72,6 @@
   },
   "webUnknownFinding": "GO-2026-5932 golang.org/x/crypto",
   "productionDeploymentAuthorized": false,
-  "searchConsoleSubmissionAuthorized": false
+  "searchConsoleSubmissionAuthorized": false,
+  "draftPullRequest": "https://github.com/wuoo6327-dot/autolink-platform/pull/6"
 }
