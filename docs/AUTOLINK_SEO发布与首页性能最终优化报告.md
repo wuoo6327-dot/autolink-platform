@@ -58,7 +58,7 @@ Chrome Performance trace 使用相同的 412×823 手机视口、4 倍 CPU 降�
 - **Chrome 首访/复访**：未节流本地环回手机视口，PerformanceObserver LCP 140→72 ms；极氪图传输 120,804→0 字节、主脚本 460,726→300 字节（复访浏览器缓存/协商）。这与慢 4G Lighthouse 结果不直接比较，也不能代表生产首访。
 - **Safari 手机视口**：在无痕窗口的响应式设计模式（iPhone 393×852、DPR 3）核对首访画面及复访刷新，极氪首屏图、H1、搜索和主要入口均可见；切至英文后 H1、搜索及车型入口仍在，手机菜单、买家登录表单和车型目录跳转通过。原始定性记录为 `safari-manual-qa-20261012.json`。未取得 Safari 可与 Chrome 对比的冷载 LCP/TBT 或 Performance trace，故不将 Chrome 分数写作 Safari 结果。
 
-SEO 镜像原先在阿里云 AMD64 运行 221 项后端测试通过、5 项按条件跳过；包括登录、Cookie、CSRF、权限、私有资料、发布审核等。固定 Trivy 扫描：auth 的 CRITICAL/HIGH/MEDIUM/LOW/UNKNOWN 均为 0；web 的 UNKNOWN 为 1（`GO-2026-5932`，`golang.org/x/crypto`），其余为 0。这一 UNKNOWN 仍待跟踪，不写成零风险。本次首页改动仅涉及公开静态资源和测试工具，未修改 auth、账号、会员、协议或生产数据。
+SEO 镜像原先在阿里云 AMD64 运行 221 项后端测试通过、5 项按条件跳过；包括登录、Cookie、CSRF、权限、私有资料、发布审核等。固定 Trivy 扫描：auth 的 CRITICAL/HIGH/MEDIUM/LOW/UNKNOWN 均为 0；web 的 UNKNOWN 为 1（`GO-2026-5932`，`golang.org/x/crypto`），其余为 0。这一 UNKNOWN 仍待跟踪，不写成零风险。本次首页改动仅涉及公开静态资源和测试工具，未修改 auth、账号、会员、协议或生产数据。性能分支没有单独构建 AMD64 镜像；两份草稿 PR 的 GitHub `source-security` 检查显示 `skipping`，不得算作通过。
 
 Chrome 的 Googlebot Smartphone UA 模拟、普通用户与服务端初始 HTML 一致性已做隔离检查；**候选没有在生产部署，所以没有 Google Search Console 的实际实时抓取、Google 选定 Canonical、已收录量或自然流量增长证据**。上一轮只读 GSC 观察属于旧生产版本，不作为本轮候选抓取通过的证明。
 
@@ -90,4 +90,5 @@ Chrome 的 Googlebot Smartphone UA 模拟、普通用户与服务端初始 HTML 
 - 首页手机 LCP 仍高于 2.5 秒，首屏 DOM/图片发现依赖主 bundle；Safari 与 Chrome、首访与复访结果见功能回归记录，不将实验室数字写成生产 CWV。
 - 英文索引仅 22 个合格车型；其余语言和品牌尚未通过内容审核，继续暂缓索引。
 - auth 镜像尚无 registry manifest digest；web 扫描的 UNKNOWN 发现待处理。
+- 性能跟进分支尚未单独归档 AMD64 镜像，GitHub `source-security` 检查跳过；若计划将性能改动一同上线，须在对应 AMD64 发布包上再做隔离预发布与回滚验收。
 - 尚无新版本生产 Google 实时抓取、真实收录与自然搜索转化数据。
