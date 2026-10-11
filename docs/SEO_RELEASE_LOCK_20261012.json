@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-12",
+  "candidateBranch": "codex/global-seo-20261012",
+  "testedCodeCommit": "128abd5d1b3636724e4cfe83277662f4c5bbc126",
+  "environment": "Aliyun isolated Ubuntu 24.04 AMD64, /home/admin/autolink-global-seo-qa-20261012",
+  "authImage": {
+    "tag": "autolink-global-seo-auth:128abd5",
+    "localImageId": "sha256:4f828c7c39f2545a6501ce2276cdc6732a2fb8f78ba9d4623a82e16f1891ac12",
+    "registryDigest": null,
+    "note": "Local immutable image ID; not yet published to a registry"
+  },
+  "webImage": "autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+  "scannerImage": "aquasec/trivy@sha256:9db099105405c648166e6b94155eb32f8da12673cf1f455207f7385cc9a77283",
+  "catalogFixture": {
+    "models": 244,
+    "brands": 53,
+    "indexableModelUrls": 199,
+    "indexableBrandUrls": 0
+  },
+  "amd64Tests": {
+    "run": 221,
+    "skipped": 5,
+    "exitCode": 0,
+    "durationSeconds": 152.109,
+    "httpQaExitCode": 0
+  },
+  "vulnerabilityCounts": {
+    "auth": {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNKNOWN": 0},
+    "web": {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNKNOWN": 1}
+  },
+  "webUnknownFinding": "GO-2026-5932 golang.org/x/crypto",
+  "productionDeployed": false,
+  "searchConsoleCandidateLiveTested": false
+}
