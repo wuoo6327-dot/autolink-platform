@@ -1,8 +1,10 @@
 # AUTOLINK 全球 SEO 自动化优化与性能验收报告
 
-**候选日期：**2026-10-12（Asia/Bangkok）  
-**仓库：**`wuoo6327-dot/autolink-platform`  
-**隔离开发分支：**`codex/global-seo-20261012`  
+**候选日期：**2026-10-12（Asia/Bangkok）
+
+**仓库：**`wuoo6327-dot/autolink-platform`
+
+**隔离开发分支：**`codex/global-seo-20261012`
 **状态：**候选代码与隔离测试；未合并、未部署、未提交生产 Sitemap 或索引请求。
 
 ## 1. 已解决的问题与边界
