@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-12",
+  "candidateBranch": "codex/seo-release-ready-20261012",
+  "sourceBase": "a38664fc9bf2be639cbcb65dce4b57ef5b94170c",
+  "pr4IntegratedCommit": "8205d5a",
+  "testedRuntimeCommit": "128abd5d1b3636724e4cfe83277662f4c5bbc126",
+  "runtimeFilesUnchangedAfterTestedCommit": true,
+  "environment": "Aliyun isolated Ubuntu 24.04 linux/amd64",
+  "authImage": {
+    "tag": "autolink-global-seo-auth:128abd5",
+    "localImageId": "sha256:4f828c7c39f2545a6501ce2276cdc6732a2fb8f78ba9d4623a82e16f1891ac12",
+    "registryManifestDigest": null,
+    "archive": "/home/admin/autolink-global-seo-qa-20261012/auth-image.tar",
+    "archiveSHA256": "25dabd6f3824a1a8deeca50499b14811c0f5c034500c40c6aad535e2e97e2d57",
+    "architecture": "linux/amd64",
+    "user": "10001:10001"
+  },
+  "webImage": {
+    "reference": "autolink-round3-caddy@sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb",
+    "archive": "/home/admin/autolink-global-seo-qa-20261012/web-image.tar",
+    "archiveSHA256": "19a86f94d04ee909461dfb3cc32352f83bb315356b9196fe34566e2665b366ef"
+  },
+  "verifiedCatalog": {
+    "models": 244,
+    "brands": 53,
+    "indexableModelUrls": 199,
+    "indexableChineseUrls": 177,
+    "indexableEnglishUrls": 22,
+    "indexableBrandUrls": 0,
+    "catalogFileSHA256": "3c7bdf436bff712c0c50b249cf93c4c0bfda8d030133ccaf0532f2096734676b",
+    "liveSourceAndImageHashesMatched": 244,
+    "lastLiveVerificationUTC": "2026-10-11T18:21:57.314394+00:00"
+  },
+  "siteAssembly": {
+    "script": "scripts/build_seo_release_site.py",
+    "base": "Read-only copy of current production public site",
+    "overlayFiles": 254,
+    "noDeletes": true,
+    "rollbackCatalogMount": "/app/catalog.json:ro",
+    "untouchedProductionFilesVerified": 5167
+  },
+  "isolatedAcceptance": {
+    "backendRun": 221,
+    "backendSkipped": 5,
+    "initialHttpQaPassed": true,
+    "candidateRollbackRestorePassed": true,
+    "testedSiteVariant": "current production public site copy with selective SEO overlay",
+    "minimalOverlayQaPassed": true,
+    "eachPhaseModels": 244,
+    "eachPhaseBrands": 53,
+    "candidateAndRestoreSitemapUrls": 199,
+    "productionUnmodified": true,
+    "minimalOverlayLog": "/home/admin/autolink-seo-release-stage-20261012/amd64-seo-rollback-overlay.log",
+    "eachPhaseExtraHistoricalModels": 0,
+    "eachPhaseExtraHistoricalBrands": 0
+  },
+  "vulnerabilityCounts": {
+    "auth": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "UNKNOWN": 0
+    },
+    "web": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "UNKNOWN": 1
+    }
+  },
+  "webUnknownFinding": "GO-2026-5932 golang.org/x/crypto",
+  "productionDeploymentAuthorized": false,
+  "searchConsoleSubmissionAuthorized": false,
+  "draftPullRequest": "https://github.com/wuoo6327-dot/autolink-platform/pull/6"
+}

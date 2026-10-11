@@ -1,0 +1,6 @@
+{
+  "policyVersion": 1,
+  "description": "Foreign model content and editorial brand pages require a content fingerprint, reviewedBy and evidence. Empty entries are intentionally not approved. Never infer review from a translated template.",
+  "model": {},
+  "brand": {}
+}

@@ -1,0 +1,149 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "bmw-brilliance-i3",
+  "brandZh": "BMW Brilliance",
+  "modelZh": "i3",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "技术数据",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "车长/车宽/车高（毫米）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（毫米）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "扭矩（牛米）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "最高车速（公里/小时）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "0-100公里/小时（秒）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "电动机输出功率（千瓦）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "百公里电耗（千瓦时/百公里）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "续航里程（CLTC）（公里）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "电池容量（千瓦时）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "充电时间 10-80%，直流快充（分钟）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "充电时间 0-100%，交流充电（小时）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "bmw-brilliance-i3-official-1",
+      "name": "eDrive35L",
+      "values": {
+        "official:0:0": "4872/1846/1481",
+        "official:0:1": "2966",
+        "official:0:2": "400",
+        "official:0:3": "180",
+        "official:0:4": "6.2",
+        "official:0:5": "210",
+        "official:0:6": "13.6",
+        "official:0:7": "550",
+        "official:0:8": "70.2",
+        "official:0:9": "31",
+        "official:0:10": "10.75",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-i3-official-2",
+      "name": "eDrive40L 曜夜套装",
+      "values": {
+        "official:0:0": "4872/1846/1481",
+        "official:0:1": "2966",
+        "official:0:2": "430",
+        "official:0:3": "180",
+        "official:0:4": "5.6",
+        "official:0:5": "250",
+        "official:0:6": "13.4",
+        "official:0:7": "625",
+        "official:0:8": "79.1",
+        "official:0:9": "32",
+        "official:0:10": "12.25",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-i3-official-3",
+      "name": "eDrive40L 曜夜运动套装",
+      "values": {
+        "official:0:0": "4872/1846/1481",
+        "official:0:1": "2966",
+        "official:0:2": "430",
+        "official:0:3": "180",
+        "official:0:4": "5.6",
+        "official:0:5": "250",
+        "official:0:6": "13.4",
+        "official:0:7": "625",
+        "official:0:8": "79.1",
+        "official:0:9": "32",
+        "official:0:10": "12.25",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/bmw-brilliance-i3.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.bmw.com.cn/zh/all-models/bmw-i/i3/2024/inspire.html"
+    }
+  ],
+  "sourceUrl": "https://www.bmw.com.cn/content/dam/bmw/marketCN/bmw_com_cn/specsheet/G28BEV.pdf.asset.1776400124842.pdf",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "bmw-i3-spec-pdf",
+      "sha256": "1ff9a918395f7b361aac3b97f3c9bf0ac434a8df3b4ec377f27f645075ab8aea"
+    }
+  ]
+}

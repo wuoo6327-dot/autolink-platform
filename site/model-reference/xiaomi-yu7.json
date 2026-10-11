@@ -1,0 +1,280 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "xiaomi-yu7",
+  "brandZh": "Xiaomi",
+  "modelZh": "YU7",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "动力与续航",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:1",
+          "label": "续航里程（CLTC，km）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "电池能量（kWh）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "电池类型"
+        },
+        {
+          "key": "official:0:4",
+          "label": "0-100km/h加速（s）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "最大扭矩（N·m）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "最大功率（PS）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "最大功率（kW）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "高压平台（V）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "快充时间（SOC 10%-80%，min）"
+        }
+      ]
+    },
+    {
+      "name": "底盘与智能配置",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "电机"
+        },
+        {
+          "key": "official:1:1",
+          "label": "双腔空气弹簧系统"
+        },
+        {
+          "key": "official:1:2",
+          "label": "连续阻尼可变减振器"
+        },
+        {
+          "key": "official:1:3",
+          "label": "智能驾驶计算平台"
+        },
+        {
+          "key": "official:1:4",
+          "label": "激光雷达"
+        },
+        {
+          "key": "official:1:5",
+          "label": "4D毫米波雷达"
+        },
+        {
+          "key": "official:1:6",
+          "label": "后轮转向"
+        },
+        {
+          "key": "official:1:7",
+          "label": "制动卡钳"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "xiaomi-yu7-official-1",
+      "name": "YU7 标准版",
+      "values": {
+        "official:0:0": "后驱",
+        "official:0:1": "643",
+        "official:0:2": "73",
+        "official:0:3": "磷酸铁锂",
+        "official:0:4": "5.9",
+        "official:0:5": "220",
+        "official:0:6": "528",
+        "official:0:7": "320",
+        "official:0:8": "官网未列明",
+        "official:0:9": "752",
+        "official:0:10": "20",
+        "official:1:0": "V6s Plus",
+        "official:1:1": "—",
+        "official:1:2": "—",
+        "official:1:3": "NVIDIA Thor™ 700TOPS",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "—",
+        "official:1:7": "前四活塞固定卡钳",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "xiaomi-yu7-official-2",
+      "name": "YU7 长续航版",
+      "values": {
+        "official:0:0": "后驱",
+        "official:0:1": "835",
+        "official:0:2": "96.3",
+        "official:0:3": "磷酸铁锂",
+        "official:0:4": "5.88",
+        "official:0:5": "240",
+        "official:0:6": "528",
+        "official:0:7": "320",
+        "official:0:8": "官网未列明",
+        "official:0:9": "752",
+        "official:0:10": "21",
+        "official:1:0": "V6s Plus",
+        "official:1:1": "—",
+        "official:1:2": "●",
+        "official:1:3": "NVIDIA Thor™ 700TOPS",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "—",
+        "official:1:7": "前四活塞固定卡钳",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "xiaomi-yu7-official-3",
+      "name": "YU7 Pro",
+      "values": {
+        "official:0:0": "四驱",
+        "official:0:1": "770",
+        "official:0:2": "96.3",
+        "official:0:3": "磷酸铁锂",
+        "official:0:4": "4.27",
+        "official:0:5": "240",
+        "official:0:6": "690",
+        "official:0:7": "496",
+        "official:0:8": "官网未列明",
+        "official:0:9": "752",
+        "official:0:10": "21",
+        "official:1:0": "V6s Plus",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "NVIDIA Thor™ 700TOPS",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "—",
+        "official:1:7": "前四活塞固定卡钳",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "xiaomi-yu7-official-4",
+      "name": "YU7 Max",
+      "values": {
+        "official:0:0": "四驱",
+        "official:0:1": "760",
+        "official:0:2": "101.7",
+        "official:0:3": "三元锂",
+        "official:0:4": "3.23",
+        "official:0:5": "253",
+        "official:0:6": "866",
+        "official:0:7": "690",
+        "official:0:8": "官网未列明",
+        "official:0:9": "897",
+        "official:0:10": "12",
+        "official:1:0": "V6s Plus",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "NVIDIA Thor™ 700TOPS",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "—",
+        "official:1:7": "Brembo®前四活塞固定卡钳",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "xiaomi-yu7-official-5",
+      "name": "YU7 GT",
+      "values": {
+        "official:0:0": "四驱",
+        "official:0:1": "705",
+        "official:0:2": "101.7",
+        "official:0:3": "三元锂",
+        "official:0:4": "2.92",
+        "official:0:5": "300",
+        "official:0:6": "官网未列明",
+        "official:0:7": "1003",
+        "official:0:8": "738",
+        "official:0:9": "897",
+        "official:0:10": "12",
+        "official:1:0": "V8s EVO",
+        "official:1:1": "●",
+        "official:1:2": "双阀CDC连续阻尼可变减振器",
+        "official:1:3": "NVIDIA Thor™ 700TOPS",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "Akebono®前六后四制动卡钳",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/xiaomi-yu7-v2.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.xiaomiev.com/yu7"
+    }
+  ],
+  "sourceUrl": "https://www.xiaomiev.com/yu7",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "yu7-compare-1",
+      "sha256": "5d695977893a25b6988f5ec6133779f63c01c52f036bb311d4e381a7e51c043d"
+    },
+    {
+      "localEvidence": "yu7-compare-2",
+      "sha256": "92c312ea3e2d2a4ca0e04e8bd37ebce6231defcda6cdbb5384ba0cf07b9d4f69"
+    },
+    {
+      "localEvidence": "yu7-compare-3",
+      "sha256": "7ff091a6c27b355229a1c87738816176c0fea28a6723dd4b140419b1026e14b2"
+    },
+    {
+      "localEvidence": "yu7-compare-4",
+      "sha256": "a67e289ecb639ed9d27b90de2e77dbbebd54eef8de0bf818dbc496a2afd24b1b"
+    },
+    {
+      "localEvidence": "yu7-compare-5",
+      "sha256": "c252be396b55c4379addeb7b5d854e70e3f1aa3149f07f4b4173f25f79ce0cd9"
+    }
+  ]
+}

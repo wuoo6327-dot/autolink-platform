@@ -1,0 +1,142 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "bmw-brilliance-x3",
+  "brandZh": "BMW Brilliance",
+  "modelZh": "X3",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "技术数据",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "车长/车宽/车高（毫米）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（毫米）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "汽缸/排量（毫升）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "输出功率（千瓦/马力）、转速（转每分）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "扭矩（牛米）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "最大扭矩转速（转每分）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "最高车速（公里/小时）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "0-100公里/小时（秒）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "综合耗油量（升/100公里）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "油箱容积约（升）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "bmw-brilliance-x3-official-1",
+      "name": "xDrive25L M运动曜夜套装",
+      "values": {
+        "official:0:0": "4865/1920/1664",
+        "official:0:1": "2975",
+        "official:0:2": "4/1998",
+        "official:0:3": "140/190/5000",
+        "official:0:4": "310",
+        "official:0:5": "1500-4000",
+        "official:0:6": "214",
+        "official:0:7": "8.9",
+        "official:0:8": "8.1",
+        "official:0:9": "65",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-x3-official-2",
+      "name": "xDrive30L 领先型 M运动曜夜套装",
+      "values": {
+        "official:0:0": "4865/1920/1664",
+        "official:0:1": "2975",
+        "official:0:2": "4/1998",
+        "official:0:3": "190/258/5000",
+        "official:0:4": "400",
+        "official:0:5": "1600-4500",
+        "official:0:6": "235",
+        "official:0:7": "6.6",
+        "official:0:8": "8.3",
+        "official:0:9": "65",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-x3-official-3",
+      "name": "xDrive30L 尊享型 M运动曜夜套装",
+      "values": {
+        "official:0:0": "4865/1920/1664",
+        "official:0:1": "2975",
+        "official:0:2": "4/1998",
+        "official:0:3": "190/258/5000",
+        "official:0:4": "400",
+        "official:0:5": "1600-4500",
+        "official:0:6": "235",
+        "official:0:7": "6.6",
+        "official:0:8": "8.3",
+        "official:0:9": "65",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/bmw-brilliance-x3.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.bmw.com.cn/zh/all-models/x-series/X3/2024/inspire.html"
+    }
+  ],
+  "sourceUrl": "https://www.bmw.com.cn/content/dam/bmw/marketCN/bmw_com_cn/specsheet/G48.pdf.asset.1790136452507.pdf",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "bmw-x3-spec-pdf",
+      "sha256": "9756871c2358e5b6bb0b76be46aba2abd29a908fe7695745979de8254a618571"
+    }
+  ]
+}

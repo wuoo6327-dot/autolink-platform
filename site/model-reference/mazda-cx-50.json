@@ -1,0 +1,980 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "mazda-cx-50",
+  "brandZh": "Mazda",
+  "modelZh": "CX-50",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "燃油 · 规格参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高(mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距(mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "前/后悬(mm)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "前/后轮距(mm)"
+        },
+        {
+          "key": "official:0:4",
+          "label": "最小转弯直径(m)"
+        },
+        {
+          "key": "official:0:5",
+          "label": "轮胎规格"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SKYACTIV TECHNOLOGY 创驰蓝天技术",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:1:1",
+          "label": "发动机技术"
+        },
+        {
+          "key": "official:1:2",
+          "label": "压缩比"
+        },
+        {
+          "key": "official:1:3",
+          "label": "排量(ml)"
+        },
+        {
+          "key": "official:1:4",
+          "label": "最大功率(kW/r/min)"
+        },
+        {
+          "key": "official:1:5",
+          "label": "最大扭矩(N·m/r/min)"
+        },
+        {
+          "key": "official:1:6",
+          "label": "综合工况油耗(L/100km)"
+        },
+        {
+          "key": "official:1:7",
+          "label": "燃油种类"
+        },
+        {
+          "key": "official:1:8",
+          "label": "排放标准"
+        },
+        {
+          "key": "official:1:9",
+          "label": "油门系统"
+        },
+        {
+          "key": "official:1:10",
+          "label": "i-STOP 智能怠速停止系统"
+        },
+        {
+          "key": "official:1:11",
+          "label": "变速箱型式"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 车身构造技术",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "车身构造技术"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 悬架系统",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "悬架系统"
+        },
+        {
+          "key": "official:3:1",
+          "label": "转向系统"
+        },
+        {
+          "key": "official:3:2",
+          "label": "制动系统"
+        },
+        {
+          "key": "official:3:3",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:3:4",
+          "label": "SKYACTIV-VEHICLE DYNAMICS\n创驰蓝天车辆动态控制技术"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 「KODO DESIGN 魂动设计」-外观",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "魂动标识之翼"
+        },
+        {
+          "key": "official:4:1",
+          "label": "矩阵式外进气格栅"
+        },
+        {
+          "key": "official:4:2",
+          "label": "前后包围银色装饰套件"
+        },
+        {
+          "key": "official:4:3",
+          "label": "自动开闭式内进气格栅"
+        },
+        {
+          "key": "official:4:4",
+          "label": "LED前大灯(光轴智能调节)"
+        },
+        {
+          "key": "official:4:5",
+          "label": "LED前大灯自动开关系统"
+        },
+        {
+          "key": "official:4:6",
+          "label": "LED前大灯迎宾照明/延时熄灭"
+        },
+        {
+          "key": "official:4:7",
+          "label": "LED日间行车灯"
+        },
+        {
+          "key": "official:4:8",
+          "label": "LED尾灯组带高位刹车灯"
+        },
+        {
+          "key": "official:4:9",
+          "label": "集成LED转向灯"
+        },
+        {
+          "key": "official:4:10",
+          "label": "电动折叠 | 电动加热 | 锁车自动折叠"
+        },
+        {
+          "key": "official:4:11",
+          "label": "可开启式电动全景天窗"
+        },
+        {
+          "key": "official:4:12",
+          "label": "四门一键升降式电动车窗"
+        },
+        {
+          "key": "official:4:13",
+          "label": "17英寸铝合金运动轮毂"
+        },
+        {
+          "key": "official:4:14",
+          "label": "19英寸铝合金双色切削轮毂"
+        },
+        {
+          "key": "official:4:15",
+          "label": "智能雨量感应式高级随动喷水无骨雨刷"
+        },
+        {
+          "key": "official:4:16",
+          "label": "车顶行李架"
+        },
+        {
+          "key": "official:4:17",
+          "label": "双出排气运动尾喉"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 「KODO DESIGN 魂动设计」- 内饰",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "内饰颜色"
+        },
+        {
+          "key": "official:5:1",
+          "label": "中控台饰板"
+        },
+        {
+          "key": "official:5:2",
+          "label": "四向调节 多功能方向盘"
+        },
+        {
+          "key": "official:5:3",
+          "label": "高级触感真皮方向盘"
+        },
+        {
+          "key": "official:5:4",
+          "label": "方向盘换挡拨片"
+        },
+        {
+          "key": "official:5:5",
+          "label": "Push Start 一键启动系统"
+        },
+        {
+          "key": "official:5:6",
+          "label": "Smart Keyless智能无钥匙进入系统"
+        },
+        {
+          "key": "official:5:7",
+          "label": "车主识别（座椅/外后视镜跟随记忆）"
+        },
+        {
+          "key": "official:5:8",
+          "label": "7英寸TFT全彩数码仪表(多功能信息显示屏)"
+        },
+        {
+          "key": "official:5:9",
+          "label": "ADD彩色平视显示系统(视角跟随记忆)"
+        },
+        {
+          "key": "official:5:10",
+          "label": "EPB 电子驻车制动系统"
+        },
+        {
+          "key": "official:5:11",
+          "label": "AUTO HOLD 自动驻车功能"
+        },
+        {
+          "key": "official:5:12",
+          "label": "防眩目内后视镜"
+        },
+        {
+          "key": "official:5:13",
+          "label": "双区独立自动恒温空调（自动防雾）"
+        },
+        {
+          "key": "official:5:14",
+          "label": "PM2.5空调滤芯"
+        },
+        {
+          "key": "official:5:15",
+          "label": "后排出风口｜A柱出风口｜主驾腰吹"
+        },
+        {
+          "key": "official:5:16",
+          "label": "中控台前方双置杯架"
+        },
+        {
+          "key": "official:5:17",
+          "label": "主/副驾驶席遮阳板带化妆镜"
+        },
+        {
+          "key": "official:5:18",
+          "label": "顶置式太阳镜盒"
+        },
+        {
+          "key": "official:5:19",
+          "label": "对开式中控台扶手"
+        },
+        {
+          "key": "official:5:20",
+          "label": "后排中央扶手(带双置杯架)"
+        },
+        {
+          "key": "official:5:21",
+          "label": "全新世代  理想驾姿人体工学座椅"
+        },
+        {
+          "key": "official:5:22",
+          "label": "主驾驶席10向电动座椅调节"
+        },
+        {
+          "key": "official:5:23",
+          "label": "主驾驶席座椅记忆"
+        },
+        {
+          "key": "official:5:24",
+          "label": "前排座椅加热"
+        },
+        {
+          "key": "official:5:25",
+          "label": "副驾驶席6向电动座椅调节"
+        },
+        {
+          "key": "official:5:26",
+          "label": "后排座椅6:4折叠功能"
+        },
+        {
+          "key": "official:5:27",
+          "label": "电动后备箱（防夹）"
+        },
+        {
+          "key": "official:5:28",
+          "label": "脚触感应式后备箱"
+        },
+        {
+          "key": "official:5:29",
+          "label": "多功能挂钩/遮物帘/后备箱顶部、侧部LED灯"
+        },
+        {
+          "key": "official:5:30",
+          "label": "手机无线充电"
+        },
+        {
+          "key": "official:5:31",
+          "label": "后排上下车扶手"
+        },
+        {
+          "key": "official:5:32",
+          "label": "风挡加热/方向盘加热/后排座椅加热"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · SAFETY 安全配置",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "主/副驾驶席安全气囊"
+        },
+        {
+          "key": "official:6:1",
+          "label": "主/副驾驶席侧安全气囊"
+        },
+        {
+          "key": "official:6:2",
+          "label": "主驾驶席膝部安全气囊"
+        },
+        {
+          "key": "official:6:3",
+          "label": "前后贯穿式大型头部安全气帘"
+        },
+        {
+          "key": "official:6:4",
+          "label": "高灵敏度驻车雷达"
+        },
+        {
+          "key": "official:6:5",
+          "label": "高分辨率倒车影像"
+        },
+        {
+          "key": "official:6:6",
+          "label": "360度全景影像驻车辅助系统"
+        },
+        {
+          "key": "official:6:7",
+          "label": "DSC 电子车身稳定控制系统"
+        },
+        {
+          "key": "official:6:8",
+          "label": "TCS 牵引力控制系统"
+        },
+        {
+          "key": "official:6:9",
+          "label": "HLA 坡道起步辅助系统"
+        },
+        {
+          "key": "official:6:10",
+          "label": "TPMS 胎压监测显示系统"
+        },
+        {
+          "key": "official:6:11",
+          "label": "发动机智能防盗系统"
+        },
+        {
+          "key": "official:6:12",
+          "label": "智能离车自动落锁"
+        },
+        {
+          "key": "official:6:13",
+          "label": "ISO FIX 儿童座椅固定装置"
+        },
+        {
+          "key": "official:6:14",
+          "label": "后门儿童安全锁"
+        },
+        {
+          "key": "official:6:15",
+          "label": "E-CALL车载紧急呼叫系统"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 全新升级「i-ACTIVSENSE 马自达智能安全辅助系统」",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "MRCC 全速域自适应巡航系统"
+        },
+        {
+          "key": "official:7:1",
+          "label": "LDWS 车道偏离警示系统"
+        },
+        {
+          "key": "official:7:2",
+          "label": "LAS 车道保持辅助系统"
+        },
+        {
+          "key": "official:7:3",
+          "label": "CTS 巡航模式智能行车辅助系统"
+        },
+        {
+          "key": "official:7:4",
+          "label": "HBC 自适应远光灯控制系统"
+        },
+        {
+          "key": "official:7:5",
+          "label": "SBS 智能前行刹车辅助系统"
+        },
+        {
+          "key": "official:7:6",
+          "label": "SBS-FC 交叉路口事故规避辅助系统"
+        },
+        {
+          "key": "official:7:7",
+          "label": "FCTB 前方横向来车刹车系统"
+        },
+        {
+          "key": "official:7:8",
+          "label": "BSM 盲点监测系统"
+        },
+        {
+          "key": "official:7:9",
+          "label": "RCTA 倒车预警系统"
+        },
+        {
+          "key": "official:7:10",
+          "label": "SBS-R 智能倒车刹车辅助系统(正后方)"
+        },
+        {
+          "key": "official:7:11",
+          "label": "SBS-RC 智能后车盲区刹车辅助系统(侧后方)"
+        }
+      ]
+    },
+    {
+      "name": "燃油 · 全新升级 MAZDA CONNECT 马自达悦联系统",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "环场声学布局 8扬声器高级和声音响"
+        },
+        {
+          "key": "official:8:1",
+          "label": "BOSE 12扬声器高级音响系统\nCenterpoint 虚拟环绕声技术\nAudioPilot 噪音补偿技术\nSurroundStage 环绕声技术"
+        },
+        {
+          "key": "official:8:2",
+          "label": "i-DM人马一体驾驶评价系统（APP分享）"
+        },
+        {
+          "key": "official:8:3",
+          "label": "10.25英寸智能中控屏幕（可触控）"
+        },
+        {
+          "key": "official:8:4",
+          "label": "CarPlay&CarLife无线连接"
+        },
+        {
+          "key": "official:8:5",
+          "label": "旋钮式中控人机交互系统"
+        },
+        {
+          "key": "official:8:6",
+          "label": "蓝牙音乐流媒体/蓝牙电话"
+        },
+        {
+          "key": "official:8:7",
+          "label": "自定义语音交互系统\n语音控制多媒体、导航、电话（支持免唤醒）"
+        },
+        {
+          "key": "official:8:8",
+          "label": "在线娱乐系统"
+        },
+        {
+          "key": "official:8:9",
+          "label": "在线导航"
+        },
+        {
+          "key": "official:8:10",
+          "label": "热门APP｜生活服务"
+        },
+        {
+          "key": "official:8:11",
+          "label": "车友在线集合｜车家互联"
+        },
+        {
+          "key": "official:8:12",
+          "label": "超级账号（车机与APP账号绑定）"
+        },
+        {
+          "key": "official:8:13",
+          "label": "4G网络"
+        },
+        {
+          "key": "official:8:14",
+          "label": "远程控制（发动机、门锁、闪灯鸣笛）｜异常提醒"
+        },
+        {
+          "key": "official:8:15",
+          "label": "车况查询（胎压、续航、电压）"
+        },
+        {
+          "key": "official:8:16",
+          "label": "导航位置下发｜车辆位置查询"
+        },
+        {
+          "key": "official:8:17",
+          "label": "车机系统OTA升级"
+        },
+        {
+          "key": "official:8:18",
+          "label": "前排USB | TYPE-C接口"
+        },
+        {
+          "key": "official:8:19",
+          "label": "后排双USB接口"
+        },
+        {
+          "key": "official:8:20",
+          "label": "前排&后备箱12V电源接口"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "mazda-cx-50-official-1",
+      "name": "2.0L 6AT 领行版",
+      "values": {
+        "official:0:0": "4,785×1,920×1,638",
+        "official:0:1": "2815",
+        "official:0:2": "960/1,010",
+        "official:0:3": "1,659/1,662",
+        "official:0:4": "11.1",
+        "official:0:5": "225/65 R17",
+        "official:1:0": "自然吸气 缸内直喷 水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "・4-2-1发动机排气系统\n・Dual S-VT 双可变气门正时控制系统+电子控制节气门\n・燃料精混三段式高压直喷技术\n・高扩散燃油喷射器\n・高压燃油泵\n・智能可变容量式机油泵\n・智能PCM发动机控制单元",
+        "official:1:2": "13:1",
+        "official:1:3": "1998",
+        "official:1:4": "114/6,000",
+        "official:1:5": "200/4,000",
+        "official:1:6": "7.20",
+        "official:1:7": "92# 以上无铅汽油",
+        "official:1:8": "国6B",
+        "official:1:9": "风琴式油门踏板（脚跟防移位结构）",
+        "official:1:10": "●",
+        "official:1:11": "六速手自一体（全速域锁止技术｜降挡加速开关）",
+        "official:2:0": "全新「SKYACTIV-BODY 创驰蓝天高刚性车身」多方向连续化环闭式车身结构\n・前后1,800MPa热成型钢防撞梁，前防撞梁1,180MPa强化构件\n・前后门1,500MPa热成型钢防撞梁\n・天窗980MPa高强度钢横梁\n・马自达阻尼减震胶工艺",
+        "official:3:0": "全新世代 「SKYACTIV-CHASSIS 创驰蓝天底盘」\n麦弗逊式独立前悬结构｜SEB(Smart Expand Beam ）蝶形仿生后悬结构\n日本进口SEB主梁，一体式蝶形变截面结构，激光无缝焊接技术",
+        "official:3:1": "C-EPS 管柱式电动助力转向系统",
+        "official:3:2": "前轮通风盘/后轮实心盘式",
+        "official:3:3": "前驱",
+        "official:3:4": "GVC PLUS(G-Vectoring Control Plus)\n加速度矢量控制系统 升级版(回正力矩强化系统)",
+        "official:4:0": "●",
+        "official:4:1": "●哑光",
+        "official:4:2": "—",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●/○※1记忆",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "—",
+        "official:4:15": "●",
+        "official:4:16": "—",
+        "official:4:17": "●",
+        "official:5:0": "黑色",
+        "official:5:1": "●哑光/○※1钢琴黑",
+        "official:5:2": "●",
+        "official:5:3": "○※1",
+        "official:5:4": "—",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "○※1",
+        "official:5:8": "●",
+        "official:5:9": "—",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●LED",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●织物仿皮/○※1高级真皮*",
+        "official:5:22": "○※1",
+        "official:5:23": "○※1",
+        "official:5:24": "○※1",
+        "official:5:25": "○※1",
+        "official:5:26": "●",
+        "official:5:27": "○※1",
+        "official:5:28": "○※1",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "—",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "前●后●",
+        "official:6:5": "—",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "○※1",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "—",
+        "official:7:7": "—",
+        "official:7:8": "○※1",
+        "official:7:9": "○※1",
+        "official:7:10": "—",
+        "official:7:11": "—",
+        "official:8:0": "●",
+        "official:8:1": "—",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "○※1",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    },
+    {
+      "id": "mazda-cx-50-official-2",
+      "name": "2.5L 6AT 畅行版",
+      "values": {
+        "official:0:0": "4,785×1,920×1,638",
+        "official:0:1": "2815",
+        "official:0:2": "960/1,010",
+        "official:0:3": "1,659/1,662",
+        "official:0:4": "11.1",
+        "official:0:5": "225/65 R17",
+        "official:1:0": "自然吸气 缸内直喷 水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "2.5L全新智能无感变缸发动机独有技术：\n-S-HLA气门间隙智能调整技术\n-全新斜涡加速燃烧技术\n-全新梯形切角活塞\n-CPA离心钟摆式阻尼器\n-EGR废气再循环技术",
+        "official:1:2": "13:1",
+        "official:1:3": "2488",
+        "official:1:4": "138/6,000",
+        "official:1:5": "250/4,000",
+        "official:1:6": "7.35",
+        "official:1:7": "92# 以上无铅汽油",
+        "official:1:8": "国6B",
+        "official:1:9": "风琴式油门踏板（脚跟防移位结构）",
+        "official:1:10": "●",
+        "official:1:11": "六速手自一体（全速域锁止技术｜降挡加速开关）",
+        "official:2:0": "全新「SKYACTIV-BODY 创驰蓝天高刚性车身」多方向连续化环闭式车身结构\n・前后1,800MPa热成型钢防撞梁，前防撞梁1,180MPa强化构件\n・前后门1,500MPa热成型钢防撞梁\n・天窗980MPa高强度钢横梁\n・马自达阻尼减震胶工艺",
+        "official:3:0": "全新世代 「SKYACTIV-CHASSIS 创驰蓝天底盘」\n麦弗逊式独立前悬结构｜SEB(Smart Expand Beam ）蝶形仿生后悬结构\n日本进口SEB主梁，一体式蝶形变截面结构，激光无缝焊接技术",
+        "official:3:1": "C-EPS 管柱式电动助力转向系统",
+        "official:3:2": "前轮通风盘/后轮实心盘式",
+        "official:3:3": "前驱",
+        "official:3:4": "GVC PLUS(G-Vectoring Control Plus)\n加速度矢量控制系统 升级版(回正力矩强化系统)",
+        "official:4:0": "●",
+        "official:4:1": "●哑光",
+        "official:4:2": "—",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "—",
+        "official:4:15": "●",
+        "official:4:16": "—",
+        "official:4:17": "●",
+        "official:5:0": "黑色",
+        "official:5:1": "●哑光",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "—",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "—",
+        "official:5:8": "●",
+        "official:5:9": "—",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●LED",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●织物仿皮",
+        "official:5:22": "—",
+        "official:5:23": "—",
+        "official:5:24": "—",
+        "official:5:25": "—",
+        "official:5:26": "●",
+        "official:5:27": "—",
+        "official:5:28": "—",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "—",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "前●后●",
+        "official:6:5": "—",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "—",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "—",
+        "official:7:7": "—",
+        "official:7:8": "—",
+        "official:7:9": "—",
+        "official:7:10": "—",
+        "official:7:11": "—",
+        "official:8:0": "●",
+        "official:8:1": "—",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "—",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    },
+    {
+      "id": "mazda-cx-50-official-3",
+      "name": "2.5L 6AT 智行版",
+      "values": {
+        "official:0:0": "4,785×1,920×1,638",
+        "official:0:1": "2815",
+        "official:0:2": "960/1,010",
+        "official:0:3": "1,659/1,662",
+        "official:0:4": "11.1",
+        "official:0:5": "225/55 R19",
+        "official:1:0": "自然吸气 缸内直喷 水冷直列4缸 顶置双凸轮轴（DOHC）16气门",
+        "official:1:1": "2.5L全新智能无感变缸发动机独有技术：\n-S-HLA气门间隙智能调整技术\n-全新斜涡加速燃烧技术\n-全新梯形切角活塞\n-CPA离心钟摆式阻尼器\n-EGR废气再循环技术",
+        "official:1:2": "13:1",
+        "official:1:3": "2488",
+        "official:1:4": "138/6,000",
+        "official:1:5": "250/4,000",
+        "official:1:6": "7.40",
+        "official:1:7": "92# 以上无铅汽油",
+        "official:1:8": "国6B",
+        "official:1:9": "风琴式油门踏板（脚跟防移位结构）",
+        "official:1:10": "●",
+        "official:1:11": "六速手自一体（全速域锁止技术｜降挡加速开关）",
+        "official:2:0": "全新「SKYACTIV-BODY 创驰蓝天高刚性车身」多方向连续化环闭式车身结构\n・前后1,800MPa热成型钢防撞梁，前防撞梁1,180MPa强化构件\n・前后门1,500MPa热成型钢防撞梁\n・天窗980MPa高强度钢横梁\n・马自达阻尼减震胶工艺",
+        "official:3:0": "全新世代 「SKYACTIV-CHASSIS 创驰蓝天底盘」\n麦弗逊式独立前悬结构｜SEB(Smart Expand Beam ）蝶形仿生后悬结构\n日本进口SEB主梁，一体式蝶形变截面结构，激光无缝焊接技术",
+        "official:3:1": "C-EPS 管柱式电动助力转向系统",
+        "official:3:2": "前轮通风盘/后轮实心盘式",
+        "official:3:3": "前驱",
+        "official:3:4": "GVC PLUS(G-Vectoring Control Plus)\n加速度矢量控制系统 升级版(回正力矩强化系统)",
+        "official:4:0": "●",
+        "official:4:1": "●钢琴黑",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●记忆",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:5:0": "黑色/○※2赤陶色",
+        "official:5:1": "●钢琴黑",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "○※2",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "○※2",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●/○※2（自动）",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●LED",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●高级真皮*",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "○※2",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "前●后●",
+        "official:6:5": "—",
+        "official:6:6": "●/○※2（车身透视）",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "○※2",
+        "official:7:7": "○※2",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "○※2",
+        "official:7:11": "○※2",
+        "official:8:0": "●",
+        "official:8:1": "○※2",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:scope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/mazda-cx-50.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.changan-mazda.com.cn/"
+    }
+  ],
+  "sourceUrl": "https://www.changan-mazda.com.cn/compare/?name=MAZDA CX-50",
+  "sourceScope": "官网当前对比表；纯电、增程、燃油版本分别对应各自参数分组，空白不跨动力版本推断。选装、辅助驾驶及*脚注条件请查看官网。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "mazda-current-compare-js",
+      "sha256": "c3aef872f3e179304d93cdce85cbd7868f03ca6b870647d226d9ee3abe7d5fd7"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "bmw-brilliance-x5l",
+  "brandZh": "BMW Brilliance",
+  "modelZh": "X5L",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "技术数据",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "车长/车宽/车高（毫米）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（毫米）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "汽缸/排量（毫升）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "输出功率（千瓦/马力）、 转速（转每分）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "扭矩（牛米/转每分）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "最高车速（公里/小时）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "0-100公里/小时（秒）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "综合耗油量（升/100公里）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "油箱容积约（升）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "bmw-brilliance-x5l-official-1",
+      "name": "xDrive30Li 尊享型 M运动曜夜套装",
+      "values": {
+        "official:0:0": "5060/2004/1776",
+        "official:0:1": "3105",
+        "official:0:2": "4/1998",
+        "official:0:3": "190/258/5000",
+        "official:0:4": "400/1600-4500",
+        "official:0:5": "222",
+        "official:0:6": "7.2",
+        "official:0:7": "8.7",
+        "official:0:8": "83",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-x5l-official-2",
+      "name": "xDrive40Li M运动曜夜套装",
+      "values": {
+        "official:0:0": "5060/2004/1776",
+        "official:0:1": "3105",
+        "official:0:2": "6/2998",
+        "official:0:3": "280/381/5500",
+        "official:0:4": "520/1850-5000",
+        "official:0:5": "250",
+        "official:0:6": "5.5",
+        "official:0:7": "8.9",
+        "official:0:8": "83",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-x5l-official-3",
+      "name": "xDrive40Li 尊享型 M运动曜夜套装",
+      "values": {
+        "official:0:0": "5060/2004/1768",
+        "official:0:1": "3105",
+        "official:0:2": "6/2998",
+        "official:0:3": "280/381/5500",
+        "official:0:4": "520/1850-5000",
+        "official:0:5": "250",
+        "official:0:6": "5.5",
+        "official:0:7": "8.9",
+        "official:0:8": "83",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/bmw-brilliance-x5l.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.bmw.com.cn/zh/all-models/x-series/X5/2023/inspire.html"
+    }
+  ],
+  "sourceUrl": "https://www.bmw.com.cn/content/dam/bmw/marketCN/bmw_com_cn/specsheet/G18.pdf.asset.1767171935045.pdf",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "bmw-x5-spec-pdf",
+      "sha256": "16adef9bb342920e541f4626351b46258090f594adf64860c48676738d43ba03"
+    }
+  ]
+}

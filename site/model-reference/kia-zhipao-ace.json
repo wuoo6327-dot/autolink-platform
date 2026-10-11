@@ -1,0 +1,332 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "kia-zhipao-ace",
+  "brandZh": "Kia",
+  "modelZh": "智跑",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基本参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "变速器"
+        },
+        {
+          "key": "official:0:1",
+          "label": "长×宽×高（mm）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:0:4",
+          "label": "最小转弯半径（m）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "最小离地间隙（mm）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "排气量（cc）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "最大功率 (Ps/rpm)"
+        },
+        {
+          "key": "official:0:8",
+          "label": "最大扭矩（N·m/rpm）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "整备质量（kg）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:0:11",
+          "label": "环保标准"
+        },
+        {
+          "key": "official:0:12",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:0:13",
+          "label": "WLTC综合工况油耗(L/100Km)"
+        },
+        {
+          "key": "official:0:14",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:15",
+          "label": "悬挂系统（前/后）"
+        },
+        {
+          "key": "official:0:16",
+          "label": "转向系统"
+        }
+      ]
+    },
+    {
+      "name": "外观",
+      "rows": [
+        {
+          "key": "official:1:4",
+          "label": "轮胎规格"
+        }
+      ]
+    },
+    {
+      "name": "多媒体",
+      "rows": [
+        {
+          "key": "official:5:1",
+          "label": "USB 充电接口"
+        },
+        {
+          "key": "official:5:2",
+          "label": "12V电源接口"
+        },
+        {
+          "key": "official:5:4",
+          "label": "扬声器"
+        }
+      ]
+    },
+    {
+      "name": "选装包",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "· ETCS"
+        },
+        {
+          "key": "official:6:1",
+          "label": "·多媒体包：Kia Connect & 百度智能互联系统3.0(含语音控制、实时在线导航、远程控制、手机蓝牙钥匙、车家互联等)+ 6 扬声器"
+        },
+        {
+          "key": "official:6:2",
+          "label": "·智行包：FCA 前方防撞辅助 (可识别车辆/行人/自行车/交叉路面对象车)+LKA 车道保持辅助+LFA 车道跟随辅助+DAW 驾驶员疲劳提醒+HBA 智能远近光调节+HDA 高速公路驾驶辅助+NSCC 基于导航的智能巡航控制+侧气帘+前后排座椅加热（后排仅坐垫加热）+手机无线充电"
+        },
+        {
+          "key": "official:6:3",
+          "label": "·科技包：FCA 前方防撞辅助 (可识别车辆/行人/自行车/交叉路面对象车)+LKA 车道保持辅助+LFA 车道跟随辅助+DAW驾驶员疲劳提醒+HBA 智能远近光调节+HDA 高速公路驾驶辅助+NSCC 基于导航的智能巡航控制+侧气帘+前后排座椅加热（后排仅坐垫加热）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "kia-zhipao-ace-official-1",
+      "name": "2.0L 探索版",
+      "values": {
+        "official:0:0": "6AT",
+        "official:0:1": "4,530X1,850X1,700 (含行李架)",
+        "official:0:2": "2640",
+        "official:0:3": "225/60 R17",
+        "official:0:4": "5.45",
+        "official:0:5": "161",
+        "official:0:6": "1999",
+        "official:0:7": "161/6,500",
+        "official:0:8": "193/4,500",
+        "official:0:9": "1423",
+        "official:0:10": "186",
+        "official:0:11": "国六",
+        "official:0:12": "58",
+        "official:0:13": "7.12",
+        "official:0:14": "前轮驱动",
+        "official:0:15": "麦弗逊独立悬架/多连杆独立悬架",
+        "official:0:16": "电动助力转向",
+        "official:1:4": "225/60 R17",
+        "official:5:1": "3",
+        "official:5:2": "2",
+        "official:5:4": "4",
+        "official:6:0": "*选装",
+        "official:6:1": "官网未单独列明，请查看来源",
+        "official:6:2": "官网未单独列明，请查看来源",
+        "official:6:3": "官网未单独列明，请查看来源",
+        "official:scope": "智跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-zhipao-ace-official-2",
+      "name": "2.0L 挑战版",
+      "values": {
+        "official:0:0": "6AT",
+        "official:0:1": "4,530X1,850X1,700 (含行李架)",
+        "official:0:2": "2640",
+        "official:0:3": "225/55 R18",
+        "official:0:4": "5.45",
+        "official:0:5": "161",
+        "official:0:6": "1999",
+        "official:0:7": "161/6,500",
+        "official:0:8": "193/4,500",
+        "official:0:9": "1472",
+        "official:0:10": "186",
+        "official:0:11": "国六",
+        "official:0:12": "58",
+        "official:0:13": "7.3",
+        "official:0:14": "前轮驱动",
+        "official:0:15": "麦弗逊独立悬架/多连杆独立悬架",
+        "official:0:16": "电动助力转向",
+        "official:1:4": "225/55 R18",
+        "official:5:1": "3",
+        "official:5:2": "2",
+        "official:5:4": "4",
+        "official:6:0": "*选装",
+        "official:6:1": "*选装",
+        "official:6:2": "官网未单独列明，请查看来源",
+        "official:6:3": "官网未单独列明，请查看来源",
+        "official:scope": "智跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-zhipao-ace-official-3",
+      "name": "2.0L 精彩版",
+      "values": {
+        "official:0:0": "6AT",
+        "official:0:1": "4,530X1,850X1,700 (含行李架)",
+        "official:0:2": "2640",
+        "official:0:3": "225/55 R18",
+        "official:0:4": "5.45",
+        "official:0:5": "161",
+        "official:0:6": "1999",
+        "official:0:7": "161/6,500",
+        "official:0:8": "193/4,500",
+        "official:0:9": "1472",
+        "official:0:10": "186",
+        "official:0:11": "国六",
+        "official:0:12": "58",
+        "official:0:13": "7.3",
+        "official:0:14": "前轮驱动",
+        "official:0:15": "麦弗逊独立悬架/多连杆独立悬架",
+        "official:0:16": "电动助力转向",
+        "official:1:4": "225/55 R18",
+        "official:5:1": "3",
+        "official:5:2": "2",
+        "official:5:4": "6",
+        "official:6:0": "*选装",
+        "official:6:1": "官网未单独列明，请查看来源",
+        "official:6:2": "*选装",
+        "official:6:3": "官网未单独列明，请查看来源",
+        "official:scope": "智跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-zhipao-ace-official-4",
+      "name": "1.5T GT-Line 聚变版",
+      "values": {
+        "official:0:0": "7DCT",
+        "official:0:1": "4,530X1,850X1,700 (含行李架)",
+        "official:0:2": "2640",
+        "official:0:3": "225/55 R18",
+        "official:0:4": "5.45",
+        "official:0:5": "161",
+        "official:0:6": "1,497",
+        "official:0:7": "200/6,000",
+        "official:0:8": "253/2,200~4,000",
+        "official:0:9": "1498",
+        "official:0:10": "200",
+        "official:0:11": "国六",
+        "official:0:12": "58",
+        "official:0:13": "6.87",
+        "official:0:14": "前轮驱动",
+        "official:0:15": "麦弗逊独立悬架/多连杆独立悬架",
+        "official:0:16": "电动助力转向",
+        "official:1:4": "225/55 R18",
+        "official:5:1": "3",
+        "official:5:2": "2",
+        "official:5:4": "4",
+        "official:6:0": "*选装",
+        "official:6:1": "*选装",
+        "official:6:2": "官网未单独列明，请查看来源",
+        "official:6:3": "官网未单独列明，请查看来源",
+        "official:scope": "智跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-zhipao-ace-official-5",
+      "name": "1.5T GT-Line 超能版",
+      "values": {
+        "official:0:0": "7DCT",
+        "official:0:1": "4,530X1,850X1,700 (含行李架)",
+        "official:0:2": "2640",
+        "official:0:3": "225/55 R18",
+        "official:0:4": "5.45",
+        "official:0:5": "161",
+        "official:0:6": "1,497",
+        "official:0:7": "200/6,000",
+        "official:0:8": "253/2,200~4,000",
+        "official:0:9": "1498",
+        "official:0:10": "200",
+        "official:0:11": "国六",
+        "official:0:12": "58",
+        "official:0:13": "6.87",
+        "official:0:14": "前轮驱动",
+        "official:0:15": "麦弗逊独立悬架/多连杆独立悬架",
+        "official:0:16": "电动助力转向",
+        "official:1:4": "225/55 R18",
+        "official:5:1": "3",
+        "official:5:2": "2",
+        "official:5:4": "6",
+        "official:6:0": "*选装",
+        "official:6:1": "官网未单独列明，请查看来源",
+        "official:6:2": "官网未单独列明，请查看来源",
+        "official:6:3": "*选装",
+        "official:scope": "智跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/kia-zhipao-ace.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.kia.cn/vehicles/"
+    }
+  ],
+  "sourceUrl": "https://www.kia.cn/vehicles/zhipao-ace/specs/79/",
+  "sourceScope": "智跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "kia-zhipao-variants",
+      "sha256": "66fb306cd424bd5a64c9e897ef459d0ce6091480a4f8646881162ab9e4a220ac"
+    },
+    {
+      "localEvidence": "kia-cmdc",
+      "sha256": "43878b0748f9031e9e2cdc3b2314168d4bc59de12b9876ece238492c7cdfdf21"
+    }
+  ]
+}

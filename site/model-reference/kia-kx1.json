@@ -1,0 +1,197 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "kia-kx1",
+  "brandZh": "Kia",
+  "modelZh": "奕跑",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": false,
+  "availableYears": [
+    2026
+  ],
+  "groups": [
+    {
+      "name": "基本参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高 (mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距 (mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "排气量 (cc)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "最大马力 (Ps/rpm)"
+        },
+        {
+          "key": "official:0:4",
+          "label": "最大扭矩 (N·m/rpm)"
+        },
+        {
+          "key": "official:0:5",
+          "label": "环保标准"
+        },
+        {
+          "key": "official:0:6",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:7",
+          "label": "悬架系统 (前/后)"
+        },
+        {
+          "key": "official:0:8",
+          "label": "转向系统"
+        },
+        {
+          "key": "official:0:9",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:0:10",
+          "label": "最高车速 (km/h)"
+        },
+        {
+          "key": "official:0:11",
+          "label": "最小离地间隙 (空载-mm)"
+        },
+        {
+          "key": "official:0:12",
+          "label": "最小转弯半径 (m)"
+        },
+        {
+          "key": "official:0:13",
+          "label": "整备质量 (kg)"
+        },
+        {
+          "key": "official:0:14",
+          "label": "油箱容积 (L)"
+        },
+        {
+          "key": "official:0:15",
+          "label": "综合工况油耗(L/100km)"
+        }
+      ]
+    },
+    {
+      "name": "内饰 & 舒适便利",
+      "rows": [
+        {
+          "key": "official:2:14",
+          "label": "副驾驶席大型化妆镜"
+        }
+      ]
+    },
+    {
+      "name": "音响 & 娱乐",
+      "rows": [
+        {
+          "key": "official:3:2",
+          "label": "扬声器"
+        }
+      ]
+    },
+    {
+      "name": "选装",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "ETC"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "kia-kx1-official-1",
+      "name": "1.4L IVT 趣享自动版",
+      "values": {
+        "official:0:0": "4,100×1,735×1,533",
+        "official:0:1": "2,570",
+        "official:0:2": "1,368",
+        "official:0:3": "100/6,500",
+        "official:0:4": "132.4/4,000",
+        "official:0:5": "国六",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式/扭力梁式",
+        "official:0:8": "MDPS电动助力转向",
+        "official:0:9": "195/60 R16",
+        "official:0:10": "176",
+        "official:0:11": "185",
+        "official:0:12": "5.45",
+        "official:0:13": "1,104",
+        "official:0:14": "43",
+        "official:0:15": "6.13",
+        "official:2:14": "小型",
+        "official:3:2": "6",
+        "official:5:0": "*选装",
+        "official:scope": "2026款 奕跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": 2026
+    },
+    {
+      "id": "kia-kx1-official-2",
+      "name": "1.4L  IVT 天窗版",
+      "values": {
+        "official:0:0": "4,100×1,735×1,533",
+        "official:0:1": "2,570",
+        "official:0:2": "1,368",
+        "official:0:3": "100/6,500",
+        "official:0:4": "132.4/4,000",
+        "official:0:5": "国六",
+        "official:0:6": "前置前驱",
+        "official:0:7": "麦弗逊式/扭力梁式",
+        "official:0:8": "MDPS电动助力转向",
+        "official:0:9": "195/60 R16",
+        "official:0:10": "176",
+        "official:0:11": "185",
+        "official:0:12": "5.45",
+        "official:0:13": "1,104",
+        "official:0:14": "43",
+        "official:0:15": "6.13",
+        "official:2:14": "官网未单独列明，请查看来源",
+        "official:3:2": "6",
+        "official:5:0": "*选装",
+        "official:scope": "2026款 奕跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": 2026
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/kia-kx1.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.kia.cn/vehicles/"
+    }
+  ],
+  "sourceUrl": "https://www.kia.cn/vehicles/kx1/specs/14/",
+  "sourceScope": "2026款 奕跑；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "kia-kx1-variants",
+      "sha256": "5d7cf1645c3b0c4935e4765a9e9ed9016a6290182496bace452903539fa7ea60"
+    },
+    {
+      "localEvidence": "kia-cmdc",
+      "sha256": "43878b0748f9031e9e2cdc3b2314168d4bc59de12b9876ece238492c7cdfdf21"
+    }
+  ]
+}

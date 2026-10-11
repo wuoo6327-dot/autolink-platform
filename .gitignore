@@ -29,3 +29,5 @@ node_modules/
 security-reports/
 *.log
 .DS_Store
+
+tests/results/

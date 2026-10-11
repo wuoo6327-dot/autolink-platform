@@ -1,9 +1,13 @@
 /* Public metadata uses reviewed API records; never infer an offer or guarantee. */
 (() => {
   const origin='https://autolinkglobal.com';
+  const languages=['en','zh','ar','ru','kk','uz','ko','fr','sw'];
+  const language=()=>{const active=window.businessI18n?.language||new URLSearchParams(location.search).get('lang')||'en';return active==='zh-CN'?'zh':languages.includes(active)?active:'en';};
+  const localizedUrl=(path,code=language())=>origin+path+(code==='en'?'':'?lang='+code);
   const baseDescription='AUTOLINK · Connecting Chinese vehicle suppliers and global buyers.';
   const text=value=>String(value??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim();
   const tr=value=>window.businessI18n?.text(value)||value;
+  const initialPath=location.pathname.replace(/\/$/,'')||'/';
   let details=null;
   let generatedDescription=null;
   const customDescriptions=new Map();
@@ -19,17 +23,27 @@
   const homeGraph=[{'@type':'Organization','@id':origin+'/#organization',name:'AUTOLINK',url:origin},
     {'@type':'WebSite',name:'AUTOLINK',url:origin,potentialAction:{'@type':'SearchAction',target:{'@type':'EntryPoint',urlTemplate:origin+'/trade/vehicles?keyword={search_term_string}'},'query-input':'required name=search_term_string'}}];
   function update(){
-    const path=location.pathname.replace(/\/$/,'')||'/';
+    const rawPath=location.pathname.replace(/\/$/,'')||'/';
+    const path=rawPath==='/trade'?'/trade/vehicles':rawPath;
     if(details?.path!==path)details=null;
+    // Keep complete server metadata until the matching public API renderer runs.
+    if(!details&&rawPath===initialPath&&document.querySelector?.('#app[data-ssr="true"]'))return;
     const privatePage=/^\/(buyer|account|supplier|admin|merchant|platform|workspace|login|register|auth|autolink|api)(\/|$)/.test(path);
     const filtered=path.startsWith('/trade/')&&[...new URLSearchParams(location.search).keys()].some(key=>key!=='lang');
-    const excluded=privatePage||details?.kind==='error'||path==='/trade/compare'||filtered;
-    const canonical=origin+path;
+    const qualityControlled=['model','brand'].includes(details?.kind)||/^\/trade\/(models|brands)\/[^/]+$/.test(path);
+    const eligibleLanguages=qualityControlled?(details?.indexLanguages||[]):languages;
+    const excluded=privatePage||details?.kind==='error'||path==='/trade/compare'||filtered||(qualityControlled&&!eligibleLanguages.includes(language()));
+    const canonical=localizedUrl(path);
     const existingDescription=document.head.querySelector('meta[name="description"]')?.content;
     if(!privatePage&&!path.startsWith('/trade/')&&existingDescription&&existingDescription!==generatedDescription)customDescriptions.set(path,existingDescription);
     const description=privatePage?'AUTOLINK account workspace.':details?.description||customDescriptions.get(path)||tr(baseDescription);
     generatedDescription=description;
     put('link[rel="canonical"]',{rel:'canonical',href:canonical});
+    for(const node of document.head.querySelectorAll('link[rel="alternate"][hreflang]'))node.remove();
+    if(!excluded){
+      for(const code of eligibleLanguages){const node=document.createElement('link');node.rel='alternate';node.hreflang=code==='zh'?'zh-CN':code;node.href=localizedUrl(path,code);document.head.append(node);}
+      const node=document.createElement('link');node.rel='alternate';node.hreflang='x-default';node.href=localizedUrl(path,eligibleLanguages.includes('en')?'en':eligibleLanguages[0]);document.head.append(node);
+    }
     put('meta[name="robots"]',{name:'robots',content:privatePage?'noindex, nofollow':excluded?'noindex, follow':'index, follow'});
     put('meta[name="description"]',{name:'description',content:description});
     for(const [property,content] of Object.entries({'og:type':'website','og:title':document.title,'og:description':description,'og:url':canonical}))
@@ -52,7 +66,7 @@
     const collection={vehicle:'vehicles',supplier:'suppliers',model:'models',brand:'brands'}[kind];
     const matches=collection&&data.id&&path==='/trade/'+collection+'/'+encodeURIComponent(data.id);
     if(collection&&!matches)return page('error');
-    const canonical=origin+path;
+    const canonical=localizedUrl(path);
     const listingName=[data.brand,data.model,data.model_year].filter(value=>value!==null&&value!==undefined&&value!=='').map(text).join(' ');
     const modelName=[data.brand,data.model,data.year].filter(value=>value!==null&&value!==undefined&&value!=='').map(text).join(' ');
     const templates={vehicle:['{vehicle} for Export from China | AUTOLINK','vehicle',listingName],supplier:['{supplier} | Chinese Vehicle Supplier | AUTOLINK','supplier',text(data.company_name)],
@@ -94,7 +108,8 @@
       graph.push({'@type':'BreadcrumbList',itemListElement:[{name:tr('Home'),item:origin+'/'},{name:parentLabel,item:origin+'/trade/'+collection},{name:label,item:canonical}].map((item,index)=>({'@type':'ListItem',position:index+1,...item}))});
       if(entity)graph.push(entity);
     }
-    details={path,kind,description,image,graph};document.title=title;update();
+    const indexLanguages=Array.isArray(data.seo?.indexLanguages)?languages.filter(code=>data.seo.indexLanguages.includes(code)):[];
+    details={path,kind,description,image,graph,indexLanguages};document.title=title;update();
   }
   window.businessSEO=Object.freeze({page,update});
   update();const title=document.head.querySelector('title');if(title)new MutationObserver(update).observe(title,{childList:true,subtree:true});

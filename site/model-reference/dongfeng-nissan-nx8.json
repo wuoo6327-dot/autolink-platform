@@ -1,0 +1,1233 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "dongfeng-nissan-nx8",
+  "brandZh": "Dongfeng Nissan",
+  "modelZh": "NX8",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基础参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长x宽x高(mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距(mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "后备厢容积（L）（含下沉式储物空间）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "前备厢容积（L）"
+        }
+      ]
+    },
+    {
+      "name": "动力性能",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "云盾电池2.0"
+        },
+        {
+          "key": "official:1:1",
+          "label": "电芯品牌/电池容量（kWh）"
+        },
+        {
+          "key": "official:1:2",
+          "label": "CLTC纯电续航里程(km) ①"
+        },
+        {
+          "key": "official:1:3",
+          "label": "CLTC综合续航里程(km) ①"
+        },
+        {
+          "key": "official:1:4",
+          "label": "直流快充时间（min）②（10%-80%）"
+        },
+        {
+          "key": "official:1:5",
+          "label": "CLTC综合工况耗电(kWh/100km) ①"
+        },
+        {
+          "key": "official:1:6",
+          "label": "VTOL最大对外放电功率（kW）"
+        },
+        {
+          "key": "official:1:7",
+          "label": "电驱系统、电机类型、驱动形式"
+        },
+        {
+          "key": "official:1:8",
+          "label": "电机功率（kW）/电机扭矩（N·m）/电机总马力(Ps)"
+        },
+        {
+          "key": "official:1:9",
+          "label": "动力模式"
+        },
+        {
+          "key": "official:1:10",
+          "label": "发动机系统"
+        },
+        {
+          "key": "official:1:11",
+          "label": "CLTC综合工况亏电油耗(L/100km) ①"
+        },
+        {
+          "key": "official:1:12",
+          "label": "发动机最大功率（kW）"
+        },
+        {
+          "key": "official:1:13",
+          "label": "排放标准"
+        }
+      ]
+    },
+    {
+      "name": "底盘系统",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "悬架类型"
+        },
+        {
+          "key": "official:2:1",
+          "label": "全域智能防晕车技术3.0、AI智能防晕车算法（舒适停车/智能防溜坡辅助/智能蠕行/弯道智能减速控制/智能坡道扭矩补偿）"
+        },
+        {
+          "key": "official:2:2",
+          "label": "DP-EPS电动助力转向系统"
+        },
+        {
+          "key": "official:2:3",
+          "label": "制动能量回收模式"
+        },
+        {
+          "key": "official:2:4",
+          "label": "e-Damper电控减震器系统（带预瞄功能）"
+        }
+      ]
+    },
+    {
+      "name": "外观设计",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "2.4米超长贯穿式星环灯、「锐鹰之眼」自适应LED大灯"
+        },
+        {
+          "key": "official:3:1",
+          "label": "2064颗OLED「量子光幕」尾灯"
+        },
+        {
+          "key": "official:3:2",
+          "label": "「星河回音」尾灯"
+        },
+        {
+          "key": "official:3:3",
+          "label": "轮毂造型/轮胎"
+        },
+        {
+          "key": "official:3:4",
+          "label": "主动闭合式进气格栅"
+        },
+        {
+          "key": "official:3:5",
+          "label": "e-latch智能电控门（带机械应急解锁）"
+        },
+        {
+          "key": "official:3:6",
+          "label": "电动后尾门（带位置记忆）"
+        },
+        {
+          "key": "official:3:7",
+          "label": "璀璨发光格栅镭雕（33040个微孔）"
+        },
+        {
+          "key": "official:3:8",
+          "label": "智能感应电动门"
+        }
+      ]
+    },
+    {
+      "name": "座舱舒适与便利体验",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "2.1㎡超大一体式全景天幕（电动遮阳帘）"
+        },
+        {
+          "key": "official:4:1",
+          "label": "AI零压云毯座椅2.0（电子皮肤传感器/AI自适应功能/主动侧翼支撑/臀部自适应/腿部支撑调节/OTA）"
+        },
+        {
+          "key": "official:4:2",
+          "label": "副驾AI零重力云毯座椅、后排右侧折叠桌板、主驾后排屏幕拓展接口、副驾按摩头枕"
+        },
+        {
+          "key": "official:4:3",
+          "label": "主副驾座椅加热/通风/按摩（坐垫靠背双区）/电动调节，支持记忆、迎宾"
+        },
+        {
+          "key": "official:4:4",
+          "label": "后排133°电动大躺椅：加热/通风/按摩（靠背）/电动调节，支持记忆、一键电动放倒"
+        },
+        {
+          "key": "official:4:5",
+          "label": "40点全车SPA级按摩"
+        },
+        {
+          "key": "official:4:6",
+          "label": "蝶形头枕×4"
+        },
+        {
+          "key": "official:4:7",
+          "label": "Dinamica环保仿麂皮"
+        },
+        {
+          "key": "official:4:8",
+          "label": "座舱云雾皮革、座椅凝脂表皮材质³（中汽中心“零甲醛”汽车认证）"
+        },
+        {
+          "key": "official:4:9",
+          "label": "256色光瀑式智能氛围灯"
+        },
+        {
+          "key": "official:4:10",
+          "label": "扬声器/功放最大功率"
+        },
+        {
+          "key": "official:4:11",
+          "label": "音响声道布局"
+        },
+        {
+          "key": "official:4:12",
+          "label": "车外扬声器"
+        },
+        {
+          "key": "official:4:13",
+          "label": "智能冷暖冰箱⑤（-6～10°C制冷/35～55°C制热、遗留物检测)"
+        },
+        {
+          "key": "official:4:14",
+          "label": "AI空调（三种智能吹风调节/预设场景联动/双温区控制/后排独立出风口）"
+        },
+        {
+          "key": "official:4:15",
+          "label": "全车LED触摸式阅读灯（色温可调，低蓝光无频闪）、防眩目内后视镜、主副驾遮阳板化妆镜"
+        },
+        {
+          "key": "official:4:16",
+          "label": "全车车窗一键升降（带防夹）、外后视镜电动调节/加热/锁车折叠"
+        },
+        {
+          "key": "official:4:17",
+          "label": "智能遥控钥匙、手机蓝牙钥匙、机械式应急钥匙、无钥匙进入/启动、电子怀挡"
+        },
+        {
+          "key": "official:4:18",
+          "label": "行车助手（内置行车记录功能）、远程App车控"
+        },
+        {
+          "key": "official:4:19",
+          "label": "540°智能全景影像"
+        },
+        {
+          "key": "official:4:20",
+          "label": "50W 风冷无线充电 ×1 、27W USB/Type-C ×4"
+        },
+        {
+          "key": "official:4:21",
+          "label": "左右双侧开中央扶手箱、前排杯托（带阻尼式升降）×2、后排扶手杯托×2、车内挂钩×3"
+        }
+      ]
+    },
+    {
+      "name": "智能座舱",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "车机芯片"
+        },
+        {
+          "key": "official:5:1",
+          "label": "双15.6英寸2.5K超清大屏"
+        },
+        {
+          "key": "official:5:2",
+          "label": "10.25英寸全液晶仪表"
+        },
+        {
+          "key": "official:5:3",
+          "label": "63英寸 AR-HUD（抬头显示）"
+        },
+        {
+          "key": "official:5:4",
+          "label": "OMS智能摄像头（支持面部识别）"
+        },
+        {
+          "key": "official:5:5",
+          "label": "AI语音助手小尼（语音免唤醒词/四音区语音唤醒/语音连续识别/可见即可说/离线对话/方言对话/声音复刻/拟人声色）"
+        },
+        {
+          "key": "official:5:6",
+          "label": "AI大模型（科大讯飞星火大模型+DeepSeek-R1大模型/AI问屏/出行助手/百科问答/AI生图/绘画/AI创作故事/车外看世界/一句话创建场景）"
+        },
+        {
+          "key": "official:5:7",
+          "label": "全新UI界面（3D无界桌面//壁纸桌面/柔性分屏）"
+        },
+        {
+          "key": "official:5:8",
+          "label": "高德深度定制导航（巡航红绿灯/红绿灯倒计时读秒/实时计算绿波车速/账号互通/充电地图）"
+        },
+        {
+          "key": "official:5:9",
+          "label": "手机互联（HUAWEI HiCar 、ICCOA Carlink、Apple CarPlay）"
+        },
+        {
+          "key": "official:5:10",
+          "label": "场景模式（GT模式、AI智能防晕车模式、临停模式、爱宠守护）"
+        },
+        {
+          "key": "official:5:11",
+          "label": "触控手势、隔空手势、健康监测、亲子空间、遗留检测提醒（儿童/宠物）、魔法相机"
+        },
+        {
+          "key": "official:5:12",
+          "label": "无麦K歌、模拟声浪、车外多场景声音交互（车外喊话等）、DLNA投屏"
+        }
+      ]
+    },
+    {
+      "name": "组合驾驶辅助系统",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "高感知雷达"
+        },
+        {
+          "key": "official:6:1",
+          "label": "驾驶辅助摄像头"
+        },
+        {
+          "key": "official:6:2",
+          "label": "DMS驾驶员监测系统摄像头"
+        },
+        {
+          "key": "official:6:3",
+          "label": "智驾小蓝灯"
+        },
+        {
+          "key": "official:6:4",
+          "label": "驾驶辅助SR（周围环境模拟显示）"
+        },
+        {
+          "key": "official:6:5",
+          "label": "城市领航辅助NOA④、高速领航辅助NOA④、智能泊车辅助系统④"
+        },
+        {
+          "key": "official:6:6",
+          "label": "智能巡航辅助系统（自适应巡航/车道巡航/智能限速系统/交通信号灯提醒/交通标志识别）"
+        },
+        {
+          "key": "official:6:7",
+          "label": "主动安全功能"
+        }
+      ]
+    },
+    {
+      "name": "安全配置",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "前排正面安全气囊、前排侧面安全气囊、前后一体式贯穿侧气帘"
+        },
+        {
+          "key": "official:7:1",
+          "label": "前排中央安全气囊"
+        },
+        {
+          "key": "official:7:2",
+          "label": "预紧式安全带"
+        },
+        {
+          "key": "official:7:3",
+          "label": "EPB电子驻车制动、Auto Hold自动驻车、VDC车身电子稳定控制系统、HSA上坡起步辅助系统、陡坡缓降(HDC）、TPMS主动胎压监测系统（带数值显示）、ARP电子防侧翻系统、ABS制动防抱死系统、EBD制动力分配、刹车辅助（EBA等）、牵引力控制系统（TCS等）、低速行车警示音、哨兵模式"
+        }
+      ]
+    },
+    {
+      "name": "选装包",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "全景视听套装（NISSAN SOUND 25扬晶石环绕音响 、63英寸 AR-HUD）"
+        },
+        {
+          "key": "official:8:1",
+          "label": "智能冷暖冰箱⑤"
+        }
+      ]
+    },
+    {
+      "name": "备注",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "①"
+        },
+        {
+          "key": "official:9:1",
+          "label": "②"
+        },
+        {
+          "key": "official:9:2",
+          "label": "③"
+        },
+        {
+          "key": "official:9:3",
+          "label": "④"
+        },
+        {
+          "key": "official:9:4",
+          "label": "⑤"
+        },
+        {
+          "key": "official:9:5",
+          "label": "*"
+        },
+        {
+          "key": "official:9:6",
+          "label": "*"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "dongfeng-nissan-nx8-official-1",
+      "name": "增程 150 Pro",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "50",
+        "official:0:3": "748",
+        "official:0:4": "—",
+        "official:1:0": "磷酸铁锂电池",
+        "official:1:1": "瑞浦兰钧 / 21.1",
+        "official:1:2": "150",
+        "official:1:3": "1320",
+        "official:1:4": "23.7",
+        "official:1:5": "13",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "195/310/265",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "1.5T 四缸混动专用高效发动机",
+        "official:1:11": "4.39",
+        "official:1:12": "109",
+        "official:1:13": "国VI",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸多条辐低风阻轮毂 、 235/55 R19",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W",
+        "official:4:11": "●7.1",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "毫米波雷达×3",
+        "official:6:1": "●前视×1/环视鱼眼×4",
+        "official:6:2": "—",
+        "official:6:3": "—",
+        "official:6:4": "—",
+        "official:6:5": "—",
+        "official:6:6": "●",
+        "official:6:7": "15项",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "—",
+        "official:8:1": "—",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-2",
+      "name": "增程 150 Max",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "50",
+        "official:0:3": "748",
+        "official:0:4": "—",
+        "official:1:0": "磷酸铁锂电池",
+        "official:1:1": "宁德时代 / 20.3",
+        "official:1:2": "150",
+        "official:1:3": "1320",
+        "official:1:4": "23.6",
+        "official:1:5": "13",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "195/310/265",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "1.5T 四缸混动专用高效发动机",
+        "official:1:11": "4.39",
+        "official:1:12": "109",
+        "official:1:13": "国VI",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸多条辐低风阻轮毂 、 235/55 R19",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W",
+        "official:4:11": "●7.1",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "激光雷达×1、毫米波雷达×3、超声波雷达×12",
+        "official:6:1": "●前视×2/环视鱼眼×4/后视×1/侧前侧后视×4",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "21项",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "—",
+        "official:8:1": "—",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-3",
+      "name": "增程 260 Pro",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "50",
+        "official:0:3": "748",
+        "official:0:4": "—",
+        "official:1:0": "磷酸铁锂电池",
+        "official:1:1": "瑞浦兰钧 / 37.4",
+        "official:1:2": "260",
+        "official:1:3": "1400",
+        "official:1:4": "21",
+        "official:1:5": "13.29",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "195/310/265",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "1.5T 四缸混动专用高效发动机",
+        "official:1:11": "4.51",
+        "official:1:12": "109",
+        "official:1:13": "国VI",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸多条辐低风阻轮毂 、 235/55 R19",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W",
+        "official:4:11": "●7.1",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "毫米波雷达×3",
+        "official:6:1": "前视×1/环视鱼眼×4",
+        "official:6:2": "—",
+        "official:6:3": "—",
+        "official:6:4": "—",
+        "official:6:5": "—",
+        "official:6:6": "●",
+        "official:6:7": "15项",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "—",
+        "official:8:1": "—",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-4",
+      "name": "增程 310 Max",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "50",
+        "official:0:3": "748",
+        "official:0:4": "—",
+        "official:1:0": "磷酸铁锂电池",
+        "official:1:1": "宁德时代 / 43.2",
+        "official:1:2": "310",
+        "official:1:3": "1450",
+        "official:1:4": "21",
+        "official:1:5": "13.29",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "195/310/265",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "1.5T 四缸混动专用高效发动机",
+        "official:1:11": "4.51",
+        "official:1:12": "109",
+        "official:1:13": "国VI",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸轮毂",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W      ○25扬 / 2000W",
+        "official:4:11": "●7.1     ○7.1.6.2（支持杜比全景声）",
+        "official:4:12": "●",
+        "official:4:13": "○",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "○",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "激光雷达×1、毫米波雷达×3、超声波雷达×12",
+        "official:6:1": "●前视×2/环视鱼眼×4/后视×1/侧前侧后视×4",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "21项",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "○",
+        "official:8:1": "○",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-5",
+      "name": "纯电 580 Pro",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "—",
+        "official:0:3": "773",
+        "official:0:4": "95",
+        "official:1:0": "磷酸铁锂400V 3C快充电池",
+        "official:1:1": "欣旺达 / 73",
+        "official:1:2": "580",
+        "official:1:3": "—",
+        "official:1:4": "17",
+        "official:1:5": "14.4",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "215/310/292",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "—",
+        "official:1:11": "—",
+        "official:1:12": "—",
+        "official:1:13": "—",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸多条辐低风阻轮毂 、 235/55 R19",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W",
+        "official:4:11": "●7.1",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "毫米波雷达×3",
+        "official:6:1": "前视×1/环视鱼眼×4",
+        "official:6:2": "—",
+        "official:6:3": "—",
+        "official:6:4": "—",
+        "official:6:5": "—",
+        "official:6:6": "●",
+        "official:6:7": "15项",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "—",
+        "official:8:1": "—",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-6",
+      "name": "纯电 580  Max",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "—",
+        "official:0:3": "773",
+        "official:0:4": "95",
+        "official:1:0": "磷酸铁锂400V 3C快充电池",
+        "official:1:1": "欣旺达 / 73",
+        "official:1:2": "580",
+        "official:1:3": "—",
+        "official:1:4": "17",
+        "official:1:5": "14.4",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "215/310/292",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "—",
+        "official:1:11": "—",
+        "official:1:12": "—",
+        "official:1:13": "—",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸多条辐低风阻轮毂 、 235/55 R19",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W",
+        "official:4:11": "●7.1",
+        "official:4:12": "●",
+        "official:4:13": "—",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "激光雷达×1、毫米波雷达×3、超声波雷达×12",
+        "official:6:1": "前视×2/环视鱼眼×4/后视×1/侧前侧后视×4",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "21项(含ESA/UPA/EAPM/DMS/FCTA/FCTB）",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "—",
+        "official:8:1": "—",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-7",
+      "name": "纯电 650 Max",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "—",
+        "official:0:3": "773",
+        "official:0:4": "95",
+        "official:1:0": "磷酸铁锂800V 5C超充电池",
+        "official:1:1": "宁德时代 / 81",
+        "official:1:2": "650",
+        "official:1:3": "—",
+        "official:1:4": "12",
+        "official:1:5": "14.4",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "250/310/340",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "—",
+        "official:1:11": "—",
+        "official:1:12": "—",
+        "official:1:13": "—",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●19英寸轮毂",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "—",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "—",
+        "official:4:3": "●主驾16向/副驾8向调节",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "—",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●12扬  / 910W      ○25扬 / 2000W",
+        "official:4:11": "●7.1     ○7.1.6.2（支持杜比全景声）",
+        "official:4:12": "●",
+        "official:4:13": "○",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "○",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "激光雷达×1、毫米波雷达×3、超声波雷达×12",
+        "official:6:1": "前视×2/环视鱼眼×4/后视×1/侧前侧后视×4",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "21项(含ESA/UPA/EAPM/DMS/FCTA/FCTB）",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "○",
+        "official:8:1": "○",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "dongfeng-nissan-nx8-official-8",
+      "name": "品牌大师版",
+      "values": {
+        "official:0:0": "4870*1920*1680",
+        "official:0:1": "2917",
+        "official:0:2": "—",
+        "official:0:3": "773",
+        "official:0:4": "95",
+        "official:1:0": "磷酸铁锂800V 5C超充电池",
+        "official:1:1": "宁德时代 / 81",
+        "official:1:2": "630",
+        "official:1:3": "—",
+        "official:1:4": "12",
+        "official:1:5": "14.9",
+        "official:1:6": "6.6",
+        "official:1:7": "永磁/同步、后置后驱",
+        "official:1:8": "250/310/340",
+        "official:1:9": "●运动/标准/舒适/自定义/AI专属",
+        "official:1:10": "—",
+        "official:1:11": "—",
+        "official:1:12": "—",
+        "official:1:13": "—",
+        "official:2:0": "前麦弗逊独立悬架 / 后五连杆独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "● 弱/强/自适应 三挡可调",
+        "official:2:4": "●舒适/标准/防晕车/运动",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "—",
+        "official:3:3": "●20英寸N形运动轮毂、235/50 R20（米其林轮胎）",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:4:0": "●",
+        "official:4:1": "● 主驾",
+        "official:4:2": "●",
+        "official:4:3": "●主驾16向/副驾16向调节（含腿托/侧翼/臀部）",
+        "official:4:4": "●40:60比例",
+        "official:4:5": "●主驾（12点）●副驾（12点）●后排（8点+8点）",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●25扬 / 2000W",
+        "official:4:11": "7.1.6.2（支持杜比全景声）",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:5:0": "高通骁龙8295P",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:6:0": "激光雷达×1、毫米波雷达×3、超声波雷达×12",
+        "official:6:1": "前视×2/环视鱼眼×4/后视×1/侧前侧后视×4",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "21项(含ESA/UPA/EAPM/DMS/FCTA/FCTB）",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:8:0": "标配全部选装包",
+        "official:8:1": "标配全部选装包",
+        "official:9:0": "CLTC纯电续航里程 /CLTC综合续航里程 /CLTC综合工况耗电/CLTC综合工况亏电油耗，由东风日产委托国家认证的第三方实验室测试所得，在车辆实际使用场景中，受不同的环境温度、路况、车辆状态、驾驶习惯等因素影响，会导致实际续航里程有所差异；",
+        "official:9:1": "快充/超充时间在常温（25℃）条件下使用充电桩测得，实际充电时间受使用情况、车辆状态以及使用环境等因素影响会有所延长；",
+        "official:9:2": "凝脂表皮材质覆盖面仅为座椅人体部分接触区域；",
+        "official:9:3": "部分功能需要OTA实现，量产仅搭载部分功能，后续将通过OTA持续推送，功能场景请以实际交付车辆为准，开通时间以实际官方通知为准；",
+        "official:9:4": "选装冰箱后将替换扶手箱配置",
+        "official:9:5": "组合驾驶辅助功能无法应对所有交通、天气与路况，不能完全代替驾驶员操控车辆，驾驶员始终承担着安全驾驶车辆与符合道路交通安全法律法规的全部责任，在驾驶车辆过程中请务必全程保持注意力集中，时刻关注车辆周围路况，并做好随时控制车辆准备，切勿依靠组合驾驶辅助功能来应对突发的紧急情况，请确保在开启前了解该功能的限制情况。在交通状况复杂多变、冰雪雨天气湿滑路面、道路积水或烂泥路面、能见度较差、崎岖山路或高速路入口出口等情况下，请谨慎使用。",
+        "official:9:6": "车型配置信息仅适用于一定生产月内生产的相应车型，不同生产月内生产的车型配置信息亦可能不同。配置表仅作为参考，实际情况应以销售店实际销售车辆为准。",
+        "official:scope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/dongfeng-nissan-nx8.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.dongfeng-nissan.com.cn/car/nx8"
+    }
+  ],
+  "sourceUrl": "https://www.dongfeng-nissan.com.cn/car-configuration-preferences-page?car_series_id=99",
+  "sourceScope": "官网当前车系及版本参数；配置脚注与适用条件保留，出口版本与选装以实际车辆及官网为准。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "nissan-nx8-params",
+      "sha256": "a3871a046562dcba2b36c172a251d080c94778f2551037290b1dd119810113aa"
+    },
+    {
+      "localEvidence": "nissan-nx8-series",
+      "sha256": "eecd6a5adc26a53d659843587fa4d360bce23558d65f037b609509a57f843b47"
+    },
+    {
+      "localEvidence": "nissan-param-items",
+      "sha256": "339e4359a6a17c467748220a0688440ef5e00656bcc1b35f782c4db2f90b85e7"
+    }
+  ]
+}

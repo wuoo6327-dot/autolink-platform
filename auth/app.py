@@ -20,6 +20,7 @@ from buyer_service import BuyerError, BuyerService
 from pagination import requested_page
 from email_auth import EmailAuthService, EmailError, normalized_email
 from trade_service import TradeService, LISTING_STATES
+from seo_service import PublicSEOService
 from platform_service import PlatformService
 from business_mail import BusinessMailer
 from mail_templates import language_code
@@ -330,6 +331,7 @@ class Handler(BaseHTTPRequestHandler):
     email_auth: EmailAuthService
     trade: TradeService
     platform: PlatformService
+    seo: PublicSEOService
     server_version = "AUTOLINKAuth/1.0"
 
     def log_message(self, format, *args):
@@ -352,6 +354,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Robots-Tag", "noindex, nofollow")
         self.send_header("X-Content-Type-Options", "nosniff")
         if cookie:
             secure = "; Secure" if os.environ.get("COOKIE_SECURE", "true").lower() != "false" else ""
@@ -361,7 +364,16 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Set-Cookie", "autolink_session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0")
         self.send_header("Content-Length", str(len(payload)))
         self.end_headers()
-        self.wfile.write(payload)
+        if self.command != "HEAD": self.wfile.write(payload)
+
+    def send_html(self, status, data):
+        self.send_response(status)
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        self.send_header('Content-Length', str(len(data)))
+        self.end_headers()
+        if self.command != 'HEAD': self.wfile.write(data)
 
     def send_image(self, data):
         self.send_response(200)
@@ -370,7 +382,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control","no-store")
         self.send_header("Content-Length",str(len(data)))
         self.end_headers()
-        self.wfile.write(data)
+        if self.command != "HEAD": self.wfile.write(data)
 
     def send_xml(self, data):
         self.send_response(200)
@@ -380,7 +392,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('X-Content-Type-Options','nosniff')
         self.send_header('Content-Length',str(len(data)))
         self.end_headers()
-        self.wfile.write(data)
+        if self.command != "HEAD": self.wfile.write(data)
 
     def send_document(self, result):
         filename = "autolink-private-document" + {"application/pdf":".pdf","image/png":".png","image/jpeg":".jpg"}[result["contentType"]]
@@ -497,8 +509,21 @@ class Handler(BaseHTTPRequestHandler):
         if method == "GET" and path == "/healthz":
             self.send_json(200, {"status": "ok"})
             return
+        if method == "GET" and path == "/autolink/merchants":
+            # Old clients get only the existing reviewed public directory.
+            self.send_json(200, [{"id": item["id"], "name": item["company_name"],
+                "city": item.get("city"), "country": item.get("country"),
+                "introduction": item.get("description"),
+                "brands": [part.strip() for part in (item.get("main_brands") or "").split(",") if part.strip()],
+                "markets": [part.strip() for part in (item.get("main_markets") or "").split(",") if part.strip()]}
+                for item in self.trade.supplier_list(public=True)])
+            return
+        if method == "GET" and path == "/autolink/auth/social/config":
+            # Only Google GSI exists. No OAuth /start route is advertised.
+            self.send_json(200, {"google": bool(self.service.client_id)})
+            return
         if method == "GET" and path == "/autolink/auth/google/config":
-            self.send_json(200, {"enabled": True})
+            self.send_json(200, {"enabled": bool(self.service.client_id)})
             return
         if method == "POST" and path == "/autolink/auth/google/challenge":
             self.read_body()
@@ -706,6 +731,11 @@ class Handler(BaseHTTPRequestHandler):
         tail = path[len("/autolink/public/"):]
         if method != "GET":
             raise ApiError(405, "Method not allowed.")
+        if tail == 'seo/trade' or tail.startswith('seo/trade/'):
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            status, body = renderer.render(self.path[len('/autolink/public/seo'):])
+            self.send_html(status, body)
+            return
         if tail=='sitemap.xml' or tail.startswith('sitemaps/'):
             self.send_xml(self.trade.sitemap_xml('sitemap.xml' if tail=='sitemap.xml' else tail[len('sitemaps/'):]))
             return
@@ -718,15 +748,23 @@ class Handler(BaseHTTPRequestHandler):
             return
         if tail == "models":
             data = self.trade.catalog.models(brand=parse_qs(urlsplit(self.path).query).get("brandId", [None])[0])
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = [{**model,'seo':renderer.index_policy('model',model)} for model in data]
         elif tail.startswith("models/"):
             ident = tail.split("/", 1)[1]
             if not self.trade.catalog.enabled(ident):
                 raise ApiError(404, "Model not found.")
             data = self.trade.catalog.get(ident)
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = {**data,'seo':renderer.index_policy('model',data)}
         elif tail == "brands":
             data = self.trade.catalog.brands()
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = [{**brand,'seo':renderer.index_policy('brand',{**brand,'models':self.trade.catalog.models(brand=brand['id'])})} for brand in data]
         elif tail.startswith("brands/"):
             data = self.trade.catalog.brand(tail.split("/", 1)[1])
+            renderer = getattr(self, 'seo', None) or PublicSEOService(self.trade)
+            data = {**data,'seo':renderer.index_policy('brand',data)}
         elif tail == "vehicles":
             query = parse_qs(urlsplit(self.path).query)
             principal=None
@@ -968,6 +1006,14 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.dispatch("GET")
 
+    def do_HEAD(self):
+        # Do not dispatch private business GET handlers: some legacy reads write.
+        path = urlsplit(self.path).path
+        if path == '/healthz' or path.startswith('/autolink/public/'):
+            self.dispatch('GET')
+        else:
+            self.send_json(405, None, 'HEAD is only available for public resources.')
+
     def do_POST(self):
         self.dispatch("POST")
 
@@ -996,6 +1042,7 @@ def main():
     Handler.buyer = BuyerService(Handler.service)
     Handler.trade = TradeService(Handler.service)
     Handler.platform = Handler.trade.platform
+    Handler.seo = PublicSEOService(Handler.trade)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     Handler.service.mailer.start()
     try:server.serve_forever()

@@ -1,0 +1,1296 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "byd-seal-07-ev",
+  "brandZh": "BYD",
+  "modelZh": "海豹07 EV",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "尺寸参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高（mm）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "轮距前/后（mm）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "最小转弯半径（m）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "整备质量（kg）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "轮胎规格"
+        }
+      ]
+    },
+    {
+      "name": "动力性能",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "驱动电机类型"
+        },
+        {
+          "key": "official:1:1",
+          "label": "驱动形式"
+        },
+        {
+          "key": "official:1:2",
+          "label": "驱动电机最大功率（kW）"
+        },
+        {
+          "key": "official:1:3",
+          "label": "驱动电机最大扭矩（N·m）"
+        },
+        {
+          "key": "official:1:4",
+          "label": "0-100km/h加速时间（s）"
+        },
+        {
+          "key": "official:1:5",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:1:6",
+          "label": "动力电池类型"
+        },
+        {
+          "key": "official:1:7",
+          "label": "电池容量（kWh）"
+        },
+        {
+          "key": "official:1:8",
+          "label": "CLTC综合工况纯电续驶里程（km）"
+        },
+        {
+          "key": "official:1:9",
+          "label": "交流充电最大功率（kw）"
+        }
+      ]
+    },
+    {
+      "name": "制动及悬架",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "前制动器类型"
+        },
+        {
+          "key": "official:2:1",
+          "label": "后制动器类型"
+        },
+        {
+          "key": "official:2:2",
+          "label": "前悬架类型"
+        },
+        {
+          "key": "official:2:3",
+          "label": "后悬架类型"
+        },
+        {
+          "key": "official:2:4",
+          "label": "云辇-C智能阻尼车身控制系统"
+        },
+        {
+          "key": "official:2:5",
+          "label": "高速爆胎稳行系统"
+        }
+      ]
+    },
+    {
+      "name": "新能源配置",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "CTB电池车身一体化技术"
+        },
+        {
+          "key": "official:3:1",
+          "label": "全新一代智能宽温域高效热泵系统"
+        },
+        {
+          "key": "official:3:2",
+          "label": "全场景智能脉冲自加热技术"
+        },
+        {
+          "key": "official:3:3",
+          "label": "预约充电功能"
+        },
+        {
+          "key": "official:3:4",
+          "label": "预约用车功能"
+        },
+        {
+          "key": "official:3:5",
+          "label": "驾驶模式（SPORT/ECO/NORMAL）"
+        },
+        {
+          "key": "official:3:6",
+          "label": "雪地模式"
+        },
+        {
+          "key": "official:3:7",
+          "label": "VTOL移动电站功能（最大6kw）"
+        },
+        {
+          "key": "official:3:8",
+          "label": "VTOL 220V放电插排"
+        },
+        {
+          "key": "official:3:9",
+          "label": "制动能量回收系统"
+        }
+      ]
+    },
+    {
+      "name": "DiPilot辅助驾驶",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "天神之眼 C - 辅助驾驶（DiPilot 100）"
+        },
+        {
+          "key": "official:4:1",
+          "label": "天神之眼 B - 辅助驾驶（DiPilot 300）"
+        },
+        {
+          "key": "official:4:2",
+          "label": "城市领航辅助（CNOA）"
+        },
+        {
+          "key": "official:4:3",
+          "label": "高快领航辅助（HNOA）"
+        },
+        {
+          "key": "official:4:4",
+          "label": "拨杆变道（ILCA）"
+        },
+        {
+          "key": "official:4:5",
+          "label": "自适应前照灯（AFL）"
+        },
+        {
+          "key": "official:4:6",
+          "label": "限速控制（ISLC）"
+        },
+        {
+          "key": "official:4:7",
+          "label": "限速标志识别（SLIF）"
+        },
+        {
+          "key": "official:4:8",
+          "label": "车道巡航辅助（ICC）"
+        },
+        {
+          "key": "official:4:9",
+          "label": "自适应巡航（ACC）"
+        },
+        {
+          "key": "official:4:10",
+          "label": "下车泊入（AVP）"
+        },
+        {
+          "key": "official:4:11",
+          "label": "泊车辅助（APA）"
+        },
+        {
+          "key": "official:4:12",
+          "label": "遥控泊车辅助（RPA）"
+        },
+        {
+          "key": "official:4:13",
+          "label": "倒车雷达（PDC）"
+        },
+        {
+          "key": "official:4:14",
+          "label": "侧边距离提醒（SDW）"
+        },
+        {
+          "key": "official:4:15",
+          "label": "低速紧急制动（MEB）*"
+        },
+        {
+          "key": "official:4:16",
+          "label": "自动紧急制动（AEB）"
+        },
+        {
+          "key": "official:4:17",
+          "label": "前向碰撞提醒（FCW）"
+        },
+        {
+          "key": "official:4:18",
+          "label": "前方横向碰撞提醒（FCTA）"
+        },
+        {
+          "key": "official:4:19",
+          "label": "前方横向碰撞制动（FCTB）"
+        },
+        {
+          "key": "official:4:20",
+          "label": "后向碰撞提醒（RCW）"
+        },
+        {
+          "key": "official:4:21",
+          "label": "后方横向碰撞提醒（RCTA）"
+        },
+        {
+          "key": "official:4:22",
+          "label": "后方横向碰撞制动（RCTB）"
+        },
+        {
+          "key": "official:4:23",
+          "label": "盲区监测（BSD）"
+        },
+        {
+          "key": "official:4:24",
+          "label": "开门安全提醒（DOW）"
+        },
+        {
+          "key": "official:4:25",
+          "label": "邻车靠近避让（ELKA）"
+        },
+        {
+          "key": "official:4:26",
+          "label": "弯道超速提醒（CSW）"
+        },
+        {
+          "key": "official:4:27",
+          "label": "车道偏离辅助（LDA）"
+        },
+        {
+          "key": "official:4:28",
+          "label": "全场景环境模拟显示（SR）"
+        },
+        {
+          "key": "official:4:29",
+          "label": "高感知激光雷达"
+        }
+      ]
+    },
+    {
+      "name": "操控配置",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "智能动力制动系统"
+        },
+        {
+          "key": "official:5:1",
+          "label": "舒适停车控制系统"
+        },
+        {
+          "key": "official:5:2",
+          "label": "车身电子稳定系统"
+        },
+        {
+          "key": "official:5:3",
+          "label": "防抱死制动系统"
+        },
+        {
+          "key": "official:5:4",
+          "label": "液压制动辅助系统"
+        },
+        {
+          "key": "official:5:5",
+          "label": "牵引力控制系统"
+        },
+        {
+          "key": "official:5:6",
+          "label": "车辆动态控制系统"
+        },
+        {
+          "key": "official:5:7",
+          "label": "电子制动力分配系统"
+        },
+        {
+          "key": "official:5:8",
+          "label": "坡道起步控制系统"
+        },
+        {
+          "key": "official:5:9",
+          "label": "防侧翻控制系统"
+        },
+        {
+          "key": "official:5:10",
+          "label": "电动助力式转向系统"
+        },
+        {
+          "key": "official:5:11",
+          "label": "EPB电子驻车系统"
+        },
+        {
+          "key": "official:5:12",
+          "label": "自动驻车系统"
+        },
+        {
+          "key": "official:5:13",
+          "label": "钥匙遥控启动"
+        },
+        {
+          "key": "official:5:14",
+          "label": "云辇预瞄系统*"
+        },
+        {
+          "key": "official:5:15",
+          "label": "防晕车模式*"
+        }
+      ]
+    },
+    {
+      "name": "安全配置",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "前排双安全气囊"
+        },
+        {
+          "key": "official:6:1",
+          "label": "前排座椅侧安全气囊"
+        },
+        {
+          "key": "official:6:2",
+          "label": "后排座椅侧安全气囊"
+        },
+        {
+          "key": "official:6:3",
+          "label": "前后贯穿式侧安全气帘"
+        },
+        {
+          "key": "official:6:4",
+          "label": "前排中间气囊"
+        },
+        {
+          "key": "official:6:5",
+          "label": "前排预紧限力式安全带"
+        },
+        {
+          "key": "official:6:6",
+          "label": "后排侧座预紧限力式安全带"
+        },
+        {
+          "key": "official:6:7",
+          "label": "后排中座非预紧限力式安全带"
+        },
+        {
+          "key": "official:6:8",
+          "label": "主副驾未系安全带提醒"
+        },
+        {
+          "key": "official:6:9",
+          "label": "后排未系安全带提醒"
+        },
+        {
+          "key": "official:6:10",
+          "label": "全高清全景影像"
+        },
+        {
+          "key": "official:6:11",
+          "label": "千里眼"
+        },
+        {
+          "key": "official:6:12",
+          "label": "哨兵模式"
+        },
+        {
+          "key": "official:6:13",
+          "label": "行车记录仪（DVR）"
+        },
+        {
+          "key": "official:6:14",
+          "label": "E-Call紧急救援"
+        },
+        {
+          "key": "official:6:15",
+          "label": "i-Call智慧客服"
+        },
+        {
+          "key": "official:6:16",
+          "label": "驾驶员疲劳监测"
+        },
+        {
+          "key": "official:6:17",
+          "label": "驾驶员分心监测"
+        },
+        {
+          "key": "official:6:18",
+          "label": "TPMS直接式胎压监测系统（数字显示）"
+        },
+        {
+          "key": "official:6:19",
+          "label": "车速感应自动上锁"
+        },
+        {
+          "key": "official:6:20",
+          "label": "电子儿童安全锁"
+        },
+        {
+          "key": "official:6:21",
+          "label": "车身电子防盗系统"
+        },
+        {
+          "key": "official:6:22",
+          "label": "ISO-FIX儿童座椅接口"
+        }
+      ]
+    },
+    {
+      "name": "DiLink智能座舱",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "智能座舱高阶版-DiLink 100"
+        },
+        {
+          "key": "official:7:1",
+          "label": "智能座舱高阶版-DiLink 150"
+        },
+        {
+          "key": "official:7:2",
+          "label": "中控屏尺寸（英寸）"
+        },
+        {
+          "key": "official:7:3",
+          "label": "小憩模式、宝宝模式、洗车模式、宠物模式"
+        },
+        {
+          "key": "official:7:4",
+          "label": "四音区语音交互系统"
+        },
+        {
+          "key": "official:7:5",
+          "label": "全场景智能语音"
+        },
+        {
+          "key": "official:7:6",
+          "label": "5G速联"
+        },
+        {
+          "key": "official:7:7",
+          "label": "智慧精准导航"
+        },
+        {
+          "key": "official:7:8",
+          "label": "车载蓝牙"
+        },
+        {
+          "key": "official:7:9",
+          "label": "车载WiFi"
+        },
+        {
+          "key": "official:7:10",
+          "label": "手车互联*"
+        },
+        {
+          "key": "official:7:11",
+          "label": "车载K歌娱乐系统"
+        },
+        {
+          "key": "official:7:12",
+          "label": "无麦K歌"
+        },
+        {
+          "key": "official:7:13",
+          "label": "百变主题"
+        },
+        {
+          "key": "official:7:14",
+          "label": "远程车控（开关车门/启闭空调/闪灯鸣笛等）"
+        },
+        {
+          "key": "official:7:15",
+          "label": "OTA远程升级"
+        },
+        {
+          "key": "official:7:16",
+          "label": "比亚迪智能云服务"
+        },
+        {
+          "key": "official:7:17",
+          "label": "智能上下电功能"
+        },
+        {
+          "key": "official:7:18",
+          "label": "Dynaudio品牌音响"
+        },
+        {
+          "key": "official:7:19",
+          "label": "扬声器数量"
+        },
+        {
+          "key": "official:7:20",
+          "label": "前排USB接口（2个）"
+        },
+        {
+          "key": "official:7:21",
+          "label": "后排USB接口（2个）"
+        }
+      ]
+    },
+    {
+      "name": "外部配置",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "LED前大灯"
+        },
+        {
+          "key": "official:8:1",
+          "label": "LED日间行车灯"
+        },
+        {
+          "key": "official:8:2",
+          "label": "LED贯穿式后尾灯"
+        },
+        {
+          "key": "official:8:3",
+          "label": "LED流水式后转向灯"
+        },
+        {
+          "key": "official:8:4",
+          "label": "LED高位制动灯"
+        },
+        {
+          "key": "official:8:5",
+          "label": "后雾灯"
+        },
+        {
+          "key": "official:8:6",
+          "label": "发光后Logo"
+        },
+        {
+          "key": "official:8:7",
+          "label": "充电口灯"
+        },
+        {
+          "key": "official:8:8",
+          "label": "后牌照灯"
+        },
+        {
+          "key": "official:8:9",
+          "label": "可开启全景天窗"
+        },
+        {
+          "key": "official:8:10",
+          "label": "全景天窗电动遮阳帘"
+        },
+        {
+          "key": "official:8:11",
+          "label": "电动后背门"
+        },
+        {
+          "key": "official:8:12",
+          "label": "隐藏式门把手"
+        },
+        {
+          "key": "official:8:13",
+          "label": "主动进气格栅"
+        },
+        {
+          "key": "official:8:14",
+          "label": "前备箱电动解锁"
+        },
+        {
+          "key": "official:8:15",
+          "label": "前备箱电动吸合"
+        },
+        {
+          "key": "official:8:16",
+          "label": "前舱盖气弹簧开启"
+        },
+        {
+          "key": "official:8:17",
+          "label": "双色铝合金轮毂"
+        },
+        {
+          "key": "official:8:18",
+          "label": "充气泵"
+        }
+      ]
+    },
+    {
+      "name": "内部配置",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "多功能方向盘"
+        },
+        {
+          "key": "official:9:1",
+          "label": "怀挡式电子换挡"
+        },
+        {
+          "key": "official:9:2",
+          "label": "方向盘四向手动调节"
+        },
+        {
+          "key": "official:9:3",
+          "label": "10.25英寸全液晶仪表"
+        },
+        {
+          "key": "official:9:4",
+          "label": "W-HUD抬头显示"
+        },
+        {
+          "key": "official:9:5",
+          "label": "多色内饰氛围灯"
+        },
+        {
+          "key": "official:9:6",
+          "label": "车顶眼镜盒"
+        },
+        {
+          "key": "official:9:7",
+          "label": "主副驾脚部氛围灯"
+        },
+        {
+          "key": "official:9:8",
+          "label": "四门门灯"
+        },
+        {
+          "key": "official:9:9",
+          "label": "前室内灯"
+        },
+        {
+          "key": "official:9:10",
+          "label": "后侧室内灯"
+        },
+        {
+          "key": "official:9:11",
+          "label": "50W手机无线充电"
+        },
+        {
+          "key": "official:9:12",
+          "label": "主副驾带化妆镜遮阳板"
+        },
+        {
+          "key": "official:9:13",
+          "label": "后排中央扶手（带双杯托）"
+        },
+        {
+          "key": "official:9:14",
+          "label": "12V车载电源接口"
+        }
+      ]
+    },
+    {
+      "name": "舒适便利配置",
+      "rows": [
+        {
+          "key": "official:10:0",
+          "label": "豪华皮座椅"
+        },
+        {
+          "key": "official:10:1",
+          "label": "主驾座椅8向电动调节"
+        },
+        {
+          "key": "official:10:2",
+          "label": "主驾座椅通风加热"
+        },
+        {
+          "key": "official:10:3",
+          "label": "主驾座椅4向电动调节腰撑"
+        },
+        {
+          "key": "official:10:4",
+          "label": "主驾座椅位置记忆"
+        },
+        {
+          "key": "official:10:5",
+          "label": "主驾座椅按摩"
+        },
+        {
+          "key": "official:10:6",
+          "label": "副驾座椅6向电动调节"
+        },
+        {
+          "key": "official:10:7",
+          "label": "副驾座椅通风加热"
+        },
+        {
+          "key": "official:10:8",
+          "label": "副驾座椅4向电动调节腰撑"
+        },
+        {
+          "key": "official:10:9",
+          "label": "副驾座椅按摩"
+        },
+        {
+          "key": "official:10:10",
+          "label": "后排座椅通风加热"
+        },
+        {
+          "key": "official:10:11",
+          "label": "智能冷暖冰箱"
+        },
+        {
+          "key": "official:10:12",
+          "label": "豪华皮方向盘"
+        },
+        {
+          "key": "official:10:13",
+          "label": "方向盘加热"
+        },
+        {
+          "key": "official:10:14",
+          "label": "后排4:6比例可放倒座椅"
+        },
+        {
+          "key": "official:10:15",
+          "label": "手动前大灯高度调节"
+        },
+        {
+          "key": "official:10:16",
+          "label": "“Follow me home”前大灯提前开启/延时关闭功能"
+        },
+        {
+          "key": "official:10:17",
+          "label": "自动开启前大灯"
+        },
+        {
+          "key": "official:10:18",
+          "label": "前间歇式无骨雨刮"
+        },
+        {
+          "key": "official:10:19",
+          "label": "前感应雨刮"
+        },
+        {
+          "key": "official:10:20",
+          "label": "前风挡/前排双层隔音玻璃"
+        },
+        {
+          "key": "official:10:21",
+          "label": "后风窗/后排隐私玻璃"
+        },
+        {
+          "key": "official:10:22",
+          "label": "后风窗电加热除雾除霜"
+        },
+        {
+          "key": "official:10:23",
+          "label": "四门车窗遥控升降及一键升降"
+        },
+        {
+          "key": "official:10:24",
+          "label": "无钥匙进入及一键启动"
+        },
+        {
+          "key": "official:10:25",
+          "label": "手机蓝牙车钥匙"
+        },
+        {
+          "key": "official:10:26",
+          "label": "手机NFC车钥匙"
+        },
+        {
+          "key": "official:10:27",
+          "label": "车载ETC"
+        },
+        {
+          "key": "official:10:28",
+          "label": "自动防眩目内后视镜"
+        },
+        {
+          "key": "official:10:29",
+          "label": "外后视镜电动折叠"
+        },
+        {
+          "key": "official:10:30",
+          "label": "外后视镜位置记忆"
+        },
+        {
+          "key": "official:10:31",
+          "label": "车身同色电动调节外后视镜"
+        },
+        {
+          "key": "official:10:32",
+          "label": "外后视镜电加热除霜"
+        },
+        {
+          "key": "official:10:33",
+          "label": "外后视镜转向灯"
+        },
+        {
+          "key": "official:10:34",
+          "label": "外后视镜照脚灯"
+        },
+        {
+          "key": "official:10:35",
+          "label": "自动双温空调"
+        },
+        {
+          "key": "official:10:36",
+          "label": "后排中央空调出风口"
+        },
+        {
+          "key": "official:10:37",
+          "label": "遥控开启空调"
+        },
+        {
+          "key": "official:10:38",
+          "label": "远程高温杀菌模式"
+        },
+        {
+          "key": "official:10:39",
+          "label": "PM2.5高效过滤器"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "byd-seal-07-ev-official-1",
+      "name": "705尊荣型",
+      "values": {
+        "official:0:0": "4995×1910×1495",
+        "official:0:1": "2900",
+        "official:0:2": "1640/1650",
+        "official:0:3": "5.5",
+        "official:0:4": "1940",
+        "official:0:5": "225/50 R18",
+        "official:1:0": "永磁同步电机",
+        "official:1:1": "后驱",
+        "official:1:2": "240",
+        "official:1:3": "305",
+        "official:1:4": "6.5",
+        "official:1:5": "200",
+        "official:1:6": "第二代刀片电池",
+        "official:1:7": "69.07",
+        "official:1:8": "705",
+        "official:1:9": "7",
+        "official:2:0": "通风盘式",
+        "official:2:1": "盘式",
+        "official:2:2": "麦弗逊",
+        "official:2:3": "五连杆",
+        "official:2:4": "●",
+        "official:2:5": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "○",
+        "official:3:9": "●",
+        "official:4:0": "●",
+        "official:4:1": "○",
+        "official:4:2": "○",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "●",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "○",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:17": "●",
+        "official:6:18": "●",
+        "official:6:19": "●",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:22": "●",
+        "official:7:0": "●",
+        "official:7:1": "○",
+        "official:7:2": "15.6",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "—",
+        "official:7:19": "8",
+        "official:7:20": "●",
+        "official:7:21": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "—",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:9:8": "●",
+        "official:9:9": "●",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "—",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "—",
+        "official:10:10": "—",
+        "official:10:11": "—",
+        "official:10:12": "●",
+        "official:10:13": "—",
+        "official:10:14": "●",
+        "official:10:15": "●",
+        "official:10:16": "●",
+        "official:10:17": "●",
+        "official:10:18": "●",
+        "official:10:19": "●",
+        "official:10:20": "●",
+        "official:10:21": "—",
+        "official:10:22": "●",
+        "official:10:23": "●",
+        "official:10:24": "●",
+        "official:10:25": "●",
+        "official:10:26": "●",
+        "official:10:27": "●",
+        "official:10:28": "●",
+        "official:10:29": "●",
+        "official:10:30": "●",
+        "official:10:31": "●",
+        "official:10:32": "●",
+        "official:10:33": "●",
+        "official:10:34": "●",
+        "official:10:35": "●",
+        "official:10:36": "●",
+        "official:10:37": "●",
+        "official:10:38": "●",
+        "official:10:39": "●",
+        "official:scope": "官网当前海豹07EV参数表；防晕车模式等部分功能需后续OTA，具体辅助驾驶、网络服务、续航工况及选装条件请查看官网。未提供出口质保承诺。"
+      },
+      "year": ""
+    },
+    {
+      "id": "byd-seal-07-ev-official-2",
+      "name": "705旗舰型",
+      "values": {
+        "official:0:0": "4995×1910×1495",
+        "official:0:1": "2900",
+        "official:0:2": "1640/1650",
+        "official:0:3": "5.5",
+        "official:0:4": "1940",
+        "official:0:5": "225/50 R18",
+        "official:1:0": "永磁同步电机",
+        "official:1:1": "后驱",
+        "official:1:2": "240",
+        "official:1:3": "305",
+        "official:1:4": "6.5",
+        "official:1:5": "200",
+        "official:1:6": "第二代刀片电池",
+        "official:1:7": "69.07",
+        "official:1:8": "705",
+        "official:1:9": "7",
+        "official:2:0": "通风盘式",
+        "official:2:1": "盘式",
+        "official:2:2": "麦弗逊",
+        "official:2:3": "五连杆",
+        "official:2:4": "●",
+        "official:2:5": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "○",
+        "official:3:9": "●",
+        "official:4:0": "—",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "●",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:6:9": "●",
+        "official:6:10": "●",
+        "official:6:11": "●",
+        "official:6:12": "●",
+        "official:6:13": "●",
+        "official:6:14": "●",
+        "official:6:15": "●",
+        "official:6:16": "●",
+        "official:6:17": "●",
+        "official:6:18": "●",
+        "official:6:19": "●",
+        "official:6:20": "●",
+        "official:6:21": "●",
+        "official:6:22": "●",
+        "official:7:0": "—",
+        "official:7:1": "●",
+        "official:7:2": "15.6",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "●",
+        "official:7:8": "●",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "12",
+        "official:7:20": "●",
+        "official:7:21": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:9:7": "●",
+        "official:9:8": "●",
+        "official:9:9": "●",
+        "official:9:10": "●",
+        "official:9:11": "●",
+        "official:9:12": "●",
+        "official:9:13": "●",
+        "official:9:14": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "●",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "●",
+        "official:10:10": "●",
+        "official:10:11": "●",
+        "official:10:12": "●",
+        "official:10:13": "●",
+        "official:10:14": "●",
+        "official:10:15": "●",
+        "official:10:16": "●",
+        "official:10:17": "●",
+        "official:10:18": "●",
+        "official:10:19": "●",
+        "official:10:20": "●",
+        "official:10:21": "●",
+        "official:10:22": "●",
+        "official:10:23": "●",
+        "official:10:24": "●",
+        "official:10:25": "●",
+        "official:10:26": "●",
+        "official:10:27": "●",
+        "official:10:28": "●",
+        "official:10:29": "●",
+        "official:10:30": "●",
+        "official:10:31": "●",
+        "official:10:32": "●",
+        "official:10:33": "●",
+        "official:10:34": "●",
+        "official:10:35": "●",
+        "official:10:36": "●",
+        "official:10:37": "●",
+        "official:10:38": "●",
+        "official:10:39": "●",
+        "official:scope": "官网当前海豹07EV参数表；防晕车模式等部分功能需后续OTA，具体辅助驾驶、网络服务、续航工况及选装条件请查看官网。未提供出口质保承诺。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/byd-seal-07-ev.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://prod.byd.com/cn/ocean-home/models/haibao/haibao-07-EV"
+    }
+  ],
+  "sourceUrl": "https://prod.byd.com/cn/ocean-home/models/haibao/haibao-07-EV",
+  "sourceScope": "官网当前海豹07EV参数表；防晕车模式等部分功能需后续OTA，具体辅助驾驶、网络服务、续航工况及选装条件请查看官网。未提供出口质保承诺。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "byd-seal-07-ev-specs",
+      "sha256": "46d8cf1f3366cf20881a305a1d518252345d19d927196b67278281702c323963"
+    }
+  ]
+}

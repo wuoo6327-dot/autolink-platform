@@ -1,0 +1,765 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "faw-volkswagen-t-roc",
+  "brandZh": "FAW Volkswagen",
+  "modelZh": "探歌",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高(mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距(mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "行李箱容积(L)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "油箱容积(L)"
+        },
+        {
+          "key": "official:0:4",
+          "label": "最小离地间隙(mm)"
+        },
+        {
+          "key": "official:0:5",
+          "label": "整备质量(kg)"
+        },
+        {
+          "key": "official:0:6",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:0:7",
+          "label": "发动机排量(L)"
+        },
+        {
+          "key": "official:0:8",
+          "label": "最大净功率(kW/rpm)"
+        },
+        {
+          "key": "official:0:9",
+          "label": "最大扭矩(N·m/rpm)"
+        },
+        {
+          "key": "official:0:10",
+          "label": "变速箱型式"
+        },
+        {
+          "key": "official:0:11",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:12",
+          "label": "最高车速(km/h)"
+        },
+        {
+          "key": "official:0:13",
+          "label": "0-100km/h加速时间(s)"
+        },
+        {
+          "key": "official:0:14",
+          "label": "WLTC综合工况油耗(L/100km)"
+        },
+        {
+          "key": "official:0:15",
+          "label": "悬架系统"
+        },
+        {
+          "key": "official:0:16",
+          "label": "排放标准"
+        }
+      ]
+    },
+    {
+      "name": "外观",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "R-Line 运动外观"
+        },
+        {
+          "key": "official:1:1",
+          "label": "铝合金车顶行李架"
+        },
+        {
+          "key": "official:1:2",
+          "label": "Panorama大尺寸全景天窗"
+        },
+        {
+          "key": "official:1:3",
+          "label": "黑色车顶"
+        },
+        {
+          "key": "official:1:4",
+          "label": "LED透镜大灯"
+        },
+        {
+          "key": "official:1:5",
+          "label": "大灯感光自动开启"
+        },
+        {
+          "key": "official:1:6",
+          "label": "大灯离回家功能"
+        },
+        {
+          "key": "official:1:7",
+          "label": "战盔之眼贯穿式尾灯"
+        },
+        {
+          "key": "official:1:8",
+          "label": "光剑贯穿式前格栅灯"
+        },
+        {
+          "key": "official:1:9",
+          "label": "4门把手氛围灯"
+        },
+        {
+          "key": "official:1:10",
+          "label": "4门把手镀铬"
+        },
+        {
+          "key": "official:1:11",
+          "label": "R-Line专属LED日行灯"
+        },
+        {
+          "key": "official:1:12",
+          "label": "翼子板\"T-ROC\"标识"
+        },
+        {
+          "key": "official:1:13",
+          "label": "翼子板\"R-Line\"标识"
+        },
+        {
+          "key": "official:1:14",
+          "label": "外后视镜照地灯(VW T-ROC标识)"
+        },
+        {
+          "key": "official:1:15",
+          "label": "17英寸REBELL 铝合金车轮"
+        },
+        {
+          "key": "official:1:16",
+          "label": "18英寸R-Line MISANO铝合金车轮"
+        },
+        {
+          "key": "official:1:17",
+          "label": "备胎"
+        },
+        {
+          "key": "official:1:18",
+          "label": "珠光白外饰漆"
+        },
+        {
+          "key": "official:1:19",
+          "label": "黑光包"
+        }
+      ]
+    },
+    {
+      "name": "IQ.Light智能灯光",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "IQ.Light灵眸矩阵大灯"
+        },
+        {
+          "key": "official:2:1",
+          "label": "MDFS大灯动态远光辅助"
+        }
+      ]
+    },
+    {
+      "name": "内饰",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "星彩透光饰板"
+        },
+        {
+          "key": "official:3:1",
+          "label": "30色可调氛围灯"
+        },
+        {
+          "key": "official:3:2",
+          "label": "顶棚USB接口（行车记录仪用）"
+        },
+        {
+          "key": "official:3:3",
+          "label": "多功能方向盘"
+        },
+        {
+          "key": "official:3:4",
+          "label": "R-Line专属超纤皮多功能方向盘"
+        },
+        {
+          "key": "official:3:5",
+          "label": "高级皮革座椅"
+        },
+        {
+          "key": "official:3:6",
+          "label": "R-Line专属高级皮革座椅"
+        },
+        {
+          "key": "official:3:7",
+          "label": "6向手动调节司机侧座椅"
+        },
+        {
+          "key": "official:3:8",
+          "label": "6向手动调节副司机侧座椅"
+        },
+        {
+          "key": "official:3:9",
+          "label": "10向电动调节司机侧座椅(含电动腰托)"
+        },
+        {
+          "key": "official:3:10",
+          "label": "可单独分级调节前排座椅加热"
+        },
+        {
+          "key": "official:3:11",
+          "label": "后排双USB充电插口"
+        }
+      ]
+    },
+    {
+      "name": "安全",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "防盗报警系统"
+        },
+        {
+          "key": "official:4:1",
+          "label": "后倒车雷达"
+        },
+        {
+          "key": "official:4:2",
+          "label": "前泊车雷达"
+        },
+        {
+          "key": "official:4:3",
+          "label": "智能胎压监控系统"
+        },
+        {
+          "key": "official:4:4",
+          "label": "前排正面双安全气囊"
+        },
+        {
+          "key": "official:4:5",
+          "label": "前排侧面双安全气囊"
+        },
+        {
+          "key": "official:4:6",
+          "label": "两侧头部气帘"
+        },
+        {
+          "key": "official:4:7",
+          "label": "前排安全带未系提醒"
+        },
+        {
+          "key": "official:4:8",
+          "label": "后排安全带未系提醒"
+        }
+      ]
+    },
+    {
+      "name": "便捷舒适",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "EPB电子驻车"
+        },
+        {
+          "key": "official:5:1",
+          "label": "Auto Hold自动驻车"
+        },
+        {
+          "key": "official:5:2",
+          "label": "无钥匙进入"
+        },
+        {
+          "key": "official:5:3",
+          "label": "一键启动系统"
+        },
+        {
+          "key": "official:5:4",
+          "label": "外后视镜电动可调带加热"
+        },
+        {
+          "key": "official:5:5",
+          "label": "外后视镜电动折叠"
+        },
+        {
+          "key": "official:5:6",
+          "label": "电动尾门"
+        },
+        {
+          "key": "official:5:7",
+          "label": "电子手动空调"
+        },
+        {
+          "key": "official:5:8",
+          "label": "双区自动空调"
+        },
+        {
+          "key": "official:5:9",
+          "label": "感应雨刷"
+        },
+        {
+          "key": "official:5:10",
+          "label": "6喇叭立体声音响系统"
+        },
+        {
+          "key": "official:5:11",
+          "label": "手机联接"
+        },
+        {
+          "key": "official:5:12",
+          "label": "CRS3.0智能信息娱乐系统：8.0英寸触摸彩屏"
+        },
+        {
+          "key": "official:5:13",
+          "label": "CNS3.0智能车载导航信息娱乐系统：9.2英寸触摸彩屏"
+        },
+        {
+          "key": "official:5:14",
+          "label": "蓝牙手机免提系统"
+        },
+        {
+          "key": "official:5:15",
+          "label": "ETC"
+        },
+        {
+          "key": "official:5:16",
+          "label": "8\"彩色数字液晶仪表"
+        },
+        {
+          "key": "official:5:17",
+          "label": "10.3英寸Active Info Display 全液晶数字仪表"
+        },
+        {
+          "key": "official:5:18",
+          "label": "车载手机无线充电"
+        },
+        {
+          "key": "official:5:19",
+          "label": "PLA 3.0自动泊车系统"
+        },
+        {
+          "key": "official:5:20",
+          "label": "泊车后视影像系统"
+        },
+        {
+          "key": "official:5:21",
+          "label": "方向盘加热"
+        },
+        {
+          "key": "official:5:22",
+          "label": "定速巡航"
+        }
+      ]
+    },
+    {
+      "name": "IQ.Drive管家",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "Travel Assist 全速域驾驶辅助系统"
+        },
+        {
+          "key": "official:6:1",
+          "label": "HOD（离手监测）方向盘"
+        },
+        {
+          "key": "official:6:2",
+          "label": "Side Assist变道辅助系统"
+        },
+        {
+          "key": "official:6:3",
+          "label": "ACC 3.0自适应巡航系统"
+        },
+        {
+          "key": "official:6:4",
+          "label": "Lane Keep Assist车道保持系统"
+        },
+        {
+          "key": "official:6:5",
+          "label": "Front Assist预碰撞安全系统（含CEB城市紧急制动）"
+        }
+      ]
+    },
+    {
+      "name": "IQ.Connectivity智慧车联",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "数字钥匙"
+        },
+        {
+          "key": "official:7:1",
+          "label": "智联控车"
+        },
+        {
+          "key": "official:7:2",
+          "label": "智慧导航"
+        },
+        {
+          "key": "official:7:3",
+          "label": "智享娱乐"
+        },
+        {
+          "key": "official:7:4",
+          "label": "IQ. Voice Companion语音精灵"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "faw-volkswagen-t-roc-official-1",
+      "name": "探歌 / 280TSI时光版",
+      "values": {
+        "official:0:0": "4336/1819/1592",
+        "official:0:1": "2,680",
+        "official:0:2": "401",
+        "official:0:3": "51",
+        "official:0:4": "145",
+        "official:0:5": "1,366",
+        "official:0:6": "EA211涡轮增压缸内直喷",
+        "official:0:7": "1.395",
+        "official:0:8": "110  / 5,000-6,000",
+        "official:0:9": "250 / 1,750-3,000",
+        "official:0:10": "DCT 7速双离合变速器",
+        "official:0:11": "前置前驱",
+        "official:0:12": "200",
+        "official:0:13": "9.5",
+        "official:0:14": "6.40",
+        "official:0:15": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:16": "国六排放标准",
+        "official:1:0": "—",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "O₁",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "—",
+        "official:1:9": "—",
+        "official:1:10": "—",
+        "official:1:11": "—",
+        "official:1:12": "●",
+        "official:1:13": "—",
+        "official:1:14": "—",
+        "official:1:15": "●",
+        "official:1:16": "O₁₀",
+        "official:1:17": "O₉",
+        "official:1:18": "O₂",
+        "official:1:19": "—",
+        "official:2:0": "—",
+        "official:2:1": "—",
+        "official:3:0": "—",
+        "official:3:1": "—",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "—",
+        "official:3:5": "●",
+        "official:3:6": "—",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "—",
+        "official:3:10": "O₃",
+        "official:3:11": "●",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "—",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "—",
+        "official:5:6": "O₄",
+        "official:5:7": "●",
+        "official:5:8": "—",
+        "official:5:9": "—",
+        "official:5:10": "—",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "—",
+        "official:5:14": "●",
+        "official:5:15": "O₅",
+        "official:5:16": "●",
+        "official:5:17": "O₆",
+        "official:5:18": "—",
+        "official:5:19": "—",
+        "official:5:20": "●",
+        "official:5:21": "—",
+        "official:5:22": "●",
+        "official:6:0": "—",
+        "official:6:1": "—",
+        "official:6:2": "—",
+        "official:6:3": "O₈",
+        "official:6:4": "—",
+        "official:6:5": "●",
+        "official:7:0": "●",
+        "official:7:1": "—",
+        "official:7:2": "—",
+        "official:7:3": "—",
+        "official:7:4": "—",
+        "official:scope": "官网当前探歌280TSI时光版、300TSI辰光版、300TSI星光版；O下标为原厂选装包，内容及实车批次请查看官网原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-volkswagen-t-roc-official-2",
+      "name": "探歌 / 300TSI辰光版",
+      "values": {
+        "official:0:0": "4319/1819/1592",
+        "official:0:1": "2,680",
+        "official:0:2": "401",
+        "official:0:3": "51",
+        "official:0:4": "145",
+        "official:0:5": "1,378",
+        "official:0:6": "EA211可变截面涡轮增压缸内直喷",
+        "official:0:7": "1.498",
+        "official:0:8": "118  / 5,500",
+        "official:0:9": "250 / 1,750-4,000",
+        "official:0:10": "DCT 7速双离合变速器",
+        "official:0:11": "前置前驱",
+        "official:0:12": "200",
+        "official:0:13": "9.4",
+        "official:0:14": "6.10",
+        "official:0:15": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:16": "国六排放标准(RDE)",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "O₁",
+        "official:1:4": "—",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "—",
+        "official:1:13": "●",
+        "official:1:14": "●",
+        "official:1:15": "—",
+        "official:1:16": "●",
+        "official:1:17": "O₉",
+        "official:1:18": "O₂",
+        "official:1:19": "O₁₁",
+        "official:2:0": "●",
+        "official:2:1": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "—",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "O₃",
+        "official:3:11": "●",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "—",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "—",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "O₅",
+        "official:5:16": "—",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "—",
+        "official:5:20": "●",
+        "official:5:21": "O₇",
+        "official:5:22": "●",
+        "official:6:0": "O₇",
+        "official:6:1": "O₇",
+        "official:6:2": "O₇",
+        "official:6:3": "●",
+        "official:6:4": "O₇",
+        "official:6:5": "●",
+        "official:7:0": "O₁₂",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:scope": "官网当前探歌280TSI时光版、300TSI辰光版、300TSI星光版；O下标为原厂选装包，内容及实车批次请查看官网原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-volkswagen-t-roc-official-3",
+      "name": "探歌 / 300TSI星光版",
+      "values": {
+        "official:0:0": "4319/1819/1592",
+        "official:0:1": "2,680",
+        "official:0:2": "401",
+        "official:0:3": "51",
+        "official:0:4": "145",
+        "official:0:5": "1,378",
+        "official:0:6": "EA211可变截面涡轮增压缸内直喷",
+        "official:0:7": "1.498",
+        "official:0:8": "118  / 5,500",
+        "official:0:9": "250 / 1,750-4,000",
+        "official:0:10": "DCT 7速双离合变速器",
+        "official:0:11": "前置前驱",
+        "official:0:12": "200",
+        "official:0:13": "9.4",
+        "official:0:14": "6.10",
+        "official:0:15": "麦弗逊式独立悬架 / 多连杆式独立悬架",
+        "official:0:16": "国六排放标准(RDE)",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "—",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "—",
+        "official:1:13": "●",
+        "official:1:14": "●",
+        "official:1:15": "—",
+        "official:1:16": "●",
+        "official:1:17": "O₉",
+        "official:1:18": "O₂",
+        "official:1:19": "O₁₁",
+        "official:2:0": "●",
+        "official:2:1": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "—",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "—",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "O₃",
+        "official:3:11": "●",
+        "official:4:0": "●",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "—",
+        "official:5:8": "●",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "—",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "O₅",
+        "official:5:16": "—",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:7:0": "O₁₂",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:scope": "官网当前探歌280TSI时光版、300TSI辰光版、300TSI星光版；O下标为原厂选装包，内容及实车批次请查看官网原表。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/faw-volkswagen-t-roc.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://vwcms.vw.com.cn/api/index"
+    }
+  ],
+  "sourceUrl": "https://vw.faw-vw.com/#/CarParamDetails?vsid=3",
+  "sourceScope": "官网当前探歌280TSI时光版、300TSI辰光版、300TSI星光版；O下标为原厂选装包，内容及实车批次请查看官网原表。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "vw-troc-attr-new",
+      "sha256": "a0621b1f1165b8d9afe0be4878a5ec5d04e4d0f38b8ffb59c5cf80960f27012e"
+    }
+  ]
+}
