@@ -76,7 +76,7 @@ Chrome 的 Googlebot Smartphone UA 模拟、普通用户与服务端初始 HTML 
 
 本轮实际变更以两个草稿 PR 的 diff 为准。SEO 整合包括 `auth/catalog.json`、`auth/catalog_service.py`、`auth/seo_service.py`、`auth/app.py`、`Caddyfile`、`site/trade/*`、索引审核 JSON、车型图和发布/回滚工具；新增 `scripts/build_seo_release_site.py`、`scripts/verify_live_catalog_release.py`、`scripts/amd64_seo_release_rollback_qa.sh` 及发布锁。首页性能改动为 `site/assets/index-autolink-membership-apply-pricing.js`、`site/assets/home-suv-visuals.js`、`site/assets/business-page-bootstrap.mjs`、`site/index.html`、`site/images/home-mobile/zeekr9x-city-ad.webp`，并新增 trace、交互、缓存和 Lighthouse 汇总工具。
 
-原始 Lighthouse JSON：[60 份 Lighthouse 原始 JSON 与汇总](evidence/autolink-lighthouse-20261012.tar.gz)（SHA-256 `3023e9a29484d642c22df7ade6a3f12bfa0912f081dda2fdd62ee5cd16c03e15`）以及 [Chrome trace、CPU profile 与浏览器回归原始 JSON](evidence/autolink-home-trace-and-browser-20261012.tar.gz)（SHA-256 `8158cf80bb6e972fdae2b113a62ec2341073330b0fb46b1705b44a4f51da92dd`）。后者还包含 Safari 定性核验记录；trace JSON 与 CPU profile 同存档。中位数汇总脚本为 `scripts/summarize_lighthouse_comparison.py`。原始数据保留，未改写分数。
+原始 Lighthouse JSON：[60 份 Lighthouse 原始 JSON 与汇总](evidence/autolink-lighthouse-20261012.tar.gz)（SHA-256 `87fc6d93e3931c8c907cfe231ffc9d66d8c6317f1e5caf19351d228744678c23`）以及 [Chrome trace、CPU profile 与浏览器回归原始 JSON](evidence/autolink-home-trace-and-browser-20261012.tar.gz)（SHA-256 `b1819ee2ef3cfa7e9b3b0e91da1e12104413fe2fc1b64c703233230deded749e`）。后者还包含 Safari 定性核验记录；trace JSON 与 CPU profile 同存档。中位数汇总脚本为 `scripts/summarize_lighthouse_comparison.py`。原始数据保留，未改写分数。
 
 ## 5. 获批准后的部署与回滚
 
