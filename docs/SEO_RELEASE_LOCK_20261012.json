@@ -28,7 +28,8 @@
     "indexableEnglishUrls": 22,
     "indexableBrandUrls": 0,
     "catalogFileSHA256": "3c7bdf436bff712c0c50b249cf93c4c0bfda8d030133ccaf0532f2096734676b",
-    "liveSourceAndImageHashesMatched": 244
+    "liveSourceAndImageHashesMatched": 244,
+    "lastLiveVerificationUTC": "2026-10-11T18:21:57.314394+00:00"
   },
   "siteAssembly": {
     "script": "scripts/build_seo_release_site.py",
