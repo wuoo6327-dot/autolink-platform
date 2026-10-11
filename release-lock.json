@@ -1,4 +1,6 @@
 {
+  "historical": true,
+  "supersededBy": "docs/SEO_RELEASE_LOCK_20261012.json",
   "release": "AUTOLINK round7 SEO quality-gated isolated candidate",
   "productionDeploymentAuthorized": false,
   "baselineCommit": "a38664fc9bf2be639cbcb65dce4b57ef5b94170c",
