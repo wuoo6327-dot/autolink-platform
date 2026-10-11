@@ -35,23 +35,39 @@
     "base": "Read-only copy of current production public site",
     "overlayFiles": 254,
     "noDeletes": true,
-    "rollbackCatalogMount": "/app/catalog.json:ro"
+    "rollbackCatalogMount": "/app/catalog.json:ro",
+    "untouchedProductionFilesVerified": 5167
   },
   "isolatedAcceptance": {
     "backendRun": 221,
     "backendSkipped": 5,
     "initialHttpQaPassed": true,
     "candidateRollbackRestorePassed": true,
-    "testedSiteVariant": "repository site snapshot",
-    "minimalOverlayQaPassed": false,
+    "testedSiteVariant": "current production public site copy with selective SEO overlay",
+    "minimalOverlayQaPassed": true,
     "eachPhaseModels": 244,
     "eachPhaseBrands": 53,
     "candidateAndRestoreSitemapUrls": 199,
-    "productionUnmodified": true
+    "productionUnmodified": true,
+    "minimalOverlayLog": "/home/admin/autolink-seo-release-stage-20261012/amd64-seo-rollback-overlay.log",
+    "eachPhaseExtraHistoricalModels": 0,
+    "eachPhaseExtraHistoricalBrands": 0
   },
   "vulnerabilityCounts": {
-    "auth": {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNKNOWN": 0},
-    "web": {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNKNOWN": 1}
+    "auth": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "UNKNOWN": 0
+    },
+    "web": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "UNKNOWN": 1
+    }
   },
   "webUnknownFinding": "GO-2026-5932 golang.org/x/crypto",
   "productionDeploymentAuthorized": false,
