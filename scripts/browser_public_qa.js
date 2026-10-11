@@ -7,12 +7,16 @@ const browserPath=process.env.CHROME_BINARY||'/Applications/Google Chrome.app/Co
  const browser=await puppeteer.launch({executablePath:browserPath,headless:true,args:['--no-sandbox']});
  const results={};
  try{
+  const normal=await browser.newPage();await normal.setViewport({width:412,height:915,deviceScaleFactor:2});
+  await normal.goto(base+'/?lang=zh',{waitUntil:'domcontentloaded'});
+  await normal.waitForFunction(()=>document.querySelector('#root')?.innerText.length>100,{timeout:20000});
+  results.normalHome=await normal.evaluate(()=>({bodyLength:document.querySelector('#root').innerText.length,h1:document.querySelector('h1')?.innerText||'',brandLinks:document.querySelectorAll('a[href^="/trade/brands/"]').length,modelLinks:document.querySelectorAll('a[href^="/trade/models/"]').length}));
   const page=await browser.newPage();await page.setViewport({width:412,height:915,deviceScaleFactor:2});
   await page.setRequestInterception(true);
   page.on('request',request=>/\/assets\/(business-seo|account-header)\.js/.test(request.url())?request.abort():request.continue());
   await page.goto(base+'/?lang=zh',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelector('#root')?.innerText.length>100,{timeout:20000});
-  results.optionalScriptFailure=await page.evaluate(()=>({bodyLength:document.querySelector('#root').innerText.length,error:document.querySelector('#root').getAttribute('role')==='alert',h1:document.querySelector('h1')?.innerText||''}));
+  results.optionalScriptFailure=await page.evaluate(()=>({bodyLength:document.querySelector('#root').innerText.length,error:document.querySelector('#root').getAttribute('role')==='alert',h1:document.querySelector('h1')?.innerText||'',brandLinks:document.querySelectorAll('a[href^="/trade/brands/"]').length,modelLinks:document.querySelectorAll('a[href^="/trade/models/"]').length}));
   const model=await browser.newPage();await model.setViewport({width:412,height:915,deviceScaleFactor:2});
   await model.goto(base+'/trade/models/zeekr-9x-2026?lang=zh',{waitUntil:'networkidle2'});
   results.modelMobile=await model.evaluate(()=>({h1:document.querySelector('h1')?.innerText,ssr:document.querySelector('#app')?.dataset.ssr,canonical:document.querySelector('link[rel="canonical"]')?.href,image:document.querySelector('.trade-hero-image')?.currentSrc,specifications:document.querySelectorAll('[data-ssr-reference] tr').length}));
@@ -23,7 +27,11 @@ const browserPath=process.env.CHROME_BINARY||'/Applications/Google Chrome.app/Co
   await bot.setUserAgent('Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/131.0.0.0 Mobile Safari/537.36');
   await bot.goto(base+'/trade/models/geely-monjaro-2026',{waitUntil:'networkidle2'});
   results.googlebotEmulation=await bot.evaluate(()=>({h1:document.querySelector('h1')?.innerText,ssr:document.querySelector('#app')?.dataset.ssr,specifications:document.querySelectorAll('[data-ssr-reference] tr').length}));
-  results.pass=results.optionalScriptFailure.bodyLength>100&&!results.optionalScriptFailure.error&&results.modelMobile.ssr==='true'&&results.modelMobile.image.includes('seo-heroes')&&results.modelEnglish.ssr==='true'&&results.modelEnglish.robots==='index, follow'&&results.googlebotEmulation.h1===results.modelEnglish.h1&&results.googlebotEmulation.specifications===results.modelEnglish.specifications;
+  results.pass=results.optionalScriptFailure.bodyLength>=results.normalHome.bodyLength*0.9&&
+   results.optionalScriptFailure.h1===results.normalHome.h1&&
+   results.optionalScriptFailure.brandLinks===results.normalHome.brandLinks&&
+   results.optionalScriptFailure.modelLinks===results.normalHome.modelLinks&&
+   !results.optionalScriptFailure.error&&results.modelMobile.ssr==='true'&&results.modelMobile.image.includes('seo-heroes')&&results.modelEnglish.ssr==='true'&&results.modelEnglish.robots==='index, follow'&&results.googlebotEmulation.h1===results.modelEnglish.h1&&results.googlebotEmulation.specifications===results.modelEnglish.specifications;
   console.log(JSON.stringify(results,null,2));
   fs.mkdirSync('tests/results',{recursive:true});fs.writeFileSync('tests/results/browser-public-qa-20261012.json',JSON.stringify(results,null,2)+'\n');
   if(!results.pass)process.exitCode=1;
