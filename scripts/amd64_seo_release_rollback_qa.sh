@@ -35,10 +35,12 @@ fixture.doCleanups()
 '
 sudo -n chown 10001:10001 "$DATA"
 start_pair() {
-  local image="$1" site="$2" config="$3"
+  local image="$1" site="$2" config="$3" catalog="${4:-}"
+  local -a catalog_mount=()
+  if [[ -n "$catalog" ]]; then catalog_mount=(-v "$catalog:/app/catalog.json:ro"); fi
   "${D[@]}" run -d --name "$AUTH" --network "$NET" --network-alias auth --read-only --cap-drop ALL \
     --security-opt no-new-privileges:true --tmpfs /tmp:size=32m,mode=1777 \
-    -v "$DATA:/data" -v "$site:/srv:ro" -e AUTH_DB_PATH=/data/autolink-auth.sqlite3 \
+    -v "$DATA:/data" -v "$site:/srv:ro" "${catalog_mount[@]}" -e AUTH_DB_PATH=/data/autolink-auth.sqlite3 \
     -e GOOGLE_CLIENT_ID=qa-client -e MEMBERSHIP_RESTRICTIONS=true "$image" >/dev/null
   "${D[@]}" run -d --name "$FRONT" --network "$NET" --read-only --cap-drop ALL \
     --security-opt no-new-privileges:true --tmpfs /tmp:size=16m,mode=1777 \
@@ -87,7 +89,7 @@ PY
 start_pair "$CANDIDATE" "$ROOT/site" "$ROOT/Caddyfile"
 probe candidate
 stop_pair
-start_pair "$BASELINE" "$BASE_SITE" "$BASE_CADDY"
+start_pair "$BASELINE" "$BASE_SITE" "$BASE_CADDY" "$ROOT/auth/catalog.json"
 probe rollback
 stop_pair
 start_pair "$CANDIDATE" "$ROOT/site" "$ROOT/Caddyfile"
