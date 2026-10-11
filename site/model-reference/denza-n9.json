@@ -1,0 +1,2178 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "denza-n9",
+  "brandZh": "Denza",
+  "modelZh": "N9",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基本参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长*宽*高（mm）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最小转弯半径（m）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "后备厢容积（L）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:0:5",
+          "label": "整车质保*"
+        },
+        {
+          "key": "official:0:6",
+          "label": "空气悬架质保*"
+        }
+      ]
+    },
+    {
+      "name": "动力性能",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "动力形式"
+        },
+        {
+          "key": "official:1:1",
+          "label": "发动机型式"
+        },
+        {
+          "key": "official:1:2",
+          "label": "排量（L)"
+        },
+        {
+          "key": "official:1:3",
+          "label": "发动机最大功率（kW）"
+        },
+        {
+          "key": "official:1:4",
+          "label": "发动机最大扭矩（N·m）"
+        },
+        {
+          "key": "official:1:5",
+          "label": "电池类型"
+        },
+        {
+          "key": "official:1:6",
+          "label": "电池电量（kWh）"
+        },
+        {
+          "key": "official:1:7",
+          "label": "直流快充功率（kW）"
+        },
+        {
+          "key": "official:1:8",
+          "label": "直流快充充电时间（min）"
+        },
+        {
+          "key": "official:1:9",
+          "label": "电机型式"
+        },
+        {
+          "key": "official:1:10",
+          "label": "前电机最大功率（kW）"
+        },
+        {
+          "key": "official:1:11",
+          "label": "前电机最大扭矩（N·m）"
+        },
+        {
+          "key": "official:1:12",
+          "label": "后双电机最大功率（kW）"
+        },
+        {
+          "key": "official:1:13",
+          "label": "后双电机最大扭矩 （N·m）"
+        },
+        {
+          "key": "official:1:14",
+          "label": "系统综合最大扭矩 （N·m）"
+        },
+        {
+          "key": "official:1:15",
+          "label": "电驱系统"
+        },
+        {
+          "key": "official:1:16",
+          "label": "驱动型式"
+        },
+        {
+          "key": "official:1:17",
+          "label": "0~100km/h加速时间（s）"
+        },
+        {
+          "key": "official:1:18",
+          "label": "NEDC综合工况亏电油耗（L/100km）"
+        },
+        {
+          "key": "official:1:19",
+          "label": "CLTC综合工况纯电续航里程（km）*"
+        },
+        {
+          "key": "official:1:20",
+          "label": "CLTC综合工况续航里程 （km）*"
+        }
+      ]
+    },
+    {
+      "name": "转向/制动/悬架",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "前/后悬架系统"
+        },
+        {
+          "key": "official:2:1",
+          "label": "前六活塞制动卡钳"
+        },
+        {
+          "key": "official:2:2",
+          "label": "前/后打孔通风式制动盘"
+        },
+        {
+          "key": "official:2:3",
+          "label": "IPB集成制动控制系统"
+        },
+        {
+          "key": "official:2:4",
+          "label": "EPS电动助力转向系统"
+        },
+        {
+          "key": "official:2:5",
+          "label": "双腔空气悬架"
+        },
+        {
+          "key": "official:2:6",
+          "label": "电控可变阻尼减振器"
+        }
+      ]
+    },
+    {
+      "name": "易三方功能",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "圆规掉头"
+        },
+        {
+          "key": "official:3:1",
+          "label": "极致转向"
+        },
+        {
+          "key": "official:3:2",
+          "label": "智能蟹行15°"
+        },
+        {
+          "key": "official:3:3",
+          "label": "180km/h高速爆胎 稳定控制"
+        },
+        {
+          "key": "official:3:4",
+          "label": "144km/h弯道爆胎 稳定控制"
+        },
+        {
+          "key": "official:3:5",
+          "label": "易三方泊车*"
+        },
+        {
+          "key": "official:3:6",
+          "label": "内八制动增稳"
+        },
+        {
+          "key": "official:3:7",
+          "label": "倒车稳定"
+        },
+        {
+          "key": "official:3:8",
+          "label": "雷达主动避让"
+        },
+        {
+          "key": "official:3:9",
+          "label": "低附路面增稳系统"
+        },
+        {
+          "key": "official:3:10",
+          "label": "主动防侧翻安全控制系统"
+        },
+        {
+          "key": "official:3:11",
+          "label": "智能地形模式（智能/雨雪内八/泥地/沙地）"
+        },
+        {
+          "key": "official:3:12",
+          "label": "主动防甩尾安全控制系统*"
+        },
+        {
+          "key": "official:3:13",
+          "label": "横风稳定护航*"
+        },
+        {
+          "key": "official:3:14",
+          "label": "腾势生命守护系统*"
+        }
+      ]
+    },
+    {
+      "name": "座椅配置",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "高级真皮座椅"
+        },
+        {
+          "key": "official:4:1",
+          "label": "NAPPA真皮座椅"
+        },
+        {
+          "key": "official:4:2",
+          "label": "主驾座椅8向电动调节"
+        },
+        {
+          "key": "official:4:3",
+          "label": "主驾主动侧翼支撑"
+        },
+        {
+          "key": "official:4:4",
+          "label": "主驾座椅4向电动调节腰撑"
+        },
+        {
+          "key": "official:4:5",
+          "label": "主驾座椅电动调节CLA腿托"
+        },
+        {
+          "key": "official:4:6",
+          "label": "副驾座椅8向电动调节"
+        },
+        {
+          "key": "official:4:7",
+          "label": "副驾座椅4向电动调节腰撑"
+        },
+        {
+          "key": "official:4:8",
+          "label": "副驾座椅电动调节CLA腿托"
+        },
+        {
+          "key": "official:4:9",
+          "label": "副驾零重力座椅"
+        },
+        {
+          "key": "official:4:10",
+          "label": "副驾座椅4向电动调节腿托"
+        },
+        {
+          "key": "official:4:11",
+          "label": "前排座椅加热、通风、记忆"
+        },
+        {
+          "key": "official:4:12",
+          "label": "前排座椅十点式按摩"
+        },
+        {
+          "key": "official:4:13",
+          "label": "前排座椅头枕高度手动调节"
+        },
+        {
+          "key": "official:4:14",
+          "label": "二排座椅4向电动调节"
+        },
+        {
+          "key": "official:4:15",
+          "label": "二排座椅4向电动调节腰撑"
+        },
+        {
+          "key": "official:4:16",
+          "label": "二排座椅4向电动调节腿托"
+        },
+        {
+          "key": "official:4:17",
+          "label": "二排座椅横向移动"
+        },
+        {
+          "key": "official:4:18",
+          "label": "二排座椅迎宾"
+        },
+        {
+          "key": "official:4:19",
+          "label": "二排座椅加热、通风"
+        },
+        {
+          "key": "official:4:20",
+          "label": "二排座椅十点式按摩"
+        },
+        {
+          "key": "official:4:21",
+          "label": "老板键"
+        },
+        {
+          "key": "official:4:22",
+          "label": "二排座椅头枕高度手动调节"
+        },
+        {
+          "key": "official:4:23",
+          "label": "三排座椅靠背电动调节"
+        },
+        {
+          "key": "official:4:24",
+          "label": "三排座椅前后电动调节"
+        },
+        {
+          "key": "official:4:25",
+          "label": "三排座椅一键放倒和收起"
+        },
+        {
+          "key": "official:4:26",
+          "label": "三排座椅加热"
+        },
+        {
+          "key": "official:4:27",
+          "label": "三排座椅座垫抬升"
+        }
+      ]
+    },
+    {
+      "name": "豪华座舱",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "顶级天然浅黛真木饰板"
+        },
+        {
+          "key": "official:5:1",
+          "label": "电子式怀挡换挡"
+        },
+        {
+          "key": "official:5:2",
+          "label": "高定奢享绒面顶棚"
+        },
+        {
+          "key": "official:5:3",
+          "label": "副驾密码手套箱"
+        },
+        {
+          "key": "official:5:4",
+          "label": "智能冷暖三开门冰箱"
+        },
+        {
+          "key": "official:5:5",
+          "label": "前排遮阳板 （带化妆镜、照明灯）"
+        },
+        {
+          "key": "official:5:6",
+          "label": "二排柔光化妆镜"
+        },
+        {
+          "key": "official:5:7",
+          "label": "前排杯托"
+        },
+        {
+          "key": "official:5:8",
+          "label": "多主题环抱式智能氛围灯*"
+        },
+        {
+          "key": "official:5:9",
+          "label": "前后排阅读灯"
+        },
+        {
+          "key": "official:5:10",
+          "label": "内后视镜防眩目"
+        },
+        {
+          "key": "official:5:11",
+          "label": "高清流媒体内后视镜"
+        },
+        {
+          "key": "official:5:12",
+          "label": "电容式多功能方向盘"
+        },
+        {
+          "key": "official:5:13",
+          "label": "方向盘4向电动调节带 加热、记忆功能"
+        },
+        {
+          "key": "official:5:14",
+          "label": "“四季”双层流五区 新风系统"
+        },
+        {
+          "key": "official:5:15",
+          "label": "前排电动开合出风口"
+        },
+        {
+          "key": "official:5:16",
+          "label": "二排独立出风口"
+        },
+        {
+          "key": "official:5:17",
+          "label": "B柱电动出风口"
+        },
+        {
+          "key": "official:5:18",
+          "label": "后排多功能调节屏"
+        },
+        {
+          "key": "official:5:19",
+          "label": "17.3英寸2.5K超清吸顶屏"
+        },
+        {
+          "key": "official:5:20",
+          "label": "二排双桌板"
+        },
+        {
+          "key": "official:5:21",
+          "label": "二排侧窗手动遮阳帘"
+        },
+        {
+          "key": "official:5:22",
+          "label": "二排侧窗电动遮阳帘"
+        },
+        {
+          "key": "official:5:23",
+          "label": "三排侧窗手动遮阳帘"
+        },
+        {
+          "key": "official:5:24",
+          "label": "智能主动式香氛系统"
+        },
+        {
+          "key": "official:5:25",
+          "label": "CN95高效滤网"
+        },
+        {
+          "key": "official:5:26",
+          "label": "智能健康座舱（AQS系统、PM2.5绿净系统、CO₂检测系统、负离子空气净化器、远程高温杀菌消毒）"
+        },
+        {
+          "key": "official:5:27",
+          "label": "1个Type-C充电口（60W快充）+1个USB-A数据接口（副仪表下方）"
+        },
+        {
+          "key": "official:5:28",
+          "label": "1个Type-C充电接口（60W）（二排右侧座椅处）"
+        },
+        {
+          "key": "official:5:29",
+          "label": "2个Type-C充电接口（18W）（三排扶手左右各一个）"
+        },
+        {
+          "key": "official:5:30",
+          "label": "3个Type-C充电接口（三排扶手处左侧一个仅充电18W、右侧两个集成快充60W带投屏及数据传输功能）"
+        },
+        {
+          "key": "official:5:31",
+          "label": "车内12V车载电源接口（2个，副仪表下方*1；后备厢左侧*1）"
+        },
+        {
+          "key": "official:5:32",
+          "label": "前排双50W无线超充 （带风冷）"
+        },
+        {
+          "key": "official:5:33",
+          "label": "二排双50W无线超充 （带风冷）"
+        }
+      ]
+    },
+    {
+      "name": "新能源科技",
+      "rows": [
+        {
+          "key": "official:6:0",
+          "label": "高性能碳化硅电驱系统"
+        },
+        {
+          "key": "official:6:1",
+          "label": "动力电池直冷管理系统"
+        },
+        {
+          "key": "official:6:2",
+          "label": "动力电池智能膜加热"
+        },
+        {
+          "key": "official:6:3",
+          "label": "预约充电系统"
+        },
+        {
+          "key": "official:6:4",
+          "label": "制动能量回收系统"
+        },
+        {
+          "key": "official:6:5",
+          "label": "驾驶模式选择（运动/舒适/竞速/自定义/经济）"
+        },
+        {
+          "key": "official:6:6",
+          "label": "车内220V交流插座 （2.2kW）"
+        },
+        {
+          "key": "official:6:7",
+          "label": "发动机主动降噪"
+        },
+        {
+          "key": "official:6:8",
+          "label": "VTL车外放电功能（6kW）"
+        }
+      ]
+    },
+    {
+      "name": "DiLink 超感交互智慧座舱",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "DiLink 150"
+        },
+        {
+          "key": "official:7:1",
+          "label": "17.3英寸2.5K超清中控悬浮屏"
+        },
+        {
+          "key": "official:7:2",
+          "label": "3200万 中控悬浮屏升降摄像头"
+        },
+        {
+          "key": "official:7:3",
+          "label": "13.2英寸2.5K超清液晶仪表盘"
+        },
+        {
+          "key": "official:7:4",
+          "label": "13.2英寸2.5K超清副驾屏"
+        },
+        {
+          "key": "official:7:5",
+          "label": "50英寸AR-HUD抬头显示"
+        },
+        {
+          "key": "official:7:6",
+          "label": "AR-HUD电影投屏"
+        },
+        {
+          "key": "official:7:7",
+          "label": "DEVIALET®车载音响系统（20扬声器）"
+        },
+        {
+          "key": "official:7:9",
+          "label": "DEVIALET®升降扬声塔"
+        },
+        {
+          "key": "official:7:10",
+          "label": "杜比全景声 （Dolby Atmos）*"
+        },
+        {
+          "key": "official:7:11",
+          "label": "车载K歌系统"
+        },
+        {
+          "key": "official:7:12",
+          "label": "全场景智能语音（六音区识别、连续对话、可见即可说、主驾全时免唤醒）"
+        },
+        {
+          "key": "official:7:13",
+          "label": "全场景智能语音（多车畅联、语音快捷指令、行程助理、用车百科、个性资讯、腾势宝盒、声纹识别、时控精灵、AI绘画、AI智能体、AI百科问答）*"
+        },
+        {
+          "key": "official:7:14",
+          "label": "AI智能影像 （多模态大模型）"
+        },
+        {
+          "key": "official:7:15",
+          "label": "AI壁纸"
+        },
+        {
+          "key": "official:7:16",
+          "label": "无麦K歌"
+        },
+        {
+          "key": "official:7:17",
+          "label": "智慧停车服务"
+        },
+        {
+          "key": "official:7:18",
+          "label": "哨兵模式"
+        },
+        {
+          "key": "official:7:19",
+          "label": "海量应用"
+        },
+        {
+          "key": "official:7:20",
+          "label": "平行视窗"
+        },
+        {
+          "key": "official:7:21",
+          "label": "车载WiFi"
+        },
+        {
+          "key": "official:7:22",
+          "label": "SDVC随速音量调节"
+        },
+        {
+          "key": "official:7:23",
+          "label": "行人低速提示音"
+        },
+        {
+          "key": "official:7:24",
+          "label": "E-Call紧急救援"
+        },
+        {
+          "key": "official:7:25",
+          "label": "I-Call智慧客服"
+        },
+        {
+          "key": "official:7:26",
+          "label": "腾势汽车APP （寻车、启闭空调等）"
+        },
+        {
+          "key": "official:7:27",
+          "label": "易三方APP"
+        },
+        {
+          "key": "official:7:28",
+          "label": "云辇APP"
+        },
+        {
+          "key": "official:7:29",
+          "label": "360°全景影像"
+        },
+        {
+          "key": "official:7:30",
+          "label": "透明底盘"
+        },
+        {
+          "key": "official:7:31",
+          "label": "行车记录仪"
+        },
+        {
+          "key": "official:7:32",
+          "label": "车载ETC"
+        },
+        {
+          "key": "official:7:33",
+          "label": "手机UWB车钥匙*"
+        },
+        {
+          "key": "official:7:34",
+          "label": "无钥匙进入及一键启动系统"
+        },
+        {
+          "key": "official:7:35",
+          "label": "手机蓝牙钥匙"
+        },
+        {
+          "key": "official:7:36",
+          "label": "手机NFC车钥匙"
+        },
+        {
+          "key": "official:7:37",
+          "label": "遥控启动车辆"
+        },
+        {
+          "key": "official:7:38",
+          "label": "蓝牙遥控驾驶"
+        },
+        {
+          "key": "official:7:39",
+          "label": "手车互联*"
+        },
+        {
+          "key": "official:7:40",
+          "label": "隐私声盾*"
+        },
+        {
+          "key": "official:7:41",
+          "label": "一键无痕*"
+        }
+      ]
+    },
+    {
+      "name": "DiPilot 辅助驾驶",
+      "rows": [
+        {
+          "key": "official:8:0",
+          "label": "天神之眼 B - 辅助驾驶激光版（DiPilot 300）"
+        },
+        {
+          "key": "official:8:1",
+          "label": "高感知激光雷达（1个）"
+        },
+        {
+          "key": "official:8:2",
+          "label": "毫米波雷达（5个）"
+        },
+        {
+          "key": "official:8:3",
+          "label": "超声波雷达（12个）"
+        },
+        {
+          "key": "official:8:4",
+          "label": "辅助驾驶摄像头（12个）"
+        },
+        {
+          "key": "official:8:5",
+          "label": "车载导航系统"
+        },
+        {
+          "key": "official:8:6",
+          "label": "车位到车位领航辅助*"
+        },
+        {
+          "key": "official:8:7",
+          "label": "高快领航辅助"
+        },
+        {
+          "key": "official:8:8",
+          "label": "城市领航辅助"
+        },
+        {
+          "key": "official:8:9",
+          "label": "下车泊入"
+        },
+        {
+          "key": "official:8:10",
+          "label": "泊车辅助"
+        },
+        {
+          "key": "official:8:11",
+          "label": "遥控泊车辅助"
+        },
+        {
+          "key": "official:8:12",
+          "label": "自适应巡航（ACC）"
+        },
+        {
+          "key": "official:8:13",
+          "label": "车道巡航辅助"
+        },
+        {
+          "key": "official:8:14",
+          "label": "邻车靠近避让（ELKA）"
+        },
+        {
+          "key": "official:8:15",
+          "label": "车道偏离预警"
+        },
+        {
+          "key": "official:8:16",
+          "label": "车道偏离辅助（LDA）"
+        },
+        {
+          "key": "official:8:17",
+          "label": "拨杆变道（ILCA）"
+        },
+        {
+          "key": "official:8:18",
+          "label": "智能远光灯（IHBC）"
+        },
+        {
+          "key": "official:8:19",
+          "label": "限速标志识别（SLIF）"
+        },
+        {
+          "key": "official:8:20",
+          "label": "智能限速提醒（ISA）"
+        },
+        {
+          "key": "official:8:21",
+          "label": "交通灯提醒（TLA）"
+        },
+        {
+          "key": "official:8:22",
+          "label": "开门安全提醒（DOW）"
+        },
+        {
+          "key": "official:8:23",
+          "label": "盲区监测（BSD）"
+        },
+        {
+          "key": "official:8:24",
+          "label": "自动紧急制动（AEB）"
+        },
+        {
+          "key": "official:8:25",
+          "label": "前向碰撞提醒（FCW）"
+        },
+        {
+          "key": "official:8:26",
+          "label": "后向碰撞提醒（RCW）"
+        },
+        {
+          "key": "official:8:27",
+          "label": "前方横向碰撞提醒 （FCTA）"
+        },
+        {
+          "key": "official:8:28",
+          "label": "前方横向碰撞制动 （FCTB）"
+        },
+        {
+          "key": "official:8:29",
+          "label": "后方横向碰撞提醒 （RCTA）"
+        },
+        {
+          "key": "official:8:30",
+          "label": "后方横向碰撞制动 （RCTB）"
+        },
+        {
+          "key": "official:8:31",
+          "label": "弯道超速提醒（CSW）"
+        },
+        {
+          "key": "official:8:32",
+          "label": "倒车雷达（PDC）"
+        },
+        {
+          "key": "official:8:33",
+          "label": "侧边距离提醒（SDW）"
+        },
+        {
+          "key": "official:8:34",
+          "label": "低速紧急制动（MEB）*"
+        },
+        {
+          "key": "official:8:35",
+          "label": "APA融合后转*"
+        },
+        {
+          "key": "official:8:36",
+          "label": "紧急转向辅助（ESA）*"
+        }
+      ]
+    },
+    {
+      "name": "智能车身控制",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "云辇-A智能空气车身控制系统"
+        },
+        {
+          "key": "official:9:1",
+          "label": "三电机扭矩矢量控制 （3TV）"
+        },
+        {
+          "key": "official:9:2",
+          "label": "跨域车控平台"
+        },
+        {
+          "key": "official:9:3",
+          "label": "iCVC智能底盘矢量控制系统"
+        },
+        {
+          "key": "official:9:4",
+          "label": "iCCT舒适控制系统"
+        },
+        {
+          "key": "official:9:5",
+          "label": "云辇预瞄系统"
+        },
+        {
+          "key": "official:9:6",
+          "label": "定眩智能防晕车系统*"
+        }
+      ]
+    },
+    {
+      "name": "安全配置",
+      "rows": [
+        {
+          "key": "official:10:0",
+          "label": "五星安全车身"
+        },
+        {
+          "key": "official:10:1",
+          "label": "CTB电池车身一体化技术"
+        },
+        {
+          "key": "official:10:2",
+          "label": "前双防撞梁+后高强度防撞梁"
+        },
+        {
+          "key": "official:10:3",
+          "label": "EPB电子驻车系统"
+        },
+        {
+          "key": "official:10:4",
+          "label": "AVH自动驻车系统"
+        },
+        {
+          "key": "official:10:5",
+          "label": "IPB智能动力制动系统"
+        },
+        {
+          "key": "official:10:6",
+          "label": "HBB液压助力制动系统"
+        },
+        {
+          "key": "official:10:7",
+          "label": "HBA液压制动辅助系统"
+        },
+        {
+          "key": "official:10:8",
+          "label": "EBP电子制动器预充压系统"
+        },
+        {
+          "key": "official:10:9",
+          "label": "CDP驻车制动减速度控制系统"
+        },
+        {
+          "key": "official:10:10",
+          "label": "VDC车辆动态控制系统"
+        },
+        {
+          "key": "official:10:11",
+          "label": "EBD电子制动力分配系统"
+        },
+        {
+          "key": "official:10:12",
+          "label": "HHC坡道起步控制系统"
+        },
+        {
+          "key": "official:10:13",
+          "label": "BDW制动盘擦拭系统"
+        },
+        {
+          "key": "official:10:14",
+          "label": "CRBS可协调再生制动系统"
+        },
+        {
+          "key": "official:10:15",
+          "label": "RMI防侧翻控制系统"
+        },
+        {
+          "key": "official:10:16",
+          "label": "HDC陡坡缓降系统"
+        },
+        {
+          "key": "official:10:17",
+          "label": "DMS驾驶员监测辅助"
+        },
+        {
+          "key": "official:10:18",
+          "label": "dTCS分布式牵引力控制系统"
+        },
+        {
+          "key": "official:10:19",
+          "label": "舒适制动功能（CST）"
+        },
+        {
+          "key": "official:10:20",
+          "label": "TPMS直接式胎压监测"
+        },
+        {
+          "key": "official:10:21",
+          "label": "电子儿童安全锁"
+        },
+        {
+          "key": "official:10:22",
+          "label": "车速感应自动上锁"
+        },
+        {
+          "key": "official:10:23",
+          "label": "碰撞感应自动解锁"
+        },
+        {
+          "key": "official:10:24",
+          "label": "电子智能防盗系统"
+        },
+        {
+          "key": "official:10:25",
+          "label": "主/副驾正面安全气囊"
+        },
+        {
+          "key": "official:10:26",
+          "label": "前排远端安全气囊"
+        },
+        {
+          "key": "official:10:27",
+          "label": "前排侧气囊*2"
+        },
+        {
+          "key": "official:10:28",
+          "label": "后排侧气囊*2"
+        },
+        {
+          "key": "official:10:29",
+          "label": "前后一体式侧安全气帘*2"
+        },
+        {
+          "key": "official:10:30",
+          "label": "主驾电机预紧安全带"
+        },
+        {
+          "key": "official:10:31",
+          "label": "前排预紧限力式安全带"
+        },
+        {
+          "key": "official:10:32",
+          "label": "前排安全带高度可调"
+        },
+        {
+          "key": "official:10:33",
+          "label": "二排预紧限力式安全带"
+        },
+        {
+          "key": "official:10:34",
+          "label": "三排紧急锁止式安全带"
+        },
+        {
+          "key": "official:10:35",
+          "label": "全车未系安全带报警"
+        },
+        {
+          "key": "official:10:36",
+          "label": "儿童座椅LATCH固定 装置*4（兼容ISO-FIX）"
+        }
+      ]
+    },
+    {
+      "name": "外部配置",
+      "rows": [
+        {
+          "key": "official:11:0",
+          "label": "绿华银双色车身*"
+        },
+        {
+          "key": "official:11:1",
+          "label": "蓝辰银双色车身*"
+        },
+        {
+          "key": "official:11:2",
+          "label": "红雅金双色车身*"
+        },
+        {
+          "key": "official:11:3",
+          "label": "紫瑢金双色车身*"
+        },
+        {
+          "key": "official:11:4",
+          "label": "双星冕前灯组 （含AFS自适应近光灯功能）"
+        },
+        {
+          "key": "official:11:5",
+          "label": "ADB自适应矩阵大灯 （108分区）"
+        },
+        {
+          "key": "official:11:6",
+          "label": "“矩阵光辉”几何尾灯"
+        },
+        {
+          "key": "official:11:7",
+          "label": "上下双主动式进气格栅"
+        },
+        {
+          "key": "official:11:8",
+          "label": "自动开启前大灯"
+        },
+        {
+          "key": "official:11:9",
+          "label": "前大灯高度自动调节"
+        },
+        {
+          "key": "official:11:10",
+          "label": "“Follow me home”前大灯提前开启/延时关闭功能"
+        },
+        {
+          "key": "official:11:11",
+          "label": "LED前/后动态流水转向灯"
+        },
+        {
+          "key": "official:11:12",
+          "label": "LED高位刹车灯"
+        },
+        {
+          "key": "official:11:13",
+          "label": "“星辉启程”迎宾光毯"
+        },
+        {
+          "key": "official:11:14",
+          "label": "智能感应动态迎宾大灯"
+        },
+        {
+          "key": "official:11:15",
+          "label": "多色电量状态充电口指示灯"
+        },
+        {
+          "key": "official:11:16",
+          "label": "四门LED/金属迎宾踏板"
+        },
+        {
+          "key": "official:11:17",
+          "label": "隐藏式门把手"
+        },
+        {
+          "key": "official:11:18",
+          "label": "雨量感应式随喷雨刮"
+        },
+        {
+          "key": "official:11:19",
+          "label": "纯平车门"
+        },
+        {
+          "key": "official:11:20",
+          "label": "隐藏水切"
+        },
+        {
+          "key": "official:11:21",
+          "label": "前后排双侧静音电吸门"
+        },
+        {
+          "key": "official:11:22",
+          "label": "智能电动门"
+        },
+        {
+          "key": "official:11:23",
+          "label": "车门内电子解锁"
+        },
+        {
+          "key": "official:11:24",
+          "label": "车门应急机械解锁"
+        },
+        {
+          "key": "official:11:25",
+          "label": "AR投影感应尾门*"
+        },
+        {
+          "key": "official:11:26",
+          "label": "无边视界全景天幕（带前后双电动遮阳帘）"
+        },
+        {
+          "key": "official:11:27",
+          "label": "全车隔热玻璃（前风挡+前角窗+前/中/后排侧窗+后风窗+天幕）"
+        },
+        {
+          "key": "official:11:28",
+          "label": "双层隔音玻璃（前风挡+前角窗+前/中/后排侧窗+天幕）"
+        },
+        {
+          "key": "official:11:29",
+          "label": "隐私玻璃（中/后排侧窗+后风窗+天幕）"
+        },
+        {
+          "key": "official:11:30",
+          "label": "前挡除雾、除霜"
+        },
+        {
+          "key": "official:11:31",
+          "label": "后风窗电加热除雾除霜"
+        },
+        {
+          "key": "official:11:32",
+          "label": "四门车窗一键升降带防夹功能"
+        },
+        {
+          "key": "official:11:33",
+          "label": "遥控升降车窗"
+        },
+        {
+          "key": "official:11:34",
+          "label": "外后视镜电动调节、加热、除霜"
+        },
+        {
+          "key": "official:11:35",
+          "label": "外后视镜倒车自动调节"
+        },
+        {
+          "key": "official:11:36",
+          "label": "外后视镜电动折叠、锁车自动折叠"
+        },
+        {
+          "key": "official:11:37",
+          "label": "外后视镜位置记忆"
+        },
+        {
+          "key": "official:11:38",
+          "label": "外后视镜照脚灯"
+        },
+        {
+          "key": "official:11:39",
+          "label": "外后视镜盲区指示灯"
+        },
+        {
+          "key": "official:11:40",
+          "label": "主驾侧自动防眩目外后视镜"
+        },
+        {
+          "key": "official:11:41",
+          "label": "22英寸多辐星曜轮毂"
+        },
+        {
+          "key": "official:11:42",
+          "label": "静音轮胎"
+        },
+        {
+          "key": "official:11:43",
+          "label": "电动侧踏板"
+        },
+        {
+          "key": "official:11:44",
+          "label": "加油口盖电动解锁"
+        },
+        {
+          "key": "official:11:45",
+          "label": "充电口外盖电动开闭"
+        },
+        {
+          "key": "official:11:46",
+          "label": "后备厢遥控开启"
+        },
+        {
+          "key": "official:11:47",
+          "label": "电动后备厢带位置记忆"
+        },
+        {
+          "key": "official:11:48",
+          "label": "流媒体外后视镜"
+        },
+        {
+          "key": "official:11:49",
+          "label": "灵鸢 比亚迪智能车载 无人机系统"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "denza-n9-official-1",
+      "name": "尊荣型",
+      "values": {
+        "official:0:0": "5258*2030*1830",
+        "official:0:1": "3125",
+        "official:0:2": "4.65",
+        "official:0:3": "351-1140",
+        "official:0:4": "○前/后：275/45 R22（限时赠送）",
+        "official:0:5": "非营运车辆“三电”系统终身保修（首任车主），整车包修期6年或15万公里（详见备注说明*及售后保修手册）",
+        "official:0:6": "非营运车辆空悬包修期8年或16万公里（详见备注说明*及售后保修手册）",
+        "official:1:0": "插混专用涡轮增压2.0T高效发动机+易三方",
+        "official:1:1": "可变截面涡轮增压器/缸内直喷/中置式进气VT/全铝合金发动机/米勒循环/高压缩比/超低摩擦",
+        "official:1:2": "2.0T",
+        "official:1:3": "152",
+        "official:1:4": "325",
+        "official:1:5": "插混专用功率型刀片电池",
+        "official:1:6": "46.9",
+        "official:1:7": "100",
+        "official:1:8": "19（30%-80%）",
+        "official:1:9": "前/后永磁同步电机",
+        "official:1:10": "200",
+        "official:1:11": "315",
+        "official:1:12": "后左240/后右240",
+        "official:1:13": "后左360/后右360",
+        "official:1:14": "1035",
+        "official:1:15": "EHS电混系统",
+        "official:1:16": "适时四驱",
+        "official:1:17": "3.9",
+        "official:1:18": "6.3",
+        "official:1:19": "202/230(长续航模式*）",
+        "official:1:20": "1302/1330（长续航模式*）",
+        "official:2:0": "前：双叉臂式独立悬架 后：五连杆式独立悬架",
+        "official:2:1": "○（限时赠送）",
+        "official:2:2": "●",
+        "official:2:3": "●",
+        "official:2:4": "●",
+        "official:2:5": "●",
+        "official:2:6": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:4:0": "●",
+        "official:4:1": "官网未单独列明，请查看来源",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●",
+        "official:4:9": "官网未单独列明，请查看来源",
+        "official:4:10": "官网未单独列明，请查看来源",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "官网未单独列明，请查看来源",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "官网未单独列明，请查看来源",
+        "official:4:27": "官网未单独列明，请查看来源",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "—",
+        "official:5:7": "●",
+        "official:5:8": "●（21处）",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "—",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "—",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "—",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "官网未单独列明，请查看来源",
+        "official:7:7": "●",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "●",
+        "official:7:24": "●",
+        "official:7:25": "●",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "●",
+        "official:7:34": "●",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "官网未单独列明，请查看来源",
+        "official:7:41": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:8:31": "●",
+        "official:8:32": "●",
+        "official:8:33": "●",
+        "official:8:34": "●",
+        "official:8:35": "●",
+        "official:8:36": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "●",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "●",
+        "official:10:10": "●",
+        "official:10:11": "●",
+        "official:10:12": "●",
+        "official:10:13": "●",
+        "official:10:14": "●",
+        "official:10:15": "●",
+        "official:10:16": "●",
+        "official:10:17": "●",
+        "official:10:18": "●",
+        "official:10:19": "●",
+        "official:10:20": "●",
+        "official:10:21": "●",
+        "official:10:22": "●",
+        "official:10:23": "●",
+        "official:10:24": "●",
+        "official:10:25": "●",
+        "official:10:26": "●",
+        "official:10:27": "●",
+        "official:10:28": "●",
+        "official:10:29": "●",
+        "official:10:30": "官网未单独列明，请查看来源",
+        "official:10:31": "●",
+        "official:10:32": "●",
+        "official:10:33": "●",
+        "official:10:34": "●",
+        "official:10:35": "●",
+        "official:10:36": "●",
+        "official:11:0": "—",
+        "official:11:1": "—",
+        "official:11:2": "—",
+        "official:11:3": "—",
+        "official:11:4": "●",
+        "official:11:5": "官网未单独列明，请查看来源",
+        "official:11:6": "●",
+        "official:11:7": "●",
+        "official:11:8": "●",
+        "official:11:9": "●",
+        "official:11:10": "●",
+        "official:11:11": "●",
+        "official:11:12": "●",
+        "official:11:13": "官网未单独列明，请查看来源",
+        "official:11:14": "●",
+        "official:11:15": "●",
+        "official:11:16": "●",
+        "official:11:17": "●",
+        "official:11:18": "●",
+        "official:11:19": "●",
+        "official:11:20": "●",
+        "official:11:21": "●",
+        "official:11:22": "—",
+        "official:11:23": "●",
+        "official:11:24": "●",
+        "official:11:25": "●",
+        "official:11:26": "●",
+        "official:11:27": "●",
+        "official:11:28": "●",
+        "official:11:29": "●",
+        "official:11:30": "●",
+        "official:11:31": "●",
+        "official:11:32": "●",
+        "official:11:33": "●",
+        "official:11:34": "●",
+        "official:11:35": "●",
+        "official:11:36": "●",
+        "official:11:37": "●",
+        "official:11:38": "●",
+        "official:11:39": "●",
+        "official:11:40": "●",
+        "official:11:41": "○（限时赠送）",
+        "official:11:42": "●",
+        "official:11:43": "○（限时赠送）",
+        "official:11:44": "●",
+        "official:11:45": "●",
+        "official:11:46": "●",
+        "official:11:47": "●",
+        "official:11:48": "官网未单独列明，请查看来源",
+        "official:11:49": "官网未单独列明，请查看来源",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "denza-n9-official-2",
+      "name": "尊越型",
+      "values": {
+        "official:0:0": "5258*2030*1830",
+        "official:0:1": "3125",
+        "official:0:2": "4.65",
+        "official:0:3": "351-1140",
+        "official:0:4": "○前/后：275/45 R22（限时赠送）",
+        "official:0:5": "非营运车辆“三电”系统终身保修（首任车主），整车包修期6年或15万公里（详见备注说明*及售后保修手册）",
+        "official:0:6": "非营运车辆空悬包修期8年或16万公里（详见备注说明*及售后保修手册）",
+        "official:1:0": "插混专用涡轮增压2.0T高效发动机+易三方",
+        "official:1:1": "可变截面涡轮增压器/缸内直喷/中置式进气VT/全铝合金发动机/米勒循环/高压缩比/超低摩擦",
+        "official:1:2": "2.0T",
+        "official:1:3": "152",
+        "official:1:4": "325",
+        "official:1:5": "插混专用功率型刀片电池",
+        "official:1:6": "46.9",
+        "official:1:7": "100",
+        "official:1:8": "19（30%-80%）",
+        "official:1:9": "前/后永磁同步电机",
+        "official:1:10": "200",
+        "official:1:11": "315",
+        "official:1:12": "后左240/后右240",
+        "official:1:13": "后左360/后右360",
+        "official:1:14": "1035",
+        "official:1:15": "EHS电混系统",
+        "official:1:16": "适时四驱",
+        "official:1:17": "3.9",
+        "official:1:18": "6.3",
+        "official:1:19": "202/230(长续航模式*）",
+        "official:1:20": "1302/1330（长续航模式*）",
+        "official:2:0": "前：双叉臂式独立悬架 后：五连杆式独立悬架",
+        "official:2:1": "○（限时赠送）",
+        "official:2:2": "●",
+        "official:2:3": "●",
+        "official:2:4": "●",
+        "official:2:5": "●",
+        "official:2:6": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "官网未单独列明，请查看来源",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:4:0": "官网未单独列明，请查看来源",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "官网未单独列明，请查看来源",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "官网未单独列明，请查看来源",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "官网未单独列明，请查看来源",
+        "official:4:27": "官网未单独列明，请查看来源",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●（22处）",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "官网未单独列明，请查看来源",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "官网未单独列明，请查看来源",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "官网未单独列明，请查看来源",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "官网未单独列明，请查看来源",
+        "official:7:7": "●",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "●",
+        "official:7:24": "●",
+        "official:7:25": "●",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "●",
+        "official:7:34": "●",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "官网未单独列明，请查看来源",
+        "official:7:41": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "●",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:8:31": "●",
+        "official:8:32": "●",
+        "official:8:33": "●",
+        "official:8:34": "●",
+        "official:8:35": "●",
+        "official:8:36": "●",
+        "official:9:0": "●",
+        "official:9:1": "官网未单独列明，请查看来源",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "官网未单独列明，请查看来源",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "●",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "●",
+        "official:10:10": "●",
+        "official:10:11": "●",
+        "official:10:12": "●",
+        "official:10:13": "●",
+        "official:10:14": "●",
+        "official:10:15": "●",
+        "official:10:16": "●",
+        "official:10:17": "●",
+        "official:10:18": "●",
+        "official:10:19": "●",
+        "official:10:20": "●",
+        "official:10:21": "●",
+        "official:10:22": "●",
+        "official:10:23": "●",
+        "official:10:24": "●",
+        "official:10:25": "●",
+        "official:10:26": "●",
+        "official:10:27": "●",
+        "official:10:28": "●",
+        "official:10:29": "●",
+        "official:10:30": "官网未单独列明，请查看来源",
+        "official:10:31": "●",
+        "official:10:32": "●",
+        "official:10:33": "●",
+        "official:10:34": "●",
+        "official:10:35": "●",
+        "official:10:36": "●",
+        "official:11:0": "—",
+        "official:11:1": "—",
+        "official:11:2": "—",
+        "official:11:3": "—",
+        "official:11:4": "●",
+        "official:11:5": "官网未单独列明，请查看来源",
+        "official:11:6": "●",
+        "official:11:7": "●",
+        "official:11:8": "●",
+        "official:11:9": "●",
+        "official:11:10": "●",
+        "official:11:11": "●",
+        "official:11:12": "●",
+        "official:11:13": "官网未单独列明，请查看来源",
+        "official:11:14": "●",
+        "official:11:15": "●",
+        "official:11:16": "●",
+        "official:11:17": "●",
+        "official:11:18": "●",
+        "official:11:19": "●",
+        "official:11:20": "●",
+        "official:11:21": "●",
+        "official:11:22": "—",
+        "official:11:23": "●",
+        "official:11:24": "●",
+        "official:11:25": "●",
+        "official:11:26": "●",
+        "official:11:27": "●",
+        "official:11:28": "●",
+        "official:11:29": "●",
+        "official:11:30": "●",
+        "official:11:31": "●",
+        "official:11:32": "●",
+        "official:11:33": "●",
+        "official:11:34": "●",
+        "official:11:35": "●",
+        "official:11:36": "●",
+        "official:11:37": "●",
+        "official:11:38": "●",
+        "official:11:39": "●",
+        "official:11:40": "●",
+        "official:11:41": "○（限时赠送）",
+        "official:11:42": "●",
+        "official:11:43": "●",
+        "official:11:44": "●",
+        "official:11:45": "●",
+        "official:11:46": "●",
+        "official:11:47": "●",
+        "official:11:48": "官网未单独列明，请查看来源",
+        "official:11:49": "官网未单独列明，请查看来源",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "denza-n9-official-3",
+      "name": "旗舰型",
+      "values": {
+        "official:0:0": "5258*2030*1830",
+        "official:0:1": "3125",
+        "official:0:2": "4.65",
+        "official:0:3": "351-1140",
+        "official:0:4": "前/后：275/45 R22",
+        "official:0:5": "非营运车辆“三电”系统终身保修（首任车主），整车包修期6年或15万公里（详见备注说明*及售后保修手册）",
+        "official:0:6": "非营运车辆空悬包修期8年或16万公里（详见备注说明*及售后保修手册）",
+        "official:1:0": "插混专用涡轮增压2.0T高效发动机+易三方",
+        "official:1:1": "可变截面涡轮增压器/缸内直喷/中置式进气VT/全铝合金发动机/米勒循环/高压缩比/超低摩擦",
+        "official:1:2": "2.0T",
+        "official:1:3": "152",
+        "official:1:4": "325",
+        "official:1:5": "插混专用功率型刀片电池",
+        "official:1:6": "46.9",
+        "official:1:7": "100",
+        "official:1:8": "19（30%-80%）",
+        "official:1:9": "前/后永磁同步电机",
+        "official:1:10": "200",
+        "official:1:11": "315",
+        "official:1:12": "后左240/后右240",
+        "official:1:13": "后左360/后右360",
+        "official:1:14": "1035",
+        "official:1:15": "EHS电混系统",
+        "official:1:16": "适时四驱",
+        "official:1:17": "3.9",
+        "official:1:18": "6.3",
+        "official:1:19": "202/230(长续航模式*）",
+        "official:1:20": "1302/1330（长续航模式*）",
+        "official:2:0": "前：双叉臂式独立悬架 后：五连杆式独立悬架",
+        "official:2:1": "●",
+        "official:2:2": "●",
+        "official:2:3": "●",
+        "official:2:4": "●",
+        "official:2:5": "●",
+        "official:2:6": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "●",
+        "official:3:8": "●",
+        "official:3:9": "●",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:4:0": "官网未单独列明，请查看来源",
+        "official:4:1": "●",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "官网未单独列明，请查看来源",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "●",
+        "official:4:27": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●（29处）",
+        "official:5:9": "●",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "官网未单独列明，请查看来源",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "官网未单独列明，请查看来源",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:6:0": "●",
+        "official:6:1": "●",
+        "official:6:2": "●",
+        "official:6:3": "●",
+        "official:6:4": "●",
+        "official:6:5": "●",
+        "official:6:6": "●",
+        "official:6:7": "●",
+        "official:6:8": "●",
+        "official:7:0": "●",
+        "official:7:1": "●",
+        "official:7:2": "●",
+        "official:7:3": "●",
+        "official:7:4": "●",
+        "official:7:5": "●",
+        "official:7:6": "●",
+        "official:7:7": "官网未单独列明，请查看来源",
+        "official:7:9": "●",
+        "official:7:10": "●",
+        "official:7:11": "●",
+        "official:7:12": "●",
+        "official:7:13": "●",
+        "official:7:14": "●",
+        "official:7:15": "●",
+        "official:7:16": "●",
+        "official:7:17": "●",
+        "official:7:18": "●",
+        "official:7:19": "●",
+        "official:7:20": "●",
+        "official:7:21": "●",
+        "official:7:22": "●",
+        "official:7:23": "●",
+        "official:7:24": "●",
+        "official:7:25": "●",
+        "official:7:26": "●",
+        "official:7:27": "●",
+        "official:7:28": "●",
+        "official:7:29": "●",
+        "official:7:30": "●",
+        "official:7:31": "●",
+        "official:7:32": "●",
+        "official:7:33": "●",
+        "official:7:34": "●",
+        "official:7:35": "●",
+        "official:7:36": "●",
+        "official:7:37": "●",
+        "official:7:38": "●",
+        "official:7:39": "●",
+        "official:7:40": "○（限时赠送）",
+        "official:7:41": "●",
+        "official:8:0": "●",
+        "official:8:1": "●",
+        "official:8:2": "●",
+        "official:8:3": "●",
+        "official:8:4": "●",
+        "official:8:5": "●",
+        "official:8:6": "●",
+        "official:8:7": "●",
+        "official:8:8": "●",
+        "official:8:9": "●",
+        "official:8:10": "●",
+        "official:8:11": "●",
+        "official:8:12": "●",
+        "official:8:13": "●",
+        "official:8:14": "●",
+        "official:8:15": "●",
+        "official:8:16": "●",
+        "official:8:17": "●",
+        "official:8:18": "官网未单独列明，请查看来源",
+        "official:8:19": "●",
+        "official:8:20": "●",
+        "official:8:21": "●",
+        "official:8:22": "●",
+        "official:8:23": "●",
+        "official:8:24": "●",
+        "official:8:25": "●",
+        "official:8:26": "●",
+        "official:8:27": "●",
+        "official:8:28": "●",
+        "official:8:29": "●",
+        "official:8:30": "●",
+        "official:8:31": "●",
+        "official:8:32": "●",
+        "official:8:33": "●",
+        "official:8:34": "●",
+        "official:8:35": "●",
+        "official:8:36": "●",
+        "official:9:0": "●",
+        "official:9:1": "●",
+        "official:9:2": "●",
+        "official:9:3": "●",
+        "official:9:4": "●",
+        "official:9:5": "●",
+        "official:9:6": "●",
+        "official:10:0": "●",
+        "official:10:1": "●",
+        "official:10:2": "●",
+        "official:10:3": "●",
+        "official:10:4": "●",
+        "official:10:5": "●",
+        "official:10:6": "●",
+        "official:10:7": "●",
+        "official:10:8": "●",
+        "official:10:9": "●",
+        "official:10:10": "●",
+        "official:10:11": "●",
+        "official:10:12": "●",
+        "official:10:13": "●",
+        "official:10:14": "●",
+        "official:10:15": "●",
+        "official:10:16": "●",
+        "official:10:17": "●",
+        "official:10:18": "●",
+        "official:10:19": "●",
+        "official:10:20": "●",
+        "official:10:21": "●",
+        "official:10:22": "●",
+        "official:10:23": "●",
+        "official:10:24": "●",
+        "official:10:25": "●",
+        "official:10:26": "●",
+        "official:10:27": "●",
+        "official:10:28": "●",
+        "official:10:29": "●",
+        "official:10:30": "●",
+        "official:10:31": "●",
+        "official:10:32": "●",
+        "official:10:33": "●",
+        "official:10:34": "●",
+        "official:10:35": "●",
+        "official:10:36": "●",
+        "official:11:0": "—",
+        "official:11:1": "—",
+        "official:11:2": "—",
+        "official:11:3": "—",
+        "official:11:4": "●",
+        "official:11:5": "●",
+        "official:11:6": "●",
+        "official:11:7": "●",
+        "official:11:8": "●",
+        "official:11:9": "●",
+        "official:11:10": "●",
+        "official:11:11": "●",
+        "official:11:12": "●",
+        "official:11:13": "●",
+        "official:11:14": "●",
+        "official:11:15": "●",
+        "official:11:16": "●",
+        "official:11:17": "●",
+        "official:11:18": "●",
+        "official:11:19": "●",
+        "official:11:20": "●",
+        "official:11:21": "●",
+        "official:11:22": "●",
+        "official:11:23": "●",
+        "official:11:24": "●",
+        "official:11:25": "●",
+        "official:11:26": "●",
+        "official:11:27": "●",
+        "official:11:28": "●",
+        "official:11:29": "●",
+        "official:11:30": "●",
+        "official:11:31": "●",
+        "official:11:32": "●",
+        "official:11:33": "●",
+        "official:11:34": "●",
+        "official:11:35": "●",
+        "official:11:36": "●",
+        "official:11:37": "●",
+        "official:11:38": "●",
+        "official:11:39": "●",
+        "official:11:40": "●",
+        "official:11:41": "●",
+        "official:11:42": "●",
+        "official:11:43": "●",
+        "official:11:44": "●",
+        "official:11:45": "●",
+        "official:11:46": "●",
+        "official:11:47": "●",
+        "official:11:48": "—",
+        "official:11:49": "—",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/denza-n9.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.denza.com/cn/product-detail/n9"
+    }
+  ],
+  "sourceUrl": "https://www.denza.com/cn/car-config/car-config-n9",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "denza-n9-config-cn",
+      "sha256": "61f5b11853411203061d000f345a76ba85c113747144a96942519ecd979aa987"
+    }
+  ]
+}

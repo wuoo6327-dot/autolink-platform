@@ -14,18 +14,19 @@ class SEOQualityTests(unittest.TestCase):
         self.site = Path(__file__).resolve().parent.parent/'site'
         self.seo = PublicSEOService(self.trade,self.site)
 
-    def test_complete_and_thin_partition_keeps_all_234_real_model_records(self):
+    def test_complete_and_thin_partition_keeps_all_244_real_model_records(self):
         models=self.trade.catalog.models()
         policies={m['id']:self.seo.index_policy('model',m) for m in models}
-        self.assertEqual(len(models),234)
-        self.assertEqual(sum(p['contentComplete'] for p in policies.values()),195)
-        self.assertEqual(sum(not p['contentComplete'] for p in policies.values()),39)
-        self.assertEqual(sum(p['indexLanguages']==['zh'] for p in policies.values()),195)
+        self.assertEqual(len(models),244)
+        self.assertEqual(sum(p['contentComplete'] for p in policies.values()),177)
+        self.assertEqual(sum(not p['contentComplete'] for p in policies.values()),67)
+        self.assertEqual(sum('zh' in p['indexLanguages'] for p in policies.values()),177)
+        self.assertEqual(sum('en' in p['indexLanguages'] for p in policies.values()),22)
         self.assertTrue(all(not p['indexLanguages'] for p in policies.values() if not p['contentComplete']))
 
-    def test_all_39_thin_models_remain_accessible_in_every_language_and_noindex(self):
+    def test_all_67_thin_models_remain_accessible_in_every_language_and_noindex(self):
         thin=[m for m in self.trade.catalog.models() if not self.seo.index_policy('model',m)['contentComplete']]
-        self.assertEqual(len(thin),39)
+        self.assertEqual(len(thin),67)
         for model in thin:
             for language in LANGUAGES:
                 with self.subTest(model=model['id'],language=language):
@@ -53,7 +54,7 @@ class SEOQualityTests(unittest.TestCase):
         site=Path(directory.name)
         (site/'model-reference').mkdir();(site/'locales').mkdir()
         source=json.loads((self.site/'model-reference/aeolus-catalog-1.json').read_text())
-        model=self.trade.catalog.get('omoda-catalog-1')
+        model=self.trade.catalog.get('byd-shark')
         source['modelId']=model['id']
         file=site/'model-reference'/(model['id']+'.json')
         file.write_text(json.dumps(source))
@@ -107,7 +108,7 @@ class SEOQualityTests(unittest.TestCase):
         robots=(self.site/'robots.txt').read_text()
         self.assertNotIn('Disallow: /trade/models',robots)
         self.assertNotIn('Disallow: /trade/brands',robots)
-        status,body=self.seo.render('/trade/models/omoda-catalog-1?lang=en')
+        status,body=self.seo.render('/trade/models/byd-shark?lang=en')
         self.assertEqual(status,200);self.assertIn('noindex, follow',body.decode())
 
 

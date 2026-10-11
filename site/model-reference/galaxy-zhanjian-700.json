@@ -1,0 +1,3011 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "galaxy-zhanjian-700",
+  "brandZh": "Galaxy",
+  "modelZh": "战舰700",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基本参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长*宽*高（mm）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "座椅布局"
+        },
+        {
+          "key": "official:0:3",
+          "label": "整备质量（kg）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "燃油标号"
+        },
+        {
+          "key": "official:0:5",
+          "label": "WLTC工况馈电油耗（L/100km）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "CLTC工况纯电续航里程（km）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "CLTC工况综合续航（km）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "0-100km/h加速时间（s）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "底盘最小离地间隙（mm）"
+        },
+        {
+          "key": "official:0:11",
+          "label": "电池包最小离地间隙（mm）"
+        },
+        {
+          "key": "official:0:12",
+          "label": "接近角（°）"
+        },
+        {
+          "key": "official:0:13",
+          "label": "离去角（°）"
+        },
+        {
+          "key": "official:0:14",
+          "label": "后备箱容积（L）"
+        },
+        {
+          "key": "official:0:15",
+          "label": "排放标准"
+        },
+        {
+          "key": "official:0:16",
+          "label": "最高车速（km/h）"
+        }
+      ]
+    },
+    {
+      "name": "质感进化",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "「东方醒狮」前脸"
+        },
+        {
+          "key": "official:1:1",
+          "label": "「天仪之眼」LED大灯"
+        },
+        {
+          "key": "official:1:2",
+          "label": "「星芒矩阵」尾灯"
+        },
+        {
+          "key": "official:1:3",
+          "label": "「运筹帷幄」越野操控岛"
+        },
+        {
+          "key": "official:1:4",
+          "label": "「游艇」挡把"
+        },
+        {
+          "key": "official:1:5",
+          "label": "「三潭印月」音响"
+        },
+        {
+          "key": "official:1:6",
+          "label": "LED前贯穿灯"
+        },
+        {
+          "key": "official:1:7",
+          "label": "「曜光晶徽」发光logo"
+        },
+        {
+          "key": "official:1:8",
+          "label": "大灯自动开启/关闭功能"
+        },
+        {
+          "key": "official:1:9",
+          "label": "大灯延迟关闭功能"
+        },
+        {
+          "key": "official:1:10",
+          "label": "AHB智能远近光灯切换"
+        },
+        {
+          "key": "official:1:11",
+          "label": "双开启全景天窗"
+        },
+        {
+          "key": "official:1:12",
+          "label": "机械上车踏板"
+        },
+        {
+          "key": "official:1:13",
+          "label": "电动伸缩踏板"
+        },
+        {
+          "key": "official:1:14",
+          "label": "备胎规格"
+        },
+        {
+          "key": "official:1:15",
+          "label": "固特异品牌轮胎（20吋）"
+        },
+        {
+          "key": "official:1:16",
+          "label": "全地形轮胎（18吋）"
+        },
+        {
+          "key": "official:1:17",
+          "label": "前后轮胎规格（20吋）"
+        },
+        {
+          "key": "official:1:18",
+          "label": "前后轮胎规格（18吋）"
+        },
+        {
+          "key": "official:1:19",
+          "label": "AGS主动进气格栅"
+        },
+        {
+          "key": "official:1:20",
+          "label": "雨量感应式雨刮"
+        },
+        {
+          "key": "official:1:21",
+          "label": "电吸合尾门"
+        },
+        {
+          "key": "official:1:22",
+          "label": "前机盖液压撑杆"
+        },
+        {
+          "key": "official:1:23",
+          "label": "车顶行李架"
+        },
+        {
+          "key": "official:1:24",
+          "label": "电动遮阳帘"
+        },
+        {
+          "key": "official:1:25",
+          "label": "外后视镜功能"
+        },
+        {
+          "key": "official:1:26",
+          "label": "四门车窗一键升降（带防夹）"
+        },
+        {
+          "key": "official:1:27",
+          "label": "金属迎宾踏板"
+        },
+        {
+          "key": "official:1:28",
+          "label": "暗夜套装"
+        }
+      ]
+    },
+    {
+      "name": "性能进化",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "动力形式"
+        },
+        {
+          "key": "official:2:1",
+          "label": "全新雷神EM-T越野电混系统"
+        },
+        {
+          "key": "official:2:2",
+          "label": "驱动型式"
+        },
+        {
+          "key": "official:2:3",
+          "label": "发动机"
+        },
+        {
+          "key": "official:2:4",
+          "label": "发动机缸数"
+        },
+        {
+          "key": "official:2:5",
+          "label": "发动机排量（ml）"
+        },
+        {
+          "key": "official:2:6",
+          "label": "进气形式"
+        },
+        {
+          "key": "official:2:7",
+          "label": "发动机平台热效率"
+        },
+        {
+          "key": "official:2:8",
+          "label": "发动机最大功率(kW)"
+        },
+        {
+          "key": "official:2:9",
+          "label": "发动机最大扭矩(N·m)"
+        },
+        {
+          "key": "official:2:10",
+          "label": "高性能电驱系统"
+        },
+        {
+          "key": "official:2:11",
+          "label": "电机类型"
+        },
+        {
+          "key": "official:2:12",
+          "label": "电机布置位置"
+        },
+        {
+          "key": "official:2:13",
+          "label": "驱动电机数量"
+        },
+        {
+          "key": "official:2:14",
+          "label": "前电机最大功率(kW)"
+        },
+        {
+          "key": "official:2:15",
+          "label": "前电机最大扭矩(N·m)"
+        },
+        {
+          "key": "official:2:16",
+          "label": "后电机最大功率(kW)"
+        },
+        {
+          "key": "official:2:17",
+          "label": "后电机最大扭矩(N·m)"
+        },
+        {
+          "key": "official:2:18",
+          "label": "系统最大功率(kW)"
+        },
+        {
+          "key": "official:2:19",
+          "label": "系统最大扭矩(N·m)"
+        },
+        {
+          "key": "official:2:20",
+          "label": "爬坡度"
+        },
+        {
+          "key": "official:2:21",
+          "label": "能源模式"
+        },
+        {
+          "key": "official:2:22",
+          "label": "驾驶模式"
+        },
+        {
+          "key": "official:2:23",
+          "label": "地形模式"
+        },
+        {
+          "key": "official:2:24",
+          "label": "动力电池类型"
+        },
+        {
+          "key": "official:2:25",
+          "label": "电芯品牌"
+        },
+        {
+          "key": "official:2:26",
+          "label": "动力电池容量（kWh）"
+        },
+        {
+          "key": "official:2:27",
+          "label": "峰值6C智充"
+        },
+        {
+          "key": "official:2:28",
+          "label": "直流快充时间 (10%-80%)"
+        },
+        {
+          "key": "official:2:29",
+          "label": "高压平台"
+        },
+        {
+          "key": "official:2:30",
+          "label": "6kW对外交流放电功能"
+        },
+        {
+          "key": "official:2:31",
+          "label": "6kW车辆对车辆供电功能"
+        },
+        {
+          "key": "official:2:32",
+          "label": "涉水感应系统"
+        },
+        {
+          "key": "official:2:33",
+          "label": "最大涉水深度（mm）"
+        },
+        {
+          "key": "official:2:34",
+          "label": "前悬架类型"
+        },
+        {
+          "key": "official:2:35",
+          "label": "后悬架类型"
+        },
+        {
+          "key": "official:2:36",
+          "label": "高精度魔毯预瞄"
+        },
+        {
+          "key": "official:2:37",
+          "label": "双腔闭式空气悬架"
+        },
+        {
+          "key": "official:2:38",
+          "label": "CCD连续可变阻尼减振器"
+        },
+        {
+          "key": "official:2:39",
+          "label": "后桥差速锁"
+        },
+        {
+          "key": "official:2:40",
+          "label": "G-ATS智能全地形系统"
+        },
+        {
+          "key": "official:2:41",
+          "label": "越野巡航"
+        },
+        {
+          "key": "official:2:42",
+          "label": "越野视图"
+        },
+        {
+          "key": "official:2:43",
+          "label": "越野散热"
+        },
+        {
+          "key": "official:2:44",
+          "label": "低速四驱"
+        },
+        {
+          "key": "official:2:45",
+          "label": "智能攀爬"
+        },
+        {
+          "key": "official:2:46",
+          "label": "智能拖拽"
+        },
+        {
+          "key": "official:2:47",
+          "label": "车身一键调平"
+        },
+        {
+          "key": "official:2:48",
+          "label": "轻松载物"
+        },
+        {
+          "key": "official:2:49",
+          "label": "悬架高度自动随速调节"
+        },
+        {
+          "key": "official:2:50",
+          "label": "CST 2.0舒适制动"
+        },
+        {
+          "key": "official:2:51",
+          "label": "华尔兹掉头"
+        },
+        {
+          "key": "official:2:52",
+          "label": "敏捷转向"
+        },
+        {
+          "key": "official:2:53",
+          "label": "液压衬套"
+        },
+        {
+          "key": "official:2:54",
+          "label": "前通风刹车盘"
+        },
+        {
+          "key": "official:2:55",
+          "label": "后通风刹车盘"
+        },
+        {
+          "key": "official:2:56",
+          "label": "EPS电动助力转向"
+        },
+        {
+          "key": "official:2:57",
+          "label": "G-TCS智能防滑控制"
+        },
+        {
+          "key": "official:2:58",
+          "label": "EPB电子驻车"
+        },
+        {
+          "key": "official:2:59",
+          "label": "自动驻车系统"
+        },
+        {
+          "key": "official:2:60",
+          "label": "CBC弯道控制系统"
+        },
+        {
+          "key": "official:2:61",
+          "label": "G-TVC智能矢量控制"
+        },
+        {
+          "key": "official:2:62",
+          "label": "制动能量回收系统"
+        },
+        {
+          "key": "official:2:63",
+          "label": "拖车装置"
+        }
+      ]
+    },
+    {
+      "name": "舒适进化",
+      "rows": [
+        {
+          "key": "official:3:0",
+          "label": "云感亲肤座椅"
+        },
+        {
+          "key": "official:3:1",
+          "label": "麂皮绒顶棚/顶棚立柱/遮阳板"
+        },
+        {
+          "key": "official:3:2",
+          "label": "18.5L双开冷暖冰箱"
+        },
+        {
+          "key": "official:3:3",
+          "label": "前排双层隔音玻璃"
+        },
+        {
+          "key": "official:3:4",
+          "label": "后排隐私玻璃"
+        },
+        {
+          "key": "official:3:5",
+          "label": "后排双侧隔音玻璃"
+        },
+        {
+          "key": "official:3:6",
+          "label": "双层隔音前挡风玻璃"
+        },
+        {
+          "key": "official:3:7",
+          "label": "主驾座椅调节"
+        },
+        {
+          "key": "official:3:8",
+          "label": "主驾座椅4向电动腰托"
+        },
+        {
+          "key": "official:3:9",
+          "label": "副驾座椅调节"
+        },
+        {
+          "key": "official:3:10",
+          "label": "副驾座椅4向电动腰托"
+        },
+        {
+          "key": "official:3:11",
+          "label": "副驾老板键"
+        },
+        {
+          "key": "official:3:12",
+          "label": "副驾电动腿托"
+        },
+        {
+          "key": "official:3:13",
+          "label": "前排座椅加热"
+        },
+        {
+          "key": "official:3:14",
+          "label": "前排座椅通风"
+        },
+        {
+          "key": "official:3:15",
+          "label": "前排座椅记忆"
+        },
+        {
+          "key": "official:3:16",
+          "label": "前排座椅14点臀背按摩"
+        },
+        {
+          "key": "official:3:17",
+          "label": "前排座椅中央扶手带双杯托"
+        },
+        {
+          "key": "official:3:18",
+          "label": "前排一键沙滩椅"
+        },
+        {
+          "key": "official:3:19",
+          "label": "后排座椅成床模式"
+        },
+        {
+          "key": "official:3:20",
+          "label": "后排座椅加热"
+        },
+        {
+          "key": "official:3:21",
+          "label": "后排座椅通风"
+        },
+        {
+          "key": "official:3:22",
+          "label": "后排座椅靠背比例折叠"
+        },
+        {
+          "key": "official:3:23",
+          "label": "后排座椅调节"
+        },
+        {
+          "key": "official:3:24",
+          "label": "后排座椅中央头枕"
+        },
+        {
+          "key": "official:3:25",
+          "label": "后排座椅中央扶手带双杯托"
+        },
+        {
+          "key": "official:3:26",
+          "label": "后排右侧小桌板"
+        },
+        {
+          "key": "official:3:27",
+          "label": "方向盘材质"
+        },
+        {
+          "key": "official:3:28",
+          "label": "多功能抗菌方向盘"
+        },
+        {
+          "key": "official:3:29",
+          "label": "方向盘加热"
+        },
+        {
+          "key": "official:3:30",
+          "label": "方向盘位置手动4向调节"
+        },
+        {
+          "key": "official:3:31",
+          "label": "主驾遮阳板带化妆镜灯"
+        },
+        {
+          "key": "official:3:32",
+          "label": "副驾遮阳板带化妆镜灯"
+        },
+        {
+          "key": "official:3:33",
+          "label": "50w风冷无线快充"
+        },
+        {
+          "key": "official:3:34",
+          "label": "后备箱220V电源"
+        },
+        {
+          "key": "official:3:35",
+          "label": "前门板储物盒灯"
+        },
+        {
+          "key": "official:3:36",
+          "label": "后备箱照明"
+        },
+        {
+          "key": "official:3:37",
+          "label": "双区自动空调"
+        },
+        {
+          "key": "official:3:38",
+          "label": "后排B柱空调出风口"
+        },
+        {
+          "key": "official:3:39",
+          "label": "ANC主动降噪"
+        },
+        {
+          "key": "official:3:40",
+          "label": "N95空调滤芯"
+        },
+        {
+          "key": "official:3:41",
+          "label": "AQS空气质量管理"
+        }
+      ]
+    },
+    {
+      "name": "智能进化",
+      "rows": [
+        {
+          "key": "official:4:0",
+          "label": "车机系统"
+        },
+        {
+          "key": "official:4:1",
+          "label": "车机芯片"
+        },
+        {
+          "key": "official:4:2",
+          "label": "实况桌面"
+        },
+        {
+          "key": "official:4:3",
+          "label": "伴途同行"
+        },
+        {
+          "key": "official:4:4",
+          "label": "10.2英寸液晶仪表"
+        },
+        {
+          "key": "official:4:5",
+          "label": "15.4英寸2K中控屏"
+        },
+        {
+          "key": "official:4:6",
+          "label": "12.66英寸副驾屏"
+        },
+        {
+          "key": "official:4:7",
+          "label": "15.2英寸W-HUD抬头显示"
+        },
+        {
+          "key": "official:4:8",
+          "label": "23扬Flyme Sound无界之声"
+        },
+        {
+          "key": "official:4:9",
+          "label": "头枕扬声器"
+        },
+        {
+          "key": "official:4:10",
+          "label": "车外扬声器"
+        },
+        {
+          "key": "official:4:11",
+          "label": "车内4音区语音控制"
+        },
+        {
+          "key": "official:4:12",
+          "label": "无麦K歌"
+        },
+        {
+          "key": "official:4:13",
+          "label": "超级Eva智能体"
+        },
+        {
+          "key": "official:4:14",
+          "label": "可见即可说"
+        },
+        {
+          "key": "official:4:15",
+          "label": "一句话多任务连续执行"
+        },
+        {
+          "key": "official:4:16",
+          "label": "面部识别"
+        },
+        {
+          "key": "official:4:17",
+          "label": "AI儿童乐园"
+        },
+        {
+          "key": "official:4:18",
+          "label": "防眩目内后视镜"
+        },
+        {
+          "key": "official:4:19",
+          "label": "256色律动氛围灯"
+        },
+        {
+          "key": "official:4:20",
+          "label": "车辆远程监控"
+        },
+        {
+          "key": "official:4:21",
+          "label": "Carplay"
+        },
+        {
+          "key": "official:4:22",
+          "label": "Carlink"
+        },
+        {
+          "key": "official:4:23",
+          "label": "HUAWEI HiCar"
+        },
+        {
+          "key": "official:4:24",
+          "label": "魅族Flyme Link无感互联"
+        },
+        {
+          "key": "official:4:25",
+          "label": "全座舱智能情景模式"
+        },
+        {
+          "key": "official:4:26",
+          "label": "车载网络"
+        },
+        {
+          "key": "official:4:27",
+          "label": "车载Wifi热点"
+        },
+        {
+          "key": "official:4:28",
+          "label": "整车OTA升级"
+        },
+        {
+          "key": "official:4:29",
+          "label": "手机蓝牙钥匙"
+        },
+        {
+          "key": "official:4:30",
+          "label": "手机接口"
+        },
+        {
+          "key": "official:4:31",
+          "label": "磁吸拓展"
+        },
+        {
+          "key": "official:4:32",
+          "label": "改装接口预留"
+        },
+        {
+          "key": "official:4:33",
+          "label": "EEA 4.0 电子电气架构"
+        },
+        {
+          "key": "official:4:34",
+          "label": "千里浩瀚辅助驾驶H7方案"
+        },
+        {
+          "key": "official:4:35",
+          "label": "千里浩瀚辅助驾驶H5方案"
+        },
+        {
+          "key": "official:4:36",
+          "label": "NVIDIA Thor-U芯片"
+        },
+        {
+          "key": "official:4:37",
+          "label": "NVIDIA Orin-Y芯片"
+        },
+        {
+          "key": "official:4:38",
+          "label": "高精度激光雷达"
+        },
+        {
+          "key": "official:4:39",
+          "label": "D2D车位到车位领航辅助"
+        },
+        {
+          "key": "official:4:40",
+          "label": "城市NOA领航驾驶辅助"
+        },
+        {
+          "key": "official:4:41",
+          "label": "高速NOA领航驾驶辅助"
+        },
+        {
+          "key": "official:4:42",
+          "label": "HWA智能巡航驾驶辅助"
+        },
+        {
+          "key": "official:4:43",
+          "label": "ALCA拨杆变道辅助"
+        },
+        {
+          "key": "official:4:44",
+          "label": "ICC智能巡航辅助"
+        },
+        {
+          "key": "official:4:45",
+          "label": "ACC全速域自适应巡航辅助"
+        },
+        {
+          "key": "official:4:46",
+          "label": "FCTA前方横向来车预警"
+        },
+        {
+          "key": "official:4:47",
+          "label": "RCTB后方横穿制动辅助"
+        },
+        {
+          "key": "official:4:48",
+          "label": "EMA紧急转向辅助"
+        },
+        {
+          "key": "official:4:49",
+          "label": "AES紧急避让辅助"
+        },
+        {
+          "key": "official:4:50",
+          "label": "DMS驾驶员状态监测系统"
+        },
+        {
+          "key": "official:4:51",
+          "label": "语音变道辅助"
+        },
+        {
+          "key": "official:4:52",
+          "label": "TBA倒车循迹辅助"
+        },
+        {
+          "key": "official:4:53",
+          "label": "PEB倒车制动辅助"
+        },
+        {
+          "key": "official:4:54",
+          "label": "MAI误加速抑制系统"
+        },
+        {
+          "key": "official:4:55",
+          "label": "LDW车道偏离预警"
+        },
+        {
+          "key": "official:4:56",
+          "label": "LKA车道保持辅助"
+        },
+        {
+          "key": "official:4:57",
+          "label": "ELKA车道保持紧急辅助"
+        },
+        {
+          "key": "official:4:58",
+          "label": "FCW前方碰撞预警"
+        },
+        {
+          "key": "official:4:59",
+          "label": "RCW后方碰撞预警"
+        },
+        {
+          "key": "official:4:60",
+          "label": "BSD盲区预警"
+        },
+        {
+          "key": "official:4:61",
+          "label": "DOW开门安全预警"
+        },
+        {
+          "key": "official:4:62",
+          "label": "AEB自动紧急制动系统"
+        },
+        {
+          "key": "official:4:63",
+          "label": "TSI交通标志识别（含超速提醒）"
+        },
+        {
+          "key": "official:4:64",
+          "label": "TAA大车主动避让辅助"
+        },
+        {
+          "key": "official:4:65",
+          "label": "LCA变道安全预警"
+        },
+        {
+          "key": "official:4:66",
+          "label": "NPW窄路通行提示"
+        },
+        {
+          "key": "official:4:67",
+          "label": "RCTA后方横向来车预警"
+        },
+        {
+          "key": "official:4:68",
+          "label": "LDP车道偏离纠正"
+        },
+        {
+          "key": "official:4:69",
+          "label": "CMSF Pro前向碰撞辅助增强"
+        },
+        {
+          "key": "official:4:70",
+          "label": "CMSR后向碰撞减缓"
+        },
+        {
+          "key": "official:4:71",
+          "label": "LGP侧向避让辅助"
+        },
+        {
+          "key": "official:4:72",
+          "label": "ARW前向防刮顶提醒"
+        },
+        {
+          "key": "official:4:73",
+          "label": "FCTB前向横穿碰撞制动"
+        },
+        {
+          "key": "official:4:74",
+          "label": "FVSW前车溜车提醒"
+        },
+        {
+          "key": "official:4:75",
+          "label": "LSDA低速探索辅助"
+        },
+        {
+          "key": "official:4:76",
+          "label": "AWW轮毂防刮蹭提醒"
+        },
+        {
+          "key": "official:4:77",
+          "label": "APA自动泊车辅助"
+        },
+        {
+          "key": "official:4:78",
+          "label": "RPA遥控泊车"
+        },
+        {
+          "key": "official:4:79",
+          "label": "HPA记忆泊车"
+        },
+        {
+          "key": "official:4:80",
+          "label": "指尖泊车"
+        },
+        {
+          "key": "official:4:81",
+          "label": "离车泊入"
+        },
+        {
+          "key": "official:4:82",
+          "label": "VLM场景交互"
+        },
+        {
+          "key": "official:4:83",
+          "label": "人车伴行"
+        },
+        {
+          "key": "official:4:84",
+          "label": "园区漫游"
+        },
+        {
+          "key": "official:4:85",
+          "label": "自主进出匝道"
+        },
+        {
+          "key": "official:4:86",
+          "label": "ETC自主通行"
+        },
+        {
+          "key": "official:4:87",
+          "label": "环岛通行"
+        },
+        {
+          "key": "official:4:88",
+          "label": "施工避让"
+        },
+        {
+          "key": "official:4:89",
+          "label": "通用障碍物绕行"
+        },
+        {
+          "key": "official:4:90",
+          "label": "邻车靠近避让"
+        },
+        {
+          "key": "official:4:91",
+          "label": "哨兵模式"
+        },
+        {
+          "key": "official:4:92",
+          "label": "毫米波雷达"
+        },
+        {
+          "key": "official:4:93",
+          "label": "超声波雷达"
+        },
+        {
+          "key": "official:4:94",
+          "label": "摄像头"
+        },
+        {
+          "key": "official:4:95",
+          "label": "540°全景影像"
+        },
+        {
+          "key": "official:4:96",
+          "label": "电容感应方向盘"
+        }
+      ]
+    },
+    {
+      "name": "安全进化",
+      "rows": [
+        {
+          "key": "official:5:0",
+          "label": "GTA原生新能源越野架构"
+        },
+        {
+          "key": "official:5:1",
+          "label": "一体式大梁"
+        },
+        {
+          "key": "official:5:2",
+          "label": "六横七纵八环星甲车身"
+        },
+        {
+          "key": "official:5:3",
+          "label": "卫星通讯系统"
+        },
+        {
+          "key": "official:5:4",
+          "label": "营地哨兵"
+        },
+        {
+          "key": "official:5:5",
+          "label": "GVMC 3.0车身稳定控制系统"
+        },
+        {
+          "key": "official:5:6",
+          "label": "碰撞稳行"
+        },
+        {
+          "key": "official:5:7",
+          "label": "横风辅助控制系统"
+        },
+        {
+          "key": "official:5:8",
+          "label": "1.5GPa双门环"
+        },
+        {
+          "key": "official:5:9",
+          "label": "拖车钩"
+        },
+        {
+          "key": "official:5:10",
+          "label": "神盾电池安全系统"
+        },
+        {
+          "key": "official:5:11",
+          "label": "电池内凹安全设计"
+        },
+        {
+          "key": "official:5:12",
+          "label": "电池底部“防弹涂层”"
+        },
+        {
+          "key": "official:5:13",
+          "label": "车云一体BMS电池管理系统"
+        },
+        {
+          "key": "official:5:14",
+          "label": "爆胎稳定控制系统"
+        },
+        {
+          "key": "official:5:15",
+          "label": "EBD制动力分配"
+        },
+        {
+          "key": "official:5:16",
+          "label": "TCS牵引力控制系统"
+        },
+        {
+          "key": "official:5:17",
+          "label": "ABS防抱死刹车"
+        },
+        {
+          "key": "official:5:18",
+          "label": "BA制动辅助"
+        },
+        {
+          "key": "official:5:19",
+          "label": "ESC车身电子稳定控制"
+        },
+        {
+          "key": "official:5:20",
+          "label": "ARP电子防翻滚"
+        },
+        {
+          "key": "official:5:21",
+          "label": "HAC上坡辅助"
+        },
+        {
+          "key": "official:5:22",
+          "label": "HDC陡坡缓降"
+        },
+        {
+          "key": "official:5:23",
+          "label": "主驾安全气囊"
+        },
+        {
+          "key": "official:5:24",
+          "label": "副驾安全气囊"
+        },
+        {
+          "key": "official:5:25",
+          "label": "前排侧气囊"
+        },
+        {
+          "key": "official:5:26",
+          "label": "侧气帘"
+        },
+        {
+          "key": "official:5:27",
+          "label": "远端气囊"
+        },
+        {
+          "key": "official:5:28",
+          "label": "前排预紧限力安全带"
+        },
+        {
+          "key": "official:5:29",
+          "label": "前排安全带未系提醒"
+        },
+        {
+          "key": "official:5:30",
+          "label": "高清行车记录仪"
+        },
+        {
+          "key": "official:5:31",
+          "label": "E-call紧急救援"
+        },
+        {
+          "key": "official:5:32",
+          "label": "后排儿童座椅ISOFIX固定装置"
+        },
+        {
+          "key": "official:5:33",
+          "label": "儿童锁"
+        },
+        {
+          "key": "official:5:34",
+          "label": "DTPMS主动式胎压监测"
+        },
+        {
+          "key": "official:5:36",
+          "label": "主动液压悬架"
+        },
+        {
+          "key": "official:5:37",
+          "label": "应急漂浮脱困"
+        },
+        {
+          "key": "official:5:38",
+          "label": "四门电吸合"
+        },
+        {
+          "key": "official:5:39",
+          "label": "弥散+鼻吸供氧系统"
+        },
+        {
+          "key": "official:5:40",
+          "label": "中央集成气源"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "galaxy-zhanjian-700-official-1",
+      "name": "305km 1.5T两驱 探索版",
+      "values": {
+        "official:0:0": "5085*1999*1912",
+        "official:0:1": "2900",
+        "official:0:2": "5座",
+        "official:0:3": "2405",
+        "official:0:4": "92号及以上",
+        "official:0:5": "5.95",
+        "official:0:6": "305",
+        "official:0:7": "1770",
+        "official:0:8": "80",
+        "official:0:9": "6.4",
+        "official:0:10": "233",
+        "official:0:11": "313",
+        "official:0:12": "30",
+        "official:0:13": "31",
+        "official:0:14": "1050",
+        "official:0:15": "国六b",
+        "official:0:16": "200",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "—",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "—",
+        "official:1:14": "外挂式全尺寸备胎",
+        "official:1:15": "—",
+        "official:1:16": "—",
+        "official:1:17": "● 265/55 R20",
+        "official:1:18": "—",
+        "official:1:19": "●",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:1:24": "●",
+        "official:1:25": "电动调节●/电动折叠●/加热●/记忆●/倒车自动下翻●/锁车自动折叠●",
+        "official:1:26": "●",
+        "official:1:27": "—",
+        "official:1:28": "—",
+        "official:2:0": "插电混动",
+        "official:2:1": "●",
+        "official:2:2": "两驱",
+        "official:2:3": "1.5TD混动专用发动机",
+        "official:2:4": "4",
+        "official:2:5": "1499",
+        "official:2:6": "涡轮增压",
+        "official:2:7": "48.41%",
+        "official:2:8": "120",
+        "official:2:9": "255",
+        "official:2:10": "三挡越野电混专用电驱",
+        "official:2:11": "永磁同步电机",
+        "official:2:12": "前置（P3）",
+        "official:2:13": "单电机",
+        "official:2:14": "230",
+        "official:2:15": "350",
+        "official:2:16": "—",
+        "official:2:17": "—",
+        "official:2:18": "350",
+        "official:2:19": "605",
+        "official:2:20": "—",
+        "official:2:21": "纯电优先●/智能电混●/燃油优先●/强制纯电●",
+        "official:2:22": "智能●/经济●/舒适●/运动●",
+        "official:2:23": "雪地●",
+        "official:2:24": "磷酸铁锂",
+        "official:2:25": "宁德时代",
+        "official:2:26": "47.14",
+        "official:2:27": "●",
+        "official:2:28": "8min25s",
+        "official:2:29": "400V",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "—",
+        "official:2:33": "600",
+        "official:2:34": "前铝合金双叉臂独立悬架",
+        "official:2:35": "后五连杆独立悬架",
+        "official:2:36": "—",
+        "official:2:37": "—",
+        "official:2:38": "●（限时免费赠送）",
+        "official:2:39": "—",
+        "official:2:40": "—",
+        "official:2:41": "—",
+        "official:2:42": "—",
+        "official:2:43": "—",
+        "official:2:44": "—",
+        "official:2:45": "—",
+        "official:2:46": "—",
+        "official:2:47": "—",
+        "official:2:48": "—",
+        "official:2:49": "—",
+        "official:2:50": "●",
+        "official:2:51": "—",
+        "official:2:52": "—",
+        "official:2:53": "—",
+        "official:2:54": "●",
+        "official:2:55": "●",
+        "official:2:56": "●",
+        "official:2:57": "●",
+        "official:2:58": "●",
+        "official:2:59": "●",
+        "official:2:60": "●",
+        "official:2:61": "—",
+        "official:2:62": "●",
+        "official:2:63": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●（限时免费赠送）",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "8向电动调节",
+        "official:3:8": "●",
+        "official:3:9": "6向电动调节",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "—",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "—",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●",
+        "official:3:22": "●",
+        "official:3:23": "●",
+        "official:3:24": "●",
+        "official:3:25": "●",
+        "official:3:26": "—",
+        "official:3:27": "皮质",
+        "official:3:28": "●",
+        "official:3:29": "●",
+        "official:3:30": "●",
+        "official:3:31": "●",
+        "official:3:32": "●",
+        "official:3:33": "●",
+        "official:3:34": "●",
+        "official:3:35": "●",
+        "official:3:36": "●",
+        "official:3:37": "●",
+        "official:3:38": "●",
+        "official:3:39": "●",
+        "official:3:40": "●",
+        "official:3:41": "●",
+        "official:4:0": "Flyme Auto 2",
+        "official:4:1": "龍鹰6P",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "●（限时免费赠送）",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "—",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "5G",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "type A*1；type C*5",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "—",
+        "official:4:35": "—",
+        "official:4:36": "—",
+        "official:4:37": "—",
+        "official:4:38": "—",
+        "official:4:39": "—",
+        "official:4:40": "—",
+        "official:4:41": "—",
+        "official:4:42": "—",
+        "official:4:43": "—",
+        "official:4:44": "—",
+        "official:4:45": "—",
+        "official:4:46": "—",
+        "official:4:47": "—",
+        "official:4:48": "—",
+        "official:4:49": "—",
+        "official:4:50": "—",
+        "official:4:51": "—",
+        "official:4:52": "—",
+        "official:4:53": "—",
+        "official:4:54": "—",
+        "official:4:55": "—",
+        "official:4:56": "—",
+        "official:4:57": "—",
+        "official:4:58": "—",
+        "official:4:59": "—",
+        "official:4:60": "—",
+        "official:4:61": "—",
+        "official:4:62": "—",
+        "official:4:63": "—",
+        "official:4:64": "—",
+        "official:4:65": "—",
+        "official:4:66": "—",
+        "official:4:67": "—",
+        "official:4:68": "—",
+        "official:4:69": "—",
+        "official:4:70": "—",
+        "official:4:71": "—",
+        "official:4:72": "—",
+        "official:4:73": "—",
+        "official:4:74": "—",
+        "official:4:75": "—",
+        "official:4:76": "—",
+        "official:4:77": "—",
+        "official:4:78": "—",
+        "official:4:79": "—",
+        "official:4:80": "—",
+        "official:4:81": "—",
+        "official:4:82": "—",
+        "official:4:83": "—",
+        "official:4:84": "—",
+        "official:4:85": "—",
+        "official:4:86": "—",
+        "official:4:87": "—",
+        "official:4:88": "—",
+        "official:4:89": "—",
+        "official:4:90": "—",
+        "official:4:91": "●",
+        "official:4:92": "—",
+        "official:4:93": "6个",
+        "official:4:94": "4个",
+        "official:4:95": "●",
+        "official:4:96": "—",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "—",
+        "official:5:5": "—",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "前2后1",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:5:34": "●",
+        "official:5:36": "—",
+        "official:5:37": "—",
+        "official:5:38": "—",
+        "official:5:39": "—",
+        "official:5:40": "—",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-zhanjian-700-official-2",
+      "name": "305km 1.5T两驱 探索+版",
+      "values": {
+        "official:0:0": "5085*1999*1912",
+        "official:0:1": "2900",
+        "official:0:2": "5座",
+        "official:0:3": "2405",
+        "official:0:4": "92号及以上",
+        "official:0:5": "5.95",
+        "official:0:6": "305",
+        "official:0:7": "1770",
+        "official:0:8": "80",
+        "official:0:9": "6.4",
+        "official:0:10": "233",
+        "official:0:11": "313",
+        "official:0:12": "30",
+        "official:0:13": "31",
+        "official:0:14": "1050",
+        "official:0:15": "国六b",
+        "official:0:16": "200",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "—",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:1:15": "—",
+        "official:1:16": "—",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:1:18": "—",
+        "official:1:19": "●",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:1:24": "●",
+        "official:1:25": "官网未单独列明，请查看来源",
+        "official:1:26": "●",
+        "official:1:27": "●",
+        "official:1:28": "—",
+        "official:2:0": "插电混动",
+        "official:2:1": "●",
+        "official:2:2": "两驱",
+        "official:2:3": "1.5TD混动专用发动机",
+        "official:2:4": "4",
+        "official:2:5": "1499",
+        "official:2:6": "涡轮增压",
+        "official:2:7": "48.41%",
+        "official:2:8": "120",
+        "official:2:9": "255",
+        "official:2:10": "三挡越野电混专用电驱",
+        "official:2:11": "永磁同步电机",
+        "official:2:12": "前置（P3）",
+        "official:2:13": "单电机",
+        "official:2:14": "230",
+        "official:2:15": "350",
+        "official:2:16": "—",
+        "official:2:17": "—",
+        "official:2:18": "350",
+        "official:2:19": "605",
+        "official:2:20": "—",
+        "official:2:21": "官网未单独列明，请查看来源",
+        "official:2:22": "官网未单独列明，请查看来源",
+        "official:2:23": "雪地●",
+        "official:2:24": "磷酸铁锂",
+        "official:2:25": "宁德时代",
+        "official:2:26": "47.14",
+        "official:2:27": "●",
+        "official:2:28": "8min25s",
+        "official:2:29": "400V",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "—",
+        "official:2:33": "600",
+        "official:2:34": "前铝合金双叉臂独立悬架",
+        "official:2:35": "后五连杆独立悬架",
+        "official:2:36": "●",
+        "official:2:37": "—",
+        "official:2:38": "●（限时免费赠送）",
+        "official:2:39": "—",
+        "official:2:40": "—",
+        "official:2:41": "—",
+        "official:2:42": "—",
+        "official:2:43": "—",
+        "official:2:44": "—",
+        "official:2:45": "—",
+        "official:2:46": "—",
+        "official:2:47": "—",
+        "official:2:48": "—",
+        "official:2:49": "—",
+        "official:2:50": "●",
+        "official:2:51": "—",
+        "official:2:52": "—",
+        "official:2:53": "—",
+        "official:2:54": "●",
+        "official:2:55": "●",
+        "official:2:56": "●",
+        "official:2:57": "●",
+        "official:2:58": "●",
+        "official:2:59": "●",
+        "official:2:60": "●",
+        "official:2:61": "—",
+        "official:2:62": "●",
+        "official:2:63": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●（限时免费赠送）",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "8向电动调节",
+        "official:3:8": "●",
+        "official:3:9": "6向电动调节",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●",
+        "official:3:22": "●",
+        "official:3:23": "●",
+        "official:3:24": "●",
+        "official:3:25": "●",
+        "official:3:26": "●",
+        "official:3:27": "皮质",
+        "official:3:28": "●",
+        "official:3:29": "●",
+        "official:3:30": "●",
+        "official:3:31": "●",
+        "official:3:32": "●",
+        "official:3:33": "●",
+        "official:3:34": "●",
+        "official:3:35": "●",
+        "official:3:36": "●",
+        "official:3:37": "●",
+        "official:3:38": "●",
+        "official:3:39": "●",
+        "official:3:40": "●",
+        "official:3:41": "●",
+        "official:4:0": "Flyme Auto 2",
+        "official:4:1": "龍鹰6P",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "●（限时免费赠送）",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "5G",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "type A*1；type C*5",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "—",
+        "official:4:35": "●",
+        "official:4:36": "—",
+        "official:4:37": "●",
+        "official:4:38": "1个",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "—",
+        "official:4:49": "—",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "—",
+        "official:4:53": "—",
+        "official:4:54": "—",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "●",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "—",
+        "official:4:72": "—",
+        "official:4:73": "—",
+        "official:4:74": "—",
+        "official:4:75": "—",
+        "official:4:76": "—",
+        "official:4:77": "●",
+        "official:4:78": "●",
+        "official:4:79": "●",
+        "official:4:80": "●",
+        "official:4:81": "●",
+        "official:4:82": "—",
+        "official:4:83": "●",
+        "official:4:84": "—",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "●",
+        "official:4:92": "3个",
+        "official:4:93": "12个",
+        "official:4:94": "11个",
+        "official:4:95": "●",
+        "official:4:96": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "—",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "前2后1",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:5:34": "●",
+        "official:5:36": "—",
+        "official:5:37": "—",
+        "official:5:38": "—",
+        "official:5:39": "—",
+        "official:5:40": "—",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-zhanjian-700-official-3",
+      "name": "280km 1.5T 三电机四驱 驭峰版",
+      "values": {
+        "official:0:0": "5085*1999*1912",
+        "official:0:1": "2900",
+        "official:0:2": "5座",
+        "official:0:3": "2575",
+        "official:0:4": "92号及以上",
+        "official:0:5": "6.95",
+        "official:0:6": "280",
+        "official:0:7": "1520",
+        "official:0:8": "80",
+        "official:0:9": "4.2",
+        "official:0:10": "233",
+        "official:0:11": "313",
+        "official:0:12": "30",
+        "official:0:13": "31",
+        "official:0:14": "1050",
+        "official:0:15": "国六b",
+        "official:0:16": "200",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "●",
+        "official:1:13": "—",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:1:15": "—",
+        "official:1:16": "—",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:1:18": "—",
+        "official:1:19": "●",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:1:24": "●",
+        "official:1:25": "官网未单独列明，请查看来源",
+        "official:1:26": "●",
+        "official:1:27": "●",
+        "official:1:28": "O",
+        "official:2:0": "插电混动",
+        "official:2:1": "●",
+        "official:2:2": "三电机四驱",
+        "official:2:3": "1.5TD混动专用发动机",
+        "official:2:4": "4",
+        "official:2:5": "1499",
+        "official:2:6": "涡轮增压",
+        "official:2:7": "48.41%",
+        "official:2:8": "120",
+        "official:2:9": "255",
+        "official:2:10": "三挡越野电混专用电驱",
+        "official:2:11": "永磁同步电机",
+        "official:2:12": "前置（P3）+后置（P4×2）",
+        "official:2:13": "三电机",
+        "official:2:14": "230",
+        "official:2:15": "350",
+        "official:2:16": "340",
+        "official:2:17": "560",
+        "official:2:18": "690",
+        "official:2:19": "1165",
+        "official:2:20": "0.7",
+        "official:2:21": "官网未单独列明，请查看来源",
+        "official:2:22": "官网未单独列明，请查看来源",
+        "official:2:23": "智能全地形●/雪地●/泥地●/沙地●/岩石●/戈壁●/涉水●",
+        "official:2:24": "磷酸铁锂",
+        "official:2:25": "宁德时代",
+        "official:2:26": "47.14",
+        "official:2:27": "●",
+        "official:2:28": "8min25s",
+        "official:2:29": "400V",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "—",
+        "official:2:33": "600",
+        "official:2:34": "前铝合金双叉臂独立悬架",
+        "official:2:35": "后五连杆独立悬架",
+        "official:2:36": "●",
+        "official:2:37": "—",
+        "official:2:38": "●（限时免费赠送）",
+        "official:2:39": "—",
+        "official:2:40": "●",
+        "official:2:41": "●",
+        "official:2:42": "●",
+        "official:2:43": "●",
+        "official:2:44": "—",
+        "official:2:45": "●",
+        "official:2:46": "●",
+        "official:2:47": "—",
+        "official:2:48": "—",
+        "official:2:49": "—",
+        "official:2:50": "●",
+        "official:2:51": "●",
+        "official:2:52": "●",
+        "official:2:53": "●",
+        "official:2:54": "●",
+        "official:2:55": "●",
+        "official:2:56": "●",
+        "official:2:57": "●",
+        "official:2:58": "●",
+        "official:2:59": "●",
+        "official:2:60": "●",
+        "official:2:61": "●",
+        "official:2:62": "●",
+        "official:2:63": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●（限时免费赠送）",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "8向电动调节",
+        "official:3:8": "●",
+        "official:3:9": "6向电动调节",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●",
+        "official:3:22": "●",
+        "official:3:23": "●",
+        "official:3:24": "●",
+        "official:3:25": "●",
+        "official:3:26": "●",
+        "official:3:27": "皮质",
+        "official:3:28": "●",
+        "official:3:29": "●",
+        "official:3:30": "●",
+        "official:3:31": "●",
+        "official:3:32": "●",
+        "official:3:33": "●",
+        "official:3:34": "●",
+        "official:3:35": "●",
+        "official:3:36": "●",
+        "official:3:37": "●",
+        "official:3:38": "●",
+        "official:3:39": "●",
+        "official:3:40": "●",
+        "official:3:41": "●",
+        "official:4:0": "Flyme Auto 2",
+        "official:4:1": "龍鹰6P",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "—",
+        "official:4:7": "●",
+        "official:4:8": "●（限时免费赠送）",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "5G",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "type A*1；type C*5",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "—",
+        "official:4:35": "●",
+        "official:4:36": "—",
+        "official:4:37": "●",
+        "official:4:38": "1个",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "—",
+        "official:4:49": "—",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "—",
+        "official:4:53": "—",
+        "official:4:54": "—",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "●",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "—",
+        "official:4:72": "—",
+        "official:4:73": "—",
+        "official:4:74": "—",
+        "official:4:75": "—",
+        "official:4:76": "—",
+        "official:4:77": "●",
+        "official:4:78": "●",
+        "official:4:79": "●",
+        "official:4:80": "●",
+        "official:4:81": "●",
+        "official:4:82": "—",
+        "official:4:83": "●",
+        "official:4:84": "—",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "●",
+        "official:4:92": "3个",
+        "official:4:93": "12个",
+        "official:4:94": "11个",
+        "official:4:95": "●",
+        "official:4:96": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "前2后1",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:5:34": "●",
+        "official:5:36": "—",
+        "official:5:37": "—",
+        "official:5:38": "—",
+        "official:5:39": "—",
+        "official:5:40": "—",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-zhanjian-700-official-4",
+      "name": "280km 1.5T 三电机四驱 驭峰+版",
+      "values": {
+        "official:0:0": "5085*1999*1895",
+        "official:0:1": "2900",
+        "official:0:2": "5座",
+        "official:0:3": "2605",
+        "official:0:4": "92号及以上",
+        "official:0:5": "6.95",
+        "official:0:6": "280",
+        "official:0:7": "1520",
+        "official:0:8": "80",
+        "official:0:9": "4.2",
+        "official:0:10": "221",
+        "official:0:11": "300",
+        "official:0:12": "33（空簧高度最高）",
+        "official:0:13": "34（空簧高度最高）",
+        "official:0:14": "1050",
+        "official:0:15": "国六b",
+        "official:0:16": "200",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "—",
+        "official:1:13": "●",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:1:15": "●",
+        "official:1:16": "—",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:1:18": "—",
+        "official:1:19": "●",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:1:24": "●",
+        "official:1:25": "官网未单独列明，请查看来源",
+        "official:1:26": "●",
+        "official:1:27": "●",
+        "official:1:28": "O",
+        "official:2:0": "插电混动",
+        "official:2:1": "●",
+        "official:2:2": "三电机四驱",
+        "official:2:3": "1.5TD混动专用发动机",
+        "official:2:4": "4",
+        "official:2:5": "1499",
+        "official:2:6": "涡轮增压",
+        "official:2:7": "48.41%",
+        "official:2:8": "120",
+        "official:2:9": "255",
+        "official:2:10": "三挡越野电混专用电驱",
+        "official:2:11": "永磁同步电机",
+        "official:2:12": "前置（P3）+后置（P4×2）",
+        "official:2:13": "三电机",
+        "official:2:14": "230",
+        "official:2:15": "350",
+        "official:2:16": "340",
+        "official:2:17": "560",
+        "official:2:18": "690",
+        "official:2:19": "1165",
+        "official:2:20": "0.7",
+        "official:2:21": "官网未单独列明，请查看来源",
+        "official:2:22": "官网未单独列明，请查看来源",
+        "official:2:23": "官网未单独列明，请查看来源",
+        "official:2:24": "磷酸铁锂",
+        "official:2:25": "宁德时代",
+        "official:2:26": "47.14",
+        "official:2:27": "●",
+        "official:2:28": "8min25s",
+        "official:2:29": "400V",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "—",
+        "official:2:33": "600",
+        "official:2:34": "前铝合金双叉臂独立悬架",
+        "official:2:35": "后五连杆独立悬架",
+        "official:2:36": "●",
+        "official:2:37": "●",
+        "official:2:38": "●（限时免费赠送）",
+        "official:2:39": "—",
+        "official:2:40": "●",
+        "official:2:41": "●",
+        "official:2:42": "●",
+        "official:2:43": "●",
+        "official:2:44": "—",
+        "official:2:45": "●",
+        "official:2:46": "●",
+        "official:2:47": "●",
+        "official:2:48": "●",
+        "official:2:49": "●",
+        "official:2:50": "●",
+        "official:2:51": "●",
+        "official:2:52": "●",
+        "official:2:53": "●",
+        "official:2:54": "●",
+        "official:2:55": "●",
+        "official:2:56": "●",
+        "official:2:57": "●",
+        "official:2:58": "●",
+        "official:2:59": "●",
+        "official:2:60": "●",
+        "official:2:61": "●",
+        "official:2:62": "●",
+        "official:2:63": "—",
+        "official:3:0": "●",
+        "official:3:1": "—",
+        "official:3:2": "●（限时免费赠送）",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "—",
+        "official:3:6": "●",
+        "official:3:7": "8向电动调节",
+        "official:3:8": "●",
+        "official:3:9": "6向电动调节",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●",
+        "official:3:22": "●",
+        "official:3:23": "●",
+        "official:3:24": "●",
+        "official:3:25": "●",
+        "official:3:26": "●",
+        "official:3:27": "皮质",
+        "official:3:28": "●",
+        "official:3:29": "●",
+        "official:3:30": "●",
+        "official:3:31": "●",
+        "official:3:32": "●",
+        "official:3:33": "●",
+        "official:3:34": "●",
+        "official:3:35": "●",
+        "official:3:36": "●",
+        "official:3:37": "●",
+        "official:3:38": "●",
+        "official:3:39": "●",
+        "official:3:40": "●",
+        "official:3:41": "●",
+        "official:4:0": "Flyme Auto 2",
+        "official:4:1": "龍鹰6P",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●（限时免费赠送）",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "5G",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "type A*1；type C*5",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "—",
+        "official:4:35": "●",
+        "official:4:36": "—",
+        "official:4:37": "●",
+        "official:4:38": "1个",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "—",
+        "official:4:49": "—",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "—",
+        "official:4:53": "—",
+        "official:4:54": "—",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "●",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "—",
+        "official:4:72": "—",
+        "official:4:73": "—",
+        "official:4:74": "—",
+        "official:4:75": "—",
+        "official:4:76": "—",
+        "official:4:77": "●",
+        "official:4:78": "●",
+        "official:4:79": "●",
+        "official:4:80": "●",
+        "official:4:81": "●",
+        "official:4:82": "—",
+        "official:4:83": "●",
+        "official:4:84": "—",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "●",
+        "official:4:92": "3个",
+        "official:4:93": "12个",
+        "official:4:94": "11个",
+        "official:4:95": "●",
+        "official:4:96": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "—",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "前2后1",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:5:34": "●",
+        "official:5:36": "—",
+        "official:5:37": "—",
+        "official:5:38": "—",
+        "official:5:39": "—",
+        "official:5:40": "—",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-zhanjian-700-official-5",
+      "name": "270km 2.0T 三电机四驱 顶峰版",
+      "values": {
+        "official:0:0": "5085*1999*1912",
+        "official:0:1": "2900",
+        "official:0:2": "5座",
+        "official:0:3": "2750",
+        "official:0:4": "92号及以上",
+        "official:0:5": "7.25",
+        "official:0:6": "270",
+        "official:0:7": "1470",
+        "official:0:8": "80",
+        "official:0:9": "3.95",
+        "official:0:10": "221",
+        "official:0:11": "300",
+        "official:0:12": "33（空簧高度最高）",
+        "official:0:13": "34（空簧高度最高）",
+        "official:0:14": "1050",
+        "official:0:15": "国六b",
+        "official:0:16": "220",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "—",
+        "official:1:13": "●",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:1:15": "●",
+        "official:1:16": "O",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:1:18": "O 265/65 R18",
+        "official:1:19": "—",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:1:24": "●",
+        "official:1:25": "官网未单独列明，请查看来源",
+        "official:1:26": "●",
+        "official:1:27": "●",
+        "official:1:28": "O",
+        "official:2:0": "插电混动",
+        "official:2:1": "●",
+        "official:2:2": "三电机四驱",
+        "official:2:3": "2.0TD 越野混动专用发动机",
+        "official:2:4": "4",
+        "official:2:5": "1999",
+        "official:2:6": "涡轮增压",
+        "official:2:7": "48.41%",
+        "official:2:8": "160",
+        "official:2:9": "360",
+        "official:2:10": "三挡越野电混专用电驱",
+        "official:2:11": "永磁同步电机",
+        "official:2:12": "前置（P3）+后置（P4×2）",
+        "official:2:13": "三电机",
+        "official:2:14": "230",
+        "official:2:15": "350",
+        "official:2:16": "440",
+        "official:2:17": "620",
+        "official:2:18": "830",
+        "official:2:19": "1330",
+        "official:2:20": "1",
+        "official:2:21": "官网未单独列明，请查看来源",
+        "official:2:22": "官网未单独列明，请查看来源",
+        "official:2:23": "官网未单独列明，请查看来源",
+        "official:2:24": "磷酸铁锂",
+        "official:2:25": "宁德时代",
+        "official:2:26": "47.14",
+        "official:2:27": "●",
+        "official:2:28": "8min25s",
+        "official:2:29": "400V",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "●",
+        "official:2:33": "800",
+        "official:2:34": "前铝合金双叉臂独立悬架",
+        "official:2:35": "后铝合金双叉臂独立悬架",
+        "official:2:36": "●",
+        "official:2:37": "●",
+        "official:2:38": "●（限时免费赠送）",
+        "official:2:39": "●",
+        "official:2:40": "●",
+        "official:2:41": "●",
+        "official:2:42": "●",
+        "official:2:43": "●",
+        "official:2:44": "●",
+        "official:2:45": "●",
+        "official:2:46": "●",
+        "official:2:47": "●",
+        "official:2:48": "●",
+        "official:2:49": "●",
+        "official:2:50": "●",
+        "official:2:51": "●",
+        "official:2:52": "●",
+        "official:2:53": "●",
+        "official:2:54": "●",
+        "official:2:55": "●",
+        "official:2:56": "●",
+        "official:2:57": "●",
+        "official:2:58": "●",
+        "official:2:59": "●",
+        "official:2:60": "●",
+        "official:2:61": "●",
+        "official:2:62": "●",
+        "official:2:63": "O",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●（限时免费赠送）",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "8向电动调节",
+        "official:3:8": "●",
+        "official:3:9": "6向电动调节",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●",
+        "official:3:22": "●",
+        "official:3:23": "●",
+        "official:3:24": "●",
+        "official:3:25": "●",
+        "official:3:26": "●",
+        "official:3:27": "皮质",
+        "official:3:28": "●",
+        "official:3:29": "●",
+        "official:3:30": "●",
+        "official:3:31": "●",
+        "official:3:32": "●",
+        "official:3:33": "●",
+        "official:3:34": "●",
+        "official:3:35": "●",
+        "official:3:36": "●",
+        "official:3:37": "●",
+        "official:3:38": "●",
+        "official:3:39": "●",
+        "official:3:40": "●",
+        "official:3:41": "●",
+        "official:4:0": "Flyme Auto 2",
+        "official:4:1": "龍鹰6P",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●（限时免费赠送）",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "5G",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "type A*1；type C*5",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "●",
+        "official:4:35": "—",
+        "official:4:36": "●",
+        "official:4:37": "—",
+        "official:4:38": "1个",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "●",
+        "official:4:49": "●",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "●",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "●",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "●",
+        "official:4:72": "●",
+        "official:4:73": "●",
+        "official:4:74": "●",
+        "official:4:75": "●",
+        "official:4:76": "●",
+        "official:4:77": "●",
+        "official:4:78": "●",
+        "official:4:79": "●",
+        "official:4:80": "●",
+        "official:4:81": "●",
+        "official:4:82": "●",
+        "official:4:83": "●",
+        "official:4:84": "●",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "●",
+        "official:4:92": "3个",
+        "official:4:93": "12个",
+        "official:4:94": "11个",
+        "official:4:95": "●",
+        "official:4:96": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "前2后2",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:5:34": "●",
+        "official:5:36": "—",
+        "official:5:37": "—",
+        "official:5:38": "—",
+        "official:5:39": "—",
+        "official:5:40": "—",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    },
+    {
+      "id": "galaxy-zhanjian-700-official-6",
+      "name": "陆地方舟版",
+      "values": {
+        "official:0:0": "5085*1999*1912",
+        "official:0:1": "2900",
+        "official:0:2": "5座",
+        "official:0:3": "2870",
+        "official:0:4": "92号及以上",
+        "official:0:5": "7.25",
+        "official:0:6": "270",
+        "official:0:7": "1470",
+        "official:0:8": "80",
+        "official:0:9": "3.95",
+        "official:0:10": "233",
+        "official:0:11": "313",
+        "official:0:12": "30",
+        "official:0:13": "27",
+        "official:0:14": "1050",
+        "official:0:15": "国六b",
+        "official:0:16": "220",
+        "official:1:0": "●",
+        "official:1:1": "●",
+        "official:1:2": "●",
+        "official:1:3": "●",
+        "official:1:4": "●",
+        "official:1:5": "●",
+        "official:1:6": "●",
+        "official:1:7": "●",
+        "official:1:8": "●",
+        "official:1:9": "●",
+        "official:1:10": "●",
+        "official:1:11": "●",
+        "official:1:12": "—",
+        "official:1:13": "●",
+        "official:1:14": "官网未单独列明，请查看来源",
+        "official:1:15": "●",
+        "official:1:16": "O",
+        "official:1:17": "官网未单独列明，请查看来源",
+        "official:1:18": "O 265/65 R18",
+        "official:1:19": "—",
+        "official:1:20": "●",
+        "official:1:21": "●",
+        "official:1:22": "●",
+        "official:1:23": "●",
+        "official:1:24": "●",
+        "official:1:25": "官网未单独列明，请查看来源",
+        "official:1:26": "●",
+        "official:1:27": "●",
+        "official:1:28": "O",
+        "official:2:0": "插电混动",
+        "official:2:1": "●",
+        "official:2:2": "三电机四驱",
+        "official:2:3": "2.0TD 越野混动专用发动机",
+        "official:2:4": "4",
+        "official:2:5": "1999",
+        "official:2:6": "涡轮增压",
+        "official:2:7": "48.41%",
+        "official:2:8": "160",
+        "official:2:9": "360",
+        "official:2:10": "三挡越野电混专用电驱",
+        "official:2:11": "永磁同步电机",
+        "official:2:12": "前置（P3）+后置（P4×2）",
+        "official:2:13": "三电机",
+        "official:2:14": "230",
+        "official:2:15": "350",
+        "official:2:16": "440",
+        "official:2:17": "620",
+        "official:2:18": "830",
+        "official:2:19": "1330",
+        "official:2:20": "1",
+        "official:2:21": "官网未单独列明，请查看来源",
+        "official:2:22": "官网未单独列明，请查看来源",
+        "official:2:23": "智能全地形●/雪地●/泥地●/沙地●/岩石●/戈壁●/应急漂浮脱困●",
+        "official:2:24": "磷酸铁锂",
+        "official:2:25": "宁德时代",
+        "official:2:26": "47.14",
+        "official:2:27": "●",
+        "official:2:28": "8min25s",
+        "official:2:29": "400V",
+        "official:2:30": "●",
+        "official:2:31": "●",
+        "official:2:32": "●",
+        "official:2:33": "800",
+        "official:2:34": "前铝合金双叉臂独立悬架",
+        "official:2:35": "后铝合金双叉臂独立悬架",
+        "official:2:36": "●",
+        "official:2:37": "—",
+        "official:2:38": "—",
+        "official:2:39": "●",
+        "official:2:40": "●",
+        "official:2:41": "●",
+        "official:2:42": "●",
+        "official:2:43": "●",
+        "official:2:44": "●",
+        "official:2:45": "●",
+        "official:2:46": "●",
+        "official:2:47": "—",
+        "official:2:48": "●",
+        "official:2:49": "●",
+        "official:2:50": "●",
+        "official:2:51": "●",
+        "official:2:52": "●",
+        "official:2:53": "●",
+        "official:2:54": "●",
+        "official:2:55": "●",
+        "official:2:56": "●",
+        "official:2:57": "●",
+        "official:2:58": "●",
+        "official:2:59": "●",
+        "official:2:60": "●",
+        "official:2:61": "●",
+        "official:2:62": "●",
+        "official:2:63": "●",
+        "official:3:0": "●",
+        "official:3:1": "●",
+        "official:3:2": "●（限时免费赠送）",
+        "official:3:3": "●",
+        "official:3:4": "●",
+        "official:3:5": "●",
+        "official:3:6": "●",
+        "official:3:7": "8向电动调节",
+        "official:3:8": "●",
+        "official:3:9": "6向电动调节",
+        "official:3:10": "●",
+        "official:3:11": "●",
+        "official:3:12": "●",
+        "official:3:13": "●",
+        "official:3:14": "●",
+        "official:3:15": "●",
+        "official:3:16": "●",
+        "official:3:17": "●",
+        "official:3:18": "●",
+        "official:3:19": "●",
+        "official:3:20": "●",
+        "official:3:21": "●",
+        "official:3:22": "●",
+        "official:3:23": "●",
+        "official:3:24": "●",
+        "official:3:25": "●",
+        "official:3:26": "●",
+        "official:3:27": "皮质",
+        "official:3:28": "●",
+        "official:3:29": "●",
+        "official:3:30": "●",
+        "official:3:31": "●",
+        "official:3:32": "●",
+        "official:3:33": "●",
+        "official:3:34": "●",
+        "official:3:35": "●",
+        "official:3:36": "●",
+        "official:3:37": "●",
+        "official:3:38": "●",
+        "official:3:39": "●",
+        "official:3:40": "●",
+        "official:3:41": "●",
+        "official:4:0": "Flyme Auto 2",
+        "official:4:1": "龍鹰6P",
+        "official:4:2": "●",
+        "official:4:3": "●",
+        "official:4:4": "●",
+        "official:4:5": "●",
+        "official:4:6": "●",
+        "official:4:7": "●",
+        "official:4:8": "●（限时免费赠送）",
+        "official:4:9": "●",
+        "official:4:10": "●",
+        "official:4:11": "●",
+        "official:4:12": "●",
+        "official:4:13": "●",
+        "official:4:14": "●",
+        "official:4:15": "●",
+        "official:4:16": "●",
+        "official:4:17": "●",
+        "official:4:18": "●",
+        "official:4:19": "●",
+        "official:4:20": "●",
+        "official:4:21": "●",
+        "official:4:22": "●",
+        "official:4:23": "●",
+        "official:4:24": "●",
+        "official:4:25": "●",
+        "official:4:26": "5G",
+        "official:4:27": "●",
+        "official:4:28": "●",
+        "official:4:29": "●",
+        "official:4:30": "type A*1；type C*5",
+        "official:4:31": "●",
+        "official:4:32": "●",
+        "official:4:33": "●",
+        "official:4:34": "●",
+        "official:4:35": "—",
+        "official:4:36": "●",
+        "official:4:37": "—",
+        "official:4:38": "1个",
+        "official:4:39": "●",
+        "official:4:40": "●",
+        "official:4:41": "●",
+        "official:4:42": "●",
+        "official:4:43": "●",
+        "official:4:44": "●",
+        "official:4:45": "●",
+        "official:4:46": "●",
+        "official:4:47": "●",
+        "official:4:48": "●",
+        "official:4:49": "●",
+        "official:4:50": "●",
+        "official:4:51": "●",
+        "official:4:52": "●",
+        "official:4:53": "●",
+        "official:4:54": "●",
+        "official:4:55": "●",
+        "official:4:56": "●",
+        "official:4:57": "●",
+        "official:4:58": "●",
+        "official:4:59": "●",
+        "official:4:60": "●",
+        "official:4:61": "●",
+        "official:4:62": "●",
+        "official:4:63": "●",
+        "official:4:64": "●",
+        "official:4:65": "●",
+        "official:4:66": "●",
+        "official:4:67": "●",
+        "official:4:68": "●",
+        "official:4:69": "●",
+        "official:4:70": "●",
+        "official:4:71": "●",
+        "official:4:72": "●",
+        "official:4:73": "●",
+        "official:4:74": "●",
+        "official:4:75": "●",
+        "official:4:76": "●",
+        "official:4:77": "●",
+        "official:4:78": "●",
+        "official:4:79": "●",
+        "official:4:80": "●",
+        "official:4:81": "●",
+        "official:4:82": "●",
+        "official:4:83": "●",
+        "official:4:84": "●",
+        "official:4:85": "●",
+        "official:4:86": "●",
+        "official:4:87": "●",
+        "official:4:88": "●",
+        "official:4:89": "●",
+        "official:4:90": "●",
+        "official:4:91": "●",
+        "official:4:92": "3个",
+        "official:4:93": "12个",
+        "official:4:94": "12个",
+        "official:4:95": "●",
+        "official:4:96": "●",
+        "official:5:0": "●",
+        "official:5:1": "●",
+        "official:5:2": "●",
+        "official:5:3": "●",
+        "official:5:4": "●",
+        "official:5:5": "●",
+        "official:5:6": "●",
+        "official:5:7": "●",
+        "official:5:8": "●",
+        "official:5:9": "前2后2",
+        "official:5:10": "●",
+        "official:5:11": "●",
+        "official:5:12": "●",
+        "official:5:13": "●",
+        "official:5:14": "●",
+        "official:5:15": "●",
+        "official:5:16": "●",
+        "official:5:17": "●",
+        "official:5:18": "●",
+        "official:5:19": "●",
+        "official:5:20": "●",
+        "official:5:21": "●",
+        "official:5:22": "●",
+        "official:5:23": "●",
+        "official:5:24": "●",
+        "official:5:25": "●",
+        "official:5:26": "●",
+        "official:5:27": "●",
+        "official:5:28": "●",
+        "official:5:29": "●",
+        "official:5:30": "●",
+        "official:5:31": "●",
+        "official:5:32": "●",
+        "official:5:33": "●",
+        "official:5:34": "●",
+        "official:5:36": "●",
+        "official:5:37": "●",
+        "official:5:38": "●",
+        "official:5:39": "●",
+        "official:5:40": "●",
+        "official:scope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/galaxy-zhanjian-700.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.galaxy-geely.com/ZJ700"
+    }
+  ],
+  "sourceUrl": "https://www.galaxy-geely.com/ZJ700",
+  "sourceScope": "官网当前配置；空白合并单元格请查看原表，OTA、辅助驾驶及选装条件以官网说明和实际交付为准。",
+  "configurationCoverage": "published-table",
+  "sourceDocuments": [
+    {
+      "localEvidence": "galaxy-700",
+      "sha256": "87f72c2e917bb05de4c513feb29368fb6d286569a7e2455c9d38c42175487745"
+    }
+  ]
+}

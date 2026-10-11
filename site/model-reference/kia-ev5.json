@@ -1,0 +1,737 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "kia-ev5",
+  "brandZh": "Kia",
+  "modelZh": "EV5",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "基础参数",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "长×宽×高 (mm)"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距 (mm)"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最小转弯半径 (m)"
+        },
+        {
+          "key": "official:0:3",
+          "label": "轮胎规格"
+        },
+        {
+          "key": "official:0:4",
+          "label": "整备质量 (kg)"
+        }
+      ]
+    },
+    {
+      "name": "动力",
+      "rows": [
+        {
+          "key": "official:1:0",
+          "label": "驱动形式"
+        },
+        {
+          "key": "official:1:1",
+          "label": "电机类型"
+        },
+        {
+          "key": "official:1:2",
+          "label": "电池类型"
+        },
+        {
+          "key": "official:1:3",
+          "label": "电机功率 (kW)"
+        },
+        {
+          "key": "official:1:4",
+          "label": "电机扭矩 (N·m)"
+        },
+        {
+          "key": "official:1:5",
+          "label": "最高车速 (km/h)"
+        },
+        {
+          "key": "official:1:6",
+          "label": "电池能量 (kWh)"
+        },
+        {
+          "key": "official:1:7",
+          "label": "CLTC续航里程 (km)"
+        },
+        {
+          "key": "official:1:8",
+          "label": "快充时间 (30-80%)"
+        }
+      ]
+    },
+    {
+      "name": "底盘",
+      "rows": [
+        {
+          "key": "official:2:0",
+          "label": "悬架类型"
+        },
+        {
+          "key": "official:2:1",
+          "label": "制动器类型"
+        },
+        {
+          "key": "official:2:2",
+          "label": "转向器类型"
+        }
+      ]
+    },
+    {
+      "name": "电池管理",
+      "rows": [
+        {
+          "key": "official:4:2",
+          "label": "V2L 220V电源输出"
+        }
+      ]
+    },
+    {
+      "name": "外部配置",
+      "rows": [
+        {
+          "key": "official:5:2",
+          "label": "LED前后转向灯"
+        },
+        {
+          "key": "official:5:14",
+          "label": "隐藏式电动门把手"
+        }
+      ]
+    },
+    {
+      "name": "舒享座椅",
+      "rows": [
+        {
+          "key": "official:7:0",
+          "label": "环保工艺座椅"
+        },
+        {
+          "key": "official:7:7",
+          "label": "驾驶席电动座椅"
+        },
+        {
+          "key": "official:7:11",
+          "label": "副驾驶席电动座椅"
+        }
+      ]
+    },
+    {
+      "name": "智能座舱",
+      "rows": [
+        {
+          "key": "official:8:11",
+          "label": "哈曼卡顿音响系统(8扬声器)"
+        }
+      ]
+    },
+    {
+      "name": "智能行车辅助",
+      "rows": [
+        {
+          "key": "official:9:0",
+          "label": "摄像头"
+        },
+        {
+          "key": "official:9:1",
+          "label": "超声波雷达"
+        },
+        {
+          "key": "official:9:2",
+          "label": "芯片"
+        },
+        {
+          "key": "official:9:3",
+          "label": "毫米波雷达"
+        }
+      ]
+    },
+    {
+      "name": "整车安全配置",
+      "rows": [
+        {
+          "key": "official:11:5",
+          "label": "防夹安全车窗"
+        }
+      ]
+    },
+    {
+      "name": "选装包",
+      "rows": [
+        {
+          "key": "official:12:0",
+          "label": "① 隐藏式电动门把手"
+        },
+        {
+          "key": "official:12:1",
+          "label": "④ 电子防眩目内后视镜 (ECM w/ETCS)"
+        },
+        {
+          "key": "official:12:2",
+          "label": "⑤ 便携式充电枪 (ICCB)"
+        },
+        {
+          "key": "official:12:3",
+          "label": "③ 哈曼卡顿音响系统(8扬声器)"
+        },
+        {
+          "key": "official:12:4",
+          "label": "② 数字钥匙  (BLE&NFC&UWB)"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "kia-ev5-official-1",
+      "name": "530 Light",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "1,870",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "64.2",
+        "official:1:7": "530",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "官网未单独列明，请查看来源",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "*选装",
+        "official:7:0": "织物",
+        "official:7:7": "8向电动",
+        "official:7:11": "官网未单独列明，请查看来源",
+        "official:8:11": "官网未单独列明，请查看来源",
+        "official:9:0": "1",
+        "official:9:1": "8",
+        "official:9:2": "官网未单独列明，请查看来源",
+        "official:9:3": "官网未单独列明，请查看来源",
+        "official:11:5": "驾驶席",
+        "official:12:0": "*选装",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "官网未单独列明，请查看来源",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-2",
+      "name": "530 Air",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "1,870",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "64.2",
+        "official:1:7": "530",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "8向电动",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "1",
+        "official:9:1": "8",
+        "official:9:2": "官网未单独列明，请查看来源",
+        "official:9:3": "官网未单独列明，请查看来源",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-3",
+      "name": "530 Land",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "1,870",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "64.2",
+        "official:1:7": "530",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "8向电动",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "1",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-4",
+      "name": "720 Light",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "2,030",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "720",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "官网未单独列明，请查看来源",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "*选装",
+        "official:7:0": "植物皮革",
+        "official:7:7": "8向电动",
+        "official:7:11": "官网未单独列明，请查看来源",
+        "official:8:11": "官网未单独列明，请查看来源",
+        "official:9:0": "1",
+        "official:9:1": "8",
+        "official:9:2": "官网未单独列明，请查看来源",
+        "official:9:3": "官网未单独列明，请查看来源",
+        "official:11:5": "驾驶席",
+        "official:12:0": "*选装",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "官网未单独列明，请查看来源",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-5",
+      "name": "720 Air",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "2,030",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "720",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "8向电动",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "1",
+        "official:9:1": "8",
+        "official:9:2": "官网未单独列明，请查看来源",
+        "official:9:3": "官网未单独列明，请查看来源",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-6",
+      "name": "720 Land",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "2,030",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "720",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "12向电动\n(含4向电动腰托)",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "1",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-7",
+      "name": "720 Wave",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "225/60 R18",
+        "official:0:4": "2,030",
+        "official:1:0": "单电机前驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160",
+        "official:1:4": "310",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "720",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢+充电口(带转接头)",
+        "official:5:2": "流光效果",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "官网未单独列明，请查看来源",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "5",
+        "official:11:5": "四门",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "*选装",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-8",
+      "name": "630 Land AWD",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "235/55 R19",
+        "official:0:4": "2,130",
+        "official:1:0": "双电机四驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160+73",
+        "official:1:4": "310+170",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "630",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "12向电动\n(含4向电动腰托)",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "1",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-9",
+      "name": "630 Wave AWD",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "235/55 R19",
+        "official:0:4": "2,130",
+        "official:1:0": "双电机四驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160+73",
+        "official:1:4": "310+170",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "630",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢+充电口(带转接头)",
+        "official:5:2": "流光效果",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "官网未单独列明，请查看来源",
+        "official:7:11": "4向电动",
+        "official:8:11": "*选装",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "5",
+        "official:11:5": "四门",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "*选装",
+        "official:12:4": "*选装",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-10",
+      "name": "580 Air AWD GT-Line",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "255/45 R20",
+        "official:0:4": "2,230",
+        "official:1:0": "双电机四驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160+73",
+        "official:1:4": "310+170",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "580",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "8向电动",
+        "official:7:11": "4向电动",
+        "official:8:11": "官网未单独列明，请查看来源",
+        "official:9:0": "1",
+        "official:9:1": "8",
+        "official:9:2": "官网未单独列明，请查看来源",
+        "official:9:3": "官网未单独列明，请查看来源",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "官网未单独列明，请查看来源",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-11",
+      "name": "580 Land AWD GT-Line",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "255/45 R20",
+        "official:0:4": "2,230",
+        "official:1:0": "双电机四驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160+73",
+        "official:1:4": "310+170",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "580",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢",
+        "official:5:2": "官网未单独列明，请查看来源",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "12向电动\n(含4向电动腰托)",
+        "official:7:11": "4向电动",
+        "official:8:11": "官网未单独列明，请查看来源",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "1",
+        "official:11:5": "驾驶席",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "官网未单独列明，请查看来源",
+        "official:12:4": "官网未单独列明，请查看来源",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "kia-ev5-official-12",
+      "name": "580 Wave AWD GT-Line",
+      "values": {
+        "official:0:0": "4,615 × 1,875 × 1,715",
+        "official:0:1": "2,750",
+        "official:0:2": "5.87",
+        "official:0:3": "255/45 R20",
+        "official:0:4": "2,230",
+        "official:1:0": "双电机四驱",
+        "official:1:1": "永磁同步电机",
+        "official:1:2": "磷酸铁锂电池",
+        "official:1:3": "160+73",
+        "official:1:4": "310+170",
+        "official:1:5": "185",
+        "official:1:6": "88.1",
+        "official:1:7": "580",
+        "official:1:8": "最快27min",
+        "official:2:0": "前麦弗逊式独立悬架 / 后五连杆式独立悬架",
+        "official:2:1": "前通风盘式 / 后盘式",
+        "official:2:2": "电子助力转向",
+        "official:4:2": "后备厢+充电口(带转接头)",
+        "official:5:2": "流光效果",
+        "official:5:14": "官网未单独列明，请查看来源",
+        "official:7:0": "植物皮革",
+        "official:7:7": "官网未单独列明，请查看来源",
+        "official:7:11": "4向电动",
+        "official:8:11": "官网未单独列明，请查看来源",
+        "official:9:0": "5",
+        "official:9:1": "12",
+        "official:9:2": "EyeQ4",
+        "official:9:3": "5",
+        "official:11:5": "四门",
+        "official:12:0": "官网未单独列明，请查看来源",
+        "official:12:1": "*选装",
+        "official:12:2": "*选装",
+        "official:12:3": "官网未单独列明，请查看来源",
+        "official:12:4": "*选装",
+        "official:scope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/kia-ev5.png",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.kia.cn/vehicles/"
+    }
+  ],
+  "sourceUrl": "https://www.kia.cn/vehicles/ev5/specs/153/",
+  "sourceScope": "EV5；已核实官网技术参数，完整选装表及具体出口配置需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "kia-ev5-variants",
+      "sha256": "832895d340a5827d228067aaf3e5d408e1a1b83e67dc036ed5553fa2b8ddd5b2"
+    },
+    {
+      "localEvidence": "kia-cmdc",
+      "sha256": "43878b0748f9031e9e2cdc3b2314168d4bc59de12b9876ece238492c7cdfdf21"
+    }
+  ]
+}

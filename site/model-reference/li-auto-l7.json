@@ -1,0 +1,24 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "li-auto-l7",
+  "brandZh": "Li Auto",
+  "modelZh": "L7",
+  "checkedAt": "2026-10-11",
+  "status": "configuration-pending-verification",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [],
+  "groups": [],
+  "variants": [],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/li-auto-l7.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://ir.lixiang.com/news-releases/news-release-details/li-auto-inc-launches-li-l7-five-seat-flagship-family-suv"
+    }
+  ],
+  "sourceUrl": "https://www.lixiang.com/configuration.html",
+  "sourceScope": "官网当前车系选择器未列出L7，当前配置列表为空；当前在售版本待核实，不使用旧代参数。",
+  "configurationCoverage": "pending"
+}

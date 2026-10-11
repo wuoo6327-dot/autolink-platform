@@ -1,0 +1,149 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "bmw-brilliance-i5",
+  "brandZh": "BMW Brilliance",
+  "modelZh": "i5",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "技术数据",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "车长/车宽/车高（毫米）"
+        },
+        {
+          "key": "official:0:1",
+          "label": "轴距（毫米）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "电动机输出功率（千瓦）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "扭矩（牛米）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "百公里电耗（千瓦时/百公里）"
+        },
+        {
+          "key": "official:0:5",
+          "label": "续航里程（CLTC）（公里）"
+        },
+        {
+          "key": "official:0:6",
+          "label": "最高车速（公里/小时）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "0-100公里/小时（秒）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "充电时间10-80%，直流快充（分钟）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "充电时间0-100%，交流充电（小时）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "电池容量（千瓦时）"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "bmw-brilliance-i5-official-1",
+      "name": "i5 eDrive35L M运动套装",
+      "values": {
+        "official:0:0": "5175/1900/1520",
+        "official:0:1": "3105",
+        "official:0:2": "200",
+        "official:0:3": "410",
+        "official:0:4": "14.8",
+        "official:0:5": "602",
+        "official:0:6": "190",
+        "official:0:7": "6.7",
+        "official:0:8": "33",
+        "official:0:9": "13",
+        "official:0:10": "81.6",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-i5-official-2",
+      "name": "i5 eDrive40L M运动套装",
+      "values": {
+        "official:0:0": "5175/1900/1520",
+        "official:0:1": "3105",
+        "official:0:2": "240",
+        "official:0:3": "410",
+        "official:0:4": "14.7",
+        "official:0:5": "713",
+        "official:0:6": "190",
+        "official:0:7": "6.7",
+        "official:0:8": "33",
+        "official:0:9": "15.5",
+        "official:0:10": "97",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    },
+    {
+      "id": "bmw-brilliance-i5-official-3",
+      "name": "i5 xDrive50L M运动套装",
+      "values": {
+        "official:0:0": "5175/1900/1520",
+        "official:0:1": "3105",
+        "official:0:2": "385",
+        "official:0:3": "775",
+        "official:0:4": "16",
+        "official:0:5": "651",
+        "official:0:6": "190",
+        "official:0:7": "4.2",
+        "official:0:8": "33",
+        "official:0:9": "15.5",
+        "official:0:10": "97",
+        "official:scope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/bmw-brilliance-i5.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.bmw.com.cn/zh/all-models/bmw-i/i5/2024/inspire.html"
+    }
+  ],
+  "sourceUrl": "https://www.bmw.com.cn/content/dam/bmw/marketCN/bmw_com_cn/specsheet/G68BEV.pdf.asset.1785503299417.pdf",
+  "sourceScope": "官方当前公开配置；是否可供货及出口版本需向供应商确认。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "bmw-i5-spec-pdf",
+      "sha256": "a5bfb11a051869681bcae51ecc750cdae246d66259c1957ea16c4069aab82f21"
+    }
+  ]
+}

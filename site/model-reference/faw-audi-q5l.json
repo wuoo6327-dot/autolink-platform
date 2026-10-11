@@ -1,0 +1,250 @@
+{
+  "provider": "Manufacturer",
+  "modelId": "faw-audi-q5l",
+  "brandZh": "FAW Audi",
+  "modelZh": "Q5L",
+  "checkedAt": "2026-10-11",
+  "status": "official-configuration",
+  "market": "China",
+  "yearUnspecified": true,
+  "availableYears": [
+    ""
+  ],
+  "groups": [
+    {
+      "name": "技术数据",
+      "rows": [
+        {
+          "key": "official:0:0",
+          "label": "发动机"
+        },
+        {
+          "key": "official:0:1",
+          "label": "排量（cm³）"
+        },
+        {
+          "key": "official:0:2",
+          "label": "最大功率（kW）"
+        },
+        {
+          "key": "official:0:3",
+          "label": "最大扭矩（N·m）"
+        },
+        {
+          "key": "official:0:4",
+          "label": "驱动方式"
+        },
+        {
+          "key": "official:0:5",
+          "label": "变速器"
+        },
+        {
+          "key": "official:0:6",
+          "label": "0-100km/h（s）"
+        },
+        {
+          "key": "official:0:7",
+          "label": "最高车速（km/h）"
+        },
+        {
+          "key": "official:0:8",
+          "label": "WLTC油耗（L/100km）"
+        },
+        {
+          "key": "official:0:9",
+          "label": "长×宽×高（mm）"
+        },
+        {
+          "key": "official:0:10",
+          "label": "轴距（mm）"
+        },
+        {
+          "key": "official:0:11",
+          "label": "行李箱容积（L）"
+        },
+        {
+          "key": "official:0:12",
+          "label": "油箱容积（L）"
+        },
+        {
+          "key": "official:0:13",
+          "label": "整备质量（kg）"
+        },
+        {
+          "key": "official:0:14",
+          "label": "允许总重量（kg）"
+        },
+        {
+          "key": "official:0:15",
+          "label": "最小转弯直径（mm）"
+        },
+        {
+          "key": "official:0:16",
+          "label": "最小离地间隙（mm）"
+        },
+        {
+          "key": "official:0:17",
+          "label": "全域智混"
+        }
+      ]
+    },
+    {
+      "name": "资料适用范围",
+      "rows": [
+        {
+          "key": "official:scope",
+          "label": "来源与适用条件"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "faw-audi-q5l-official-1",
+      "name": "Q5L 智混豪华型",
+      "values": {
+        "official:0:0": "2.0L直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "150",
+        "official:0:3": "340",
+        "official:0:4": "quattro智能四轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "7.1",
+        "official:0:7": "220",
+        "official:0:8": "6.8",
+        "official:0:9": "4842×1900×1660",
+        "official:0:10": "2945",
+        "official:0:11": "494",
+        "official:0:12": "68",
+        "official:0:13": "2043",
+        "official:0:14": "2530",
+        "official:0:15": "11800",
+        "official:0:16": "159",
+        "official:0:17": "●",
+        "official:scope": "官网全新Q5L配置折页第15页技术数据；完整选装及交付条件请查看官方原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-q5l-official-2",
+      "name": "Q5L 千万用户专享版",
+      "values": {
+        "official:0:0": "2.0L直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "150",
+        "official:0:3": "340",
+        "official:0:4": "quattro智能四轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "7.1",
+        "official:0:7": "220",
+        "official:0:8": "6.98",
+        "official:0:9": "4842×1900×1660",
+        "official:0:10": "2945",
+        "official:0:11": "494",
+        "official:0:12": "68",
+        "official:0:13": "2043",
+        "official:0:14": "2530",
+        "official:0:15": "11800",
+        "official:0:16": "159",
+        "official:0:17": "●",
+        "official:scope": "官网全新Q5L配置折页第15页技术数据；完整选装及交付条件请查看官方原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-q5l-official-3",
+      "name": "Q5L 智混臻选型",
+      "values": {
+        "official:0:0": "2.0L直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "200",
+        "official:0:3": "400",
+        "official:0:4": "quattro智能四轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "5.8",
+        "official:0:7": "240",
+        "official:0:8": "7.19",
+        "official:0:9": "4842×1900×1660",
+        "official:0:10": "2945",
+        "official:0:11": "494",
+        "official:0:12": "68",
+        "official:0:13": "2067",
+        "official:0:14": "2540",
+        "official:0:15": "11800",
+        "official:0:16": "162",
+        "official:0:17": "●",
+        "official:scope": "官网全新Q5L配置折页第15页技术数据；完整选装及交付条件请查看官方原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-q5l-official-4",
+      "name": "Q5L 智混尊享型",
+      "values": {
+        "official:0:0": "2.0L直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "200",
+        "official:0:3": "400",
+        "official:0:4": "quattro智能四轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "5.8",
+        "official:0:7": "240",
+        "official:0:8": "7.19",
+        "official:0:9": "4842×1900×1660",
+        "official:0:10": "2945",
+        "official:0:11": "494",
+        "official:0:12": "68",
+        "official:0:13": "2067",
+        "official:0:14": "2540",
+        "official:0:15": "11800",
+        "official:0:16": "162",
+        "official:0:17": "●",
+        "official:scope": "官网全新Q5L配置折页第15页技术数据；完整选装及交付条件请查看官方原表。"
+      },
+      "year": ""
+    },
+    {
+      "id": "faw-audi-q5l-official-5",
+      "name": "Q5L 智混旗舰型",
+      "values": {
+        "official:0:0": "2.0L直列四缸",
+        "official:0:1": "1984",
+        "official:0:2": "200",
+        "official:0:3": "400",
+        "official:0:4": "quattro智能四轮驱动",
+        "official:0:5": "7速S tronic双离合变速器",
+        "official:0:6": "5.8",
+        "official:0:7": "240",
+        "official:0:8": "7.19",
+        "official:0:9": "4842×1900×1660",
+        "official:0:10": "2945",
+        "official:0:11": "494",
+        "official:0:12": "68",
+        "official:0:13": "2067",
+        "official:0:14": "2540",
+        "official:0:15": "11800",
+        "official:0:16": "162",
+        "official:0:17": "●",
+        "official:scope": "官网全新Q5L配置折页第15页技术数据；完整选装及交付条件请查看官方原表。"
+      },
+      "year": ""
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/catalog-update-20261011/faw-audi-q5l.jpg",
+      "category": "exterior",
+      "trim": "Official promotional image",
+      "source": "https://www.audi.cn/zh.html"
+    }
+  ],
+  "sourceUrl": "https://www.audi.cn/content/dam/OneWeb/faw_vw/pdf/202601/q5/全新奥迪Q5L折页.pdf",
+  "sourceScope": "官网全新Q5L配置折页第15页技术数据；完整选装及交付条件请查看官方原表。",
+  "configurationCoverage": "verified-core-specifications",
+  "sourceDocuments": [
+    {
+      "localEvidence": "audi-q5l-new-page-pdf",
+      "sha256": "64ed7a6870fa60276245c623eee3309850b3c70cc196ccf8227cae2b6db71a56"
+    }
+  ]
+}

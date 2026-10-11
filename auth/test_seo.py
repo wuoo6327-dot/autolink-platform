@@ -48,12 +48,12 @@ class PublicSEOTests(unittest.TestCase):
         with self.auth.connect() as db:return '\n'.join(db.iterdump())
     def test_initial_model_directory_and_detail_work_without_javascript(self):
         before=self.snapshot()
-        self.assertEqual(len(self.trade.catalog.models()),234)
+        self.assertEqual(len(self.trade.catalog.models()),244)
         status,body=self.seo.render('/trade/models?lang=zh')
         document=HTMLDocument(body.decode())
         self.assertEqual(status,200);self.assertIn('车型',document.title)
         self.assertIn('探索中国汽车车型。',document.h1)
-        self.assertIn('234',body.decode())
+        self.assertIn('244',body.decode())
         status,body=self.seo.render('/trade/models/aeolus-catalog-1?lang=zh')
         document=HTMLDocument(body.decode())
         self.assertEqual(status,200);self.assertIn('Haohan',document.title)
@@ -76,19 +76,38 @@ class PublicSEOTests(unittest.TestCase):
                 self.assertIn('index, follow' if language=='zh' else 'noindex, follow',next(item['content'] for item in document.metas if item.get('name')=='robots'))
                 self.assertEqual(document.html['lang'],LANGUAGE_TAGS[language])
                 self.assertEqual(document.html['dir'],'rtl' if language=='ar' else 'ltr')
-    def test_sitemap_has_195_complete_models_in_reviewed_source_language(self):
+
+    def test_model_and_brand_show_only_current_approved_public_supply(self):
+        model_path='/trade/models/zeekr-9x-2026'
+        brand_path='/trade/brands/zeekr'
+        self.assertIn('No approved vehicle listings yet.',self.seo.render(model_path)[1].decode())
+        listing=self.approved_vehicle()
+        for path in (model_path,brand_path):
+            body=self.seo.render(path)[1].decode()
+            self.assertIn('/trade/vehicles/'+listing,body)
+            self.assertIn('China Export Co',body)
+            for private in ('REG123','+8613800000000','buyer-a@example.com'):
+                self.assertNotIn(private,body)
+        self.trade.transition_vehicle(self.users['supplier-a'],listing,'offline')
+        for path in (model_path,brand_path):
+            self.assertNotIn('/trade/vehicles/'+listing,self.seo.render(path)[1].decode())
+    def test_sitemap_has_reviewed_source_and_english_models(self):
         root=ElementTree.fromstring(self.trade.sitemap_xml('models-1.xml'))
         ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
         urls=root.findall('s:url',ns)
         locations=[node.find('s:loc',ns).text for node in urls]
-        self.assertEqual(len(locations),195)
-        self.assertEqual(len(set(locations)),195)
-        self.assertTrue(all(url.endswith('?lang=zh') for url in locations))
-        self.assertFalse(any('omoda-catalog-1' in url for url in locations))
+        self.assertEqual(len(locations),199)
+        self.assertEqual(len(set(locations)),199)
+        self.assertEqual(sum(url.endswith('?lang=zh') for url in locations),177)
+        self.assertEqual(sum('?' not in url for url in locations),22)
+        self.assertFalse(any('byd-shark' in url for url in locations))
         for node in urls:
             actual={link.attrib['hreflang']:link.attrib['href'] for link in node.findall('x:link',ns)}
             path=node.find('s:loc',ns).text.split('autolinkglobal.com',1)[1].split('?',1)[0]
-            expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'zh')}
+            reviews=json.loads((Path(__file__).resolve().parent.parent/'site/locales/seo-model-en-reviewed.json').read_text())
+            english=reviews.get(path.rsplit('/',1)[-1],{}).get('status')=='approved'
+            expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'en' if english else 'zh')}
+            if english:expected['en']=localized_url(path,'en')
             self.assertEqual(actual,expected)
         self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('vehicles-1.xml')).findall('s:url',ns),[])
         self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('suppliers-1.xml')).findall('s:url',ns),[])
