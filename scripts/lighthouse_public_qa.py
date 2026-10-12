@@ -8,6 +8,7 @@ cli=Path(os.environ['LIGHTHOUSE_CLI'])
 base=os.environ.get('LIGHTHOUSE_BASE','http://127.0.0.1:18081')
 pages={
     'home':'/?lang=zh',
+    'home-en':'/',
     'model-detail':'/trade/models/zeekr-9x-2026?lang=zh',
     'brand-directory':'/trade/brands?lang=zh',
     'model-directory':'/trade/models?lang=zh',

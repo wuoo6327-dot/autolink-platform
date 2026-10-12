@@ -20,6 +20,7 @@ const languages=['en','zh','ar','ru','kk','uz','ko','fr','sw'];
   }
   await page.goto(base+'/?lang=zh',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelector('h1'));
+  await page.waitForSelector('button.language-trigger',{timeout:45000});
   await page.evaluate(()=>[...document.querySelectorAll('button')].find(x=>x.textContent.trim()==='仅必要项')?.click());
   const before=await page.$eval('h1',x=>x.innerText);
   result.languageControl=await page.evaluate(()=>{
@@ -42,17 +43,20 @@ const languages=['en','zh','ar','ru','kk','uz','ko','fr','sw'];
   result.mobileMenuOpened=menu;
   await page.setViewport({width:1440,height:900,deviceScaleFactor:1});
   await page.goto(base+'/?lang=en',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>document.querySelector('#root')?.innerText.length>100);
+  await page.waitForSelector('a[href="/buyer/login"]',{timeout:45000});
   result.viewports.desktop=await page.evaluate(()=>({h1:document.querySelector('h1')?.innerText,
    brands:document.querySelectorAll('a[href^="/trade/brands/"]').length,
    modelEntry:!!document.querySelector('a[href="/trade/models"]'),
    loginEntry:!!document.querySelector('a[href="/buyer/login"]')}));
+  result.mainScriptLoads=await page.evaluate(()=>performance.getEntriesByType('resource')
+   .filter(item=>item.name.includes('/assets/index-autolink-membership-apply-pricing.js'))
+   .map(item=>item.name));
   await page.evaluate(()=>[...document.querySelectorAll('button')].find(x=>x.textContent.trim()==='Necessary only')?.click());
   await page.evaluate(()=>[...document.querySelectorAll('a[href="/buyer/login"]')].find(x=>x.getBoundingClientRect().width>0)?.click());
   await page.waitForFunction(()=>location.pathname==='/buyer/login',{timeout:15000});
   result.loginNavigation=new URL(page.url()).pathname;
   await page.goto(base+'/?lang=en',{waitUntil:'domcontentloaded'});
-  await page.waitForSelector('a[href="/trade/models"]');
+  await page.waitForSelector('a[href="/buyer/login"]',{timeout:45000});
   await page.evaluate(()=>[...document.querySelectorAll('a[href="/trade/models"]')].find(x=>x.getBoundingClientRect().width>0)?.click());
   await page.waitForFunction(()=>location.pathname==='/trade/models',{timeout:15000});
   result.modelNavigation=new URL(page.url()).pathname;
@@ -62,6 +66,7 @@ const languages=['en','zh','ar','ru','kk','uz','ko','fr','sw'];
    &&result.viewports.mobile.modelEntry&&result.viewports.desktop.modelEntry
    &&result.viewports.mobile.loginEntry&&result.viewports.desktop.loginEntry
    &&result.mobileMenuOpened&&result.loginNavigation==='/buyer/login'&&result.modelNavigation==='/trade/models';
+  result.pass=result.pass&&result.mainScriptLoads.length===1&&result.mainScriptLoads[0].endsWith('?v=20261012-home-fast');
   fs.mkdirSync('tests/results',{recursive:true});
   fs.writeFileSync('tests/results/home-interaction-qa-20261012.json',JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify(result,null,2));

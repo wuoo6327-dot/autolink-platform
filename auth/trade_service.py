@@ -46,8 +46,11 @@ PUBLIC_VEHICLE_WHERE = """v.archived_at IS NULL AND v.status='ONLINE' AND """ + 
         WHERE cm.id=v.model_id AND cm.active=1 AND cb.active=1)"""
 SITEMAP_ORIGIN = 'https://autolinkglobal.com'
 SITEMAP_PAGE_SIZE = 5000
+# Only routes with a crawlable, self-canonical initial document belong here.
+# /membership currently serves the homepage shell, while /support initially
+# serves a client-only shell; both remain accessible through normal navigation.
 SITEMAP_STATIC_PATHS = ('/', '/about', '/trade/vehicles', '/trade/models', '/trade/brands',
-    '/trade/suppliers', '/membership', '/support', '/guide/middle-east-importers')
+    '/trade/suppliers', '/guide/middle-east-importers')
 
 
 def ident(prefix: str) -> str:
