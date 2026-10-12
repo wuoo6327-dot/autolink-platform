@@ -55,10 +55,17 @@
 	handle @support {
 		route {
 			try_files {path} /support/index.html
-			header Cache-Control "no-cache"
+			header {
+				Cache-Control "no-cache"
+				X-Robots-Tag "noindex, follow"
+			}
 			file_server
 		}
 	}
+	# Membership is a client route whose initial document is the homepage shell.
+	# Keep it navigable, but do not let crawlers index that duplicate shell.
+	@membership path /membership /membership/*
+	header @membership X-Robots-Tag "noindex, follow"
 	@contact path /contact /contact-us
 	redir @contact /support 302
 	@aboutFile path /about.html

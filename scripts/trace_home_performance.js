@@ -4,6 +4,7 @@ const path = require('path');
 const puppeteer = require('puppeteer-core');
 
 const base = process.env.TRACE_BASE || 'http://127.0.0.1:18081';
+const route = process.env.TRACE_PATH || '/?lang=zh';
 const output = process.env.TRACE_OUTPUT || 'tests/results/traces/home-mobile-baseline';
 const browserPath = process.env.CHROME_BINARY || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
@@ -36,7 +37,7 @@ const browserPath = process.env.CHROME_BINARY || '/Applications/Google Chrome.ap
       transferMode: 'ReturnAsStream'});
     await client.send('Profiler.start');
     const started = Date.now();
-    await page.goto(base + '/?lang=zh', {waitUntil: 'domcontentloaded', timeout: 90000});
+    await page.goto(base + route, {waitUntil: 'domcontentloaded', timeout: 90000});
     await page.waitForFunction(() => document.querySelector('#root')?.innerText.length > 100, {timeout: 90000});
     await page.waitForFunction(() => {
       const poster = document.querySelector('.journey-poster');

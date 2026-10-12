@@ -200,6 +200,10 @@ class TradeFlowTests(unittest.TestCase):
         self.assertNotIn('/admin',static)
         self.assertIn('https://autolinkglobal.com/about',static)
         self.assertNotIn('https://autolinkglobal.com/about?lang=',static)
+        # These routes are usable, but their initial HTML is not a distinct,
+        # self-canonical page and must not be advertised for indexing.
+        self.assertNotIn('https://autolinkglobal.com/membership',static)
+        self.assertNotIn('https://autolinkglobal.com/support',static)
         for missing in ('/help','/faq','/refund'):
             self.assertNotIn('https://autolinkglobal.com'+missing,static)
 
