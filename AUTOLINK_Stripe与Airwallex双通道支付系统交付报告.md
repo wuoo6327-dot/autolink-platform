@@ -25,7 +25,7 @@ Airwallex Checkout Sessions 的 [官方 API 文档](https://www.airwallex.com/do
 
 ## 3. 变更文件与固定候选
 
-代码提交：`d6844ee6d79425ca66eae4fab1d2a38a684e9206`，分支：`codex/membership-dual-payments-20261012`，基于 `fda95d7`。代码文件：`auth/membership_payments.py`、`auth/test_membership_payments.py`、`auth/app.py`、`auth/Dockerfile`、`compose.yaml`、`site/assets/membership-checkout.js`、`site/assets/membership-checkout.css`、`site/assets/index-autolink-membership-apply-pricing.js`、`site/buyer/app.js`、`site/index.html`。
+代码提交：`d6844ee6d79425ca66eae4fab1d2a38a684e9206`，分支：`codex/membership-dual-payments-20261012`，基于 `fda95d7`。GitHub 候选：[PR #13](https://github.com/wuoo6327-dot/autolink-platform/pull/13)，目标是 Round 12 候选分支；该分支继承较长的既有候选链，不能把此 PR 单独视为可直接合并 `main` 的生产发布包。代码文件：`auth/membership_payments.py`、`auth/test_membership_payments.py`、`auth/app.py`、`auth/Dockerfile`、`compose.yaml`、`site/assets/membership-checkout.js`、`site/assets/membership-checkout.css`、`site/assets/index-autolink-membership-apply-pricing.js`、`site/buyer/app.js`、`site/index.html`。
 
 隔离构建 `autolink-auth:payment-candidate`：`linux/amd64`，本地 Docker 镜像 ID `sha256:8864b74d20520c41f42cfd1498d6e470ce243bcf73c67c90762e316d50347e2d`。这是**本地镜像身份**，不是 Registry Manifest Digest，也没有作为正式发布镜像归档。主要应用文件 SHA256：`auth/app.py` 为 `bb218d0cf918b0b7c1e2bdb1404f31bde15ea131bb559f75bb5cbd58dc5970a5`，`auth/membership_payments.py` 为 `678d48988d488aae94850d8df2feb9107160471e22e77bf477a26967ac5f1761`。
 
