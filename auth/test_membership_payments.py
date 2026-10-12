@@ -2,11 +2,14 @@
 
 import hashlib
 import hmac
+import io
 import json
 import os
 import tempfile
 import time
 import unittest
+from datetime import datetime, timezone
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 from http.server import ThreadingHTTPServer
@@ -16,17 +19,28 @@ from urllib.error import HTTPError
 
 from app import AuthService, Handler
 from buyer_service import BuyerError, BuyerService
-from membership_payments import GatewayError, MembershipPaymentService, PaymentGateway
+from membership_payments import GatewayError, MembershipPaymentService, PaymentGateway, add_months
+from reconcile_membership import main as reconcile_main
 
 
 class FakeGateway:
     def __init__(self):
         self.sessions = {}
+        self.fail_after_create = False
 
     def checkout(self, order, email):
         ref = "cs_" + order["id"]
-        self.sessions[ref] = order
+        self.sessions.setdefault(ref, {"id": ref, "client_reference_id": order["id"],
+            "metadata": {"autolink_order_id": order["id"]}, "mode": "payment", "livemode": False,
+            "amount_total": order["amount_minor"], "currency": "usd", "status": "open",
+            "payment_status": "unpaid", "payment_intent": None})
+        if self.fail_after_create:
+            self.fail_after_create = False
+            raise GatewayError("Simulated response loss after Stripe created a session.")
         return ref, "https://checkout.stripe.com/test/" + ref
+
+    def retrieve_checkout(self, reference):
+        return self.sessions[reference]
 
 
 class MembershipPaymentsTests(unittest.TestCase):
@@ -34,7 +48,8 @@ class MembershipPaymentsTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         env = patch.dict(os.environ, {"PAYMENTS_ENV": "sandbox", "STRIPE_CARD_ENABLED": "true",
-            "STRIPE_SECRET_KEY": "sk_test_isolated", "STRIPE_WEBHOOK_SECRET": "whsec_isolated"})
+            "STRIPE_ACCOUNT_ID": "acct_isolated", "STRIPE_SECRET_KEY": "sk_test_isolated",
+            "STRIPE_WEBHOOK_SECRET": "whsec_isolated"})
         env.start(); self.addCleanup(env.stop)
         self.auth = AuthService(Path(self.temp.name) / "auth.db", "test-client", verifier=lambda *_: {})
         BuyerService(self.auth)
@@ -99,12 +114,108 @@ class MembershipPaymentsTests(unittest.TestCase):
     def test_stripe_checkout_rejects_wrong_environment_and_host(self):
         order={"provider":"stripe", "amount_minor":199, "id":"order-test", "plan":"monthly", "expires_at":int(time.time())+3600}
         gateway=PaymentGateway()
+        valid={"id":"cs_test_abc", "url":"https://checkout.stripe.com/test/cs_test_abc",
+               "livemode":False,"mode":"payment","client_reference_id":"order-test",
+               "metadata":{"autolink_order_id":"order-test"},"amount_total":199,"currency":"usd"}
         for response in (
-            {"id":"cs_test", "url":"https://checkout.stripe.com/test/cs_test", "livemode":True},
-            {"id":"cs_test", "url":"https://checkout.evil.example/test/cs_test", "livemode":False},
+            {**valid,"livemode":True},
+            {**valid,"url":"https://checkout.evil.example/test/cs_test_abc"},
+            {**valid,"amount_total":200},
+            {**valid,"id":"cs_live_abc"},
+            {**valid,"metadata":None},
         ):
-            with patch.object(gateway,"stripe",return_value=response):
+            with patch.object(gateway,"verify_account"), patch.object(gateway,"stripe",return_value=response):
                 with self.assertRaises(GatewayError):gateway.checkout(order,"buyer@example.test")
+
+    def test_stripe_account_preflight_blocks_wrong_merchant(self):
+        gateway=PaymentGateway()
+        with patch.object(gateway,"stripe_get",return_value={"id":"acct_other"}):
+            with self.assertRaises(GatewayError):gateway.verify_account()
+        with patch.object(gateway,"stripe_get",return_value={"id":"acct_isolated"}):
+            gateway.verify_account()
+
+    def test_restricted_test_key_can_be_used_without_accepting_live_key(self):
+        with patch.dict(os.environ,{"STRIPE_SECRET_KEY":"rk_test_isolated"}):
+            self.assertTrue(self.payments.enabled("stripe_card"))
+        with patch.dict(os.environ,{"STRIPE_SECRET_KEY":"rk_live_isolated"}):
+            self.assertFalse(self.payments.enabled("stripe_card"))
+
+    def test_calendar_months_preserve_month_end_in_utc(self):
+        stamp=lambda y,m,d:int(datetime(y,m,d,12,tzinfo=timezone.utc).timestamp())
+        self.assertEqual(add_months(stamp(2024,1,31),1),stamp(2024,2,29))
+        self.assertEqual(add_months(stamp(2024,2,29),1),stamp(2024,3,31))
+        self.assertEqual(add_months(stamp(2023,1,31),1),stamp(2023,2,28))
+        self.assertEqual(add_months(stamp(2023,12,31),12),stamp(2024,12,31))
+
+    def test_reconcile_lost_webhook_and_idempotent_late_event(self):
+        checkout=self.payments.create_checkout(self.user,{"plan":"quarterly","method":"stripe_card","autoRenew":False})
+        ref="cs_"+checkout["orderId"]
+        self.gateway.sessions[ref].update(status="complete",payment_status="paid",payment_intent="pi_"+checkout["orderId"])
+        self.assertEqual(self.payments.reconcile_order(checkout["orderId"])["status"],"PAID")
+        self.assertTrue(self.payments.reconcile_order(checkout["orderId"])["alreadyProcessed"])
+        self.assertEqual(self.payments.webhook("stripe",*self.stripe_event(checkout)),{"duplicate":True})
+        with self.auth.connect() as db:
+            self.assertEqual(db.execute("SELECT count(*) FROM buyer_memberships WHERE user_id='buyer'").fetchone()[0],1)
+
+    def test_reconcile_rejects_provider_amount_mismatch(self):
+        checkout=self.payments.create_checkout(self.user,{"plan":"monthly","method":"stripe_card","autoRenew":False})
+        ref="cs_"+checkout["orderId"]
+        self.gateway.sessions[ref].update(status="complete",payment_status="paid",
+                                          payment_intent="pi_"+checkout["orderId"],amount_total=200)
+        with self.assertRaises(BuyerError) as error:self.payments.reconcile_order(checkout["orderId"])
+        self.assertEqual(error.exception.status,409)
+        with self.auth.connect() as db:
+            self.assertEqual(db.execute("SELECT count(*) FROM buyer_memberships WHERE user_id='buyer'").fetchone()[0],0)
+
+    def test_timeout_recovery_uses_same_order_and_expired_checkout_releases_slot(self):
+        self.gateway.fail_after_create=True
+        with self.assertRaises(BuyerError):
+            self.payments.create_checkout(self.user,{"plan":"monthly","method":"stripe_card","autoRenew":False})
+        with self.auth.connect() as db:
+            order=db.execute("SELECT * FROM membership_orders WHERE user_id='buyer'").fetchone()
+            self.assertEqual(order["status"],"UNKNOWN")
+            order_id=order["id"]
+        self.assertTrue(self.payments.reconcile_order(order_id)["manualReview"])
+        self.assertEqual(self.payments.reconcile_order(order_id,recover_unknown=True)["status"],"PENDING")
+        ref="cs_"+order_id
+        self.gateway.sessions[ref].update(status="expired",payment_status="unpaid")
+        self.assertEqual(self.payments.reconcile_order(order_id)["status"],"EXPIRED")
+        another=self.payments.create_checkout(self.user,{"plan":"annual","method":"stripe_card","autoRenew":False})
+        self.assertEqual((another["amountMinor"],another["purchaseType"]),(3999,"FIRST"))
+
+    def test_operator_reconciliation_requires_explicit_matching_confirmation(self):
+        checkout=self.payments.create_checkout(self.user,{"plan":"monthly","method":"stripe_card","autoRenew":False})
+        env={"AUTH_DB_PATH":str(Path(self.temp.name)/"auth.db")}
+        with patch.dict(os.environ,env), patch("sys.argv",["reconcile_membership.py","--order-id",checkout["orderId"]]):
+            output=io.StringIO()
+            with redirect_stdout(output):reconcile_main()
+        self.assertEqual(json.loads(output.getvalue())["status"],"PENDING")
+        with patch.dict(os.environ,env), patch("sys.argv",["reconcile_membership.py","--order-id",checkout["orderId"],
+                "--apply","--environment","sandbox","--confirm-order","wrong"]):
+            with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:reconcile_main()
+        self.assertEqual(error.exception.code,2)
+        with self.auth.connect() as db:
+            self.assertEqual(db.execute("SELECT status FROM membership_orders WHERE id=?",(checkout["orderId"],)).fetchone()[0],"PENDING")
+
+    def test_early_renewal_and_refund_preserve_other_paid_period(self):
+        first=self.payments.create_checkout(self.user,{"plan":"monthly","method":"stripe_card","autoRenew":False})
+        self.payments.webhook("stripe",*self.stripe_event(first))
+        renewal=self.payments.create_checkout(self.user,{"plan":"quarterly","method":"stripe_card","autoRenew":False})
+        self.payments.webhook("stripe",*self.stripe_event(renewal,event_id="evt_renewal"))
+        with self.auth.connect() as db:
+            rows=db.execute("SELECT start_at,end_at FROM buyer_memberships WHERE user_id='buyer' ORDER BY start_at").fetchall()
+            self.assertEqual(rows[1]["start_at"],rows[0]["end_at"])
+            self.assertEqual(BuyerService.membership(db,"buyer")["endAt"],rows[1]["end_at"])
+        refund={"id":"evt_refund_renewal","type":"charge.refunded","livemode":False,
+                "data":{"object":{"payment_intent":"pi_"+renewal["orderId"],"currency":"usd","amount_refunded":2999}}}
+        raw=json.dumps(refund).encode();stamp=str(int(time.time()))
+        sig=hmac.new(b"whsec_isolated",stamp.encode()+b"."+raw,hashlib.sha256).hexdigest()
+        self.payments.webhook("stripe",raw,{"Stripe-Signature":"t="+stamp+",v1="+sig})
+        self.assertEqual(self.payments.reconcile_order(renewal["orderId"])["refundStatus"],"FULL")
+        self.assertTrue(self.payments.reconcile_order(renewal["orderId"])["manualReview"])
+        with self.auth.connect() as db:
+            self.assertEqual(BuyerService.membership(db,"buyer")["status"],"ACTIVE")
+            self.assertEqual(BuyerService.membership(db,"buyer")["endAt"],rows[0]["end_at"])
 
     def test_auto_renewal_and_disabled_provider_are_rejected(self):
         with self.assertRaises(BuyerError) as error:
@@ -124,10 +235,30 @@ class MembershipPaymentsTests(unittest.TestCase):
         raw=json.dumps(event).encode();stamp=str(int(time.time()))
         sig=hmac.new(b"whsec_isolated",stamp.encode()+b"."+raw,hashlib.sha256).hexdigest()
         self.payments.webhook("stripe",raw,{"Stripe-Signature":"t="+stamp+",v1="+sig})
+        event["id"]="evt_refund_delayed_partial"
+        event["data"]["object"]["amount_refunded"]=100
+        delayed=json.dumps(event).encode()
+        delayed_sig=hmac.new(b"whsec_isolated",stamp.encode()+b"."+delayed,hashlib.sha256).hexdigest()
+        self.payments.webhook("stripe",delayed,{"Stripe-Signature":"t="+stamp+",v1="+delayed_sig})
         with self.auth.connect() as db:
             self.assertEqual(db.execute("SELECT status FROM buyer_memberships WHERE user_id='buyer'").fetchone()[0],"REFUNDED")
             self.assertEqual(db.execute("SELECT status FROM buyer_membership_payments WHERE user_id='buyer'").fetchone()[0],"REFUNDED")
+            self.assertEqual(db.execute("SELECT refund_status FROM membership_orders WHERE id=?",(checkout["orderId"],)).fetchone()[0],"FULL")
         self.assertFalse(self.payments.pricing(self.user)["firstPurchaseEligible"])
+
+    def test_out_of_order_refund_waits_for_verified_payment_then_revokes_once(self):
+        checkout=self.payments.create_checkout(self.user,{"plan":"monthly","method":"stripe_card","autoRenew":False})
+        event={"id":"evt_refund_before_payment","type":"charge.refunded","livemode":False,
+               "data":{"object":{"payment_intent":"pi_"+checkout["orderId"],"currency":"usd","amount_refunded":199}}}
+        raw=json.dumps(event).encode();stamp=str(int(time.time()))
+        sig=hmac.new(b"whsec_isolated",stamp.encode()+b"."+raw,hashlib.sha256).hexdigest()
+        headers={"Stripe-Signature":"t="+stamp+",v1="+sig}
+        with self.assertRaises(BuyerError):self.payments.webhook("stripe",raw,headers)
+        self.payments.webhook("stripe",*self.stripe_event(checkout))
+        self.assertEqual(self.payments.webhook("stripe",raw,headers),{"recorded":True})
+        self.assertEqual(self.payments.webhook("stripe",raw,headers),{"duplicate":True})
+        with self.auth.connect() as db:
+            self.assertEqual(db.execute("SELECT status FROM buyer_memberships WHERE user_id='buyer'").fetchone()[0],"REFUNDED")
 
     def test_airwallex_extension_is_reserved_and_fail_closed(self):
         self.assertFalse(self.payments.pricing(self.user)["methods"]["airwallex_alipay"]["available"])

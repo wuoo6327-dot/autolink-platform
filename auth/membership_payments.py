@@ -9,10 +9,11 @@ import hashlib
 import hmac
 import json
 import os
+import re
 import time
 import uuid
 from datetime import datetime, timezone
-from urllib.parse import urlencode, urlparse
+from urllib.parse import quote, urlencode, urlparse
 from urllib.request import Request, urlopen
 
 from buyer_service import BuyerError, BuyerService
@@ -35,7 +36,9 @@ def add_months(timestamp, months):
     value = datetime.fromtimestamp(timestamp, timezone.utc)
     year = value.year + (value.month - 1 + months) // 12
     month = (value.month - 1 + months) % 12 + 1
-    day = min(value.day, calendar.monthrange(year, month)[1])
+    source_last = calendar.monthrange(value.year, value.month)[1]
+    target_last = calendar.monthrange(year, month)[1]
+    day = target_last if value.day == source_last else min(value.day, target_last)
     return int(value.replace(year=year, month=month, day=day).timestamp())
 
 
@@ -58,9 +61,25 @@ class PaymentGateway:
         except Exception as exc:
             raise GatewayError("Stripe checkout requires reconciliation.") from exc
 
+    def stripe_get(self, path):
+        secret = os.environ["STRIPE_SECRET_KEY"]
+        try:
+            with urlopen(Request("https://api.stripe.com/v1/" + path,
+                                 headers={"Authorization": "Bearer " + secret}), timeout=12) as response:
+                return json.load(response)
+        except Exception as exc:
+            raise GatewayError("Stripe status is unavailable; retain the order for review.") from exc
+
+    def verify_account(self):
+        configured = os.environ.get("STRIPE_ACCOUNT_ID", "")
+        account = self.stripe_get("account")
+        if not configured or not isinstance(account, dict) or account.get("id") != configured:
+            raise GatewayError("Stripe account does not match the configured merchant.")
+
     def checkout(self, order, email):
         if order["provider"] != "stripe":
             raise GatewayError("This payment adapter is not available.")
+        self.verify_account()
         amount = order["amount_minor"]
         order_id = order["id"]
         label = {"monthly": "Monthly", "quarterly": "Quarterly", "annual": "Annual"}[order["plan"]]
@@ -76,12 +95,28 @@ class PaymentGateway:
             "expires_at": str(order["expires_at"]),
         }
         result = self.stripe("checkout/sessions", fields, order_id)
+        if not isinstance(result, dict):
+            raise GatewayError("Stripe returned an invalid checkout response.")
         ref, url = result.get("id"), result.get("url")
         if result.get("livemode") is not (os.environ.get("PAYMENTS_ENV") == "live"):
             raise GatewayError("Stripe checkout environment does not match.")
-        if not ref or not url or urlparse(url).scheme != "https" or urlparse(url).hostname != "checkout.stripe.com":
+        metadata = result.get("metadata")
+        if (result.get("mode") != "payment" or result.get("client_reference_id") != order_id
+                or not isinstance(metadata, dict) or metadata.get("autolink_order_id") != order_id
+                or result.get("amount_total") != amount or result.get("currency") != "usd"):
+            raise GatewayError("Stripe checkout does not match the membership order.")
+        expected_prefix = "cs_live_" if os.environ.get("PAYMENTS_ENV") == "live" else "cs_test_"
+        if (not isinstance(ref, str) or not ref.startswith(expected_prefix)
+                or not isinstance(url, str) or urlparse(url).scheme != "https"
+                or urlparse(url).hostname != "checkout.stripe.com"):
             raise GatewayError("Provider returned an invalid checkout URL.")
         return ref, url
+
+    def retrieve_checkout(self, reference):
+        if not isinstance(reference, str) or not re.fullmatch(r"cs_(?:test|live)_[A-Za-z0-9]+", reference):
+            raise GatewayError("Invalid Stripe checkout reference.")
+        self.verify_account()
+        return self.stripe_get("checkout/sessions/" + quote(reference, safe=""))
 
 
 class MembershipPaymentService:
@@ -96,7 +131,7 @@ class MembershipPaymentService:
                     amount_minor INTEGER NOT NULL, currency TEXT NOT NULL,
                     method TEXT NOT NULL, provider TEXT NOT NULL,
                     status TEXT NOT NULL, provider_ref TEXT UNIQUE,
-                    checkout_url TEXT, provider_payment_id TEXT UNIQUE,
+                    checkout_url TEXT, checkout_email TEXT, provider_payment_id TEXT UNIQUE,
                     membership_id TEXT REFERENCES buyer_memberships(id),
                     created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL,
                     paid_at INTEGER, updated_at INTEGER NOT NULL,
@@ -118,6 +153,9 @@ class MembershipPaymentService:
                     PRIMARY KEY(provider,event_id)
                 );
             """)
+            columns = {row["name"] for row in db.execute("PRAGMA table_info(membership_orders)")}
+            if "checkout_email" not in columns:
+                db.execute("ALTER TABLE membership_orders ADD COLUMN checkout_email TEXT")
 
     @staticmethod
     def enabled(method):
@@ -128,10 +166,10 @@ class MembershipPaymentService:
             return False
         if os.environ.get(flag, "false").lower() != "true":
             return False
-        expected = "sk_test_" if os.environ["PAYMENTS_ENV"] == "sandbox" else "sk_live_"
+        expected = ("sk_test_", "rk_test_") if os.environ["PAYMENTS_ENV"] == "sandbox" else ("sk_live_", "rk_live_")
         return bool(os.environ.get("STRIPE_SECRET_KEY", "").startswith(expected)
                     and os.environ.get("STRIPE_WEBHOOK_SECRET", "").startswith("whsec_")
-                    and (os.environ.get("PAYMENTS_ENV") == "sandbox" or os.environ.get("STRIPE_ACCOUNT_ID")))
+                    and os.environ.get("STRIPE_ACCOUNT_ID", "").startswith("acct_"))
 
     @staticmethod
     def first_purchase(db, user_id):
@@ -178,13 +216,13 @@ class MembershipPaymentService:
             first = self.first_purchase(db, user["id"])
             amount = PLANS[plan][1 if first else 2]
             db.execute("INSERT INTO membership_orders(id,user_id,plan,purchase_type,amount_minor,currency,method,provider,"
-                       "status,created_at,expires_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                       "status,checkout_email,created_at,expires_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                        (order_id, user["id"], plan, "FIRST" if first else "RENEWAL", amount, "USD", method,
-                        provider, "CREATING", now, now + 3600, now))
+                        provider, "CREATING", user["email"], now, now + 3600, now))
         with self.auth.connect() as db:
             row = dict(db.execute("SELECT * FROM membership_orders WHERE id=?", (order_id,)).fetchone())
         try:
-            ref, url = self.gateway.checkout(row, user["email"])
+            ref, url = self.gateway.checkout(row, row["checkout_email"])
         except Exception:
             with self.auth.connect() as db:
                 db.execute("UPDATE membership_orders SET status='UNKNOWN',updated_at=? WHERE id=?", (int(time.time()), order_id))
@@ -199,6 +237,71 @@ class MembershipPaymentService:
         return db.execute("INSERT OR IGNORE INTO membership_payment_events VALUES (?,?,?,?,?)",
                           (provider, event_id, order_id, event_type, int(time.time()))).rowcount == 1
 
+    @staticmethod
+    def _checkout_matches(order, session):
+        return (isinstance(session, dict) and session.get("id") == order["provider_ref"]
+                and session.get("client_reference_id") == order["id"]
+                and isinstance(session.get("metadata"), dict)
+                and session["metadata"].get("autolink_order_id") == order["id"]
+                and session.get("mode") == "payment"
+                and session.get("livemode") is (os.environ.get("PAYMENTS_ENV") == "live")
+                and session.get("amount_total") == order["amount_minor"]
+                and session.get("currency") == order["currency"].lower())
+
+    def reconcile_order(self, order_id, recover_unknown=False):
+        """Server-side repair only; never charges a card or trusts a browser return URL."""
+        with self.auth.connect() as db:
+            row = db.execute("SELECT * FROM membership_orders WHERE id=? AND provider='stripe'", (order_id,)).fetchone()
+        if not row:
+            raise BuyerError(404, "Stripe membership order was not found.")
+        order = dict(row)
+        if order["status"] == "PAID":
+            return {"status": "PAID", "alreadyProcessed": True,
+                    "manualReview": bool(order["refund_status"] or order["dispute_status"]),
+                    "refundStatus": order["refund_status"], "disputeStatus": order["dispute_status"]}
+        if order["status"] not in ("CREATING", "UNKNOWN", "PENDING", "EXPIRED"):
+            return {"status": order["status"], "manualReview": True}
+        if not order["provider_ref"]:
+            if (order["status"] not in ("CREATING", "UNKNOWN") or not recover_unknown
+                    or not order["checkout_email"] or int(time.time()) >= order["expires_at"]):
+                return {"status": "UNKNOWN", "manualReview": True}
+            try:
+                ref, url = self.gateway.checkout(order, order["checkout_email"])
+            except GatewayError:
+                return {"status": "UNKNOWN", "manualReview": True}
+            with self.auth.connect() as db:
+                db.execute("BEGIN IMMEDIATE")
+                current = db.execute("SELECT status,provider_ref FROM membership_orders WHERE id=?", (order_id,)).fetchone()
+                if current["status"] == "PAID":
+                    return {"status": "PAID", "alreadyProcessed": True}
+                if current["provider_ref"] and current["provider_ref"] != ref:
+                    raise BuyerError(409, "Checkout identity changed during reconciliation.")
+                db.execute("UPDATE membership_orders SET status='PENDING',provider_ref=?,checkout_url=?,updated_at=? WHERE id=?",
+                           (ref, url, int(time.time()), order_id))
+            order["provider_ref"] = ref
+        try:
+            session = self.gateway.retrieve_checkout(order["provider_ref"])
+        except GatewayError:
+            return {"status": "UNKNOWN", "manualReview": True}
+        if not self._checkout_matches(order, session):
+            raise BuyerError(409, "Stripe checkout does not match the order; manual review required.")
+        if session.get("status") == "complete" and session.get("payment_status") == "paid":
+            payment_id = session.get("payment_intent")
+            if not isinstance(payment_id, str) or not payment_id.startswith("pi_"):
+                raise BuyerError(409, "Stripe payment identity requires manual review.")
+            result = self._fulfill("stripe", "reconcile:" + order["provider_ref"], "checkout.session.reconciled",
+                                   order_id, order["provider_ref"], payment_id,
+                                   session["amount_total"], session["currency"])
+            if result.get("review"):
+                return {"status": "REVIEW", "manualReview": True}
+            return {"status": "PAID", "reconciled": True}
+        if session.get("status") == "expired" and session.get("payment_status") == "unpaid":
+            with self.auth.connect() as db:
+                db.execute("UPDATE membership_orders SET status='EXPIRED',updated_at=? WHERE id=? AND status IN ('CREATING','UNKNOWN','PENDING')",
+                           (int(time.time()), order_id))
+            return {"status": "EXPIRED"}
+        return {"status": "PENDING", "manualReview": session.get("status") != "open"}
+
     def _fulfill(self, provider, event_id, event_type, order_id, provider_ref, payment_id, amount_minor, currency):
         now = int(time.time())
         with self.auth.connect() as db:
@@ -206,13 +309,15 @@ class MembershipPaymentService:
             row = db.execute("SELECT * FROM membership_orders WHERE id=?", (order_id,)).fetchone()
             if not row or row["provider"] != provider or row["provider_ref"] != provider_ref:
                 raise BuyerError(409, "Provider order identity does not match.")
-            if amount_minor != row["amount_minor"] or currency.upper() != row["currency"]:
+            if amount_minor != row["amount_minor"] or not isinstance(currency, str) or currency.upper() != row["currency"]:
                 raise BuyerError(409, "Provider payment amount does not match the order.")
             if not self._record_event(db, provider, event_id, order_id, event_type):
                 return {"duplicate": True}
             if row["status"] == "PAID":
+                if row["provider_payment_id"] != payment_id:
+                    raise BuyerError(409, "Payment identity does not match the paid order.")
                 return {"duplicate": True}
-            if row["status"] not in ("PENDING", "UNKNOWN", "CREATING"):
+            if row["status"] not in ("PENDING", "UNKNOWN", "CREATING", "EXPIRED"):
                 raise BuyerError(409, "Order cannot be fulfilled in this state.")
             if row["purchase_type"] == "FIRST" and not self.first_purchase(db, row["user_id"]):
                 db.execute("UPDATE membership_orders SET status='REVIEW',provider_payment_id=?,paid_at=?,updated_at=? WHERE id=?",
@@ -243,7 +348,9 @@ class MembershipPaymentService:
             if not self._record_event(db, provider, event_id, order["id"], event_type):
                 return {"duplicate": True}
             if refund_minor is not None:
-                state = "FULL" if refund_minor >= order["amount_minor"] else "PARTIAL_REVIEW"
+                if refund_minor < 0 or refund_minor > order["amount_minor"]:
+                    raise BuyerError(409, "Stripe refund amount does not match the order.")
+                state = "FULL" if order["refund_status"] == "FULL" or refund_minor == order["amount_minor"] else "PARTIAL_REVIEW"
                 db.execute("UPDATE membership_orders SET refund_status=?,updated_at=? WHERE id=?",
                            (state, int(time.time()), order["id"]))
                 if state == "FULL" and order["membership_id"]:
@@ -268,6 +375,8 @@ class MembershipPaymentService:
 
     def webhook(self, provider, raw, headers):
         if provider == "stripe":
+            if os.environ.get("PAYMENTS_ENV") not in ("sandbox", "live") or not os.environ.get("STRIPE_ACCOUNT_ID", "").startswith("acct_"):
+                raise BuyerError(503, "Stripe merchant configuration is unavailable.")
             self._signed_stripe(raw, headers.get("Stripe-Signature", ""))
         elif provider == "airwallex":
             raise BuyerError(503, "Airwallex integration is reserved and unavailable.")
@@ -288,9 +397,13 @@ class MembershipPaymentService:
             if event.get("account") and event["account"] != os.environ.get("STRIPE_ACCOUNT_ID"):
                 raise BuyerError(409, "Stripe account mismatch.")
             event_type = event.get("type", "")
-            obj = event.get("data", {}).get("object", {})
+            data = event.get("data")
+            obj = data.get("object") if isinstance(data, dict) else None
+            if not isinstance(obj, dict):
+                raise BuyerError(400, "Invalid Stripe event object.")
             if event_type == "charge.refunded":
-                if not obj.get("payment_intent") or obj.get("currency", "").upper() != "USD" or not isinstance(obj.get("amount_refunded"), int):
+                if (not obj.get("payment_intent") or not isinstance(obj.get("currency"), str)
+                        or obj["currency"].upper() != "USD" or not isinstance(obj.get("amount_refunded"), int)):
                     raise BuyerError(409, "Stripe refund identity mismatch.")
                 return self._adjustment(provider, event_id, event_type, obj["payment_intent"],
                                         refund_minor=obj.get("amount_refunded"))
@@ -313,7 +426,8 @@ class MembershipPaymentService:
             if obj.get("mode") != "payment" or obj.get("payment_status") != "paid" or not obj.get("payment_intent"):
                 return {"pending": True}
             order_id = obj.get("client_reference_id")
-            if obj.get("metadata", {}).get("autolink_order_id") != order_id:
+            metadata = obj.get("metadata")
+            if not isinstance(metadata, dict) or metadata.get("autolink_order_id") != order_id:
                 raise BuyerError(409, "Stripe metadata mismatch.")
             return self._fulfill(provider, event_id, event_type, order_id, obj.get("id"),
                                  obj["payment_intent"], obj.get("amount_total"), obj.get("currency", ""))
