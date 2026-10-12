@@ -55,8 +55,8 @@ start_pair() {
 stop_pair() { docker rm -f "$WEB" "$AUTH" >/dev/null; }
 probe() {
   local phase="$1"
-  QA_PHASE="$phase" QA_CATALOG="$CATALOG" python3 - <<'PY'
-import json,os,urllib.request,urllib.error,xml.etree.ElementTree as ET
+  QA_PHASE="$phase" QA_CATALOG="$CATALOG" QA_WORK="$QA_BASE" python3 - <<'PY'
+import hashlib,json,os,urllib.request,urllib.error,xml.etree.ElementTree as ET
 base='http://127.0.0.1:18088'; phase=os.environ['QA_PHASE']
 def get(path):
     try:
@@ -72,17 +72,35 @@ assert get('/autolink/admin/users')[0]==401
 assert get('/buyer/login')[0]==200
 assert get('/supplier')[0]==200 and get('/admin')[0]==200
 assert get('/robots.txt')[0]==200
+page_hashes={}
 for model in models:
     path=model.get('url') or '/trade/models/'+str(model['id'])
     assert path.startswith('/trade/models/'),(model,'bad model URL')
     status,body=get(path)
     assert status==200 and b'<h1' in body,(path,status)
+    page_hashes[path]=hashlib.sha256(body).hexdigest()
 for brand in brands:
     path='/trade/brands/'+str(brand['id'])
     status,body=get(path)
     assert status==200 and b'<h1' in body,(path,status)
+    page_hashes[path]=hashlib.sha256(body).hexdigest()
 assert get('/trade/models/brand-qa-nonexistent')[0]==404
 result={'phase':phase,'publicModels':len(models),'publicBrands':len(brands),'allPublicPages':len(models)+len(brands)}
+ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+sitemap_urls={}
+for name in ('models-1.xml','brands-1.xml'):
+    status,xml=get('/sitemaps/'+name);assert status==200
+    sitemap_urls[name]=[node.text for node in ET.fromstring(xml).findall('.//s:loc',ns)]
+    assert sitemap_urls[name],name
+comparison={'pageHashes':page_hashes,'sitemapURLs':sitemap_urls}
+comparison_path=os.path.join(os.environ['QA_WORK'],'public-seo-comparison.json')
+if not os.path.exists(comparison_path):
+    assert phase=='candidate'
+    with open(comparison_path,'w') as output:json.dump(comparison,output,sort_keys=True)
+else:
+    assert comparison==json.load(open(comparison_path)),'Model/brand HTML or Sitemap changed across rollback rehearsal'
+result['modelSitemapURLs']=len(sitemap_urls['models-1.xml'])
+result['brandSitemapURLs']=len(sitemap_urls['brands-1.xml'])
 if phase=='candidate':
     status,home=get('/');assert status==200
     assert b'Chinese Vehicle Sourcing &amp; B2B Supplier Platform' in home
@@ -100,7 +118,6 @@ if phase=='candidate':
     assert b'https://autolinkglobal.com/about' in about
     assert get('/about.html')[0]==200  # urllib follows the 308 canonical redirect
     status,xml=get('/sitemaps/static-1.xml');assert status==200
-    ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
     urls=[node.text for node in ET.fromstring(xml).findall('.//s:loc',ns)]
     assert urls.count('https://autolinkglobal.com/about')==1
     assert all('/about?lang=' not in url for url in urls)
