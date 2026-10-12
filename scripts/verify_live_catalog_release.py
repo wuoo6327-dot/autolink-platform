@@ -7,6 +7,8 @@ the candidate's reviewed content automatically.
 import hashlib
 import http.client
 import json
+import mimetypes
+import os
 import sys
 import time
 import urllib.error
@@ -19,10 +21,18 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://autolinkglobal.com"
 FIXTURE = json.loads((ROOT / "tests/fixtures/production-public-catalog-20261012.json").read_text())
 HEROES = json.loads((ROOT / "site/images/seo-heroes/manifest.json").read_text())
+LIVE_SITE_ROOT = Path(os.environ["AUTOLINK_LIVE_SITE_ROOT"]).resolve() if os.environ.get("AUTOLINK_LIVE_SITE_ROOT") else None
 
 
 def fetch(path):
     assert path.startswith("/") and not path.startswith("//")
+    if LIVE_SITE_ROOT is not None and path.startswith(("/model-reference/", "/images/")):
+        # The current production Caddy container mounts this directory at
+        # /srv and serves these public resources with file_server. Reading the
+        # actual bind mount avoids CDN timeouts while still hashing every byte.
+        candidate = (LIVE_SITE_ROOT / path.lstrip("/")).resolve()
+        assert candidate.is_relative_to(LIVE_SITE_ROOT), path
+        return candidate.read_bytes(), mimetypes.guess_type(candidate.name)[0] or ""
     req = urllib.request.Request(BASE + path, headers={"User-Agent": "AUTOLINK-release-readonly/1.0"})
     # Public CDN responses can be interrupted mid-body. Retry the same read-only
     # request, but never treat a partial body as evidence that content matches.
@@ -78,6 +88,7 @@ def main(output):
     summary = {
         "checkedAt": datetime.now(timezone.utc).isoformat(),
         "productionOrigin": BASE,
+        "staticVerificationRoot": str(LIVE_SITE_ROOT) if LIVE_SITE_ROOT else None,
         "models": len(live_models),
         "brands": len(live_brands),
         "catalogModelsExact": live_models == FIXTURE["models"],
