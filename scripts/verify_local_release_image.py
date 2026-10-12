@@ -108,8 +108,8 @@ def main():
         raise ValueError("Local OCI manifest config differs from saved archive")
     if len(local_manifest["layers"]) != len(layers):
         raise ValueError("Local OCI manifest layers differ in count from archive")
-    for layer, archive_digest in zip(local_manifest["layers"], archive_layer_digests):
-        if layer["digest"] != archive_digest:
+    for layer, saved_layer_digest in zip(local_manifest["layers"], archive_layer_digests):
+        if layer["digest"] != saved_layer_digest:
             raise ValueError("Local OCI manifest layer differs from saved archive")
         blob = subprocess.check_output([
             "ctr", "-n", "moby", "content", "get", layer["digest"],
