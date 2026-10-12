@@ -55,7 +55,7 @@ start_pair() {
 stop_pair() { docker rm -f "$WEB" "$AUTH" >/dev/null; }
 probe() {
   local phase="$1"
-  QA_PHASE="$phase" QA_CATALOG="$CATALOG" QA_WORK="$QA_BASE" python3 - <<'PY'
+  QA_PHASE="$phase" QA_CATALOG="$CATALOG" QA_WORK="$QA_BASE" QA_BASELINE="$BASELINE" python3 - <<'PY'
 import hashlib,json,os,urllib.request,urllib.error,xml.etree.ElementTree as ET
 base='http://127.0.0.1:18088'; phase=os.environ['QA_PHASE']
 def get(path):
@@ -139,7 +139,9 @@ if phase=='candidate':
     assert b'index, follow' in get('/trade/models/geely-monjaro-2026')[1]
     result['aboutSitemap']=True;result['homepageLanguages']=9;result['nonemptySitemapChildren']=children
 else:
-    status,home=get('/');assert status==200 and b'Source China. Drive Global.' in home
+    status,home=get('/');assert status==200
+    previous=open(os.path.join(os.environ['QA_BASELINE'],'site','index.html'),'rb').read()
+    assert hashlib.sha256(home).digest()==hashlib.sha256(previous).digest()
     result['baselineHomepage']=True
 print(json.dumps(result,sort_keys=True))
 PY
