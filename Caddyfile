@@ -188,6 +188,79 @@
 	handle @static {
 		file_server
 	}
+	# Fixed homepage rewrites provide matching initial HTML for language URLs.
+	@homeZh {
+		path /
+		query lang=zh
+	}
+	handle @homeZh {
+		rewrite * /index.zh.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeAr {
+		path /
+		query lang=ar
+	}
+	handle @homeAr {
+		rewrite * /index.ar.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeRu {
+		path /
+		query lang=ru
+	}
+	handle @homeRu {
+		rewrite * /index.ru.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeKk {
+		path /
+		query lang=kk
+	}
+	handle @homeKk {
+		rewrite * /index.kk.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeUz {
+		path /
+		query lang=uz
+	}
+	handle @homeUz {
+		rewrite * /index.uz.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeKo {
+		path /
+		query lang=ko
+	}
+	handle @homeKo {
+		rewrite * /index.ko.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeFr {
+		path /
+		query lang=fr
+	}
+	handle @homeFr {
+		rewrite * /index.fr.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@homeSw {
+		path /
+		query lang=sw
+	}
+	handle @homeSw {
+		rewrite * /index.sw.html
+		header Cache-Control "no-cache"
+		file_server
+	}
 	handle {
 		route {
 			try_files {path} /index.html

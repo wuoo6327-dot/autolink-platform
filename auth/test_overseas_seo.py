@@ -67,6 +67,13 @@ class OverseasSEOTests(unittest.TestCase):
     def test_sitemap_and_market_guide_language_boundaries(self):
         ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
         static=ElementTree.fromstring(self.trade.sitemap_xml('static-1.xml'))
+        home=[url for url in static.findall('s:url',ns)
+            if url.find('s:loc',ns).text in ('https://autolinkglobal.com/','https://autolinkglobal.com/?lang=zh')]
+        self.assertEqual({url.find('s:loc',ns).text for url in home},
+            {'https://autolinkglobal.com/','https://autolinkglobal.com/?lang=zh'})
+        for url in home:
+            self.assertEqual({link.get('hreflang') for link in url.findall('x:link',ns)},
+                {'en','zh-CN','x-default'})
         guide=[url for url in static.findall('s:url',ns)
             if '/guide/middle-east-importers' in url.find('s:loc',ns).text]
         self.assertEqual(len(guide),1)

@@ -129,7 +129,11 @@ class TradeFlowTests(unittest.TestCase):
             self.trade.send_quote(owner, draft['id'])
 
     def sitemap_locations(self, filename):
-        root=ElementTree.fromstring(self.trade.sitemap_xml(filename))
+        try:root=ElementTree.fromstring(self.trade.sitemap_xml(filename))
+        except BuyerError as error:
+            if error.status==404 and filename in ('vehicles-1.xml','suppliers-1.xml'):
+                return []
+            raise
         return [node.text for node in root.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
 
     def test_sitemap_contains_only_public_inventory_and_no_private_records(self):
@@ -144,6 +148,7 @@ class TradeFlowTests(unittest.TestCase):
             self.assertNotIn(value,xml)
         self.trade.transition_vehicle(self.users['supplier-a'],listing,'offline')
         self.assertEqual(self.sitemap_locations('vehicles-1.xml'),[])
+        self.assertNotIn('vehicles-1.xml',self.sitemap_locations('sitemap.xml'))
         self.assertEqual(self.trade.vehicle_rows(public=True),[])
 
     def test_sitemap_hides_unpublished_suspended_and_unapproved_suppliers(self):

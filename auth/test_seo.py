@@ -10,6 +10,7 @@ import urllib.request
 from xml.etree import ElementTree
 
 from app import Handler
+from buyer_service import BuyerError
 from buyer_service import BuyerService
 from seo_service import PublicSEOService, LANGUAGES, LANGUAGE_TAGS, localized_url
 import test_trade
@@ -109,8 +110,11 @@ class PublicSEOTests(unittest.TestCase):
             expected={'zh-CN':localized_url(path,'zh'),'x-default':localized_url(path,'en' if english else 'zh')}
             if english:expected['en']=localized_url(path,'en')
             self.assertEqual(actual,expected)
-        self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('vehicles-1.xml')).findall('s:url',ns),[])
-        self.assertEqual(ElementTree.fromstring(self.trade.sitemap_xml('suppliers-1.xml')).findall('s:url',ns),[])
+        index=self.trade.sitemap_xml('sitemap.xml').decode()
+        self.assertNotIn('vehicles-1.xml',index)
+        self.assertNotIn('suppliers-1.xml',index)
+        for empty in ('vehicles-1.xml','suppliers-1.xml'):
+            with self.assertRaises(BuyerError):self.trade.sitemap_xml(empty)
     def test_unknown_private_and_deactivated_pages_are_not_indexable(self):
         for path in ('/trade/models/nonexistent','/trade/models/../buyer','/buyer/private','/trade/private','/trade/models/a/b'):
             with self.subTest(path=path):

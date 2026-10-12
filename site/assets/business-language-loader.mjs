@@ -35,6 +35,33 @@ export function loadScript(url, {module = false} = {}) {
 }
 
 let languageReady;
+function installHomeLanguageChoices() {
+  // The homepage changes language without navigation. Load the selected
+  // business dictionary before React renders translated copy; the initial
+  // request still downloads only English and the active language.
+  document.addEventListener('click', event => {
+    const button = event.target.closest?.('.language-options button[lang]');
+    const code = button?.getAttribute('lang');
+    if (!Object.hasOwn(languageFiles, code) ||
+        window.AUTOLINK_BUSINESS_RESOURCES?.[code] ||
+        button.dataset.autolinkLocaleAttempted === '1') return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (button.dataset.autolinkLocaleLoading === '1') return;
+    button.dataset.autolinkLocaleLoading = '1';
+    void loadScript(languageFiles[code]).then(() => {
+      const messages = window.AUTOLINK_BUSINESS_RESOURCES?.[code]?.translation;
+      if (messages && window.i18next?.addResourceBundle) {
+        window.i18next.addResourceBundle(code, 'translation', messages, true, true);
+      }
+    }).catch(() => { /* The UI can still switch to its bundled translations. */ })
+      .finally(() => {
+        button.dataset.autolinkLocaleAttempted = '1';
+        delete button.dataset.autolinkLocaleLoading;
+        if (button.isConnected) button.click();
+      });
+  }, true);
+}
 export function ensureBusinessLanguage() {
   if (!languageReady) languageReady = (async () => {
     const language = selectBusinessLanguage();
@@ -43,6 +70,7 @@ export function ensureBusinessLanguage() {
       ...[...new Set(['en', language])].map(code => loadScript(languageFiles[code]))
     ]);
     await loadScript('/i18n/business-i18n.js?v=20261009-speed');
+    installHomeLanguageChoices();
     // The adapter can arrive after DOMContentLoaded. Translate only explicit,
     // application-owned labels, using the same contract as the existing adapter.
     for (const node of document.querySelectorAll('[data-business-text]')) {
@@ -62,5 +90,11 @@ export function showBootstrapError(language = selectBusinessLanguage()) {
     sw: 'Imeshindwa kupakia. Pakia ukurasa tena.'
   };
   const root = document.querySelector('#app, #root');
+  // The public homepage contains a complete static search and navigation
+  // fallback. A failed optional application import must not erase it.
+  if (root?.querySelector('.home-static')) {
+    root.dataset.enhancement = 'unavailable';
+    return;
+  }
   if (root) { root.textContent = messages[language] || messages.en; root.setAttribute('role', 'alert'); }
 }

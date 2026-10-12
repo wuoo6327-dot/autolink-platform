@@ -605,7 +605,9 @@ class TradeService:
                 children = ['static-1.xml']
                 for category,(source,where,*_) in sections.items():
                     count = db.execute('SELECT count(*) FROM '+source+' WHERE '+where).fetchone()[0]
-                    pages = max(1, (count+entity_page_size-1)//entity_page_size)
+                    # An empty urlset is invalid under the Sitemap XML schema.
+                    # Do not advertise empty supplier or vehicle shards.
+                    pages = (count+entity_page_size-1)//entity_page_size
                     if len(children)+pages > 50000:
                         raise BuyerError(503, 'Sitemap capacity exceeded.')
                     children.extend(category+'-'+str(page)+'.xml' for page in range(1,pages+1))
@@ -614,7 +616,10 @@ class TradeService:
                     ElementTree.SubElement(node, 'loc').text = SITEMAP_ORIGIN+'/sitemaps/'+child
             elif filename=='static-1.xml':
                 for path in SITEMAP_STATIC_PATHS:
-                    append_urls(path,languages=('en',) if path in ('/about','/guide/middle-east-importers') else LANGUAGES)
+                    # Seven homepage UI languages are accessible but remain
+                    # noindex until their editorial content is reviewed.
+                    static_languages = ('en','zh') if path=='/' else ('en',) if path in ('/about','/guide/middle-east-importers') else LANGUAGES
+                    append_urls(path,languages=static_languages)
             else:
                 match = re.fullmatch(r'(brands|models|suppliers|vehicles)-([1-9][0-9]{0,4})\.xml',filename)
                 if not match:
@@ -622,7 +627,7 @@ class TradeService:
                 category,page = match[1],int(match[2])
                 source,where,key,modified,prefix = sections[category]
                 count = db.execute('SELECT count(*) FROM '+source+' WHERE '+where).fetchone()[0]
-                if page > max(1,(count+entity_page_size-1)//entity_page_size):
+                if page > (count+entity_page_size-1)//entity_page_size:
                     raise BuyerError(404,'Sitemap not found.')
                 rows = db.execute('SELECT '+key+' AS id,'+modified+' AS modified FROM '+source+
                     ' WHERE '+where+' ORDER BY '+key+' LIMIT ? OFFSET ?',
