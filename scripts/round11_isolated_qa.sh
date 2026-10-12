@@ -123,7 +123,8 @@ if phase=='candidate':
     assert all('/about?lang=' not in url for url in urls)
     assert urls.count('https://autolinkglobal.com/')==1
     assert urls.count('https://autolinkglobal.com/?lang=zh')==1
-    assert not any('autolinkglobal.com/?lang='+code in url for code in ('ar','ru','kk','uz','ko','fr','sw'))
+    assert not any(url.startswith('https://autolinkglobal.com/?lang='+code)
+                   for url in urls for code in ('ar','ru','kk','uz','ko','fr','sw'))
     status,root_xml=get('/sitemap.xml');assert status==200
     children=[node.text.rsplit('/',1)[-1] for node in ET.fromstring(root_xml).findall('.//s:loc',ns)]
     assert children==['static-1.xml','brands-1.xml','models-1.xml'],children
