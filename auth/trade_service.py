@@ -46,7 +46,7 @@ PUBLIC_VEHICLE_WHERE = """v.archived_at IS NULL AND v.status='ONLINE' AND """ + 
         WHERE cm.id=v.model_id AND cm.active=1 AND cb.active=1)"""
 SITEMAP_ORIGIN = 'https://autolinkglobal.com'
 SITEMAP_PAGE_SIZE = 5000
-SITEMAP_STATIC_PATHS = ('/', '/trade/vehicles', '/trade/models', '/trade/brands',
+SITEMAP_STATIC_PATHS = ('/', '/about', '/trade/vehicles', '/trade/models', '/trade/brands',
     '/trade/suppliers', '/membership', '/support', '/guide/middle-east-importers')
 
 
@@ -614,7 +614,7 @@ class TradeService:
                     ElementTree.SubElement(node, 'loc').text = SITEMAP_ORIGIN+'/sitemaps/'+child
             elif filename=='static-1.xml':
                 for path in SITEMAP_STATIC_PATHS:
-                    append_urls(path,languages=('en',) if path=='/guide/middle-east-importers' else LANGUAGES)
+                    append_urls(path,languages=('en',) if path in ('/about','/guide/middle-east-importers') else LANGUAGES)
             else:
                 match = re.fullmatch(r'(brands|models|suppliers|vehicles)-([1-9][0-9]{0,4})\.xml',filename)
                 if not match:

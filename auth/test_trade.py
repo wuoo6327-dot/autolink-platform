@@ -193,7 +193,9 @@ class TradeFlowTests(unittest.TestCase):
         self.assertNotIn('<lastmod>',static)
         self.assertNotIn('/buyer',static)
         self.assertNotIn('/admin',static)
-        for missing in ('/about','/help','/faq','/refund'):
+        self.assertIn('https://autolinkglobal.com/about',static)
+        self.assertNotIn('https://autolinkglobal.com/about?lang=',static)
+        for missing in ('/help','/faq','/refund'):
             self.assertNotIn('https://autolinkglobal.com'+missing,static)
 
     def test_sitemap_shards_cover_catalogue_once_with_bounded_results(self):
