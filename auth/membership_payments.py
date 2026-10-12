@@ -79,12 +79,15 @@ class PaymentGateway:
     def checkout(self, order, email):
         if order["provider"] != "stripe":
             raise GatewayError("This payment adapter is not available.")
+        configuration = os.environ.get("STRIPE_PAYMENT_METHOD_CONFIGURATION", "")
+        if not re.fullmatch(r"pmc_[A-Za-z0-9]+", configuration):
+            raise GatewayError("A dedicated Stripe card payment configuration is required.")
         self.verify_account()
         amount = order["amount_minor"]
         order_id = order["id"]
         label = {"monthly": "Monthly", "quarterly": "Quarterly", "annual": "Annual"}[order["plan"]]
         fields = {
-            "mode": "payment", "payment_method_types[0]": "card",
+            "mode": "payment", "payment_method_configuration": configuration,
             "client_reference_id": order_id, "metadata[autolink_order_id]": order_id,
             "customer_email": email, "line_items[0][quantity]": "1",
             "line_items[0][price_data][currency]": "usd",
@@ -105,6 +108,12 @@ class PaymentGateway:
                 or not isinstance(metadata, dict) or metadata.get("autolink_order_id") != order_id
                 or result.get("amount_total") != amount or result.get("currency") != "usd"):
             raise GatewayError("Stripe checkout does not match the membership order.")
+        config_details = result.get("payment_method_configuration_details")
+        methods = result.get("payment_method_types")
+        if (not isinstance(config_details, dict) or config_details.get("id") != configuration
+                or not isinstance(methods, list) or "card" not in methods
+                or not set(methods).issubset({"card", "cartes_bancaires", "link"})):
+            raise GatewayError("Stripe checkout exposes an unapproved payment method.")
         expected_prefix = "cs_live_" if os.environ.get("PAYMENTS_ENV") == "live" else "cs_test_"
         if (not isinstance(ref, str) or not ref.startswith(expected_prefix)
                 or not isinstance(url, str) or urlparse(url).scheme != "https"
@@ -169,7 +178,9 @@ class MembershipPaymentService:
         expected = ("sk_test_", "rk_test_") if os.environ["PAYMENTS_ENV"] == "sandbox" else ("sk_live_", "rk_live_")
         return bool(os.environ.get("STRIPE_SECRET_KEY", "").startswith(expected)
                     and os.environ.get("STRIPE_WEBHOOK_SECRET", "").startswith("whsec_")
-                    and os.environ.get("STRIPE_ACCOUNT_ID", "").startswith("acct_"))
+                    and os.environ.get("STRIPE_ACCOUNT_ID", "").startswith("acct_")
+                    and re.fullmatch(r"pmc_[A-Za-z0-9]+",
+                                     os.environ.get("STRIPE_PAYMENT_METHOD_CONFIGURATION", "")))
 
     @staticmethod
     def first_purchase(db, user_id):

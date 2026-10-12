@@ -49,7 +49,8 @@ class MembershipPaymentsTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         env = patch.dict(os.environ, {"PAYMENTS_ENV": "sandbox", "STRIPE_CARD_ENABLED": "true",
             "STRIPE_ACCOUNT_ID": "acct_isolated", "STRIPE_SECRET_KEY": "sk_test_isolated",
-            "STRIPE_WEBHOOK_SECRET": "whsec_isolated"})
+            "STRIPE_WEBHOOK_SECRET": "whsec_isolated",
+            "STRIPE_PAYMENT_METHOD_CONFIGURATION": "pmc_isolated"})
         env.start(); self.addCleanup(env.stop)
         self.auth = AuthService(Path(self.temp.name) / "auth.db", "test-client", verifier=lambda *_: {})
         BuyerService(self.auth)
@@ -116,16 +117,24 @@ class MembershipPaymentsTests(unittest.TestCase):
         gateway=PaymentGateway()
         valid={"id":"cs_test_abc", "url":"https://checkout.stripe.com/test/cs_test_abc",
                "livemode":False,"mode":"payment","client_reference_id":"order-test",
-               "metadata":{"autolink_order_id":"order-test"},"amount_total":199,"currency":"usd"}
+               "metadata":{"autolink_order_id":"order-test"},"amount_total":199,"currency":"usd",
+               "payment_method_configuration_details":{"id":"pmc_isolated"},
+               "payment_method_types":["card"]}
         for response in (
             {**valid,"livemode":True},
             {**valid,"url":"https://checkout.evil.example/test/cs_test_abc"},
             {**valid,"amount_total":200},
             {**valid,"id":"cs_live_abc"},
             {**valid,"metadata":None},
+            {**valid,"payment_method_configuration_details":{"id":"pmc_other"}},
+            {**valid,"payment_method_types":["card","alipay"]},
         ):
             with patch.object(gateway,"verify_account"), patch.object(gateway,"stripe",return_value=response):
                 with self.assertRaises(GatewayError):gateway.checkout(order,"buyer@example.test")
+        with patch.object(gateway,"verify_account"), patch.object(gateway,"stripe",return_value=valid) as request:
+            gateway.checkout(order,"buyer@example.test")
+            self.assertEqual(request.call_args.args[1]["payment_method_configuration"], "pmc_isolated")
+            self.assertNotIn("payment_method_types[0]", request.call_args.args[1])
 
     def test_stripe_account_preflight_blocks_wrong_merchant(self):
         gateway=PaymentGateway()
