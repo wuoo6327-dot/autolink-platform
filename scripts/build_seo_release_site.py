@@ -30,9 +30,12 @@ overlay = [
 # Keep the list explicit so unrelated business files in the repository cannot
 # silently replace a newer production file. The AMD64 home trace showed a TBT
 # regression in the PR #7 home bundle, so this SEO release preserves the live
-# home HTML, bundle, visuals and image while retaining failure recovery below.
+# home HTML, bundle and visuals while retaining failure recovery below. The
+# smaller Zeekr hero is the same artwork and was included in the tested home
+# variant (1920x1080 instead of 2880x1620).
 overlay.extend([
     'assets/business-page-bootstrap.mjs',
+    'images/home-mobile/zeekr9x-city-ad.webp',
     'admin/app.js',
     'admin/bootstrap.js',
     'admin/index.html',

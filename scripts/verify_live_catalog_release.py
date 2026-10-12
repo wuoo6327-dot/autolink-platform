@@ -5,8 +5,10 @@ production service. A mismatch withdraws release approval rather than changing
 the candidate's reviewed content automatically.
 """
 import hashlib
+import http.client
 import json
 import sys
+import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -22,8 +24,16 @@ HEROES = json.loads((ROOT / "site/images/seo-heroes/manifest.json").read_text())
 def fetch(path):
     assert path.startswith("/") and not path.startswith("//")
     req = urllib.request.Request(BASE + path, headers={"User-Agent": "AUTOLINK-release-readonly/1.0"})
-    with urllib.request.urlopen(req, timeout=25) as response:
-        return response.read(), response.headers.get("Content-Type", "")
+    # Public CDN responses can be interrupted mid-body. Retry the same read-only
+    # request, but never treat a partial body as evidence that content matches.
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=25) as response:
+                return response.read(), response.headers.get("Content-Type", "")
+        except (OSError, http.client.HTTPException, urllib.error.URLError):
+            if attempt == 2:
+                raise
+            time.sleep(0.5 * (attempt + 1))
 
 
 def check_model(model):
@@ -39,7 +49,7 @@ def check_model(model):
             errors.append("reference-content-type")
         if json.loads(body) != json.loads(local_reference.read_bytes()):
             errors.append("reference-content-change")
-    except (OSError, ValueError, urllib.error.URLError) as exc:
+    except (OSError, ValueError, http.client.HTTPException, urllib.error.URLError) as exc:
         errors.append("reference-fetch:" + type(exc).__name__)
 
     hero = HEROES.get(ident)
@@ -52,7 +62,7 @@ def check_model(model):
                 errors.append("image-content-type")
             if hashlib.sha256(body).hexdigest() != hero["sourceSHA256"]:
                 errors.append("image-content-change")
-        except (OSError, urllib.error.URLError) as exc:
+        except (OSError, http.client.HTTPException, urllib.error.URLError) as exc:
             errors.append("image-fetch:" + type(exc).__name__)
     return ident, errors
 
