@@ -12,7 +12,7 @@ RUN apk add --no-cache zlib=1.3.2-r1 \
 FROM scratch
 COPY --from=dependencies / /
 WORKDIR /app
-COPY app.py seo_service.py ./
+COPY app.py seo_service.py membership_payments.py ./
 COPY buyer_service.py catalog_service.py catalog.json ./
 COPY email_auth.py mail_service.py business_mail.py mail_templates.py mail_translations.json ./
 COPY trade_service.py platform_service.py image_service.py price_review_service.py verification_service.py team_service.py pagination.py ./

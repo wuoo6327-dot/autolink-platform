@@ -1,0 +1,5 @@
+.membership-checkout{margin-top:1rem;padding:1rem;border:1px solid rgba(19,43,58,.18);border-radius:12px;background:#fff;color:#18313d}
+.membership-checkout p{margin:.5rem 0;font-size:.9rem;line-height:1.5}
+.membership-checkout-methods{display:flex;flex-wrap:wrap;gap:.5rem}
+.membership-checkout-methods button,.membership-checkout-methods a{display:inline-flex;align-items:center;padding:.6rem .85rem;border:1px solid #18313d;border-radius:8px;background:#18313d;color:white;font:inherit;cursor:pointer;text-decoration:none}
+.membership-checkout-methods button:disabled{opacity:.6;cursor:wait}

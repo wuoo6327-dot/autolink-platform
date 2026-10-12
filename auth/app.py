@@ -24,6 +24,7 @@ from seo_service import PublicSEOService
 from platform_service import PlatformService
 from business_mail import BusinessMailer
 from mail_templates import language_code
+from membership_payments import MembershipPaymentService
 
 
 CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
@@ -332,6 +333,11 @@ class Handler(BaseHTTPRequestHandler):
     trade: TradeService
     platform: PlatformService
     seo: PublicSEOService
+    payments: MembershipPaymentService
+
+    def payment_service(self):
+        instance = getattr(self, "payments", None)
+        return instance if instance is not None else MembershipPaymentService(self.service)
     server_version = "AUTOLINKAuth/1.0"
 
     def log_message(self, format, *args):
@@ -442,6 +448,15 @@ class Handler(BaseHTTPRequestHandler):
             raise ApiError(400, "JSON object required.")
         return body
 
+    def read_payment_webhook(self):
+        try:
+            size = int(self.headers.get("Content-Length", "0"))
+        except ValueError as exc:
+            raise ApiError(400, "Invalid webhook length.") from exc
+        if size < 1 or size > 65536:
+            raise ApiError(413, "Invalid webhook length.")
+        return self.rfile.read(size)
+
     def check_test_workspace(self, method, path):
         # Provisioned test accounts can edit their own drafts; they cannot contact
         # real buyers, join another team, sign an agreement or publish listings.
@@ -473,6 +488,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def handle_request(self, method: str):
         path = urlsplit(self.path).path
+        if method == "POST" and path in ("/autolink/payments/webhooks/stripe", "/autolink/payments/webhooks/airwallex"):
+            provider = path.rsplit("/", 1)[1]
+            self.send_json(200, self.payment_service().webhook(provider, self.read_payment_webhook(), self.headers))
+            return
         self.check_test_workspace(method, path)
         if method in ("POST", "PUT", "DELETE"):
             self.check_origin()
@@ -713,6 +732,11 @@ class Handler(BaseHTTPRequestHandler):
             data = self.buyer.mark_read(user, tail.split("/")[1])
         elif method == "GET" and tail == "membership":
             data = self.buyer.membership_page(user)
+            data["pricing"] = self.payment_service().pricing(user)
+            data["orders"] = self.payment_service().orders(user)
+            data["checkoutAvailable"] = any(item["available"] for item in data["pricing"]["methods"].values())
+        elif method == "POST" and tail == "membership/checkout":
+            data = self.payment_service().create_checkout(user, self.read_body())
         elif method == "GET" and tail == "entitlements":
             data = self.platform.entitlements(user)
         elif method == "GET" and tail == "security":
@@ -1045,6 +1069,7 @@ def main():
     Handler.trade = TradeService(Handler.service)
     Handler.platform = Handler.trade.platform
     Handler.seo = PublicSEOService(Handler.trade)
+    Handler.payments = MembershipPaymentService(Handler.service)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     Handler.service.mailer.start()
     try:server.serve_forever()
