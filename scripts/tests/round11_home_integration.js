@@ -45,10 +45,11 @@ async function main() {
     const context = await browser.newContext({viewport: {width: 1440, height: 900}, locale: 'en-US'});
     const page = await context.newPage();
     assert.equal((await page.goto(base + '/', {waitUntil: 'domcontentloaded', timeout: 60000})).status(), 200);
-    const consent = page.locator('button').filter({hasText: /necessary only/i}).first();
-    await consent.waitFor({state: 'visible', timeout: 12000}).catch(() => {});
-    if (await consent.isVisible().catch(() => false)) await consent.click();
     await page.getByRole('banner').getByRole('button', {name: /语言/}).waitFor({state: 'visible', timeout: 30000});
+    const consent = page.locator('.privacy-dialog button').filter({hasText: /necessary only/i}).first();
+    await consent.waitFor({state: 'visible', timeout: 45000});
+    await consent.click();
+    await page.locator('.privacy-dialog').waitFor({state: 'hidden', timeout: 10000});
     for (const [code, htmlLang] of choices) {
       await page.getByRole('banner').getByRole('button', {name: /语言/}).click();
       await page.locator(`.language-options button[lang="${code}"]`).click();
@@ -73,9 +74,11 @@ async function main() {
     const mobile = await browser.newContext({viewport: {width: 390, height: 844}, isMobile: true, locale: 'en-US'});
     const phone = await mobile.newPage();
     assert.equal((await phone.goto(base + '/', {waitUntil: 'domcontentloaded'})).status(), 200);
-    const mobileConsent = phone.locator('button').filter({hasText: /necessary only/i}).first();
-    await mobileConsent.waitFor({state: 'visible', timeout: 12000});
+    await phone.getByRole('button', {name: 'Open menu'}).waitFor({state: 'visible', timeout: 30000});
+    const mobileConsent = phone.locator('.privacy-dialog button').filter({hasText: /necessary only/i}).first();
+    await mobileConsent.waitFor({state: 'visible', timeout: 45000});
     await mobileConsent.click();
+    await phone.locator('.privacy-dialog').waitFor({state: 'hidden', timeout: 10000});
     await phone.getByRole('button', {name: 'Open menu'}).click();
     assert.ok(await phone.locator('header a[href="/buyer/login"]:visible').count());
     assert.ok(await phone.locator('header a[href="/merchant/login"]:visible').count());
