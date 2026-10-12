@@ -21,7 +21,7 @@ from backup_production_sqlite import verify as verify_sqlite
 
 BASE = Path("/opt/autolink-backups/seo-cutover-20261012")
 OLD = Path("/opt/autolink-releases/a38664fc9bf2be639cbcb65dce4b57ef5b94170c")
-OLD_AUTH = "sha256:328ad2e7f193d924d8adc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80"
+OLD_AUTH = "sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80"
 WEB = "sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb"
 CATALOG_SHA = "3c7bdf436bff712c0c50b249cf93c4c0bfda8d030133ccaf0532f2096734676b"
 

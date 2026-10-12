@@ -30,7 +30,7 @@ STATE_DIR = Path("/opt/autolink-release-state/seo-20261012")
 STAGE = Path("/home/admin/autolink-final-seo-qa-20261012")
 AUTH_ID = "sha256:0fcb1f1c73a0d6b7b23c81355a9d48ca1e82e514705011d26c63a7cd5aaff815"
 WEB_ID = "sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb"
-OLD_AUTH_ID = "sha256:328ad2e7f193d924d8adc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80"
+OLD_AUTH_ID = "sha256:328ad2e7f193a924d8ddc9943c2bde450e26e1b1af7318b26b1e4cb8984d4b80"
 CATALOG_SHA = "3c7bdf436bff712c0c50b249cf93c4c0bfda8d030133ccaf0532f2096734676b"
 DOMAIN = "autolinkglobal.com"
 
