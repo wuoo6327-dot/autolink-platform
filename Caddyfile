@@ -61,6 +61,14 @@
 	}
 	@contact path /contact /contact-us
 	redir @contact /support 302
+	@aboutFile path /about.html
+	redir @aboutFile /about 308
+	@aboutPage path /about /about/
+	handle @aboutPage {
+		rewrite * /about.html
+		header Cache-Control "no-cache"
+		file_server
+	}
 	@oldBrands path /brands /brands/*
 	redir @oldBrands /trade{uri} 302
 	@oldVehicles path /vehicles /vehicles/*

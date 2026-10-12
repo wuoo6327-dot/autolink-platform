@@ -72,6 +72,11 @@ class OverseasSEOTests(unittest.TestCase):
         self.assertEqual(len(guide),1)
         self.assertEqual(guide[0].find('s:loc',ns).text,'https://autolinkglobal.com/guide/middle-east-importers')
         self.assertEqual({link.get('hreflang') for link in guide[0].findall('x:link',ns)},{'en','x-default'})
+        about=[url for url in static.findall('s:url',ns)
+            if '/about' in url.find('s:loc',ns).text]
+        self.assertEqual(len(about),1)
+        self.assertEqual(about[0].find('s:loc',ns).text,'https://autolinkglobal.com/about')
+        self.assertEqual({link.get('hreflang') for link in about[0].findall('x:link',ns)},{'en','x-default'})
         page=(ROOT/'site/guide/middle-east-importers.html').read_text()
         fallback=(ROOT/'site/guide/middle-east-importers.fallback.html').read_text()
         self.assertIn('content="index, follow"',page)
