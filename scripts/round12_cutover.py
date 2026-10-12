@@ -17,6 +17,7 @@ ORIGINAL_PROBE = runbook.core_probe
 EXPECTED = {
     'index.html',
     *(f'index.{code}.html' for code in ('zh', 'ar', 'ru', 'kk', 'uz', 'ko', 'fr', 'sw')),
+    'assets/business-page-bootstrap.mjs',
     'assets/index-autolink-membership-apply-pricing.js',
     'images/zeekr9x-villa.webp',
 }
@@ -96,6 +97,11 @@ def core_probe(backup, candidate):
         raise RuntimeError('Homepage still preloads the old duplicate bundle URL')
     if 'index-autolink-membership-apply-pricing.js?v=20261012-home-fast' not in runbook.http('/')[1]:
         raise RuntimeError('Homepage does not preload its executing bundle URL')
+    status, bootstrap = runbook.http('/assets/business-page-bootstrap.mjs')
+    if status != 200 or "page === 'home' ? '?v=20261012-home-fast'" not in bootstrap:
+        raise RuntimeError('Homepage bootstrap still executes the old duplicate bundle URL')
+    if 'business-page-bootstrap.mjs?v=20261012-home-fast' not in runbook.http('/')[1]:
+        raise RuntimeError('Homepage still references cached old bootstrap module')
     print(runbook.now(), 'ROUND12_PROBE_OK', json.dumps({'languages': 9, 'sitemapChildren': names}), flush=True)
 
 

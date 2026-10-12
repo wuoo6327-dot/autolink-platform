@@ -15,6 +15,7 @@ BASE_BUNDLE_SHA256 = '744bcedd5caa4fd5ada2418410f26ee496da1db979eb32350d07f2cbe0
 OVERLAY_FILES = {
     'index.html',
     *(f'index.{code}.html' for code in ('zh', 'ar', 'ru', 'kk', 'uz', 'ko', 'fr', 'sw')),
+    'assets/business-page-bootstrap.mjs',
     'assets/index-autolink-membership-apply-pricing.js',
     'images/zeekr9x-villa.webp',
 }

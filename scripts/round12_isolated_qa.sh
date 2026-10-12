@@ -118,6 +118,7 @@ if phase=='candidate':
         assert b'<html lang="'+expected+b'"' in page
         assert (b'index, follow' if code=='zh' else b'noindex, follow') in page
         assert b'<div class="home-static">' in page
+        assert b'business-page-bootstrap.mjs?v=20261012-home-fast' in page
     status,about=get('/about');assert status==200 and b'<h1>About AUTOLINK</h1>' in about
     assert b'does not directly provide vehicle shipping' in about
     assert b'https://autolinkglobal.com/about' in about
@@ -146,6 +147,9 @@ if phase=='candidate':
     assert get('/assets/index-autolink-membership-apply-pricing.js')[0]==200
     assert b'index-autolink-membership-apply-pricing.js?v=20261012-home-fast' in home
     assert b'index-autolink-membership-apply-pricing.js?v=20261011-mobile-ad' not in home
+    assert b'business-page-bootstrap.mjs?v=20261012-home-fast' in home
+    status,bootstrap=get('/assets/business-page-bootstrap.mjs');assert status==200
+    assert b"page === 'home' ? '?v=20261012-home-fast'" in bootstrap
     assert get('/sitemaps/suppliers-1.xml')[0]==404
     assert get('/sitemaps/vehicles-1.xml')[0]==404
     assert get('/trade/models/aeolus-catalog-1')[0]==200
