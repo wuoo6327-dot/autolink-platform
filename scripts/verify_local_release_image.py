@@ -5,6 +5,7 @@ a remote registry manifest digest and never pulls or rebuilds an image.
 """
 
 import argparse
+import gzip
 import hashlib
 import json
 import subprocess
@@ -69,9 +70,16 @@ def main():
         diff_ids = config["rootfs"]["diff_ids"]
         if len(layers) != len(diff_ids) or not layers:
             raise ValueError("Layer list does not match config diff IDs")
+        archive_layer_digests = []
         for member, expected in zip(layers, diff_ids):
-            if digest_stream(image_archive.extractfile(member)) != expected:
-                raise ValueError(f"Layer checksum mismatch: {member}")
+            blob = image_archive.extractfile(member).read()
+            blob_digest = "sha256:" + hashlib.sha256(blob).hexdigest()
+            if member.startswith("blobs/sha256/") and blob_digest != "sha256:" + member.rsplit("/", 1)[-1]:
+                raise ValueError(f"Saved blob checksum mismatch: {member}")
+            uncompressed = gzip.decompress(blob) if blob.startswith(b"\x1f\x8b") else blob
+            if "sha256:" + hashlib.sha256(uncompressed).hexdigest() != expected:
+                raise ValueError(f"Layer diff ID mismatch: {member}")
+            archive_layer_digests.append(blob_digest)
         if (config["os"], config["architecture"]) != ("linux", "amd64"):
             raise ValueError("Archive is not linux/amd64")
 
@@ -100,7 +108,9 @@ def main():
         raise ValueError("Local OCI manifest config differs from saved archive")
     if len(local_manifest["layers"]) != len(layers):
         raise ValueError("Local OCI manifest layers differ in count from archive")
-    for layer in local_manifest["layers"]:
+    for layer, archive_digest in zip(local_manifest["layers"], archive_layer_digests):
+        if layer["digest"] != archive_digest:
+            raise ValueError("Local OCI manifest layer differs from saved archive")
         blob = subprocess.check_output([
             "ctr", "-n", "moby", "content", "get", layer["digest"],
         ])
