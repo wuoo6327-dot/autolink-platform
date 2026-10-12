@@ -94,28 +94,32 @@ def main():
     descriptor = loaded.get("Descriptor") or {}
     if descriptor.get("digest") != args.expected_image_id:
         raise ValueError("Loaded image descriptor differs from approved local digest")
-    if not descriptor.get("mediaType", "").endswith(".image.manifest.v1+json"):
-        raise ValueError("Loaded image descriptor is not an OCI image manifest")
+    allowed_manifests = {
+        "application/vnd.oci.image.manifest.v1+json",
+        "application/vnd.docker.distribution.manifest.v2+json",
+    }
+    if descriptor.get("mediaType") not in allowed_manifests:
+        raise ValueError("Loaded image descriptor is not a supported local image manifest")
     if loaded.get("RootFS", {}).get("Layers") != diff_ids:
         raise ValueError("Loaded image rootfs differs from archive layers")
     manifest_bytes = subprocess.check_output([
         "ctr", "-n", "moby", "content", "get", args.expected_image_id,
     ])
     if "sha256:" + hashlib.sha256(manifest_bytes).hexdigest() != args.expected_image_id:
-        raise ValueError("Local OCI manifest bytes differ from descriptor digest")
+        raise ValueError("Local image manifest bytes differ from descriptor digest")
     local_manifest = json.loads(manifest_bytes)
     if local_manifest["config"]["digest"] != config_digest:
-        raise ValueError("Local OCI manifest config differs from saved archive")
+        raise ValueError("Local image manifest config differs from saved archive")
     if len(local_manifest["layers"]) != len(layers):
-        raise ValueError("Local OCI manifest layers differ in count from archive")
+        raise ValueError("Local image manifest layers differ in count from archive")
     for layer, saved_layer_digest in zip(local_manifest["layers"], archive_layer_digests):
         if layer["digest"] != saved_layer_digest:
-            raise ValueError("Local OCI manifest layer differs from saved archive")
+            raise ValueError("Local image manifest layer differs from saved archive")
         blob = subprocess.check_output([
             "ctr", "-n", "moby", "content", "get", layer["digest"],
         ])
         if "sha256:" + hashlib.sha256(blob).hexdigest() != layer["digest"]:
-            raise ValueError("Local OCI layer blob checksum mismatch")
+            raise ValueError("Local image layer blob checksum mismatch")
 
     source_hashes = {}
     if args.source_root or args.source_commit:
@@ -150,8 +154,8 @@ def main():
         "archive": str(archive),
         "archiveSHA256": archive_digest,
         "dockerImageID": loaded["Id"],
-        "localOCIManifestDigest": descriptor["digest"],
-        "localOCIManifestMediaType": descriptor["mediaType"],
+        "localImageManifestDigest": descriptor["digest"],
+        "localImageManifestMediaType": descriptor["mediaType"],
         "dockerRepoDigestsLocalObservation": loaded.get("RepoDigests", []),
         "archiveConfigDigest": config_digest,
         "os": "linux",
