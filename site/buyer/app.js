@@ -205,17 +205,17 @@ function renderMembership(data) {
   const m=data.membership, status=m.status==='FREE'?t('免费账号','Free Account'):m.status==='ACTIVE'?t('已开通','Active'):t('已到期','Expired');
   const locale=window.businessI18n.language;
   const labels={
-    en:['First purchase','Later renewal','Renew manually when the paid period ends. Automatic charges are off.','Online methods are awaiting merchant approval.','Payment order','Next charge'],
-    zh:['首次购买','后续续费','当前周期结束后手动续费，不会自动扣款。','线上支付方式仍待商户审核。','付款订单','下次扣费'],
-    ar:['الشراء الأول','التجديد اللاحق','جدّد يدوياً عند انتهاء الفترة المدفوعة. لا يوجد خصم تلقائي.','طرق الدفع بانتظار موافقة التاجر.','طلب الدفع','الخصم التالي'],
-    ru:['Первая покупка','Последующее продление','После окончания оплаченного периода продлите вручную. Автосписание отключено.','Способы оплаты ожидают одобрения продавца.','Платёжный заказ','Следующий платёж'],
-    kk:['Алғашқы сатып алу','Кейінгі ұзарту','Төленген кезең аяқталғанда қолмен ұзартыңыз. Автоматты төлем өшірулі.','Төлем әдістері мақұлдауды күтуде.','Төлем тапсырысы','Келесі төлем'],
-    uz:['Birinchi xarid','Keyingi yangilash','To‘langan davr tugaganda qo‘lda yangilang. Avtomatik yechib olish o‘chiq.','To‘lov usullari tasdiqlanishini kutmoqda.','To‘lov buyurtmasi','Keyingi to‘lov'],
-    ko:['첫 구매','이후 갱신','결제 기간이 끝나면 직접 갱신하세요. 자동 결제는 꺼져 있습니다.','결제 수단은 가맹점 승인을 기다리고 있습니다.','결제 주문','다음 결제'],
-    fr:['Premier achat','Renouvellement ultérieur','Renouvelez manuellement à la fin de la période payée. Aucun prélèvement automatique.','Les moyens de paiement attendent l’approbation du marchand.','Commande de paiement','Prochain prélèvement'],
-    sw:['Ununuzi wa kwanza','Uhuishaji unaofuata','Sasisha mwenyewe kipindi kilicholipiwa kikiisha. Hakuna malipo ya kiotomatiki.','Njia za malipo zinasubiri idhini ya mfanyabiashara.','Agizo la malipo','Malipo yajayo']
+    en:['First purchase','Later renewal','Renew manually when the paid period ends. Automatic charges are off.','Online checkout is not available yet.','Payment order','Next charge'],
+    zh:['首次购买','后续续费','当前周期结束后手动续费，不会自动扣款。','在线付款暂未开放。','付款订单','下次扣费'],
+    ar:['الشراء الأول','التجديد اللاحق','جدّد يدوياً عند انتهاء الفترة المدفوعة. لا يوجد خصم تلقائي.','الدفع عبر الإنترنت غير متاح حالياً.','طلب الدفع','الخصم التالي'],
+    ru:['Первая покупка','Последующее продление','После окончания оплаченного периода продлите вручную. Автосписание отключено.','Онлайн-оплата пока недоступна.','Платёжный заказ','Следующий платёж'],
+    kk:['Алғашқы сатып алу','Кейінгі ұзарту','Төленген кезең аяқталғанда қолмен ұзартыңыз. Автоматты төлем өшірулі.','Онлайн төлем әзірге қолжетімсіз.','Төлем тапсырысы','Келесі төлем'],
+    uz:['Birinchi xarid','Keyingi yangilash','To‘langan davr tugaganda qo‘lda yangilang. Avtomatik yechib olish o‘chiq.','Onlayn to‘lov hozircha mavjud emas.','To‘lov buyurtmasi','Keyingi to‘lov'],
+    ko:['첫 구매','이후 갱신','결제 기간이 끝나면 직접 갱신하세요. 자동 결제는 꺼져 있습니다.','온라인 결제는 아직 제공되지 않습니다.','결제 주문','다음 결제'],
+    fr:['Premier achat','Renouvellement ultérieur','Renouvelez manuellement à la fin de la période payée. Aucun prélèvement automatique.','Le paiement en ligne n’est pas encore disponible.','Commande de paiement','Prochain prélèvement'],
+    sw:['Ununuzi wa kwanza','Uhuishaji unaofuata','Sasisha mwenyewe kipindi kilicholipiwa kikiisha. Hakuna malipo ya kiotomatiki.','Malipo ya mtandaoni bado hayapatikani.','Agizo la malipo','Malipo yajayo']
   }[locale] || null;
-  const c=labels || ['First purchase','Later renewal','Renew manually when the paid period ends. Automatic charges are off.','Online methods are awaiting merchant approval.','Payment order','Next charge'];
+  const c=labels || ['First purchase','Later renewal','Renew manually when the paid period ends. Automatic charges are off.','Online checkout is not available yet.','Payment order','Next charge'];
   const plans=data.pricing?.plans || {monthly:{firstMinor:199,renewalMinor:1990},quarterly:{firstMinor:999,renewalMinor:2999},annual:{firstMinor:3999,renewalMinor:9999}};
   const planRows=['monthly','quarterly','annual'].map(plan=>`<div class="row"><div class="row-main"><strong>${esc(tr(plan))}</strong><small>${esc(c[0])}: USD ${(plans[plan].firstMinor/100).toFixed(2)} · ${esc(c[1])}: USD ${(plans[plan].renewalMinor/100).toFixed(2)}</small></div></div>`).join('');
   const orders=(data.orders||[]).map(o=>`<div class="row"><div class="row-main"><strong>${esc(tr(o.plan))} · USD ${(o.amount_minor/100).toFixed(2)}</strong><small>${esc(o.method)} · ${esc(o.status)} · ${date(o.created_at)}</small></div></div>`).join('');

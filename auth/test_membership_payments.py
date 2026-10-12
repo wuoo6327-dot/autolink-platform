@@ -16,7 +16,7 @@ from urllib.error import HTTPError
 
 from app import AuthService, Handler
 from buyer_service import BuyerError, BuyerService
-from membership_payments import MembershipPaymentService
+from membership_payments import GatewayError, MembershipPaymentService, PaymentGateway
 
 
 class FakeGateway:
@@ -24,19 +24,9 @@ class FakeGateway:
         self.sessions = {}
 
     def checkout(self, order, email):
-        provider = order["provider"]
-        ref = ("cs_" if provider == "stripe" else "bco_") + order["id"]
-        host = "checkout.stripe.com" if provider == "stripe" else "checkout.airwallex.com"
+        ref = "cs_" + order["id"]
         self.sessions[ref] = order
-        return ref, "https://" + host + "/test/" + ref
-
-    def airwallex_checkout(self, path, payload=None):
-        ref = path.rsplit("/", 1)[1]
-        order = self.sessions[ref]
-        method = "alipaycn" if order["method"] == "airwallex_alipay" else "wechatpay"
-        return {"id": ref, "account_id": "acct_test", "status": "COMPLETED", "mode": "PAYMENT",
-                "payment_intent_id": "int_" + order["id"], "metadata": {"autolink_order_id": order["id"]},
-                "payment_options": {"payment_method_types": [method]}, "currency": "USD"}
+        return ref, "https://checkout.stripe.com/test/" + ref
 
 
 class MembershipPaymentsTests(unittest.TestCase):
@@ -44,11 +34,7 @@ class MembershipPaymentsTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         env = patch.dict(os.environ, {"PAYMENTS_ENV": "sandbox", "STRIPE_CARD_ENABLED": "true",
-            "STRIPE_SECRET_KEY": "sk_test_isolated", "STRIPE_WEBHOOK_SECRET": "whsec_isolated",
-            "AIRWALLEX_CHECKOUT_APPROVED": "true", "AIRWALLEX_ALIPAY_ENABLED": "true",
-            "AIRWALLEX_WECHAT_ENABLED": "true", "AIRWALLEX_CLIENT_ID": "isolated",
-            "AIRWALLEX_API_KEY": "isolated", "AIRWALLEX_WEBHOOK_SECRET": "airwallex-isolated",
-            "AIRWALLEX_ACCOUNT_ID": "acct_test"})
+            "STRIPE_SECRET_KEY": "sk_test_isolated", "STRIPE_WEBHOOK_SECRET": "whsec_isolated"})
         env.start(); self.addCleanup(env.stop)
         self.auth = AuthService(Path(self.temp.name) / "auth.db", "test-client", verifier=lambda *_: {})
         BuyerService(self.auth)
@@ -72,18 +58,7 @@ class MembershipPaymentsTests(unittest.TestCase):
         signature = hmac.new(b"whsec_isolated", stamp.encode() + b"." + raw, hashlib.sha256).hexdigest()
         return raw, {"Stripe-Signature": "t=" + stamp + ", v1=" + signature}
 
-    def airwallex_event(self, checkout, *, amount=None, method="alipaycn", event_id="aw_evt_1"):
-        order_id = checkout["orderId"]
-        event = {"id": event_id, "name": "payment_intent.succeeded", "accountId": "acct_test",
-                 "data": {"object": {"id": "int_" + order_id, "merchant_order_id": order_id,
-                     "amount": str(checkout["amountMinor"] / 100) if amount is None else amount,
-                     "currency": "USD", "status": "SUCCEEDED", "payment_method": {"type": method}}}}
-        raw = json.dumps(event).encode()
-        stamp = str(int(time.time() * 1000))
-        signature = hmac.new(b"airwallex-isolated", stamp.encode() + raw, hashlib.sha256).hexdigest()
-        return raw, {"x-timestamp": stamp, "x-signature": signature}
-
-    def test_prices_first_purchase_once_across_plan_and_provider(self):
+    def test_prices_first_purchase_once_across_plans(self):
         self.assertEqual({k:v["dueMinor"] for k,v in self.payments.pricing(self.user)["plans"].items()},
                          {"monthly":199,"quarterly":999,"annual":3999})
         order = self.payments.create_checkout(self.user, {"plan":"annual", "method":"stripe_card", "autoRenew":False})
@@ -95,27 +70,41 @@ class MembershipPaymentsTests(unittest.TestCase):
         self.assertEqual(self.payments.webhook("stripe", raw, headers), {"duplicate":True})
         self.assertEqual({k:v["dueMinor"] for k,v in self.payments.pricing(self.user)["plans"].items()},
                          {"monthly":1990,"quarterly":2999,"annual":9999})
-        renewal = self.payments.create_checkout(self.user, {"plan":"monthly", "method":"airwallex_alipay", "autoRenew":False})
+        renewal = self.payments.create_checkout(self.user, {"plan":"monthly", "method":"stripe_card", "autoRenew":False})
         self.assertEqual((renewal["amountMinor"],renewal["purchaseType"]),(1990,"RENEWAL"))
-        raw, headers = self.airwallex_event(renewal)
-        self.payments.webhook("airwallex", raw, headers)
+        raw, headers = self.stripe_event(renewal, event_id="evt_renewal")
+        self.payments.webhook("stripe", raw, headers)
         with self.auth.connect() as db:
             self.assertEqual(db.execute("SELECT count(*) FROM buyer_memberships WHERE user_id='buyer'").fetchone()[0],2)
             self.assertEqual(db.execute("SELECT count(*) FROM membership_intro_uses WHERE user_id='buyer'").fetchone()[0],1)
             self.assertEqual(db.execute("SELECT count(*) FROM buyer_membership_payments WHERE user_id='buyer'").fetchone()[0],2)
 
-    def test_webhook_signature_amount_method_and_account_fail_closed(self):
-        order = self.payments.create_checkout(self.user, {"plan":"monthly", "method":"airwallex_wechat", "autoRenew":False})
-        raw, headers = self.airwallex_event(order, method="wechatpay")
-        with self.assertRaises(BuyerError):self.payments.webhook("airwallex", raw, {**headers,"x-signature":"bad"})
-        with self.assertRaises(BuyerError):self.payments.webhook("airwallex", *self.airwallex_event(order,amount="2.00",method="wechatpay"))
-        with self.assertRaises(BuyerError):self.payments.webhook("airwallex", *self.airwallex_event(order,method="alipaycn"))
-        event=json.loads(raw);event["accountId"]="wrong"
-        wrong=json.dumps(event).encode();stamp=headers["x-timestamp"]
-        sig=hmac.new(b"airwallex-isolated",stamp.encode()+wrong,hashlib.sha256).hexdigest()
-        with self.assertRaises(BuyerError):self.payments.webhook("airwallex",wrong,{"x-timestamp":stamp,"x-signature":sig})
-        self.payments.webhook("airwallex",raw,headers)
+    def test_stripe_webhook_signature_amount_and_account_fail_closed(self):
+        order = self.payments.create_checkout(self.user, {"plan":"monthly", "method":"stripe_card", "autoRenew":False})
+        raw, headers = self.stripe_event(order)
+        with self.assertRaises(BuyerError):self.payments.webhook("stripe", raw, {"Stripe-Signature":"bad"})
+        with self.assertRaises(BuyerError):self.payments.webhook("stripe", *self.stripe_event(order,amount=200))
+        event=json.loads(raw);event["account"]="wrong"
+        wrong=json.dumps(event).encode();stamp=str(int(time.time()))
+        sig=hmac.new(b"whsec_isolated",stamp.encode()+b"."+wrong,hashlib.sha256).hexdigest()
+        with self.assertRaises(BuyerError):self.payments.webhook("stripe",wrong,{"Stripe-Signature":"t="+stamp+",v1="+sig})
+        for payload in ([], {"id":"evt_missing_mode", "type":"checkout.session.completed", "data":{"object":{}}}):
+            invalid=json.dumps(payload).encode()
+            sig=hmac.new(b"whsec_isolated",stamp.encode()+b"."+invalid,hashlib.sha256).hexdigest()
+            with self.assertRaises(BuyerError):
+                self.payments.webhook("stripe",invalid,{"Stripe-Signature":"t="+stamp+",v1="+sig})
+        self.payments.webhook("stripe",raw,headers)
         with self.auth.connect() as db:self.assertEqual(db.execute("SELECT count(*) FROM buyer_memberships").fetchone()[0],1)
+
+    def test_stripe_checkout_rejects_wrong_environment_and_host(self):
+        order={"provider":"stripe", "amount_minor":199, "id":"order-test", "plan":"monthly", "expires_at":int(time.time())+3600}
+        gateway=PaymentGateway()
+        for response in (
+            {"id":"cs_test", "url":"https://checkout.stripe.com/test/cs_test", "livemode":True},
+            {"id":"cs_test", "url":"https://checkout.evil.example/test/cs_test", "livemode":False},
+        ):
+            with patch.object(gateway,"stripe",return_value=response):
+                with self.assertRaises(GatewayError):gateway.checkout(order,"buyer@example.test")
 
     def test_auto_renewal_and_disabled_provider_are_rejected(self):
         with self.assertRaises(BuyerError) as error:
@@ -140,21 +129,16 @@ class MembershipPaymentsTests(unittest.TestCase):
             self.assertEqual(db.execute("SELECT status FROM buyer_membership_payments WHERE user_id='buyer'").fetchone()[0],"REFUNDED")
         self.assertFalse(self.payments.pricing(self.user)["firstPurchaseEligible"])
 
-    def test_airwallex_refund_acceptance_does_not_revoke_until_settled(self):
-        checkout = self.payments.create_checkout(self.user, {"plan": "monthly", "method": "airwallex_alipay", "autoRenew": False})
-        self.payments.webhook("airwallex", *self.airwallex_event(checkout))
-        for event_id, name in (("refund_accepted", "refund.accepted"), ("refund_settled", "refund.settled")):
-            event = {"id": event_id, "name": name, "accountId": "acct_test",
-                     "data": {"object": {"payment_intent_id": "int_" + checkout["orderId"],
-                                         "amount": "1.99", "currency": "USD"}}}
-            raw = json.dumps(event).encode()
-            stamp = str(int(time.time() * 1000))
-            signature = hmac.new(b"airwallex-isolated", stamp.encode() + raw, hashlib.sha256).hexdigest()
-            self.payments.webhook("airwallex", raw, {"x-timestamp": stamp, "x-signature": signature})
-            with self.auth.connect() as db:
-                status = db.execute("SELECT status FROM buyer_memberships WHERE user_id='buyer'").fetchone()[0]
-                expected = "ACTIVE" if name == "refund.accepted" else "REFUNDED"
-                self.assertEqual(status, expected)
+    def test_airwallex_extension_is_reserved_and_fail_closed(self):
+        self.assertFalse(self.payments.pricing(self.user)["methods"]["airwallex_alipay"]["available"])
+        self.assertFalse(self.payments.pricing(self.user)["methods"]["airwallex_wechat"]["available"])
+        with patch.dict(os.environ, {"AIRWALLEX_ALIPAY_ENABLED":"true", "AIRWALLEX_CHECKOUT_APPROVED":"true"}):
+            with self.assertRaises(BuyerError) as error:
+                self.payments.create_checkout(self.user, {"plan":"monthly", "method":"airwallex_alipay", "autoRenew":False})
+            self.assertEqual(error.exception.status, 503)
+        with self.assertRaises(BuyerError) as error:
+            self.payments.webhook("airwallex", b"{}", {})
+        self.assertEqual(error.exception.status, 503)
 
     def test_http_auth_csrf_and_verified_webhook_only(self):
         class PaymentHandler(Handler):

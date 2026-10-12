@@ -12,7 +12,6 @@ import os
 import time
 import uuid
 from datetime import datetime, timezone
-from decimal import Decimal, InvalidOperation
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 
@@ -26,8 +25,9 @@ PLANS = {
 }
 METHODS = {
     "stripe_card": ("stripe", "STRIPE_CARD_ENABLED"),
-    "airwallex_alipay": ("airwallex", "AIRWALLEX_ALIPAY_ENABLED"),
-    "airwallex_wechat": ("airwallex", "AIRWALLEX_WECHAT_ENABLED"),
+    # Reserved API values. Airwallex cannot be enabled in this Stripe-first release.
+    "airwallex_alipay": ("airwallex", None),
+    "airwallex_wechat": ("airwallex", None),
 }
 
 
@@ -39,30 +39,12 @@ def add_months(timestamp, months):
     return int(value.replace(year=year, month=month, day=day).timestamp())
 
 
-def money_minor(value):
-    try:
-        amount = Decimal(str(value)) * 100
-        if amount != amount.to_integral_value():
-            raise ValueError("Amount is not exact cents")
-        return int(amount)
-    except (InvalidOperation, ValueError, TypeError) as exc:
-        raise BuyerError(400, "Invalid provider amount.") from exc
-
-
 class GatewayError(Exception):
     pass
 
 
 class PaymentGateway:
-    """Small server-only adapter for the providers' hosted checkout APIs."""
-
-    def _json(self, url, payload, headers):
-        data = None if payload is None else json.dumps(payload, separators=(",", ":")).encode()
-        try:
-            with urlopen(Request(url, data=data, headers=headers, method="GET" if payload is None else "POST"), timeout=12) as response:
-                return json.load(response)
-        except Exception as exc:
-            raise GatewayError("Payment provider request failed; order requires reconciliation.") from exc
+    """Server-only Stripe hosted checkout; Airwallex is a reserved later adapter."""
 
     def stripe(self, path, fields, order_id):
         secret = os.environ["STRIPE_SECRET_KEY"]
@@ -76,63 +58,28 @@ class PaymentGateway:
         except Exception as exc:
             raise GatewayError("Stripe checkout requires reconciliation.") from exc
 
-    def airwallex_token(self):
-        base = "https://api.sandbox.airwallex.com" if os.environ.get("PAYMENTS_ENV") == "sandbox" else "https://api.airwallex.com"
-        result = self._json(base + "/api/v1/authentication/login", {}, {
-            "Content-Type": "application/json", "x-client-id": os.environ["AIRWALLEX_CLIENT_ID"],
-            "x-api-key": os.environ["AIRWALLEX_API_KEY"]})
-        if not result.get("token"):
-            raise GatewayError("Airwallex did not issue a token.")
-        return base, result["token"]
-
-    def airwallex(self, path, payload=None):
-        base, token = self.airwallex_token()
-        return self._json(base + "/api/v1/pa/" + path, payload,
-                          {"Authorization": "Bearer " + token, "Content-Type": "application/json"})
-
-    def airwallex_checkout(self, path, payload=None):
-        base, token = self.airwallex_token()
-        return self._json(base + "/api/v1/checkout/" + path, payload,
-                          {"Authorization": "Bearer " + token, "Content-Type": "application/json"})
-
     def checkout(self, order, email):
+        if order["provider"] != "stripe":
+            raise GatewayError("This payment adapter is not available.")
         amount = order["amount_minor"]
         order_id = order["id"]
         label = {"monthly": "Monthly", "quarterly": "Quarterly", "annual": "Annual"}[order["plan"]]
-        if order["provider"] == "stripe":
-            fields = {
-                "mode": "payment", "payment_method_types[0]": "card",
-                "client_reference_id": order_id, "metadata[autolink_order_id]": order_id,
-                "customer_email": email, "line_items[0][quantity]": "1",
-                "line_items[0][price_data][currency]": "usd",
-                "line_items[0][price_data][unit_amount]": str(amount),
-                "line_items[0][price_data][product_data][name]": "AUTOLINK " + label + " membership",
-                "success_url": "https://autolinkglobal.com/membership?checkout=return",
-                "cancel_url": "https://autolinkglobal.com/membership?checkout=cancelled",
-                "expires_at": str(order["expires_at"]),
-            }
-            result = self.stripe("checkout/sessions", fields, order_id)
-            allowed = "checkout.stripe.com"
-        else:
-            payment_method = "alipaycn" if order["method"] == "airwallex_alipay" else "wechatpay"
-            result = self.airwallex_checkout("checkout_sessions/create", {
-                "mode": "PAYMENT", "request_id": order_id, "currency": "USD",
-                "account_id": os.environ["AIRWALLEX_ACCOUNT_ID"],
-                "success_url": "https://autolinkglobal.com/membership?checkout=return",
-                "back_url": "https://autolinkglobal.com/membership?checkout=cancelled",
-                "invoice_creation": {"enabled": False},
-                "payment_intent_data": {"merchant_order_id": order_id},
-                "metadata": {"autolink_order_id": order_id},
-                "line_items": [{"quantity": 1, "price": {
-                    "currency": "USD", "unit_amount": float(Decimal(amount) / 100),
-                    "product": {"name": "AUTOLINK " + label + " membership"}}}],
-                "payment_options": {"payment_method_types": [payment_method],
-                                    "payment_method_save": {"mode": "DISABLED"}},
-                "ui_mode": "HOSTED",
-            })
-            allowed = "checkout.airwallex.com"
+        fields = {
+            "mode": "payment", "payment_method_types[0]": "card",
+            "client_reference_id": order_id, "metadata[autolink_order_id]": order_id,
+            "customer_email": email, "line_items[0][quantity]": "1",
+            "line_items[0][price_data][currency]": "usd",
+            "line_items[0][price_data][unit_amount]": str(amount),
+            "line_items[0][price_data][product_data][name]": "AUTOLINK " + label + " membership",
+            "success_url": "https://autolinkglobal.com/membership?checkout=return",
+            "cancel_url": "https://autolinkglobal.com/membership?checkout=cancelled",
+            "expires_at": str(order["expires_at"]),
+        }
+        result = self.stripe("checkout/sessions", fields, order_id)
         ref, url = result.get("id"), result.get("url")
-        if not ref or not url or urlparse(url).scheme != "https" or urlparse(url).hostname != allowed:
+        if result.get("livemode") is not (os.environ.get("PAYMENTS_ENV") == "live"):
+            raise GatewayError("Stripe checkout environment does not match.")
+        if not ref or not url or urlparse(url).scheme != "https" or urlparse(url).hostname != "checkout.stripe.com":
             raise GatewayError("Provider returned an invalid checkout URL.")
         return ref, url
 
@@ -175,18 +122,16 @@ class MembershipPaymentService:
     @staticmethod
     def enabled(method):
         provider, flag = METHODS[method]
+        if provider != "stripe":
+            return False
         if os.environ.get("PAYMENTS_ENV") not in ("sandbox", "live"):
             return False
         if os.environ.get(flag, "false").lower() != "true":
             return False
-        if provider == "stripe":
-            expected = "sk_test_" if os.environ["PAYMENTS_ENV"] == "sandbox" else "sk_live_"
-            return bool(os.environ.get("STRIPE_SECRET_KEY", "").startswith(expected)
-                        and os.environ.get("STRIPE_WEBHOOK_SECRET", "").startswith("whsec_")
-                        and (os.environ.get("PAYMENTS_ENV") == "sandbox" or os.environ.get("STRIPE_ACCOUNT_ID")))
-        return bool(os.environ.get("AIRWALLEX_CHECKOUT_APPROVED", "false").lower() == "true"
-                    and os.environ.get("AIRWALLEX_CLIENT_ID") and os.environ.get("AIRWALLEX_API_KEY")
-                    and os.environ.get("AIRWALLEX_WEBHOOK_SECRET") and os.environ.get("AIRWALLEX_ACCOUNT_ID"))
+        expected = "sk_test_" if os.environ["PAYMENTS_ENV"] == "sandbox" else "sk_live_"
+        return bool(os.environ.get("STRIPE_SECRET_KEY", "").startswith(expected)
+                    and os.environ.get("STRIPE_WEBHOOK_SECRET", "").startswith("whsec_")
+                    and (os.environ.get("PAYMENTS_ENV") == "sandbox" or os.environ.get("STRIPE_ACCOUNT_ID")))
 
     @staticmethod
     def first_purchase(db, user_id):
@@ -219,7 +164,7 @@ class MembershipPaymentService:
         if body.get("autoRenew") is not False:
             raise BuyerError(409, "Automatic renewal is unavailable for this payment method. Choose manual renewal.")
         if not self.enabled(method):
-            raise BuyerError(503, "This payment method is not yet approved and available.")
+            raise BuyerError(503, "This payment method is unavailable.")
         if user.get("is_test_workspace"):
             raise BuyerError(403, "Test workspace cannot purchase membership.")
         now, order_id = int(time.time()), str(uuid.uuid4())
@@ -288,8 +233,7 @@ class MembershipPaymentService:
                        (payment_id, member_id, now, now, order_id))
         return {"paid": True, "membershipId": member_id}
 
-    def _adjustment(self, provider, event_id, event_type, payment_id, refund_minor=None, dispute=None,
-                    refund_pending=False):
+    def _adjustment(self, provider, event_id, event_type, payment_id, refund_minor=None, dispute=None):
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             order = db.execute("SELECT * FROM membership_orders WHERE provider=? AND provider_payment_id=?",
@@ -298,10 +242,6 @@ class MembershipPaymentService:
                 raise BuyerError(409, "Payment adjustment has no matching order.")
             if not self._record_event(db, provider, event_id, order["id"], event_type):
                 return {"duplicate": True}
-            if refund_pending:
-                db.execute("UPDATE membership_orders SET refund_status='PENDING',updated_at=? "
-                           "WHERE id=? AND COALESCE(refund_status,'')!='FULL'",
-                           (int(time.time()), order["id"]))
             if refund_minor is not None:
                 state = "FULL" if refund_minor >= order["amount_minor"] else "PARTIAL_REVIEW"
                 db.execute("UPDATE membership_orders SET refund_status=?,updated_at=? WHERE id=?",
@@ -326,31 +266,24 @@ class MembershipPaymentService:
         if not any(hmac.compare_digest(expected, part[3:]) for part in parts if part.startswith("v1=")):
             raise BuyerError(400, "Invalid Stripe signature.")
 
-    @staticmethod
-    def _signed_airwallex(raw, timestamp, signature):
-        secret = os.environ.get("AIRWALLEX_WEBHOOK_SECRET", "")
-        if not secret or not timestamp.isdigit() or abs(int(time.time() * 1000) - int(timestamp)) > 300000:
-            raise BuyerError(400, "Invalid Airwallex signature timestamp.")
-        expected = hmac.new(secret.encode(), timestamp.encode() + raw, hashlib.sha256).hexdigest()
-        if not hmac.compare_digest(expected, signature):
-            raise BuyerError(400, "Invalid Airwallex signature.")
-
     def webhook(self, provider, raw, headers):
         if provider == "stripe":
             self._signed_stripe(raw, headers.get("Stripe-Signature", ""))
         elif provider == "airwallex":
-            self._signed_airwallex(raw, headers.get("x-timestamp", ""), headers.get("x-signature", ""))
+            raise BuyerError(503, "Airwallex integration is reserved and unavailable.")
         else:
             raise BuyerError(404, "Unknown payment provider.")
         try:
             event = json.loads(raw)
         except ValueError as exc:
             raise BuyerError(400, "Invalid provider event.") from exc
+        if not isinstance(event, dict):
+            raise BuyerError(400, "Invalid provider event.")
         event_id = event.get("id")
         if not isinstance(event_id, str) or not event_id:
             raise BuyerError(400, "Missing provider event ID.")
         if provider == "stripe":
-            if bool(event.get("livemode")) != (os.environ.get("PAYMENTS_ENV") == "live"):
+            if event.get("livemode") is not (os.environ.get("PAYMENTS_ENV") == "live"):
                 raise BuyerError(409, "Stripe environment mismatch.")
             if event.get("account") and event["account"] != os.environ.get("STRIPE_ACCOUNT_ID"):
                 raise BuyerError(409, "Stripe account mismatch.")
@@ -384,43 +317,3 @@ class MembershipPaymentService:
                 raise BuyerError(409, "Stripe metadata mismatch.")
             return self._fulfill(provider, event_id, event_type, order_id, obj.get("id"),
                                  obj["payment_intent"], obj.get("amount_total"), obj.get("currency", ""))
-        if event.get("accountId") != os.environ.get("AIRWALLEX_ACCOUNT_ID"):
-            raise BuyerError(409, "Airwallex account mismatch.")
-        event_type = event.get("name", "")
-        obj = event.get("data", {}).get("object", {})
-        if event_type in ("refund.accepted", "refund.settled"):
-            if not obj.get("payment_intent_id") or str(obj.get("currency", "")).upper() != "USD":
-                raise BuyerError(409, "Airwallex refund identity mismatch.")
-            return self._adjustment(provider, event_id, event_type, obj["payment_intent_id"],
-                                    refund_minor=money_minor(obj.get("amount")) if event_type == "refund.settled" else None,
-                                    refund_pending=event_type == "refund.accepted")
-        if event_type.startswith("payment_dispute."):
-            if not obj.get("payment_intent_id"):
-                raise BuyerError(409, "Airwallex dispute identity mismatch.")
-            return self._adjustment(provider, event_id, event_type, obj["payment_intent_id"],
-                                    dispute=event_type.split(".", 1)[1].upper())
-        if event_type != "payment_intent.succeeded":
-            with self.auth.connect() as db:
-                self._record_event(db, provider, event_id, None, event_type)
-            return {"ignored": True}
-        if obj.get("status") != "SUCCEEDED" or not obj.get("id"):
-            raise BuyerError(409, "Airwallex payment is not final.")
-        order_id = obj.get("merchant_order_id")
-        with self.auth.connect() as db:
-            order = db.execute("SELECT * FROM membership_orders WHERE id=? AND provider='airwallex'", (order_id,)).fetchone()
-        if not order or not order["provider_ref"]:
-            raise BuyerError(409, "Airwallex order not found.")
-        session = self.gateway.airwallex_checkout("checkout_sessions/" + order["provider_ref"])
-        expected_method = "alipaycn" if order["method"] == "airwallex_alipay" else "wechatpay"
-        if (session.get("id") != order["provider_ref"] or session.get("account_id") != os.environ.get("AIRWALLEX_ACCOUNT_ID")
-                or session.get("status") != "COMPLETED" or session.get("mode") != "PAYMENT"
-                or session.get("payment_intent_id") != obj["id"]
-                or session.get("metadata", {}).get("autolink_order_id") != order_id
-                or session.get("payment_options", {}).get("payment_method_types") != [expected_method]
-                or str(session.get("currency", "")).upper() != "USD"):
-            raise BuyerError(409, "Airwallex checkout session does not match the order.")
-        method = obj.get("payment_method", {}).get("type")
-        if method != expected_method:
-            raise BuyerError(409, "Airwallex payment method does not match the buyer's selection.")
-        return self._fulfill(provider, event_id, event_type, order_id, order["provider_ref"],
-                             obj["id"], money_minor(obj.get("amount")), obj.get("currency", ""))
