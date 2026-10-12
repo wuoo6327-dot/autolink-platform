@@ -24,10 +24,14 @@ class Head {
 }
 for(const language of languages){
   const head=new Head();head.append(new Element('title',head));
-  const location={pathname:'/trade/models/model-synthetic',search:'?lang='+language};
-  const document={head,title:'AUTOLINK',createElement:tag=>new Element(tag,head)};
-  const context=vm.createContext({document,location,URL,URLSearchParams,encodeURIComponent,MutationObserver:class{observe(){}}});
-  context.window=context;context.businessI18n={language,text:value=>value};
+  const location={pathname:'/trade/models/model-synthetic',search:'?lang='+language,href:'https://autolinkglobal.com/trade/models/model-synthetic?lang='+language};
+  const document={head,title:'AUTOLINK',documentElement:{lang:language==='zh'?'zh-CN':language},
+    querySelector:()=>null,createElement:tag=>new Element(tag,head)};
+  const history={state:null,pushState(state,_,href){this.state=state;this.replaceState(state,_,href)},
+    replaceState(state,_,href){const url=new URL(href,location.href);this.state=state;location.href=url.href;location.pathname=url.pathname;location.search=url.search}};
+  const context=vm.createContext({document,location,history,URL,URLSearchParams,encodeURIComponent,
+    queueMicrotask:callback=>callback(),MutationObserver:class{observe(){}}});
+  context.window=context;context.addEventListener=()=>{};context.businessI18n={language,text:value=>value};
   vm.runInContext(source,context);
   const api=context.businessSEO;
   const record={id:'model-synthetic',brand:'Synthetic <script>',model:'Reference',year:2026,image:'/images/reference.webp',price_minor:987654321,review_reason:'PRIVATE_MARKER',contact:{email:'PRIVATE_MARKER'},seo:{indexLanguages:languages}};
@@ -59,5 +63,19 @@ for(const language of languages){
   location.pathname='/trade/brands/brand-synthetic';
   api.page('brand',{id:'brand-synthetic',name:'Synthetic',seo:{indexLanguages:[]}});
   assert.equal(head.querySelector('meta[name="robots"]').content,'noindex, follow');
+  // A React language switch keeps the page alive while changing <html lang>.
+  // The canonical, URL and index policy must follow the new language.
+  location.pathname='/';location.search='?lang=zh';location.href='https://autolinkglobal.com/?lang=zh';
+  document.documentElement.lang='zh-CN';document.title='AUTOLINK — 中国车源。 连接全球。';api.update();
+  assert.equal(canonical(),'https://autolinkglobal.com/?lang=zh');
+  assert.equal(head.querySelectorAll('link[rel="alternate"][hreflang]').length,3);
+  document.documentElement.lang='en';document.title='AUTOLINK — Source China. Drive Global.';api.update();
+  assert.equal(location.href,'https://autolinkglobal.com/');
+  assert.equal(canonical(),'https://autolinkglobal.com/');
+  assert.equal(document.title,'AUTOLINK | Chinese Vehicle Sourcing & B2B Supplier Platform');
+  document.documentElement.lang='ar';api.update();
+  assert.equal(location.href,'https://autolinkglobal.com/?lang=ar');
+  assert.equal(head.querySelector('meta[name="robots"]').content,'noindex, follow');
+  assert.equal(head.querySelectorAll('link[rel="alternate"][hreflang]').length,0);
   console.log(language+': isolated adapter canonical, language alternates, private/filter exclusions and schema redaction PASS');
 }

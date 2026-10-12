@@ -2,17 +2,26 @@
 (() => {
   const origin='https://autolinkglobal.com';
   const languages=['en','zh','ar','ru','kk','uz','ko','fr','sw'];
-  const language=()=>{const active=window.businessI18n?.language||new URLSearchParams(location.search).get('lang')||'en';return active==='zh-CN'?'zh':languages.includes(active)?active:'en';};
+  // React changes <html lang> without reloading. The i18next adapter records
+  // only the language selected at first load, so it cannot be authoritative.
+  const language=()=>{const active=document.documentElement.lang||new URLSearchParams(location.search).get('lang')||window.businessI18n?.language||'en';return active==='zh-CN'?'zh':languages.includes(active)?active:'en';};
   const localizedUrl=(path,code=language())=>origin+path+(code==='en'?'':'?lang='+code);
   const baseDescription='AUTOLINK · Connecting Chinese vehicle suppliers and global buyers.';
   const homeTitle='AUTOLINK | Chinese Vehicle Sourcing & B2B Supplier Platform';
   const homeDescription='AUTOLINK connects international vehicle buyers with Chinese automotive suppliers. Explore vehicle specifications, browse approved supplier listings, and submit sourcing inquiries.';
   const text=value=>String(value??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim();
-  const tr=value=>window.businessI18n?.text(value)||value;
+  const tr=value=>window.i18next?.t(value,{lng:language(),defaultValue:value})||window.businessI18n?.text(value)||value;
   const initialPath=location.pathname.replace(/\/$/,'')||'/';
   let details=null;
   let generatedDescription=null;
   const customDescriptions=new Map();
+  const nativeReplaceState=history.replaceState.bind(history);
+  function syncPublicLanguageUrl(path){
+    if(path!=='/'||[...new URLSearchParams(location.search).keys()].some(key=>key!=='lang'))return;
+    const code=language(),url=new URL(location.href);
+    if(code==='en')url.searchParams.delete('lang');else url.searchParams.set('lang',code);
+    if(url.href!==location.href)nativeReplaceState(history.state,'',url.href);
+  }
   const put=(selector,attributes)=>{let node=document.head.querySelector(selector);if(!node){node=document.createElement(selector.startsWith('link')?'link':'meta');document.head.append(node);}for(const [name,value] of Object.entries(attributes))node.setAttribute(name,value);};
   const drop=selector=>document.head.querySelector(selector)?.remove();
   const imageUrl=value=>{
@@ -31,6 +40,7 @@
     const rawPath=location.pathname.replace(/\/$/,'')||'/';
     const path=rawPath==='/trade'?'/trade/vehicles':rawPath;
     if(details?.path!==path)details=null;
+    syncPublicLanguageUrl(path);
     // The home application still sets its former marketing title on render.
     // Keep the reviewed English title stable without changing other languages.
     if(path==='/'&&language()==='en'&&document.title!==homeTitle)document.title=homeTitle;
@@ -39,12 +49,14 @@
     const privatePage=/^\/(buyer|account|supplier|admin|merchant|platform|workspace|login|register|auth|autolink|api)(\/|$)/.test(path);
     const filtered=path.startsWith('/trade/')&&[...new URLSearchParams(location.search).keys()].some(key=>key!=='lang');
     const qualityControlled=['model','brand'].includes(details?.kind)||/^\/trade\/(models|brands)\/[^/]+$/.test(path);
-    const eligibleLanguages=qualityControlled?(details?.indexLanguages||[]):languages;
-    const excluded=privatePage||details?.kind==='error'||path==='/trade/compare'||filtered||(qualityControlled&&!eligibleLanguages.includes(language()));
+    const eligibleLanguages=qualityControlled?(details?.indexLanguages||[]):path==='/'?['en','zh']:languages;
+    const excluded=privatePage||details?.kind==='error'||path==='/trade/compare'||filtered||!eligibleLanguages.includes(language());
     const canonical=localizedUrl(path);
     const existingDescription=document.head.querySelector('meta[name="description"]')?.content;
-    if(!privatePage&&!path.startsWith('/trade/')&&existingDescription&&existingDescription!==generatedDescription)customDescriptions.set(path,existingDescription);
-    const description=privatePage?'AUTOLINK account workspace.':path==='/'&&language()==='en'?homeDescription:details?.description||customDescriptions.get(path)||tr(baseDescription);
+    const descriptionKey=path+'|'+language();
+    if(!privatePage&&!path.startsWith('/trade/')&&existingDescription&&existingDescription!==generatedDescription)customDescriptions.set(descriptionKey,existingDescription);
+    const visibleHomeDescription=text(document.querySelector('.journey-subtitle,.home-static-intro')?.textContent).slice(0,300);
+    const description=privatePage?'AUTOLINK account workspace.':path==='/'&&language()==='en'?homeDescription:path==='/'?(visibleHomeDescription||customDescriptions.get(descriptionKey)||tr(baseDescription)):details?.description||customDescriptions.get(descriptionKey)||tr(baseDescription);
     generatedDescription=description;
     put('link[rel="canonical"]',{rel:'canonical',href:canonical});
     for(const node of document.head.querySelectorAll('link[rel="alternate"][hreflang]'))node.remove();
@@ -121,5 +133,14 @@
     details={path,kind,description,image,graph,indexLanguages};document.title=title;update();
   }
   window.businessSEO=Object.freeze({page,update});
-  update();const title=document.head.querySelector('title');if(title)new MutationObserver(update).observe(title,{childList:true,subtree:true});
+  let queued=false;
+  const queueUpdate=()=>{if(!queued){queued=true;queueMicrotask(()=>{queued=false;update();});}};
+  for(const method of ['pushState','replaceState']){
+    const original=history[method];
+    history[method]=function(...args){const result=original.apply(this,args);queueUpdate();return result;};
+  }
+  window.addEventListener('popstate',queueUpdate);
+  window.addEventListener('hashchange',queueUpdate);
+  new MutationObserver(queueUpdate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  update();const title=document.head.querySelector('title');if(title)new MutationObserver(queueUpdate).observe(title,{childList:true,subtree:true});
 })();
