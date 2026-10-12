@@ -26,7 +26,7 @@ NEW = Path("/opt/autolink-releases/5725b8b-seo-20261012")
 OLD = Path("/opt/autolink-releases/a38664fc9bf2be639cbcb65dce4b57ef5b94170c")
 BACKUPS = Path("/opt/autolink-backups/seo-cutover-20261012")
 OVERRIDE = BACKUPS / "rollback-compose-override.yaml"
-STATE_DIR = Path("/opt/autolink-release-state/seo-20261012")
+STATE_DIR = Path("/opt/autolink-release-state/seo-20261012-attempt2")
 STAGE = Path("/home/admin/autolink-final-seo-qa-20261012")
 AUTH_ID = "sha256:0fcb1f1c73a0d6b7b23c81355a9d48ca1e82e514705011d26c63a7cd5aaff815"
 WEB_ID = "sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb"
@@ -103,6 +103,21 @@ def http(path):
     ], timeout=5, log_output=False).stdout
     body, status = response.rsplit("\n__AUTOLINK_STATUS__", 1)
     return int(status), body
+
+
+def wait_web_https(deadline):
+    """Wait for Caddy's public TLS listener after Docker reports healthy."""
+    last_error = None
+    while time.monotonic() < deadline:
+        try:
+            status, _ = http("/healthz")
+            if status == 200:
+                return
+            last_error = f"HTTP {status}"
+        except RuntimeError as issue:
+            last_error = str(issue)
+        time.sleep(2)
+    raise TimeoutError(f"Public HTTPS did not become ready: {last_error}")
 
 
 def core_probe(candidate):
@@ -238,8 +253,8 @@ def rollback(reason):
     compose(OLD, "up", "-d", "--no-deps", "--force-recreate", "--pull", "never", "--no-build", "auth", override=True, timeout=50)
     health("autolink-demo-auth-1", OLD_AUTH_ID, time.monotonic() + 40)
     compose(OLD, "up", "-d", "--no-deps", "--force-recreate", "--pull", "never", "--no-build", "web", override=True, timeout=50)
-    if container("autolink-demo-web-1")["Image"] != WEB_ID:
-        raise RuntimeError("Rollback web image mismatch")
+    health("autolink-demo-web-1", WEB_ID, time.monotonic() + 30)
+    wait_web_https(time.monotonic() + 20)
     core_probe(False)
     state_write("rolled_back", reason=reason)
 
@@ -270,8 +285,8 @@ def cutover(lock):
                 if time.monotonic() > deadline:
                     raise TimeoutError("Cutover budget expired after auth")
                 compose(NEW, "up", "-d", "--no-deps", "--force-recreate", "--pull", "never", "--no-build", "web", timeout=45)
-                if container("autolink-demo-web-1")["Image"] != WEB_ID:
-                    raise RuntimeError("Candidate web image mismatch")
+                health("autolink-demo-web-1", WEB_ID, min(deadline, time.monotonic() + 30))
+                wait_web_https(min(deadline, time.monotonic() + 20))
                 core_probe(True)
                 if time.monotonic() > deadline:
                     raise TimeoutError("Cutover budget expired after core probes")
