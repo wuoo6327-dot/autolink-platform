@@ -25,6 +25,7 @@ from platform_service import PlatformService
 from business_mail import BusinessMailer
 from mail_templates import language_code
 from membership_payments import MembershipPaymentService
+from supplier_listing_payments import SupplierListingPayments
 
 
 CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
@@ -334,6 +335,7 @@ class Handler(BaseHTTPRequestHandler):
     platform: PlatformService
     seo: PublicSEOService
     payments: MembershipPaymentService
+    supplier_payments: SupplierListingPayments
 
     def payment_service(self):
         instance = getattr(self, "payments", None)
@@ -488,6 +490,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def handle_request(self, method: str):
         path = urlsplit(self.path).path
+        if method == "POST" and path == "/autolink/supplier/payments/webhooks/airwallex":
+            self.send_json(200, self.supplier_payments.webhook(self.read_payment_webhook(), self.headers))
+            return
         if method == "POST" and path in ("/autolink/payments/webhooks/stripe", "/autolink/payments/webhooks/airwallex"):
             provider = path.rsplit("/", 1)[1]
             self.send_json(200, self.payment_service().webhook(provider, self.read_payment_webhook(), self.headers))
@@ -874,6 +879,13 @@ class Handler(BaseHTTPRequestHandler):
             data = self.trade.vehicle_rows(supplier_id=user["id"],public=user["supplier_role"]=="SALES",status=status,limit=200,page=self.list_page())
         elif method == "POST" and tail == "vehicles":
             data = self.trade.save_vehicle(user, self.read_body())
+        elif method == "GET" and tail == "listing-payments":
+            with self.service.connect() as db:
+                rows = db.execute("SELECT id,listing_id,model_id,model_year,quarter_number,amount_minor,currency,"
+                                  "status,created_at,paid_at,service_until,refund_status,dispute_status "
+                                  "FROM supplier_listing_orders WHERE supplier_id=? ORDER BY created_at DESC LIMIT 50",
+                                  (user["id"],)).fetchall()
+            data = [dict(row) for row in rows]
         elif tail.startswith("vehicles/"):
             parts = tail.split("/")
             listing_id = parts[1]
@@ -893,6 +905,11 @@ class Handler(BaseHTTPRequestHandler):
             elif method == "POST" and len(parts) == 3 and parts[2] == "copy":
                 self.read_body()
                 data = self.trade.copy_vehicle(user, listing_id)
+            elif method == "GET" and len(parts) == 3 and parts[2] == "listing-quote":
+                data = self.supplier_payments.quote(user, listing_id)
+            elif method == "POST" and len(parts) == 3 and parts[2] == "listing-checkout":
+                self.read_body()
+                data = self.supplier_payments.create_checkout(user, listing_id)
             elif method == "POST" and len(parts) == 3:
                 self.read_body()
                 data = self.trade.transition_vehicle(user, listing_id, parts[2])
@@ -1070,6 +1087,7 @@ def main():
     Handler.platform = Handler.trade.platform
     Handler.seo = PublicSEOService(Handler.trade)
     Handler.payments = MembershipPaymentService(Handler.service)
+    Handler.supplier_payments = SupplierListingPayments(Handler.trade)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     Handler.service.mailer.start()
     try:server.serve_forever()
