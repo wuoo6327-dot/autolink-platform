@@ -140,12 +140,25 @@ class BuyerService:
 
     @staticmethod
     def membership(db, user_id):
-        row = db.execute("SELECT * FROM buyer_memberships WHERE user_id=? ORDER BY end_at DESC LIMIT 1", (user_id,)).fetchone()
-        if not row:
+        rows = db.execute("SELECT * FROM buyer_memberships WHERE user_id=? ORDER BY start_at,end_at", (user_id,)).fetchall()
+        if not rows:
             return {"status": "FREE", "plan": None, "startAt": None, "endAt": None, "autoRenew": False}
-        status = "ACTIVE" if row["status"] == "ACTIVE" and row["end_at"] > int(time.time()) else "EXPIRED"
-        return {"status": status, "plan": row["plan"], "startAt": row["start_at"],
-                "endAt": row["end_at"], "autoRenew": bool(row["auto_renew"])}
+        now = int(time.time())
+        current = [row for row in rows if row["status"] == "ACTIVE" and row["start_at"] <= now < row["end_at"]]
+        if current:
+            row = max(current, key=lambda item: item["end_at"])
+            end = row["end_at"]
+            for future in rows:
+                if future["status"] == "ACTIVE" and future["start_at"] <= end and future["end_at"] > end:
+                    end, row = future["end_at"], future
+            return {"status": "ACTIVE", "plan": row["plan"], "startAt": min(item["start_at"] for item in current),
+                    "endAt": end, "autoRenew": bool(row["auto_renew"])}
+        past = [row for row in rows if row["end_at"] <= now]
+        if not past:
+            return {"status": "FREE", "plan": None, "startAt": None, "endAt": None, "autoRenew": False}
+        row = max(past, key=lambda item: item["end_at"])
+        return {"status": "EXPIRED", "plan": row["plan"], "startAt": row["start_at"],
+                "endAt": row["end_at"], "autoRenew": False}
 
     def profile(self, user):
         with self.auth.connect() as db:
