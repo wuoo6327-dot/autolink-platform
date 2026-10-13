@@ -66,3 +66,19 @@ UTC 13:25:08 开始切换，13:25:35 核心公网探针通过；按 Auth 健康�
 - 生产真实买家需求目前为 0，公开已审核车源为 0；询盘提交、管理员跟进及商家审核链路通过隔离合成数据验证，但不能据此宣称已有真实海外采购转化。
 
 下一阶段运营重点是完善真实已审核供应资源和买家询盘响应时效，持续在 Search Console 观察英文车型曝光与已收录数量，并区分访问、注册和有效采购询盘；支付开发继续独立搁置。
+
+## 6. 后续账号权限与商家资料表单修复（2026-10-13）
+
+原第十四轮上线后，用户报告一个买家账号被错误地保留为商家身份并进入供应商中心。只读检查确认该账号仍为 `MERCHANT`，仅有未提交的企业草稿和 3 份私有审核文件，没有公开车源或交易。用户明确要求该账号只作买家，且同一邮箱不能同时拥有买家与商家权限。
+
+补充候选 [PR #16](https://github.com/wuoo6327-dot/autolink-platform/pull/16) 在密码、邮箱验证码和 Google 登录入口执行同一身份约束，拒绝从商家入口静默升级买家身份；供应商 API 再次校验服务器端角色。管理员可对未提交、未公开、无交易的商家草稿执行“清除供应商权限”，并撤销全部会话。另增加有严格业务记录阻断条件的“永久清除个人资料”管理员操作；此操作**没有**对任何生产账号执行。买家端恢复入口和商家端的身份提示同步完善。
+
+用户随后指出企业资料页“主营品牌／主要市场”多选面板过长，且点击“添加”后不会收起。补充提交 `b8502a8` 将电脑端面板改为浮层、手机端改为底部选择区，已选项以紧凑摘要保留在按钮中；“完成”、添加自定义项、空自定义项的“添加”、Escape 和点击外部均可收起。保留原有隐藏字段及保存接口，不改变企业资料审核规则。源码改动为 `site/supplier/company-fields.js`、`site/supplier/console.css`、`site/supplier/bootstrap.mjs`、`site/supplier/index.html`。发布与回滚工具补充于 `41927bd`。
+
+补充验收实际结果：阿里云原生 linux/amd64 后端运行 235 项、5 项跳过，其余通过；复制生产数据库上的买家身份纠正、会话撤销、私有文件保留和合成账号资料清除通过。隔离回滚演练依次通过候选版、旧安全版、恢复候选版，三阶段数据库完整性为 `ok`，总目录 270/60、公开目录 244/53。Chrome 与 Playwright WebKit 的手机、电脑视口均通过真实隔离商家申请页的多选、收起、Escape、无横向溢出及无表单位移检查。GitHub PR #16 最新两项 `source-security` 作业实际通过；候选 Auth 镜像 Trivy HIGH/CRITICAL 0、密钥 0。旧版已有的 7 项法律页头部测试失败在未改动基线可复现，与本次权限和多选修复无关。
+
+2026-10-13 **15:59:47 UTC**，补充版完成生产核心切换，Auth 镜像 ID 为 `sha256:8c14559850ac1ebe5d778415adb6e1b5777e75b5424fe8677ae402ada81242e0`，Web 镜像 ID 仍为 `sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb`。运行代码提交为 `b8502a8`，完整 Auth 归档 SHA-256 为 `63a428cd1ef3988a191affc37ec37da5c15486e5093f807facedb7df64437bf0`；它们是本地镜像 ID 和归档哈希，并非 Registry Manifest Digest。发布锁位于 `/opt/autolink-releases/7fefb90-account-role-20261013/account-role-release-lock.json`。切换前最新全量备份位于 `/opt/autolink-backups/account-role-20261013/final-20261013T155735Z/`，SQLite 快照 SHA-256 为 `2e9787528857222709f8a9a929871947ee5dcff7e7aa870123dde501ae7cb27c`，上传文件、Caddy 证书／配置、旧发布目录及旧镜像均已隔离恢复校验。用户指定账号纠正前另做 SQLite 一致性备份 `/opt/autolink-backups/account-role-20261013/pre-target-role-20261013T1600Z/`，恢复验证通过。
+
+生产纠正通过与隔离演练相同的受保护服务方法执行一次：账号变为 `BUYER`，旧会话数 0，原 3 份私有审核文件保留，审计记录 1 条。生产数据库未被替换，纠正后总目录仍为 270/60，用户 8，买家采购需求 0，商家车源草稿 1，`quick_check=ok`、外键违规 0。上线后只读检查了全部 244 个车型和 53 个品牌英文页面：297 页 HTTP 200、Title/H1/Canonical 齐全，未知车型 404。Chrome 与 WebKit 的手机、电脑视口均通过买家登录、商家登录和代表车型详情的公网匿名访问，未在生产创建测试账号或询盘。
+
+30 分钟自动监控于 **16:30:45 UTC** 写入 `completed`，运行器退出码 0，全程 `MONITOR_FAILURE` 0、核心探针通过 32 次、资源检查 6 次，**未发生回滚**。最终只读复核确认 Auth/Web 镜像 ID 与锁定值一致、均为 healthy、重启数均为 0；SQLite `quick_check=ok`、外键违规 0。生产匿名请求私有证件、管理员用户列表和商家申请接口均返回 401。公网 Chrome 与 WebKit 的 390px 手机、1440px 电脑在买家登录、商家登录及代表车型页共 12 次访问中均为 HTTP 200、横向溢出 0；这不是目标买家账号的真实密码登录测试。全量页面只读结果位于 `/opt/autolink-releases/7fefb90-account-role-20261013/post-release-public-pages.json`，自动监控状态与日志位于 `/opt/autolink-release-state/account-role-20261013/7fefb90-account-role-20261013/`。PR #16 在发布工具提交 `41927bd` 后的两项 `source-security` 实际通过：[运行 38426223354](https://github.com/wuoo6327-dot/autolink-platform/actions/runs/38426223354)、[运行 38426230936](https://github.com/wuoo6327-dot/autolink-platform/actions/runs/38426230936)。回滚目标为 `/opt/autolink-releases/e7c48f2-round14-robots-20261013/`，回滚只恢复代码和固定镜像，保留最新数据库、上传文件和证书卷。此补充没有启用支付，没有修改会员收费，也没有合并 `main`。
