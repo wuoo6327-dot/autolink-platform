@@ -19,7 +19,7 @@
 
 - 申请申报的业务是供应商上架数字服务，**不是买家会员费或车辆货款**。沿用网站既有展示标准：每个 SKC 每季度首季 USD 40、第二季 USD 140、标准 USD 200；同一供应商同品牌、车型、年款为一个 SKC，配置和颜色不重复收费。提交的经营预估为平均 USD 100/笔、最高 USD 200/笔、每月约 100 笔、约 USD 10,000/月、国际付款占比 40%–60%。这些是申请预估，不是实际交易量。
 - 申请中的交付说明为企业和车源资料在付款前完成审核，付款后当天开通。现有网站仍无付费上架激活流程；该申报须在正式收款前由真实产品流程和条款落实。
-- 新分支 `codex/supplier-airwallex-listing-20261013` 基于 Stripe 候选 `16ce239`，代码提交 `8cccbe783cb2204785a50bd36a40235ae8f89620`。新增 `auth/supplier_listing_payments.py`，在后端创建独立供应商订单，按已付款季度次数计算 USD 40/140/200；前端提交的价格不参与收费。只允许审核通过的企业所有者对已审核车源发起沙盘支付链接。单个 SKC 的未决订单受到唯一约束，避免重复付款。
+- 新分支 `codex/supplier-airwallex-listing-20261013` 基于 Stripe 候选 `16ce239`，代码提交 `8cccbe783cb2204785a50bd36a40235ae8f89620`，候选为 [GitHub PR #14](https://github.com/wuoo6327-dot/autolink-platform/pull/14)（Draft，目标 PR #13 的分支，不能直接合并主线）。新增 `auth/supplier_listing_payments.py`，在后端创建独立供应商订单，按已付款季度次数计算 USD 40/140/200；前端提交的价格不参与收费。只允许审核通过的企业所有者对已审核车源发起沙盘支付链接。单个 SKC 的未决订单受到唯一约束，避免重复付款。
 - 新 Webhook 验证 Airwallex 原始请求体 HMAC、时间戳、账户 ID，并向服务商查询一次性支付链接，复核订单引用、金额、币种和唯一成功 PaymentIntent。重复事件只记录一次。付款仅记录服务期，**不会跳过现有企业、车源及图片审核，也不会自动把车源设为 ONLINE**。
 - 新接口为 `GET /autolink/supplier/vehicles/{id}/listing-quote`、`POST /autolink/supplier/vehicles/{id}/listing-checkout`、`GET /autolink/supplier/listing-payments` 和 `POST /autolink/supplier/payments/webhooks/airwallex`。当前 `SUPPLIER_LISTING_PAYMENTS_ENABLED` 默认关闭，代码仅支持 `PAYMENTS_ENV=sandbox`；生产模式始终不可用。网站展示端 `paymentAvailable:false` 不变。
 - 隔离测试：后端全套 **249 项运行，5 项跳过，其余通过**；新增供应商支付专项 6 项通过，覆盖默认关闭、审核和所有者限制、服务端价格、重复订单、签名/商户/金额拒绝、HTTP 登录与 Origin 限制。`gitleaks dir auth` 扫描约 2.03 MB，未发现密钥；`trivy fs auth` 的 HIGH/CRITICAL 漏洞与密钥发现均为 0。使用本地临时数据库和模拟网关，**尚未完成真实空中云汇沙盘 API、真实 Webhook、AMD64 预发布及生产验证**。
