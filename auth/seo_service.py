@@ -21,6 +21,13 @@ from buyer_service import BuyerError
 ORIGIN = 'https://autolinkglobal.com'
 LANGUAGES = ('en', 'zh', 'ar', 'ru', 'kk', 'uz', 'ko', 'fr', 'sw')
 LANGUAGE_TAGS = {language: 'zh-CN' if language == 'zh' else language for language in LANGUAGES}
+REQUEST_CTA_LABELS = {
+    'en': 'Create a sourcing request', 'zh': '提交采购需求',
+    'ar': 'إنشاء طلب شراء', 'ru': 'Создать заявку на закупку',
+    'kk': 'Сатып алу сұрауын жасау', 'uz': 'Xarid soʻrovini yaratish',
+    'ko': '구매 요청 작성', 'fr': 'Créer une demande d’achat',
+    'sw': 'Unda ombi la ununuzi',
+}
 
 
 def asset_version(path):
@@ -391,9 +398,10 @@ class PublicSEOService:
                 safe_description = model.get('description') and not editorial and (language!='en' or not re.search(r'[\u3400-\u9fff]',model['description']))
                 mobile_image = self.mobile_hero(model, image)
                 hero = ('<picture>' + ('<source media="(max-width:700px)" srcset="' + e(mobile_image) + '">' if mobile_image else '') + '<img class="trade-hero-image" width="1200" height="750" fetchpriority="high" src="' + e(image) + '" alt="' + e(name) + '"></picture>')
-                content = '<div class="trade-intro"><div><span class="eyebrow">' + e(tr('MODEL REFERENCE · NOT A STOCK OFFER')) + '</span><h1>' + e(model_name) + '</h1><p>' + e(introduction) + '</p></div></div><div class="trade-detail"><div>' + hero + '</div><div>' + fields(facts) + ('<p>' + e(model['description']) + '</p>' if safe_description else '') + anchor('/trade/vehicles?' + urlencode({'brand':model['brand'],'model':model['model']}), tr('Find approved supplier offers')) + '</div></div>'
+                request_url='/buyer/requests?'+urlencode({'vehicleId':model['id'],'lang':language})
+                content = '<div class="trade-intro"><div><span class="eyebrow">' + e(tr('MODEL REFERENCE · NOT A STOCK OFFER')) + '</span><h1>' + e(model_name) + '</h1><p>' + e(introduction) + '</p></div></div><div class="trade-detail"><div>' + hero + '</div><div>' + fields(facts) + ('<p>' + e(model['description']) + '</p>' if safe_description else '') + anchor('/trade/vehicles?' + urlencode({'brand':model['brand'],'model':model['model']}), tr('Find approved supplier offers')) + anchor(request_url,REQUEST_CTA_LABELS[language],True) + '</div></div>'
                 if editorial and editorial.get('buyerNote'):
-                    content += '<section class="related-models"><h2>China sourcing note</h2><p>' + e(editorial['buyerNote']) + '</p>' + anchor('/buyer/requests','Submit a purchase request',True) + '</section>'
+                    content += '<section class="related-models"><h2>China sourcing note</h2><p>' + e(editorial['buyerNote']) + '</p>' + anchor(request_url,REQUEST_CTA_LABELS[language],True) + '</section>'
                 content += self.reference_parameters(model, language, tr)
                 content += anchor(canonical_path+'?interactive=1',tr('Compare all configurations'),True)
                 related = [item for item in self.trade.catalog.models(brand=model['brandId']) if item['id'] != ident][:4]

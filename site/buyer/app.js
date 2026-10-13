@@ -30,7 +30,7 @@ const nav = [
   ['compare','车型对比','Compare'],['suppliers','关注供应商','Saved Suppliers'],['requests','采购需求','Purchase Requests'],
   ['notifications','通知','Notifications'],['messages','消息中心','Messages'],['membership','会员中心','Membership'],['company','买家企业资料','Buyer company profile'],['security','账号与安全','Account & Security']
 ];
-let user = null, catalog = [], currentSection = '', renderedData = null;
+let user = null, catalog = [], catalogAliases = new Map(), catalogAliasesLoaded=false, currentSection = '', renderedData = null;
 let codeRetryUntil = 0, codeSending = false;
 let inquiryFilterVersion = 0, inquiryFilterTimer;
 let navigationId=0,readController=null,catalogLoaded=false;
@@ -38,15 +38,28 @@ function beginBuyerRead(){readController?.abort();readController=new AbortContro
 function beginBuyerNavigation(){navigationId++;beginBuyerRead();inquiryFilterVersion++;clearTimeout(inquiryFilterTimer);renderedData=null;return navigationId;}
 const needsBuyerCatalog=()=>['catalog','requests'].includes(location.pathname.split('/')[2]);
 async function loadBuyerCatalog(epoch){
-  if(catalogLoaded)return;
-  try{const rows=localPreview?[]:await api('/autolink/public/models');if(epoch!==navigationId)return;catalog=Array.isArray(rows)?rows:[];catalogLoaded=true;}
+  if(catalogLoaded){if(location.pathname==='/buyer/catalog')await loadCatalogAliases(epoch);return;}
+  try{const rows=localPreview?[]:await api('/autolink/public/models');if(epoch!==navigationId)return;catalog=Array.isArray(rows)?rows:[];catalogLoaded=true;
+    if(location.pathname==='/buyer/catalog')await loadCatalogAliases(epoch);
+  }
   catch(error){if(epoch!==navigationId||error.name==='AbortError')throw error;catalog=[];}
+}
+async function loadCatalogAliases(epoch){
+  if(catalogAliasesLoaded)return;
+  const reviews=await fetch('/locales/seo-model-en-reviewed.json',{cache:'force-cache'}).then(r=>r.ok?r.json():{}).catch(()=>({}));
+  const {reviewedAliases}=await import('/trade/model-directory.mjs?v=20261013-round14');
+  if(epoch===navigationId){catalogAliases=reviewedAliases(reviews);catalogAliasesLoaded=true;}
 }
 const isJoinPage = () => location.pathname === '/buyer/register';
 const afterLogin = () => {
   const path=new URLSearchParams(location.search).get('returnTo');
   if(!path?.startsWith('/')||path.startsWith('//')||/[\\\x00-\x1f\x7f]/.test(path))return '/buyer';
   try{const url=new URL(path,location.origin);return url.origin===location.origin?url.pathname+url.search+url.hash:'/buyer';}catch{return '/buyer';}
+};
+const buyerAuthUrl = register => {
+  const route=register?'/buyer/register':'/buyer/login';
+  const destination=afterLogin();
+  return destination==='/buyer'?route:route+'?returnTo='+encodeURIComponent(destination);
 };
 
 function supplierContact(contact,locked=false) {
@@ -65,12 +78,12 @@ function buyerRoleSelector(register){
   const entry=window.AUTOLINK_AUTH_ENTRY;if(!entry)return '';
   const language=window.businessI18n.language;
   const icons={buyer:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a17 17 0 0 1 0 18 17 17 0 0 1 0-18Z"/>',supplier:'<path d="M4 21V7h6V3h10v18H4ZM10 7v14M14 7h2M14 11h2M14 15h2M6 11h1M6 15h1"/>'};
-  return `<nav class="buyer-role-selector" aria-label="${esc(entry.text(language,'label'))}">${['buyer','supplier'].map(kind=>`<a class="buyer-role-option${kind==='buyer'?' active':''}" data-auth-kind="${kind}" href="${esc(entry.url(kind,{register}))}" ${kind==='buyer'?'aria-current="page"':''}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${icons[kind]}</svg><span><strong>${esc(entry.text(language,kind))}</strong><small>${esc(entry.text(language,kind+'Hint'))}</small></span></a>`).join('')}</nav>`;
+  return `<nav class="buyer-role-selector" aria-label="${esc(entry.text(language,'label'))}">${['buyer','supplier'].map(kind=>`<a class="buyer-role-option${kind==='buyer'?' active':''}" data-auth-kind="${kind}" href="${esc(kind==='buyer'?buyerAuthUrl(register):entry.url(kind,{register}))}" ${kind==='buyer'?'aria-current="page"':''}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${icons[kind]}</svg><span><strong>${esc(entry.text(language,kind))}</strong><small>${esc(entry.text(language,kind+'Hint'))}</small></span></a>`).join('')}</nav>`;
 }
 function renderLogin(message='') {
   const joining = isJoinPage();
   document.title = `${t(joining ? '加入 AUTOLINK' : '买家登录', joining ? 'Join AUTOLINK' : 'Buyer sign in')} · AUTOLINK`;
-  root.innerHTML = `<div class="login-shell"><aside class="login-hero"><a class="brand" href="/" style="color:white">AUTOLINK<i>▪</i></a><div><span class="eyebrow">${esc(tr("AUTOLINK · BUYER CENTER"))}</span><h1>${t('连接中国车源，管理全球采购。','Source China. Manage global opportunities.')}</h1><p>${t('收藏车型、发起询价、跟进供应商回复。','Save models, send inquiries and follow supplier replies.')}</p></div><small>${t('买家采购工作台','A sourcing workspace for global buyers')}</small></aside><main class="login-main"><div class="login-card"><h2>${t(joining?'创建买家账号':'买家登录',joining?'Create your buyer account':'Buyer sign in')}</h2><p>${esc(tr(joining?'Verify your email to create an account and set your password.':'Sign in with a password, email code or Google.'))}</p>${buyerRoleSelector(joining)}${message?`<div class="alert error" role="alert">${esc(message)}</div>`:''}${joining?'':`<div class="buyer-login-tabs"><button type="button" class="btn secondary" data-login-tab="password">${t('密码登录','Password Login')}</button><button type="button" class="btn secondary" data-login-tab="code">${t('验证码登录','Email Code Login')}</button></div><form id="buyer-password-form"><label class="field">${t('邮箱','Email')}<input name="email" type="email" required autocomplete="email"></label><label class="field">${t('密码','Password')}<input name="password" type="password" required autocomplete="current-password"></label><label class="consent"><input name="remember" type="checkbox"><span>${t('保持登录','Keep me signed in')}</span></label><button class="btn buyer-continue" type="submit">${t('登录','Log in')}</button><p>${link('/merchant/login?reset=1',t('忘记密码','Forgot password'),true)}</p><div id="buyer-password-status" role="status"></div></form>`}<form id="buyer-email-form" ${joining?'':'hidden'}><label class="field">${t('邮箱','Email')}<input name="email" type="email" required autocomplete="email" placeholder="${esc(tr("you@company.com"))}"></label>${joining?registrationFields():''}<label class="field">${t('验证码','Verification code')}<span class="buyer-code-row"><input name="code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required autocomplete="one-time-code" placeholder="000000"><button id="buyer-send-code" type="button">${t('获取验证码','Send code')}</button></span></label><label class="consent"><input id="buyer-consent" type="checkbox"><span>${t('新账号注册时，我同意','For a new account, I agree to the')} <a href="/terms" target="_blank">${t('服务条款','Terms')}</a> ${t('和','and')} <a href="/privacy" target="_blank">${t('隐私政策','Privacy Policy')}</a></span></label><div id="buyer-code-status" class="notice" role="status" aria-live="polite"></div><button class="btn buyer-continue" type="submit">${joining?tr('Create account'):t('登录 / 注册','Continue')}</button></form><div class="buyer-divider">${t('或使用 Google','or continue with Google')}</div><label class="field">${t('企业名称（可选）','Company name (optional)')}<input id="buyer-company" maxlength="160" autocomplete="organization"></label><div class="google-button" id="google-button">${t('正在加载 Google 登录…','Loading Google sign-in…')}</div><p class="notice">${t('商家和供应商请走独立的企业申请流程。','Merchants and suppliers use the separate business application flow.')}</p><div class="buyer-login-links">${link('/supplier/application',t('申请成为商家 / 供应商','Apply as a merchant / supplier'),true)}${link('/buyer/register',t('邮箱验证码快速注册','Register with email code'),true)}</div></div></main></div>`;
+  root.innerHTML = `<div class="login-shell"><aside class="login-hero"><a class="brand" href="/" style="color:white">AUTOLINK<i>▪</i></a><div><span class="eyebrow">${esc(tr("AUTOLINK · BUYER CENTER"))}</span><h1>${t('连接中国车源，管理全球采购。','Source China. Manage global opportunities.')}</h1><p>${t('收藏车型、发起询价、跟进供应商回复。','Save models, send inquiries and follow supplier replies.')}</p></div><small>${t('买家采购工作台','A sourcing workspace for global buyers')}</small></aside><main class="login-main"><div class="login-card"><h2>${t(joining?'创建买家账号':'买家登录',joining?'Create your buyer account':'Buyer sign in')}</h2><p>${esc(tr(joining?'Verify your email to create an account and set your password.':'Sign in with a password, email code or Google.'))}</p>${buyerRoleSelector(joining)}${message?`<div class="alert error" role="alert">${esc(message)}</div>`:''}${joining?'':`<div class="buyer-login-tabs"><button type="button" class="btn secondary" data-login-tab="password">${t('密码登录','Password Login')}</button><button type="button" class="btn secondary" data-login-tab="code">${t('验证码登录','Email Code Login')}</button></div><form id="buyer-password-form"><label class="field">${t('邮箱','Email')}<input name="email" type="email" required autocomplete="email"></label><label class="field">${t('密码','Password')}<input name="password" type="password" required autocomplete="current-password"></label><label class="consent"><input name="remember" type="checkbox"><span>${t('保持登录','Keep me signed in')}</span></label><button class="btn buyer-continue" type="submit">${t('登录','Log in')}</button><p>${link('/merchant/login?reset=1',t('忘记密码','Forgot password'),true)}</p><div id="buyer-password-status" role="status"></div></form>`}<form id="buyer-email-form" ${joining?'':'hidden'}><label class="field">${t('邮箱','Email')}<input name="email" type="email" required autocomplete="email" placeholder="${esc(tr("you@company.com"))}"></label>${joining?registrationFields():''}<label class="field">${t('验证码','Verification code')}<span class="buyer-code-row"><input name="code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required autocomplete="one-time-code" placeholder="000000"><button id="buyer-send-code" type="button">${t('获取验证码','Send code')}</button></span></label><label class="consent"><input id="buyer-consent" type="checkbox"><span>${t('新账号注册时，我同意','For a new account, I agree to the')} <a href="/terms" target="_blank">${t('服务条款','Terms')}</a> ${t('和','and')} <a href="/privacy" target="_blank">${t('隐私政策','Privacy Policy')}</a></span></label><div id="buyer-code-status" class="notice" role="status" aria-live="polite"></div><button class="btn buyer-continue" type="submit">${joining?tr('Create account'):t('登录 / 注册','Continue')}</button></form><div class="buyer-divider">${t('或使用 Google','or continue with Google')}</div><label class="field">${t('企业名称（可选）','Company name (optional)')}<input id="buyer-company" maxlength="160" autocomplete="organization"></label><div class="google-button" id="google-button">${t('正在加载 Google 登录…','Loading Google sign-in…')}</div><p class="notice">${t('商家和供应商请走独立的企业申请流程。','Merchants and suppliers use the separate business application flow.')}</p><div class="buyer-login-links">${link('/supplier/application',t('申请成为商家 / 供应商','Apply as a merchant / supplier'),true)}${link(buyerAuthUrl(true),t('邮箱验证码快速注册','Register with email code'),true)}</div></div></main></div>`;
   updateCodeButton();
   if (!localPreview) setupGoogle();
 }
@@ -161,12 +174,12 @@ function renderFavorites(data) {
 function renderCompare(data) {
   const fields=[['brand',t('品牌','Brand')],['model',t('车型','Model')],['year',t('年份','Year')],['bodyType',t('车身类型','Body type')],['energy',t('能源类型','Energy')]];
   const rows=fields.map(([key,label])=>`<tr><th>${label}</th>${data.map(v=>`<td>${esc(v[key]||'—')}</td>`).join('')}</tr>`).join('');
-  return pageTitle('AUTOLINK · BUYER CENTER','车型对比','Compare Vehicles','最多同时对比 4 台车型。','Compare up to four models.',link('/buyer/catalog',t('添加车型','Add models')))+panel(t('对比清单','Comparison'),data.length?`<div class="compare-wrap"><table class="compare-table"><tr><th></th>${data.map(v=>`<td><img src="${esc(v.image)}" alt=""><p><strong>${esc(v.brand)} ${esc(v.model)}</strong></p>${link(v.url,t('查看详情','View Details'),true)} <button class="btn secondary" data-action="remove-compare" data-id="${esc(v.id)}">${t('移除','Remove')}</button></td>`).join('')}</tr>${rows}<tr><th>${t('FOB 参考价','FOB reference')}</th>${data.map(()=>`<td>${t('待供应商确认','Supplier quote pending')}</td>`).join('')}</tr><tr><th>${t('询价','Inquiry')}</th>${data.map(v=>`<td>${link(`/trade/vehicles?keyword=${encodeURIComponent(v.id)}`,t('立即询价','Inquire'))}</td>`).join('')}</tr></table></div><p class="notice">${t('其他规格请以车型详情和供应商确认资料为准。','Confirm further specifications with the supplier.')}</p>`:empty(t('对比清单为空','No models to compare'),t('从车型目录或收藏列表加入最多 4 台。','Add up to four models from the catalogue or shortlist.'),link('/buyer/catalog',t('浏览车型','Browse Models'))));
+  return pageTitle('AUTOLINK · BUYER CENTER','车型对比','Compare Vehicles','最多同时对比 4 台车型。','Compare up to four models.',link('/buyer/catalog',t('添加车型','Add models')))+panel(t('对比清单','Comparison'),data.length?`<div class="compare-wrap"><table class="compare-table"><tr><th></th>${data.map(v=>`<td><img src="${esc(v.image)}" alt=""><p><strong>${esc(v.brand)} ${esc(v.model)}</strong></p>${link(v.url,t('查看详情','View Details'),true)} <button class="btn secondary" data-action="remove-compare" data-id="${esc(v.id)}">${t('移除','Remove')}</button></td>`).join('')}</tr>${rows}<tr><th>${t('FOB 参考价','FOB reference')}</th>${data.map(()=>`<td>${t('待供应商确认','Supplier quote pending')}</td>`).join('')}</tr><tr><th>${t('询价','Inquiry')}</th>${data.map(v=>`<td>${link(`/buyer/requests?vehicleId=${encodeURIComponent(v.id)}`,t('提交采购需求','Create request'))}</td>`).join('')}</tr></table></div><p class="notice">${t('其他规格请以车型详情和供应商确认资料为准。','Confirm further specifications with the supplier.')}</p>`:empty(t('对比清单为空','No models to compare'),t('从车型目录或收藏列表加入最多 4 台。','Add up to four models from the catalogue or shortlist.'),link('/buyer/catalog',t('浏览车型','Browse Models'))));
 }
 function renderCatalog(data) {
-  return pageTitle('AUTOLINK · BUYER CENTER','车型目录','Model Catalogue','基于 AUTOLINK 现有车型资料；库存、FOB 价格与供应商须另行确认。','Existing AUTOLINK model references. Stock, FOB prices and suppliers require confirmation.',link('/vehicles',t('浏览车源','Browse Vehicles'),true))+`<div class="filters"><input type="search" id="catalog-search" placeholder="${t('搜索品牌或车型','Search brand or model')}"><select id="catalog-energy"><option value="">${t('全部动力','All energy types')}</option><option value="EV">${esc(tr("EV"))}</option><option value="PHEV">${esc(tr("PHEV"))}</option><option value="ICE">${esc(tr("ICE"))}</option><option value="HEV">${esc(tr("HEV"))}</option></select></div><div id="catalog-grid" class="catalog-grid">${catalogCards(data.slice(0,24))}</div><p class="notice" id="catalog-count">${t('显示前 24 台车型；可搜索完整目录。','Showing 24 models; search the full catalogue.')}</p>`;
+  return pageTitle('AUTOLINK · BUYER CENTER','车型目录','Model Catalogue','基于 AUTOLINK 现有车型资料；库存、FOB 价格与供应商须另行确认。','Existing AUTOLINK model references. Stock, FOB prices and suppliers require confirmation.',link('/vehicles',t('浏览车源','Browse Vehicles'),true))+`<div class="filters"><input type="search" id="catalog-search" placeholder="${t('搜索品牌或车型','Search brand or model')}"><select id="catalog-brand"><option value="">${t('全部品牌','All brands')}</option>${[...new Set(data.map(v=>v.brand))].sort().map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}</select><select id="catalog-year"><option value="">${t('全部年份','All years')}</option>${[...new Set(data.map(v=>v.year).filter(Boolean))].sort((a,b)=>b-a).map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}</select><select id="catalog-energy"><option value="">${t('全部动力','All energy types')}</option><option value="EV">${esc(tr("EV"))}</option><option value="PHEV">${esc(tr("PHEV"))}</option><option value="ICE">${esc(tr("ICE"))}</option><option value="HEV">${esc(tr("HEV"))}</option></select></div><div id="catalog-grid" class="catalog-grid">${catalogCards(data.slice(0,24))}</div><p class="notice" id="catalog-count">${t('显示前 24 台车型；可搜索完整目录。','Showing 24 models; search the full catalogue.')}</p>`;
 }
-function catalogCards(data) { return data.length?data.map(v=>`<article class="model-card"><img loading="lazy" src="${esc(v.image||'/favicon.svg')}" alt=""><div><h3>${esc(v.brand)} ${esc(v.model)}</h3><p>${esc([v.year,v.bodyType,v.energy].filter(Boolean).join(' · '))}</p><p>${t('库存与价格以供应商确认信息为准','Stock and pricing require supplier confirmation')}</p><div class="row-actions">${link(v.url,t('详情','Details'),true)}<button class="btn secondary" data-action="save" data-id="${esc(v.id)}">${t('收藏','Save')}</button><button class="btn secondary" data-action="compare" data-id="${esc(v.id)}">${t('对比','Compare')}</button>${link(`/trade/vehicles?keyword=${encodeURIComponent(v.id)}`,t('询价','Inquire'))}</div></div></article>`).join(''):empty(t('没有匹配车型','No matching models'),t('尝试其他关键词。','Try another search.')); }
+function catalogCards(data) { return data.length?data.map(v=>`<article class="model-card"><img loading="lazy" src="${esc(v.image||'/favicon.svg')}" alt=""><div><h3>${esc(v.brand)} ${esc(v.model)}</h3><p>${esc([v.year,v.bodyType,v.energy].filter(Boolean).join(' · '))}</p><p>${t('库存与价格以供应商确认信息为准','Stock and pricing require supplier confirmation')}</p><div class="row-actions">${link(v.url,t('详情','Details'),true)}<button class="btn secondary" data-action="save" data-id="${esc(v.id)}">${t('收藏','Save')}</button><button class="btn secondary" data-action="compare" data-id="${esc(v.id)}">${t('对比','Compare')}</button>${link(`/buyer/requests?vehicleId=${encodeURIComponent(v.id)}`,t('提交采购需求','Create request'))}${link(`/trade/vehicles?brand=${encodeURIComponent(v.brand)}&model=${encodeURIComponent(v.model)}`,t('找已审核车源','Find approved listings'))}</div></div></article>`).join(''):empty(t('没有匹配车型','No matching models'),t('尝试其他关键词。','Try another search.')); }
 function renderSuppliers(data) {
   const rows=data.map(s=>`<div class="row"><div class="row-main"><strong>${esc(s.companyName)}</strong><small>${esc(s.country||'—')} · ${esc(tr(s.verificationStatus==='COMPANY_CHECKED'?'Verified supplier':'Unverified'))}</small><small>${esc(s.description)}</small></div><div class="row-actions">${link('/trade/suppliers/'+encodeURIComponent(s.id),tr('View Supplier'),true)}<button class="btn secondary" data-action="unsave-supplier" data-id="${esc(s.id)}">${t('取消关注','Remove')}</button></div></div>`).join('');
   return pageTitle('AUTOLINK · BUYER CENTER','关注供应商','Saved Suppliers','保存并管理真实入驻的供应商。','Follow suppliers with published profiles.')+`<p class="notice">${esc(tr('AUTOLINK checked certain company information. Verification does not guarantee a vehicle exists, supplier performance, payment security or a completed deal.'))}</p>`+panel(t('已关注','Following'),data.length?`<div class="list">${rows}</div>`:empty(t('还没有关注供应商','No saved suppliers'),t('目前没有已关注的真实供应商资料。','No published supplier profile has been saved.')));
@@ -175,10 +188,43 @@ function buyingDestination() {
   const value=new URLSearchParams(location.search).get('destinationCountry')||'';
   return value.length<=120&&!/[\x00-\x1f\x7f]/.test(value)?value.trim():'';
 }
+const requestDraftKey='autolink-buyer-request-draft-v1';
+function requestDraft() {
+  try {
+    const saved=JSON.parse(sessionStorage.getItem(requestDraftKey)||'null');
+    return saved?.owner===user?.id && Date.now()-saved.savedAt<86400000 ? saved.fields : null;
+  } catch { return null; }
+}
+function saveRequestDraft(form) {
+  if(!user?.id)return;
+  try {
+    const fields=Object.fromEntries(new FormData(form));
+    delete fields.publishConsent;
+    sessionStorage.setItem(requestDraftKey,JSON.stringify({owner:user.id,savedAt:Date.now(),fields}));
+  } catch { /* Browsers may disable storage; the live form still works. */ }
+}
+function requestSeed() {
+  const requested=new URLSearchParams(location.search).get('vehicleId')||'';
+  const model=catalog.find(item=>item.id===requested);
+  const saved=requestDraft();
+  const fields=saved&&(!model||saved.vehicleId===model.id)?saved:{};
+  if(model){
+    fields.vehicleId=model.id;
+    fields.title=fields.title||`${model.brand} ${model.model} sourcing request`;
+    fields.brand=model.brand;
+    fields.year=model.year||'';
+    fields.energy=model.energy||'';
+  }
+  return {fields,model};
+}
 function renderRequests(data) {
+  const {fields:seed,model:selectedModel}=requestSeed();
+  const created=new URLSearchParams(location.search).get('created');
+  const createdRow=data.find(item=>item.id===created);
+  const creationNotice=createdRow?`<div class="alert success" role="status">${t('采购需求已保存，编号：','Purchase request saved. Reference: ')}<strong>${esc(createdRow.id)}</strong> · ${esc(createdRow.status)}</div>`:'';
   const labels={DRAFT:t('草稿','Draft'),PUBLISHED:t('已发布','Published'),RESPONSES_RECEIVED:t('已收到回应','Responses received'),CLOSED:t('已关闭','Closed')};
-  const list=data.length?data.map(r=>`<div class="row"><div class="row-main"><strong>${esc(r.title)}</strong><small>${esc(r.id)} · ${t('数量','Quantity')} ${Number(r.quantity)} · ${esc(labels[r.status]||r.status)} · ${date(r.created_at)}</small><small>${esc(r.destination_country||'—')} · ${esc(r.trade_term||'—')}</small><p>${r.status==='CLOSED'?t('已停止接收新供应商回应。历史询盘和报价保留。','New supplier responses are closed. Existing inquiries and quotes remain available.'):r.distribution_consent?t('已分享给认证供应商。','Shared with verified suppliers.'):t('仅保存于你的账号，尚未向供应商分享。','Saved in your account; not shared with suppliers.')}</p></div><div class="row-actions">${r.response_count?link('/buyer/quotes',t('查看回应报价','View response quotations')+' ('+Number(r.response_count)+')',true):''}${r.status!=='CLOSED'&&!r.distribution_consent?`<button class="btn" data-action="publish-request" data-id="${esc(r.id)}">${t('分享给认证供应商','Share with verified suppliers')}</button>`:''}${r.status!=='CLOSED'?`<button class="btn secondary" data-action="close-request" data-id="${esc(r.id)}">${t('关闭需求','Close request')}</button>`:''}</div></div>`).join(''):empty(t('暂无采购需求','No purchase requests'),t('填写需求后可保存为草稿或发布。','Create a draft or publish your sourcing request.'));
-  return pageTitle('AUTOLINK · BUYER CENTER','采购需求','Purchase Requests','发布你需要的车型、数量和目标市场。','Describe the vehicles, quantity and destination you need.')+panel(t('新建采购需求','New Request'),`<form id="request-form" class="form-grid"><label class="field wide">${t('采购标题','Title')}<input name="title" maxlength="160" required></label><label class="field">${t('目标车型','Model')}<select name="vehicleId"><option value="">${t('不限车型','Any model')}</option>${catalog.map(v=>`<option value="${esc(v.id)}">${esc(v.brand)} ${esc(v.model)}</option>`).join('')}</select></label><label class="field">${t('品牌','Brand')}<input name="brand" maxlength="120"></label><label class="field">${t('数量','Quantity')}<input name="quantity" type="number" min="1" max="100000" value="1" required></label><label class="field">${t('目标国家','Destination country')}<input name="destinationCountry" maxlength="120" value="${esc(buyingDestination())}"></label><label class="field">${t('目的港','Destination port')}<input name="destinationPort" maxlength="120"></label><label class="field">${t('贸易方式','Trade term')}<select name="tradeTerm"><option value="">${t('待确认','To be confirmed')}</option><option value="FOB">${esc(tr("FOB"))}</option><option value="CIF">${esc(tr("CIF"))}</option><option value="CFR">${esc(tr("CFR"))}</option><option value="EXW">${esc(tr("EXW"))}</option></select></label><label class="field">${t('目标单价，美元（可选）','Target unit price, USD (optional)')}<input name="budget" type="number" min="0" step="0.01"></label><label class="field wide">${t('备注','Note')}<textarea name="note" maxlength="2000"></textarea></label><label class="consent field wide"><input id="request-sharing" name="publishConsent" type="checkbox"><span>${requestSharingText()}</span></label><div class="form-actions"><button class="btn secondary" type="submit" name="status" value="DRAFT">${t('保存草稿','Save Draft')}</button><button id="publish-request" class="btn" type="submit" name="status" value="PUBLISHED" disabled>${t('发布需求','Publish Request')}</button></div></form><p class="notice">${t('供应商必须使用自己的已审核车源发送报价。报价进入你的个人中心，不产生平台车辆付款。','Suppliers must respond with their own approved listings. Quotations arrive in your account and do not create vehicle payments.')}</p>`)+panel(t('我的需求','My Requests'),`<div class="list">${list}</div>`);
+  const list=data.length?data.map(r=>`<div class="row"><div class="row-main"><strong>${esc(r.title)}</strong><small>${esc(r.id)} · ${t('数量','Quantity')} ${Number(r.quantity)} · ${esc(labels[r.status]||r.status)} · ${date(r.created_at)}</small><small>${esc([r.brand,r.year,r.energy,r.configuration].filter(Boolean).join(' · '))}</small><small>${esc(r.destination_country||'—')} · ${esc(r.destination_port||'—')} · ${esc(r.trade_term||'—')}</small><p>${r.status==='CLOSED'?t('已停止接收新供应商回应。历史询盘和报价保留。','New supplier responses are closed. Existing inquiries and quotes remain available.'):r.distribution_consent?t('已分享给认证供应商。','Shared with verified suppliers.'):t('仅保存于你的账号，尚未向供应商分享。','Saved in your account; not shared with suppliers.')}</p></div><div class="row-actions">${r.response_count?link('/buyer/quotes',t('查看回应报价','View response quotations')+' ('+Number(r.response_count)+')',true):''}${r.status!=='CLOSED'&&!r.distribution_consent?`<button class="btn" data-action="publish-request" data-id="${esc(r.id)}">${t('分享给认证供应商','Share with verified suppliers')}</button>`:''}${r.status!=='CLOSED'?`<button class="btn secondary" data-action="close-request" data-id="${esc(r.id)}">${t('关闭需求','Close request')}</button>`:''}</div></div>`).join(''):empty(t('暂无采购需求','No purchase requests'),t('填写需求后可保存为草稿或发布。','Create a draft or publish your sourcing request.'));
+  return pageTitle('AUTOLINK · BUYER CENTER','采购需求','Purchase Requests','发布你需要的车型、数量和目标市场。','Describe the vehicles, quantity and destination you need.')+creationNotice+panel(t('新建采购需求','New Request'),`${selectedModel?`<p class="notice">${esc(selectedModel.brand)} ${esc(selectedModel.model)} · ${t('车型参考，不代表现货。','Model reference; supplier stock must be verified.')}</p>`:''}<form id="request-form" class="form-grid"><label class="field wide">${t('采购标题','Title')}<input name="title" maxlength="160" value="${esc(seed.title||'')}" required></label><label class="field">${t('目标车型','Model')}<select name="vehicleId"><option value="">${t('不限车型','Any model')}</option>${catalog.map(v=>`<option value="${esc(v.id)}" ${v.id===seed.vehicleId?'selected':''}>${esc(v.brand)} ${esc(v.model)}</option>`).join('')}</select></label><label class="field">${t('品牌','Brand')}<input name="brand" maxlength="120" value="${esc(seed.brand||'')}"></label><label class="field">${t('年份','Model year')}<input name="year" type="number" min="1900" max="2100" value="${esc(seed.year||'')}"></label><label class="field">${t('能源类型','Energy type')}<input name="energy" maxlength="100" value="${esc(seed.energy||'')}"></label><label class="field">${t('数量','Quantity')}<input name="quantity" type="number" min="1" max="100000" value="${esc(seed.quantity||1)}" required></label><label class="field">${t('目标国家','Destination country')}<input name="destinationCountry" maxlength="120" value="${esc(seed.destinationCountry||buyingDestination())}"></label><label class="field">${t('目的港','Destination port')}<input name="destinationPort" maxlength="120" value="${esc(seed.destinationPort||'')}"></label><label class="field">${t('贸易方式','Trade term')}<select name="tradeTerm"><option value="">${t('待确认','To be confirmed')}</option><option value="FOB" ${seed.tradeTerm==='FOB'?'selected':''}>${esc(tr("FOB"))}</option><option value="CIF" ${seed.tradeTerm==='CIF'?'selected':''}>${esc(tr("CIF"))}</option><option value="CFR" ${seed.tradeTerm==='CFR'?'selected':''}>${esc(tr("CFR"))}</option><option value="EXW" ${seed.tradeTerm==='EXW'?'selected':''}>${esc(tr("EXW"))}</option></select></label><label class="field">${t('目标单价，美元（可选）','Target unit price, USD (optional)')}<input name="budget" type="number" min="0" step="0.01" value="${esc(seed.budget||'')}"></label><label class="field wide">${t('所需配置（选填）','Requested configuration (optional)')}<input name="configuration" maxlength="160" value="${esc(seed.configuration||'')}"></label><label class="field wide">${t('备注','Note')}<textarea name="note" maxlength="2000">${esc(seed.note||'')}</textarea></label><label class="consent field wide"><input id="request-sharing" name="publishConsent" type="checkbox"><span>${requestSharingText()}</span></label><div class="form-actions"><button class="btn secondary" type="submit" name="status" value="DRAFT">${t('保存草稿','Save Draft')}</button><button id="publish-request" class="btn" type="submit" name="status" value="PUBLISHED" disabled>${t('发布需求','Publish Request')}</button></div></form><p class="notice">${t('供应商必须使用自己的已审核车源发送报价。报价进入你的个人中心，不产生平台车辆付款。','Suppliers must respond with their own approved listings. Quotations arrive in your account and do not create vehicle payments.')}</p>`)+panel(t('我的需求','My Requests'),`<div class="list">${list}</div>`);
 }
 function requestSharingText(){return t('我同意向已认证供应商展示此采购需求，并向回应供应商提供我的企业资料和联系邮箱。','I agree to share this buying request with verified suppliers and provide my business profile and contact email to suppliers who respond.');}
 function renderMessages(data) {
@@ -298,8 +344,8 @@ document.addEventListener('click', async event => {
   const el=event.target.closest('[data-action],[data-filter]'); if(!el) return;
   const action=el.dataset.action, id=el.dataset.id;
   if(action==='menu') { const side=document.querySelector('#buyer-sidebar'); side.classList.toggle('open'); el.setAttribute('aria-expanded',side.classList.contains('open')); }
-  if(action==='logout') { try { await api('/auth/logout','POST',{}); } catch {} location.href='/buyer/login'; }
-  if(action==='logout-all') { await mutation('logout-all','POST',{});location.href='/buyer/login'; }
+  if(action==='logout') { try { sessionStorage.removeItem(requestDraftKey);await api('/auth/logout','POST',{}); } catch {} location.href='/buyer/login'; }
+  if(action==='logout-all') { try{sessionStorage.removeItem(requestDraftKey);}catch{} await mutation('logout-all','POST',{});location.href='/buyer/login'; }
   if(action==='save') await mutation('favorites','POST',{vehicleId:id});
   if(action==='remove-favorite') await mutation(`favorites/${encodeURIComponent(id)}`,'DELETE');
   if(action==='compare') await mutation('compare','POST',{vehicleId:id});
@@ -308,10 +354,20 @@ document.addEventListener('click', async event => {
   if(action==='unsave-listing') await mutation(`saved-listings/${encodeURIComponent(id)}`,'DELETE');
   if(action==='quote-accept') await mutation(`quotes/${encodeURIComponent(id)}/response`,'POST',{decision:'ACCEPTED'});
   if(action==='quote-reject') await mutation(`quotes/${encodeURIComponent(id)}/response`,'POST',{decision:'REJECTED'});
-  if(action==='publish-request'){if(confirm(requestSharingText()))await mutation(`requests/${encodeURIComponent(id)}`,'PUT',{status:'PUBLISHED',publishConsent:true});}
-  if(action==='close-request'){if(confirm(t('关闭后停止接收新供应商回应，已有询盘和报价继续保留。','Close this request to stop new responses? Existing inquiries and quotes remain available.')))await mutation(`requests/${encodeURIComponent(id)}`,'PUT',{status:'CLOSED'});}
+  if(action==='publish-request'&&!el.disabled&&confirm(requestSharingText())){
+    el.disabled=true;
+    if(await mutation(`requests/${encodeURIComponent(id)}`,'PUT',{status:'PUBLISHED',publishConsent:true}))
+      document.querySelector('#buyer-content')?.insertAdjacentHTML('afterbegin',`<div class="alert success" role="status">${t('采购需求已分享给符合条件的供应商。','Purchase request shared with eligible suppliers.')}</div>`);
+    else el.disabled=false;
+  }
+  if(action==='close-request'&&!el.disabled&&confirm(t('关闭后停止接收新供应商回应，已有询盘和报价继续保留。','Close this request to stop new responses? Existing inquiries and quotes remain available.'))){
+    el.disabled=true;
+    if(await mutation(`requests/${encodeURIComponent(id)}`,'PUT',{status:'CLOSED'}))
+      document.querySelector('#buyer-content')?.insertAdjacentHTML('afterbegin',`<div class="alert success" role="status">${t('采购需求已关闭；历史询盘和报价保留。','Purchase request closed; existing inquiries and quotes remain available.')}</div>`);
+    else el.disabled=false;
+  }
   if(action==='mark-read') await mutation(`messages/${encodeURIComponent(id)}/read`,'POST',{});
-  if(action==='inquire') location.href=`/trade/vehicles?keyword=${encodeURIComponent(id)}`;
+  if(action==='inquire') location.href=`/buyer/requests?vehicleId=${encodeURIComponent(id)}`;
   if(el.dataset.filter) { document.querySelectorAll('#inquiry-tabs button').forEach(b=>b.setAttribute('aria-selected',b===el));await filterInquiries(); }
 });
 function inquiryApiPath() {
@@ -344,15 +400,37 @@ async function filterInquiries() {
   } finally {if(epoch===navigationId&&version===inquiryFilterVersion&&list.isConnected)list.removeAttribute('aria-busy');}
 }
 document.addEventListener('input', event => {
+  if(event.target.closest('#request-form'))saveRequestDraft(event.target.form);
   if(event.target.id==='inquiry-search') {inquiryFilterVersion++;readController?.abort();clearTimeout(inquiryFilterTimer);inquiryFilterTimer=setTimeout(filterInquiries,300);}
   if(event.target.id==='favorite-search') { const q=event.target.value.toLowerCase();const filtered=(renderedData||[]).filter(v=>`${v.brand} ${v.model}`.toLowerCase().includes(q));document.querySelector('#favorite-list').innerHTML=filtered.length?filtered.map(v=>vehicleRow(v,`${link(v.url,t('查看详情','View Details'),true)}<button class="btn secondary" data-action="inquire" data-id="${esc(v.id)}">${t('询价','Inquire')}</button><button class="btn secondary" data-action="compare" data-id="${esc(v.id)}">${t('对比','Compare')}</button><button class="btn secondary" data-action="remove-favorite" data-id="${esc(v.id)}">${t('移除','Remove')}</button>`)).join(''):empty(t('没有匹配车型','No matching models'),''); }
-  if(event.target.id==='catalog-search'||event.target.id==='catalog-energy') { const q=(document.querySelector('#catalog-search')?.value||'').toLowerCase(),energy=document.querySelector('#catalog-energy')?.value||'';const matched=catalog.filter(v=>`${v.brand} ${v.model}`.toLowerCase().includes(q)&&(!energy||v.energy.includes(energy)));document.querySelector('#catalog-grid').innerHTML=catalogCards(matched.slice(0,60));document.querySelector('#catalog-count').textContent=`${matched.length} ${t('台匹配车型，最多显示前 60 台','matching models; showing at most 60')}`; }
+  if(['catalog-search','catalog-brand','catalog-year','catalog-energy'].includes(event.target.id)) { const q=(document.querySelector('#catalog-search')?.value||'').trim().toLocaleLowerCase(),brand=document.querySelector('#catalog-brand')?.value||'',year=document.querySelector('#catalog-year')?.value||'',energy=document.querySelector('#catalog-energy')?.value||'';const matched=catalog.filter(v=>(!brand||v.brand===brand)&&(!year||String(v.year)===year)&&(!energy||String(v.energy||'').split(/[,/]/).map(x=>x.trim()).includes(energy))&&(!q||[v.brand,v.model,catalogAliases.get(v.id)].filter(Boolean).join(' ').toLocaleLowerCase().includes(q)));document.querySelector('#catalog-grid').innerHTML=catalogCards(matched.slice(0,60));document.querySelector('#catalog-count').textContent=`${matched.length} ${t('台匹配车型，最多显示前 60 台','matching models; showing at most 60')}`; }
 });
 document.addEventListener('submit', async event => {
   const form=event.target; if(!['inquiry-form','request-form','company-form'].includes(form.id)) return;
   event.preventDefault();const values=Object.fromEntries(new FormData(form));
-  if(form.id==='inquiry-form') { values.quantity=Number(values.quantity);await mutation('inquiries','POST',values);location.href='/buyer/inquiries'; }
-  if(form.id==='request-form') { values.quantity=Number(values.quantity); values.status=event.submitter?.value||'DRAFT';values.publishConsent=values.publishConsent==='on';values.budgetMinor=values.budget?Math.round(Number(values.budget)*100):null;values.currency='USD';delete values.budget;await mutation('requests','POST',values); }
+  if(form.id==='inquiry-form') { values.quantity=Number(values.quantity);if(await mutation('inquiries','POST',values))location.href='/buyer/inquiries'; }
+  if(form.id==='request-form') {
+    if(form.dataset.submitting==='1')return;
+    form.dataset.submitting='1';
+    const buttons=[...form.querySelectorAll('button[type=submit]')];
+    buttons.forEach(button=>button.disabled=true);
+    values.quantity=Number(values.quantity);
+    values.year=values.year?Number(values.year):null;
+    values.status=event.submitter?.value||'DRAFT';
+    values.publishConsent=values.publishConsent==='on';
+    values.budgetMinor=values.budget?Math.round(Number(values.budget)*100):null;
+    values.currency='USD';delete values.budget;
+    try {
+      const saved=await api('/autolink/buyer/requests','POST',values);
+      try{sessionStorage.removeItem(requestDraftKey);}catch{}
+      location.assign('/buyer/requests?created='+encodeURIComponent(saved.id));
+    } catch(error) {
+      form.querySelector('[data-request-error]')?.remove();
+      form.insertAdjacentHTML('afterbegin',`<div class="alert error" role="alert" data-request-error>${esc(error.message)} · ${link('/buyer/requests',t('查看已有需求','Check existing requests'),true)}</div>`);
+      buttons.forEach(button=>button.disabled=button.id==='publish-request'&&!form.elements.publishConsent.checked);
+      delete form.dataset.submitting;
+    }
+  }
   if(form.id==='company-form') await mutation('profile','PUT',values);
 });
 
@@ -403,4 +481,18 @@ function notificationName(event){const translated=tr(event);if(translated!==even
 
 function quoteStatus(value){const names={DRAFT:["草稿","Draft"],SENT:["已发送","Sent"],VIEWED:["已查看","Viewed"],ACCEPTED:["已接受意向","Accepted"],REJECTED:["已拒绝","Rejected"],EXPIRED:["已过期","Expired"],CANCELLED:["已取消","Cancelled"]};return names[value]?t(...names[value]):value;}
 
-document.addEventListener("change",event=>{if(event.target.id==="request-sharing")document.querySelector("#publish-request").disabled=!event.target.checked;});
+document.addEventListener("change",event=>{
+  const form=event.target.closest('#request-form');
+  if(!form)return;
+  if(event.target.name==='vehicleId'){
+    const model=catalog.find(item=>item.id===event.target.value);
+    if(model){
+      form.elements.brand.value=model.brand;
+      form.elements.year.value=model.year||'';
+      form.elements.energy.value=model.energy||'';
+      if(!form.elements.title.value.trim())form.elements.title.value=`${model.brand} ${model.model} sourcing request`;
+    }
+  }
+  if(event.target.id==='request-sharing')document.querySelector('#publish-request').disabled=!event.target.checked;
+  saveRequestDraft(form);
+});

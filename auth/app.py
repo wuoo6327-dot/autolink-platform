@@ -941,6 +941,12 @@ class Handler(BaseHTTPRequestHandler):
         tail = path[len("/autolink/admin/"):]
         if method == "GET" and tail == "overview":
             data = self.trade.admin_overview()
+        elif method == "GET" and tail == "sourcing":
+            kind=parse_qs(urlsplit(self.path).query).get('kind',['requests'])[0]
+            data=self.trade.admin_sourcing(user,kind,page=self.list_page())
+        elif method == "POST" and re.fullmatch(r"sourcing/(requests|inquiries)/[^/]+/followup",tail):
+            _,kind,entity_id,_=tail.split('/')
+            data=self.trade.admin_sourcing_followup(user,kind,entity_id,self.read_body())
         elif method == "GET" and tail == "seo/status":
             data = (getattr(self, 'seo', None) or PublicSEOService(self.trade)).admin_status()
         elif method == "GET" and tail == "email":
