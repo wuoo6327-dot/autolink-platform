@@ -414,7 +414,9 @@ class TradeService:
             allowed_states = ("APPROVED",) if kind == 'BRAND_AUTHORIZATION' else ("DRAFT", "REQUIRES_CHANGES", "REJECTED")
             if (kind == 'BRAND_AUTHORIZATION' and not application) or (application and application["status"] not in allowed_states):
                 raise BuyerError(409, "Documents cannot be uploaded in the current application state.")
-            count = db.execute("SELECT count(*) FROM supplier_documents WHERE supplier_id=?", (user["id"],)).fetchone()[0]
+            count = db.execute("""SELECT count(*) FROM supplier_documents WHERE supplier_id=?
+                AND (kind='BRAND_AUTHORIZATION')=?""",
+                (user["id"], kind == 'BRAND_AUTHORIZATION')).fetchone()[0]
             if count >= (20 if kind == 'BRAND_AUTHORIZATION' else 6):
                 raise BuyerError(409, "Supplier document limit reached.")
         DOCUMENT_ROOT.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -442,7 +444,9 @@ class TradeService:
                                (user["id"], now))
                     db.execute("INSERT INTO supplier_applications(supplier_id,status,updated_at,evidence_version) VALUES (?,'DRAFT',?,2)",
                                (user["id"], now))
-                if db.execute("SELECT count(*) FROM supplier_documents WHERE supplier_id=?", (user["id"],)).fetchone()[0] >= (20 if kind == 'BRAND_AUTHORIZATION' else 6):
+                if db.execute("""SELECT count(*) FROM supplier_documents WHERE supplier_id=?
+                    AND (kind='BRAND_AUTHORIZATION')=?""",
+                    (user["id"], kind == 'BRAND_AUTHORIZATION')).fetchone()[0] >= (20 if kind == 'BRAND_AUTHORIZATION' else 6):
                     raise BuyerError(409, "Supplier document limit reached.")
                 db.execute("INSERT INTO supplier_documents VALUES (?,?,?,?,?,?,?,?)",
                            (document_id,user["id"],kind,filename,content_type,stored_name,len(data),int(time.time())))
