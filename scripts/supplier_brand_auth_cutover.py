@@ -22,6 +22,7 @@ SITE = {'admin/app.js', 'supplier/app.js'}
 AUTH_FILES = {'Dockerfile', 'app.py', 'brand_authorization_service.py',
               'seo_service.py', 'trade_service.py', 'test_brand_authorization.py'}
 IMAGE_SOURCES = ('app.py', 'brand_authorization_service.py', 'seo_service.py', 'trade_service.py')
+REQUIRE_NO_AUTH_TABLE = True
 
 
 def source_files(root):
@@ -128,9 +129,11 @@ def preflight(backup_path):
     if (backup['images']['oldAuth']['imageID'], backup['images']['oldWeb']['imageID']) != (AUTH_OLD, WEB):
         raise RuntimeError('Backup image identity differs from production')
     with sqlite3.connect('file:' + backup['sqliteBackup'] + '?mode=ro', uri=True) as db:
+        authorization_table_exists = db.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='supplier_brand_authorizations'").fetchone() is not None
         if (db.execute('PRAGMA integrity_check').fetchone()[0] != 'ok'
                 or db.execute('PRAGMA foreign_key_check').fetchone() is not None
-                or db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='supplier_brand_authorizations'").fetchone()):
+                or authorization_table_exists == REQUIRE_NO_AUTH_TABLE):
             raise RuntimeError('Current database contains unexpected authorization state')
         counts = (db.execute('SELECT count(*) FROM catalog_models').fetchone()[0],
                   db.execute('SELECT count(*) FROM catalog_brands').fetchone()[0])

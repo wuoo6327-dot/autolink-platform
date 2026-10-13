@@ -22,13 +22,14 @@ cp "$QA_DB_SNAPSHOT" "$DATA/autolink-auth.sqlite3"
 tar -xzf "$QA_AUTH_NONDB_ARCHIVE" -C "$DATA"
 chown -R 10001:10001 "$DATA"
 python3 - "$DATA/autolink-auth.sqlite3" <<'PY'
-import sqlite3,sys
+import os,sqlite3,sys
 with sqlite3.connect('file:'+sys.argv[1]+'?mode=ro',uri=True) as db:
     assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
     assert db.execute('PRAGMA foreign_key_check').fetchone() is None
     assert db.execute('SELECT count(*) FROM catalog_models').fetchone()[0]>=270
     assert db.execute('SELECT count(*) FROM catalog_brands').fetchone()[0]>=60
-    assert not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='supplier_brand_authorizations'").fetchone()
+    exists=bool(db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='supplier_brand_authorizations'").fetchone())
+    assert exists == (os.environ.get('QA_EXPECT_EXISTING_BRAND_AUTH')=='1')
 PY
 docker network create "$NET" >/dev/null
 stop_pair(){ docker rm -f "$WEB" "$AUTH" >/dev/null 2>&1 || true; }
