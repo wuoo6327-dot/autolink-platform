@@ -172,9 +172,25 @@ def preflight(release, backup_path):
             raise RuntimeError(f"Missing QA evidence: {filename}")
     if not json.loads((release / "round14-evidence/native-catalog-http-qa.json").read_text())["pass"]:
         raise RuntimeError("297-page isolated HTTP QA failed")
+    scan = json.loads((release / "round14-evidence/native-image-scan.json").read_text())
+    blocking = [finding for result in scan.get("Results", [])
+                for finding in result.get("Vulnerabilities", [])
+                if finding.get("Severity") in ("HIGH", "CRITICAL")]
+    secrets = [finding for result in scan.get("Results", [])
+               for finding in result.get("Secrets", [])]
+    if blocking or secrets:
+        raise RuntimeError("Candidate image security scan has blocking findings")
+    for browser in ("chrome", "webkit"):
+        checks = json.loads((release / "round14-evidence" / f"browser-qa-{browser}.json").read_text())
+        if len(checks) != 5 or any(item.get("jsErrors", 0) for item in checks):
+            raise RuntimeError(f"Isolated {browser} browser QA incomplete")
     if (release / "round14-evidence/native-home-integration.log").read_text().splitlines()[-1] != "ROUND11_HOME_INTEGRATION_OK":
         raise RuntimeError("Native homepage regression QA failed")
-    if len((release / "round14-evidence/native-rollback-rehearsal.jsonl").read_text().splitlines()) != 3:
+    phases = [json.loads(line) for line in
+              (release / "round14-evidence/native-rollback-rehearsal.jsonl").read_text().splitlines()]
+    if ([item["phase"] for item in phases] != ["candidate", "rollback", "restored_candidate"]
+            or any(item["sqliteIntegrity"] != "ok" or item["databaseModels"] != 270
+                   or item["databaseBrands"] != 60 for item in phases)):
         raise RuntimeError("Native rollback rehearsal incomplete")
     if "OK (skipped=5)" not in (release / "round14-evidence/native-backend-tests.log").read_text():
         raise RuntimeError("Native backend suite incomplete")
