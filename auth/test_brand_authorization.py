@@ -42,6 +42,24 @@ class BrandAuthorizationTests(unittest.TestCase):
         self.assertIsNotNone(public)
         self.assertEqual(public['brandAuthorizations'], [])
 
+    def test_unreviewed_dealer_claim_is_hidden_from_public_prose(self):
+        self.approved_vehicle()
+        source='Exports Chinese vehicles.\nGeely 一级经销商；six showrooms.'
+        with self.auth.connect() as db:
+            db.execute('UPDATE supplier_profiles SET description=? WHERE user_id=?',
+                (source,'supplier-a'))
+        public=self.trade.public_supplier('supplier-a')
+        self.assertEqual(public['description'],'Exports Chinese vehicles.')
+        self.assertTrue(public['authorizationClaimHidden'])
+        self.assertEqual(public['brandAuthorizations'],[])
+        detail=PublicSEOService(self.trade).render('/trade/suppliers/supplier-a')[1].decode()
+        directory=PublicSEOService(self.trade).render('/trade/suppliers')[1].decode()
+        self.assertNotIn('一级经销商',detail+directory)
+        self.assertIn('withheld pending separate review',detail)
+        with self.auth.connect() as db:
+            self.assertEqual(db.execute('SELECT description FROM supplier_profiles WHERE user_id=?',
+                ('supplier-a',)).fetchone()[0],source)
+
     def test_private_proof_review_expiry_and_revocation(self):
         with self.assertRaises(BuyerError):
             self.evidence()

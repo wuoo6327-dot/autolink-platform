@@ -53,6 +53,23 @@ SITEMAP_PAGE_SIZE = 5000
 # serves a client-only shell; both remain accessible through normal navigation.
 SITEMAP_STATIC_PATHS = ('/', '/about', '/trade/vehicles', '/trade/models', '/trade/brands',
     '/trade/suppliers', '/guide/middle-east-importers', '/guide/african-importers')
+PUBLIC_AUTHORIZATION_CLAIM = re.compile(
+    r'官方授权|品牌授权|授权经销商|授权出口商|官方经销商|特许经销商|独家代理|官方代理|一级经销商|'
+    r'\b(?:official|authorized|authorised)\s+(?:dealer|distributor|exporter|agent|partner)\b|'
+    r'\bexclusive\s+(?:agent|distributor|dealer)\b|'
+    r'\b(?:concessionnaire|distributeur|agent)\s+agréé(?:e)?\b|'
+    r'وكيل\s+معتمد|موزع\s+معتمد', re.IGNORECASE)
+
+
+def public_supplier_overview(value):
+    """Keep unreviewed brand authorization assertions out of public prose.
+
+    The private source remains intact for staff review. Reviewed authorizations
+    are displayed only from structured, currently valid authorization records.
+    """
+    lines = str(value or '').splitlines()
+    safe = [line for line in lines if not PUBLIC_AUTHORIZATION_CLAIM.search(line)]
+    return '\n'.join(safe).strip(), len(safe) != len(lines)
 
 
 def ident(prefix: str) -> str:
@@ -578,6 +595,8 @@ class TradeService:
         results = [dict(r) for r in rows] if public else rows
         if public:
             for supplier in results:
+                supplier['description'], claim_hidden = public_supplier_overview(supplier.get('description'))
+                supplier['authorizationClaimHidden'] = claim_hidden
                 enabled = supplier.pop("public_contact_enabled") == 1
                 contact = {key: supplier.pop("public_contact_" + key)
                            for key in ("name", "email", "phone", "website", "address")}
