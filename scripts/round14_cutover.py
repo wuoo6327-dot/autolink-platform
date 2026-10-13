@@ -62,7 +62,9 @@ def prepare_backup_manifest():
         raise RuntimeError("Unexpected backup root")
     if (root / "backup-manifest.json").exists():
         raise RuntimeError("Backup manifest already exists; do not regenerate it")
-    if (Path("/opt/autolink-backups/round14-backup.exit").read_text().strip() != "exit=0"
+    backup_exit = ("/opt/autolink-backups/round14-robots-backup.exit" if HOTFIX_MODE
+                   else "/opt/autolink-backups/round14-backup.exit")
+    if (Path(backup_exit).read_text().strip() != "exit=0"
             or (root / "restore-verify.exit").read_text().strip() != "exit=0"):
         raise RuntimeError("Backup or isolated restore did not pass")
     subprocess.run(["sha256sum", "-c", "SHA256SUMS"], cwd=root,
