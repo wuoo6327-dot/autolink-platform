@@ -34,6 +34,18 @@ let user = null, catalog = [], catalogAliases = new Map(), catalogAliasesLoaded=
 let codeRetryUntil = 0, codeSending = false;
 let inquiryFilterVersion = 0, inquiryFilterTimer;
 let navigationId=0,readController=null,catalogLoaded=false;
+let notificationIndicator=null,notificationModule=null;
+async function syncNotificationIndicator(){
+  if(!user?.id||localPreview)return;
+  if(notificationIndicator?.userId===user.id){notificationIndicator.render();return;}
+  notificationIndicator?.stop();notificationIndicator=null;
+  const accountId=user.id;
+  try{
+    notificationModule ||= import('/assets/notification-indicator.mjs?v=20261014-unread');
+    const {createNotificationIndicator}=await notificationModule;
+    if(user?.id===accountId)notificationIndicator=createNotificationIndicator(accountId,'/buyer/notifications');
+  }catch{notificationModule=null;}
+}
 function beginBuyerRead(){readController?.abort();readController=new AbortController();}
 function beginBuyerNavigation(){navigationId++;beginBuyerRead();inquiryFilterVersion++;clearTimeout(inquiryFilterTimer);renderedData=null;return navigationId;}
 const needsBuyerCatalog=()=>['catalog','requests'].includes(location.pathname.split('/')[2]);
@@ -68,8 +80,10 @@ function supplierContact(contact,locked=false) {
   return `<div class="supplier-contact"><p><strong>${esc(contact.contact_name||contact.company_name)}</strong></p><p>${t('邮箱','Email')}: ${esc(contact.email)}</p><p>${t('电话','Phone')}: ${esc(contact.contact_phone||'—')}</p></div>`;
 }
 function shell(section, contents) {
-  const menu = nav.map(([slug,zh,en]) => `<a href="/buyer${slug?'/'+slug:''}" class="${section===slug?'active':''}" ${section===slug?'aria-current="page"':''}>${esc(t(zh,en))}</a>`).join('');
-  root.innerHTML = `<header class="site-head"><div class="site-head-inner"><a class="brand" href="/">AUTOLINK<i>▪</i></a><div class="head-right">${window.businessI18n.languageControl()}<span>${esc(user?.nickName || user?.companyName || user?.username || t('预览模式','Preview mode'))}</span><a href="/trade/vehicles">${t('真实车源','Supplier Vehicles')}</a><a href="/">${t('返回网站','Website')}</a></div></div></header><div class="workspace"><aside class="side" id="buyer-sidebar"><div class="side-title">${esc(tr("AUTOLINK · BUYER CENTER"))}</div>${menu}<div class="side-bottom"><a href="/trade/vehicles">${t('浏览车源','Supplier Vehicles')}</a><a href="/">${t('返回网站','Back to Website')}</a><button data-action="logout">${t('退出登录','Log Out')}</button></div></aside><main class="content"><button class="btn secondary mobile-menu" data-action="menu" aria-controls="buyer-sidebar" aria-expanded="false">☰ ${t('菜单','Menu')}</button><div id="buyer-content">${contents}</div></main></div>`;
+  const badge='<span class="notification-count" data-notification-badge hidden aria-hidden="true"></span>';
+  const menu = nav.map(([slug,zh,en]) => `<a href="/buyer${slug?'/'+slug:''}" class="${section===slug?'active':''}" ${section===slug?'aria-current="page"':''} ${slug==='notifications'?'data-notification-link':''}>${esc(t(zh,en))}${slug==='notifications'?badge:''}</a>`).join('');
+  root.innerHTML = `<header class="site-head"><div class="site-head-inner"><a class="brand" href="/">AUTOLINK<i>▪</i></a><div class="head-right">${window.businessI18n.languageControl()}<span>${esc(user?.nickName || user?.companyName || user?.username || t('预览模式','Preview mode'))}</span><a href="/trade/vehicles">${t('真实车源','Supplier Vehicles')}</a><a href="/">${t('返回网站','Website')}</a></div></div></header><div class="workspace"><aside class="side" id="buyer-sidebar"><div class="side-title">${esc(tr("AUTOLINK · BUYER CENTER"))}</div>${menu}<div class="side-bottom"><a href="/trade/vehicles">${t('浏览车源','Supplier Vehicles')}</a><a href="/">${t('返回网站','Back to Website')}</a><button data-action="logout">${t('退出登录','Log Out')}</button></div></aside><main class="content"><button class="btn secondary mobile-menu" data-action="menu" aria-controls="buyer-sidebar" aria-expanded="false">☰ ${t('菜单','Menu')} ${badge}</button><div id="buyer-content">${contents}</div></main></div>`;
+  notificationIndicator?.render();
 }
 function setContent(html) { document.querySelector('#buyer-content').innerHTML = html; }
 function loading(section) { shell(section, `<div class="skeleton"></div><div class="skeleton" style="margin-top:20px"></div>`); }
@@ -447,11 +461,12 @@ document.addEventListener('submit', async event => {
 
 async function start() {
   const epoch=beginBuyerNavigation();
-  if(location.pathname==='/buyer/login'||location.pathname==='/buyer/register') { renderLogin();return; }
+  root.dataset.notificationUser='';
+  if(location.pathname==='/buyer/login'||location.pathname==='/buyer/register') { notificationIndicator?.stop();notificationIndicator=null;renderLogin();return; }
   loading(location.pathname.split('/')[2]||'');
   if(localPreview) { user={companyName:t('预览模式','Preview mode')};await loadPage(epoch);return; }
-  try { const [me]=await Promise.all([api('/autolink/me'),needsBuyerCatalog()?loadBuyerCatalog(epoch):Promise.resolve()]);if(epoch!==navigationId)return;if(me.role!=='BUYER') {user=null;renderLogin(t('此账号不是买家账号。','This is not a buyer account.'));return;}user=me;await loadPage(epoch); }
-  catch(e) { if(epoch!==navigationId||e.name==='AbortError')return;user=null;renderedData=null;if(e.message.includes('不是买家')||e.message.includes('not a buyer')) {renderLogin(e.message);return;}location.replace('/buyer/login?returnTo='+encodeURIComponent(location.pathname+location.search)); }
+  try { const [me]=await Promise.all([api('/autolink/me'),needsBuyerCatalog()?loadBuyerCatalog(epoch):Promise.resolve()]);if(epoch!==navigationId)return;if(me.role!=='BUYER') {user=null;notificationIndicator?.stop();notificationIndicator=null;renderLogin(t('此账号不是买家账号。','This is not a buyer account.'));return;}user=me;root.dataset.notificationUser=me.id;void syncNotificationIndicator();await loadPage(epoch); }
+  catch(e) { if(epoch!==navigationId||e.name==='AbortError')return;user=null;notificationIndicator?.stop();notificationIndicator=null;renderedData=null;if(e.message.includes('不是买家')||e.message.includes('not a buyer')) {renderLogin(e.message);return;}location.replace('/buyer/login?returnTo='+encodeURIComponent(location.pathname+location.search)); }
 }
 function internalBuyerUrl(href){
   const url=new URL(href,location.href);
@@ -502,8 +517,9 @@ document.addEventListener('submit',async e=>{
 });
 
 
-async function notificationPage(){const data=await window.businessPagination.load(api,'/autolink/notifications');return `<section class="panel"><div class="panel-head"><h2>${t('通知','Notifications')}</h2></div>${data.length?`<div class="list">${data.map(n=>`<div class="supplier-row"><div class="supplier-row-main"><strong>${esc(notificationName(n.event))}</strong><small>${esc(n.entity_id)}</small></div><a class="button-link secondary" href="${esc(n.url)}">${t('查看','View')}</a>${!n.read_at?`<button class="btn secondary" data-notice="${esc(n.id)}">${t('标记已读','Mark read')}</button>`:''}</div>`).join('')}</div>`:`<div class="empty"><strong>${t('暂无通知','No notifications yet.')}</strong></div>`}</section>`+window.businessPagination.controls(data);}
-document.addEventListener('click',async e=>{const b=e.target.closest('[data-notice]');if(!b)return;const epoch=navigationId;try{await api('/autolink/notifications/'+encodeURIComponent(b.dataset.notice),'POST',{});if(epoch===navigationId)await start();}catch(error){if(epoch===navigationId&&b.isConnected)b.textContent=error.message;}});
+async function notificationPage(){const data=await window.businessPagination.load(api,'/autolink/notifications');return `<section class="panel"><div class="panel-head"><h2>${t('通知','Notifications')}</h2></div>${data.length?`<div class="list">${data.map(n=>`<div class="supplier-row${n.read_at?'':' notification-unread'}"><div class="supplier-row-main"><strong>${esc(notificationName(n.event))}</strong><small>${esc(n.entity_id)}</small></div><a class="button-link secondary" href="${esc(n.url)}" data-notice-open="${esc(n.id)}">${t('查看','View')}</a>${!n.read_at?`<button class="btn secondary" data-notice="${esc(n.id)}">${t('标记已读','Mark read')}</button>`:''}</div>`).join('')}</div>`:`<div class="empty"><strong>${t('暂无通知','No notifications yet.')}</strong></div>`}</section>`+window.businessPagination.controls(data);}
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-notice]');if(!b)return;const epoch=navigationId;try{await api('/autolink/notifications/'+encodeURIComponent(b.dataset.notice),'POST',{});await notificationIndicator?.refresh({announce:false});if(epoch===navigationId)await start();}catch(error){if(epoch===navigationId&&b.isConnected)b.textContent=error.message;}});
+document.addEventListener('click',e=>{const a=e.target.closest('[data-notice-open]');if(!a||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;void api('/autolink/notifications/'+encodeURIComponent(a.dataset.noticeOpen),'POST',{}).then(()=>notificationIndicator?.refresh({announce:false})).catch(()=>{});});
 
 function notificationName(event){const translated=tr(event);if(translated!==event)return translated;const labels={QUOTE_CANCELLED:['供应商已取消报价','Quotation cancelled'],NEW_QUOTE:['收到新报价','New quote'],NEW_INQUIRY:['收到新询盘','New inquiry'],QUOTE_RESPONSE:['买家回应报价','Buyer quote response'],SUPPLIER_REVIEW:['企业审核结果','Supplier review'],VEHICLE_REVIEW:['车辆审核结果','Vehicle review'],SUPPORT_REQUEST:['新支持请求','Support request'],TEAM_INVITED:['供应商团队邀请','Supplier team invitation'],TEAM_JOINED:['团队成员已加入','Team member joined'],BUYER_ASSIGNED:['已分配客户','Buyer assigned'],QUOTE_ACCEPTED:['买家接受报价意向','Buyer accepted quote intention'],QUOTE_REJECTED:['买家拒绝报价','Buyer rejected quote'],SUPPLIER_APPROVED:['企业审核通过','Supplier approved'],SUPPLIER_REJECTED:['企业申请未通过','Supplier rejected'],SUPPLIER_REQUIRES_CHANGES:['企业资料需修改','Supplier changes required'],SUPPLIER_SUSPENDED:['企业资格已暂停','Supplier suspended'],VEHICLE_APPROVED:['车源审核通过','Listing approved'],VEHICLE_REJECTED:['车源审核未通过','Listing rejected']};return labels[event]?t(...labels[event]):t('账户更新','Account update');}
 

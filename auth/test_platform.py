@@ -294,6 +294,10 @@ class PlatformFlowTests(unittest.TestCase):
         self.assertEqual(self.platform.unread_notification_count(buyer), 105)
         self.assertEqual(self.platform.unread_notification_count(other), 7)
         self.assertEqual(self.platform.unread_notification_count(self.users['supplier-a']), 0)
+        self.assertEqual(self.platform.notification_summary(buyer),
+                         {'userId':'buyer-a','unread':105,'latestId':'qa-notice-104'})
+        self.assertEqual(self.platform.notification_summary(other)['unread'],7)
+        self.assertEqual(self.platform.notification_summary(self.users['supplier-a'])['unread'],0)
         class TestHandler(test_trade.Handler):
             pass
         TestHandler.service = self.auth
@@ -310,12 +314,27 @@ class PlatformFlowTests(unittest.TestCase):
             request = urllib.request.Request(endpoint, headers={'Cookie': 'autolink_session='+token})
             with urllib.request.urlopen(request) as response:
                 self.assertEqual(json.loads(response.read())['data']['unreadNotifications'], expected)
+            summary_request = urllib.request.Request(
+                'http://127.0.0.1:'+str(server.server_port)+'/autolink/notifications/summary',
+                headers={'Cookie':'autolink_session='+token})
+            with urllib.request.urlopen(summary_request) as response:
+                summary=json.loads(response.read())['data']
+                self.assertEqual(summary['userId'],account['id'])
+                self.assertEqual(summary['unread'],expected)
+                self.assertEqual(set(summary),{'userId','unread','latestId'})
         with self.assertRaises(urllib.error.HTTPError) as denied:
             urllib.request.urlopen(endpoint)
         self.assertEqual(denied.exception.code, 401)
         denied.exception.close()
+        with self.assertRaises(urllib.error.HTTPError) as denied:
+            urllib.request.urlopen('http://127.0.0.1:'+str(server.server_port)+'/autolink/notifications/summary')
+        self.assertEqual(denied.exception.code,401)
+        denied.exception.close()
         with self.auth.connect() as db:
             self.assertEqual(db.execute("SELECT count(*) FROM account_notifications WHERE user_id='buyer-a' AND read_at IS NULL").fetchone()[0], 105)
+        self.platform.mark_notification(buyer,'qa-notice-104')
+        self.assertEqual(self.platform.notification_summary(buyer),
+                         {'userId':'buyer-a','unread':104,'latestId':'qa-notice-103'})
 
     def test_membership_application_does_not_grant_paid_access(self):
         buyer=self.users['buyer-a']

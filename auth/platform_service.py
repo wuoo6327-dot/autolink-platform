@@ -113,6 +113,15 @@ class PlatformService:
             return db.execute("SELECT count(*) FROM account_notifications WHERE user_id=? AND read_at IS NULL",
                               (user["id"],)).fetchone()[0]
 
+    def notification_summary(self, user):
+        with self.auth.connect() as db:
+            count = db.execute("SELECT count(*) FROM account_notifications WHERE user_id=? AND read_at IS NULL",
+                               (user["id"],)).fetchone()[0]
+            latest = db.execute("""SELECT id FROM account_notifications
+                WHERE user_id=? AND read_at IS NULL ORDER BY created_at DESC,id DESC LIMIT 1""",
+                (user["id"],)).fetchone()
+        return {"userId": user["id"], "unread": count, "latestId": latest["id"] if latest else None}
+
     def mark_notification(self, user, notification_id):
         with self.auth.connect() as db:
             cursor=db.execute("UPDATE account_notifications SET read_at=COALESCE(read_at,?) WHERE id=? AND user_id=?",(int(time.time()),notification_id,user["id"]))
