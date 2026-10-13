@@ -22,13 +22,25 @@ keywords = ["auth_code_secret"]
 # Audited round5 metadata false positives, never credentials.
 # SHA256(auth/email_auth.py) and SHA256(auth/Dockerfile), independently recomputed.
 # Keep the initial fae1a371 commit in history; do not rewrite it to hide findings.
-# Only these exact two public file digests in this exact release metadata file.
+# Each allowlist has exactly one verified digest. Combining them under AND
+# would require one finding to contain both digests, so neither was excluded.
 [[allowlists]]
-description = "Two verified file SHA256 values in round5 release-lock metadata"
+description = "Verified email_auth.py SHA256 in round5 release-lock metadata"
 condition = "AND"
 paths = ['''(^|/)release-lock\.json$''']
 regexTarget = "secret"
-regexes = [
-  '''^ff33ff6a032377bdebaee6b1c03824ac073d936047bb4bb1ae12e2f5e923710b$''',
-  '''^290e4897140dd11a130921039038465c5305500c576764065565f53d1714ea4a$'''
-]
+regexes = ['''^ff33ff6a032377bdebaee6b1c03824ac073d936047bb4bb1ae12e2f5e923710b$''']
+
+[[allowlists]]
+description = "Verified auth Dockerfile SHA256 in round5 release-lock metadata"
+condition = "AND"
+paths = ['''(^|/)release-lock\.json$''']
+regexTarget = "secret"
+regexes = ['''^290e4897140dd11a130921039038465c5305500c576764065565f53d1714ea4a$''']
+
+[[allowlists]]
+description = "Published round13 isolated test image tag is not an API credential"
+condition = "AND"
+paths = ['''(^|/)AUTOLINK_Stripe真实测试与支付上线准备完成报告\.md$''']
+regexTarget = "match"
+regexes = ['''^autolink-auth:round13-2aa4f32-isolated`$''']
