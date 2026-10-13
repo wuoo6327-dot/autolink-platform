@@ -129,17 +129,32 @@ html[dir=rtl] .seller-console .side a.active{box-shadow:inset -3px 0 #365641}
 .seller-console .seller-agreement-preview h2{font-size:14px;margin:0 0 5px}
 .seller-console .seller-agreement-preview .notice{margin:0}
 .seller-console .seller-multi{position:relative;width:100%;min-width:0}
-.seller-console .seller-multi summary{min-height:36px;padding:8px 10px;border:1px solid #dce4dc;border-radius:5px;background:#fff;cursor:pointer;overflow-wrap:anywhere;font-size:12px}
+.seller-console .seller-multi[open]{z-index:20}
+.seller-console .seller-multi summary{min-height:36px;padding:8px 12px;border:1px solid #dce4dc;border-radius:5px;background:#fff;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:10px;list-style:none}
+.seller-console .seller-multi summary::-webkit-details-marker{display:none}
+.seller-console .seller-multi summary [data-choice-summary]{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.seller-console .seller-multi summary::after{content:"";width:6px;height:6px;border-right:1.5px solid #55705d;border-bottom:1.5px solid #55705d;transform:rotate(45deg);margin:-3px 2px 0;flex:none}
 .seller-console .seller-multi[open] summary{border-color:#8da58f}
-.seller-multi-menu{border:1px solid #dce4dc;padding:9px;border-radius:5px;background:#fff;margin-top:5px}
+.seller-console .seller-multi[open] summary::after{transform:rotate(225deg);margin:3px 2px 0}
+.seller-console .seller-multi summary:focus-visible{outline:2px solid #8da58f;outline-offset:2px}
+.seller-multi-menu{position:absolute;top:100%;left:0;width:min(360px,max(100%,320px));max-width:calc(100vw - 32px);box-sizing:border-box;z-index:21;border:1px solid #dce4dc;padding:10px;border-radius:6px;background:#fff;margin-top:5px;box-shadow:0 12px 30px rgba(23,49,31,.13)}
+.seller-multi[data-company-multi="mainMarkets"] .seller-multi-menu{left:auto;right:0}
+[dir="rtl"] .seller-multi[data-company-multi="mainMarkets"] .seller-multi-menu{right:auto;left:0}
 .seller-multi-options{max-height:180px;overflow:auto;margin:7px 0;display:grid;gap:3px}
 .seller-console .seller-multi-option{display:flex;align-items:center;gap:8px;padding:4px;font-size:12px;cursor:pointer}
+.seller-console .seller-multi-option:hover,.seller-console .seller-multi-option:has(input:checked){background:#f1f6f1;border-radius:4px}
 .seller-console .seller-multi-option[hidden]{display:none}
 .seller-console .seller-multi-option input[type=checkbox]{width:15px;height:15px;min-height:15px;padding:0;margin:0;flex:0 0 15px;accent-color:#254b3a}
 .seller-console .seller-multi-add{display:flex;align-items:center;gap:6px}
 .seller-multi-add input{min-width:0;flex:1}
 .seller-multi-add button{flex:none}
+.seller-multi-footer{display:flex;justify-content:flex-end;border-top:1px solid #edf0ed;margin-top:9px;padding-top:9px}
+.seller-multi-footer button{min-width:72px}
 .seller-console .seller-multi-menu input{width:100%}
+@media(max-width:650px){
+ .seller-console .seller-multi .seller-multi-menu{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;max-width:none;max-height:75dvh;overflow:auto;margin:0;border-radius:12px 12px 0 0;padding:15px 16px max(15px,env(safe-area-inset-bottom));box-shadow:0 -10px 34px rgba(23,49,31,.18)}
+ .seller-console .seller-multi-options{max-height:38dvh}
+}
 .seller-console .seller-agreement-preview .supplier-actions{flex:none;display:flex;flex-wrap:wrap;gap:8px}
 @media(max-width:800px){.seller-console .seller-agreement-preview{align-items:flex-start;flex-direction:column}}
 /* Persisted application readiness, kept compact and aligned in every language. */

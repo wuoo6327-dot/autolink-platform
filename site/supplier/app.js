@@ -34,7 +34,7 @@ function guard(){
       (invited?' '+link('/buyer/register?returnTo='+destination,tr('Register'),true):''));
     return false;
   }
-  if(!['BUYER','MERCHANT','SUPPLIER'].includes(me.role)){layout(title(tr('Supplier access required'),tr('This account does not have a supplier role.'))+link('/buyer',tr('Go to Buyer Center'),true));return false;}
+  if(!['MERCHANT','SUPPLIER'].includes(me.role)){layout(title(tr('Supplier access required'),tr('This email is a buyer account. Use a separate email for supplier registration.'))+link('/buyer',tr('Go to Buyer Center'),true));return false;}
   return true;
 }
 function reviewNotice(){if(me?.isTestWorkspace)return `<p class="notice">${esc(tr('This test workspace is not a verified business.'))}</p>`;const status=application?.status||'DRAFT';return `<div class="supplier-profile-note"><strong>${esc(tr("Company verification"))}: ${esc(tr(status))}</strong><br>${esc(tr(status==='APPROVED'?'Your company may submit vehicles for platform review. Vehicle listings appear publicly only after their own approval.':status==='PENDING'?'Your application is waiting for platform review.':'Complete the company application before publishing vehicles.'))}${application?.review_reason?`<br>${esc(tr("Review note:"))} ${esc(application.review_reason)}`:''}</div>`;}
@@ -208,9 +208,13 @@ async function start(){
   try{
     let loadedApplication,applicationSupplier;
     if(!me||!contexts.length){
-      const [account,nextContexts]=await Promise.all([api('/autolink/me'),api('/autolink/supplier/contexts')]);
+      const account=await api('/autolink/me');
       if(current!==navigationId)return;
-      me=account;contexts=nextContexts;
+      me=account;
+      if(!guard())return;
+      const nextContexts=await api('/autolink/supplier/contexts');
+      if(current!==navigationId)return;
+      contexts=nextContexts;
     }
     else{
       const wanted=new URLSearchParams(location.search).get('company')||storedWorkspace();

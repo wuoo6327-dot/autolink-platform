@@ -1,4 +1,4 @@
-"""Supplier entry repairs legacy roles without granting reviewed business access.
+"""Supplier entry never changes the role of an existing identity.
 
 All accounts and provider responses are synthetic and use an isolated SQLite DB.
 """
@@ -7,9 +7,16 @@ import tempfile
 import time
 import unittest
 import uuid
+import os
+import json
+import threading
+import urllib.request
+import urllib.error
 from pathlib import Path
+from unittest.mock import patch
+from http.server import ThreadingHTTPServer
 
-from app import ApiError, AuthService
+from app import ApiError, AuthService, Handler
 from buyer_service import BuyerError, BuyerService
 from email_auth import EmailAuthService, EmailError, password_hash
 from trade_service import TradeService
@@ -47,10 +54,18 @@ class SupplierLoginRoleTests(unittest.TestCase):
             db.execute("INSERT INTO consents(user_id,terms_version,privacy_version,accepted_at) VALUES (?,?,?,?)",
                        (account_id, "existing-terms", "existing-privacy", now - 1000))
         if application:
-            self.trade.save_application(self.read_user(account_id), {
-                "companyName": "Existing registered company", "registrationNo": "SYNTHETIC-REG-001",
-                "country": "Hong Kong", "address": "Existing company address",
-                "contactName": "Existing sales contact", "contactPhone": "+85200000000"})
+            if role in ('MERCHANT','SUPPLIER'):
+                self.trade.save_application(self.read_user(account_id), {
+                    "companyName": "Existing registered company", "registrationNo": "SYNTHETIC-REG-001",
+                    "country": "Hong Kong", "address": "Existing company address",
+                    "contactName": "Existing sales contact", "contactPhone": "+85200000000"})
+            else:
+                # Model a private draft left by the old dual-role implementation.
+                with self.auth.connect() as db:
+                    db.execute("INSERT INTO supplier_profiles(user_id,published,updated_at) VALUES (?,0,?)",
+                               (account_id,now-1000))
+                    db.execute("INSERT INTO supplier_applications(supplier_id,registration_no,address,contact_name,contact_phone,status,updated_at) VALUES (?,?,?,?,?,'DRAFT',?)",
+                               (account_id,'SYNTHETIC-REG-001','Existing company address','Existing sales contact','+85200000000',now-1000))
             with self.auth.connect() as db:
                 db.execute("UPDATE supplier_applications SET status='REQUIRES_CHANGES',review_reason=? WHERE supplier_id=?",
                            ("Existing private review note", account_id))
@@ -95,21 +110,21 @@ class SupplierLoginRoleTests(unittest.TestCase):
             return self.code_login(name, role)
         return self.auth.google_login(self.google_body(name, role))
 
-    def test_supplier_entry_preserves_legacy_identity_and_business_data_for_each_provider(self):
+    def test_supplier_entry_rejects_buyer_without_changing_data_for_each_provider(self):
         for method in ("password", "code", "google"):
             with self.subTest(provider=method):
                 account_id = self.account(method, google=method == "google", application=True)
                 before = self.preserved_data(account_id)
-                result = self.login(method, method, "MERCHANT")
-                user = self.auth.user_for_token(result["access_token"])
-                self.assertEqual((user["id"], user["role"], result["role"]), (account_id, "MERCHANT", "MERCHANT"))
+                with self.assertRaises((EmailError, ApiError)) as denied:
+                    self.login(method, method, "MERCHANT")
+                self.assertEqual(denied.exception.status, 403)
+                self.assertEqual(self.read_user(account_id)['role'], 'BUYER')
                 self.assertEqual(self.preserved_data(account_id), before)
-                # A second login from the buyer page cannot downgrade the supplier.
                 if method == "code":
                     with self.auth.connect() as db:
                         db.execute("UPDATE email_verification_codes SET created_at=0 WHERE email=?", (method + "@example.com",))
                 again = self.login(method, method, "BUYER")
-                self.assertEqual(again["role"], "MERCHANT")
+                self.assertEqual(again["role"], "BUYER")
                 self.assertEqual(self.auth.user_for_token(again["access_token"])["id"], account_id)
 
     def test_regular_buyer_entry_never_promotes_for_each_provider(self):
@@ -134,6 +149,12 @@ class SupplierLoginRoleTests(unittest.TestCase):
                     self.assertEqual(result["role"], original_role)
                     self.assertEqual(self.read_user(account_id)["role"], original_role)
                     self.assertEqual(self.preserved_data(account_id), before)
+                    if method == 'code':
+                        with self.auth.connect() as db:
+                            db.execute('UPDATE email_verification_codes SET created_at=0 WHERE email=?', (name+'@example.com',))
+                    with self.assertRaises((EmailError, ApiError)) as denied:
+                        self.login(method, name, 'BUYER')
+                    self.assertEqual(denied.exception.status, 403)
 
     def test_failed_password_does_not_change_role_or_business_data(self):
         account_id = self.account("bad-password", application=True)
@@ -198,7 +219,7 @@ class SupplierLoginRoleTests(unittest.TestCase):
         self.assertEqual(self.preserved_data(account_id), before)
 
     def test_supplier_sign_in_does_not_approve_application_or_allow_publication(self):
-        account_id = self.account("applicant", application=True)
+        account_id = self.account("applicant", role="MERCHANT", application=True)
         result = self.password_login("applicant", "MERCHANT")
         principal = self.trade.require_supplier(result["access_token"], approved=False)
         self.assertEqual(principal["supplier_role"], "OWNER")
@@ -216,7 +237,7 @@ class SupplierLoginRoleTests(unittest.TestCase):
     def test_existing_team_scope_stays_sales_and_other_company_is_denied(self):
         owner = self.account("owner", role="MERCHANT", application=True)
         other = self.account("other-owner", role="MERCHANT", application=True)
-        staff = self.account("sales", application=True)
+        staff = self.account("sales", role="MERCHANT", application=True)
         with self.auth.connect() as db:
             db.execute("UPDATE supplier_applications SET status='APPROVED' WHERE supplier_id IN (?,?)", (owner, other))
             db.execute("INSERT INTO supplier_team_members(supplier_id,user_id,role,status,joined_at) VALUES (?,?,'SALES','ACTIVE',?)",
@@ -237,6 +258,100 @@ class SupplierLoginRoleTests(unittest.TestCase):
         with self.assertRaises(BuyerError) as denied:
             self.trade.require_supplier(result["access_token"], approved=True, supplier_id=owner)
         self.assertEqual(denied.exception.status, 404)
+
+    def test_admin_can_return_only_unsubmitted_supplier_to_buyer_access(self):
+        admin_id = self.account('access-admin', role='PLATFORM_ADMIN')
+        target = self.account('access-target', role='MERCHANT', application=True)
+        with self.auth.connect() as db:
+            db.execute("UPDATE supplier_applications SET status='DRAFT',submitted_at=NULL WHERE supplier_id=?", (target,))
+            db.execute("INSERT INTO supplier_documents(id,supplier_id,kind,filename,content_type,stored_name,bytes,uploaded_at) VALUES (?,?,?,?,?,?,?,?)",
+                       ('DOC-SYNTHETIC',target,'BUSINESS_LICENSE','private.pdf','application/pdf','synthetic-private',20,int(time.time())))
+        session = self.auth.session_for_user(target)['access_token']
+        with patch.dict(os.environ, {'PLATFORM_ADMIN_EMAIL':'access-admin@example.com'}):
+            with self.assertRaises(BuyerError) as denied:
+                self.trade.clear_supplier_access(self.read_user(admin_id), target,
+                    {'confirmEmail':'other@example.com','reason':'Correct account role'})
+            self.assertEqual(denied.exception.status, 409)
+            result = self.trade.clear_supplier_access(self.read_user(admin_id), target,
+                {'confirmEmail':'access-target@example.com','reason':'Correct account role'})
+        self.assertEqual(result['role'], 'BUYER')
+        self.assertEqual(self.read_user(target)['role'], 'BUYER')
+        with self.auth.connect() as db:
+            self.assertEqual(db.execute('SELECT count(*) FROM supplier_applications WHERE supplier_id=?', (target,)).fetchone()[0], 1)
+            self.assertEqual(db.execute('SELECT count(*) FROM supplier_profiles WHERE user_id=?', (target,)).fetchone()[0], 1)
+            self.assertEqual(db.execute('SELECT count(*) FROM supplier_documents WHERE supplier_id=?', (target,)).fetchone()[0], 1)
+            self.assertEqual(db.execute('SELECT count(*) FROM buyer_profiles WHERE user_id=?', (target,)).fetchone()[0], 1)
+        with self.assertRaises(ApiError):
+            self.auth.user_for_token(session)
+        buyer_session = self.password_login('access-target', 'BUYER')['access_token']
+        with self.assertRaises(BuyerError) as denied:
+            self.trade.require_supplier(buyer_session)
+        self.assertEqual(denied.exception.status, 403)
+
+    def test_admin_erasure_removes_empty_accounts_and_blocks_business_history(self):
+        admin_id = self.account('erase-admin', role='PLATFORM_ADMIN')
+        empty_id = self.account('erase-empty')
+        busy_id = self.account('erase-busy')
+        draft_id = self.account('erase-draft', role='MERCHANT', application=True)
+        token = self.auth.session_for_user(empty_id)['access_token']
+        with self.auth.connect() as db:
+            self.trade.audit(db, busy_id, 'BUYER_REQUEST_CREATED', 'request', 'synthetic-request')
+        request = {'confirmEmail':'erase-empty@example.com','reasonCode':'USER_REQUEST',
+                   'confirmation':'DELETE'}
+        with patch.dict(os.environ, {'PLATFORM_ADMIN_EMAIL':'erase-admin@example.com'}):
+            with self.assertRaises(BuyerError) as denied:
+                self.trade.erase_user_personal_data(self.read_user(busy_id), empty_id, request)
+            self.assertEqual(denied.exception.status, 403)
+            with self.assertRaises(BuyerError) as denied:
+                self.trade.erase_user_personal_data(self.read_user(admin_id), empty_id,
+                    {**request,'confirmEmail':'wrong@example.com'})
+            self.assertEqual(denied.exception.status, 409)
+            with self.assertRaises(BuyerError) as denied:
+                self.trade.erase_user_personal_data(self.read_user(admin_id), busy_id,
+                    {**request,'confirmEmail':'erase-busy@example.com'})
+            self.assertEqual(denied.exception.status, 409)
+            with self.assertRaises(BuyerError) as denied:
+                self.trade.erase_user_personal_data(self.read_user(admin_id), draft_id,
+                    {**request,'confirmEmail':'erase-draft@example.com'})
+            self.assertEqual(denied.exception.status, 409)
+            result = self.trade.erase_user_personal_data(self.read_user(admin_id), empty_id, request)
+        self.assertTrue(result['personalDataErased'])
+        with self.auth.connect() as db:
+            self.assertIsNone(db.execute('SELECT 1 FROM users WHERE id=?', (empty_id,)).fetchone())
+            self.assertIsNone(db.execute('SELECT 1 FROM email_identities WHERE email=?', ('erase-empty@example.com',)).fetchone())
+            self.assertIsNone(db.execute('PRAGMA foreign_key_check').fetchone())
+            self.assertEqual(db.execute("SELECT count(*) FROM trade_audit WHERE action='USER_PERSONAL_DATA_ERASED' AND entity_id=?", (empty_id,)).fetchone()[0], 1)
+            self.assertIsNotNone(db.execute('SELECT 1 FROM users WHERE id=?', (busy_id,)).fetchone())
+        with self.assertRaises(ApiError):
+            self.auth.user_for_token(token)
+
+    def test_admin_account_actions_reject_buyer_and_cross_origin_http(self):
+        admin_id=self.account('http-admin',role='PLATFORM_ADMIN')
+        target=self.account('http-target')
+        class LocalHandler(Handler):
+            pass
+        LocalHandler.service=self.auth
+        LocalHandler.trade=self.trade
+        LocalHandler.platform=self.trade.platform
+        server=ThreadingHTTPServer(('127.0.0.1',0),LocalHandler)
+        threading.Thread(target=server.serve_forever,daemon=True).start()
+        self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
+        tokens={name:self.auth.session_for_user(name)['access_token'] for name in (admin_id,target)}
+        path=f'/autolink/admin/users/{target}/erase-personal-data'
+        body={'confirmEmail':'http-target@example.com','confirmation':'DELETE','reasonCode':'USER_REQUEST'}
+        def call(actor,origin='https://autolinkglobal.com'):
+            request=urllib.request.Request(f'http://127.0.0.1:{server.server_port}'+path,
+                data=json.dumps(body).encode(),headers={'Content-Type':'application/json',
+                'Origin':origin,'Cookie':'autolink_session='+tokens[actor]})
+            try:response=urllib.request.urlopen(request)
+            except urllib.error.HTTPError as error:response=error
+            with response:return response.status
+        with patch.dict(os.environ, {'PLATFORM_ADMIN_EMAIL':'http-admin@example.com'}):
+            self.assertEqual(call(target),403)
+            self.assertEqual(call(admin_id,'https://untrusted.example'),403)
+            self.assertEqual(call(admin_id),200)
+        with self.auth.connect() as db:
+            self.assertIsNone(db.execute('SELECT 1 FROM users WHERE id=?',(target,)).fetchone())
 
 
 if __name__ == "__main__":

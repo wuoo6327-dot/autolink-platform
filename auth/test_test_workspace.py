@@ -51,7 +51,7 @@ class TestWorkspaceTests(unittest.TestCase):
     def test_password_login_session_dashboard_and_tenant_denial(self):
         owner=self.activate();base=self.server()
         status,result,headers=self.request(base,'/autolink/auth/password/login',body={
-            'email':owner['email'],'password':'Synthetic test password!'})
+            'email':owner['email'],'password':'Synthetic test password!','role':'MERCHANT'})
         self.assertEqual(status,200)
         token=result['data']['access_token'];cookie=headers.get('Set-Cookie','')
         self.assertIn('HttpOnly',cookie);self.assertIn('SameSite=Lax',cookie)

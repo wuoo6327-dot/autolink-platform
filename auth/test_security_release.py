@@ -40,7 +40,7 @@ class SecurityReleaseTests(unittest.TestCase):
     def user(self, name):
         return self.auth.user_for_token(self.tokens[name])
 
-    def approved(self, name='buyer'):
+    def approved(self, name='legacy'):
         self.trade.save_application(self.user(name), {'companyName': 'Synthetic company', 'registrationNo': 'QA-REG',
             'country': 'China', 'address': 'Synthetic warehouse', 'contactName': 'QA', 'contactPhone': '+860000'})
         # Synthetic fixture approval bypasses workflows covered by separate suites.
@@ -59,7 +59,7 @@ class SecurityReleaseTests(unittest.TestCase):
         (self.image_root/stored).write_bytes(b'SYNTHETIC PRIVATE IMAGE')
         with self.auth.connect() as db:
             db.execute("INSERT INTO vehicle_images(id,listing_id,supplier_id,filename,stored_name,bytes,width,height,created_at) VALUES (?,?,?,?,?,?,?,?,?)",
-                       ('image', listing['id'], 'buyer', stored, stored, 23, 100, 100, int(time.time())))
+                       ('image', listing['id'], owner['id'], stored, stored, 23, 100, 100, int(time.time())))
         return owner
 
     def test_private_images_recheck_owner_email_and_account_revocation(self):
@@ -68,7 +68,7 @@ class SecurityReleaseTests(unittest.TestCase):
         with patch.dict(os.environ, {'PLATFORM_ADMIN_EMAIL': ' ADMIN@EXAMPLE.COM '}):
             self.assertEqual(self.trade.images.bytes('image', owner), b'SYNTHETIC PRIVATE IMAGE')
             self.assertEqual(self.trade.images.bytes('image', stale_admin), b'SYNTHETIC PRIVATE IMAGE')
-            for user in (None, self.user('legacy'), self.user('other-admin')):
+            for user in (None, self.user('buyer'), self.user('other-admin')):
                 with self.subTest(user=user and user['id']), self.assertRaises(BuyerError) as denied:
                     self.trade.images.bytes('image', user)
                 self.assertEqual(denied.exception.status, 404)

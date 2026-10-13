@@ -7,6 +7,8 @@ The maintained catalogue remains model reference data, never an offer of stock.
 from __future__ import annotations
 
 import re
+import hashlib
+import hmac
 import base64
 import binascii
 import os
@@ -40,7 +42,7 @@ DOCUMENT_TYPES = {"application/pdf": ".pdf", "image/png": ".png", "image/jpeg": 
 # Aliases p/a/u are shared by public directory, inventory and sitemap queries.
 PUBLIC_SUPPLIER_WHERE = """p.published=1 AND a.status='APPROVED' AND u.status='ACTIVE'
     AND u.deleted_at IS NULL AND u.email_verified_at IS NOT NULL AND u.is_test_workspace=0
-    AND u.role IN ('BUYER','MERCHANT','SUPPLIER')"""
+    AND u.role IN ('MERCHANT','SUPPLIER')"""
 PUBLIC_VEHICLE_WHERE = """v.archived_at IS NULL AND v.status='ONLINE' AND """ + PUBLIC_SUPPLIER_WHERE + """
     AND EXISTS (SELECT 1 FROM catalog_models cm JOIN catalog_brands cb ON cb.id=cm.brand_id
         WHERE cm.id=v.model_id AND cm.active=1 AND cb.active=1)"""
@@ -230,7 +232,7 @@ class TradeService:
 
     def require_supplier(self, token, approved=False, supplier_id=None):
         user = self.auth.user_for_token(token)
-        if user["role"] not in ("BUYER", "MERCHANT", "SUPPLIER"):
+        if user["role"] not in ("MERCHANT", "SUPPLIER"):
             raise BuyerError(403, "Supplier account required.")
         if not user["email_verified_at"]:
             raise BuyerError(403, "Verify your email before applying as a supplier.")
@@ -286,7 +288,7 @@ class TradeService:
                 if row['deleted_at'] is not None:reasons.append('ACCOUNT_DELETED')
                 if row['email_verified_at'] is None:reasons.append('EMAIL_UNVERIFIED')
                 if row['is_test_workspace'] != 0:reasons.append('TEST_WORKSPACE')
-                if row['role'] not in ('BUYER','MERCHANT','SUPPLIER'):reasons.append('ACCOUNT_ROLE_INELIGIBLE')
+                if row['role'] not in ('MERCHANT','SUPPLIER'):reasons.append('ACCOUNT_ROLE_INELIGIBLE')
                 if row['application_id'] is None:
                     reasons.append('APPLICATION_MISSING')
                 elif status != 'APPROVED':
@@ -376,6 +378,8 @@ class TradeService:
         return [dict(row) for row in rows]
 
     def add_document(self, user, body):
+        if user.get('role') not in ('MERCHANT','SUPPLIER'):
+            raise BuyerError(403, 'Supplier account required.')
         kind = body.get("kind")
         if kind not in ("BUSINESS_LICENSE", "EXPORT_LICENSE", "OTHER") and kind not in PHOTO_KINDS:
             raise BuyerError(400, "Invalid document kind.")
@@ -420,6 +424,8 @@ class TradeService:
                 file.write(data)
             with self.auth.connect() as db:
                 db.execute("BEGIN IMMEDIATE")
+                if not db.execute("SELECT 1 FROM users WHERE id=? AND role IN ('MERCHANT','SUPPLIER') AND status='ACTIVE' AND deleted_at IS NULL", (user['id'],)).fetchone():
+                    raise BuyerError(403, 'Supplier account required.')
                 application = db.execute("SELECT status FROM supplier_applications WHERE supplier_id=?", (user["id"],)).fetchone()
                 if application and application["status"] not in ("DRAFT", "REQUIRES_CHANGES", "REJECTED"):
                     raise BuyerError(409, "Application state changed. Please reload.")
@@ -449,6 +455,8 @@ class TradeService:
         return {"filename":row["filename"], "contentType":row["content_type"], "data":(DOCUMENT_ROOT/row["stored_name"]).read_bytes()}
 
     def save_application(self, user, body):
+        if user.get('role') not in ('MERCHANT','SUPPLIER'):
+            raise BuyerError(403, 'Supplier account required.')
         fields = {
             "company_name": text(body.get("companyName"), "company name", 160, True),
             "registration_no": text(body.get("registrationNo"), "registration number", 100, True),
@@ -473,6 +481,8 @@ class TradeService:
         now = int(time.time())
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
+            if not db.execute("SELECT 1 FROM users WHERE id=? AND role IN ('MERCHANT','SUPPLIER') AND status='ACTIVE' AND deleted_at IS NULL", (user['id'],)).fetchone():
+                raise BuyerError(403, 'Supplier account required.')
             existing = db.execute("SELECT status FROM supplier_applications WHERE supplier_id=?", (user["id"],)).fetchone()
             if submit and not db.execute("SELECT 1 FROM supplier_documents WHERE supplier_id=? AND kind='BUSINESS_LICENSE'", (user["id"],)).fetchone():
                 raise BuyerError(409, "Save draft and upload a business license before submitting.")
@@ -945,7 +955,7 @@ class TradeService:
         self.team.owner(supplier)
         active = db.execute("""SELECT 1 FROM supplier_applications a JOIN users u ON u.id=a.supplier_id
             WHERE a.supplier_id=? AND a.status='APPROVED' AND u.status='ACTIVE'
-            AND u.role IN ('BUYER','MERCHANT','SUPPLIER') AND u.deleted_at IS NULL
+            AND u.role IN ('MERCHANT','SUPPLIER') AND u.deleted_at IS NULL
             AND u.email_verified_at IS NOT NULL""", (supplier["id"],)).fetchone()
         if not active or self.team.actor(supplier) != supplier["id"]:
             raise BuyerError(403, "An approved company owner is required.")
@@ -1616,6 +1626,9 @@ class TradeService:
         if status not in ("ACTIVE", "SUSPENDED"):
             raise BuyerError(400, "Invalid account status.")
         with self.auth.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if not self.auth.platform_admin_in_db(db, admin):
+                raise BuyerError(403, 'Platform admin required.')
             row = db.execute("SELECT role,status FROM users WHERE id=?", (user_id,)).fetchone()
             if not row or row["role"] == "PLATFORM_ADMIN" or row["status"] == "DELETED":
                 raise BuyerError(403, "This account cannot be changed here.")
@@ -1623,6 +1636,101 @@ class TradeService:
             db.execute("DELETE FROM sessions WHERE user_id=?", (user_id,))
             self.audit(db, admin["id"], "USER_"+status, "user", user_id, metadata=reason)
         return {"id": user_id, "status": status}
+
+    def clear_supplier_access(self, admin, user_id, body):
+        """Revoke supplier access without destroying an unsubmitted private draft."""
+        confirmed_email = text(body.get('confirmEmail'), 'confirmation email', 320, True).strip().casefold()
+        reason = text(body.get('reason'), 'reason', 1000, True)
+        with self.auth.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if not self.auth.platform_admin_in_db(db, admin):
+                raise BuyerError(403, 'Platform admin required.')
+            row = db.execute('SELECT id,email,role,status,deleted_at FROM users WHERE id=?', (user_id,)).fetchone()
+            if not row:
+                raise BuyerError(404, 'Account not found.')
+            if row['email'].strip().casefold() != confirmed_email:
+                raise BuyerError(409, 'Confirmation email does not match this account.')
+            if row['role'] not in ('MERCHANT','SUPPLIER') or row['status'] != 'ACTIVE' or row['deleted_at'] is not None:
+                raise BuyerError(409, 'Only an active supplier account can be changed to buyer access.')
+            application = db.execute('SELECT status,submitted_at FROM supplier_applications WHERE supplier_id=?', (user_id,)).fetchone()
+            if application and (application['status'] != 'DRAFT' or application['submitted_at'] is not None):
+                raise BuyerError(409, 'A submitted supplier application requires a separate reviewed decision.')
+            profile = db.execute('SELECT published FROM supplier_profiles WHERE user_id=?', (user_id,)).fetchone()
+            if profile and profile['published']:
+                raise BuyerError(409, 'A published supplier profile requires a separate reviewed decision.')
+            blockers = (
+                ('supplier_vehicles','supplier_id'),
+                ('supplier_team_members','supplier_id'), ('supplier_team_members','user_id'),
+                ('supplier_team_invites','supplier_id'), ('supplier_team_invites','invited_by'),
+                ('buyer_inquiries','supplier_id'), ('trade_quotes','supplier_id'),
+                ('supplier_crm','supplier_id'), ('buyer_saved_suppliers','supplier_id'),
+                ('supplier_agreement_confirmations','supplier_id'),
+                ('buyer_memberships','user_id'), ('buyer_membership_payments','user_id'),
+            )
+            for table, column in blockers:
+                if db.execute(f'SELECT 1 FROM {table} WHERE {column}=? LIMIT 1', (user_id,)).fetchone():
+                    raise BuyerError(409, 'Supplier activity exists; review it before clearing access.')
+            # A private draft and its uploaded documents are retained for review;
+            # the buyer role cannot access supplier routes or publish them.
+            db.execute("UPDATE users SET role='BUYER' WHERE id=?", (user_id,))
+            db.execute('DELETE FROM sessions WHERE user_id=?', (user_id,))
+            self.audit(db, admin['id'], 'USER_SUPPLIER_ACCESS_CLEARED', 'user', user_id, metadata=reason)
+        return {'id':user_id,'role':'BUYER','sessionsRevoked':True}
+
+    def erase_user_personal_data(self, admin, user_id, body):
+        """Hard-delete an account only when business records can remain intact."""
+        confirmed_email = text(body.get('confirmEmail'), 'confirmation email', 320, True).strip().casefold()
+        reason_code = body.get('reasonCode')
+        if reason_code not in ('USER_REQUEST','DUPLICATE_ACCOUNT','TEST_ACCOUNT','OTHER_REVIEWED'):
+            raise BuyerError(400, 'Select an account erasure reason.')
+        if body.get('confirmation') != 'DELETE':
+            raise BuyerError(400, 'Type DELETE to confirm permanent personal-data erasure.')
+        with self.auth.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if not self.auth.platform_admin_in_db(db, admin):
+                raise BuyerError(403, 'Platform admin required.')
+            row = db.execute('SELECT id,email,role FROM users WHERE id=?', (user_id,)).fetchone()
+            if not row:
+                raise BuyerError(404, 'Account not found.')
+            if row['id'] == admin['id'] or row['role'] == 'PLATFORM_ADMIN':
+                raise BuyerError(403, 'An administrator account cannot be erased here.')
+            if row['email'].strip().casefold() != confirmed_email:
+                raise BuyerError(409, 'Confirmation email does not match this account.')
+            # New user-related tables fail closed until their records are reviewed.
+            disposable = {'sessions','consents','email_identities','email_passwords',
+                          'buyer_profiles','buyer_saved_vehicles','buyer_compared_vehicles',
+                          'buyer_saved_suppliers','supplier_profiles','account_notifications',
+                          'business_mail_jobs','buyer_vehicle_views','inquiry_rate_events'}
+            for item in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"):
+                table = item['name']
+                quoted = '"' + table.replace('"','""') + '"'
+                for fk in db.execute(f'PRAGMA foreign_key_list({quoted})'):
+                    if fk['table'] != 'users':
+                        continue
+                    column = '"' + fk['from'].replace('"','""') + '"'
+                    if table not in disposable and db.execute(f'SELECT 1 FROM {quoted} WHERE {column}=? LIMIT 1', (user_id,)).fetchone():
+                        raise BuyerError(409, 'Business or audit records exist; this account needs a reviewed erasure plan.')
+            if db.execute('SELECT 1 FROM support_tickets WHERE lower(email)=? LIMIT 1', (confirmed_email,)).fetchone() or \
+                    db.execute('SELECT 1 FROM supplier_team_invites WHERE lower(email)=? LIMIT 1', (confirmed_email,)).fetchone():
+                raise BuyerError(409, 'Business communications exist; this account needs a reviewed erasure plan.')
+            if db.execute("SELECT 1 FROM trade_audit WHERE entity_type='user' AND entity_id=? LIMIT 1", (user_id,)).fetchone():
+                raise BuyerError(409, 'Account audit records exist; this account needs a reviewed erasure plan.')
+            if db.execute('SELECT 1 FROM supplier_profiles WHERE user_id=? LIMIT 1', (user_id,)).fetchone():
+                raise BuyerError(409, 'Supplier records or uploads may exist; this account needs a reviewed erasure plan.')
+            for table in ('buyer_saved_suppliers','account_notifications','business_mail_jobs',
+                          'buyer_vehicle_views','inquiry_rate_events','sessions'):
+                db.execute(f'DELETE FROM {table} WHERE user_id=?' if table not in ('inquiry_rate_events',) else
+                           'DELETE FROM inquiry_rate_events WHERE buyer_id=?', (user_id,))
+            if not getattr(self.auth, 'code_secret', None):
+                raise BuyerError(503, 'Email auth is unavailable; account erasure cannot be verified.')
+            attempt_hash = hmac.new(self.auth.code_secret, ('email:'+confirmed_email).encode(), hashlib.sha256).hexdigest()
+            db.execute('DELETE FROM email_password_attempts WHERE email_hash=?', (attempt_hash,))
+            db.execute('DELETE FROM email_verification_codes WHERE email=?', (confirmed_email,))
+            db.execute('DELETE FROM users WHERE id=?', (user_id,))
+            if db.execute('PRAGMA foreign_key_check').fetchone():
+                raise BuyerError(409, 'Account erasure would leave an invalid reference.')
+            self.audit(db, admin['id'], 'USER_PERSONAL_DATA_ERASED', 'user', user_id, metadata=reason_code)
+        return {'id':user_id,'personalDataErased':True}
 
     def audit_rows(self, page=None):
         with self.auth.connect() as db:
