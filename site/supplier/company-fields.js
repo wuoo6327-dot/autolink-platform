@@ -5,6 +5,7 @@
  const languages=['en','zh','ar','ru','kk','uz','ko','fr','sw'];
  const english=new Intl.DisplayNames(['en'],{type:'region'});
  const normalize=value=>String(value||'').trim().toLocaleLowerCase().replace(/\s+/g,' ');
+ const doneLabels={en:'Done',zh:'完成',ar:'تم',ru:'Готово',kk:'Дайын',uz:'Tayyor',ko:'완료',fr:'Terminé',sw:'Imekamilika'};
  let regionChoices;
  function regions(){
    if(!regionChoices){
@@ -35,8 +36,13 @@
      if(!option){option={value:token,label:token,aliases:[token]};options.push(option);}
      if(!selected.includes(option.value))selected.push(option.value);
    }
-   const summary=options.filter(r=>selected.includes(r.value)).map(r=>r.label).join('、')||window.businessI18n.text('Choose one or more');
-   return `<div class="field"><span id="label-${kind}">${escape(window.businessI18n.text(label))}</span><input type="hidden" name="${kind}" value="${escape(selected.join(', '))}"><details class="seller-multi" data-company-multi="${kind}"><summary>${escape(summary)}</summary><div class="seller-multi-menu"><input type="search" data-choice-filter placeholder="${escape(window.businessI18n.text('Search options'))}" aria-label="${escape(window.businessI18n.text('Search options'))}"><div class="seller-multi-options" role="group" aria-labelledby="label-${kind}">${options.map(r=>`<label class="seller-multi-option"><input type="checkbox" value="${escape(r.value)}" ${selected.includes(r.value)?'checked':''}><span>${escape(r.label)}</span></label>`).join('')}</div><div class="seller-multi-add"><input data-choice-custom maxlength="100" aria-label="${escape(window.businessI18n.text('Other option'))}" placeholder="${escape(window.businessI18n.text('Other option'))}"><button type="button" class="btn secondary" data-choice-add>${escape(window.businessI18n.text('Add'))}</button></div></div></details></div>`;
+   const summary=summaryText(options.filter(r=>selected.includes(r.value)).map(r=>r.label));
+   const done=doneLabels[window.businessI18n.language]||doneLabels.en;
+   return `<div class="field"><span id="label-${kind}">${escape(window.businessI18n.text(label))}</span><input type="hidden" name="${kind}" value="${escape(selected.join(', '))}"><details class="seller-multi" data-company-multi="${kind}"><summary aria-describedby="label-${kind}" title="${escape(options.filter(r=>selected.includes(r.value)).map(r=>r.label).join('、'))}"><span data-choice-summary>${escape(summary)}</span></summary><div class="seller-multi-menu"><input type="search" data-choice-filter placeholder="${escape(window.businessI18n.text('Search options'))}" aria-label="${escape(window.businessI18n.text('Search options'))}"><div class="seller-multi-options" role="group" aria-labelledby="label-${kind}">${options.map(r=>`<label class="seller-multi-option"><input type="checkbox" value="${escape(r.value)}" ${selected.includes(r.value)?'checked':''}><span>${escape(r.label)}</span></label>`).join('')}</div><div class="seller-multi-add"><input data-choice-custom maxlength="100" aria-label="${escape(window.businessI18n.text('Other option'))}" placeholder="${escape(window.businessI18n.text('Other option'))}"><button type="button" class="btn secondary" data-choice-add>${escape(window.businessI18n.text('Add'))}</button></div><div class="seller-multi-footer"><button type="button" class="btn" data-choice-done>${escape(done)}</button></div></div></details></div>`;
+ }
+ function summaryText(labels){
+   if(!labels.length)return window.businessI18n.text('Choose one or more');
+   return labels.slice(0,2).join('、')+(labels.length>2?` +${labels.length-2}`:'');
  }
  function sync(details){
    const selected=[...details.querySelectorAll('input[type=checkbox]:checked')];
@@ -44,8 +50,17 @@
    const joined=selected.map(input=>input.value).join(', ');
    if(joined.length>500){return false;}
    hidden.value=joined;
-   details.querySelector('summary').textContent=selected.map(input=>input.nextElementSibling.textContent).join('、')||window.businessI18n.text('Choose one or more');
+   const labels=selected.map(input=>input.nextElementSibling.textContent);
+   const summary=details.querySelector('summary');
+   summary.querySelector('[data-choice-summary]').textContent=summaryText(labels);
+   summary.title=labels.join('、');
    hidden.dispatchEvent(new Event('input',{bubbles:true}));return true;
+ }
+ function close(details,focus=true){
+   details.open=false;
+   const filter=details.querySelector('[data-choice-filter]');filter.value='';
+   details.querySelectorAll('.seller-multi-option').forEach(option=>{option.hidden=false;});
+   if(focus)details.querySelector('summary').focus();
  }
  document.addEventListener('change',event=>{
    if(!event.target.matches('[data-company-multi] input[type=checkbox]'))return;
@@ -57,9 +72,13 @@
    event.target.closest('details').querySelectorAll('.seller-multi-option').forEach(option=>{option.hidden=!normalize(option.textContent+' '+option.querySelector('input').value).includes(query);});
  });
  document.addEventListener('click',event=>{
+   const done=event.target.closest('[data-choice-done]');
+   if(done){close(done.closest('details'));return;}
    const button=event.target.closest('[data-choice-add]');if(!button)return;
    const details=button.closest('details'),input=details.querySelector('[data-choice-custom]'),value=input.value.trim();
-   if(!value||/[,，;；\n]/.test(value))return;
+   if(!value){close(details);return;}
+   if(/[,，;；\n]/.test(value)){input.setCustomValidity(window.businessI18n.text('Other option'));input.reportValidity();return;}
+   input.setCustomValidity('');
    let checkbox=[...details.querySelectorAll('input[type=checkbox]')].find(c=>normalize(c.value)===normalize(value));
    if(!checkbox){
      const label=document.createElement('label');label.className='seller-multi-option';
@@ -69,6 +88,25 @@
    checkbox.checked=true;
    if(!sync(details)){checkbox.checked=false;sync(details);return;}
    input.value='';
+   close(details);
+ });
+ document.addEventListener('input',event=>{
+   if(event.target.matches('[data-choice-custom]'))event.target.setCustomValidity('');
+ });
+ document.addEventListener('click',event=>{
+   document.querySelectorAll('[data-company-multi][open]').forEach(details=>{
+     if(!details.contains(event.target))close(details,false);
+   });
+ });
+ document.addEventListener('toggle',event=>{
+   const details=event.target;
+   if(!details.matches?.('[data-company-multi][open]'))return;
+   document.querySelectorAll('[data-company-multi][open]').forEach(other=>{if(other!==details)close(other,false);});
+ },true);
+ document.addEventListener('keydown',event=>{
+   if(event.key!=='Escape')return;
+   const details=event.target.closest?.('[data-company-multi][open]');
+   if(details){event.preventDefault();close(details);}
  });
  window.autolinkCompanyFields={country,multi,values};
 })();

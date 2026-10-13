@@ -9,7 +9,7 @@ const language=files[requested]?requested:stored||(files[browser]?browser:'en');
 function load(url){return new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=url;script.onload=resolve;script.onerror=()=>reject(Error('Resource unavailable'));document.head.append(script);});}
 try{
  await Promise.all([load('/vendor/i18next-26.4.2.min.js'),...[...new Set(['en',language])].map(lang=>load(files[lang]))]);
- await Promise.all([load('/i18n/business-i18n.js?v=20261006-common'),load('/supplier/company-fields.js?v=20261008-forms-navigation')]);
+ await Promise.all([load('/i18n/business-i18n.js?v=20261006-common'),load('/supplier/company-fields.js?v=20261013-multi-picker')]);
  await load('/supplier/app.js?v=20261013-account-role');
 }catch{
  const labels={en:'Unable to load. Please reload.',zh:'加载失败，请刷新页面。',ar:'تعذر التحميل. أعد تحميل الصفحة.',ru:'Не удалось загрузить. Обновите страницу.',kk:'Жүктеу мүмкін болмады. Бетті жаңартыңыз.',uz:'Yuklanmadi. Sahifani yangilang.',ko:'불러오지 못했습니다. 새로고침하세요.',fr:'Chargement impossible. Rechargez la page.',sw:'Imeshindwa kupakia. Pakia ukurasa tena.'};
