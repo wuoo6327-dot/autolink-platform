@@ -52,7 +52,7 @@ SITEMAP_PAGE_SIZE = 5000
 # /membership currently serves the homepage shell, while /support initially
 # serves a client-only shell; both remain accessible through normal navigation.
 SITEMAP_STATIC_PATHS = ('/', '/about', '/trade/vehicles', '/trade/models', '/trade/brands',
-    '/trade/suppliers', '/guide/middle-east-importers')
+    '/trade/suppliers', '/guide/middle-east-importers', '/guide/african-importers')
 
 
 def ident(prefix: str) -> str:
@@ -631,7 +631,7 @@ class TradeService:
                 for path in SITEMAP_STATIC_PATHS:
                     # Seven homepage UI languages are accessible but remain
                     # noindex until their editorial content is reviewed.
-                    static_languages = ('en','zh') if path=='/' else ('en',) if path in ('/about','/guide/middle-east-importers') else LANGUAGES
+                    static_languages = ('en','zh') if path=='/' else ('en',) if path in ('/about','/guide/middle-east-importers','/guide/african-importers') else LANGUAGES
                     append_urls(path,languages=static_languages)
             else:
                 match = re.fullmatch(r'(brands|models|suppliers|vehicles)-([1-9][0-9]{0,4})\.xml',filename)

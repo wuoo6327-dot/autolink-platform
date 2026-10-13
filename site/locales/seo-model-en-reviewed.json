@@ -690,5 +690,31 @@
     "catalogSHA256": "095304897a1b4df21d0f5227e2910326b1c780c17d6d9460980f6e65f68a5b5c",
     "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
     "evidence": "source:https://www.autohome.com.cn/config/series/5245.html; checked against current production reference and selected trim; no supply, price or market approval claimed"
+  },
+  "haval-catalog-1": {
+    "status": "approved",
+    "brandName": "Haval",
+    "modelName": "H6",
+    "sourceTrim": "1.5T 两驱经典版",
+    "trim": "2026 1.5T two-wheel-drive Classic",
+    "intro": "This Haval H6 reference describes the 2026 China-market 1.5T two-wheel-drive Classic gasoline configuration. The source records a 2738 mm wheelbase, five seats and WLTC fuel consumption for this particular trim. International H6 variants can differ, so confirm the exact vehicle and destination requirements with a supplier.",
+    "buyerNote": "GWM uses Haval H6 as an international model name, but the listed China-market Classic trim is not an overseas-market specification or a current stock offer. Ask for steering position, vehicle documents, quoted configuration and the supplier’s actual availability.",
+    "referenceSHA256": "f23338f35de449d2c00ff7026d0bb43bb3661acde00ccbb5d3938fd3480654f6",
+    "reviewedBy": "Codex source-to-English review, 2026-10-14",
+    "evidence": "source:https://www.autohome.com.cn/config/series/2123.html; selected source trim and numeric fields cross-checked with stored reference; official English model naming: https://www.gwm-global.com/news/1155598.html; no inventory or import approval claimed",
+    "catalogSHA256": "ceda7c26d2225c5c8984fdfdf2d7bc5a8c5a7fa6921030aa92b99f378cc84686"
+  },
+  "tank-catalog-1": {
+    "status": "approved",
+    "brandName": "Tank",
+    "modelName": "300",
+    "sourceTrim": "2.0T 汽油挑战者",
+    "trim": "2026 2.0T gasoline Challenger",
+    "intro": "The 2026 China-market Tank 300 reference here covers the 2.0T gasoline Challenger configuration, with five seats and a 2750 mm wheelbase in its source record. GWM has marketed Tank 300 in Saudi Arabia, but that does not establish the availability or import approval of this specific China trim.",
+    "buyerNote": "Request the exact steering side, equipment, certificates and documents for the vehicle offered to your destination. A brand’s presence in Saudi Arabia does not prove that AUTOLINK or a listed supplier has manufacturer authorization.",
+    "referenceSHA256": "d2ef94afef9e418eb6679e6f813f8a678d9872ac78dfa1c283271928cb86d290",
+    "reviewedBy": "Codex source-to-English review, 2026-10-14",
+    "evidence": "source:https://www.autohome.com.cn/config/series/5810.html; selected source trim and numeric fields cross-checked with stored reference; official English model naming: https://www.gwm-global.com/news/3402203.html; no inventory or import approval claimed",
+    "catalogSHA256": "e31bab7465a6e8045eed927832b16a6bf9b950e3c14c1c5295043982c9b3b3a1"
   }
 }

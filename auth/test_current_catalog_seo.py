@@ -62,10 +62,10 @@ class CurrentCatalogSEOTests(unittest.TestCase):
                             self.assertIn('content="noindex, follow"',source)
                             self.assertEqual(doc.alternates(),{})
         self.assertEqual(len(indexable),len(set(indexable)))
-        self.assertEqual(len(indexable),237)
-        self.assertEqual(sum('?' not in url for url in indexable),60)
+        self.assertEqual(len(indexable),241)
+        self.assertEqual(sum('?' not in url for url in indexable),64)
         self.assertEqual(sum('?lang=zh' in url for url in indexable),177)
-        self.assertEqual(sum('/trade/brands/' in url for url in indexable),10)
+        self.assertEqual(sum('/trade/brands/' in url for url in indexable),12)
 
     def test_fresh_database_seed_is_current_public_catalog(self):
         self.assertEqual(set(CATALOG),{model['id'] for model in self.models})
@@ -96,7 +96,7 @@ class CurrentCatalogSEOTests(unittest.TestCase):
             root=ElementTree.fromstring(self.trade.sitemap_xml(f'models-{page}.xml'))
             found.update(node.text for node in root.findall('.//s:loc',ns))
         self.assertEqual(found,expected)
-        self.assertEqual(sum('?' not in url for url in found),50)
+        self.assertEqual(sum('?' not in url for url in found),52)
 
     def test_english_review_withdraws_on_catalog_change(self):
         model=self.trade.catalog.get('geely-monjaro-2026')

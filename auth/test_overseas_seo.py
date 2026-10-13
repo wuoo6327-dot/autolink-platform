@@ -19,7 +19,8 @@ class OverseasSEOTests(unittest.TestCase):
         seo=PublicSEOService(self.trade,ROOT/'site')
         models=self.trade.catalog.models()
         approved=[model for model in models if 'en' in seo.index_policy('model',model)['indexLanguages']]
-        self.assertEqual(len(approved),50)
+        self.assertEqual(len(approved),52)
+        self.assertTrue({'haval-catalog-1','tank-catalog-1'}.issubset({item['id'] for item in approved}))
         descriptions=set()
         for model in approved:
             with self.subTest(model=model['id']):
@@ -47,6 +48,8 @@ class OverseasSEOTests(unittest.TestCase):
         self.assertEqual(seo.index_policy('brand',brand)['indexLanguages'],['en'])
         source=seo.render('/trade/brands/byd')[1].decode()
         self.assertIn('manufacturer source',source)
+        self.assertIn('Listing a brand on AUTOLINK does not imply official affiliation',source)
+        self.assertIn('Supplier authorization, where claimed, is verified separately.',source)
         self.assertIn('/trade/models/',source)
         self.assertIn('/images/seo-heroes/byd-seal-07-ev-640.webp',source)
         self.assertNotIn('/images/catalog-update-20261011/byd-seal-07-ev.jpg',source)
@@ -90,6 +93,20 @@ class OverseasSEOTests(unittest.TestCase):
         self.assertIn('content="noindex, follow"',fallback)
         self.assertNotIn('hreflang="ar"',page)
         self.assertIn('import jurisdiction',page)
+        africa=[url for url in static.findall('s:url',ns)
+            if '/guide/african-importers' in url.find('s:loc',ns).text]
+        self.assertEqual(len(africa),1)
+        self.assertEqual(africa[0].find('s:loc',ns).text,'https://autolinkglobal.com/guide/african-importers')
+        self.assertEqual({link.get('hreflang') for link in africa[0].findall('x:link',ns)},{'en','x-default'})
+        africa_page=(ROOT/'site/guide/african-importers.html').read_text()
+        self.assertIn('content="index, follow"',africa_page)
+        self.assertIn('Kenya Revenue Authority',africa_page)
+        self.assertIn('/buyer/requests',africa_page)
+        self.assertIn('noindex, follow',(ROOT/'site/guide/african-importers.fallback.html').read_text())
+        arabic=(ROOT/'site/guide/middle-east-importers.ar.html').read_text()
+        self.assertIn('<html lang="ar" dir="rtl">',arabic)
+        self.assertIn('content="noindex, follow"',arabic)
+        self.assertIn('href="https://autolinkglobal.com/guide/middle-east-importers?lang=ar"',arabic)
 
 
 if __name__=='__main__':unittest.main()
