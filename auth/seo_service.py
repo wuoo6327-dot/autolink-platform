@@ -28,6 +28,10 @@ REQUEST_CTA_LABELS = {
     'ko': '구매 요청 작성', 'fr': 'Créer une demande d’achat',
     'sw': 'Unda ombi la ununuzi',
 }
+BRAND_REFERENCE_NOTICE = ('Brand and model information is provided for reference only. '
+    'Listing a brand on AUTOLINK does not imply official affiliation, endorsement, '
+    'dealership authorization, or partnership with the vehicle manufacturer. '
+    'Supplier authorization, where claimed, is verified separately.')
 
 
 def asset_version(path):
@@ -422,6 +426,9 @@ class PublicSEOService:
                 energies = sorted({item['energy'] for item in brand['models'] if item.get('energy')})
                 overview = brand_editorial['intro'] if brand_editorial else brand.get('overview') or (brand['name'] + ' has ' + str(len(brand['models'])) + ' public model references on AUTOLINK. The catalogue lists ' + ', '.join(body_types) + ' body types and ' + ', '.join(energies) + ' energy labels where provided. These are model references, not confirmed inventory or manufacturer authorization.')
                 content = '<div class="trade-intro"><div><h1>' + e(brand['name']) + '</h1><p>' + e(overview) + '</p></div></div>'
+                # The brand catalogue and supplier authorization have separate owners
+                # and publication gates. Never infer a manufacturer relationship here.
+                content += '<p class="trade-note">' + e(BRAND_REFERENCE_NOTICE) + '</p>'
                 if brand_editorial:
                     content += fields([('Body types',', '.join(body_types)),('Powertrains',', '.join(energies))])
                     content += '<p class="trade-note">Brand background: <a href="' + e(brand_editorial['sourceUrl']) + '" rel="noopener noreferrer">manufacturer source</a>. Catalogue entries do not imply manufacturer authorization or current stock.</p>'
@@ -445,7 +452,7 @@ class PublicSEOService:
                     raise BuyerError(404,'Supplier not found.')
                 title = tr('{supplier} | Chinese Vehicle Supplier | AUTOLINK').replace('{supplier}',supplier['company_name'])
                 description = supplier['company_name'] + ' · ' + description
-                content = '<div class="trade-intro"><div><h1>' + e(supplier['company_name']) + '</h1><p>' + e(supplier.get('description') or tr('No overview available.')) + '</p></div></div>' + fields([('Location',', '.join(value for value in (supplier.get('city'),supplier.get('country')) if value)),('Main brands',supplier.get('main_brands')),('Main markets',supplier.get('main_markets'))]) + anchor('/trade/vehicles?' + urlencode({'supplierId':ident}),tr('View this supplier’s vehicles'))
+                content = '<div class="trade-intro"><div><h1>' + e(supplier['company_name']) + '</h1><p>' + e(supplier.get('description') or tr('No overview available.')) + '</p></div></div>' + fields([('Location',', '.join(value for value in (supplier.get('city'),supplier.get('country')) if value)),('Supplier-declared brands',supplier.get('main_brands')),('Main markets',supplier.get('main_markets'))]) + '<p class="trade-note">' + e('Company verification and individual vehicle review do not establish manufacturer authorization. Any supplier authorization claim must be verified for the named brand, business scope, territory and validity period.') + '</p>' + anchor('/trade/vehicles?' + urlencode({'supplierId':ident}),tr('View this supplier’s vehicles'))
                 graph.append({'@type':'Organization','name':supplier['company_name'],'url':localized_url(canonical_path,language)})
             elif collection == 'models':
                 models = self.trade.catalog.models()

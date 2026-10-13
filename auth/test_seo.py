@@ -97,10 +97,10 @@ class PublicSEOTests(unittest.TestCase):
         ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
         urls=root.findall('s:url',ns)
         locations=[node.find('s:loc',ns).text for node in urls]
-        self.assertEqual(len(locations),227)
-        self.assertEqual(len(set(locations)),227)
+        self.assertEqual(len(locations),229)
+        self.assertEqual(len(set(locations)),229)
         self.assertEqual(sum(url.endswith('?lang=zh') for url in locations),177)
-        self.assertEqual(sum('?' not in url for url in locations),50)
+        self.assertEqual(sum('?' not in url for url in locations),52)
         self.assertFalse(any('byd-shark' in url for url in locations))
         for node in urls:
             actual={link.attrib['hreflang']:link.attrib['href'] for link in node.findall('x:link',ns)}

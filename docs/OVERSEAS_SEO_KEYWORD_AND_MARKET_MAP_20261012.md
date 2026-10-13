@@ -13,12 +13,13 @@ This is a content routing map, not a ranking or search-volume claim. One landing
 | Changan CS75 Plus China | Research the China-market configuration | `/trade/models/changan-catalog-1` | Existing reviewed English model page |
 | China FOB Car Quotation | Understand the required quote fields | `/guide/trade-process` | A seller must provide the actual price and named term |
 | Chinese Cars for Middle East Importers | Region-specific buyer due diligence | `/guide/middle-east-importers` | English-only guide; import compliance and stock are separate checks |
+| Chinese vehicle sourcing for African importers | Compare country-specific buyer checks and verified supply | `/guide/african-importers` | English guide; no continent-wide import or stock claim |
 
 ## Market content decisions
 
 - **Middle East:** one English sourcing guide is implemented. It asks buyers to specify their destination country and independently verify import, registration and vehicle requirements. It does not claim that any named model is eligible there.
-- **Africa:** research brief only. Before a standalone page, obtain country-specific importer questions and reviewed sources for documentation, port logistics, steering, service and compliance. Do not publish a continent-wide eligibility or tax claim.
+- **Africa:** one English buyer guide now distinguishes a model reference, an approved supplier listing and destination-country import checks. Its Nigeria context links to the U.S. Commercial Service and its Kenya steering/inspection prompt links to the Kenya Revenue Authority. It does not claim that any linked China-market model qualifies in either country. Nigeria, Kenya, Ghana and Morocco country pages remain research briefs until each has original, sourced content.
 - **Central Asia:** research brief only. A future page should distinguish destination-country documentation and vehicle specifications from a China-market reference; do not reuse the Middle East text with country names changed.
 - **Southeast Asia:** research brief only. Different national import frameworks and steering conventions require country-level research and real supplier evidence before an indexable page.
 
-The nine-language interface remains available. New editorial model and brand approval is English only. The new market guide uses English canonical and `x-default`; explicitly requested unreviewed language variants return a readable `noindex` fallback.
+The nine-language interface remains available. Editorial model and brand approval remains English only. The Middle East guide has an Arabic RTL draft at `?lang=ar` that is `noindex` until a qualified reviewer approves its terminology and market fit. Other unreviewed language variants return a readable `noindex` fallback. The indexed guides use English canonical and `x-default` only.

@@ -77,22 +77,38 @@ def main():
     agent='Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/131.0.0.0 Mobile Safari/537.36'
     parity={path:fetch(path)[1]==fetch(path,agent)[1] for path in
         ('/trade/models/geely-catalog-3','/trade/models/geely-catalog-3?lang=ar','/trade/brands/byd','/trade/brands/aion')}
-    guide=Page(fetch('/guide/middle-east-importers')[1]);fallback=Page(fetch('/guide/middle-east-importers?lang=ar')[1])
+    guide=Page(fetch('/guide/middle-east-importers')[1])
+    arabic=Page(fetch('/guide/middle-east-importers?lang=ar')[1])
+    africa=Page(fetch('/guide/african-importers')[1])
+    africa_fallback=Page(fetch('/guide/african-importers?lang=fr')[1])
+    eligible_by_language={lang:sum(lang in item['seo']['indexLanguages'] for item in models)
+        for lang in LANGS}
+    eligible_brands_by_language={lang:sum(lang in item['seo']['indexLanguages'] for item in brands)
+        for lang in LANGS}
     output={'checkedAt':datetime.now(timezone.utc).isoformat(),'base':BASE,'models':len(models),'brands':len(brands),
         'detailLanguagePages':len(jobs),'detailFailures':failures,
         'indexableModels':len(expected_models),'indexableBrands':len(expected_brands),
+        'indexableModelsByLanguage':eligible_by_language,
+        'indexableBrandsByLanguage':eligible_brands_by_language,
         'sitemapCounts':{key:len(value) for key,value in sitemap.items()},
         'sitemapExact':set(sitemap['models'])==expected_models and set(sitemap['brands'])==expected_brands,
-        'marketGuide':{'canonical':guide.canonical,'robots':guide.robots,'unreviewedArabicRobots':fallback.robots,
-            'inEnglishSitemap':ORIGIN+'/guide/middle-east-importers' in sitemap['static']},
+        'marketGuide':{'canonical':guide.canonical,'robots':guide.robots,
+            'arabicRobots':arabic.robots,'arabicLang':arabic.html_lang,
+            'africaCanonical':africa.canonical,'africaRobots':africa.robots,
+            'unreviewedFrenchRobots':africa_fallback.robots,
+            'inEnglishSitemap':ORIGIN+'/guide/middle-east-importers' in sitemap['static'],
+            'africaInEnglishSitemap':ORIGIN+'/guide/african-importers' in sitemap['static']},
         'userAgentParity':parity,'unknownModelStatus':fetch('/trade/models/unknown-model')[0],
         'anonymousAdminStatus':fetch('/autolink/admin/seo/status')[0],
         'elapsedSeconds':round(time.monotonic()-started,2)}
     output['pass']=(not failures and len(models)==244 and len(brands)==53 and len(jobs)==2673
-        and len(expected_models)==227 and len(expected_brands)==10 and output['sitemapExact']
+        and eligible_by_language['en']>=51 and eligible_by_language['zh']>=177
+        and eligible_brands_by_language['en']>=11 and output['sitemapExact']
         and all(parity.values()) and output['unknownModelStatus']==404 and output['anonymousAdminStatus']==401
-        and guide.robots=='index, follow' and fallback.robots=='noindex, follow'
-        and output['marketGuide']['inEnglishSitemap'])
+        and guide.robots=='index, follow' and arabic.robots=='noindex, follow'
+        and arabic.html_lang=='ar' and not arabic.alternates
+        and africa.robots=='index, follow' and africa_fallback.robots=='noindex, follow'
+        and output['marketGuide']['inEnglishSitemap'] and output['marketGuide']['africaInEnglishSitemap'])
     OUTPUT.parent.mkdir(parents=True,exist_ok=True)
     OUTPUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({key:value for key,value in output.items() if key!='detailFailures'},ensure_ascii=False))

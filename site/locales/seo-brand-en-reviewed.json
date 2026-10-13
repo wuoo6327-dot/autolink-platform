@@ -88,5 +88,23 @@
     "catalogSHA256": "3a27c630c24c8ab051e5a50feba22a7d56ce21c5f1cb89179d9351369bcf98f4",
     "reviewedBy": "Codex source-to-English content QA, 2026-10-12",
     "evidence": "source:https://www.volkswagen-newsroom.com/en/volkswagen-group-china-4068; company context checked against manufacturer-owned publication; catalog lineup from current AUTOLINK records"
+  },
+  "haval": {
+    "status": "approved",
+    "brandName": "Haval",
+    "intro": "Haval is Great Wall Motor’s SUV brand. Its China-market references on AUTOLINK include H6, Dargo, H9, Raptor and Xiaolong MAX, which span gasoline and electrified configurations. GWM also uses the Haval name in overseas markets, but a familiar badge does not establish that the China-market version or an approved supplier offer is available at a buyer’s destination.",
+    "sourceUrl": "https://www.gwm-global.com/news/3403821.html",
+    "reviewedBy": "Codex manufacturer-source and catalogue review, 2026-10-14",
+    "evidence": "source:https://www.gwm-global.com/news/3403821.html; manufacturer brand identity and current AUTOLINK public model list checked; no supplier authorization or stock inferred",
+    "catalogSHA256": "bc6f5c00fdef184691fc641bff26c285c1c4dcc917502369886ea93396943215"
+  },
+  "tank": {
+    "status": "approved",
+    "brandName": "Tank",
+    "intro": "Tank is Great Wall Motor’s off-road-oriented SUV range. AUTOLINK currently presents China-market references for Tank 300, 400, 500 and 700, with different powertrains and source years. GWM has announced Tank models in Middle Eastern markets, but those local launches do not verify the supply, registration eligibility or manufacturer authorization of any AUTOLINK supplier or specific China-market trim.",
+    "sourceUrl": "https://www.gwm-global.com/news/3402203.html",
+    "reviewedBy": "Codex manufacturer-source and catalogue review, 2026-10-14",
+    "evidence": "source:https://www.gwm-global.com/news/3402203.html; manufacturer brand identity and current AUTOLINK public model list checked; no supplier authorization or stock inferred",
+    "catalogSHA256": "f58a8785edfb0e91018f0ca20bf848af03a113ca79abc3c678f5ad7517cb5e80"
   }
 }

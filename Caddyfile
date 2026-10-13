@@ -153,16 +153,40 @@
 	}
 	@middleEastPendingTranslation {
 		path /guide/middle-east-importers
-		query lang=zh lang=ar lang=ru lang=kk lang=uz lang=ko lang=fr lang=sw
+		query lang=zh lang=ru lang=kk lang=uz lang=ko lang=fr lang=sw
 	}
 	handle @middleEastPendingTranslation {
 		rewrite * /guide/middle-east-importers.fallback.html
 		header Cache-Control "no-cache"
 		file_server
 	}
+	@middleEastArabicDraft {
+		path /guide/middle-east-importers
+		query lang=ar
+	}
+	handle @middleEastArabicDraft {
+		rewrite * /guide/middle-east-importers.ar.html
+		header Cache-Control "no-cache"
+		file_server
+	}
 	@middleEastGuide path /guide/middle-east-importers
 	handle @middleEastGuide {
 		rewrite * /guide/middle-east-importers.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@africaPendingTranslation {
+		path /guide/african-importers
+		query lang=zh lang=ar lang=ru lang=kk lang=uz lang=ko lang=fr lang=sw
+	}
+	handle @africaPendingTranslation {
+		rewrite * /guide/african-importers.fallback.html
+		header Cache-Control "no-cache"
+		file_server
+	}
+	@africaGuide path /guide/african-importers
+	handle @africaGuide {
+		rewrite * /guide/african-importers.html
 		header Cache-Control "no-cache"
 		file_server
 	}
