@@ -343,6 +343,7 @@ async function accountSettings(){const current=navigationId;const d=await api('/
 
 async function companyProfile(){const current=navigationId;
   const p=await api('/autolink/supplier/profile');assertSupplierNavigation(current);
+  const [claims,brands]=await Promise.all([api('/autolink/supplier/brand-authorizations'),api('/autolink/public/brands')]);assertSupplierNavigation(current);
   const input=(key,label,value,type='text',max=320)=>`<label class="field">${esc(tr(label))}<input name="${key}" type="${type}" value="${esc(value||'')}" maxlength="${max}"></label>`;
   layout(title(tr('Company profile'),tr('Manage the information buyers see on your public supplier page.'),link('/trade/suppliers/'+encodeURIComponent(p.id),tr('Public page'),true))+
     panel(tr('Reviewed company'),`<div class="supplier-data">${[['Company legal name',p.company_name],['Country',p.country],['City',p.city]].map(([label,value])=>`<div><span>${esc(tr(label))}</span><strong>${esc(value===null||value===undefined||value===''?'—':value)}</strong></div>`).join('')}</div><p class="notice">${esc(tr('Reviewed legal company information stays in your verification application.'))}</p>`)+
@@ -358,8 +359,41 @@ async function companyProfile(){const current=navigationId;
       <label class="supplier-public-consent wide"><input type="checkbox" name="publishContact" ${p.contact_enabled?'checked':''}><span>${esc(tr('Publish these business contact details on my public supplier page.'))}</span></label>
       <p class="notice wide">${esc(tr('Contact details remain private when this box is unchecked. Your sign-in email and private verification documents are never copied to this public form.'))}</p>
       <div class="form-actions"><button class="btn" type="submit">${esc(tr('Save public profile'))}</button></div>
-    </form>`));
+    </form>`)+panel(tr('Brand authorization claims'),`<p class="notice">${esc(tr('Your declared brands and company verification do not establish manufacturer authorization. Submit a separate private proof for each brand; only a currently valid, reviewed claim can appear publicly.'))}</p>
+      ${claims.length?`<div class="list">${claims.map(c=>`<article class="supplier-row"><div class="supplier-row-main"><strong>${esc(c.brand_name)} · ${esc(tr(c.authorization_type))}</strong><small>${esc(tr(c.status))} · ${esc(c.territories)} · ${esc(c.valid_until)}</small>${c.review_reason?`<p>${esc(c.review_reason)}</p>`:''}</div><a href="/autolink/supplier/documents/${encodeURIComponent(c.evidence_document_id)}">${esc(tr('Private evidence'))}</a></article>`).join('')}</div>`:''}
+      <form id="brand-authorization-form" class="form-grid supplier-form">
+        <label class="field">${esc(tr('Brand'))}<select name="brandId" required>${brands.map(b=>`<option value="${esc(b.id)}">${esc(b.name)}</option>`).join('')}</select></label>
+        <label class="field">${esc(tr('Authorization type'))}<select name="authorizationType" required><option value="AUTHORIZED_DEALER">Authorized dealer</option><option value="AUTHORIZED_EXPORTER">Authorized exporter</option><option value="AUTHORIZED_DISTRIBUTOR">Authorized distributor</option></select></label>
+        ${input('holderLegalName','Authorization holder legal name',p.company_name,'text',160)}
+        ${input('issuerLegalName','Authorization issuer legal name','', 'text',160)}
+        ${input('businessScope','Authorized business scope','', 'text',500)}
+        ${input('territories','Authorized sales territories','', 'text',500)}
+        <label class="field wide">${esc(tr('Authorization chain'))}<textarea name="authorizationChain" maxlength="1000" required></textarea></label>
+        <label class="field">${esc(tr('Valid from'))}<input type="date" name="validFrom" required></label>
+        <label class="field">${esc(tr('Valid until'))}<input type="date" name="validUntil" required></label>
+        <label class="field wide">${esc(tr('Private authorization proof'))}<input type="file" name="proof" accept=".pdf,.png,.jpg,.jpeg" required></label>
+        <p class="notice wide">${esc(tr('PDF, PNG or JPEG up to 5 MB. The document stays private; submitting does not grant an authorization label.'))}</p>
+        <div class="form-actions"><button class="btn" type="submit">${esc(tr('Submit for separate review'))}</button></div>
+      </form>`));
 }
+document.addEventListener('submit',async event=>{
+  const form=event.target;if(form.id!=='brand-authorization-form')return;
+  event.preventDefault();if(form.dataset.busy==='yes')return;form.dataset.busy='yes';
+  const button=form.querySelector('button[type="submit"]');button.disabled=true;
+  try{
+    const file=form.elements.proof.files[0];
+    if(!file||file.size<20||file.size>5000000)throw Error('Choose a PDF, PNG or JPEG of 5 MB or smaller.');
+    const ext=file.name.split('.').pop().toLowerCase();
+    const mime={pdf:'application/pdf',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg'}[ext];
+    if(!mime)throw Error('PDF, PNG or JPEG required.');
+    const base64=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result).split(',')[1]);reader.onerror=()=>reject(Error('Cannot read the selected file.'));reader.readAsDataURL(file);});
+    const document=await api('/autolink/supplier/documents','POST',{kind:'BRAND_AUTHORIZATION',filename:file.name,contentType:mime,base64});
+    const values=Object.fromEntries(new FormData(form));delete values.proof;values.evidenceDocumentId=document.id;
+    await api('/autolink/supplier/brand-authorizations','POST',values);
+    await companyProfile();note('Brand authorization submitted for separate review.');
+  }catch(error){note(error.message,true);button.disabled=false;}
+  finally{form.dataset.busy='no';}
+});
 document.addEventListener('submit',async event=>{
   const form=event.target;if(form.id!=='company-profile-form')return;
   event.preventDefault();if(form.dataset.busy==='yes')return;form.dataset.busy='yes';

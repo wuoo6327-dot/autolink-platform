@@ -453,6 +453,12 @@ class PublicSEOService:
                 title = tr('{supplier} | Chinese Vehicle Supplier | AUTOLINK').replace('{supplier}',supplier['company_name'])
                 description = supplier['company_name'] + ' · ' + description
                 content = '<div class="trade-intro"><div><h1>' + e(supplier['company_name']) + '</h1><p>' + e(supplier.get('description') or tr('No overview available.')) + '</p></div></div>' + fields([('Location',', '.join(value for value in (supplier.get('city'),supplier.get('country')) if value)),('Supplier-declared brands',supplier.get('main_brands')),('Main markets',supplier.get('main_markets'))]) + '<p class="trade-note">' + e('Company verification and individual vehicle review do not establish manufacturer authorization. Any supplier authorization claim must be verified for the named brand, business scope, territory and validity period.') + '</p>' + anchor('/trade/vehicles?' + urlencode({'supplierId':ident}),tr('View this supplier’s vehicles'))
+                authorizations = supplier.get('brandAuthorizations') or []
+                if authorizations:
+                    content += '<section class="trade-authorization"><h2>Reviewed supplier brand authorizations</h2><ul>' + ''.join(
+                        '<li>' + e(item['brand_name']) + ' · ' + e(item['authorization_label']) +
+                        ' · ' + e(item['business_scope']) + ' · ' + e(item['territories']) +
+                        ' · valid through ' + e(item['valid_until']) + '</li>' for item in authorizations) + '</ul></section>'
                 graph.append({'@type':'Organization','name':supplier['company_name'],'url':localized_url(canonical_path,language)})
             elif collection == 'models':
                 models = self.trade.catalog.models()
