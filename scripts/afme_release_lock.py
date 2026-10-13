@@ -31,7 +31,8 @@ def sha(path):
     return digest.hexdigest()
 
 def inventory(root):
-    return {p.relative_to(root).as_posix():sha(p) for p in root.rglob('*') if p.is_file()}
+    return {p.relative_to(root).as_posix():sha(p) for p in root.rglob('*')
+            if p.is_file() and '__pycache__' not in p.relative_to(root).parts}
 
 def main():
     if os.geteuid() or platform.machine()!='x86_64':
