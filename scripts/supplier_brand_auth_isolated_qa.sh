@@ -60,6 +60,12 @@ probe(){
   [[ "$(docker inspect -f '{{.State.Health.Status}}' "$AUTH")" == healthy ]]
   [[ "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:$PORT/autolink/supplier/brand-authorizations")" == 401 ]]
   [[ "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:$PORT/autolink/admin/suppliers/unknown/brand-authorizations")" == 401 ]]
+  if [[ "$phase" != rollback ]]; then
+    curl -fsS -o "$DATA/admin-candidate.js" "http://127.0.0.1:$PORT/admin/app.js"
+    curl -fsS -o "$DATA/supplier-candidate.js" "http://127.0.0.1:$PORT/supplier/app.js"
+    grep -q 'data-brand-auth-review' "$DATA/admin-candidate.js"
+    grep -q 'brand-authorization-form' "$DATA/supplier-candidate.js"
+  fi
   PHASE="$phase" python3 - "$DATA/autolink-auth.sqlite3" <<'PY'
 import json,os,sqlite3,sys,urllib.request
 base='http://127.0.0.1:18185'
@@ -78,6 +84,7 @@ PY
 }
 start_pair "$QA_AUTH_IMAGE" "$QA_ROOT/site"
 probe candidate "$QA_AUTH_IMAGE"
+python3 "$QA_BASE_ROOT/scripts/overseas_seo_http_qa.py" "http://127.0.0.1:$PORT" "$QA_ROOT/isolated-overseas-seo-http.json"
 stop_pair
 start_pair "$QA_BASE_AUTH_IMAGE" "$QA_BASE_ROOT/site"
 probe rollback "$QA_BASE_AUTH_IMAGE"
