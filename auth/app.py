@@ -489,6 +489,9 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/autolink/notifications" and method == "GET":
             self.send_json(200,self.platform.notifications(self.service.user_for_token(self.token()), page=self.list_page()))
             return
+        if path == "/autolink/notifications/summary" and method == "GET":
+            self.send_json(200,self.platform.notification_summary(self.service.user_for_token(self.token())))
+            return
         if path.startswith("/autolink/notifications/") and method == "POST":
             user = self.service.user_for_token(self.token())
             self.read_body()
