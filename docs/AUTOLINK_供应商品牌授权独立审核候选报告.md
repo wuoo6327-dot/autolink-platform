@@ -1,4 +1,4 @@
-# AUTOLINK 供应商品牌授权独立审核候选报告
+# AUTOLINK 供应商品牌授权独立审核与上线报告
 
 日期：2026-10-14。原候选 [PR #19](https://github.com/wuoo6327-dot/autolink-platform/pull/19) 基于通知版本 `ce079be`；后续以已部署的非洲／中东 SEO 源提交 `ccf4413` 为基线整合成[草稿 PR #20](https://github.com/wuoo6327-dot/autolink-platform/pull/20)，只包含供应商品牌授权功能差异。支付、会员、入驻协议和现有审核结果不变。
 
@@ -16,10 +16,36 @@
 
 ## 现有数据与验收
 
-生产公开目录当前为 244 个车型、53 个品牌，公开供应商 1 个、公开车源 1 条。生产尚没有品牌授权记录表，也没有经本功能审核通过的授权声明，因此上线后默认公开授权标签仍为 **0**；不得把现有企业／车源审核结果倒灌到新表。
+生产公开目录当前为 244 个车型、53 个品牌，公开供应商 1 个、公开车源 1 条。切换前没有品牌授权记录表；独立新表上线后授权记录仍为 **0**，不会把现有企业／车源审核结果倒灌到新表。
 
-本机专项测试 **3 项通过**；整合分支完整后端共运行 **238 项，其中 233 通过、5 跳过**。原候选日志为 `/tmp/autolink-brand-auth-tests-final-20261014.log` 和 `/tmp/autolink-brand-auth-full-tests-final-20261014.log`；整合分支完整日志为 `/tmp/autolink-supplier-on-seo-tests.log`。JavaScript 语法、Python 编译和 `git diff --check` 均通过。原候选 Gitleaks／Trivy 源码扫描 0 项，整合提交 Gitleaks 0 项；PR #20 的两次 `source-security` CI 实际运行并通过。原生 Linux AMD64、生产数据备份恢复、私有文件卷安全、容器镜像扫描和回滚演练尚未验收；**本候选未部署生产**。
+本机专项测试 **3 项通过**；整合分支完整后端共运行 **238 项，其中 233 通过、5 跳过**。原生 Linux AMD64 完整后端再次运行 **238 项，其中 233 通过、5 跳过**，日志 `/opt/autolink-releases/brand-auth-20261014/native-container-tests.log`，退出码 0。隔离环境使用恢复的生产数据，在非特权应用进程下依次验证候选版→当前 SEO 安全版→候选版，三阶段均通过；完整公开 SEO 回归遍历 **2673 个语言页面**，确认 244 个公开车型、53 个公开品牌、228 个具备资格的车型 URL（英语 51、中文 177），公开目录与 XML 一致。隔离回滚及 SEO 日志位于同一发布目录的 `isolated-qa.log` 与 `isolated-overseas-seo-http.json`。
 
-## 上线门槛与后续操作
+JavaScript 语法、Python 编译和 `git diff --check` 均通过。候选镜像 Trivy HIGH／CRITICAL **0**、密钥 **0**，结果为发布目录的 `brand-auth-trivy.json`；PR #20 的两项 `source-security` CI 均实际运行并通过。PR 保持草稿状态，未合并 main。
 
-先在生产当时最新的一致性备份和私有文件归档上验证独立恢复，在 AMD64 隔离容器运行完整后端、供应商／管理员权限和公开 HTML 测试，并验证现有 1 条公开车源及目录不变。对新表的迁移是 `CREATE TABLE IF NOT EXISTS`，绝不从旧品牌字段批量补授权。固定镜像与文件哈希、检查扫描和回滚，再按现有 Runbook 上线。上线后真实授权的审查仍必须由具备材料和权限的人工审核人员完成；测试 PDF 不能成为生产授权证据。
+## 数据安全、镜像与发布证据
+
+切换前最新生产完整备份为 `/opt/autolink-backups/brand-auth-20261014/final-20261013T200641Z/release-backup-manifest.json`。真实 SQLite 通过一致性备份及隔离恢复，SHA256 为 `8b3dfd122b098466b2994307c5a377d19642cec2fe5b3e8b9cd5760b047220ef`。备份同时归档了真实上传文件、Caddy 数据及配置、当前 SEO 发布目录和旧 Auth／Web 镜像，并逐项核对哈希与恢复结果。数据库共有 270 个车型记录、60 个品牌记录，公开目录是 244／53；没有以公开目录覆盖数据库。
+
+最终发布锁 `/opt/autolink-releases/brand-auth-20261014/brand-auth-release-lock.json` 固定源提交 `820f49547c0dd3873069af2eeaabd2c67560168c`、新 Auth 本地镜像 ID `sha256:5b7d0823b5482e31c69dd56e765632ca895795d45f22005e7dbfcd75fd3d9288`、沿用 Web 镜像 ID `sha256:bddc55c35abafbc75c8a765ac79991f221c9149fa943bf960217d50cf70323fb`。Auth 完整归档 SHA256 为 `de193f1e5d9698a732be59d2225ee36546b508f0169e1f3447d209dd9612b249`。这是同机固定镜像和本地不可变归档交付，**镜像 ID 并非 Registry Manifest Digest**；部署时未重建或拉取镜像。
+
+生产切换使用持久 `tmux` 会话、一次性状态锁、固定文件哈希、110 秒切换期限和自动回滚。发布状态及完整日志在 `/opt/autolink-release-state/brand-auth-20261014/brand-auth-20261014/`，断线后可查询。2026-10-13 **20:07:52 UTC** 开始切换，先验证新 Auth 健康，再切 Web；**20:08:18 UTC** 核心路由及权限探针通过，约 26 秒，低于 5 分钟上限。初始探针确认 244／53 不变、Haval H6 英文页面正常、私有管理／供应商接口未登录仍返回 401、无效车型 404。生产 SQLite `quick_check=ok`，新表 0 条授权记录；没有从既有企业审核或车源审核自动生成授权身份。
+
+第一版的持续 **30 分钟监控于 20:39:19 UTC 完成**，状态为 `completed`，探针失败 0、Auth/Web 重启 0，未发生回滚。期间的 HTTPS、核心路由、权限、公开目录、数据库快速完整性检查、CPU／内存／磁盘记录在上述持久日志中。手机／电脑公网浏览器分别检查首页、品牌目录、车型目录、Haval H6、买家登录和首页非关键脚本失败恢复，共 12 项，全部通过；原始 JSON 在本机 `tests/results/brand-auth-public-browser-20261014.json`。
+
+## 公开供应商自述的后续修正
+
+第一版监控期间发现：唯一公开供应商原有自由文本简介含“一级经销商”自述，但平台没有独立品牌授权审核记录。结构化授权标签没有误显示，然而自由文本仍可能让买家误解。第二个固定版本只调整**公开呈现**：把包含未核验品牌授权措辞的供应商简介行从公开 API 与 SSR 页面暂时屏蔽；原始资料不改动，供管理员审查。已审核且有效的授权仍只由结构化记录展示。公网切换后核对：公开供应商 1 个，`authorizationClaimHidden=true` 的记录 1 个，公开 API／目录／详情中的该措辞 0 处，结构化授权记录 0 条；详情页显示待独立审查提示。
+
+第二版源提交 `ef551a8e00e69c8a4a0fda02c17a3a9330833de0`，Auth 本地镜像 ID `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，完整归档 SHA256 `9f914a9489a4e821f04e60421416c548949a022716b207619d4b9635dc64e1c7`；Web 镜像继续沿用上述固定 ID。发布锁在 `/opt/autolink-releases/brand-auth-claim-screen-20261014/brand-auth-release-lock.json`。原生 AMD64 后端 **239 项，其中 234 通过、5 跳过**；隔离候选→旧品牌授权版→候选回滚三阶段通过；2673 语言页面 SEO 回归通过；Trivy HIGH／CRITICAL 0、密钥 0；PR #20 对该提交的两项安全 CI 通过。日志在第二版发布目录。并未新建供应商或改动真实客户数据。
+
+第二版公网浏览器补充检查在手机 390×844 与电脑 1440×900 分别覆盖供应商目录和详情，以及首页、车型与品牌目录、Haval H6、买家登录和首页非关键脚本失败恢复，共 **16 项**；均无页面 JS 异常、横向溢出或公开授权自述漏出，原始 JSON 是本机 `tests/results/brand-auth-claim-public-browser-20261014.json` 和 `tests/results/brand-auth-claim-main-browser-20261014.json`。首页静态资源、视觉与付款功能没有变化；该检查是功能回归，不冒充新的 Lighthouse 性能得分。
+
+第二版切换前完整备份 `/opt/autolink-backups/brand-auth-claim-screen-20261014/final-20261013T203219Z/release-backup-manifest.json`，SQLite SHA256 `6be2bc104e8ab6105ca82732034f6b3d79f30b2d449766b3be61ccbc482e5d3a`，上传文件、Caddy 配置／证书卷、第一版源码与回滚镜像均归档并隔离恢复。2026-10-13 **20:39:58 UTC** 开始二次切换，**20:40:24 UTC** 核心权限、SEO、公开自述屏蔽探针通过，约 26 秒。第二轮持续 **30 分钟监控于 21:11:21 UTC 完成**，状态为 `completed`，探针失败 0、Auth/Web 重启 0，**没有回滚**。状态与完整日志在 `/opt/autolink-release-state/brand-auth-claim-screen-20261014/brand-auth-claim-screen-20261014/`。
+
+最终只读核对：实际运行 Auth/Web 镜像 ID 与第二版发布锁一致，两个容器 `healthy`；SQLite `integrity_check=ok`、外键异常 0、数据库车型／品牌 270／60、品牌授权记录 0；HTTPS 公开接口均 200，公开车型／品牌 244／53、公开供应商 1、被暂屏蔽的自述 1、公开自述中的该授权措辞 0、已审核授权展示 0。根分区剩余约 2.3 GiB。**本轮品牌授权功能及公开声明修正已正式上线，核心验收通过。**
+
+## 后续操作与保留边界
+
+新表的建立是 `CREATE TABLE IF NOT EXISTS`，不会从旧品牌字段批量补授权。真实授权仍须由具备材料和权限的人工审核人员逐项核实；测试 PDF 不能成为生产授权证据。支付、会员、供应商入驻协议和当前企业／车源审核结果均未改变。PR #20 保持独立，不自动合并 main。
+
+已知限制：目前没有经真实证明材料审批的品牌授权记录，不能称任何供应商已获平台核实的品牌授权。公开自由文本的屏蔽使用明确的常见授权称谓，不能替代管理员对其他措辞、其他语言和授权链条的人工审查。Google 车型 Sitemap 子图的后台 “Couldn't fetch” 仍未解决，Google 已收录数不能由技术资格推断。阿里云根分区约 96% 已用、剩余约 2.3 GiB；保留两次发布的旧镜像和完整备份供回滚，后续须按正式保留策略处理容量，不能直接清理持久卷或仍需恢复的归档。
