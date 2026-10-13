@@ -24,6 +24,14 @@ AUTH_FILES = {'Dockerfile', 'app.py', 'brand_authorization_service.py',
 IMAGE_SOURCES = ('app.py', 'brand_authorization_service.py', 'seo_service.py', 'trade_service.py')
 
 
+def source_files(root):
+    """Ignore legacy macOS sidecar metadata in copied release trees."""
+    return {path.relative_to(root).as_posix(): release.engine.sha(path)
+            for path in root.rglob('*') if path.is_file()
+            and '__pycache__' not in path.relative_to(root).parts
+            and not path.name.startswith('._')}
+
+
 def commit():
     value = (NEW / 'git-commit.txt').read_text().strip()
     if not re.fullmatch(r'[0-9a-f]{40}', value):
@@ -55,7 +63,7 @@ def preflight(backup_path):
             or lock['baselineRoot'] != str(OLD) or lock['authImageId'] != AUTH_NEW
             or lock['oldAuthImageId'] != AUTH_OLD or lock['webImageId'] != WEB):
         raise RuntimeError('Release lock identifies a different candidate')
-    before, after = release.files(OLD / 'site'), release.files(NEW / 'site')
+    before, after = source_files(OLD / 'site'), source_files(NEW / 'site')
     changed = {name for name in before.keys() | after.keys() if before.get(name) != after.get(name)}
     if changed != SITE or before['index.html'] != after['index.html']:
         raise RuntimeError('Candidate site differs from reviewed authorization scope')
@@ -64,7 +72,7 @@ def preflight(backup_path):
     for name, digest in lock['siteFiles'].items():
         if after[name] != digest:
             raise RuntimeError('Locked site file changed: ' + name)
-    old_auth, new_auth = release.files(OLD / 'auth'), release.files(NEW / 'auth')
+    old_auth, new_auth = source_files(OLD / 'auth'), source_files(NEW / 'auth')
     auth_changed = {name for name in old_auth.keys() | new_auth.keys()
                     if old_auth.get(name) != new_auth.get(name)}
     if auth_changed != AUTH_FILES:

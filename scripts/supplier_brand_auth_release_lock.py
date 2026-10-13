@@ -35,7 +35,8 @@ def sha(path):
 
 def inventory(root):
     return {path.relative_to(root).as_posix(): sha(path) for path in root.rglob('*')
-            if path.is_file() and '__pycache__' not in path.relative_to(root).parts}
+            if path.is_file() and '__pycache__' not in path.relative_to(root).parts
+            and not path.name.startswith('._')}
 
 
 def main():
