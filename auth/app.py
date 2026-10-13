@@ -839,6 +839,10 @@ class Handler(BaseHTTPRequestHandler):
             data = self.trade.supplier_profile(user)
         elif method == "PUT" and tail == "profile":
             data = self.trade.save_supplier_profile(user, self.read_body())
+        elif method == "GET" and tail == "brand-authorizations":
+            data = self.trade.brand_authorizations.rows(user["id"])
+        elif method == "POST" and tail == "brand-authorizations":
+            data = self.trade.brand_authorizations.submit(user, self.read_body())
         elif method == "GET" and tail == "documents":
             data = self.trade.documents(user["id"])
         elif method == "POST" and tail == "documents":
@@ -998,6 +1002,10 @@ class Handler(BaseHTTPRequestHandler):
                 data['agreementConfirmation'] = self.trade.agreement.matching(db,data['supplier_id'],data['company_name'],data['registration_no'],data['address'])
         elif method == "GET" and tail.startswith("suppliers/") and tail.endswith("/documents"):
             data = self.trade.documents(tail.split("/")[1])
+        elif method == "GET" and re.fullmatch(r"suppliers/[^/]+/brand-authorizations", tail):
+            data = self.trade.brand_authorizations.rows(tail.split('/')[1])
+        elif method == "POST" and re.fullmatch(r"brand-authorizations/[^/]+/review", tail):
+            data = self.trade.brand_authorizations.review(user, tail.split('/')[1], self.read_body())
         elif method == "GET" and tail.startswith("documents/"):
             self.send_document(self.trade.document_bytes(tail.split("/",1)[1],user))
             return

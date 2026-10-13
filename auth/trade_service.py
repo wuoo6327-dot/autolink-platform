@@ -53,6 +53,23 @@ SITEMAP_PAGE_SIZE = 5000
 # serves a client-only shell; both remain accessible through normal navigation.
 SITEMAP_STATIC_PATHS = ('/', '/about', '/trade/vehicles', '/trade/models', '/trade/brands',
     '/trade/suppliers', '/guide/middle-east-importers', '/guide/african-importers')
+PUBLIC_AUTHORIZATION_CLAIM = re.compile(
+    r'官方授权|品牌授权|授权经销商|授权出口商|官方经销商|特许经销商|独家代理|官方代理|一级经销商|'
+    r'\b(?:official|authorized|authorised)\s+(?:dealer|distributor|exporter|agent|partner)\b|'
+    r'\bexclusive\s+(?:agent|distributor|dealer)\b|'
+    r'\b(?:concessionnaire|distributeur|agent)\s+agréé(?:e)?\b|'
+    r'وكيل\s+معتمد|موزع\s+معتمد', re.IGNORECASE)
+
+
+def public_supplier_overview(value):
+    """Keep unreviewed brand authorization assertions out of public prose.
+
+    The private source remains intact for staff review. Reviewed authorizations
+    are displayed only from structured, currently valid authorization records.
+    """
+    lines = str(value or '').splitlines()
+    safe = [line for line in lines if not PUBLIC_AUTHORIZATION_CLAIM.search(line)]
+    return '\n'.join(safe).strip(), len(safe) != len(lines)
 
 
 def ident(prefix: str) -> str:
@@ -219,6 +236,8 @@ class TradeService:
         self.images = ListingImages(auth)
         self.price_reviews = PriceReviews(auth)
         self.team = SupplierTeam(auth)
+        from brand_authorization_service import BrandAuthorizationService
+        self.brand_authorizations = BrandAuthorizationService(self)
 
     @staticmethod
     def add_column(db, table, name, declaration):
@@ -381,7 +400,7 @@ class TradeService:
         if user.get('role') not in ('MERCHANT','SUPPLIER'):
             raise BuyerError(403, 'Supplier account required.')
         kind = body.get("kind")
-        if kind not in ("BUSINESS_LICENSE", "EXPORT_LICENSE", "OTHER") and kind not in PHOTO_KINDS:
+        if kind not in ("BUSINESS_LICENSE", "EXPORT_LICENSE", "OTHER", "BRAND_AUTHORIZATION") and kind not in PHOTO_KINDS:
             raise BuyerError(400, "Invalid document kind.")
         filename = text(body.get("filename"), "filename", 160, True)
         if "/" in filename or "\\" in filename or filename.startswith("."):
@@ -409,11 +428,14 @@ class TradeService:
             content_type, extension = 'image/jpeg', '.jpg'
         with self.auth.connect() as db:
             application = db.execute("SELECT status FROM supplier_applications WHERE supplier_id=?", (user["id"],)).fetchone()
-            if application and application["status"] not in ("DRAFT", "REQUIRES_CHANGES", "REJECTED"):
+            allowed_states = ("APPROVED",) if kind == 'BRAND_AUTHORIZATION' else ("DRAFT", "REQUIRES_CHANGES", "REJECTED")
+            if (kind == 'BRAND_AUTHORIZATION' and not application) or (application and application["status"] not in allowed_states):
                 raise BuyerError(409, "Documents cannot be uploaded in the current application state.")
-            count = db.execute("SELECT count(*) FROM supplier_documents WHERE supplier_id=?", (user["id"],)).fetchone()[0]
-            if count >= 6:
-                raise BuyerError(409, "Maximum six documents per supplier.")
+            count = db.execute("""SELECT count(*) FROM supplier_documents WHERE supplier_id=?
+                AND (kind='BRAND_AUTHORIZATION')=?""",
+                (user["id"], kind == 'BRAND_AUTHORIZATION')).fetchone()[0]
+            if count >= (20 if kind == 'BRAND_AUTHORIZATION' else 6):
+                raise BuyerError(409, "Supplier document limit reached.")
         DOCUMENT_ROOT.mkdir(parents=True, exist_ok=True, mode=0o700)
         document_id=ident("DOC")
         stored_name=uuid.uuid4().hex+extension
@@ -427,7 +449,9 @@ class TradeService:
                 if not db.execute("SELECT 1 FROM users WHERE id=? AND role IN ('MERCHANT','SUPPLIER') AND status='ACTIVE' AND deleted_at IS NULL", (user['id'],)).fetchone():
                     raise BuyerError(403, 'Supplier account required.')
                 application = db.execute("SELECT status FROM supplier_applications WHERE supplier_id=?", (user["id"],)).fetchone()
-                if application and application["status"] not in ("DRAFT", "REQUIRES_CHANGES", "REJECTED"):
+                if kind == 'BRAND_AUTHORIZATION':
+                    self.active_company_owner(db, user)
+                if (kind == 'BRAND_AUTHORIZATION' and not application) or (application and application["status"] not in allowed_states):
                     raise BuyerError(409, "Application state changed. Please reload.")
                 # A verified owner may upload evidence before completing the form.
                 # Only a private draft is created; approval, agreement and role gates remain.
@@ -437,8 +461,10 @@ class TradeService:
                                (user["id"], now))
                     db.execute("INSERT INTO supplier_applications(supplier_id,status,updated_at,evidence_version) VALUES (?,'DRAFT',?,2)",
                                (user["id"], now))
-                if db.execute("SELECT count(*) FROM supplier_documents WHERE supplier_id=?", (user["id"],)).fetchone()[0] >= 6:
-                    raise BuyerError(409, "Maximum six documents per supplier.")
+                if db.execute("""SELECT count(*) FROM supplier_documents WHERE supplier_id=?
+                    AND (kind='BRAND_AUTHORIZATION')=?""",
+                    (user["id"], kind == 'BRAND_AUTHORIZATION')).fetchone()[0] >= (20 if kind == 'BRAND_AUTHORIZATION' else 6):
+                    raise BuyerError(409, "Supplier document limit reached.")
                 db.execute("INSERT INTO supplier_documents VALUES (?,?,?,?,?,?,?,?)",
                            (document_id,user["id"],kind,filename,content_type,stored_name,len(data),int(time.time())))
                 self.audit(db,user["id"],"DOCUMENT_UPLOADED","document",document_id,user["id"],kind)
@@ -569,10 +595,13 @@ class TradeService:
         results = [dict(r) for r in rows] if public else rows
         if public:
             for supplier in results:
+                supplier['description'], claim_hidden = public_supplier_overview(supplier.get('description'))
+                supplier['authorizationClaimHidden'] = claim_hidden
                 enabled = supplier.pop("public_contact_enabled") == 1
                 contact = {key: supplier.pop("public_contact_" + key)
                            for key in ("name", "email", "phone", "website", "address")}
                 supplier["contact"] = contact if enabled else None
+                supplier['brandAuthorizations'] = self.brand_authorizations.rows(supplier['id'], public=True)
         return results
 
     def public_supplier(self, supplier_id):
