@@ -22,6 +22,8 @@ import brand_identity_cutover as engine
 
 
 BASELINE = Path("/opt/autolink-releases/40d685b-round12-20261012")
+RELEASE = Path("/opt/autolink-releases/ecee142-round14-20261013")
+ROBOTS_RELEASE = Path("/opt/autolink-releases/e7c48f2-round14-robots-20261013")
 STATE_ROOT = Path("/opt/autolink-release-state/round14-20261013")
 BACKUP_POINTER = Path("/opt/autolink-backups/round14-latest-path")
 EXPECTED_OVERLAY = {
@@ -32,6 +34,7 @@ EXPECTED_OVERLAY = {
 }
 engine.OLD = BASELINE
 engine.STATE_ROOT = STATE_ROOT
+HOTFIX_MODE = False
 
 
 def sha(path):
@@ -96,7 +99,7 @@ def prepare_backup_manifest():
 
 
 def verify_overlay(release, lock):
-    if release != Path("/opt/autolink-releases/ecee142-round14-20261013"):
+    if release != RELEASE:
         raise RuntimeError("Unexpected release directory")
     original = {path.relative_to(BASELINE / "site").as_posix(): sha(path)
                 for path in (BASELINE / "site").rglob("*") if path.is_file()}
@@ -194,6 +197,10 @@ def preflight(release, backup_path):
         raise RuntimeError("Native rollback rehearsal incomplete")
     if "OK (skipped=5)" not in (release / "round14-evidence/native-backend-tests.log").read_text():
         raise RuntimeError("Native backend suite incomplete")
+    if HOTFIX_MODE:
+        css_qa = json.loads((release / "round14-evidence/robots-css-qa.json").read_text())
+        if not css_qa.get("pass") or "Allow: /buyer/buyer.css" not in (release / "site/robots.txt").read_text():
+            raise RuntimeError("Isolated public CSS crawl QA failed")
     current = public_catalog()
     saved = json.loads(Path(backup["publicCatalog"]).read_text())
     if current != saved:
@@ -232,6 +239,11 @@ def core_probe(backup, candidate):
         raise RuntimeError("English brand SSR failed")
     if "noindex" not in engine.http("/trade/models/aeolus-catalog-1?lang=en")[1]:
         raise RuntimeError("Unreviewed model lost noindex")
+    if HOTFIX_MODE and candidate:
+        status, robots = engine.http("/robots.txt")
+        css_status, _ = engine.http("/buyer/buyer.css?v=20261009-speed")
+        if status != 200 or css_status != 200 or "Allow: /buyer/buyer.css" not in robots:
+            raise RuntimeError("Public model stylesheet remains blocked")
     for child, minimum in (("models-1.xml", 227), ("brands-1.xml", 10)):
         status, xml = engine.http("/sitemaps/" + child)
         urls = list(ElementTree.fromstring(xml).iter("{http://www.sitemaps.org/schemas/sitemap/0.9}url"))
@@ -246,13 +258,22 @@ engine.core_probe = core_probe
 
 
 def main():
+    global BASELINE, RELEASE, STATE_ROOT, EXPECTED_OVERLAY, HOTFIX_MODE
     parser = argparse.ArgumentParser()
     parser.add_argument("mode", choices=("prepare-backup", "preflight", "cutover", "status"))
-    parser.add_argument("--release", type=Path,
-                        default=Path("/opt/autolink-releases/ecee142-round14-20261013"))
+    parser.add_argument("--release", type=Path)
+    parser.add_argument("--hotfix", action="store_true")
     parser.add_argument("--backup-manifest", type=Path)
     args = parser.parse_args()
-    release = args.release.resolve()
+    if args.hotfix:
+        HOTFIX_MODE = True
+        BASELINE = Path("/opt/autolink-releases/ecee142-round14-20261013")
+        RELEASE = ROBOTS_RELEASE
+        EXPECTED_OVERLAY = {"robots.txt"}
+        STATE_ROOT = Path("/opt/autolink-release-state/round14-robots-20261013")
+        engine.OLD = BASELINE
+        engine.STATE_ROOT = STATE_ROOT
+    release = (args.release or RELEASE).resolve()
     if args.mode == "prepare-backup":
         prepare_backup_manifest()
     elif args.mode == "status":
