@@ -203,6 +203,13 @@ def preflight(release, backup_path):
         css_qa = json.loads((release / "round14-evidence/robots-css-qa.json").read_text())
         if not css_qa.get("pass") or "Allow: /buyer/buyer.css" not in (release / "site/robots.txt").read_text():
             raise RuntimeError("Isolated public CSS crawl QA failed")
+        robots_phases = [json.loads(line) for line in
+                         (release / "round14-evidence/native-robots-rollback-rehearsal.jsonl")
+                         .read_text().splitlines()]
+        if ([item["phase"] for item in robots_phases]
+                != ["candidate", "rollback", "restored_candidate"]
+                or any(item["sqliteIntegrity"] != "ok" for item in robots_phases)):
+            raise RuntimeError("Robots hotfix rollback rehearsal incomplete")
     current = public_catalog()
     saved = json.loads(Path(backup["publicCatalog"]).read_text())
     if current != saved:
