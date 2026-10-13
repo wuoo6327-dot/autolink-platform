@@ -23,6 +23,7 @@
 - 新 Webhook 验证 Airwallex 原始请求体 HMAC、时间戳、账户 ID，并向服务商查询一次性支付链接，复核订单引用、金额、币种和唯一成功 PaymentIntent。重复事件只记录一次。付款仅记录服务期，**不会跳过现有企业、车源及图片审核，也不会自动把车源设为 ONLINE**。
 - 新接口为 `GET /autolink/supplier/vehicles/{id}/listing-quote`、`POST /autolink/supplier/vehicles/{id}/listing-checkout`、`GET /autolink/supplier/listing-payments` 和 `POST /autolink/supplier/payments/webhooks/airwallex`。当前 `SUPPLIER_LISTING_PAYMENTS_ENABLED` 默认关闭，代码仅支持 `PAYMENTS_ENV=sandbox`；生产模式始终不可用。网站展示端 `paymentAvailable:false` 不变。
 - 隔离测试：后端全套 **249 项运行，5 项跳过，其余通过**；新增供应商支付专项 6 项通过，覆盖默认关闭、审核和所有者限制、服务端价格、重复订单、签名/商户/金额拒绝、HTTP 登录与 Origin 限制。`gitleaks dir auth` 扫描约 2.03 MB，未发现密钥；`trivy fs auth` 的 HIGH/CRITICAL 漏洞与密钥发现均为 0。使用本地临时数据库和模拟网关，**尚未完成真实空中云汇沙盘 API、真实 Webhook、AMD64 预发布及生产验证**。
+- GitHub [安全工作流运行 #38380815913](https://github.com/wuoo6327-dot/autolink-platform/actions/runs/38380815913) 在提交 `af4723d` 上实际完成并成功：当前源码扫描、Git 历史密钥扫描和阻断发现门槛均通过。仓库当前为 Public，工作流中“保留私有仓库的脱敏报告”步骤按条件跳过；安全扫描本身没有跳过，也未更改仓库可见性。
 - 当前仍需补齐供应商收费正式条款、退款及争议流程、真实客服联系方式、付款后激活与到期处理、异常订单对账、空中云汇沙盘凭据和逐项支付方式批准信息。未完成前不得开放真实收款。
 
 ## 价格、权益与安全边界
