@@ -15,6 +15,7 @@ Allow: /autolink/public/suppliers$
 Allow: /autolink/public/suppliers?
 Allow: /autolink/public/suppliers/
 Allow: /autolink/public/vehicle-images/
+Allow: /buyer/buyer.css
 Disallow: /api/
 Disallow: /buyer/
 Disallow: /account/

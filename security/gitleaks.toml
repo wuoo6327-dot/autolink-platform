@@ -32,3 +32,15 @@ regexes = [
   '''^ff33ff6a032377bdebaee6b1c03824ac073d936047bb4bb1ae12e2f5e923710b$''',
   '''^290e4897140dd11a130921039038465c5305500c576764065565f53d1714ea4a$'''
 ]
+
+# A historical, separate payment candidate report contains this exact
+# Docker image tag, which the generic API-key rule mistakes for a credential.
+# This allowlist does not include payment code or any credential prefix.
+[[allowlists]]
+description = "Verified Docker image tag in isolated payment candidate report"
+condition = "AND"
+paths = ['''(^|/)AUTOLINK_Stripe真实测试与支付上线准备完成报告\.md$''']
+regexTarget = "secret"
+regexes = [
+  '''^round13-2aa4f32-isolated$'''
+]

@@ -105,6 +105,14 @@ class CurrentCatalogSEOTests(unittest.TestCase):
             db.execute("UPDATE catalog_models SET name='Changed model' WHERE id=?",(model['id'],))
         self.assertNotIn('en',self.seo.index_policy('model',self.trade.catalog.get(model['id']))['indexLanguages'])
 
+    def test_model_sourcing_link_uses_real_catalog_id_in_initial_html(self):
+        path='/trade/models/geely-monjaro-2026'
+        for language in LANGUAGES:
+            with self.subTest(language=language):
+                status,body=self.seo.render(path+'?lang='+language)
+                self.assertEqual(status,200)
+                self.assertIn('href="/buyer/requests?vehicleId=geely-monjaro-2026',body.decode())
+
     def test_catalog_year_requires_source_year_evidence(self):
         for ident in ('byd-song-plus-2026','byd-sealion-7-2026','gac-gs8-2026'):
             with self.subTest(model=ident):

@@ -13,7 +13,7 @@ try{
     import('/assets/business-seo.js')
   ]);
   await import('/i18n/business-i18n.js?v=20261007-owner-zh');
-  await import('/admin/app.js?v=20261012-overseas-seo');
+  await import('/admin/app.js?v=20261013-round14');
 }catch{
   if(status)status.textContent='加载失败，请刷新重试。';
 }

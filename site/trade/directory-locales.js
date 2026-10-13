@@ -105,6 +105,8 @@
     browseAll: ['Browse listings','浏览车源','تصفح العروض','Смотреть предложения','Ұсыныстарды қарау','Takliflarni ko‘rish','차량 둘러보기','Parcourir les offres','Angalia matangazo'],
     budget: ['Budget (USD / unit)','预算（USD / 台）','الميزانية (USD / مركبة)','Бюджет (USD / шт.)','Бюджет (USD / көлік)','Byudjet (USD / dona)','예산 (USD / 대)','Budget (USD / unité)','Bajeti (USD / gari)'],
     allBrands: ['All brands','全部品牌','جميع العلامات','Все марки','Барлық маркалар','Barcha brendlar','모든 브랜드','Toutes les marques','Chapa zote'],
+    allYears: ['All years','全部年份','كل السنوات','Все годы','Барлық жылдар','Barcha yillar','전체 연식','Toutes les années','Miaka yote'],
+    createRequest: ['Create a sourcing request','提交采购需求','إنشاء طلب شراء','Создать заявку на закупку','Сатып алу сұрауын жасау','Xarid soʻrovini yaratish','구매 요청 작성','Créer une demande d’achat','Unda ombi la ununuzi'],
     applySupplier: ['Apply as a supplier','申请供应商入驻','تقدم كمورد','Подать заявку поставщика','Жеткізуші болуға өтініш беру','Yetkazib beruvchi bo‘lish uchun ariza','공급업체 신청','Devenir fournisseur','Omba kuwa muuzaji']
   };
   window.AUTOLINK_DIRECTORY_COPY = Object.fromEntries(languages.map((language,index) => [language,Object.fromEntries(Object.entries(rows).map(([key,values]) => {

@@ -1476,9 +1476,59 @@ class TradeService:
                     JOIN supplier_applications a ON a.supplier_id=v.supplier_id
                     JOIN users u ON u.id=v.supplier_id WHERE """+PUBLIC_VEHICLE_WHERE),
                 "inquiries":count("SELECT count(*) FROM buyer_inquiries"),
+                "buyingRequests":count("SELECT count(*) FROM buyer_requests"),
                 "quotes":count("SELECT count(*) FROM trade_quotes WHERE sent_at IS NOT NULL"),
                 "memberships":count("SELECT count(*) FROM buyer_memberships WHERE status='ACTIVE' AND end_at>strftime('%s','now')"),
                 "reports":count("SELECT count(*) FROM listing_reports")}
+
+    def admin_sourcing(self, admin, kind, page=None):
+        """Show real buyer requests or supplier inquiries only to active admins."""
+        if kind not in ('requests', 'inquiries'):
+            raise BuyerError(400, 'Invalid sourcing view.')
+        with self.auth.connect() as db:
+            allowed=db.execute("""SELECT 1 FROM users WHERE id=? AND role='PLATFORM_ADMIN'
+                AND status='ACTIVE' AND deleted_at IS NULL""",(admin['id'],)).fetchone()
+            if not allowed:
+                raise BuyerError(403, 'Platform admin required.')
+            if kind=='requests':
+                sql="""SELECT r.id,r.buyer_id,r.title,r.vehicle_id,r.brand,r.year,r.energy,
+                    r.configuration,r.quantity,r.destination_country,r.destination_port,r.status,
+                    r.distribution_consent,r.created_at,r.updated_at,u.email AS buyer_email,
+                    u.company_name AS buyer_company,
+                    (SELECT metadata FROM trade_audit a WHERE a.entity_type='request'
+                     AND a.entity_id=r.id AND a.action='ADMIN_FOLLOWUP'
+                     ORDER BY a.created_at DESC,a.id DESC LIMIT 1) AS last_followup
+                    FROM buyer_requests r JOIN users u ON u.id=r.buyer_id"""
+            else:
+                sql="""SELECT i.id,i.buyer_id,i.supplier_id,i.vehicle_id,i.quantity,
+                    i.destination_country,i.destination_port,i.status,i.created_at,i.updated_at,
+                    u.email AS buyer_email,u.company_name AS buyer_company,
+                    s.company_name AS supplier_company,
+                    (SELECT metadata FROM trade_audit a WHERE a.entity_type='inquiry'
+                     AND a.entity_id=i.id AND a.action='ADMIN_FOLLOWUP'
+                     ORDER BY a.created_at DESC,a.id DESC LIMIT 1) AS last_followup
+                    FROM buyer_inquiries i JOIN users u ON u.id=i.buyer_id
+                    LEFT JOIN users s ON s.id=i.supplier_id"""
+            prefix='r' if kind=='requests' else 'i'
+            return query_list(db,sql,(),order=f'{prefix}.updated_at DESC,{prefix}.id DESC',page=page,legacy_limit=100)
+
+    def admin_sourcing_followup(self, admin, kind, entity_id, body):
+        if kind not in ('requests', 'inquiries'):
+            raise BuyerError(400, 'Invalid sourcing view.')
+        note=text(body.get('note'), 'follow-up note', 1000, True)
+        entity_id=text(entity_id, 'sourcing id', 100, True)
+        table='buyer_requests' if kind=='requests' else 'buyer_inquiries'
+        entity_type='request' if kind=='requests' else 'inquiry'
+        with self.auth.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            allowed=db.execute("""SELECT 1 FROM users WHERE id=? AND role='PLATFORM_ADMIN'
+                AND status='ACTIVE' AND deleted_at IS NULL""",(admin['id'],)).fetchone()
+            if not allowed:
+                raise BuyerError(403, 'Platform admin required.')
+            if not db.execute(f'SELECT 1 FROM {table} WHERE id=?',(entity_id,)).fetchone():
+                raise BuyerError(404, 'Sourcing record not found.')
+            self.audit(db,admin['id'],'ADMIN_FOLLOWUP',entity_type,entity_id,metadata=note)
+        return {'id':entity_id,'recorded':True}
 
     def crm_detail(self, supplier, buyer_id, pages=None):
         relationship = next((row for row in self.crm(supplier) if row["buyer_id"] == buyer_id), None)

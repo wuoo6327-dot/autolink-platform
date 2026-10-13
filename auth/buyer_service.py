@@ -122,7 +122,8 @@ class BuyerService:
                 );
             """)
             request_columns={row["name"] for row in db.execute("PRAGMA table_info(buyer_requests)")}
-            for name,declaration in (("distribution_consent","INTEGER NOT NULL DEFAULT 0"),("published_at","INTEGER")):
+            for name,declaration in (("distribution_consent","INTEGER NOT NULL DEFAULT 0"),("published_at","INTEGER"),
+                                     ("configuration","TEXT NOT NULL DEFAULT ''")):
                 if name not in request_columns:
                     db.execute(f"ALTER TABLE buyer_requests ADD COLUMN {name} {declaration}")
 
@@ -320,20 +321,22 @@ class BuyerService:
     def create_request(self, user, body):
         title = text(body.get("title"), "request title", 160, True)
         vehicle_id = text(body.get("vehicleId"), "vehicle model", 100) or None
-        if vehicle_id:
-            self.model(vehicle_id)
+        model = self.model(vehicle_id) if vehicle_id else None
         status = body.get("status", "DRAFT")
         if status not in ("DRAFT", "PUBLISHED"):
             raise BuyerError(400, "Invalid request status.")
         if user["role"]!="BUYER":
             raise BuyerError(403,"Buyer account required.")
         now = int(time.time())
-        values = [title, vehicle_id, text(body.get("brand"), "brand", 120), text(body.get("vehicleType"), "vehicle type", 100),
-                  text(body.get("energy"), "energy", 100), body.get("year"), positive_int(body.get("quantity"), "quantity"),
+        values = [title, vehicle_id, model["brand"] if model else text(body.get("brand"), "brand", 120),
+                  model["bodyType"] if model else text(body.get("vehicleType"), "vehicle type", 100),
+                  model["energy"] if model else text(body.get("energy"), "energy", 100),
+                  model["year"] if model else body.get("year"), positive_int(body.get("quantity"), "quantity"),
                   body.get("budgetMinor"), text(body.get("currency"), "currency", 3),
                   text(body.get("destinationCountry"), "destination country", 120), text(body.get("destinationPort"), "destination port", 120),
                   text(body.get("tradeTerm"), "trade term", 30), text(body.get("deliveryDate"), "delivery date", 30),
-                  text(body.get("note"), "note", 2000), status]
+                  text(body.get("note"), "note", 2000), status,
+                  text(body.get("configuration"), "requested configuration", 160)]
         if values[5] is not None and (isinstance(values[5],bool) or not isinstance(values[5], int) or not 1900 <= values[5] <= 2100):
             raise BuyerError(400, "Invalid model year.")
         if values[7] is not None and (isinstance(values[7],bool) or not isinstance(values[7], int) or not 0 <= values[7] <= 10**12):
@@ -351,11 +354,13 @@ class BuyerService:
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             if status=="PUBLISHED":self.check_request_publish(db,user,body)
-            duplicate=db.execute("SELECT 1 FROM buyer_requests WHERE buyer_id=? AND title=? AND quantity=? AND destination_country=? AND created_at>?",(user["id"],title,values[6],values[9],now-300)).fetchone()
+            duplicate=db.execute("""SELECT 1 FROM buyer_requests WHERE buyer_id=? AND title=? AND quantity=?
+                AND destination_country=? AND COALESCE(vehicle_id,'')=COALESCE(?,'') AND created_at>?""",
+                (user["id"],title,values[6],values[9],vehicle_id,now-300)).fetchone()
             if duplicate:raise BuyerError(409,"This buying request was already saved recently.")
             if db.execute("SELECT count(*) FROM buyer_requests WHERE buyer_id=? AND created_at>?",(user["id"],now-86400)).fetchone()[0]>=20:
                 raise BuyerError(429,"Buying request limit reached. Try again later.")
-            db.execute("INSERT INTO buyer_requests(id,buyer_id,title,vehicle_id,brand,vehicle_type,energy,year,quantity,budget_minor,currency,destination_country,destination_port,trade_term,delivery_date,note,status,created_at,updated_at,distribution_consent,published_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            db.execute("INSERT INTO buyer_requests(id,buyer_id,title,vehicle_id,brand,vehicle_type,energy,year,quantity,budget_minor,currency,destination_country,destination_port,trade_term,delivery_date,note,status,configuration,created_at,updated_at,distribution_consent,published_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                        (request_id, user["id"], *values, now, now,1 if status=="PUBLISHED" else 0,now if status=="PUBLISHED" else None))
         return self.requests(user, request_id)[0]
 
