@@ -1,6 +1,6 @@
 # AUTOLINK 供应商品牌授权独立审核候选报告
 
-日期：2026-10-14。分支基于当前生产通知版本 `ce079be`，与非洲／中东 SEO 候选分开；支付、会员、入驻协议和现有审核结果不变。
+日期：2026-10-14。原候选 [PR #19](https://github.com/wuoo6327-dot/autolink-platform/pull/19) 基于通知版本 `ce079be`；后续以已部署的非洲／中东 SEO 源提交 `ccf4413` 为基线整合成[草稿 PR #20](https://github.com/wuoo6327-dot/autolink-platform/pull/20)，只包含供应商品牌授权功能差异。支付、会员、入驻协议和现有审核结果不变。
 
 ## 已实现的边界
 
@@ -18,7 +18,7 @@
 
 生产公开目录当前为 244 个车型、53 个品牌，公开供应商 1 个、公开车源 1 条。生产尚没有品牌授权记录表，也没有经本功能审核通过的授权声明，因此上线后默认公开授权标签仍为 **0**；不得把现有企业／车源审核结果倒灌到新表。
 
-本机专项测试 **3 项通过**；去重后的完整后端测试 **238 项通过、5 项跳过**，原始日志分别为 `/tmp/autolink-brand-auth-tests-final-20261014.log` 和 `/tmp/autolink-brand-auth-full-tests-final-20261014.log`。JavaScript 语法、Python 编译和 `git diff --check` 均通过。Gitleaks 和 Trivy 源码／依赖扫描均完成、发现 0 项（本机 `security-reports/all-sanitized.json`）。原生 Linux AMD64、生产数据备份恢复、私有文件卷安全、容器镜像扫描和回滚演练尚未验收；**本候选未部署生产**。
+本机专项测试 **3 项通过**；整合分支完整后端共运行 **238 项，其中 233 通过、5 跳过**。原候选日志为 `/tmp/autolink-brand-auth-tests-final-20261014.log` 和 `/tmp/autolink-brand-auth-full-tests-final-20261014.log`；整合分支完整日志为 `/tmp/autolink-supplier-on-seo-tests.log`。JavaScript 语法、Python 编译和 `git diff --check` 均通过。原候选 Gitleaks／Trivy 源码扫描 0 项，整合提交 Gitleaks 0 项；PR #20 的两次 `source-security` CI 实际运行并通过。原生 Linux AMD64、生产数据备份恢复、私有文件卷安全、容器镜像扫描和回滚演练尚未验收；**本候选未部署生产**。
 
 ## 上线门槛与后续操作
 
