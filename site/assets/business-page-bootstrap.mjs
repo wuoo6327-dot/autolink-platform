@@ -1,7 +1,7 @@
 import {ensureBusinessLanguage, loadScript, showBootstrapError} from './business-language-loader.mjs?v=20261009-speed';
 
 const page = document.querySelector('script[data-business-page]')?.dataset.businessPage;
-const version = page === 'home' ? '?v=20261012-home-fast' : ['trade','buyer'].includes(page) ? '?v=20261013-round14' : '?v=20261009-gx';
+const version = page === 'home' ? '?v=20261012-home-fast' : page === 'buyer' ? '?v=20261013-account-role' : page === 'trade' ? '?v=20261013-round14' : '?v=20261009-gx';
 const pages = {
   home: {
     before: ['/assets/supplier-program.js', '/assets/auth-entry.js', '/trade/directory-locales.js', '/assets/home-suv-visuals.js'],

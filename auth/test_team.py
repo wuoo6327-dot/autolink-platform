@@ -19,6 +19,10 @@ import test_trade
 class SupplierTeamTests(unittest.TestCase):
     def setUp(self):
         test_trade.TradeFlowTests.setUp(self)
+        # A supplier salesperson has a supplier identity, never a buyer identity.
+        with self.auth.connect() as db:
+            db.execute("UPDATE users SET role='MERCHANT' WHERE id='buyer-b'")
+        self.users['buyer-b']=self.auth.user_for_token(self.auth.session_for_user('buyer-b')['access_token'])
         self.listing=self.approved_vehicle()
         self.owner=self.users['supplier-a']
         self.recipient=self.users['buyer-b']
@@ -43,15 +47,14 @@ class SupplierTeamTests(unittest.TestCase):
         self.assertEqual(self.trade.team.accept(self.recipient,invite['id'])['role'],'SALES')
         with self.assertRaises(BuyerError):self.trade.team.accept(self.recipient,invite['id'])
         with self.auth.connect() as db:
-            self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(self.recipient['id'],)).fetchone()[0],'BUYER')
+            self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(self.recipient['id'],)).fetchone()[0],'MERCHANT')
 
     def register_invited(self,email,language='en'):
         transport=Mock()
         auth=EmailAuthService(self.auth,sender=transport)
         auth.send_code(email,'login','isolated-invitation-qa',language)
-        session=auth.register({'email':email,'code':transport.call_args.args[1],
-            'password':'Synthetic invitation fixture only!','country':'Saudi Arabia',
-            'consent':True,'language':language})
+        session=auth.login_code({'email':email,'code':transport.call_args.args[1],
+            'role':'MERCHANT','companyName':'Synthetic sales staff','consent':True,'language':language})
         return self.auth.user_for_token(session['access_token'])
 
     def test_new_email_invitation_registration_assignment_and_buyer_quote_loop(self):
@@ -71,7 +74,7 @@ class SupplierTeamTests(unittest.TestCase):
         self.assertEqual(len(invited_mail),1)
         self.assertIn('https://autolinkglobal.com/supplier/team',invited_mail[0].args[2])
         user=self.register_invited(address)
-        self.assertEqual(user['role'],'BUYER')
+        self.assertEqual(user['role'],'MERCHANT')
         self.assertEqual(self.trade.team.invitations(user)[0]['id'],invitation['id'])
         with self.auth.connect() as db:self.assertEqual(db.execute('SELECT count(*) FROM supplier_team_members').fetchone()[0],0)
         with self.assertRaises(BuyerError):self.trade.team.accept(self.users['buyer-a'],invitation['id'])
@@ -84,7 +87,7 @@ class SupplierTeamTests(unittest.TestCase):
         self.assertEqual(self.trade.quote_rows(self.users['buyer-a'])[0]['id'],quote['id'])
         self.trade.team.remove(self.owner,user['id'])
         with self.assertRaises(BuyerError):self.trade.supplier_inquiries(sales)
-        with self.auth.connect() as db:self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(user['id'],)).fetchone()[0],'BUYER')
+        with self.auth.connect() as db:self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(user['id'],)).fetchone()[0],'MERCHANT')
 
     def test_unsent_new_email_invitation_is_cancelled_if_invitation_or_owner_is_revoked(self):
         for case in ('cancel','expire','suspend','demote','delete','unverify'):
@@ -127,11 +130,11 @@ class SupplierTeamTests(unittest.TestCase):
 
     def test_team_mutations_recheck_current_owner_and_recipient_under_lock(self):
         invitation=self.trade.team.invite(self.owner,{'email':self.recipient['email']})
-        for change in ("status='SUSPENDED'","role='PLATFORM_ADMIN'","email_verified_at=NULL","email='changed@example.com'"):
+        for change in ("status='SUSPENDED'","role='PLATFORM_ADMIN'","role='BUYER'","email_verified_at=NULL","email='changed@example.com'"):
             with self.auth.connect() as db:db.execute('UPDATE users SET '+change+" WHERE id='buyer-b'")
             with self.assertRaises(BuyerError) as denied:self.trade.team.accept(self.recipient,invitation['id'])
             self.assertEqual(denied.exception.status,403)
-            with self.auth.connect() as db:db.execute("UPDATE users SET status='ACTIVE',role='BUYER',email_verified_at=?,email='buyer-b@example.com' WHERE id='buyer-b'",(int(time.time()),))
+            with self.auth.connect() as db:db.execute("UPDATE users SET status='ACTIVE',role='MERCHANT',email_verified_at=?,email='buyer-b@example.com' WHERE id='buyer-b'",(int(time.time()),))
         with self.auth.connect() as db:db.execute("UPDATE users SET role='BUYER' WHERE id='supplier-a'")
         for call in (lambda:self.trade.team.invite(self.owner,{'email':'not-permitted@example.com'}),
             lambda:self.trade.team.cancel(self.owner,invitation['id']),
@@ -178,7 +181,7 @@ class SupplierTeamTests(unittest.TestCase):
         self.assertEqual(code,200);invitation=data['data']['id']
         self.assertNotIn('email',data['data']);self.assertNotIn('token',data['data'])
         self.assertEqual(call(self.users['supplier-b'],'team/invitations/'+invitation+'/cancel',{})[0],404)
-        self.assertEqual(call(self.users['buyer-a'],'invitations/'+invitation+'/accept',{})[0],404)
+        self.assertEqual(call(self.users['buyer-a'],'invitations/'+invitation+'/accept',{})[0],403)
         user=self.register_invited('http-new@example.com')
         self.assertEqual(call(user,'invitations/'+invitation+'/accept',{})[0],200)
         self.assertEqual(call(user,'invitations/'+invitation+'/accept',{})[0],404)
@@ -213,7 +216,11 @@ class SupplierTeamTests(unittest.TestCase):
         sales = self.sales()
         self.trade.team.assign(self.owner, 'buyer-a', {'userId': 'buyer-b'})
         assigned = self.quote(self.owner, send=True)
-        other_inquiry = self.trade.create_inquiry(self.recipient, {
+        with self.auth.connect() as db:
+            db.execute("INSERT INTO users(id,email,display_name,company_name,role,created_at,email_verified_at) VALUES (?,?,?,?,?,?,?)",
+                       ('buyer-c','buyer-c@example.com','Synthetic other buyer','Buyer C','BUYER',int(time.time()),int(time.time())))
+        other_buyer=self.auth.user_for_token(self.auth.session_for_user('buyer-c')['access_token'])
+        other_inquiry = self.trade.create_inquiry(other_buyer, {
             'listingId': self.listing, 'quantity': 2, 'destinationCountry': 'UAE'})
         unassigned = self.trade.create_quote(self.owner, other_inquiry['id'], {
             'unitPriceMinor': 1890000, 'validUntil': str(date.today()), 'send': True})

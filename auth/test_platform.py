@@ -71,8 +71,9 @@ class PlatformFlowTests(unittest.TestCase):
         inquiry=self.trade.create_inquiry(buyer,{'listingId':listing,'quantity':2,'destinationCountry':'Saudi Arabia'})
         self.trade.create_quote(supplier,inquiry['id'],{'unitPriceMinor':100,'validUntil':str(date.today()),'send':True})
         self.trade.create_quote(supplier,inquiry['id'],{'unitPriceMinor':200,'validUntil':str(date.today())})
-        invitation=self.trade.team.invite(supplier,{'email':buyer['email']})
-        self.trade.team.accept(buyer,invitation['id'])
+        staff=test_trade.TradeFlowTests.add_sales_staff(self)
+        invitation=self.trade.team.invite(supplier,{'email':staff['email']})
+        self.trade.team.accept(staff,invitation['id'])
         now=int(time.time())
         with self.auth.connect() as db:
             db.execute("INSERT INTO buyer_profiles(user_id,country,city) VALUES ('buyer-a','Saudi Arabia','Riyadh')")
@@ -89,8 +90,9 @@ class PlatformFlowTests(unittest.TestCase):
         self.assertEqual(detail['counts']['buyerInquiries'],1)
         self.assertEqual(detail['counts']['buyerQuotes'],1)
         self.assertEqual(detail['counts']['supplierInquiries'],0)
-        self.assertEqual(detail['supplierWorkspaces'][0]['role'],'SALES')
-        self.assertEqual(detail['supplierWorkspaces'][0]['supplier_id'],'supplier-a')
+        self.assertEqual(detail['supplierWorkspaces'],[])
+        self.assertTrue(any(item['role']=='SALES' and item['supplier_id']=='supplier-a'
+                            for item in self.trade.admin_user_detail(self.users['admin'],staff['id'])['supplierWorkspaces']))
         serialized=json.dumps(detail)
         for forbidden in ('qa-private-google-sub','qa-private-password-hash','password_hash','token_hash',
                           'code_hash','registration_no','stored_name','review_reason','metadata'):
@@ -219,15 +221,16 @@ class PlatformFlowTests(unittest.TestCase):
 
     def test_company_profile_http_enforces_workspace_owner_and_origin(self):
         self.approved_vehicle(); self.approved_vehicle('supplier-b')
-        invite = self.trade.team.invite(self.users['supplier-a'],{'email':'buyer-a@example.com'})
-        self.trade.team.accept(self.users['buyer-a'],invite['id'])
+        staff=test_trade.TradeFlowTests.add_sales_staff(self)
+        invite = self.trade.team.invite(self.users['supplier-a'],{'email':staff['email']})
+        self.trade.team.accept(staff,invite['id'])
         Handler = test_trade.Handler
         Handler.service=self.auth; Handler.trade=self.trade; Handler.platform=self.platform
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
         threading.Thread(target=server.serve_forever,daemon=True).start()
         self.addCleanup(server.server_close); self.addCleanup(server.shutdown)
         base='http://127.0.0.1:'+str(server.server_port)+'/autolink/supplier/profile'
-        tokens={key:self.auth.session_for_user(key)['access_token'] for key in ('supplier-a','supplier-b','buyer-a','buyer-b','admin')}
+        tokens={key:self.auth.session_for_user(key)['access_token'] for key in ('supplier-a','supplier-b','buyer-a','buyer-b','admin','sales-staff')}
         def request(account,company=None,body=None,origin='https://autolinkglobal.com'):
             headers={'Content-Type':'application/json','Origin':origin}
             if account:headers['Cookie']='autolink_session='+tokens[account]
@@ -236,11 +239,12 @@ class PlatformFlowTests(unittest.TestCase):
                                           data=None if body is None else json.dumps(body).encode())
         for account,company,body,origin,expected in (
                 (None,None,None,'https://autolinkglobal.com',401),
-                ('buyer-b','supplier-a',None,'https://autolinkglobal.com',404),
+                ('buyer-b','supplier-a',None,'https://autolinkglobal.com',403),
                 ('supplier-b','supplier-a',None,'https://autolinkglobal.com',404),
                 ('admin','supplier-a',None,'https://autolinkglobal.com',403),
                 ('buyer-a','supplier-a',None,'https://autolinkglobal.com',403),
                 ('buyer-a','supplier-a',{'description':'Sales edit'},'https://autolinkglobal.com',403),
+                ('sales-staff','supplier-a',{'description':'Sales edit'},'https://autolinkglobal.com',403),
                 ('supplier-a','supplier-a',{'description':'Cross site'},'https://evil.example',403)):
             with self.subTest(account=account,body=body),self.assertRaises(urllib.error.HTTPError) as raised:
                 urllib.request.urlopen(request(account,company,body,origin))
@@ -331,12 +335,14 @@ class PlatformFlowTests(unittest.TestCase):
 
     def test_buyer_application_does_not_grant_supplier_tools_before_review(self):
         token=self.auth.session_for_user('buyer-a')['access_token']
-        self.assertEqual(self.trade.require_supplier(token,approved=False)['role'],'BUYER')
+        with self.assertRaises(BuyerError) as denied:self.trade.require_supplier(token,approved=False)
+        self.assertEqual(denied.exception.status,403)
         with self.assertRaises(BuyerError):self.trade.require_supplier(token,approved=True)
-        self.approved_vehicle('buyer-a')
-        self.assertEqual(self.trade.require_supplier(token,approved=True)['id'],'buyer-a')
+        with self.assertRaises(BuyerError):self.trade.save_application(self.users['buyer-a'],{
+            'companyName':'Synthetic buyer','registrationNo':'TEST','address':'Test address',
+            'country':'China','contactName':'Buyer','contactPhone':'000000'})
         self.assertEqual(self.auth.user_for_token(token)['role'],'BUYER')
-        self.assertEqual(len(self.trade.vehicle_rows(public=True)),1)
+        self.assertEqual(len(self.trade.vehicle_rows(public=True)),0)
 
     def test_reports_need_verified_identity_and_valid_entity(self):
         listing=self.approved_vehicle()

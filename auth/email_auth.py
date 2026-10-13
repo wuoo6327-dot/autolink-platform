@@ -20,6 +20,17 @@ PASSWORD_ITERATIONS = 600000
 EMAIL_RE = re.compile(r"^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,63}$", re.UNICODE)
 
 
+def account_entry_error(account_role, requested_role):
+    """An existing identity has one role; a sign-in form cannot change it."""
+    if requested_role == 'BUYER' and account_role != 'BUYER':
+        return 'This email belongs to a different account role. Use the appropriate sign-in page.'
+    if requested_role == 'MERCHANT' and account_role == 'BUYER':
+        return 'This email belongs to a buyer account. Use a different email for a supplier account.'
+    if requested_role == 'MERCHANT' and account_role not in ('MERCHANT', 'SUPPLIER', 'PLATFORM_ADMIN'):
+        return 'This email belongs to a different account role. Use the appropriate sign-in page.'
+    return None
+
+
 class EmailError(Exception):
     def __init__(self, status, message):
         super().__init__(message)
@@ -60,6 +71,7 @@ class EmailAuthService:
         self.auth = auth
         self.sender = sender
         self.secret = os.environ.get('AUTH_CODE_SECRET', '').encode() or secrets.token_bytes(32)
+        auth.code_secret = self.secret
         self.migrate_nullable_google_subject()
         with auth.connect() as db:
             db.executescript("""
@@ -194,11 +206,10 @@ class EmailAuthService:
                     # or convert a supplier/admin into a buyer.
                     raise EmailError(409, 'This email already has an account. Sign in or reset your password.')
                 user_id = identity['user_id']
-                if requested_role == 'MERCHANT':
-                    # Supplier sign-in is an explicit workspace choice. Preserve
-                    # account data and review gates while correcting legacy
-                    # accounts created as buyers from the merchant entry.
-                    db.execute("UPDATE users SET role='MERCHANT' WHERE id=? AND role='BUYER' AND status='ACTIVE' AND deleted_at IS NULL", (user_id,))
+                role = db.execute("SELECT role FROM users WHERE id=?", (user_id,)).fetchone()['role']
+                mismatch = account_entry_error(role, requested_role)
+                if mismatch:
+                    raise EmailError(403, mismatch)
             else:
                 if body.get('consent') is not True:
                     raise EmailError(400, "Accept the platform terms to create an account.")
@@ -251,9 +262,9 @@ class EmailAuthService:
             raise EmailError(401, "Invalid email or password.")
         with self.auth.connect() as db:
             db.execute("DELETE FROM email_password_attempts WHERE email_hash=?", (email_hash,))
-            if requested_role == 'MERCHANT':
-                db.execute("UPDATE users SET role='MERCHANT' WHERE id=? AND role='BUYER' AND status='ACTIVE' AND deleted_at IS NULL", (row['user_id'],))
-                row = db.execute("SELECT role,id AS user_id FROM users WHERE id=?", (row['user_id'],)).fetchone()
+            mismatch = account_entry_error(row['role'], requested_role)
+            if mismatch:
+                raise EmailError(403, mismatch)
             db.execute("UPDATE users SET last_login_at=? WHERE id=?", (int(time.time()),row['user_id']))
         return {**self.auth.session_for_user(row['user_id'], bool(body.get('remember'))), 'role':row['role']}
 

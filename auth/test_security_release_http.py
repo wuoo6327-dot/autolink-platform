@@ -117,18 +117,18 @@ class SecurityReleaseHTTPTests(unittest.TestCase):
         self.private_image()
         path = '/autolink/public/vehicle-images/image'
         with patch.dict(os.environ, {'PLATFORM_ADMIN_EMAIL': 'admin@example.com'}):
-            for account in ('buyer', 'admin'):
+            for account in ('legacy', 'admin'):
                 status, headers, body = self.request(path, account=account)
                 self.assertEqual(status, 200)
                 self.assertEqual(body, b'SYNTHETIC PRIVATE IMAGE')
                 self.assertNotIn('X-Robots-Tag', headers)
                 self.assertEqual(headers['Cache-Control'], 'no-store')
-            for account in (None, 'legacy', 'other-admin'):
+            for account in (None, 'buyer', 'other-admin'):
                 with self.subTest(account=account):
                     self.assertEqual(self.request(path, account=account)[0], 404)
             with patch.dict(os.environ, {'PLATFORM_ADMIN_EMAIL': 'other-admin@example.com'}):
                 self.assertEqual(self.request(path, account='admin')[0], 404)
-            for account in ('buyer', 'admin'):
+            for account in ('legacy', 'admin'):
                 with self.auth.connect() as db:
                     db.execute('UPDATE users SET status=? WHERE id=?', ('SUSPENDED', account))
                 self.assertEqual(self.request(path, account=account)[0], 404)

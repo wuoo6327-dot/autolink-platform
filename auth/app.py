@@ -18,7 +18,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from buyer_service import BuyerError, BuyerService
 from pagination import requested_page
-from email_auth import EmailAuthService, EmailError, normalized_email
+from email_auth import EmailAuthService, EmailError, normalized_email, account_entry_error
 from trade_service import TradeService, LISTING_STATES
 from seo_service import PublicSEOService
 from platform_service import PlatformService
@@ -198,12 +198,12 @@ class AuthService:
                 BusinessMailer.enqueue(db,user_id,'WELCOME',user_id,'/buyer' if role=='BUYER' else '/supplier','welcome:'+user_id)
                 user = db.execute("SELECT * FROM users WHERE id=?", (user_id,)).fetchone()
             else:
-                if body.get("role") == "MERCHANT" and user["role"] == "BUYER":
-                    # The verified Google identity is the account identity. A
-                    # supplier login can correct legacy buyers created from the
-                    # old merchant entry without bypassing supplier review.
-                    db.execute("UPDATE users SET role='MERCHANT' WHERE id=? AND role='BUYER' AND status='ACTIVE' AND deleted_at IS NULL", (user["id"],))
-                    user = db.execute("SELECT * FROM users WHERE id=?", (user["id"],)).fetchone()
+                requested_role = body.get('role', 'MERCHANT')
+                if requested_role not in ('BUYER', 'MERCHANT'):
+                    raise ApiError(400, 'Invalid account role.')
+                mismatch = account_entry_error(user['role'], requested_role)
+                if mismatch:
+                    raise ApiError(403, mismatch)
                 db.execute("UPDATE users SET last_login_at=?,email_verified_at=COALESCE(email_verified_at,?) WHERE id=?", (int(time.time()),int(time.time()), user["id"]))
         return {**self.session_for_user(user["id"], bool(body.get("remember"))), "role": user["role"]}
 
@@ -969,6 +969,10 @@ class Handler(BaseHTTPRequestHandler):
             data = self.trade.admin_user_detail(user, tail.split("/", 1)[1])
         elif method == "POST" and tail.startswith("users/") and tail.endswith("/status"):
             data = self.trade.user_status(user, tail.split("/")[1], self.read_body())
+        elif method == "POST" and re.fullmatch(r"users/[^/]+/clear-supplier-access", tail):
+            data = self.trade.clear_supplier_access(user, tail.split('/')[1], self.read_body())
+        elif method == "POST" and re.fullmatch(r"users/[^/]+/erase-personal-data", tail):
+            data = self.trade.erase_user_personal_data(user, tail.split('/')[1], self.read_body())
         elif method == "GET" and tail == "support":
             data = self.platform.tickets(page=self.list_page())
         elif method == "POST" and tail.startswith("support/"):

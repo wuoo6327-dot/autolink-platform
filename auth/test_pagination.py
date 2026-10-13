@@ -99,12 +99,13 @@ class BusinessPaginationTests(unittest.TestCase):
         other=self.trade.create_inquiry(self.users['buyer-b'],{
             'listingId':self.listing,'quantity':2,'destinationCountry':'UAE'})
         self.trade.create_quote(self.owner,other['id'],{'unitPriceMinor':1,'validUntil':str(date.today()),'send':True})
-        invite=self.trade.team.invite(self.owner,{'email':self.users['buyer-b']['email']})
-        self.trade.team.accept(self.users['buyer-b'],invite['id'])
-        sales=self.trade.team.principal(self.users['buyer-b'],self.owner['id'],approved=True)
+        staff=test_trade.TradeFlowTests.add_sales_staff(self)
+        invite=self.trade.team.invite(self.owner,{'email':staff['email']})
+        self.trade.team.accept(staff,invite['id'])
+        sales=self.trade.team.principal(staff,self.owner['id'],approved=True)
         self.assertEqual(self.trade.quote_rows(sales,True,page=1)['total'],0)
         self.assertEqual(self.trade.supplier_inquiries(sales,page=1)['total'],0)
-        self.trade.team.assign(self.owner,self.buyer['id'],{'userId':'buyer-b'})
+        self.trade.team.assign(self.owner,self.buyer['id'],{'userId':staff['id']})
         for method in (lambda p:self.trade.quote_rows(sales,True,page=p),lambda p:self.trade.supplier_inquiries(sales,page=p)):
             data=method(9)
             self.assertEqual((data['total'],len(data['items'])),(225,25))
@@ -115,7 +116,7 @@ class BusinessPaginationTests(unittest.TestCase):
         self.trade.team.assign(self.owner,self.buyer['id'],{'userId':''})
         self.assertEqual(self.trade.quote_rows(sales,True,page=9)['total'],0)
         self.assertEqual(self.trade.supplier_inquiries(sales,page=9)['items'],[])
-        self.trade.team.remove(self.owner,'buyer-b')
+        self.trade.team.remove(self.owner,staff['id'])
         with self.assertRaises(BuyerError):self.trade.quote_rows(sales,True,page=1)
 
     def test_private_vehicle_pages_keep_status_filter_public_redaction_and_stable_order(self):

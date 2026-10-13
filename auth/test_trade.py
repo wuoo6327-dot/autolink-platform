@@ -49,6 +49,14 @@ class TradeFlowTests(unittest.TestCase):
         self.users = {account: self.auth.user_for_token(self.auth.session_for_user(account)["access_token"])
                       for account in ("buyer-a", "buyer-b", "supplier-a", "supplier-b", "admin")}
 
+    def add_sales_staff(self, account='sales-staff'):
+        with self.auth.connect() as db:
+            db.execute("INSERT INTO users(id,email,display_name,company_name,role,created_at,email_verified_at) "
+                       "VALUES (?,?,?,?,?,?,?)", (account, account+'@example.com', account,
+                       'Synthetic supplier staff', 'MERCHANT', int(time.time()), int(time.time())))
+        self.users[account] = self.auth.user_for_token(self.auth.session_for_user(account)['access_token'])
+        return self.users[account]
+
     def add_application_evidence(self, owner):
         output = io.BytesIO()
         Image.new('RGB', (240, 240), 'grey').save(output, 'PNG')
@@ -525,33 +533,35 @@ class TradeFlowTests(unittest.TestCase):
 
     def test_supplier_quote_detail_is_scoped_to_assigned_active_sales(self):
         owner,buyer=self.users['supplier-a'],self.users['buyer-a'];listing=self.approved_vehicle()
+        staff=self.add_sales_staff()
         inquiry=self.trade.create_inquiry(buyer,{'listingId':listing,'quantity':2,'destinationCountry':'Kenya'})
         quote=self.trade.create_quote(owner,inquiry['id'],{'unitPriceMinor':1850000,
             'validUntil':str(date.today().replace(year=date.today().year+1))})
-        invitation=self.trade.team.invite(owner,{'email':'buyer-b@example.com'})
-        self.trade.team.accept(self.users['buyer-b'],invitation['id'])
-        sales=self.trade.team.principal(self.users['buyer-b'],'supplier-a',True)
+        invitation=self.trade.team.invite(owner,{'email':staff['email']})
+        self.trade.team.accept(staff,invitation['id'])
+        sales=self.trade.team.principal(staff,'supplier-a',True)
         with self.assertRaises(BuyerError):self.trade.supplier_quote(sales,quote['id'])
-        self.trade.team.assign(owner,buyer['id'],{'userId':'buyer-b'})
+        self.trade.team.assign(owner,buyer['id'],{'userId':staff['id']})
         self.assertEqual(self.trade.supplier_quote(sales,quote['id'])['buyer_company'],buyer['company_name'])
         with self.assertRaises(BuyerError):self.trade.supplier_quote(self.users['supplier-b'],quote['id'])
-        self.trade.team.remove(owner,'buyer-b')
+        self.trade.team.remove(owner,staff['id'])
         with self.assertRaises(BuyerError):self.trade.supplier_quote(sales,quote['id'])
 
     def test_lifecycle_http_routes_enforce_owner_assignment_and_csrf(self):
         owner,buyer=self.users['supplier-a'],self.users['buyer-a'];listing=self.approved_vehicle()
+        staff=self.add_sales_staff()
         inquiry=self.trade.create_inquiry(buyer,{'listingId':listing,'quantity':2,'destinationCountry':'Kenya'})
         quote=self.trade.create_quote(owner,inquiry['id'],{'unitPriceMinor':1850000,
             'validUntil':str(date.today().replace(year=date.today().year+1))})
-        invitation=self.trade.team.invite(owner,{'email':'buyer-b@example.com'})
-        self.trade.team.accept(self.users['buyer-b'],invitation['id'])
-        self.trade.team.assign(owner,buyer['id'],{'userId':'buyer-b'})
+        invitation=self.trade.team.invite(owner,{'email':staff['email']})
+        self.trade.team.accept(staff,invitation['id'])
+        self.trade.team.assign(owner,buyer['id'],{'userId':staff['id']})
         class TestHandler(Handler):pass
         TestHandler.service=self.auth;TestHandler.trade=self.trade;TestHandler.platform=self.trade.platform
         server=ThreadingHTTPServer(('127.0.0.1',0),TestHandler)
         threading.Thread(target=server.serve_forever,daemon=True).start()
         self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
-        tokens={key:self.auth.session_for_user(key)['access_token'] for key in ('supplier-a','supplier-b','buyer-a','buyer-b')}
+        tokens={key:self.auth.session_for_user(key)['access_token'] for key in ('supplier-a','supplier-b','buyer-a','buyer-b','sales-staff')}
         def call(user,tail,method='GET',company='supplier-a',origin=None):
             headers={'Cookie':'autolink_session='+tokens[user],'X-Autolink-Supplier':company,'Content-Type':'application/json'}
             if origin:headers['Origin']=origin
@@ -560,9 +570,9 @@ class TradeFlowTests(unittest.TestCase):
             try:response=urllib.request.urlopen(request)
             except urllib.error.HTTPError as error:response=error
             with response:return response.status,json.loads(response.read())
-        self.assertEqual(call('buyer-b','quotes/'+quote['id'])[0],200)
-        self.assertEqual(call('buyer-b','vehicles/'+listing+'/copy','POST')[0],403)
-        self.assertEqual(call('buyer-b','vehicles/'+listing+'/restore','POST')[0],403)
+        self.assertEqual(call('sales-staff','quotes/'+quote['id'])[0],200)
+        self.assertEqual(call('sales-staff','vehicles/'+listing+'/copy','POST')[0],403)
+        self.assertEqual(call('sales-staff','vehicles/'+listing+'/restore','POST')[0],403)
         self.assertEqual(call('supplier-b','quotes/'+quote['id'],company='supplier-b')[0],403)
         self.assertEqual(call('supplier-a','vehicles/'+listing+'/copy','POST',origin='https://other.example')[0],403)
         status,result=call('supplier-a','vehicles/'+listing+'/copy','POST')
@@ -572,8 +582,8 @@ class TradeFlowTests(unittest.TestCase):
         self.assertEqual(call('supplier-a','vehicles/'+copied)[1]['data']['status'],'ARCHIVED')
         self.assertEqual(call('supplier-a','vehicles/'+copied+'/restore','POST')[1]['data']['status'],'DRAFT')
         self.assertEqual(call('supplier-a','vehicles?status=BAD')[0],400)
-        self.trade.team.remove(owner,'buyer-b')
-        self.assertEqual(call('buyer-b','quotes/'+quote['id'])[0],404)
+        self.trade.team.remove(owner,staff['id'])
+        self.assertEqual(call('sales-staff','quotes/'+quote['id'])[0],404)
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ class DocumentUploadTests(unittest.TestCase):
                 'base64':base64.b64encode(b'%PDF-1.4\n1 0 obj << >> endobj\n%%EOF').decode()}
 
     def test_upload_first_creates_only_private_draft_and_keeps_role(self):
-        user=self.users['buyer-a']
+        user=self.users['supplier-a']
         saved=self.trade.add_document(user,self.body())
         self.assertEqual(self.trade.documents(user['id'])[0]['id'],saved['id'])
         application=self.trade.application(user)
@@ -26,7 +26,7 @@ class DocumentUploadTests(unittest.TestCase):
         self.assertEqual(application['registration_no'],'')
         self.assertIsNone(application['agreementConfirmation'])
         with self.auth.connect() as db:
-            self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(user['id'],)).fetchone()[0],'BUYER')
+            self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(user['id'],)).fetchone()[0],'MERCHANT')
             self.assertEqual(db.execute('SELECT published FROM supplier_profiles WHERE user_id=?',(user['id'],)).fetchone()[0],0)
             self.assertEqual(db.execute('SELECT count(*) FROM supplier_documents WHERE supplier_id=?',(user['id'],)).fetchone()[0],1)
         with self.assertRaises(BuyerError):self.trade.document_bytes(saved['id'],self.users['supplier-b'])
@@ -52,7 +52,7 @@ class DocumentUploadTests(unittest.TestCase):
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
         threading.Thread(target=server.serve_forever,daemon=True).start()
         self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
-        token=self.auth.session_for_user('buyer-a')['access_token']
+        token=self.auth.session_for_user('supplier-a')['access_token']
         def call(path,body=None,cookie=token,company=None,origin=None):
             headers={'Content-Type':'application/json','Cookie':'autolink_session='+cookie}
             if company:headers['X-Autolink-Supplier']=company

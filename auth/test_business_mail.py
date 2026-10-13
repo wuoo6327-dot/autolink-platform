@@ -171,7 +171,9 @@ class BusinessMailTests(unittest.TestCase):
         with self.auth.connect() as db:self.assertEqual(db.execute("SELECT status FROM users WHERE id='buyer-a'").fetchone()[0],'ACTIVE')
 
     def test_team_invitation_and_revoked_sales_notifications_are_scoped(self):
-        self.approved_vehicle();owner=self.users['supplier-a'];recipient=self.users['buyer-b']
+        self.approved_vehicle();owner=self.users['supplier-a']
+        with self.auth.connect() as db:db.execute("UPDATE users SET role='MERCHANT' WHERE id='buyer-b'")
+        recipient=self.auth.user_for_token(self.auth.session_for_user('buyer-b')['access_token'])
         invite=self.trade.team.invite(owner,{'email':recipient['email']})
         sender=Mock(return_value='qa-accepted');mailer=BusinessMailer(self.auth,sender=sender)
         self.assertEqual(mailer.process_once(limit=20),3)

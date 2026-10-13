@@ -58,7 +58,7 @@ class SupplierTeam:
                    (identity('AUD'), actor, company, action, 'team', entity, int(time.time()), ''))
 
     def contexts(self, user):
-        if not user['email_verified_at'] or user['role'] not in ('BUYER', 'MERCHANT', 'SUPPLIER'):
+        if not user['email_verified_at'] or user['role'] not in ('MERCHANT', 'SUPPLIER'):
             raise BuyerError(403, 'A verified business account is required.')
         with self.auth.connect() as db:
             own = db.execute('SELECT status FROM supplier_applications WHERE supplier_id=?', (user['id'],)).fetchone()
@@ -92,6 +92,8 @@ class SupplierTeam:
         return result
 
     def invitations(self, user):
+        if user['role'] not in ('MERCHANT','SUPPLIER'):
+            return []
         with self.auth.connect() as db:
             return [dict(row) for row in db.execute('''SELECT i.id,i.supplier_id,u.company_name,i.created_at,i.expires_at
                 FROM supplier_team_invites i JOIN users u ON u.id=i.supplier_id
@@ -124,7 +126,10 @@ class SupplierTeam:
             owner_email = db.execute('SELECT email FROM users WHERE id=?', (supplier['id'],)).fetchone()[0]
             if email == owner_email:
                 raise BuyerError(400, 'You cannot invite your own account.')
-            recipient = db.execute("SELECT id FROM users WHERE email=? AND status='ACTIVE' AND deleted_at IS NULL AND email_verified_at IS NOT NULL AND role IN ('BUYER','MERCHANT','SUPPLIER')", (email,)).fetchone()
+            existing_account = db.execute("SELECT id,role,status,deleted_at,email_verified_at FROM users WHERE lower(email)=?", (email,)).fetchone()
+            if existing_account and existing_account['role'] == 'BUYER':
+                raise BuyerError(409, 'This email cannot be used for supplier staff. Ask the recipient to use a separate supplier email.')
+            recipient = existing_account if existing_account and existing_account['status']=='ACTIVE' and existing_account['deleted_at'] is None and existing_account['email_verified_at'] is not None else None
             if recipient and db.execute("SELECT 1 FROM supplier_team_members WHERE supplier_id=? AND user_id=? AND status='ACTIVE'", (supplier['id'], recipient['id'])).fetchone():
                 raise BuyerError(409, 'This account is already a team member.')
             if db.execute("SELECT 1 FROM supplier_team_invites WHERE supplier_id=? AND email=? AND status='PENDING' AND expires_at>?", (supplier['id'], email, now)).fetchone():
@@ -143,12 +148,12 @@ class SupplierTeam:
         return {'id': invitation, 'status': 'PENDING'}
 
     def accept(self, user, invitation):
-        if not user['email_verified_at'] or user['role'] not in ('BUYER', 'MERCHANT', 'SUPPLIER'):
+        if not user['email_verified_at'] or user['role'] not in ('MERCHANT', 'SUPPLIER'):
             raise BuyerError(403, 'Verify your account before accepting a team invitation.')
         now = int(time.time())
         with self.auth.connect() as db:
             db.execute('BEGIN IMMEDIATE')
-            current = db.execute("SELECT email FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL AND email_verified_at IS NOT NULL AND role IN ('BUYER','MERCHANT','SUPPLIER')", (user['id'],)).fetchone()
+            current = db.execute("SELECT email FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL AND email_verified_at IS NOT NULL AND role IN ('MERCHANT','SUPPLIER')", (user['id'],)).fetchone()
             if not current or current['email'] != user['email']:
                 raise BuyerError(403, 'Verify your account before accepting a team invitation.')
             row = db.execute('''SELECT i.* FROM supplier_team_invites i
@@ -222,7 +227,7 @@ class SupplierTeam:
             JOIN users o ON o.id=m.supplier_id JOIN supplier_applications a ON a.supplier_id=m.supplier_id
             WHERE m.supplier_id=? AND m.user_id=? AND m.status='ACTIVE' AND u.status='ACTIVE'
             AND u.email_verified_at IS NOT NULL AND u.deleted_at IS NULL
-            AND u.role IN ('BUYER','MERCHANT','SUPPLIER') AND o.status='ACTIVE'
+            AND u.role IN ('MERCHANT','SUPPLIER') AND o.status='ACTIVE'
             AND o.deleted_at IS NULL AND o.email_verified_at IS NOT NULL
             AND o.role IN ('MERCHANT','SUPPLIER') AND a.status='APPROVED' ''', (supplier['id'], actor)).fetchone():
             raise BuyerError(403, 'Supplier membership is no longer active.')

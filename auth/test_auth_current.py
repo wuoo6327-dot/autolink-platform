@@ -107,7 +107,7 @@ class CurrentAuthTests(unittest.TestCase):
             self.assertEqual(db.execute('SELECT role FROM users WHERE id=?',(user['id'],)).fetchone()[0],'MERCHANT')
             self.assertEqual(db.execute('SELECT count(*) FROM email_passwords').fetchone()[0],0)
             self.assertEqual(db.execute('SELECT count(*) FROM buyer_profiles').fetchone()[0],0)
-        logged=self.email.login_code({'email':body['email'],'code':code})
+        logged=self.email.login_code({'email':body['email'],'code':code,'role':'MERCHANT'})
         self.assertEqual(self.auth.user_for_token(logged['access_token'])['id'],user['id'])
         self.assertEqual(logged['role'],'MERCHANT')
 
@@ -231,7 +231,7 @@ class CurrentAuthTests(unittest.TestCase):
         google = self.auth.google_login(self.google_body(companyName='Example', consent=True))
         google_id = self.auth.user_for_token(google['access_token'])['id']
         code = self.code('google@example.com')
-        email = self.email.login_code({'email': 'google@example.com', 'code': code})
+        email = self.email.login_code({'email': 'google@example.com', 'code': code, 'role':'MERCHANT'})
         self.assertEqual(self.auth.user_for_token(email['access_token'])['id'], google_id)
         self.assertEqual(email['role'], 'MERCHANT')
 
@@ -250,10 +250,9 @@ class CurrentAuthTests(unittest.TestCase):
         returned = self.auth.google_login(self.google_body())
         self.assertEqual(self.auth.user_for_token(returned['access_token'])['id'],
                          self.auth.user_for_token(session['access_token'])['id'])
-        buyer_entry = self.auth.google_login(self.google_body(role='BUYER'))
-        self.assertEqual(buyer_entry['role'], 'MERCHANT')
-        self.assertEqual(self.auth.user_for_token(buyer_entry['access_token'])['id'],
-                         self.auth.user_for_token(session['access_token'])['id'])
+        with self.assertRaises(ApiError) as buyer_entry:
+            self.auth.google_login(self.google_body(role='BUYER'))
+        self.assertEqual(buyer_entry.exception.status, 403)
 
     def test_code_bad_attempt_limit_expiry_cooldown_and_rate_limit(self):
         code = self.code()

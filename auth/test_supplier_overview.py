@@ -19,6 +19,9 @@ class SupplierOverviewTests(unittest.TestCase):
 
     def setUp(self):
         test_trade.TradeFlowTests.setUp(self)
+        with self.auth.connect() as db:
+            db.execute("UPDATE users SET role='MERCHANT' WHERE id='buyer-b'")
+        self.users['buyer-b']=self.auth.user_for_token(self.auth.session_for_user('buyer-b')['access_token'])
         self.listing = self.approved_vehicle()
         self.owner = self.users['supplier-a']
         self.buyer = self.users['buyer-a']
@@ -134,7 +137,7 @@ class SupplierOverviewTests(unittest.TestCase):
         now = int(time.time())
         for account, changes in (
             ('supplier-a', ["status='SUSPENDED'", "role='BUYER'", 'deleted_at=1', 'email_verified_at=NULL']),
-            ('buyer-b', ["status='SUSPENDED'", "role='PLATFORM_ADMIN'", 'deleted_at=1', 'email_verified_at=NULL']),
+            ('buyer-b', ["status='SUSPENDED'", "role='BUYER'", "role='PLATFORM_ADMIN'", 'deleted_at=1', 'email_verified_at=NULL']),
         ):
             for change in changes:
                 with self.subTest(account=account, change=change):
@@ -146,7 +149,7 @@ class SupplierOverviewTests(unittest.TestCase):
                         self.assertEqual(denied.exception.status, 403)
                     with self.auth.connect() as db:
                         db.execute("UPDATE users SET status='ACTIVE',role=?,deleted_at=NULL,email_verified_at=? WHERE id=?",
-                            ('MERCHANT' if account=='supplier-a' else 'BUYER', now, account))
+                            ('MERCHANT', now, account))
         with self.auth.connect() as db:
             db.execute("UPDATE supplier_applications SET status='SUSPENDED' WHERE supplier_id='supplier-a'")
         for principal in (self.owner, sales):

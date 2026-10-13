@@ -97,7 +97,7 @@ class SupplierAgreementService:
             raise BuyerError(409, 'Agreement version changed. Reload before confirming.')
         with self.auth.connect() as db:
             db.execute('BEGIN IMMEDIATE')
-            actor = db.execute("SELECT * FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL AND email_verified_at IS NOT NULL AND is_test_workspace=0 AND role IN ('BUYER','MERCHANT','SUPPLIER')", (user['id'],)).fetchone()
+            actor = db.execute("SELECT * FROM users WHERE id=? AND status='ACTIVE' AND deleted_at IS NULL AND email_verified_at IS NOT NULL AND is_test_workspace=0 AND role IN ('MERCHANT','SUPPLIER')", (user['id'],)).fetchone()
             if not actor:
                 raise BuyerError(403, 'A verified active supplier account is required.')
             application = db.execute('SELECT registration_no,address,status FROM supplier_applications WHERE supplier_id=?', (user['id'],)).fetchone()

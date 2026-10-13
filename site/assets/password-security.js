@@ -9,7 +9,7 @@
     <div class="form-actions"><button class="btn" type="submit">${esc(text('Save Password'))}</button></div>
     <div class="wide" data-password-status role="status" aria-live="polite"></div>
     <p class="notice wide">${esc(text('Changing your password signs out all devices.'))}</p>
-    <a class="wide" href="/merchant/login?reset=1">${esc(text('Forgot password'))}</a>
+    <a class="wide" href="${location.pathname.startsWith('/buyer')?'/buyer/login?reset=1':'/merchant/login?reset=1'}">${esc(text('Forgot password'))}</a>
   </form>`;
   document.addEventListener('submit', async event => {
     const form = event.target;
@@ -31,7 +31,7 @@
       form.reset();
       if (result.data?.signedOut) {
         status.textContent = text('Password changed. All devices are signed out.');
-        const link = document.createElement('a'); link.className = 'button-link'; link.href = '/merchant/login'; link.textContent = text('Sign in again'); status.append(document.createElement('br'),link);
+        const link = document.createElement('a'); link.className = 'button-link'; link.href = location.pathname.startsWith('/buyer')?'/buyer/login':'/merchant/login'; link.textContent = text('Sign in again'); status.append(document.createElement('br'),link);
         form.querySelectorAll('input').forEach(input => input.disabled = true);
       } else {location.reload();}
     } catch (error) {status.textContent = window.businessI18n.apiError?.(error,response?.status).message || text(error.message);button.disabled = false;form.dataset.busy = 'no';}
