@@ -40,7 +40,9 @@ GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `sour
 
 ## 尚未达到真实收款上线门槛
 
-2026-10-17 追加只读复核：生产服务器的专用 live env 仍为 `STRIPE_LIVE_RELEASE_READY=false`、`STRIPE_CARD_ENABLED=false`、`STRIPE_SUPPLIER_LISTING_ENABLED=false`，两条正式 Webhook 签名密钥均为空。Stripe 正式账户 Workbench 的 Webhook 页面显示尚未配置事件接收端。原先命名为 “AUTOLINK Card and Link Release” 的专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b`，当前界面显示银行卡、支付宝、Apple Pay、Google Pay、Link 五种方式为已启用，已偏离本候选仅允许银行卡／Link 的隔离验收状态；候选后端会拒绝返回了非许可支付方式的 Checkout Session。所有者要求优先开放真实付款，但这两项技术门槛未通过，且五页法律文本仍标为待审稿；本次没有切换生产，也没有真实扣款。
+2026-10-17 追加只读复核：生产服务器的专用 live env 仍为 `STRIPE_LIVE_RELEASE_READY=false`、`STRIPE_CARD_ENABLED=false`、`STRIPE_SUPPLIER_LISTING_ENABLED=false`，两条正式 Webhook 签名密钥均为空。复核时 Stripe 正式账户 Workbench 尚未配置事件接收端。原先命名为 “AUTOLINK Card and Link Release” 的专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b`，当前界面显示银行卡、支付宝、Apple Pay、Google Pay、Link 五种方式为已启用，已偏离本候选仅允许银行卡／Link 的隔离验收状态；候选后端会拒绝返回了非许可支付方式的 Checkout Session。所有者要求优先开放真实付款，但这两项技术门槛未通过，且五页法律文本仍标为待审稿；本次没有切换生产，也没有真实扣款。
+
+2026-10-17 晚间 Webhook 进展：经所有者在生成凭据前单独授权，Stripe 正式账户已创建买家会员事件接收端 `we_1URasbD11yCRmchaiBss9Gso`，地址 `https://autolinkglobal.com/autolink/payments/webhooks/stripe`，来源为商户自身账户，快照事件共五类：`checkout.session.completed`、`checkout.session.expired`、`charge.refunded`、`charge.dispute.created`、`charge.dispute.closed`。Stripe 显示接收端“使用中”，事件交付总数 0、失败 0；签名密钥未显示或读取，也尚未写入服务器专用 live env。供应商接收端的同五类事件与独立地址已填入创建表单，尚未提交。公网两个 Webhook 地址的 HEAD 请求均返回 HTTP 405，表明路由存在且只接受 POST；这不能替代带有效 Stripe 签名的投递测试。生产支付开关未更改，未发生真实扣款。
 
 2026-10-17 R2 补充：根据所有者提供的五页 R1 内部审阅稿和后续确认，候选法律页已补入公司编号、完整商业登记证号码、公司提供的注册办事处地址、客服邮箱及电话；会员页明确首年 USD 39.99、其后每年手动续费 USD 99.99；账号删除页明确核实后 1–3 个工作日受理并关闭账号，保留资料的清理期限另待审。已使用的九语言会员 UI 包也把年度首购展示更正为 USD 39.99，并更新静态资源版本。`docs/AUTOLINK_五页法律条款R1核对与R2修订清单.md` 列出五页 R2 全文位置与剩余决策。所有者确认没有法务终稿，适用法律与争议解决条款仍待审；因此这仍是未生效候选，正式扣款和部署未发生。账号删除与供应商协议前端的 27 项测试、会员定价资源检查、后端会员相关 22 项测试均通过；最终 AMD64 镜像、生产备份和回滚仍需按本报告门槛重新验收。
 
@@ -53,7 +55,7 @@ GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `sour
 7. 供应商提出企业发票需求。候选已在已付款订单旁加入“申请发票”，通过现有支持单收集订单号、企业抬头、适用登记号、账单地址和接收邮箱，明确由人工核对付款与退款后出具香港公司商业发票。尚无自动发票编号、下载入口或退款后自动更正；香港商业发票不能冒充中国大陆增值税专用发票。Stripe Checkout 的自动生成已付发票是另一个可选方案，香港公开价格当前为交易额的 0.4%，每张封顶 USD 2；**尚未启用，也未计入本候选成本**。需先核对商户实际合同价格、受限密钥权限、收件人字段和财务流程，再决定是否启用；不能静默增加收费功能。
 8. 生产法律页 `/terms`、`/membership-terms`、`/privacy` 等仍显示“预览稿／待确认”，其中包含未定稿的生效日、个人资料留存期限及争议条款。新上架服务页不能替代这些通用文件；现有已签署的供应商入驻协议带版本和内容指纹，不得原地改写。正式收款前需完成这些具体条款的审定与版本发布，不能因公司证书已提供而跳过。
 9. 已完成生产只读预备份、归档哈希、隔离恢复和旧镜像本机回滚预演。正式切换前仍需在维护窗口制作当时最新的一致性数据库和上传文件备份，并在目标主机验证最终候选镜像及回滚流程。该过程尚未修改生产数据或容器。
-10. 正式受限密钥与专用银行卡／Link 配置已经创建并在服务器核验，不能再将其列为“尚未创建”。两条正式 Webhook 签名密钥尚未创建或写入。正式账户返回 `charges_enabled=true` 只证明 Stripe 账户状态，不证明 AUTOLINK 已完成正式支付链路验收。
+10. 正式受限密钥与专用支付方式配置已经创建并在服务器核验，不能再将其列为“尚未创建”。买家 Webhook 接收端已创建，但其签名密钥尚未写入服务器；供应商 Webhook 尚未创建，两条服务器签名密钥配置仍为空。正式账户返回 `charges_enabled=true` 只证明 Stripe 账户状态，不证明 AUTOLINK 已完成正式支付链路验收。
 
 ### 服务器扩容后复核
 
