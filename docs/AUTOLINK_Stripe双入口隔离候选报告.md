@@ -27,6 +27,8 @@
 
 候选镜像以 `linux/amd64` 构建并保存在本机，标签 `autolink-stripe-both:qa-20261017`；本地 OCI manifest list 身份为 `sha256:252202c7962de23d46d594a7408ecedd6e12880379bc12682c80076d35e1cb22`，不冒充远程 Registry Manifest Digest。压缩归档位于 `/Users/oo/Documents/ChatGPT/Space Auto/deployment/artifacts/stripe-both-20261017/autolink-stripe-both-qa-amd64.tar.gz`，SHA256 为 `5d03da09a0da83da84d405e78acf1cfd689c51b4531c2b18ff78d2c396036c79`。阿里云加载后读取的镜像身份、架构与本机一致；镜像内 `app.py` 和两项支付模块的 SHA256 与提交源文件逐项一致。它只作为隔离验收镜像，未接入生产 Compose。
 
+为控制阿里云磁盘使用，原生 AMD64 验收完成后仅删除本次隔离 QA 镜像标签；本机固定归档保留，运行中的生产 Auth 和 Web 容器继续保持健康。
+
 ## 尚未达到真实收款上线门槛
 
 1. 会员法律页面仍标注“预览稿／企业资料待确认”，客服联系方式待确认；价格及退款、取消条款须由所有者审定。不能用 Stripe 实名完成替代服务条款审核。
