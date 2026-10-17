@@ -1,0 +1,12 @@
+title = "AUTOLINK payment candidate secret scan"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Two immutable SHA-256 file hashes in the existing release lock"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)release-lock\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"(?:email_auth\.py|authDockerfileSHA256)"\s*:\s*"[a-f0-9]{64}"\s*,?\s*$''']

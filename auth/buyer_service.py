@@ -141,10 +141,21 @@ class BuyerService:
 
     @staticmethod
     def membership(db, user_id):
-        row = db.execute("SELECT * FROM buyer_memberships WHERE user_id=? ORDER BY end_at DESC LIMIT 1", (user_id,)).fetchone()
+        now = int(time.time())
+        # Show the paid-through date of a queued renewal while an earlier paid
+        # period is active. A refunded renewal must not hide that earlier period.
+        active = db.execute(
+            "SELECT 1 FROM buyer_memberships WHERE user_id=? AND status='ACTIVE' "
+            "AND start_at<=? AND end_at>? LIMIT 1", (user_id, now, now)
+        ).fetchone()
+        row = db.execute(
+            "SELECT * FROM buyer_memberships WHERE user_id=? "
+            "ORDER BY CASE WHEN status='ACTIVE' THEN 0 ELSE 1 END,end_at DESC LIMIT 1",
+            (user_id,)
+        ).fetchone()
         if not row:
             return {"status": "FREE", "plan": None, "startAt": None, "endAt": None, "autoRenew": False}
-        status = "ACTIVE" if row["status"] == "ACTIVE" and row["end_at"] > int(time.time()) else "EXPIRED"
+        status = "ACTIVE" if active else "EXPIRED"
         return {"status": status, "plan": row["plan"], "startAt": row["start_at"],
                 "endAt": row["end_at"], "autoRenew": bool(row["auto_renew"])}
 
