@@ -254,12 +254,12 @@ async function header(options = {}) {
 const business = role => ({role, nickName: 'Synthetic account', capabilities: {buyer: true, supplier: true, admin: false}});
 
 for (const [role, pathname] of [['BUYER', '/supplier/application'], ['MERCHANT', '/buyer/profile']])
-  test(`Header Cookie dual workspace ${role} preserves protected pathname without forced redirects`, async () => {
+  test(`Header Cookie single-role ${role} preserves protected pathname without forced redirects`, async () => {
     const h = await header({responses: [reply(business(role))], pathname, stored: {'autolink-business-session': legacy}});
     assert.equal(h.calls.length, 1); assert.equal(h.calls[0].options.headers?.Authorization, undefined);
     for (const n of h.navigation) {
       assert.equal(n.account.href, role === 'BUYER' ? '/buyer' : '/supplier');
-      assert.equal(n.supplier.href, '/supplier/application'); assert.equal(n.supplier.hidden, false);
+      assert.equal(n.supplier.href, '/merchant/login'); assert.equal(n.supplier.hidden, true);
     }
     assert.equal(h.location.pathname, pathname); assert.equal(h.navigations.length, 0);
     assert.equal(h.local.get('autolink-cookie-session'), '1');

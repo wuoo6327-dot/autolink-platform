@@ -24,6 +24,8 @@ from seo_service import PublicSEOService
 from platform_service import PlatformService
 from business_mail import BusinessMailer
 from mail_templates import language_code
+from membership_payments import MembershipPaymentService
+from supplier_listing_payments import SupplierListingPayments
 
 
 CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
@@ -332,7 +334,17 @@ class Handler(BaseHTTPRequestHandler):
     trade: TradeService
     platform: PlatformService
     seo: PublicSEOService
+    payments: MembershipPaymentService
+    supplier_payments: SupplierListingPayments
     server_version = "AUTOLINKAuth/1.0"
+
+    def payment_service(self):
+        instance = getattr(self, "payments", None)
+        return instance if instance is not None else MembershipPaymentService(self.service)
+
+    def supplier_payment_service(self):
+        instance = getattr(self, "supplier_payments", None)
+        return instance if instance is not None else SupplierListingPayments(self.trade)
 
     def log_message(self, format, *args):
         # Never log bearer tokens or Google credentials.
@@ -442,6 +454,15 @@ class Handler(BaseHTTPRequestHandler):
             raise ApiError(400, "JSON object required.")
         return body
 
+    def read_payment_webhook(self):
+        try:
+            size = int(self.headers.get("Content-Length", "0"))
+        except ValueError as exc:
+            raise ApiError(400, "Invalid webhook length.") from exc
+        if size < 1 or size > 65536:
+            raise ApiError(413, "Invalid webhook length.")
+        return self.rfile.read(size)
+
     def check_test_workspace(self, method, path):
         # Provisioned test accounts can edit their own drafts; they cannot contact
         # real buyers, join another team, sign an agreement or publish listings.
@@ -473,6 +494,14 @@ class Handler(BaseHTTPRequestHandler):
 
     def handle_request(self, method: str):
         path = urlsplit(self.path).path
+        if method == "POST" and path == "/autolink/payments/webhooks/stripe":
+            self.send_json(200, self.payment_service().webhook(
+                "stripe", self.read_payment_webhook(), self.headers))
+            return
+        if method == "POST" and path == "/autolink/supplier/payments/webhooks/stripe":
+            self.send_json(200, self.supplier_payment_service().webhook(
+                self.read_payment_webhook(), self.headers))
+            return
         self.check_test_workspace(method, path)
         if method in ("POST", "PUT", "DELETE"):
             self.check_origin()
@@ -716,6 +745,11 @@ class Handler(BaseHTTPRequestHandler):
             data = self.buyer.mark_read(user, tail.split("/")[1])
         elif method == "GET" and tail == "membership":
             data = self.buyer.membership_page(user)
+            data["pricing"] = self.payment_service().pricing(user)
+            data["orders"] = self.payment_service().orders(user)
+            data["checkoutAvailable"] = data["pricing"]["methods"]["stripe_card"]["available"]
+        elif method == "POST" and tail == "membership/checkout":
+            data = self.payment_service().create_checkout(user, self.read_body())
         elif method == "GET" and tail == "entitlements":
             data = self.platform.entitlements(user)
         elif method == "GET" and tail == "security":
@@ -857,6 +891,15 @@ class Handler(BaseHTTPRequestHandler):
             data = self.trade.vehicle_rows(supplier_id=user["id"],public=user["supplier_role"]=="SALES",status=status,limit=200,page=self.list_page())
         elif method == "POST" and tail == "vehicles":
             data = self.trade.save_vehicle(user, self.read_body())
+        elif method == "GET" and tail == "listing-payments":
+            with self.service.connect() as db:
+                rows = db.execute(
+                    "SELECT id,listing_id,model_id,model_year,quarter_number,amount_minor,currency,"
+                    "status,created_at,paid_at,service_until,refund_status,dispute_status "
+                    "FROM supplier_listing_orders WHERE supplier_id=? ORDER BY created_at DESC LIMIT 50",
+                    (user["id"],)
+                ).fetchall()
+            data = [dict(row) for row in rows]
         elif tail.startswith("vehicles/"):
             parts = tail.split("/")
             listing_id = parts[1]
@@ -876,6 +919,10 @@ class Handler(BaseHTTPRequestHandler):
             elif method == "POST" and len(parts) == 3 and parts[2] == "copy":
                 self.read_body()
                 data = self.trade.copy_vehicle(user, listing_id)
+            elif method == "GET" and len(parts) == 3 and parts[2] == "listing-quote":
+                data = self.supplier_payment_service().quote(user, listing_id)
+            elif method == "POST" and len(parts) == 3 and parts[2] == "listing-checkout":
+                data = self.supplier_payment_service().create_checkout(user, listing_id, self.read_body())
             elif method == "POST" and len(parts) == 3:
                 self.read_body()
                 data = self.trade.transition_vehicle(user, listing_id, parts[2])
@@ -1066,6 +1113,8 @@ def main():
     Handler.trade = TradeService(Handler.service)
     Handler.platform = Handler.trade.platform
     Handler.seo = PublicSEOService(Handler.trade)
+    Handler.payments = MembershipPaymentService(Handler.service)
+    Handler.supplier_payments = SupplierListingPayments(Handler.trade)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     Handler.service.mailer.start()
     try:server.serve_forever()

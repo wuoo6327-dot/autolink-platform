@@ -21,5 +21,5 @@ try {
   void Promise.allSettled(config.after.map(url => loadScript(url + version)));
   // Load presentation, language, authentication and navigation helpers before
   // the existing application renders.
-  await loadScript(config.app + version, {module: !!config.module});
+  await loadScript(config.app + (page === 'home' ? '?v=20261017-annual-price' : version), {module: !!config.module});
 } catch { showBootstrapError(); }

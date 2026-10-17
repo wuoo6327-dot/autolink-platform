@@ -45,7 +45,15 @@ PUBLIC_SUPPLIER_WHERE = """p.published=1 AND a.status='APPROVED' AND u.status='A
     AND u.role IN ('MERCHANT','SUPPLIER')"""
 PUBLIC_VEHICLE_WHERE = """v.archived_at IS NULL AND v.status='ONLINE' AND """ + PUBLIC_SUPPLIER_WHERE + """
     AND EXISTS (SELECT 1 FROM catalog_models cm JOIN catalog_brands cb ON cb.id=cm.brand_id
-        WHERE cm.id=v.model_id AND cm.active=1 AND cb.active=1)"""
+        WHERE cm.id=v.model_id AND cm.active=1 AND cb.active=1)
+    AND (NOT EXISTS (SELECT 1 FROM supplier_listing_orders so
+            WHERE so.supplier_id=v.supplier_id AND so.model_id=v.model_id
+                AND so.model_year=v.model_year AND so.status='PAID')
+        OR EXISTS (SELECT 1 FROM supplier_listing_orders so
+            WHERE so.supplier_id=v.supplier_id AND so.status='PAID'
+                AND so.model_id=v.model_id AND so.model_year=v.model_year
+                AND so.service_until>CAST(strftime('%s','now') AS INTEGER)
+                AND coalesce(so.refund_status,'')!='FULL'))"""
 SITEMAP_ORIGIN = 'https://autolinkglobal.com'
 SITEMAP_PAGE_SIZE = 5000
 # Only routes with a crawlable, self-canonical initial document belong here.
@@ -233,6 +241,9 @@ class TradeService:
                 (SELECT 1 FROM users WHERE id=NEW.supplier_id AND is_test_workspace=1)
                 BEGIN SELECT RAISE(ABORT,'Test vehicles must remain private drafts'); END;
             """)
+            # Public listing queries must be safe before the optional payment handler starts.
+            from supplier_listing_payments import ensure_listing_schema
+            ensure_listing_schema(db)
         self.images = ListingImages(auth)
         self.price_reviews = PriceReviews(auth)
         self.team = SupplierTeam(auth)
@@ -353,6 +364,10 @@ class TradeService:
         reasons = []
         if not visible:
             reasons.extend(supplier['reasons'])
+            service = self.listing_service_state(db, row)
+            if service == 'EXPIRED':reasons.append('LISTING_SERVICE_EXPIRED')
+            elif service == 'REFUNDED':reasons.append('LISTING_SERVICE_REFUNDED')
+            elif service == 'UNPAID':reasons.append('LISTING_SERVICE_PAYMENT_REQUIRED')
             if row['archived_at'] is not None or row['status'] == 'ARCHIVED':
                 reasons.append('VEHICLE_ARCHIVED')
             elif row['status'] != 'ONLINE':
@@ -370,6 +385,8 @@ class TradeService:
             action = 'restore_vehicle'
         elif model is None or not model['model_active'] or not model['brand_active']:
             action = 'edit_vehicle'
+        elif service in ('EXPIRED','REFUNDED','UNPAID') and row['status'] in ('APPROVED','ONLINE','OFFLINE'):
+            action = 'renew_listing_service' if service != 'UNPAID' else 'pay_listing_service'
         elif row['status'] in ('APPROVED','OFFLINE','SOLD_OUT'):
             action = 'put_online'
         elif row['status'] == 'PENDING_REVIEW':
@@ -377,6 +394,23 @@ class TradeService:
         else:
             action = 'edit_vehicle'
         return {'visible':visible,'reasons':reasons,'nextAction':action}
+
+    @staticmethod
+    def listing_service_state(db, row):
+        """Paid listings require a current non-refunded period; legacy listings keep their state."""
+        records = db.execute(
+            "SELECT service_until,refund_status FROM supplier_listing_orders "
+            "WHERE supplier_id=? AND model_id=? AND model_year=? AND status='PAID' "
+            "ORDER BY paid_at DESC",
+            (row['supplier_id'], row['model_id'], row['model_year'])
+        ).fetchall()
+        if any(item['service_until'] and item['service_until'] > int(time.time())
+               and item['refund_status'] != 'FULL' for item in records):
+            return 'ACTIVE'
+        if records:
+            return 'REFUNDED' if records[0]['refund_status'] == 'FULL' else 'EXPIRED'
+        return ('UNPAID' if os.environ.get('STRIPE_SUPPLIER_LISTING_ENABLED', 'false').lower() == 'true'
+                else 'LEGACY')
 
     def application(self, user):
         with self.auth.connect() as db:
@@ -1029,7 +1063,7 @@ class TradeService:
         with self.auth.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             self.active_company_owner(db, user)
-            row = db.execute("SELECT status,valid_until,model_id,archived_at FROM supplier_vehicles WHERE id=? AND supplier_id=?",
+            row = db.execute("SELECT id,supplier_id,status,valid_until,model_id,model_year,archived_at FROM supplier_vehicles WHERE id=? AND supplier_id=?",
                              (listing_id,user["id"])).fetchone()
             if not row:
                 raise BuyerError(404,"Vehicle listing not found.")
@@ -1045,6 +1079,8 @@ class TradeService:
                 iso_date(row["valid_until"])
                 if not self.catalog.enabled(row["model_id"]):
                     raise BuyerError(409, "Update the listing to an active catalogue model before review.")
+            if action == "online" and self.listing_service_state(db, row) not in ('ACTIVE','LEGACY'):
+                raise BuyerError(409, "Pay for an active listing service before publication.")
             now=int(time.time())
             db.execute("UPDATE supplier_vehicles SET status=?,updated_at=?,archived_at=? WHERE id=? AND supplier_id=?",
                        (target,now,now if action=="archive" else None,listing_id,user["id"]))

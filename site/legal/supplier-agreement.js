@@ -4,9 +4,9 @@
   const button=document.getElementById('agreement-confirm');
   const status=document.getElementById('agreement-confirmation-status');
   const next=document.getElementById('agreement-next');
-  let signed=false,busy=false;
+  let signed=false,busy=false,canSign=false;
   const checked=()=>form.elements.agreement.checked&&form.elements.privacy.checked;
-  function update(){button.disabled=signed||busy||!checked();}
+  function update(){button.disabled=signed||busy||!canSign||!checked();}
   function confirmed(data){
     if(!data.confirmation)return;
     signed=true;button.textContent='已确认签署';
@@ -33,7 +33,7 @@
   };
   form.addEventListener('change',update);
   form.addEventListener('submit',async event=>{
-    event.preventDefault();if(busy||signed||!checked())return;
+    event.preventDefault();if(busy||signed||!canSign||!checked())return;
     busy=true;update();status.textContent='正在确认…';
     try{confirmed(await request('POST',{version:body.dataset.version,bodySha256:body.dataset.bodySha256,
       consent:true,authorized:true,privacyAcknowledged:true}));}
@@ -42,7 +42,15 @@
       status.textContent=errors[error.message]||'暂时无法确认，请重试。';next.hidden=false;
     }finally{busy=false;update();}
   });
-  request('GET').then(confirmed).catch(error=>{
+  update();
+  request('GET').then(data=>{
+    canSign=data.acceptanceEnabled===true&&data.version===body.dataset.version&&
+      data.bodySha256===body.dataset.bodySha256;
+    if(canSign)confirmed(data);
+    else status.textContent=data.acceptanceEnabled===false?'协议确认暂未开放。':'协议已更新，请刷新页面并重新阅读。';
+    update();
+  }).catch(error=>{
     if(error.status!==401){status.textContent=errors[error.message]||'确认服务暂时不可用，请稍后重试。';}
+    update();
   });
 })();

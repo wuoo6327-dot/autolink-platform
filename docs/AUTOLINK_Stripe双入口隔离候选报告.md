@@ -1,0 +1,70 @@
+# AUTOLINK Stripe 双入口隔离候选报告
+
+日期：2026-10-17，最近更新：2026-10-18。状态：**仅隔离候选；生产支付未启用，也未部署本候选。** 生产服务器的正式配置文件 `/home/admin/autolink-stripe-live-20261017/private/stripe-live.env` 权限为 `0600`。所有者已通过隐藏输入将正式受限密钥写入该文件；只读取状态校验确认其为 `rk_live_` 类型，且 Stripe 正式账户读取接口返回预期账户 `acct_1UOybvD11yCRmcha`（账户报告 `charges_enabled=true`）。专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b` 已固定到该配置文件，但 Stripe 后台当前启用方式超出候选批准的银行卡／Link 范围，须在发布前纠正并重新验证。买家正式 Webhook 签名密钥已配置；供应商密钥在浏览器检查中暴露到工具记录后已立即从服务器清除，须由所有者在 Stripe 轮换并使旧值立即失效。`STRIPE_LIVE_RELEASE_READY`、`STRIPE_CARD_ENABLED`、`STRIPE_SUPPLIER_LISTING_ENABLED` 均为 `false`。没有执行真实扣款。
+
+发布准备分支 `codex/stripe-buyer-supplier-20261017`，草稿 PR [#21](https://github.com/wuoo6327-dot/autolink-platform/pull/21)。Auth 支付代码基准提交 `187aff32757976827548134ec5914c4c3725f74f`；其后增加独立上架服务条款与人工票据申请前端，旧候选镜像只包含此前 Auth 代码，不能充当最终前端发布包。生产 Auth 镜像仍为 `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，Auth/Web 均健康，生产容器未部署本候选。阿里云实例已由所有者升级为 4 vCPU、16 GiB 内存和 80 GiB 系统盘；根分区扩容后约 79 GiB，剩余约 31 GiB（使用率 60%）。
+
+## 范围与基线
+
+- 从 `2797d12`（`codex/supplier-brand-auth-on-seo-20261014`）建立独立分支 `codex/stripe-buyer-supplier-20261017`。保留此前生产安全、SEO、询盘和商家审核流程；没有合并旧支付 PR，也没有修改真实生产数据。
+- Stripe 为买家会员和供应商上架服务的共同收款商户，分别使用独立的订单、Checkout 和 Webhook 路由。Airwallex 仅保留关闭的接口名称，不参与付款；没有自动续费。
+- 生产 Auth 容器只读检查：运行镜像 ID `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，Auth、Web 均健康；生产容器中的 `PAYMENTS_ENV`、两个支付开关、`STRIPE_LIVE_RELEASE_READY` 与 Stripe 密钥均未配置。线上真实扣款仍为关闭状态。
+
+## 已完成的隔离开发
+
+- 买家会员后端固定 USD 首购／续费价格：月度 1.99／19.90，季度 9.99／29.99，年度 39.99／99.99。每个账户的首购资格只可用一次。只有已签名且身份、金额、币种匹配的 Stripe 付款确认才开通会员；重复回调幂等。买家页面保留现有布局，并仅在后端开放时显示 Stripe 按钮。
+- 供应商上架服务使用独立订单表，固定 USD 40／140／200 每 SKC 每季度的现有价格。只有已核准企业的所有者、已审核且具备当前实拍图、有效资料的车源可创建付款单。结账前须主动确认三个月服务规则，后端保存同意版本和时间。Stripe 已验证的付款将未变更且符合条件的车源当天置为公开；一个 SKC 覆盖同一供应商的同车型同年款配置。到期时公开查询立即隐藏该 SKC；全额退款且无其他有效付费期时，相关车源转为 OFFLINE。部分退款及争议保留人工处理。供应商可查看自己的付款记录。
+- 两入口分别有关闭开关和 Webhook 签名密钥。生产模式另需显式 `STRIPE_LIVE_RELEASE_READY=true`。前端不能提交实际支付金额或凭返回页面开通服务。两个只供操作员使用的订单对账命令可检查和恢复不确定的 Checkout 结果。
+- 实际修改：`auth/app.py`、`auth/buyer_service.py`、`auth/Dockerfile`、`auth/membership_payments.py`、`auth/supplier_listing_payments.py`、`auth/reconcile_membership.py`、`auth/reconcile_supplier_listing.py`、`auth/test_membership_payments.py`、`auth/test_supplier_listing_payments.py`、`compose.yaml`、`.gitleaks.toml`、`site/index.html`、`site/assets/membership-checkout.js`、`site/assets/membership-checkout.css`、`site/assets/supplier-stripe-checkout.js`、`site/assets/supplier-program.js`、`site/buyer/app.js`、`site/supplier/app.js`、`site/supplier/index.html`。后续候选增加 `site/legal/supplier-listing-terms.html`，修改 `Caddyfile`、`site/support/app.js` 和上述供应商脚本，为上架服务提供单独的双语条款与人工核验后开票申请入口；不自动开票，不产生额外收费。
+
+## 已验证的事实
+
+| 检查 | 实际结果 |
+| --- | --- |
+| Stripe Test Mode API | 与服务器隔离环境中配置的商户账户一致；创建并取回 USD 1.99 会员及 USD 40 供应商测试 Checkout。会员沙盒订单 `70330cd7-b5fc-41f7-91a1-4e627cd17e2b` 已用 Stripe 官方测试卡完成付款；Stripe API 返回 `livemode=false`、`status=complete`、`payment_status=paid`、`amount_total=199`、`currency=usd`。供应商沙盒 USD 40 付款也已由所有者完成，详见下行。 |
+| 供应商 Stripe Test Mode 实际回调 | 阿里云原生 AMD64 隔离容器运行候选源码及隔离数据库，未挂载生产数据卷。Stripe CLI 将测试事件 `checkout.session.completed`（`evt_1URYNGD11yCRmchazEXAIAXR`）转发到独立供应商 Webhook，服务返回 HTTP 200。隔离库 `PRAGMA integrity_check=ok`；一笔订单为 `PAID`、金额 4000 美分／USD，一条支付事件，测试车源状态 `ONLINE`，公开查询可见。隔离已付库快照 SHA256 `fe438607f05d077f8f32f05090ab001ebed2b2abd82be93962b05661dec1edc1`。这是沙盒付款，没有真实扣款。 |
+| 供应商 Stripe Test Mode 实际全额退款 | 现有受限测试密钥调用退款 API 返回 HTTP 403、`more_permissions_required`。Stripe 沙盒后台的“Charges and Refunds”写权限同时覆盖创建、更新和捕获收款，超过所有者仅增加测试退款权限的授权范围，因此没有扩大密钥权限。改在 Stripe 沙盒交易后台对上述唯一 USD 40 测试订单全额退款；页面显示“已退款”。Stripe CLI 将真实 `charge.refunded` 测试事件 `evt_3URYNFD11yCRmcha0GoYWGuT` 投递到阿里云隔离 Webhook，返回 HTTP 200。隔离库 `refund_status=FULL`、车源 `OFFLINE`、支付事件各一条，`PRAGMA integrity_check=ok`；公开详情返回 HTTP 404。退款后隔离库一致性快照 SHA256 `fef0be8b2376bdca4cf3a0fd674504ac0e921f5911cb9c84c75c85673f6c3292`。没有真实资金往来。 |
+| 本机完整后端测试 | 本轮最终源码共运行 267 项，其中 262 项通过、5 项跳过；包含权限、金额、首购、重复回调、退款、付费上架及不确定订单恢复。 |
+| AMD64 支付与车源专项 | 本轮最终镜像在 Mac Docker 的 `linux/amd64` 隔离容器内，以无外网、无生产卷方式运行 28 项支付专项，通过。阿里云原生 AMD64 以候选源码只读挂载、无外网、无生产数据库方式运行支付／车源／公开权限 43 项，通过；公开 SEO 用例读取现有生产站点素材的只读挂载。第一次未挂站点素材时，Sitemap 用例因缺少资料失败，补全隔离依赖后重跑通过。 |
+| 静态及配置检查 | 修改过的 JavaScript `node --check` 通过；使用非生产占位变量的 `docker compose config --quiet` 通过；`git diff --check` 通过。 |
+| 安全扫描 | 本轮 Gitleaks 对候选目录扫描约 308.37 MB，未发现泄露；Trivy 文件系统与最终候选镜像均报告 0 项 HIGH/CRITICAL 漏洞。 |
+| 票据入口及新版条款复核 | 新增条款 HTML 结构校验、Caddy 独立路由、修改过的 JavaScript 语法和差异检查通过。2026-10-17 对当前候选目录再次运行 Gitleaks（308.40 MB，0 泄露）与 Trivy 文件系统 HIGH/CRITICAL 扫描（0 项）。隔离 AMD64 完整回归因挂载路径首次漏 `/site`、再次漏 `/tests` 分别出现测试资料找不到的错误；补齐 `/site` 后的 267 项运行中仅 7 项缺 `/tests` 夹具，其余无失败；单独补跑这 7 项，7/7 通过。两次结果合并覆盖全部 267 项（262 通过、5 跳过），不能把其中任何一次失败的运行写成单次全绿。原始日志位于本机 `deployment/artifacts/stripe-both-20261017/`。 |
+| 生产只读预备份及隔离恢复 | 完整生产文件归档 SHA256 `8efbb9bf1eb5ed225c445a7428a102bec9b13e04933fd9ea204b2361d09d6d61`，保存在本机私有目录 `/Users/oo/.codex/private/autolink-preflight-20261017/production-files.tar.gz`，权限 0600；`gzip -t` 通过。隔离解包后可读取当前发布锁 `ef551a8e00e69c8a4a0fda02c17a3a9330833de0`、Caddy 数据卷与配置卷，归档内 SQLite `quick_check=ok`、8 个账号。单独的 SQLite 一致性备份 SHA256 `ad9be11ca37a077ee8d75198cada0939720c6271fbf2c6262f34db92c346d65d`，`integrity_check=ok`。这些均是预发布备份；生产切换前仍需重新制作当时最新版本。 |
+| 旧生产镜像与回滚预演 | 旧 Auth、Web 两镜像的只读归档 `/Users/oo/.codex/private/autolink-preflight-20261017/production-images.tar.gz`，SHA256 `71d52ece5ee0ca57d05473da9b7778f36c018f1f53e247cf2c4e2dfb6788f654`，权限 0600。`gzip -t` 通过，本机 `docker load` 还原出生产锁记录的 Auth `sha256:e56bb2c…` 与 Web `sha256:bddc55c…`，两者均为 `linux/amd64`。隔离复制一致性数据库后，用旧 Auth 镜像及归档站点启动，`/healthz` 返回 200，复制库 `quick_check=ok`；旧 Web 镜像对归档 Caddyfile 的配置验证通过。这证明归档可用于本机隔离回滚预演，仍不等于正式切换后的线上回滚演练。 |
+
+GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `source-security`，运行编号 `39027901352` 与 `39027904598` 均通过；在条款及票据入口候选提交 `39e628a89014e2da639fbfec9979bcb82640d63b` 上再次运行两次 `source-security`，运行编号 `39042768874` 与 `39042771765` 均通过。上述结果属于候选代码验收，不代表生产支付已启用。
+
+最终候选镜像以 `linux/amd64` 构建并保存在本机，标签 `autolink-stripe-both:qa-20261017-r4`；本地 OCI manifest list 身份为 `sha256:36d3e93c408757b8ef82f59a4c4ba4457c39cee6a037088d466b636a67851a4e`，不冒充远程 Registry Manifest Digest。压缩归档位于 `/Users/oo/Documents/ChatGPT/Space Auto/deployment/artifacts/stripe-both-20261017/autolink-stripe-both-qa-r4-amd64.tar.gz`，SHA256 为 `bd7786b3adc1b1fc7d52400d8c51042216001b9d9bf44c9f783f4925613faeb4`。镜像内 `app.py`、`supplier_listing_payments.py`、`trade_service.py` 哈希与对应源文件相符。本轮最终镜像已经在本机 Docker AMD64 容器运行支付专项；阿里云原生 AMD64 验证使用同源候选源码只读挂载至旧 QA 基础镜像，尚未将最终镜像归档加载到阿里云。候选未接入生产 Compose。
+
+为控制阿里云磁盘使用，本轮没有向阿里云加载新镜像；本机固定归档保留，运行中的生产 Auth 和 Web 容器继续保持健康。
+
+## 尚未达到真实收款上线门槛
+
+2026-10-17 追加只读复核：生产服务器的专用 live env 仍为 `STRIPE_LIVE_RELEASE_READY=false`、`STRIPE_CARD_ENABLED=false`、`STRIPE_SUPPLIER_LISTING_ENABLED=false`，两条正式 Webhook 签名密钥均为空。复核时 Stripe 正式账户 Workbench 尚未配置事件接收端。原先命名为 “AUTOLINK Card and Link Release” 的专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b`，当前界面显示银行卡、支付宝、Apple Pay、Google Pay、Link 五种方式为已启用，已偏离本候选仅允许银行卡／Link 的隔离验收状态；候选后端会拒绝返回了非许可支付方式的 Checkout Session。所有者要求优先开放真实付款，但这两项技术门槛未通过，且五页法律文本仍标为待审稿；本次没有切换生产，也没有真实扣款。
+
+2026-10-17 至 18 日 Webhook 进展：经所有者分别在生成凭据前单独授权，Stripe 正式账户已创建两个独立事件接收端：买家会员 `we_1URasbD11yCRmchaiBss9Gso`，地址 `https://autolinkglobal.com/autolink/payments/webhooks/stripe`；供应商上架费 `we_1URb1yD11yCRmchaeVN3RdV5`，地址 `https://autolinkglobal.com/autolink/supplier/payments/webhooks/stripe`。两者来源均为商户自身账户，快照事件各五类：`checkout.session.completed`、`checkout.session.expired`、`charge.refunded`、`charge.dispute.created`、`charge.dispute.closed`。Stripe 均显示接收端“使用中”，创建时事件交付总数 0、失败 0。2026-10-18 所有者通过隐藏输入向服务器写入两枚签名密钥；首次误将同一值输入两处，已在所有支付开关关闭时清除。重新输入后只读状态校验确认两枚值格式正确、彼此不同，env 权限 `0600`；未读取、打印或提交密钥值。公网两个 Webhook 地址的 HEAD 请求均返回 HTTP 405，表明路由存在且只接受 POST；这不能替代带有效 Stripe 签名的投递测试。生产支付开关未更改，未发生真实扣款。
+
+2026-10-18 安全修正：在浏览器检查供应商 Webhook 页面时，Stripe 页面曾处于密钥可见状态，浏览器工具返回了完整供应商签名密钥。该值未写入代码或报告，但已进入工具记录，应视为暴露。发现后立即从服务器 live env 清除供应商密钥，只读复核为供应商密钥为空、买家密钥仍在、文件权限 `0600`、三个正式收款开关均为 `false`。停止上线步骤；所有者须在 Stripe 供应商接收端滚动签名密钥并选择旧密钥立即失效，再通过隐藏输入交付新值。不得继续使用旧值，也不得把这段“曾写入”当作当前配置状态。
+
+2026-10-17 R2 补充：根据所有者提供的五页 R1 内部审阅稿和后续确认，候选法律页已补入公司编号、完整商业登记证号码、公司提供的注册办事处地址、客服邮箱及电话；会员页明确首年 USD 39.99、其后每年手动续费 USD 99.99；账号删除页明确核实后 1–3 个工作日受理并关闭账号，保留资料的清理期限另待审。已使用的九语言会员 UI 包也把年度首购展示更正为 USD 39.99，并更新静态资源版本。`docs/AUTOLINK_五页法律条款R1核对与R2修订清单.md` 列出五页 R2 全文位置与剩余决策。所有者确认没有法务终稿，适用法律与争议解决条款仍待审；因此这仍是未生效候选，正式扣款和部署未发生。账号删除与供应商协议前端的 27 项测试、会员定价资源检查、后端会员相关 22 项测试均通过；最终 AMD64 镜像、生产备份和回滚仍需按本报告门槛重新验收。
+
+1. 所有者提供香港公司注册证明书与商业登记证的图片。证明书显示法定名称 `ZING HEI INTERNATIONAL TRADING LIMITED / 正汽國際貿易有限公司`、编号 `80964737`，签发日 2026-08-04；商业登记证显示同一公司名称、营业地址 `FLAT/RM 917A BLK A 9/F NEW MANDARIN PLAZA NO 14 SCIENCE MUSEUM RD TSIM SHA TSUI HONG KONG`，有效期至 2027-08-03。候选会员条款、通用条款和隐私政策已填入该主体及明确标为“商业登记证所载营业地址”的地址，没有将其冒称为已核实的注册办事处地址。供应商入驻协议有已签署正文指纹和版本约束，因此本次没有改动该协议；需要另行按签署版本升级流程处理。所有者另提供注册办事处地址中文 `九龍尖沙咀科學館道14號新文華中心A座9樓917A室`、英文 `UNIT 917A, 9/F., TOWER A, NEW MANDARIN PLAZA, NO.14 SCIENCE MUSEUM ROAD, TSIMSHATSUI, KOWLOON, HONG KONG.`，与商证营业地址指向同一单元；候选法律页已分别标注两种地址来源。该注册办事处地址尚未以最新公司资料报告或 NNC1/NR1 独立核验。会员页仍标“预览稿”；已批准的退款规则和价格保留。供应商付费上架规则已整理为 `docs/AUTOLINK_供应商上架付费条款审阅稿.md`，退款资格、供应商违规或资料变更后的处理规则、3 个工作日确认及资料齐全后 10 个工作日给出结果的时限已获所有者批准。生效日及正式中英文页面仍未定稿；人工票据申请入口虽已开发，但发放流程尚未正式验收。2026-10-17 所有者明确回复“尚未审定”完整正式法律条款，因此不得将预览页改称生效条款，不能以 Stripe 实名审核或公司证书代替审定。证件图片不纳入公开代码库。
+2. 买家会员已有一笔 Stripe Test Mode 测试卡成功付款。2026-10-17 17:55（Asia/Bangkok）前后，阿里云隔离数据库对账结果为 `PAID`，重复对账返回 `alreadyProcessed`；隔离库恰有 1 个有效会员期、1 条已付记录和 1 次首购使用记录。买家 Webhook 成功事件测试目前仍为模拟签名事件。供应商成功付款和全额退款已完成真实 Test Mode 事件投递；两个入口的失败付款、争议端到端记录及买家实际 Webhook 投递仍缺失。
+3. 所有者已批准“企业和车源审核后付款、Stripe 确认付款后当天上线、服务三个月、到期或全额退款后下线、部分退款和争议人工处理”。本轮已在候选代码实现，并用 Stripe Test Mode 实际供应商付款及全额退款两类真实测试事件验证上线与下线。到期后公开查询会立即隐藏车源，数据库原始状态可暂留 `ONLINE`，商家界面按公开可见性显示暂停。部分退款和争议仍仅经自动化模拟事件验证；正式收款前还需确认服务条款与运营处理流程。
+4. 阿里云主机原先剩余空间约 2.3 GB（96% 已用）。所有者购买 80 GiB 套餐后，云盘已变为 80 GiB，但根分区一度仍为 49.8 GiB。完成最新 SQLite 一致性备份及 Auth 上传卷、网站文件与 Caddy 证书卷的本机归档、解包验证，并确认阿里云系统盘快照 `s-j6ciwrxizbjf5cywqod9` 创建完成后，执行 `growpart /dev/vda 3` 和 `resize2fs /dev/vda3`。根分区现为 79.8 GiB ext4，`df` 显示约 31 GiB 可用、使用率 60%。没有删除旧备份、镜像或持久卷；正式支付发布前仍须制作当时最新的生产备份与回滚演练。
+5. 本候选未做真实生产部署、真实扣款、生产数据迁移或线上浏览器端到端付款测试。九语言新文案已写入，但仍需业务语言审核。
+6. Stripe 测试模式 API 密钥页在本次浏览器核查中直接显示了完整测试密钥，浏览器工具返回内容因此包含测试凭据。没有将其复制到代码、报告正文或其他服务；继续使用前应由账户所有者轮换测试密钥并更新隔离环境。该情况不涉及生产收款密钥，生产支付依旧关闭。
+7. 供应商提出企业发票需求。候选已在已付款订单旁加入“申请发票”，通过现有支持单收集订单号、企业抬头、适用登记号、账单地址和接收邮箱，明确由人工核对付款与退款后出具香港公司商业发票。尚无自动发票编号、下载入口或退款后自动更正；香港商业发票不能冒充中国大陆增值税专用发票。Stripe Checkout 的自动生成已付发票是另一个可选方案，香港公开价格当前为交易额的 0.4%，每张封顶 USD 2；**尚未启用，也未计入本候选成本**。需先核对商户实际合同价格、受限密钥权限、收件人字段和财务流程，再决定是否启用；不能静默增加收费功能。
+8. 生产法律页 `/terms`、`/membership-terms`、`/privacy` 等仍显示“预览稿／待确认”，其中包含未定稿的生效日、个人资料留存期限及争议条款。新上架服务页不能替代这些通用文件；现有已签署的供应商入驻协议带版本和内容指纹，不得原地改写。正式收款前需完成这些具体条款的审定与版本发布，不能因公司证书已提供而跳过。
+9. 已完成生产只读预备份、归档哈希、隔离恢复和旧镜像本机回滚预演。正式切换前仍需在维护窗口制作当时最新的一致性数据库和上传文件备份，并在目标主机验证最终候选镜像及回滚流程。该过程尚未修改生产数据或容器。
+10. 正式受限密钥与专用支付方式配置已经创建并在服务器核验，不能再将其列为“尚未创建”。买家和供应商 Webhook 接收端已创建；买家签名密钥已配置，供应商旧密钥已因暴露而从服务器清除，等待 Stripe 轮换。签名值仍需在最终隔离版本中通过真实签名投递验证。正式账户返回 `charges_enabled=true` 只证明 Stripe 账户状态，不证明 AUTOLINK 已完成正式支付链路验收。
+
+### 服务器扩容后复核
+
+- 2026-10-17 阿里云控制台确认实例 `d4be2872caf54f3d87fbe2219461aaf4` 为 4 vCPU、16 GiB 内存、80 GiB 系统盘。系统盘快照 `s-j6ciwrxizbjf5cywqod9` 在控制台不再显示“创建中”，显示创建时间与回滚入口。
+- 扩容前一致性 SQLite 备份 SHA256 `c049ed52595bc1685320912174f0acec94c2d692ea50be35538da5ecb47038da`，`PRAGMA integrity_check=ok`，账号计数 8；Auth 上传卷归档 SHA256 `089f0da6d7a0fff518cf4373c92008311c0c89e79d70a2f42abb2fb0028787c7`；网站文件及 Caddy 数据／配置卷归档 SHA256 `79ce4b4bbc923ccf6efc408e4df93a127451ef91f7c7b5dca956250e39a7fcc2`。三份文件保存在本机仅所有者可读的 `/Users/oo/.codex/private/autolink-storage-upgrade-20261017/`；归档校验和隔离解包通过。
+- 扩容后 `/dev/vda3` 为约 79.8 GiB ext4，`df -hT /` 显示根分区约 79 GiB、已用 45 GiB、可用 31 GiB、使用率 60%；生产 SQLite 完整性仍为 `ok`、账号计数仍为 8。生产 Auth/Web 容器均健康，重启次数为 0，镜像 ID 与扩容前相同。公网首页、会员页、供应商上架入口、robots.txt、Sitemap、服务条款和隐私页均返回 HTTP 200。三个正式收款开关仍为 `false`。
+
+## 下一步
+
+先在 Stripe 轮换供应商 Webhook 签名密钥并立即使暴露的旧值失效；新值由所有者经隐藏输入配置，整个过程不发送密钥或显示密钥截图。随后以最新公司资料报告或 NNC1/NR1 核实所有者提供的注册办事处地址，并完成完整法律页与供应商付费条款的正式审定；当前没有已审定版本。已提供按订单号申请企业抬头商业发票的人工流程；具体票据必须由财务核对付款、退款及企业信息后出具、更正。此次法律 HTML 更新发生在上一版候选镜像归档之后；发布前必须重新构建并验证镜像文件哈希，不能把旧归档称为包含最新条款。供应商沙盒实际付款、全额退款及 Webhook 已通过；仍须在阿里云原生 AMD64 隔离环境验证最终镜像、买家 Webhook、失败付款及争议流程，完成支付发布前最新生产备份、恢复与回滚演练。扩容已解决空间阻断，但不代表这些支付发布门槛已经通过；两个真实支付开关继续保持关闭。

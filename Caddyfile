@@ -35,7 +35,7 @@
 	handle @api {
 		respond "Demo only: backend is not connected." 503
 	}
-	@legal path /privacy /terms /cookies /supplier-terms /account-deletion /disclaimer /membership-terms
+	@legal path /privacy /terms /cookies /supplier-terms /supplier-listing-terms /account-deletion /disclaimer /membership-terms
 	handle @legal {
 		rewrite * /legal{path}.html
 		file_server
