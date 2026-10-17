@@ -1,8 +1,8 @@
 # AUTOLINK Stripe 双入口隔离候选报告
 
-日期：2026-10-17。状态：**仅隔离候选；生产支付未启用，也未部署本候选。**
+日期：2026-10-17。状态：**仅隔离候选；生产支付未启用，也未部署本候选。** 2026-10-17 生产服务器上已建立权限为 `0600` 的正式配置文件 `/home/admin/autolink-stripe-live-20261017/private/stripe-live.env`，但正式 Stripe 密钥、账户 ID、支付方式配置及买家／供应商 Webhook 签名密钥仍为空；三个正式收款开关均为 `false`。此文件本身不代表 Stripe 正式凭据已经创建或真实扣款可用。
 
-发布准备分支 `codex/stripe-buyer-supplier-20261017`，草稿 PR [#21](https://github.com/wuoo6327-dot/autolink-platform/pull/21)。最终支付代码提交 `187aff32757976827548134ec5914c4c3725f74f`；后续报告文字提交不改变镜像内应用文件。生产 Auth 镜像仍为 `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，Auth/Web 均健康，`PAYMENTS_ENV`、买家和供应商真实收款开关均未设置。阿里云根分区可用空间约 2.3 GB（使用率 96%）。
+发布准备分支 `codex/stripe-buyer-supplier-20261017`，草稿 PR [#21](https://github.com/wuoo6327-dot/autolink-platform/pull/21)。Auth 支付代码基准提交 `187aff32757976827548134ec5914c4c3725f74f`；其后增加独立上架服务条款与人工票据申请前端，旧候选镜像只包含此前 Auth 代码，不能充当最终前端发布包。生产 Auth 镜像仍为 `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，Auth/Web 均健康，`PAYMENTS_ENV`、买家和供应商真实收款开关均未设置。阿里云根分区可用空间约 2.3 GB（使用率 96%）。
 
 ## 范围与基线
 
@@ -15,7 +15,7 @@
 - 买家会员后端固定 USD 首购／续费价格：月度 1.99／19.90，季度 9.99／29.99，年度 39.99／99.99。每个账户的首购资格只可用一次。只有已签名且身份、金额、币种匹配的 Stripe 付款确认才开通会员；重复回调幂等。买家页面保留现有布局，并仅在后端开放时显示 Stripe 按钮。
 - 供应商上架服务使用独立订单表，固定 USD 40／140／200 每 SKC 每季度的现有价格。只有已核准企业的所有者、已审核且具备当前实拍图、有效资料的车源可创建付款单。结账前须主动确认三个月服务规则，后端保存同意版本和时间。Stripe 已验证的付款将未变更且符合条件的车源当天置为公开；一个 SKC 覆盖同一供应商的同车型同年款配置。到期时公开查询立即隐藏该 SKC；全额退款且无其他有效付费期时，相关车源转为 OFFLINE。部分退款及争议保留人工处理。供应商可查看自己的付款记录。
 - 两入口分别有关闭开关和 Webhook 签名密钥。生产模式另需显式 `STRIPE_LIVE_RELEASE_READY=true`。前端不能提交实际支付金额或凭返回页面开通服务。两个只供操作员使用的订单对账命令可检查和恢复不确定的 Checkout 结果。
-- 实际修改：`auth/app.py`、`auth/buyer_service.py`、`auth/Dockerfile`、`auth/membership_payments.py`、`auth/supplier_listing_payments.py`、`auth/reconcile_membership.py`、`auth/reconcile_supplier_listing.py`、`auth/test_membership_payments.py`、`auth/test_supplier_listing_payments.py`、`compose.yaml`、`.gitleaks.toml`、`site/index.html`、`site/assets/membership-checkout.js`、`site/assets/membership-checkout.css`、`site/assets/supplier-stripe-checkout.js`、`site/assets/supplier-program.js`、`site/buyer/app.js`、`site/supplier/app.js`、`site/supplier/index.html`。
+- 实际修改：`auth/app.py`、`auth/buyer_service.py`、`auth/Dockerfile`、`auth/membership_payments.py`、`auth/supplier_listing_payments.py`、`auth/reconcile_membership.py`、`auth/reconcile_supplier_listing.py`、`auth/test_membership_payments.py`、`auth/test_supplier_listing_payments.py`、`compose.yaml`、`.gitleaks.toml`、`site/index.html`、`site/assets/membership-checkout.js`、`site/assets/membership-checkout.css`、`site/assets/supplier-stripe-checkout.js`、`site/assets/supplier-program.js`、`site/buyer/app.js`、`site/supplier/app.js`、`site/supplier/index.html`。后续候选增加 `site/legal/supplier-listing-terms.html`，修改 `Caddyfile`、`site/support/app.js` 和上述供应商脚本，为上架服务提供单独的双语条款与人工核验后开票申请入口；不自动开票，不产生额外收费。
 
 ## 已验证的事实
 
@@ -28,6 +28,8 @@
 | AMD64 支付与车源专项 | 本轮最终镜像在 Mac Docker 的 `linux/amd64` 隔离容器内，以无外网、无生产卷方式运行 28 项支付专项，通过。阿里云原生 AMD64 以候选源码只读挂载、无外网、无生产数据库方式运行支付／车源／公开权限 43 项，通过；公开 SEO 用例读取现有生产站点素材的只读挂载。第一次未挂站点素材时，Sitemap 用例因缺少资料失败，补全隔离依赖后重跑通过。 |
 | 静态及配置检查 | 修改过的 JavaScript `node --check` 通过；使用非生产占位变量的 `docker compose config --quiet` 通过；`git diff --check` 通过。 |
 | 安全扫描 | 本轮 Gitleaks 对候选目录扫描约 308.37 MB，未发现泄露；Trivy 文件系统与最终候选镜像均报告 0 项 HIGH/CRITICAL 漏洞。 |
+| 票据入口及新版条款复核 | 新增条款 HTML 结构校验、Caddy 独立路由、修改过的 JavaScript 语法和差异检查通过。2026-10-17 对当前候选目录再次运行 Gitleaks（308.40 MB，0 泄露）与 Trivy 文件系统 HIGH/CRITICAL 扫描（0 项）。隔离 AMD64 完整回归因挂载路径首次漏 `/site`、再次漏 `/tests` 分别出现测试资料找不到的错误；补齐 `/site` 后的 267 项运行中仅 7 项缺 `/tests` 夹具，其余无失败；单独补跑这 7 项，7/7 通过。两次结果合并覆盖全部 267 项（262 通过、5 跳过），不能把其中任何一次失败的运行写成单次全绿。原始日志位于本机 `deployment/artifacts/stripe-both-20261017/`。 |
+| 生产只读预备份及隔离恢复 | 完整生产文件归档 SHA256 `8efbb9bf1eb5ed225c445a7428a102bec9b13e04933fd9ea204b2361d09d6d61`，保存在本机私有目录 `/Users/oo/.codex/private/autolink-preflight-20261017/production-files.tar.gz`，权限 0600；`gzip -t` 通过。隔离解包后可读取当前发布锁 `ef551a8e00e69c8a4a0fda02c17a3a9330833de0`、Caddy 数据卷与配置卷，归档内 SQLite `quick_check=ok`、8 个账号。单独的 SQLite 一致性备份 SHA256 `ad9be11ca37a077ee8d75198cada0939720c6271fbf2c6262f34db92c346d65d`，`integrity_check=ok`。这些均是预发布备份；生产切换前仍需重新制作当时最新版本。 |
 
 GitHub Actions 在最终支付代码提交 `187aff3` 上实际运行两次 `source-security`，运行编号 `39027901352` 与 `39027904598` 均通过；包含当前源码、历史记录和依赖扫描。上述结果属于候选代码验收，不代表生产支付已启用。
 
@@ -43,8 +45,10 @@ GitHub Actions 在最终支付代码提交 `187aff3` 上实际运行两次 `sour
 4. 阿里云主机剩余空间约 2.3 GB（96% 已用）。本轮仅加载隔离候选镜像并运行测试，没有在生产主机构建、清理镜像或替换运行容器。正式发布前仍需最新生产备份、恢复与回滚演练。
 5. 本候选未做真实生产部署、真实扣款、生产数据迁移或线上浏览器端到端付款测试。九语言新文案已写入，但仍需业务语言审核。
 6. Stripe 测试模式 API 密钥页在本次浏览器核查中直接显示了完整测试密钥，浏览器工具返回内容因此包含测试凭据。没有将其复制到代码、报告正文或其他服务；继续使用前应由账户所有者轮换测试密钥并更新隔离环境。该情况不涉及生产收款密钥，生产支付依旧关闭。
-7. 供应商提出企业发票需求。现有候选仅保存上架服务订单与付款状态，尚无企业抬头资料确认、正式票据编号、下载入口或退款后票据更正流程。拟采用 Stripe 免费付款收据加按需申请香港公司商业发票的方式；不能把香港商业发票冒充中国大陆增值税专用发票。Stripe Checkout 的自动生成已付发票是另一个可选方案，香港公开价格当前为交易额的 0.4%，每张封顶 USD 2；**尚未启用，也未计入本候选成本**。需先核对商户实际合同价格、受限密钥权限、收件人字段和财务流程，再决定是否启用；不能静默增加收费功能。
+7. 供应商提出企业发票需求。候选已在已付款订单旁加入“申请发票”，通过现有支持单收集订单号、企业抬头、适用登记号、账单地址和接收邮箱，明确由人工核对付款与退款后出具香港公司商业发票。尚无自动发票编号、下载入口或退款后自动更正；香港商业发票不能冒充中国大陆增值税专用发票。Stripe Checkout 的自动生成已付发票是另一个可选方案，香港公开价格当前为交易额的 0.4%，每张封顶 USD 2；**尚未启用，也未计入本候选成本**。需先核对商户实际合同价格、受限密钥权限、收件人字段和财务流程，再决定是否启用；不能静默增加收费功能。
+8. 生产法律页 `/terms`、`/membership-terms`、`/privacy` 等仍显示“预览稿／待确认”，其中包含未定稿的生效日、个人资料留存期限及争议条款。新上架服务页不能替代这些通用文件；现有已签署的供应商入驻协议带版本和内容指纹，不得原地改写。正式收款前需完成这些具体条款的审定与版本发布，不能因公司证书已提供而跳过。
+9. 最新生产备份正在以只读方式传输；完成压缩归档 SHA256、隔离恢复、旧镜像归档与回滚演练前，不具备生产切换条件。该过程尚未修改生产数据或容器。
 
 ## 下一步
 
-以最新公司资料报告或 NNC1/NR1 核实所有者提供的注册办事处地址，并审定完整法律页与供应商付费条款。完成上架服务票据流程，至少保证付款人可凭订单号申请企业抬头商业发票，且全额或部分退款能关联更正。此次法律 HTML 更新发生在上一版候选镜像归档之后；发布前必须重新构建并验证镜像文件哈希，不能把旧归档称为包含最新条款。供应商沙盒实际付款、全额退款及 Webhook 已通过；仍须在阿里云原生 AMD64 隔离环境验证最终镜像、买家 Webhook、失败付款及争议流程，并验证完整生产备份与回滚。以上门槛通过后，才可按安全 Runbook 讨论生产切换；两个真实支付开关继续保持关闭。
+以最新公司资料报告或 NNC1/NR1 核实所有者提供的注册办事处地址，并审定完整法律页与供应商付费条款。已提供按订单号申请企业抬头商业发票的人工流程；具体票据必须由财务核对付款、退款及企业信息后出具、更正。此次法律 HTML 更新发生在上一版候选镜像归档之后；发布前必须重新构建并验证镜像文件哈希，不能把旧归档称为包含最新条款。供应商沙盒实际付款、全额退款及 Webhook 已通过；仍须取得正式 Stripe 凭据，并在阿里云原生 AMD64 隔离环境验证最终镜像、买家 Webhook、失败付款及争议流程，完成生产备份、恢复与回滚演练。以上门槛通过后才可执行生产切换；两个真实支付开关继续保持关闭。

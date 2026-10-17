@@ -67,6 +67,9 @@
     checkbox.type = 'checkbox'; checkbox.required = true;
     const explanation = document.createElement('span');
     explanation.textContent = disclosures[document.documentElement.lang.toLowerCase().split('-')[0]] || disclosures.en;
+    const terms = document.createElement('a');
+    terms.href = '/supplier-listing-terms'; terms.target = '_blank'; terms.rel = 'noopener';
+    terms.textContent = document.documentElement.lang.toLowerCase().startsWith('zh') ? '查看上架服务条款' : 'Read listing service terms';
     consent.append(checkbox, explanation);
     checkbox.addEventListener('change', () => { button.disabled = !checkbox.checked; });
     const status = document.createElement('p');
@@ -88,7 +91,7 @@
         location.assign(url.href);
       } catch { status.textContent = unavailable; button.disabled = !checkbox.checked; }
     });
-    card.append(header, amount, consent, button, status);
+    card.append(header, amount, terms, consent, button, status);
     host.append(card);
   }
   new MutationObserver(schedule).observe(document.querySelector('#app'), {childList: true, subtree: true});
