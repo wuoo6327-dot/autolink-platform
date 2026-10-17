@@ -922,8 +922,7 @@ class Handler(BaseHTTPRequestHandler):
             elif method == "GET" and len(parts) == 3 and parts[2] == "listing-quote":
                 data = self.supplier_payment_service().quote(user, listing_id)
             elif method == "POST" and len(parts) == 3 and parts[2] == "listing-checkout":
-                self.read_body()
-                data = self.supplier_payment_service().create_checkout(user, listing_id)
+                data = self.supplier_payment_service().create_checkout(user, listing_id, self.read_body())
             elif method == "POST" and len(parts) == 3:
                 self.read_body()
                 data = self.trade.transition_vehicle(user, listing_id, parts[2])

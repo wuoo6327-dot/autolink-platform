@@ -16,15 +16,15 @@
   const skc='One SKC covers one supplier\'s brand, model and model year. Mid/high trims and colours are SKUs; they are not charged separately.';
   const price=minor=>'US$'+(minor/100).toFixed(0);
   const reviewBeforeCheckout={
-    en:'Company and listing reviews come before any available checkout. Payment alone does not publish a listing.',
-    zh:'企业和车源审核须先完成，之后才可能开放付款。付款本身不会自动公开车源。',
-    ar:'تسبق مراجعة الشركة والإدراج أي دفع متاح. الدفع وحده لا ينشر الإدراج.',
-    ru:'Оплата возможна только после проверки компании и объявления. Сама оплата не публикует объявление.',
-    kk:'Төлем компания мен хабарландыру тексерілгеннен кейін ғана қолжетімді. Төлем хабарландыруды өздігінен жарияламайды.',
-    uz:'To‘lov faqat kompaniya va e’lon tekshirilgandan keyin mavjud bo‘lishi mumkin. To‘lov e’lonni o‘z-o‘zidan chop etmaydi.',
-    ko:'회사와 차량 등록 심사가 끝난 뒤에만 결제가 제공될 수 있습니다. 결제만으로 등록이 공개되지는 않습니다.',
-    fr:'Le paiement éventuel suit les vérifications de l’entreprise et de l’annonce. Payer ne publie pas automatiquement l’annonce.',
-    sw:'Malipo yanapatikana tu baada ya ukaguzi wa kampuni na tangazo. Malipo peke yake hayachapishi tangazo.'
+    en:'Checkout opens only after company and listing review. A confirmed payment publishes an unchanged, eligible listing for three months; changed listings require manual review.',
+    zh:'企业和车源审核通过后才开放付款。确认收款后，符合条件且未变更的车源上线三个月；资料变更须重新人工审核。',
+    ar:'لا يتاح الدفع إلا بعد مراجعة الشركة والإعلان. ينشر الدفع المؤكد الإعلان المؤهل وغير المعدّل لمدة ثلاثة أشهر؛ وتتطلب التغييرات مراجعة يدوية.',
+    ru:'Оплата доступна после проверки компании и объявления. Подтверждённая оплата публикует неизменённое подходящее объявление на три месяца; изменения требуют повторной проверки.',
+    kk:'Төлем компания мен хабарландыру тексерілген соң ғана қолжетімді. Расталған төлем өзгермеген жарамды хабарландыруды үш айға жариялайды; өзгерістер қайта қаралады.',
+    uz:'To‘lov kompaniya va e’lon tekshirilgach ochiladi. Tasdiqlangan to‘lov o‘zgarmagan mos e’lonni uch oyga chiqaradi; o‘zgarishlar qayta ko‘rib chiqiladi.',
+    ko:'회사와 차량 등록 심사가 끝난 뒤 결제할 수 있습니다. 결제가 확인되면 변경되지 않은 적격 등록이 3개월간 공개되며, 변경 시 재심사가 필요합니다.',
+    fr:'Le paiement suit la vérification de l’entreprise et de l’annonce. Une fois confirmé, il publie l’annonce admissible et inchangée pendant trois mois ; toute modification exige un nouvel examen.',
+    sw:'Malipo hupatikana baada ya kampuni na tangazo kukaguliwa. Malipo yakithibitishwa, tangazo linalostahili na ambalo halijabadilishwa huonekana kwa miezi mitatu; mabadiliko huhitaji ukaguzi tena.'
   };
   function html(translate){
     const t=key=>escape(translate(key));

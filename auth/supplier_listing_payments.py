@@ -18,10 +18,50 @@ from urllib.parse import quote, urlparse
 
 from buyer_service import BuyerError
 from membership_payments import GatewayError, PaymentGateway
+from platform_service import PlatformService
 
 
 PRICES_MINOR = (4000, 14000, 20000)
 PLAN_VERSION = "supplier-launch-20261007-v1"
+CONSENT_VERSION = "supplier-listing-service-20261017-v1"
+
+
+def ensure_listing_schema(db):
+    """Create the entitlement table before any public listing SQL references it."""
+    db.executescript("""
+        CREATE TABLE IF NOT EXISTS supplier_listing_orders (
+            id TEXT PRIMARY KEY, supplier_id TEXT NOT NULL REFERENCES users(id),
+            listing_id TEXT NOT NULL REFERENCES supplier_vehicles(id),
+            model_id TEXT NOT NULL, model_year INTEGER NOT NULL,
+            quarter_number INTEGER NOT NULL, amount_minor INTEGER NOT NULL,
+            currency TEXT NOT NULL CHECK(currency='USD'),
+            plan_version TEXT NOT NULL, provider TEXT NOT NULL CHECK(provider='stripe'),
+            status TEXT NOT NULL, provider_ref TEXT UNIQUE, checkout_url TEXT,
+            provider_payment_id TEXT UNIQUE, created_at INTEGER NOT NULL,
+            expires_at INTEGER NOT NULL, paid_at INTEGER, service_until INTEGER,
+            updated_at INTEGER NOT NULL, refund_status TEXT, dispute_status TEXT,
+            consent_version TEXT NOT NULL DEFAULT '', consented_at INTEGER
+        );
+        CREATE UNIQUE INDEX IF NOT EXISTS supplier_listing_one_open
+            ON supplier_listing_orders(supplier_id,model_id,model_year)
+            WHERE status IN ('CREATING','PENDING','UNKNOWN');
+        CREATE INDEX IF NOT EXISTS supplier_listing_paid_skc
+            ON supplier_listing_orders(supplier_id,model_id,model_year,status,service_until);
+        CREATE TABLE IF NOT EXISTS supplier_listing_payment_events (
+            event_id TEXT PRIMARY KEY, event_type TEXT NOT NULL,
+            order_id TEXT, received_at INTEGER NOT NULL
+        );
+    """)
+    schema = db.execute(
+        "SELECT sql FROM sqlite_master WHERE type='table' AND name='supplier_listing_orders'"
+    ).fetchone()[0].lower()
+    if "provider='airwallex'" in schema:
+        raise RuntimeError("Old Airwallex supplier orders need an explicit migration before Stripe use.")
+    columns = {item[1] for item in db.execute("PRAGMA table_info(supplier_listing_orders)")}
+    if "consent_version" not in columns:
+        db.execute("ALTER TABLE supplier_listing_orders ADD COLUMN consent_version TEXT NOT NULL DEFAULT ''")
+    if "consented_at" not in columns:
+        db.execute("ALTER TABLE supplier_listing_orders ADD COLUMN consented_at INTEGER")
 
 
 def quarter_end(timestamp):
@@ -114,32 +154,7 @@ class SupplierListingPayments:
         self.auth = trade.auth
         self.gateway = gateway or StripeListingGateway()
         with self.auth.connect() as db:
-            db.executescript("""
-                CREATE TABLE IF NOT EXISTS supplier_listing_orders (
-                    id TEXT PRIMARY KEY, supplier_id TEXT NOT NULL REFERENCES users(id),
-                    listing_id TEXT NOT NULL REFERENCES supplier_vehicles(id),
-                    model_id TEXT NOT NULL, model_year INTEGER NOT NULL,
-                    quarter_number INTEGER NOT NULL, amount_minor INTEGER NOT NULL,
-                    currency TEXT NOT NULL CHECK(currency='USD'),
-                    plan_version TEXT NOT NULL, provider TEXT NOT NULL CHECK(provider='stripe'),
-                    status TEXT NOT NULL, provider_ref TEXT UNIQUE, checkout_url TEXT,
-                    provider_payment_id TEXT UNIQUE, created_at INTEGER NOT NULL,
-                    expires_at INTEGER NOT NULL, paid_at INTEGER, service_until INTEGER,
-                    updated_at INTEGER NOT NULL, refund_status TEXT, dispute_status TEXT
-                );
-                CREATE UNIQUE INDEX IF NOT EXISTS supplier_listing_one_open
-                    ON supplier_listing_orders(supplier_id,model_id,model_year)
-                    WHERE status IN ('CREATING','PENDING','UNKNOWN');
-                CREATE TABLE IF NOT EXISTS supplier_listing_payment_events (
-                    event_id TEXT PRIMARY KEY, event_type TEXT NOT NULL,
-                    order_id TEXT, received_at INTEGER NOT NULL
-                );
-            """)
-            schema = db.execute(
-                "SELECT sql FROM sqlite_master WHERE type='table' AND name='supplier_listing_orders'"
-            ).fetchone()[0].lower()
-            if "provider='airwallex'" in schema:
-                raise RuntimeError("Old Airwallex supplier orders need an explicit migration before Stripe use.")
+            ensure_listing_schema(db)
 
     @staticmethod
     def enabled():
@@ -164,22 +179,30 @@ class SupplierListingPayments:
             ).fetchone()
             if not row:
                 raise BuyerError(404, "Supplier listing not found.")
-            if row["status"] != "APPROVED":
-                raise BuyerError(409, "Listing review must be completed before payment.")
             paid = db.execute(
-                "SELECT count(*),max(service_until) FROM supplier_listing_orders "
+                "SELECT count(*),max(CASE WHEN coalesce(refund_status,'')!='FULL' "
+                "THEN service_until END) FROM supplier_listing_orders "
                 "WHERE supplier_id=? AND model_id=? AND model_year=? AND status='PAID'",
                 (supplier["id"], row["model_id"], row["model_year"])
             ).fetchone()
+            if row["status"] not in ("APPROVED", "OFFLINE") and not (paid[0] and row["status"] == "ONLINE"):
+                raise BuyerError(409, "Listing review must be completed before payment.")
+            if not self._reviewed_listing(db, {"listing_id": listing_id,
+                    "supplier_id": supplier["id"], "model_id": row["model_id"],
+                    "model_year": row["model_year"]}, int(time.time())):
+                raise BuyerError(409, "Listing is not ready for paid publication; contact support.")
         return {"listingId": listing_id, "modelId": row["model_id"],
                 "modelYear": row["model_year"], "quarterNumber": paid[0] + 1,
                 "amountMinor": PRICES_MINOR[min(paid[0], 2)], "currency": "USD",
                 "planVersion": PLAN_VERSION, "currentServiceUntil": paid[1],
                 "available": self.enabled(), "renewal": "manual", "provider": "stripe"}
 
-    def create_checkout(self, supplier, listing_id):
+    def create_checkout(self, supplier, listing_id, body):
         if not self.enabled():
             raise BuyerError(503, "Supplier listing payment is not yet available.")
+        if (not isinstance(body, dict) or body.get("serviceConsent") is not True
+                or body.get("serviceTermsVersion") != CONSENT_VERSION):
+            raise BuyerError(400, "Confirm the current listing service terms before payment.")
         if supplier.get("is_test_workspace"):
             raise BuyerError(403, "Test workspace cannot purchase listing service.")
         quoted = self.quote(supplier, listing_id)
@@ -192,7 +215,7 @@ class SupplierListingPayments:
                 "WHERE id=? AND supplier_id=? AND archived_at IS NULL",
                 (listing_id, supplier["id"])
             ).fetchone()
-            if (not row or row["status"] != "APPROVED"
+            if (not row or row["status"] not in ("APPROVED", "ONLINE", "OFFLINE")
                     or row["model_id"] != quoted["modelId"]
                     or row["model_year"] != quoted["modelYear"]):
                 raise BuyerError(409, "Listing changed during checkout; review the quote again.")
@@ -203,6 +226,12 @@ class SupplierListingPayments:
             ).fetchone()[0]
             if paid_count + 1 != quoted["quarterNumber"]:
                 raise BuyerError(409, "Listing price changed; review the quote again.")
+            if row["status"] == "ONLINE" and paid_count == 0:
+                raise BuyerError(409, "An online listing without prior service cannot renew.")
+            if not self._reviewed_listing(db, {"listing_id": listing_id,
+                    "supplier_id": supplier["id"], "model_id": row["model_id"],
+                    "model_year": row["model_year"]}, now):
+                raise BuyerError(409, "Listing is not ready for paid publication; contact support.")
             if db.execute(
                 "SELECT 1 FROM supplier_listing_orders WHERE supplier_id=? AND model_id=? AND model_year=? "
                 "AND status IN ('CREATING','PENDING','UNKNOWN')",
@@ -212,10 +241,10 @@ class SupplierListingPayments:
             db.execute(
                 "INSERT INTO supplier_listing_orders(id,supplier_id,listing_id,model_id,model_year,"
                 "quarter_number,amount_minor,currency,plan_version,provider,status,created_at,"
-                "expires_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                "expires_at,updated_at,consent_version,consented_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (order_id, supplier["id"], listing_id, row["model_id"], row["model_year"],
                  paid_count + 1, quoted["amountMinor"], "USD", PLAN_VERSION, "stripe",
-                 "CREATING", now, now + 3600, now)
+                 "CREATING", now, now + 3600, now, CONSENT_VERSION, now)
             )
             order = dict(db.execute(
                 "SELECT * FROM supplier_listing_orders WHERE id=?", (order_id,)
@@ -253,6 +282,8 @@ class SupplierListingPayments:
     def _settle_session(self, order, session, event_id, event_type):
         paid = event_type in ("checkout.session.completed", "checkout.session.reconciled")
         if paid:
+            if order.get("consent_version") != CONSENT_VERSION or not order.get("consented_at"):
+                raise BuyerError(409, "Supplier service consent was not recorded.")
             if (session.get("status") != "complete" or session.get("payment_status") != "paid"
                     or not isinstance(session.get("payment_intent"), str)
                     or not session["payment_intent"].startswith("pi_")):
@@ -288,7 +319,8 @@ class SupplierListingPayments:
             else:
                 prior = db.execute(
                     "SELECT max(service_until) FROM supplier_listing_orders WHERE supplier_id=? "
-                    "AND model_id=? AND model_year=? AND status='PAID'",
+                    "AND model_id=? AND model_year=? AND status='PAID' "
+                    "AND coalesce(refund_status,'')!='FULL'",
                     (order["supplier_id"], order["model_id"], order["model_year"])
                 ).fetchone()[0]
                 until = quarter_end(max(now, prior or now))
@@ -297,11 +329,48 @@ class SupplierListingPayments:
                     "service_until=?,updated_at=? WHERE id=? AND status IN ('PENDING','EXPIRED')",
                     (session["payment_intent"], now, until, now, order["id"])
                 )
+                publication = self._activate_reviewed_listing(db, order, now)
                 result = {"paid": True, "serviceUntil": until,
-                          "publication": "awaiting_verified_activation"}
+                          "publication": publication}
             db.execute("INSERT INTO supplier_listing_payment_events VALUES(?,?,?,?)",
                        (event_id, event_type, order["id"], now))
         return result
+
+    def _reviewed_listing(self, db, order, now):
+        """Return the unchanged listing only when it can be published safely."""
+        row = db.execute("""SELECT v.*,p.published,a.status AS company_status,u.status AS account_status,
+                u.deleted_at,u.email_verified_at,u.is_test_workspace
+            FROM supplier_vehicles v JOIN supplier_profiles p ON p.user_id=v.supplier_id
+            JOIN supplier_applications a ON a.supplier_id=v.supplier_id
+            JOIN users u ON u.id=v.supplier_id WHERE v.id=? AND v.supplier_id=?""",
+            (order["listing_id"], order["supplier_id"])).fetchone()
+        if (not row or row["model_id"] != order["model_id"]
+                or row["model_year"] != order["model_year"]
+                or row["status"] not in ("APPROVED", "ONLINE", "OFFLINE")
+                or row["archived_at"] is not None or row["reviewed_at"] is None
+                or row["company_status"] != "APPROVED" or not row["published"]
+                or row["account_status"] != "ACTIVE" or row["deleted_at"] is not None
+                or row["email_verified_at"] is None or row["is_test_workspace"]
+                or row["valid_until"] < datetime.fromtimestamp(now, timezone.utc).date().isoformat()
+                or not self.trade.catalog.enabled(row["model_id"])):
+            return None
+        try:
+            self.trade.images.require_stock_photos(db, row["id"], row["supplier_id"])
+        except BuyerError:
+            return None
+        return row
+
+    def _activate_reviewed_listing(self, db, order, now):
+        """A paid order can publish only the unchanged, currently reviewed listing."""
+        row = self._reviewed_listing(db, order, now)
+        if row is None:
+            return "manual_review"
+        if row["status"] in ("APPROVED", "OFFLINE"):
+            db.execute("UPDATE supplier_vehicles SET status='ONLINE',updated_at=? WHERE id=? AND status IN ('APPROVED','OFFLINE')",
+                       (now, row["id"]))
+        PlatformService.notify(db, row["supplier_id"], "LISTING_SERVICE_ACTIVE", row["id"],
+                               "/supplier/vehicles/" + row["id"])
+        return "online"
 
     def reconcile_order(self, order_id, recover_unknown=False):
         """Operator-only status repair through the same idempotent Stripe Checkout key."""
@@ -314,8 +383,12 @@ class SupplierListingPayments:
             raise BuyerError(404, "Stripe supplier order was not found.")
         order = dict(row)
         if order["status"] == "PAID":
+            with self.auth.connect() as db:
+                listing = db.execute("SELECT status FROM supplier_vehicles WHERE id=?",
+                                     (order["listing_id"],)).fetchone()
             return {"status": "PAID", "alreadyProcessed": True,
-                    "manualReview": bool(order["refund_status"] or order["dispute_status"])}
+                    "manualReview": bool(order["refund_status"] or order["dispute_status"]
+                                         or not listing or listing["status"] != "ONLINE")}
         if order["status"] not in ("CREATING", "UNKNOWN", "PENDING", "EXPIRED"):
             return {"status": order["status"], "manualReview": True}
         if not order["provider_ref"]:
@@ -329,7 +402,7 @@ class SupplierListingPayments:
                     "WHERE id=? AND supplier_id=? AND archived_at IS NULL",
                     (order["listing_id"], order["supplier_id"])
                 ).fetchone()
-                if (not listing or listing["status"] != "APPROVED"
+                if (not listing or listing["status"] not in ("APPROVED", "ONLINE", "OFFLINE")
                         or listing["model_id"] != order["model_id"]
                         or listing["model_year"] != order["model_year"]):
                     return {"status": "UNKNOWN", "manualReview": True}
@@ -412,6 +485,12 @@ class SupplierListingPayments:
                     status = "FULL" if obj["amount_refunded"] == row["amount_minor"] else "PARTIAL"
                     db.execute("UPDATE supplier_listing_orders SET refund_status=?,updated_at=? WHERE id=?",
                                (status, int(time.time()), row["id"]))
+                    if status == "FULL" and self.trade.listing_service_state(db, row) != "ACTIVE":
+                        db.execute("UPDATE supplier_vehicles SET status='OFFLINE',updated_at=? "
+                                   "WHERE supplier_id=? AND model_id=? AND model_year=? AND status='ONLINE'",
+                                   (int(time.time()), row["supplier_id"], row["model_id"], row["model_year"]))
+                        PlatformService.notify(db, row["supplier_id"], "LISTING_SERVICE_REFUNDED",
+                                               row["listing_id"], "/supplier/vehicles/" + row["listing_id"])
                 else:
                     status = "OPEN" if name.endswith("created") else str(obj.get("status", "CLOSED")).upper()
                     db.execute("UPDATE supplier_listing_orders SET dispute_status=?,updated_at=? WHERE id=?",
