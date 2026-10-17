@@ -30,8 +30,9 @@
 | 安全扫描 | 本轮 Gitleaks 对候选目录扫描约 308.37 MB，未发现泄露；Trivy 文件系统与最终候选镜像均报告 0 项 HIGH/CRITICAL 漏洞。 |
 | 票据入口及新版条款复核 | 新增条款 HTML 结构校验、Caddy 独立路由、修改过的 JavaScript 语法和差异检查通过。2026-10-17 对当前候选目录再次运行 Gitleaks（308.40 MB，0 泄露）与 Trivy 文件系统 HIGH/CRITICAL 扫描（0 项）。隔离 AMD64 完整回归因挂载路径首次漏 `/site`、再次漏 `/tests` 分别出现测试资料找不到的错误；补齐 `/site` 后的 267 项运行中仅 7 项缺 `/tests` 夹具，其余无失败；单独补跑这 7 项，7/7 通过。两次结果合并覆盖全部 267 项（262 通过、5 跳过），不能把其中任何一次失败的运行写成单次全绿。原始日志位于本机 `deployment/artifacts/stripe-both-20261017/`。 |
 | 生产只读预备份及隔离恢复 | 完整生产文件归档 SHA256 `8efbb9bf1eb5ed225c445a7428a102bec9b13e04933fd9ea204b2361d09d6d61`，保存在本机私有目录 `/Users/oo/.codex/private/autolink-preflight-20261017/production-files.tar.gz`，权限 0600；`gzip -t` 通过。隔离解包后可读取当前发布锁 `ef551a8e00e69c8a4a0fda02c17a3a9330833de0`、Caddy 数据卷与配置卷，归档内 SQLite `quick_check=ok`、8 个账号。单独的 SQLite 一致性备份 SHA256 `ad9be11ca37a077ee8d75198cada0939720c6271fbf2c6262f34db92c346d65d`，`integrity_check=ok`。这些均是预发布备份；生产切换前仍需重新制作当时最新版本。 |
+| 旧生产镜像与回滚预演 | 旧 Auth、Web 两镜像的只读归档 `/Users/oo/.codex/private/autolink-preflight-20261017/production-images.tar.gz`，SHA256 `71d52ece5ee0ca57d05473da9b7778f36c018f1f53e247cf2c4e2dfb6788f654`，权限 0600。`gzip -t` 通过，本机 `docker load` 还原出生产锁记录的 Auth `sha256:e56bb2c…` 与 Web `sha256:bddc55c…`，两者均为 `linux/amd64`。隔离复制一致性数据库后，用旧 Auth 镜像及归档站点启动，`/healthz` 返回 200，复制库 `quick_check=ok`；旧 Web 镜像对归档 Caddyfile 的配置验证通过。这证明归档可用于本机隔离回滚预演，仍不等于正式切换后的线上回滚演练。 |
 
-GitHub Actions 在最终支付代码提交 `187aff3` 上实际运行两次 `source-security`，运行编号 `39027901352` 与 `39027904598` 均通过；包含当前源码、历史记录和依赖扫描。上述结果属于候选代码验收，不代表生产支付已启用。
+GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `source-security`，运行编号 `39027901352` 与 `39027904598` 均通过；在条款及票据入口候选提交 `39e628a89014e2da639fbfec9979bcb82640d63b` 上再次运行两次 `source-security`，运行编号 `39042768874` 与 `39042771765` 均通过。上述结果属于候选代码验收，不代表生产支付已启用。
 
 最终候选镜像以 `linux/amd64` 构建并保存在本机，标签 `autolink-stripe-both:qa-20261017-r4`；本地 OCI manifest list 身份为 `sha256:36d3e93c408757b8ef82f59a4c4ba4457c39cee6a037088d466b636a67851a4e`，不冒充远程 Registry Manifest Digest。压缩归档位于 `/Users/oo/Documents/ChatGPT/Space Auto/deployment/artifacts/stripe-both-20261017/autolink-stripe-both-qa-r4-amd64.tar.gz`，SHA256 为 `bd7786b3adc1b1fc7d52400d8c51042216001b9d9bf44c9f783f4925613faeb4`。镜像内 `app.py`、`supplier_listing_payments.py`、`trade_service.py` 哈希与对应源文件相符。本轮最终镜像已经在本机 Docker AMD64 容器运行支付专项；阿里云原生 AMD64 验证使用同源候选源码只读挂载至旧 QA 基础镜像，尚未将最终镜像归档加载到阿里云。候选未接入生产 Compose。
 
@@ -47,7 +48,7 @@ GitHub Actions 在最终支付代码提交 `187aff3` 上实际运行两次 `sour
 6. Stripe 测试模式 API 密钥页在本次浏览器核查中直接显示了完整测试密钥，浏览器工具返回内容因此包含测试凭据。没有将其复制到代码、报告正文或其他服务；继续使用前应由账户所有者轮换测试密钥并更新隔离环境。该情况不涉及生产收款密钥，生产支付依旧关闭。
 7. 供应商提出企业发票需求。候选已在已付款订单旁加入“申请发票”，通过现有支持单收集订单号、企业抬头、适用登记号、账单地址和接收邮箱，明确由人工核对付款与退款后出具香港公司商业发票。尚无自动发票编号、下载入口或退款后自动更正；香港商业发票不能冒充中国大陆增值税专用发票。Stripe Checkout 的自动生成已付发票是另一个可选方案，香港公开价格当前为交易额的 0.4%，每张封顶 USD 2；**尚未启用，也未计入本候选成本**。需先核对商户实际合同价格、受限密钥权限、收件人字段和财务流程，再决定是否启用；不能静默增加收费功能。
 8. 生产法律页 `/terms`、`/membership-terms`、`/privacy` 等仍显示“预览稿／待确认”，其中包含未定稿的生效日、个人资料留存期限及争议条款。新上架服务页不能替代这些通用文件；现有已签署的供应商入驻协议带版本和内容指纹，不得原地改写。正式收款前需完成这些具体条款的审定与版本发布，不能因公司证书已提供而跳过。
-9. 最新生产备份正在以只读方式传输；完成压缩归档 SHA256、隔离恢复、旧镜像归档与回滚演练前，不具备生产切换条件。该过程尚未修改生产数据或容器。
+9. 已完成生产只读预备份、归档哈希、隔离恢复和旧镜像本机回滚预演。正式切换前仍需在维护窗口制作当时最新的一致性数据库和上传文件备份，并在目标主机验证最终候选镜像及回滚流程。该过程尚未修改生产数据或容器。
 
 ## 下一步
 
