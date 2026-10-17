@@ -239,6 +239,8 @@ class SupplierStripeTests(unittest.TestCase):
         refund = {"payment_intent": "pi_paid", "currency": "usd", "amount_refunded": 4000}
         raw, headers = self.event(refund, "evt_refund", "charge.refunded")
         self.assertTrue(self.payments.webhook(raw, headers)["recorded"])
+        self.assertTrue(self.payments.webhook(*self.event(
+            refund, "evt_refund_repeat", "charge.refunded"))["recorded"])
         with self.auth.connect() as db:
             self.assertEqual(db.execute(
                 "SELECT refund_status FROM supplier_listing_orders WHERE id=?",
@@ -246,6 +248,8 @@ class SupplierStripeTests(unittest.TestCase):
             ).fetchone()[0], "FULL")
             self.assertEqual(db.execute("SELECT status FROM supplier_vehicles WHERE id='listing'")
                              .fetchone()[0], 'OFFLINE')
+            self.assertEqual(db.execute("SELECT count(*) FROM account_notifications "
+                "WHERE user_id='supplier' AND event='LISTING_SERVICE_REFUNDED'").fetchone()[0], 1)
         with self.assertRaises(BuyerError) as hidden:
             self.trade.vehicle('listing', public=True)
         self.assertEqual(hidden.exception.status, 404)

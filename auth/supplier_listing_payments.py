@@ -485,7 +485,8 @@ class SupplierListingPayments:
                     status = "FULL" if obj["amount_refunded"] == row["amount_minor"] else "PARTIAL"
                     db.execute("UPDATE supplier_listing_orders SET refund_status=?,updated_at=? WHERE id=?",
                                (status, int(time.time()), row["id"]))
-                    if status == "FULL" and self.trade.listing_service_state(db, row) != "ACTIVE":
+                    if (status == "FULL" and row["refund_status"] != "FULL"
+                            and self.trade.listing_service_state(db, row) != "ACTIVE"):
                         db.execute("UPDATE supplier_vehicles SET status='OFFLINE',updated_at=? "
                                    "WHERE supplier_id=? AND model_id=? AND model_year=? AND status='ONLINE'",
                                    (int(time.time()), row["supplier_id"], row["model_id"], row["model_year"]))
