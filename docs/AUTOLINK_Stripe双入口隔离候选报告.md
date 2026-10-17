@@ -2,6 +2,8 @@
 
 日期：2026-10-17。状态：**仅隔离候选；生产支付未启用，也未部署本候选。**
 
+发布准备分支 `codex/stripe-buyer-supplier-20261017`，草稿 PR [#21](https://github.com/wuoo6327-dot/autolink-platform/pull/21)。最终支付代码提交 `187aff32757976827548134ec5914c4c3725f74f`；后续报告文字提交不改变镜像内应用文件。生产 Auth 镜像仍为 `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，Auth/Web 均健康，`PAYMENTS_ENV`、买家和供应商真实收款开关均未设置。阿里云根分区可用空间约 2.3 GB（使用率 96%）。
+
 ## 范围与基线
 
 - 从 `2797d12`（`codex/supplier-brand-auth-on-seo-20261014`）建立独立分支 `codex/stripe-buyer-supplier-20261017`。保留此前生产安全、SEO、询盘和商家审核流程；没有合并旧支付 PR，也没有修改真实生产数据。
@@ -25,7 +27,9 @@
 | 静态及配置检查 | 修改过的 JavaScript `node --check` 通过；使用非生产占位变量的 `docker compose config --quiet` 通过；`git diff --check` 通过。 |
 | 安全扫描 | 本轮 Gitleaks 对候选目录扫描约 308.37 MB，未发现泄露；Trivy 文件系统与最终候选镜像均报告 0 项 HIGH/CRITICAL 漏洞。 |
 
-最终候选镜像以 `linux/amd64` 构建并保存在本机，标签 `autolink-stripe-both:qa-20261017-r3`；本地 OCI manifest list 身份为 `sha256:546264c6e67bac0d5c00fb11f63e7fdc4a99d7924ff404ddc99e1adabea82314`，不冒充远程 Registry Manifest Digest。压缩归档位于 `/Users/oo/Documents/ChatGPT/Space Auto/deployment/artifacts/stripe-both-20261017/autolink-stripe-both-qa-r3-amd64.tar.gz`，SHA256 为 `1301ab1669d44e93282d6fcf97df0455c879a9ccfe3a5a1655141d96dc66c2ef`。本轮最终镜像已经在本机 Docker AMD64 容器运行支付专项；阿里云原生 AMD64 验证使用同源候选源码只读挂载至旧 QA 基础镜像，尚未将最终镜像归档加载到阿里云。候选未接入生产 Compose。
+GitHub Actions 在最终支付代码提交 `187aff3` 上实际运行两次 `source-security`，运行编号 `39027901352` 与 `39027904598` 均通过；包含当前源码、历史记录和依赖扫描。上述结果属于候选代码验收，不代表生产支付已启用。
+
+最终候选镜像以 `linux/amd64` 构建并保存在本机，标签 `autolink-stripe-both:qa-20261017-r4`；本地 OCI manifest list 身份为 `sha256:36d3e93c408757b8ef82f59a4c4ba4457c39cee6a037088d466b636a67851a4e`，不冒充远程 Registry Manifest Digest。压缩归档位于 `/Users/oo/Documents/ChatGPT/Space Auto/deployment/artifacts/stripe-both-20261017/autolink-stripe-both-qa-r4-amd64.tar.gz`，SHA256 为 `bd7786b3adc1b1fc7d52400d8c51042216001b9d9bf44c9f783f4925613faeb4`。镜像内 `app.py`、`supplier_listing_payments.py`、`trade_service.py` 哈希与对应源文件相符。本轮最终镜像已经在本机 Docker AMD64 容器运行支付专项；阿里云原生 AMD64 验证使用同源候选源码只读挂载至旧 QA 基础镜像，尚未将最终镜像归档加载到阿里云。候选未接入生产 Compose。
 
 为控制阿里云磁盘使用，本轮没有向阿里云加载新镜像；本机固定归档保留，运行中的生产 Auth 和 Web 容器继续保持健康。
 
