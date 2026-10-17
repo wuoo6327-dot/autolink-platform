@@ -1,6 +1,6 @@
 # AUTOLINK Stripe 双入口隔离候选报告
 
-日期：2026-10-17。状态：**仅隔离候选；生产支付未启用，也未部署本候选。** 生产服务器的正式配置文件 `/home/admin/autolink-stripe-live-20261017/private/stripe-live.env` 权限为 `0600`。所有者已通过隐藏输入将正式受限密钥写入该文件；只读取状态校验确认其为 `rk_live_` 类型，且 Stripe 正式账户读取接口返回预期账户 `acct_1UOybvD11yCRmcha`（账户报告 `charges_enabled=true`）。专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b` 仅启用银行卡和 Link，已固定到该配置文件；另一份由所有者勾选更多支付方式的配置没有接入候选。买家及供应商正式 Webhook 签名密钥仍为空，`STRIPE_LIVE_RELEASE_READY`、`STRIPE_CARD_ENABLED`、`STRIPE_SUPPLIER_LISTING_ENABLED` 均为 `false`。没有执行真实扣款。
+日期：2026-10-17，最近更新：2026-10-18。状态：**仅隔离候选；生产支付未启用，也未部署本候选。** 生产服务器的正式配置文件 `/home/admin/autolink-stripe-live-20261017/private/stripe-live.env` 权限为 `0600`。所有者已通过隐藏输入将正式受限密钥写入该文件；只读取状态校验确认其为 `rk_live_` 类型，且 Stripe 正式账户读取接口返回预期账户 `acct_1UOybvD11yCRmcha`（账户报告 `charges_enabled=true`）。专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b` 已固定到该配置文件，但 Stripe 后台当前启用方式超出候选批准的银行卡／Link 范围，须在发布前纠正并重新验证。买家及供应商正式 Webhook 签名密钥均已由所有者写入，状态校验为格式正确且两值不同；`STRIPE_LIVE_RELEASE_READY`、`STRIPE_CARD_ENABLED`、`STRIPE_SUPPLIER_LISTING_ENABLED` 均为 `false`。没有执行真实扣款。
 
 发布准备分支 `codex/stripe-buyer-supplier-20261017`，草稿 PR [#21](https://github.com/wuoo6327-dot/autolink-platform/pull/21)。Auth 支付代码基准提交 `187aff32757976827548134ec5914c4c3725f74f`；其后增加独立上架服务条款与人工票据申请前端，旧候选镜像只包含此前 Auth 代码，不能充当最终前端发布包。生产 Auth 镜像仍为 `sha256:e56bb2c05766aeda08db14db4a6931e6ba19f117926a9f24927b7edaccf3be2c`，Auth/Web 均健康，生产容器未部署本候选。阿里云实例已由所有者升级为 4 vCPU、16 GiB 内存和 80 GiB 系统盘；根分区扩容后约 79 GiB，剩余约 31 GiB（使用率 60%）。
 
@@ -42,7 +42,7 @@ GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `sour
 
 2026-10-17 追加只读复核：生产服务器的专用 live env 仍为 `STRIPE_LIVE_RELEASE_READY=false`、`STRIPE_CARD_ENABLED=false`、`STRIPE_SUPPLIER_LISTING_ENABLED=false`，两条正式 Webhook 签名密钥均为空。复核时 Stripe 正式账户 Workbench 尚未配置事件接收端。原先命名为 “AUTOLINK Card and Link Release” 的专用支付方式配置 `pmc_1URZPtD11yCRmcha7OJWNH7b`，当前界面显示银行卡、支付宝、Apple Pay、Google Pay、Link 五种方式为已启用，已偏离本候选仅允许银行卡／Link 的隔离验收状态；候选后端会拒绝返回了非许可支付方式的 Checkout Session。所有者要求优先开放真实付款，但这两项技术门槛未通过，且五页法律文本仍标为待审稿；本次没有切换生产，也没有真实扣款。
 
-2026-10-17 至 18 日 Webhook 进展：经所有者分别在生成凭据前单独授权，Stripe 正式账户已创建两个独立事件接收端：买家会员 `we_1URasbD11yCRmchaiBss9Gso`，地址 `https://autolinkglobal.com/autolink/payments/webhooks/stripe`；供应商上架费 `we_1URb1yD11yCRmchaeVN3RdV5`，地址 `https://autolinkglobal.com/autolink/supplier/payments/webhooks/stripe`。两者来源均为商户自身账户，快照事件各五类：`checkout.session.completed`、`checkout.session.expired`、`charge.refunded`、`charge.dispute.created`、`charge.dispute.closed`。Stripe 均显示接收端“使用中”，当时事件交付总数 0、失败 0；签名密钥未显示或读取，也尚未写入服务器专用 live env。公网两个 Webhook 地址的 HEAD 请求均返回 HTTP 405，表明路由存在且只接受 POST；这不能替代带有效 Stripe 签名的投递测试。生产支付开关未更改，未发生真实扣款。
+2026-10-17 至 18 日 Webhook 进展：经所有者分别在生成凭据前单独授权，Stripe 正式账户已创建两个独立事件接收端：买家会员 `we_1URasbD11yCRmchaiBss9Gso`，地址 `https://autolinkglobal.com/autolink/payments/webhooks/stripe`；供应商上架费 `we_1URb1yD11yCRmchaeVN3RdV5`，地址 `https://autolinkglobal.com/autolink/supplier/payments/webhooks/stripe`。两者来源均为商户自身账户，快照事件各五类：`checkout.session.completed`、`checkout.session.expired`、`charge.refunded`、`charge.dispute.created`、`charge.dispute.closed`。Stripe 均显示接收端“使用中”，创建时事件交付总数 0、失败 0。2026-10-18 所有者通过隐藏输入向服务器写入两枚签名密钥；首次误将同一值输入两处，已在所有支付开关关闭时清除。重新输入后只读状态校验确认两枚值格式正确、彼此不同，env 权限 `0600`；未读取、打印或提交密钥值。公网两个 Webhook 地址的 HEAD 请求均返回 HTTP 405，表明路由存在且只接受 POST；这不能替代带有效 Stripe 签名的投递测试。生产支付开关未更改，未发生真实扣款。
 
 2026-10-17 R2 补充：根据所有者提供的五页 R1 内部审阅稿和后续确认，候选法律页已补入公司编号、完整商业登记证号码、公司提供的注册办事处地址、客服邮箱及电话；会员页明确首年 USD 39.99、其后每年手动续费 USD 99.99；账号删除页明确核实后 1–3 个工作日受理并关闭账号，保留资料的清理期限另待审。已使用的九语言会员 UI 包也把年度首购展示更正为 USD 39.99，并更新静态资源版本。`docs/AUTOLINK_五页法律条款R1核对与R2修订清单.md` 列出五页 R2 全文位置与剩余决策。所有者确认没有法务终稿，适用法律与争议解决条款仍待审；因此这仍是未生效候选，正式扣款和部署未发生。账号删除与供应商协议前端的 27 项测试、会员定价资源检查、后端会员相关 22 项测试均通过；最终 AMD64 镜像、生产备份和回滚仍需按本报告门槛重新验收。
 
@@ -55,7 +55,7 @@ GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `sour
 7. 供应商提出企业发票需求。候选已在已付款订单旁加入“申请发票”，通过现有支持单收集订单号、企业抬头、适用登记号、账单地址和接收邮箱，明确由人工核对付款与退款后出具香港公司商业发票。尚无自动发票编号、下载入口或退款后自动更正；香港商业发票不能冒充中国大陆增值税专用发票。Stripe Checkout 的自动生成已付发票是另一个可选方案，香港公开价格当前为交易额的 0.4%，每张封顶 USD 2；**尚未启用，也未计入本候选成本**。需先核对商户实际合同价格、受限密钥权限、收件人字段和财务流程，再决定是否启用；不能静默增加收费功能。
 8. 生产法律页 `/terms`、`/membership-terms`、`/privacy` 等仍显示“预览稿／待确认”，其中包含未定稿的生效日、个人资料留存期限及争议条款。新上架服务页不能替代这些通用文件；现有已签署的供应商入驻协议带版本和内容指纹，不得原地改写。正式收款前需完成这些具体条款的审定与版本发布，不能因公司证书已提供而跳过。
 9. 已完成生产只读预备份、归档哈希、隔离恢复和旧镜像本机回滚预演。正式切换前仍需在维护窗口制作当时最新的一致性数据库和上传文件备份，并在目标主机验证最终候选镜像及回滚流程。该过程尚未修改生产数据或容器。
-10. 正式受限密钥与专用支付方式配置已经创建并在服务器核验，不能再将其列为“尚未创建”。买家和供应商 Webhook 接收端均已创建，但两枚签名密钥尚未写入服务器，服务器签名密钥配置仍为空。正式账户返回 `charges_enabled=true` 只证明 Stripe 账户状态，不证明 AUTOLINK 已完成正式支付链路验收。
+10. 正式受限密钥与专用支付方式配置已经创建并在服务器核验，不能再将其列为“尚未创建”。买家和供应商 Webhook 接收端及各自不同的签名密钥均已配置；签名值仍需在最终隔离版本中通过真实签名投递验证。正式账户返回 `charges_enabled=true` 只证明 Stripe 账户状态，不证明 AUTOLINK 已完成正式支付链路验收。
 
 ### 服务器扩容后复核
 
@@ -65,4 +65,4 @@ GitHub Actions 在支付后端代码提交 `187aff3` 上实际运行两次 `sour
 
 ## 下一步
 
-以最新公司资料报告或 NNC1/NR1 核实所有者提供的注册办事处地址，并完成完整法律页与供应商付费条款的正式审定；当前没有已审定版本。已提供按订单号申请企业抬头商业发票的人工流程；具体票据必须由财务核对付款、退款及企业信息后出具、更正。此次法律 HTML 更新发生在上一版候选镜像归档之后；发布前必须重新构建并验证镜像文件哈希，不能把旧归档称为包含最新条款。供应商沙盒实际付款、全额退款及 Webhook 已通过；两条正式事件接收端已创建，仍须由所有者把各自签名密钥安全写入服务器，在阿里云原生 AMD64 隔离环境验证最终镜像、买家 Webhook、失败付款及争议流程，完成支付发布前最新生产备份、恢复与回滚演练。扩容已解决空间阻断，但不代表这些支付发布门槛已经通过；两个真实支付开关继续保持关闭。
+以最新公司资料报告或 NNC1/NR1 核实所有者提供的注册办事处地址，并完成完整法律页与供应商付费条款的正式审定；当前没有已审定版本。已提供按订单号申请企业抬头商业发票的人工流程；具体票据必须由财务核对付款、退款及企业信息后出具、更正。此次法律 HTML 更新发生在上一版候选镜像归档之后；发布前必须重新构建并验证镜像文件哈希，不能把旧归档称为包含最新条款。供应商沙盒实际付款、全额退款及 Webhook 已通过；两条正式事件接收端及不同的签名密钥已配置，仍须在阿里云原生 AMD64 隔离环境验证最终镜像、买家 Webhook、失败付款及争议流程，完成支付发布前最新生产备份、恢复与回滚演练。扩容已解决空间阻断，但不代表这些支付发布门槛已经通过；两个真实支付开关继续保持关闭。
